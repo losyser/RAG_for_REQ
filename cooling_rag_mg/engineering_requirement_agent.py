@@ -399,6 +399,16 @@ def compact_requirement_context(
     # 按 requirement_intents 分组（帮助 agent 归并）
     grouped_evidence = _group_evidence_by_type(supported)
 
+    allowed_aspects = [
+        {
+            "topic": sub.get("topic", ""),
+            "source_phrase": sub.get("source_phrase", ""),
+            "implication_type": sub.get("implication_type", "explicit"),
+        }
+        for sub in requirement_context.get("sub_requirements", []) or []
+        if sub.get("source_phrase")
+    ]
+
     return {
         "requirement_id": requirement_context.get("requirement_id", ""),
         "stakeholder": requirement_context.get("stakeholder", ""),
@@ -409,6 +419,7 @@ def compact_requirement_context(
         "background_evidence_for_reference_only": background,
         "evidence_gap_summary": gaps,
         "sub_requirement_type_distribution": sub_type_dist,
+        "allowed_engineering_aspects": allowed_aspects,
         "sub_requirements_hidden_from_generation": True,
     }
 
