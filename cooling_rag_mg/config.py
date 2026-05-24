@@ -78,7 +78,7 @@ class DeepSeekConfig:
     max_tokens_split: int = int(os.getenv("MAX_TOKENS_SPLIT", "1200"))   # 900→1200，给更长的拆分结果留余量
     max_tokens_judge: int = int(os.getenv("MAX_TOKENS_JUDGE", "2800"))   # 2200→2800，候选多时 judge 不截断
     max_tokens_requirement_agent: int = int(os.getenv("MAX_TOKENS_REQUIREMENT_AGENT", "6000"))  # 3600→6000，防止复杂需求 JSON 截断
-
+    splitter_review_max_rounds: int = int(os.getenv("SPLITTER_REVIEW_MAX_ROUNDS", "3"))
 
     @property
     def enabled(self) -> bool:
