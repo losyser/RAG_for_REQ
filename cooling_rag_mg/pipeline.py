@@ -117,6 +117,8 @@ def build_sub_payload(requirement_id: str, idx: int, sub: dict[str, Any]) -> dic
         "text": sub.get("text", ""),
         "split_method": sub.get("split_method", ""),
         "split_error": sub.get("split_error", ""),
+        "source_phrase": sub.get("source_phrase", ""),
+        "implication_type": sub.get("implication_type", ""),
     }
 
 
