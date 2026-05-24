@@ -649,6 +649,29 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str
             if rel.get("source") not in removed_ids and rel.get("target") not in removed_ids
         ]
 
+    # ── Scope validation: engineering_requirement topics must be in allowed_engineering_aspects ──
+    allowed_topics = {
+        a["topic"]
+        for a in obj.get("allowed_engineering_aspects", []) or []
+        if a.get("topic")
+    }
+    if allowed_topics:
+        valid_reqs = []
+        for req in obj["engineering_requirements"]:
+            if req.get("topic", "") in allowed_topics:
+                valid_reqs.append(req)
+            else:
+                obj.setdefault("evidence_gaps", []).append({
+                    "related_requirement_id": req.get("id", ""),
+                    "gap_type": "scope_violation",
+                    "description": (
+                        f"topic '{req.get('topic', '')}' 不在 allowed_engineering_aspects 列表中，"
+                        "已从工程需求中移除。若确需覆盖该方面，请在原始需求中补充相应内容。"
+                    ),
+                    "suggested_document_update": "在原始需求中明确提及该工程方面。",
+                })
+        obj["engineering_requirements"] = valid_reqs
+
     obj["generated_at"] = datetime.now().isoformat(timespec="seconds")
     obj["agent"] = "langgraph_deepseek_engineering_requirement_agent"
     return obj
@@ -705,6 +728,10 @@ def build_graph():
                 return {**state, "output": fallback, "errors": errors}
 
         try:
+            # inject allowed_aspects from compact_context so normalize_agent_output can validate scope
+            compact = state.get("compact_context", {}) or {}
+            obj["allowed_engineering_aspects"] = compact.get("allowed_engineering_aspects", [])
+
             obj = normalize_agent_output(obj, requirement_id)
             if errors:
                 obj.setdefault("assumptions", [])
