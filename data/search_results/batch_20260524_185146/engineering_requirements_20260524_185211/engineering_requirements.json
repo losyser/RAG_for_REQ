@@ -1,0 +1,147 @@
+{
+  "generated_at": "2026-05-24T18:52:11",
+  "agent": "langgraph_deepseek_engineering_requirement_agent",
+  "requirement_sets": [
+    {
+      "requirement_set_id": "ER-R001",
+      "source_requirement_id": "R001",
+      "stakeholder": "船东代表",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统在连续运行、负荷变化和高温环境下的冷却能力、温度控制、冗余配置及报警保护要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R001-01",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "capacity",
+          "topic": "冷却能力与设计工况",
+          "shall_statement": "主机冷却水系统应具备在连续运行、负荷变化和最高设计海水温度下维持主机冷却水温度在厂家规定范围内的能力。",
+          "engineering_rationale": "E-CCS-COOL-001（CCS规则）支撑了按最高海水温度设计的要求；E-DNV-COOL-001（DNV规则）支撑了进机温度保持在厂家限值内的要求；E-LT-CAP-001（DNV规则）支撑了LT回路容量按满负荷计算的要求。",
+          "acceptance_criteria": [
+            "设计图纸和热平衡计算书应表明系统在最高设计海水温度（按项目设计基准确认）下，主机在MCR工况时冷却水温度不超过主机厂家Technical Data规定的限值。",
+            "调试期间在主机MCR工况下连续运行，记录HT/LT冷却水进机温度，确认在厂家规定范围内。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-001",
+            "E-LT-CAP-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "设计海水温度按项目设计基准（Design Basis）确认。"
+          ],
+          "risk_if_unmet": "冷却能力不足将导致主机过热，触发高温报警甚至自动降功率，影响推进安全和运行经济性。"
+        },
+        {
+          "id": "ER-R001-02",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "redundancy",
+          "topic": "冷却水泵冗余配置",
+          "shall_statement": "主机冷却水系统应配置不少于两台冷却水泵，一用一备；任意单台泵发生故障时，系统应能通过备用泵维持主机在MCR工况下连续运行。",
+          "engineering_rationale": "E-CCS-COOL-001（CCS规则）明确要求主机冷却水泵≥2台，每台容量满足MCR，直接支撑冗余配置要求。",
+          "acceptance_criteria": [
+            "检查图纸确认泵的台数和备用切换回路配置符合本条要求。",
+            "调试期间模拟主泵故障，确认备用泵自动启动并维持主机MCR工况运行，切换时间按项目调试大纲确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CCS-COOL-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "单泵故障后无备用将导致主机停机，影响航行安全。"
+        },
+        {
+          "id": "ER-R001-03",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "温度控制与报警保护",
+          "shall_statement": "主机冷却水系统应配置自动温度控制阀，实现全负荷范围内的自动调节，并设置手动备用调节功能；同时应设置高温报警和自动保护（降功率或停机）。",
+          "engineering_rationale": "E-CTRL-COOL-001（IACS UR E10）要求温控系统全负荷范围自动调节、手动备用、高温报警及自动保护；E-PARAM-HT-001（IACS/ISO/DNV）给出了标准报警设定值范围。",
+          "acceptance_criteria": [
+            "检查图纸确认自动温控阀、手动备用回路及报警保护逻辑符合IACS UR E10要求。",
+            "调试期间模拟高温工况，确认报警和自动保护动作正确，报警设定值按主机厂家Technical Data确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温度失控可能导致主机热应力过大或损坏，影响安全。"
+        },
+        {
+          "id": "ER-R001-04",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却水温度参数限值",
+          "shall_statement": "主机HT冷却水进机温度应保持在主机厂家Technical Data规定的范围内，且不超过调温阀开启温度加36°C；LT冷却水温度应满足中央冷却系统设计要求。",
+          "engineering_rationale": "E-DNV-COOL-001（DNV规则）要求进机温度不超过调温阀开启温度+36°C；E-PARAM-HT-001给出了典型温度范围，但具体值以厂家为准。",
+          "acceptance_criteria": [
+            "设计文件中应明确主机厂家Technical Data规定的HT/LT冷却水温度限值。",
+            "[待确认数值] 调试期间实测HT进机温度，确认不超过调温阀开启温度+36°C。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-DNV-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "support_status": "need_confirmation",
+          "applicability_constraints": [
+            "具体温度限值按主机厂家Technical Data确认。"
+          ],
+          "risk_if_unmet": "温度超限将导致主机性能下降或损坏。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R001",
+          "target": "ER-R001-01",
+          "type": "derive",
+          "description": "由原始需求「冷却能力」和E-CCS-COOL-001、E-DNV-COOL-001、E-LT-CAP-001直接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-02",
+          "type": "derive",
+          "description": "由原始需求「可靠性」和E-CCS-COOL-001直接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-03",
+          "type": "derive",
+          "description": "由原始需求「稳定可靠」和E-CTRL-COOL-001、E-PARAM-HT-001直接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-04",
+          "type": "derive",
+          "description": "由原始需求「稳定可靠」和E-DNV-COOL-001、E-PARAM-HT-001直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家Technical Data中HT/LT冷却水温度限值、调温阀开启温度。",
+          "reason": "现有证据仅给出典型范围，具体值需厂家确认。"
+        },
+        {
+          "item": "确认项目设计基准中的最高设计海水温度。",
+          "reason": "冷却能力计算需明确设计海水温度。"
+        },
+        {
+          "item": "确认备用泵自动切换时间要求。",
+          "reason": "现有证据未给出具体时间限值，需项目调试大纲确认。"
+        }
+      ],
+      "generated_at": "2026-05-24T18:52:11",
+      "agent": "langgraph_deepseek_engineering_requirement_agent"
+    }
+  ]
+}
