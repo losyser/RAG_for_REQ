@@ -58,6 +58,69 @@ configuration, cost, other
 """
 
 
+REVIEW_PROMPT = """
+你是工程需求质量审核员。
+任务：审核拆分器对原始需求识别出的工程方面列表，判断是否合法。
+只输出合法 JSON，不输出 Markdown，不输出注释。
+
+## 评价维度
+1. 溯源合法性：source_phrase 是否确实存在于原文中（字面包含）
+2. 推断合理性：implication_type=direct_implication 是否真的是工程共识，非个人推测
+3. 完整性：原文明确提到的重要方面是否都已覆盖
+4. 无冗余：是否有两条方面高度重叠
+5. 检索可用性：text 是否足够具体，能有效检索
+
+## 通过条件
+所有方面 valid=true，且 missing_aspects 为空列表。
+
+## 输出格式
+{
+  "passed": false,
+  "aspect_evaluations": [
+    {"aspect_name": "方面名称", "valid": true},
+    {"aspect_name": "另一方面", "valid": false, "issue": "source_phrase 不在原文中"}
+  ],
+  "missing_aspects": ["原文提到但未覆盖的方面描述"],
+  "overall_feedback": "给拆分器的修订指令，简洁具体"
+}
+"""
+
+
+def _review_aspects(
+    raw_text: str,
+    aspects: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """调用 LLM 审核方面列表，返回 review 结果 dict。"""
+    cfg = get_config()
+    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    payload = {
+        "original_requirement": raw_text,
+        "proposed_aspects": [
+            {
+                "aspect_name": a.get("topic", ""),
+                "source_phrase": a.get("source_phrase", ""),
+                "implication_type": a.get("implication_type", ""),
+                "text": a.get("text", ""),
+            }
+            for a in aspects
+        ],
+    }
+    resp = client.chat.completions.create(
+        model=cfg.deepseek.model,
+        messages=[
+            {"role": "system", "content": REVIEW_PROMPT},
+            {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
+        ],
+        temperature=0,
+        max_tokens=800,
+        response_format={"type": "json_object"},
+    )
+    try:
+        return _extract_json(resp.choices[0].message.content or "")
+    except Exception:
+        return {"passed": True, "aspect_evaluations": [], "missing_aspects": [], "overall_feedback": ""}
+
+
 def _extract_json(text: str) -> dict[str, Any]:
     text = text.strip()
     if text.startswith("```json"):
