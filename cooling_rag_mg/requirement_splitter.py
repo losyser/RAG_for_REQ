@@ -10,55 +10,48 @@ from cooling_rag_mg.config import get_config
 from cooling_rag_mg.text_utils import safe_text
 
 SPLIT_PROMPT = """
-你是船舶主机冷却水系统需求工程助手。
-你的任务是把一个利益相关方的原始需求拆成工程子需求，供后续证据检索使用。
-不要生成检索关键词。不要生成证据判断。不要输出 Markdown。只输出合法 JSON。
+你是船舶主机冷却水系统需求工程师。
+任务：从工程角度分解原始需求，识别其涵盖的各工程方面，供后续证据检索和工程需求生成使用。
+只输出合法 JSON，不输出 Markdown，不输出注释。
 
-## 核心原则：宁少勿多
-每个原始需求最多拆出 4 条子需求。拆分的目的是区分不同的工程关注点，不是穷举所有细节。
-如果拿不准要不要拆，就不拆，合并为一条。
+## 核心原则：溯源优先，宁少勿多
+每个工程方面必须能在原文中找到支撑词句（source_phrase）或属于工程直接隐含。
+最多输出 4 个方面。拿不准时合并，不拆。
 
-## 应该拆分的情况（满足其中之一才拆）
-1. 工程类型完全不同，例如"冗余配置"（redundancy）和"安装布置"（installation）必须分开，因为检索时需要找完全不同的证据。
-2. 工程对象完全不同且独立，例如"冷却水泵"和"冷却器"各有独立的工程要求，可以分开。
+## implication_type 判断标准
+- "explicit"：原文字面包含该方面的关键词或短语
+- "direct_implication"：任何熟悉船舶冷却水系统的工程师看到原文，无歧义地认同该方面
+  是原文的直接工程含义，不依赖个人偏好（例："稳定可靠的冷却能力" → 冗余泵配置）
 
-## 禁止拆分的情况（以下情况必须合并为一条）
-3. 同一工程目标在不同工况下的表达，一律合并为一条 operation 类型，在 text 中列举所有工况。
-   例："启动、低负荷、满负荷、快速负荷变化、停机后冷却各工况下参数稳定" → 1 条，不是 5 条。
-4. 对同一系统多个参数或部件的监测要求，按功能归并（过程参数 / 设备状态），最多 2 条。
-   例："集控室监测温度、压力、液位、泵状态、阀门状态、冷却器状态" → 最多 2 条，不是 6 条。
-5. 对同一部件的多项并列要求（如"冷却器应便于拆卸、清洗、更换"），合并为一条 maintainability。
-6. 原文列举多个部件但工程目的相同（如"冷却器、滤器、泵周围应留有足够空间"），合并为一条。
+## 禁止行为
+- source_phrase 在原文中不存在或只是模糊匹配
+- 用 direct_implication 覆盖原文未提及的独立工程领域（如原文说参数限值却添加"倾斜工况"）
+- 将同一方面拆为多条（如相同工况下不同参数 → 合并为一条）
+- 逐字复制原文作为 text（text 应是面向检索的工程化表达）
+
+## 修订模式（有 previous_aspects 和 reviewer_feedback 时）
+- 仅修改审核指出的问题
+- 保留审核认可的方面，不要整体推翻重来
 
 ## topic 命名规则
-- 格式：[主要对象] + [工程动作/属性]，例如"冷却水泵冗余配置"、"过程参数监测"
-- 必须唯一，同一需求集内不能重名
-- 禁止使用宽泛标题：不能只写"监测"、"参数稳定性"、"安装要求"
+- 格式：[主要对象] + [工程动作/属性]，例如"冷却水泵冗余配置"、"HT回路温度控制"
+- 同一需求集内唯一，禁止宽泛标题（如"参数"、"安装"）
 
-## requirement_type 选择
-只能从以下值选择：
+## requirement_type 选项
 reliability, redundancy, maintainability, installation, operation, control,
 alarm_protection, parameter, verification, safety_environment, water_treatment,
 configuration, cost, other
-
-- 工况稳定性（任何工况下保持参数/运行稳定）→ operation
-- 监测/显示/集控室/传感器接入 → control
-- 温度/压力/流量具体限值 → parameter
-- 冗余/备用/一用一备 → redundancy
-- 安装/施工/布置/冲洗/试压/焊接/支架 → installation
-- 报警/保护/停机/降负荷 → alarm_protection
-- 维护/检修/清洗/拆卸/更换/检修空间 → maintainability
-- 泄漏/腐蚀/烫伤/环保/误操作 → safety_environment
-- 图纸/计算书/审查/验收/船级社文件 → verification
 
 ## 输出格式
 {
   "sub_requirements": [
     {
       "sub_id": "01",
-      "requirement_type": "reliability",
-      "topic": "冷却水系统运行稳定性",
-      "text": "主机冷却水系统应运行稳定，不能因冷却不足影响航行安全。"
+      "requirement_type": "redundancy",
+      "topic": "冷却水泵冗余配置",
+      "text": "主机冷却水系统应配置冗余冷却水泵，单台故障时系统应能维持主机基本冷却需求。",
+      "source_phrase": "稳定可靠的冷却能力",
+      "implication_type": "direct_implication"
     }
   ]
 }
