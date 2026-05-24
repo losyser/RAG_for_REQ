@@ -144,6 +144,26 @@ def _extract_json(text: str) -> dict[str, Any]:
     raise ValueError("LLM 返回不是合法 JSON")
 
 
+def _clean_aspects(subs: list[Any]) -> list[dict[str, Any]]:
+    cleaned = []
+    for i, s in enumerate(subs, start=1):
+        if not isinstance(s, dict):
+            continue
+        text = safe_text(s.get("text"))
+        if not text:
+            continue
+        cleaned.append({
+            "sub_id": safe_text(s.get("sub_id")) or f"{i:02d}",
+            "requirement_type": safe_text(s.get("requirement_type")) or infer_type(text),
+            "topic": safe_text(s.get("topic")) or text[:20],
+            "text": text,
+            "source_phrase": safe_text(s.get("source_phrase")) or "",
+            "implication_type": safe_text(s.get("implication_type")) or "explicit",
+            "split_method": "deepseek_v2",
+        })
+    return cleaned
+
+
 def _dedup_topics(subs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """topic 相同时自动加序号区分，防止 agent 侧无法归并。"""
     seen: dict[str, int] = {}
@@ -162,14 +182,27 @@ def _dedup_topics(subs: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def split_requirement(requirement_id: str, stakeholder: str, raw_text: str) -> list[dict[str, Any]]:
     cfg = get_config()
-    if cfg.deepseek.enabled and cfg.deepseek.use_requirement_splitter:
-        try:
-            client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
-            payload = {
+    if not (cfg.deepseek.enabled and cfg.deepseek.use_requirement_splitter):
+        return fallback_split(raw_text)
+
+    try:
+        client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+        feedback: str | None = None
+        prev_aspects: list[dict[str, Any]] | None = None
+        aspects: list[dict[str, Any]] = []
+
+        for attempt in range(max(1, cfg.deepseek.splitter_review_max_rounds)):
+            # ── Split phase ──
+            payload: dict[str, Any] = {
                 "requirement_id": requirement_id,
                 "stakeholder": stakeholder,
                 "raw_requirement": raw_text,
             }
+            if prev_aspects is not None:
+                payload["previous_aspects"] = prev_aspects
+            if feedback is not None:
+                payload["reviewer_feedback"] = feedback
+
             resp = client.chat.completions.create(
                 model=cfg.deepseek.model,
                 messages=[
@@ -181,25 +214,28 @@ def split_requirement(requirement_id: str, stakeholder: str, raw_text: str) -> l
                 response_format={"type": "json_object"},
             )
             obj = _extract_json(resp.choices[0].message.content or "")
-            subs = obj.get("sub_requirements", [])
-            cleaned = []
-            for i, s in enumerate(subs, start=1):
-                if not isinstance(s, dict):
-                    continue
-                text = safe_text(s.get("text"))
-                if not text:
-                    continue
-                cleaned.append({
-                    "sub_id": safe_text(s.get("sub_id")) or f"{i:02d}",
-                    "requirement_type": safe_text(s.get("requirement_type")) or infer_type(text),
-                    "topic": safe_text(s.get("topic")) or text[:20],
-                    "text": text,
-                    "split_method": "deepseek",
-                })
-            if cleaned:
-                return _dedup_topics(cleaned)
-        except Exception as exc:
-            return fallback_split(raw_text, error=str(exc))
+            aspects = _clean_aspects(obj.get("sub_requirements", []))
+
+            if not aspects:
+                break
+
+            # ── Review phase ──
+            review = _review_aspects(raw_text, aspects)
+            if review.get("passed", True):
+                return _dedup_topics(aspects)
+
+            feedback = review.get("overall_feedback", "")
+            prev_aspects = aspects
+
+        # Exceeded max rounds: return last result with warning
+        if aspects:
+            for a in aspects:
+                a["review_warning"] = f"审核未通过，已达最大修订轮数({cfg.deepseek.splitter_review_max_rounds})"
+            return _dedup_topics(aspects)
+
+    except Exception as exc:
+        return fallback_split(raw_text, error=str(exc))
+
     return fallback_split(raw_text)
 
 
