@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import re
 from typing import Any
 
@@ -8,6 +9,8 @@ from openai import OpenAI
 
 from cooling_rag_mg.config import get_config
 from cooling_rag_mg.text_utils import safe_text
+
+logger = logging.getLogger(__name__)
 
 SPLIT_PROMPT = """
 你是船舶主机冷却水系统需求工程师。
@@ -117,7 +120,8 @@ def _review_aspects(
     )
     try:
         return _extract_json(resp.choices[0].message.content or "")
-    except Exception:
+    except Exception as exc:
+        logger.warning("_review_aspects failed, returning permissive fallback: %s", exc)
         return {"passed": True, "aspect_evaluations": [], "missing_aspects": [], "overall_feedback": ""}
 
 
