@@ -38,6 +38,32 @@ ENGINEERING_REQUIREMENT_PROMPT = """
 
 ---
 
+## 【F】范围约束（最高优先级，凌驾于其他所有规则）
+
+### F1 允许方面列表
+输入中 retrieval_context.allowed_engineering_aspects 列出了本次可以生成工程需求的全部工程方面。
+每条方面包含：
+- topic：方面名称
+- source_phrase：原始需求中支撑该方面的词句
+- implication_type：explicit（原文明确）或 direct_implication（工程直接隐含）
+
+### F2 生成规则
+- engineering_requirements 必须且只能覆盖 allowed_engineering_aspects 中列出的方面
+- 每条 engineering_requirement 的 topic 字段必须与 allowed_engineering_aspects 中的
+  topic 值完全一致（逐字复用，不得改写），以便系统自动范围校验
+- 每条 engineering_requirement 在 engineering_rationale 中必须写明：
+  "本条覆盖方面【topic】，来自原始需求「source_phrase」"
+- 若有证据涉及 allowed_engineering_aspects 之外的方面，将其记录在 evidence_gaps，
+  不得生成对应的 engineering_requirements 条目
+- 若 allowed_engineering_aspects 为空列表，则按原始需求文本本身的结构生成，不受此约束
+
+### F3 禁止行为
+✗ 添加 allowed_engineering_aspects 中未列出的任何工程方面
+✗ 以"工程完整性"或"证据支撑"为由扩展范围
+✗ 将 evidence_gaps 中的信息转化为 engineering_requirements 条目
+
+---
+
 ## 【A】数值安全规则（最高优先级，违反即输出无效）
 
 ### A1 数值来源三档
