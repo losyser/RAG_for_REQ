@@ -42,6 +42,12 @@ def main() -> None:
 
     print(f"Loaded {len(units)} evidence units")
 
+    # Remove background-strength entries (noise; hard-filtered by applicability_filter anyway)
+    before = len(units)
+    units = [u for u in units if u.get("metadata", {}).get("evidence_strength") != "background"]
+    removed_bg = before - len(units)
+    print(f"Removed {removed_bg} background-strength entries")
+
     groups: dict[str, list[dict]] = {}
     for u in units:
         key = _fp(u["text"])
