@@ -456,6 +456,10 @@ def render_retrieval_workspace(cfg: Any) -> None:
     st.session_state.fine_k = int(fine_k)
 
     render_section_header("原始需求", "只保留启用且需求内容非空的行进入检索。", "Input")
+    # When returning from another page, the widget delta is cleared by Streamlit.
+    # Detect this by checking if the key is absent, and restore the base from _staged_requirements.
+    if "requirements_editor" not in st.session_state and "_staged_requirements" in st.session_state:
+        st.session_state.requirements_df = st.session_state._staged_requirements.copy()
     edited_df = st.data_editor(
         st.session_state.requirements_df,
         key="requirements_editor",
@@ -469,6 +473,7 @@ def render_retrieval_workspace(cfg: Any) -> None:
             "启用": st.column_config.CheckboxColumn("启用", width="small"),
         },
     )
+    st.session_state._staged_requirements = pd.DataFrame(edited_df)
     enabled_count = len(normalize_df(pd.DataFrame(edited_df)))
     action_col, info_col, clear_col = st.columns([1.05, 3.6, 1.05])
     with action_col:
@@ -488,7 +493,6 @@ def render_retrieval_workspace(cfg: Any) -> None:
         st.rerun()
 
     if start_clicked:
-        st.session_state.requirements_df = pd.DataFrame(edited_df)
         reqs = normalize_df(edited_df)
         if not reqs:
             st.warning("没有可检索的需求。")

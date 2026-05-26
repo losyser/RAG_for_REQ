@@ -30,6 +30,8 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
+import copy
+
 from cooling_rag_mg.config import get_config
 from cooling_rag_mg.engineering_requirement_agent import (
     generate_engineering_requirements,
@@ -157,11 +159,14 @@ def _build_flat_retrieval_payload(
     reqs: list[dict[str, Any]],
     cfg: Any,
     top_k: int,
+    services: Any,
 ) -> dict[str, Any]:
+    """Single-granularity retrieval (evidence_units only, flat RRF).
+
+    Uses the same applicability_filter and evidence_judge as G3/G4 so that
+    G2 vs G3 isolates retrieval granularity only.
     """
-    Build a retrieval_payload compatible with generate_engineering_requirements
-    using flat (single-granularity) evidence_units retrieval.
-    """
+    from cooling_rag_mg.evidence_judge import apply_judge
     from cooling_rag_mg.hybrid_fusion import rrf_fuse
     from cooling_rag_mg.index_store import HybridIndexSearcher, load_index
 
@@ -169,38 +174,37 @@ def _build_flat_retrieval_payload(
         load_index(str(cfg.paths.indexes_dir / "evidence_units")),
         device=cfg.model.device,
     )
-
     requirement_results = []
     for r in reqs:
         query = r.get("requirement_text", "")
-        vec = searcher.vector_search(query, top_k * 4)
-        bm25 = searcher.bm25_search(query, top_k * 4)
-        candidates = rrf_fuse([vec, bm25])[:top_k]
+        vec = searcher.vector_search(query, top_k * 6)
+        bm25 = searcher.bm25_search(query, top_k * 6)
+        candidates = rrf_fuse([vec, bm25])
 
-        # Wrap as selected_results (all marked as "indirect" since no LLM judge)
-        selected = []
-        for c in candidates:
-            c = dict(c)
-            c["llm_judge"] = {"support_type": "indirect", "evidence_role": "supporting"}
-            selected.append(c)
-
-        # Build one synthetic sub-requirement containing all flat results
         synthetic_sub = {
             "sub_requirement_id": f"{r['requirement_id']}-01",
             "requirement_type": "other",
             "topic": r.get("requirement_text", "")[:40],
             "text": r.get("requirement_text", ""),
-            "selected_results": selected,
-            "evidence_gap": None,
         }
+
+        # Same filter + judge pipeline as G3/G4
+        applicable, _ = services.applicability_filter.apply(
+            synthetic_sub, candidates, top_k_for_judge=top_k * 3,
+        )
+        judge_result = services.judge(synthetic_sub, applicable, max_selected=top_k)
+        selected, _ = apply_judge(applicable, judge_result)
 
         requirement_results.append({
             "requirement_id": r["requirement_id"],
             "stakeholder": r.get("stakeholder", ""),
             "raw_requirement_text": r.get("requirement_text", ""),
-            "sub_requirements": [synthetic_sub],
+            "sub_requirements": [{
+                **synthetic_sub,
+                "selected_results": selected,
+                "evidence_gap": None,
+            }],
         })
-
     return {"requirements": requirement_results, "diagnostics": {}}
 
 
@@ -210,8 +214,9 @@ def _run_g2(
     cfg: Any,
     top_k: int,
 ) -> list[dict[str, Any]]:
+    services = make_services()
     pipeline_reqs = _to_pipeline_input(reqs)
-    retrieval_payload = _build_flat_retrieval_payload(reqs, cfg, top_k)
+    retrieval_payload = _build_flat_retrieval_payload(reqs, cfg, top_k, services)
     output = generate_engineering_requirements(pipeline_reqs, retrieval_payload)
     results = []
     for rs in output.get("requirement_sets", []):
@@ -293,13 +298,35 @@ def _run_pipeline_group(
 
 
 def _disable_profile_scoring(retriever: Any) -> None:
-    """A2 ablation: bypass profile scoring, sort by rrf_score only."""
-    def _flat(items: list[dict], profile: dict, *, is_chunk: bool = False) -> list[dict]:
+    """A2 ablation: bypass all profile-based scoring and filtering.
+
+    Replaces both _score_by_profile and _soft_filter_by_profile so A2
+    reflects pure RRF with no profile influence.  Data-quality hard-rejects
+    (not_applicable, is_noise) are preserved.
+    """
+    def _flat_score(items: list[dict], profile: dict, *, is_chunk: bool = False) -> list[dict]:
         for item in items:
             item["profile_score"] = 0.0
             item["final_score"] = float(item.get("rrf_score", 0.0))
         return items
-    retriever._score_by_profile = _flat  # type: ignore[method-assign]
+
+    def _flat_filter(items: list[dict], profile: dict) -> list[dict]:
+        from cooling_rag_mg.schema import normalize_v2_metadata
+        from cooling_rag_mg.text_utils import safe_text as _st
+        out = []
+        for item in items:
+            meta = normalize_v2_metadata(item.get("metadata", {}) or {})
+            if _st(meta.get("evidence_strength")).lower() == "not_applicable":
+                continue
+            if meta.get("is_noise") is True:
+                continue
+            item["retrieval_role"] = item.get("retrieval_role") or "candidate"
+            item["metadata"] = meta
+            out.append(item)
+        return out
+
+    retriever._score_by_profile = _flat_score  # type: ignore[method-assign]
+    retriever._soft_filter_by_profile = _flat_filter  # type: ignore[method-assign]
 
 
 # ─────────────────────────────────────────────
@@ -332,6 +359,7 @@ def main() -> None:
 
     groups = args.groups
     top_k = args.top_k
+    g4_results = None  # shared across G4 and A1
 
     if "G1" in groups:
         print("=== G1: Direct LLM ===")
@@ -350,17 +378,28 @@ def main() -> None:
 
     if "G4" in groups:
         print("\n=== G4: Proposed (multi-RAG + QG + SysML) ===")
-        _run_pipeline_group(
+        g4_results = _run_pipeline_group(
             "G4", reqs, exp_dir, cfg,
             with_quality_gate=True, with_profile_scoring=True, top_k=top_k,
         )
 
     if "A1" in groups:
-        print("\n=== A1: Ablation — no quality gate ===")
-        _run_pipeline_group(
-            "A1", reqs, exp_dir, cfg,
-            with_quality_gate=False, with_profile_scoring=True, top_k=top_k,
-        )
+        print("\n=== A1: Ablation — no quality gate (derived from G4) ===")
+        if g4_results is None:
+            # G4 wasn't selected — must run it now to share retrieval + generation
+            print("  [A1] G4 not in selected groups; running G4 first to share results...")
+            g4_results = _run_pipeline_group(
+                "G4", reqs, exp_dir, cfg,
+                with_quality_gate=True, with_profile_scoring=True, top_k=top_k,
+            )
+        a1_results = copy.deepcopy(g4_results)
+        for rs in a1_results:
+            rs["_group"] = "A1"
+            rs.pop("_quality_gate_summary", None)
+            for er in rs.get("engineering_requirements") or []:
+                er.pop("quality_gate_report", None)
+        write_jsonl(str(exp_dir / "A1_results.jsonl"), a1_results)
+        print(f"  [A1] derived from G4: {len(a1_results)} sets")
 
     if "A2" in groups:
         print("\n=== A2: Ablation — no profile scoring ===")

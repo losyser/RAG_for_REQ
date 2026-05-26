@@ -8,14 +8,16 @@ All commands run from `cooling_rag_multigranular/` (the inner project directory 
 
 **Install dependencies:**
 ```bat
-D:\Users\yando\anaconda3\envs\LangGraph_env\python.exe -m pip install -r requirements.txt
+D:\Users\yando\miniconda3\envs\cooling_rag_env\python.exe -m pip install -r requirements.txt
 ```
 
-**First-time setup (must run in order):**
+**First-time setup:**
 ```bat
-python scripts/10_convert_docx_to_multigranular_jsonl.py   # Parse docx → 3 JSONL files
-python scripts/11_build_multigranular_indexes.py            # Build FAISS + BM25 indexes
+python scripts/11_build_multigranular_indexes.py   # Build FAISS + BM25 indexes
 ```
+
+> Note: `evidence_units.jsonl` and `source_chunks.jsonl` are maintained manually (scripts 30–36).
+> Do NOT regenerate them from `evidence.docx` — that would overwrite hand-curated entries.
 
 **Smoke test (runs a single requirement through the full pipeline):**
 ```bat

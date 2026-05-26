@@ -57,7 +57,11 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    import subprocess
-    sys.exit(subprocess.run(
-        [sys.executable, "-m", "streamlit", "run", __file__] + sys.argv[1:]
-    ).returncode)
+    import streamlit.runtime
+    if streamlit.runtime.exists():
+        main()
+    else:
+        import subprocess
+        sys.exit(subprocess.run(
+            [sys.executable, "-m", "streamlit", "run", __file__] + sys.argv[1:]
+        ).returncode)

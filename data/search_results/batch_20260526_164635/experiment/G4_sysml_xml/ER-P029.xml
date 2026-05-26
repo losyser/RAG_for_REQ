@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P029" sourceRequirementId="P029" stakeholder="环保负责人" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-26T17:39:40">
+  <ProfessionalSummary>覆盖冷却液泄漏防护、海水泄漏防护、化学品误排放防护和环保合规性四个方面，基于SOLAS、MARPOL、CCS规则及厂家指南证据生成工程需求。</ProfessionalSummary>
+  <EngineeringRequirements count="5">
+    <Requirement id="ER-P029-01" level="1" requirementType="safety">
+      <sysml:Name>冷却液泄漏防护</sysml:Name>
+      <sysml:Text>主机冷却水系统应通过管路隔热、密封件选型、泄漏检测和废液收集等措施，减少冷却液泄漏风险。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-SAFE-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-ENV-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-INCL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>冷却液泄漏可能导致主机冷却不足、环境污染及人员烫伤风险。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认高温冷却水管路隔热设计满足表面温度&lt;55°C要求，隔热材料耐温≥150°C并设铝皮护套。</Criterion>
+        <Criterion>检查管路色标和热警示标识符合ISO 14726和ISO 11684要求。</Criterion>
+        <Criterion>检查废冷却液收集系统设计，确保含铬/亚硝酸盐/乙二醇的废液可收集并送岸上设施。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却液泄漏防护】，来自原始需求「减少冷却液泄漏」。E-SUPP-SAFE-001支撑了高温管路隔热和标识要求；E-SUPP-ENV-001支撑了废液禁止排海和收集要求；E-SOLAS-INCL-001支撑了倾斜工况下膨胀水箱液位维持，间接减少泄漏。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 3 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+      <Requirement id="ER-P029-01-01" level="2" requirementType="parameter">
+        <sysml:Name>冷却液泄漏防护</sysml:Name>
+        <sysml:Text>膨胀水箱溢流管不得直接排入大海，应引至废液收集舱柜。</sysml:Text>
+        <sysml:VerifiedBy method="review" />
+        <sysml:DerivedFrom refId="ER-P029-01" />
+        <sysml:Traceability>
+          <Evidence id="E-SUPP-ENV-001" supportStatus="verified_by_direct_evidence" />
+        </sysml:Traceability>
+        <sysml:QualityStatus>
+          <SupportStatus>verified_by_direct_evidence</SupportStatus>
+          <RiskIfUnmet>溢流管直排大海将违反MARPOL规定，造成海洋污染。</RiskIfUnmet>
+        </sysml:QualityStatus>
+        <sysml:AcceptanceCriteria>
+          <Criterion>检查系统图确认膨胀水箱溢流管连接至废液收集舱柜，无直接通海接口。</Criterion>
+        </sysml:AcceptanceCriteria>
+        <sysml:EngineeringRationale>本条覆盖方面【冷却液泄漏防护】，来自原始需求「减少冷却液泄漏」。E-SUPP-ENV-001明确要求膨胀水箱溢流管不得排入大海。</sysml:EngineeringRationale>
+        <sysml:QualityGateReport passed="true" score="1.0">
+          <Check dimension="evidence_sufficiency" passed="true" severity="error">
+            <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+          </Check>
+          <Check dimension="verifiability" passed="true" severity="error">
+            <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+          </Check>
+          <Check dimension="over_inference" passed="true" severity="error">
+            <Message>No over-inference detected.</Message>
+          </Check>
+          <Check dimension="ambiguity" passed="true" severity="warning">
+            <Message>No ambiguous terms detected (LLM check).</Message>
+          </Check>
+          <Check dimension="mbse_completeness" passed="true" severity="error">
+            <Message>All 5 SysML required fields are present.</Message>
+          </Check>
+        </sysml:QualityGateReport>
+      </Requirement>
+    </Requirement>
+    <Requirement id="ER-P029-02" level="1" requirementType="redundancy">
+      <sysml:Name>海水泄漏防护</sysml:Name>
+      <sysml:Text>主机冷却水系统应配置冗余冷却水泵，并设置压力/流量监测和报警，以在泵或管路故障时减少海水泄漏风险。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CCS-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>单泵故障且无备用将导致冷却中断，可能引发管路破裂和海水泄漏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认冷却水泵不少于两台，一用一备。</Criterion>
+        <Criterion>检查报警清单确认设有冷却水低压/低流量报警。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【海水泄漏防护】，来自原始需求「减少海水泄漏」。E-SOLAS-COOL-001和E-CCS-COOL-001均要求冷却水泵冗余配置和报警，间接支撑海水泄漏防护。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P029-03" level="1" requirementType="environmental_protection">
+      <sysml:Name>化学品误排放防护</sysml:Name>
+      <sysml:Text>冷却水系统应设置废液收集设施，防止含化学品的冷却水误排入海，并设置标识和操作程序避免误排放。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-ENV-001" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-SYS-CORR-004" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-SYS-CORR-003" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>化学品误排入海将违反MARPOL，导致罚款和声誉损失。</RiskIfUnmet>
+        <ApplicabilityConstraint>E-SYS-CORR-004和E-SYS-CORR-003基于MAN/Everllence 49/60DF机型，其他厂家和机型应参照各自技术文件确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统图确认设有废冷却液收集舱柜或收集水箱。</Criterion>
+        <Criterion>检查操作手册确认有化学品误排放预防程序。</Criterion>
+        <Criterion>检查标识符合相关标准（如废液容器标识）。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【化学品误排放防护】，来自原始需求「减少化学品误排放风险」。E-SUPP-ENV-001要求含铬/亚硝酸盐/乙二醇的废液禁止排海；E-SYS-CORR-004和E-SYS-CORR-003（MAN/Everllence指南）要求设置收集水箱回收含化学品的冷却水。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="false" severity="warning">
+          <Message>Acceptance criteria contain vague placeholder(s): ['相关'].</Message>
+          <Suggestion>Replace vague terms with measurable conditions or explicit references to project documents (e.g., 'per commissioning procedure Doc-XXX').</Suggestion>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P029-04" level="1" requirementType="environmental_protection">
+      <sysml:Name>环保合规性</sysml:Name>
+      <sysml:Text>冷却水系统设计、建造和运行应满足MARPOL、SOLAS及船级社相关环保要求，包括冷却液处理、排放控制和记录。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-ENV-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-SAFE-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>不满足环保要求将导致项目无法通过验收或运营处罚。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>提交环保合规声明，列出适用的国际公约和船级社规则。</Criterion>
+        <Criterion>检查废液处理记录和排放记录符合MARPOL要求。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【环保合规性】，来自原始需求「满足项目环保要求」。E-SUPP-ENV-001直接支撑MARPOL排放要求；E-SUPP-SAFE-001和E-SOLAS-COOL-001支撑安全与冗余要求，间接满足环保合规。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['相关环保要求'].</Message>
+          <Suggestion>Specify which MARPOL, SOLAS, and classification society requirements apply, e.g., by referencing specific annexes or regulations.</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P029" target="ER-P029-01" type="derive">由原始需求「减少冷却液泄漏」和E-SUPP-SAFE-001、E-SUPP-ENV-001派生。</Relationship>
+    <Relationship source="P029" target="ER-P029-02" type="derive">由原始需求「减少海水泄漏」和E-SOLAS-COOL-001、E-CCS-COOL-001派生。</Relationship>
+    <Relationship source="P029" target="ER-P029-03" type="derive">由原始需求「减少化学品误排放风险」和E-SUPP-ENV-001、E-SYS-CORR-004、E-SYS-CORR-003派生。</Relationship>
+    <Relationship source="P029" target="ER-P029-04" type="derive">由原始需求「满足项目环保要求」和E-SUPP-ENV-001等派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P029-03" gapType="parameter_source_gap">
+      <Description>缺少通用（非厂家特定）的化学品误排放防护设计标准，现有证据限于MAN/Everllence机型。</Description>
+      <SuggestedDocumentUpdate>补充项目环保设计规范或通用标准（如ISO 14001）要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认废冷却液收集舱柜的容量和排放接口设计。</Statement>
+      <Reason>现有证据未给出具体容量要求，需按项目设计基准确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认冷却水处理化学品清单及生物可降解性要求。</Statement>
+      <Reason>MARPOL推荐热带/ECA/极地水域使用生物可降解抑制剂，需项目确认适用水域。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

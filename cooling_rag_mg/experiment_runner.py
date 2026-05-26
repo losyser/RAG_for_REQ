@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 Experiment runner — in-memory versions of scripts/21 and scripts/22.
-All functions return Python objects; no file I/O.
 """
 from __future__ import annotations
 
+import copy
 import json
 import math
+from datetime import datetime
+from pathlib import Path
 from typing import Any, Callable
 
 from cooling_rag_mg.quality_gate import QualityGate
@@ -138,7 +140,14 @@ def _build_flat_retrieval_payload(
     reqs: list[dict[str, Any]],
     cfg: Any,
     top_k: int,
+    services: Any,
 ) -> dict[str, Any]:
+    """Single-granularity retrieval (evidence_units only, flat RRF).
+
+    Uses the same applicability_filter and evidence_judge as G3/G4 so that
+    G2 vs G3 isolates retrieval granularity only.
+    """
+    from cooling_rag_mg.evidence_judge import apply_judge
     from cooling_rag_mg.hybrid_fusion import rrf_fuse
     from cooling_rag_mg.index_store import HybridIndexSearcher, load_index
 
@@ -149,27 +158,34 @@ def _build_flat_retrieval_payload(
     requirement_results = []
     for r in reqs:
         query = r.get("requirement_text", "")
-        vec = searcher.vector_search(query, top_k * 4)
-        bm25 = searcher.bm25_search(query, top_k * 4)
-        candidates = rrf_fuse([vec, bm25])[:top_k]
-        selected = []
-        for c in candidates:
-            c = dict(c)
-            c["llm_judge"] = {"support_type": "indirect", "evidence_role": "supporting"}
-            selected.append(c)
+        # Retrieve more candidates upfront to survive filter + judge
+        vec = searcher.vector_search(query, top_k * 6)
+        bm25 = searcher.bm25_search(query, top_k * 6)
+        candidates = rrf_fuse([vec, bm25])
+
         synthetic_sub = {
             "sub_requirement_id": f"{r['requirement_id']}-01",
             "requirement_type": "other",
             "topic": r.get("requirement_text", "")[:40],
             "text": r.get("requirement_text", ""),
-            "selected_results": selected,
-            "evidence_gap": None,
         }
+
+        # Same filter + judge pipeline as G3/G4
+        applicable, _ = services.applicability_filter.apply(
+            synthetic_sub, candidates, top_k_for_judge=top_k * 3,
+        )
+        judge_result = services.judge(synthetic_sub, applicable, max_selected=top_k)
+        selected, _ = apply_judge(applicable, judge_result)
+
         requirement_results.append({
             "requirement_id": r["requirement_id"],
             "stakeholder": r.get("stakeholder", ""),
             "raw_requirement_text": r.get("requirement_text", ""),
-            "sub_requirements": [synthetic_sub],
+            "sub_requirements": [{
+                **synthetic_sub,
+                "selected_results": selected,
+                "evidence_gap": None,
+            }],
         })
     return {"requirements": requirement_results, "diagnostics": {}}
 
@@ -181,9 +197,13 @@ def run_g2(
     on_progress: ProgressCallback | None = None,
 ) -> list[dict[str, Any]]:
     from cooling_rag_mg.engineering_requirement_agent import generate_engineering_requirements
+    from cooling_rag_mg.pipeline import make_services
     if on_progress:
-        on_progress(0, len(reqs), "构建扁平检索载荷")
-    retrieval_payload = _build_flat_retrieval_payload(reqs, cfg, top_k)
+        on_progress(0, len(reqs), "初始化服务")
+    services = make_services()
+    if on_progress:
+        on_progress(0, len(reqs), "单粒度检索 + 证据审查")
+    retrieval_payload = _build_flat_retrieval_payload(reqs, cfg, top_k, services)
     if on_progress:
         on_progress(0, len(reqs), "调用工程需求智能体")
     pipeline_reqs = to_pipeline_input(reqs)
@@ -202,12 +222,51 @@ def run_g2(
 # ─────────────────────────────────────────────
 
 def _disable_profile_scoring(retriever: Any) -> None:
-    def _flat(items: list[dict], profile: dict, *, is_chunk: bool = False) -> list[dict]:
+    """A2 ablation: bypass all profile-based scoring and filtering.
+
+    Replaces both _score_by_profile (adds profile bonus/penalty) and
+    _soft_filter_by_profile (uses component/aspect match for role assignment)
+    so that A2 truly reflects pure RRF with no profile influence.
+    Data-quality hard-rejects (not_applicable, is_noise) are preserved.
+    """
+    def _flat_score(items: list[dict], profile: dict, *, is_chunk: bool = False) -> list[dict]:
         for item in items:
             item["profile_score"] = 0.0
             item["final_score"] = float(item.get("rrf_score", 0.0))
         return items
-    retriever._score_by_profile = _flat  # type: ignore[method-assign]
+
+    def _flat_filter(items: list[dict], profile: dict) -> list[dict]:
+        from cooling_rag_mg.schema import normalize_v2_metadata
+        from cooling_rag_mg.text_utils import safe_text as _st
+        out = []
+        for item in items:
+            meta = normalize_v2_metadata(item.get("metadata", {}) or {})
+            if _st(meta.get("evidence_strength")).lower() == "not_applicable":
+                continue
+            if meta.get("is_noise") is True:
+                continue
+            item["retrieval_role"] = item.get("retrieval_role") or "candidate"
+            item["metadata"] = meta
+            out.append(item)
+        return out
+
+    retriever._score_by_profile = _flat_score  # type: ignore[method-assign]
+    retriever._soft_filter_by_profile = _flat_filter  # type: ignore[method-assign]
+
+
+def make_a1_from_g4(g4_results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Derive A1 (ablation: no quality gate) by stripping QG reports from G4 results.
+
+    A1 and G4 share identical retrieval + generation; only the quality gate differs.
+    This is the only correct way to isolate the quality gate's contribution.
+    """
+    results = copy.deepcopy(g4_results)
+    for rs in results:
+        rs["_group"] = "A1"
+        rs.pop("_quality_gate_summary", None)
+        for er in rs.get("engineering_requirements") or []:
+            er.pop("quality_gate_report", None)
+    return results
 
 
 def attach_quality_gate(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -247,14 +306,15 @@ def run_pipeline_group(
     from cooling_rag_mg.pipeline import make_services, run_requirements_with_services
 
     pipeline_reqs = to_pipeline_input(reqs)
+    n = len(reqs)
     if on_progress:
-        on_progress(0, len(reqs), "初始化服务")
+        on_progress(0, n, "初始化服务")
     if services is None:
         services = make_services()
     if not with_profile_scoring:
         _disable_profile_scoring(services.retriever)
     if on_progress:
-        on_progress(0, len(reqs), "多粒度检索中")
+        on_progress(1, n, "多粒度检索中")
     retrieval_payload = run_requirements_with_services(
         pipeline_reqs,
         services=services,
@@ -263,7 +323,7 @@ def run_pipeline_group(
         fine_k=40,
     )
     if on_progress:
-        on_progress(0, len(reqs), "工程需求生成中")
+        on_progress(2, n, "工程需求生成中")
     output = generate_engineering_requirements(pipeline_reqs, retrieval_payload)
     results = []
     for rs in output.get("requirement_sets", []):
@@ -271,10 +331,10 @@ def run_pipeline_group(
         results.append(rs)
     if with_quality_gate:
         if on_progress:
-            on_progress(0, len(reqs), "质量门检查中")
+            on_progress(3, n, "质量门检查中")
         results = attach_quality_gate(results)
     if on_progress:
-        on_progress(len(reqs), len(reqs), "done")
+        on_progress(n, n, "done")
     return results
 
 
@@ -308,15 +368,19 @@ def compute_metrics(results_by_group: dict[str, list[dict[str, Any]]]) -> list[d
         def _nan_safe(n: int, d: int) -> float:
             return round(n / d, 4) if d else float("nan")
 
-        # M1
-        empty_ev = sum(1 for r in reqs if not (r.get("evidence_ids") or []))
-        m1 = _nan_safe(empty_ev, len(reqs))
+        # M1 — G1 is a no-evidence baseline by design (evidence_ids=[]) so M1=1.0 is
+        # a trivial constant, not a measured outcome; exclude it from comparison.
+        if group == "G1":
+            m1 = float("nan")
+        else:
+            empty_ev = sum(1 for r in reqs if not (r.get("evidence_ids") or []))
+            m1 = _nan_safe(empty_ev, len(reqs))
 
-        # M2
-        has_report = [r for r in reqs if r.get("quality_gate_report")]
-        if has_report:
-            passed_qg = sum(1 for r in has_report if (r.get("quality_gate_report") or {}).get("overall_passed"))
-            m2 = _nan_safe(passed_qg, len(has_report))
+        # M2 — only meaningful for groups that run the quality gate
+        if group in {"G4", "A2"}:
+            qg_reqs = [r for r in reqs if r.get("quality_gate_report")]
+            passed_qg = sum(1 for r in qg_reqs if (r.get("quality_gate_report") or {}).get("overall_passed"))
+            m2 = _nan_safe(passed_qg, len(qg_reqs)) if qg_reqs else float("nan")
         else:
             m2 = float("nan")
 
@@ -328,9 +392,13 @@ def compute_metrics(results_by_group: dict[str, list[dict[str, Any]]]) -> list[d
         passed_ver = sum(1 for r in reqs if qg._verifiability(r).passed)  # noqa: SLF001
         m4 = _nan_safe(passed_ver, len(reqs))
 
-        # M5
-        passed_mbse = sum(1 for r in reqs if qg._mbse_completeness(r).passed)  # noqa: SLF001
-        m5 = _nan_safe(passed_mbse, len(reqs))
+        # M5 — G1 has all structural fields but evidence_ids=[] by design, making M5=0
+        # a reflection of the baseline constraint rather than structural quality.
+        if group == "G1":
+            m5 = float("nan")
+        else:
+            passed_mbse = sum(1 for r in reqs if qg._mbse_completeness(r).passed)  # noqa: SLF001
+            m5 = _nan_safe(passed_mbse, len(reqs))
 
         rows.append({
             "group": group,
@@ -363,3 +431,48 @@ def generate_m6_template(result_sets: list[dict[str, Any]], n: int = 20) -> list
             },
         })
     return out
+
+
+# ─────────────────────────────────────────────
+# Persistence
+# ─────────────────────────────────────────────
+
+def save_experiment_results(
+    exp_results: dict[str, list],
+    metrics: list[dict],
+    results_root: str | Path,
+    top_k: int = 4,
+    n_requirements: int = 0,
+) -> Path:
+    """Save experiment results to disk under results_root/batch_.../experiment/.
+
+    Returns the experiment directory path.
+    """
+    batch_dir = Path(results_root) / f"batch_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    exp_dir = batch_dir / "experiment"
+    exp_dir.mkdir(parents=True, exist_ok=True)
+
+    for group, result_sets in exp_results.items():
+        path = exp_dir / f"{group}_results.json"
+        path.write_text(
+            json.dumps({"group": group, "result_sets": result_sets}, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+    (exp_dir / "metrics.json").write_text(
+        json.dumps(metrics, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    manifest = {
+        "created_at": datetime.now().isoformat(),
+        "groups": list(exp_results.keys()),
+        "top_k": top_k,
+        "n_requirements": n_requirements,
+    }
+    (exp_dir / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    return exp_dir

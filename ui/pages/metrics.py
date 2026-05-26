@@ -524,7 +524,7 @@ def render_metrics_workspace(cfg: Any) -> None:
     )
 
     metrics: list[dict] | None = st.session_state.get("exp_metrics")
-    if not metrics:
+    if metrics is None:
         st.info("尚未计算指标。请先在「实验对比」页面运行实验。")
         if st.button("前往实验对比", type="primary"):
             st.session_state.active_workspace = "experiment_comparison"

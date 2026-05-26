@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Export engineering requirements to SysML-aligned XML.
+Export engineering requirements to SysML-inspired XML.
 
-The output XML structure follows the OMG SysML 1.6 Requirement block definition
-(OMG Document formal/2019-11-01), using a lightweight custom serialisation that
-preserves all mandatory SysML Requirement fields plus domain-specific extensions
-for evidence traceability and quality gate results.
+The output is a lightweight custom XML serialisation whose field semantics are
+aligned with the OMG SysML 1.6 Requirement block (OMG Document formal/2019-11-01)
+but does NOT conform to the standard XMI interchange format.  It cannot be
+directly imported by SysML tools (MagicDraw, Cameo, Papyrus) without a custom
+importer.  The namespace URI and element names are project-specific.
 
 Typical usage::
 
@@ -22,8 +23,8 @@ from typing import Any
 
 from cooling_rag_mg.text_utils import safe_text
 
-# XML namespace — references the OMG SysML specification URI
-_SYSML_NS = "http://www.omg.org/spec/SysML/20181001/Requirements"
+# Project-specific namespace URI (SysML-inspired, not standard XMI)
+_SYSML_NS = "http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements"
 _NS_PREFIX = "sysml"
 
 ET.register_namespace(_NS_PREFIX, _SYSML_NS)
@@ -133,11 +134,12 @@ def _requirement_to_xml(
             if chk.get("suggestion"):
                 _sub(chk_el, "Suggestion", safe_text(chk.get("suggestion")))
 
-    # ── Recursively nest level-2 children ──
+    # ── Recursively nest direct children (next level) ──
     rid = safe_text(req.get("id"))
+    current_level = req.get("level", 1)
     children = [
         r for r in all_reqs
-        if safe_text(r.get("parent_id")) == rid and r.get("level", 1) == 2
+        if safe_text(r.get("parent_id")) == rid and r.get("level", 1) == current_level + 1
     ]
     for child in children:
         _requirement_to_xml(child, req_el, all_reqs)

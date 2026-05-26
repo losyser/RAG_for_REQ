@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P028" sourceRequirementId="P028" stakeholder="船厂质量检验人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-26T17:39:40">
+  <ProfessionalSummary>覆盖冷却水系统安装后检查要求，包括管路密性试验、支架固定检查、传感器安装检查及交船前整改。</ProfessionalSummary>
+  <EngineeringRequirements count="4">
+    <Requirement id="ER-P028-01" level="1" requirementType="test">
+      <sysml:Name>管路密性检查</sysml:Name>
+      <sysml:Text>冷却水系统管路安装完成后，应按设计压力进行水压密性试验，试验压力不低于设计压力的1.5倍，保压时间不少于30分钟，试验过程中管路应无泄漏。</sysml:Text>
+      <sysml:VerifiedBy method="test" />
+      <sysml:DerivedFrom refId="ER-P028" />
+      <sysml:Traceability>
+        <Evidence id="E-CCS-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M72-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>管路泄漏可能导致冷却水流失、主机过热，影响航行安全。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查水压试验记录，确认试验压力不低于设计压力的1.5倍，保压时间不少于30分钟。</Criterion>
+        <Criterion>试验期间管路无可见泄漏，压力降在允许范围内。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【管路密性检查】，来自原始需求「检查管路密性」。E-CCS-COOL-002（CCS规则）支撑了1.5倍设计压力、保压30分钟的要求；E-IACS-M72-001（IACS UR M72）支撑了1.5倍最大工作压力的试验压力要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='test', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P028-02" level="1" requirementType="installation">
+      <sysml:Name>支架固定检查</sysml:Name>
+      <sysml:Text>冷却水系统管路支架应固定牢固，符合设计要求，确保管路在运行中无异常振动和位移。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P028" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>支架固定不牢可能导致管路振动、接头松动，引发泄漏或损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【支架固定检查】，来自原始需求「支架固定」。E-SUPP-MAINT-001（DNV/IACS维护通道间距要求）间接支撑了安装布置要求，但无直接证据规定支架固定细节。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="false" severity="error">
+          <Message>Missing SysML required field(s): ['traceLinks (evidenceIds)'].</Message>
+          <Suggestion>Populate all SysML Requirement block fields before XML export.</Suggestion>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P028-03" level="1" requirementType="installation">
+      <sysml:Name>传感器安装检查</sysml:Name>
+      <sysml:Text>冷却水系统温度传感器、压力传感器、液位传感器等监测仪表应安装正确，接线牢固，信号接入监控系统并验证功能正常。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P028" />
+      <sysml:Traceability>
+        <Evidence id="E-IACS-M51-001" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-DNV-COOL-003" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-COMM-COOL-001" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>传感器安装不当或功能异常可能导致监控失效，无法及时发现冷却水系统故障。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查传感器安装位置、接线和信号传输，确认符合设计图纸。</Criterion>
+        <Criterion>调试期间验证传感器测量值准确，报警和跳闸功能正常。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【传感器安装检查】，来自原始需求「传感器安装」。E-IACS-M51-001（IACS UR M51）间接支撑了报警和跳闸功能验证；E-DNV-COOL-003（DNV规则）要求监测仪表指示正确；E-COMM-COOL-001（综合规范实践）要求传感器功能验证。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P028-04" level="1" requirementType="verification">
+      <sysml:Name>交船前整改</sysml:Name>
+      <sysml:Text>冷却水系统安装和试验完成后，所有检查发现的问题应在交船前完成整改，并形成整改记录。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P028" />
+      <sysml:Traceability>
+        <Evidence id="E-DNV-COOL-003" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COMM-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>问题未整改可能导致系统带病运行，增加故障风险，影响交船验收。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查整改记录，确认所有问题已关闭。</Criterion>
+        <Criterion>整改后重新验证相关功能，满足验收标准。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【交船前整改】，来自原始需求「发现问题应在交船前整改」。E-DNV-COOL-003（DNV规则）要求海试问题整改在交船前完成；E-COMM-COOL-001（综合规范实践）要求调试问题闭环。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="false" severity="warning">
+          <Message>Acceptance criteria contain vague placeholder(s): ['相关'].</Message>
+          <Suggestion>Replace vague terms with measurable conditions or explicit references to project documents (e.g., 'per commissioning procedure Doc-XXX').</Suggestion>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P028" target="ER-P028-01" type="derive">由原始需求「检查管路密性」和E-CCS-COOL-002、E-IACS-M72-001直接证据派生。</Relationship>
+    <Relationship source="P028" target="ER-P028-02" type="derive">由原始需求「支架固定」和evidence_gap_summary子需求P028-02派生。</Relationship>
+    <Relationship source="P028" target="ER-P028-03" type="derive">由原始需求「传感器安装」和间接证据派生。</Relationship>
+    <Relationship source="P028" target="ER-P028-04" type="derive">由原始需求「发现问题应在交船前整改」和直接证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P028-02" gapType="only_indirect">
+      <Description>缺少支架固定检查的直接证据，如船级社规则或厂家安装指南中关于支架间距、固定方式、紧固力矩等具体要求。</Description>
+      <SuggestedDocumentUpdate>补充船级社规则（如CCS/DNV）中关于管路支架的条款，或主机厂家安装手册中支架固定要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认管路水压试验压力值是否与设计压力一致。</Statement>
+      <Reason>证据中试验压力为1.5倍设计压力，需确认设计压力值。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认传感器安装的具体位置和接线要求。</Statement>
+      <Reason>间接证据未提供传感器安装细节，需厂家安装手册确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

@@ -324,6 +324,8 @@ def render_experiment_workspace(cfg: Any) -> None:
         )
         clear_clicked = st.button("清空结果", use_container_width=True, disabled=is_running)
 
+        if st.session_state.get("exp_last_save_dir"):
+            st.caption(f"上次保存：`{st.session_state.exp_last_save_dir}`")
 
     if clear_clicked:
         st.session_state.exp_results = {}
@@ -335,65 +337,86 @@ def render_experiment_workspace(cfg: Any) -> None:
     if run_clicked and selected_groups:
         from cooling_rag_mg.experiment_runner import compute_metrics
 
-        reqs = normalize_df(st.session_state.requirements_df)
+        _staged = st.session_state.get("_staged_requirements")
+        reqs = normalize_df(_staged if _staged is not None else st.session_state.requirements_df)
         if not reqs:
             st.warning("检索工作台中没有启用的需求，请先添加需求。")
-        else:
-            st.session_state.exp_running = True
-            with col_main:
-                progress_bar = st.progress(0, text="准备运行实验")
-                status_box = st.empty()
+            return
 
-            total_groups = len(selected_groups)
-            for gi, group in enumerate(selected_groups):
-                st.session_state.exp_current_group = group
-                progress_bar.progress(gi / total_groups, text=f"运行 {group}（{gi+1}/{total_groups}）")
-                status_box.info(f"正在运行 {GROUP_LABELS[group]}：{GROUP_DESCRIPTIONS[group]}")
+        st.session_state.exp_running = True
+        with col_main:
+            progress_bar = st.progress(0, text="准备运行实验")
+            status_box = st.empty()
 
-                try:
-                    def _prog(done: int, total: int, msg: str, _gi: int = gi, _g: str = group) -> None:
-                        frac = _gi / total_groups + (done / max(total, 1)) / total_groups
-                        progress_bar.progress(min(frac, 0.99), text=f"{GROUP_LABELS[_g]}（{_gi+1}/{total_groups}） — {msg}")
+        total_groups = len(selected_groups)
+        for gi, group in enumerate(selected_groups):
+            st.session_state.exp_current_group = group
+            progress_bar.progress(gi / total_groups, text=f"运行 {group}（{gi+1}/{total_groups}）")
+            status_box.info(f"正在运行 {GROUP_LABELS[group]}：{GROUP_DESCRIPTIONS[group]}")
 
-                    if group == "G1":
-                        result = run_g1(reqs, cfg, on_progress=_prog)
-                    elif group == "G2":
-                        result = run_g2(reqs, cfg, top_k=int(top_k), on_progress=_prog)
-                    elif group == "G3":
-                        result = run_pipeline_group(
-                            "G3", reqs, cfg,
-                            with_quality_gate=False, with_profile_scoring=True,
-                            top_k=int(top_k), on_progress=_prog,
-                        )
-                    elif group == "G4":
-                        result = run_pipeline_group(
+            try:
+                def _prog(done: int, total: int, msg: str, _gi: int = gi, _g: str = group) -> None:
+                    frac = _gi / total_groups + (done / max(total, 1)) / total_groups
+                    progress_bar.progress(min(frac, 0.99), text=f"{GROUP_LABELS[_g]}（{_gi+1}/{total_groups}） — {msg}")
+
+                if group == "G1":
+                    result = run_g1(reqs, cfg, on_progress=_prog)
+                elif group == "G2":
+                    result = run_g2(reqs, cfg, top_k=int(top_k), on_progress=_prog)
+                elif group == "G3":
+                    result = run_pipeline_group(
+                        "G3", reqs, cfg,
+                        with_quality_gate=False, with_profile_scoring=True,
+                        top_k=int(top_k), on_progress=_prog,
+                    )
+                elif group == "G4":
+                    result = run_pipeline_group(
+                        "G4", reqs, cfg,
+                        with_quality_gate=True, with_profile_scoring=True,
+                        top_k=int(top_k), on_progress=_prog,
+                    )
+                elif group == "A1":
+                    from cooling_rag_mg.experiment_runner import make_a1_from_g4
+                    if "G4" not in exp_results:
+                        # G4 not yet run — run it now so A1 shares identical retrieval
+                        progress_bar.progress(gi / total_groups, text="A1 需要 G4 结果，先运行 G4…")
+                        g4_result = run_pipeline_group(
                             "G4", reqs, cfg,
                             with_quality_gate=True, with_profile_scoring=True,
                             top_k=int(top_k), on_progress=_prog,
                         )
-                    elif group == "A1":
-                        result = run_pipeline_group(
-                            "A1", reqs, cfg,
-                            with_quality_gate=False, with_profile_scoring=True,
-                            top_k=int(top_k), on_progress=_prog,
-                        )
-                    else:  # A2
-                        result = run_pipeline_group(
-                            "A2", reqs, cfg,
-                            with_quality_gate=True, with_profile_scoring=False,
-                            top_k=int(top_k), on_progress=_prog,
-                        )
-                    exp_results[group] = result
-                except Exception as exc:
-                    status_box.error(f"{group} 运行失败：{exc}")
+                        exp_results["G4"] = g4_result
+                    result = make_a1_from_g4(exp_results["G4"])
+                else:  # A2
+                    result = run_pipeline_group(
+                        "A2", reqs, cfg,
+                        with_quality_gate=True, with_profile_scoring=False,
+                        top_k=int(top_k), on_progress=_prog,
+                    )
+                exp_results[group] = result
+            except Exception as exc:
+                status_box.error(f"{group} 运行失败：{exc}")
 
-            st.session_state.exp_metrics = compute_metrics(exp_results)
-            st.session_state.exp_running = False
-            st.session_state.pop("exp_current_group", None)
-            progress_bar.progress(1.0, text="全部实验组运行完成 ✓")
-            status_box.success(f"完成 {len(exp_results)} 个实验组，可在「指标分析」页查看汇总指标。")
-            st.rerun()
-        return  # don't render results during/after run setup
+        st.session_state.exp_running = False
+        st.session_state.pop("exp_current_group", None)
+        metrics = compute_metrics(exp_results)
+        st.session_state.exp_metrics = metrics
+        progress_bar.empty()
+        status_box.empty()
+
+        try:
+            from cooling_rag_mg.experiment_runner import save_experiment_results
+            exp_dir = save_experiment_results(
+                exp_results,
+                metrics,
+                results_root=cfg.paths.search_results_dir,
+                top_k=int(top_k),
+                n_requirements=len(reqs),
+            )
+            st.session_state.exp_last_save_dir = str(exp_dir)
+            st.toast(f"完成 {len(exp_results)} 个实验组，结果已保存至 {exp_dir.name}/experiment/", icon="✅")
+        except Exception as exc:
+            st.toast(f"完成 {len(exp_results)} 个实验组（保存失败：{exc}）", icon="⚠️")
 
     with col_main:
         if not exp_results:

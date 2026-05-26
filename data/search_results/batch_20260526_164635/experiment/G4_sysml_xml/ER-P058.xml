@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P058" sourceRequirementId="P058" stakeholder="轮机长" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-26T17:39:40">
+  <ProfessionalSummary>覆盖膨胀水箱低液位报警、自动补水控制及系统失压防护要求，确保冷却水系统安全运行。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P058-01" level="1" requirementType="alarm_protection">
+      <sysml:Name>膨胀水箱低液位报警</sysml:Name>
+      <sysml:Text>膨胀水箱应设置低液位声光报警装置，报警信号应接入集控室和驾驶台监控系统。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P058" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-EXP-CAP-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>低液位无法及时发现，可能导致冷却水泄漏后系统失压，主机过热停机。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认膨胀水箱配置低液位报警传感器，报警信号接入集控室和驾驶台监控系统。</Criterion>
+        <Criterion>调试期间模拟低液位，确认声光报警正确触发，报警显示位置符合设计要求。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【膨胀水箱低液位报警】，来自原始需求「低液位声光报警」。E-CTRL-COOL-002（IACS UR E10）支撑了膨胀水箱低液位报警要求；E-ISO8861-002（ISO 8861:1998）支撑了报警应在机控室和驾驶台显示；E-EXP-CAP-001（DNV规则）支撑了装设低液位报警。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P058-02" level="1" requirementType="control">
+      <sysml:Name>膨胀水箱自动补水控制</sysml:Name>
+      <sysml:Text>膨胀水箱应具备自动补水功能，当液位低于设定值时，自动补水阀应开启向水箱补水，直至液位恢复至正常范围。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P058" />
+      <sysml:Traceability>
+        <Evidence id="E-EXP-ALARM-008" supportStatus="need_confirmation" />
+        <Evidence id="E-EXP-ALARM-005" supportStatus="need_confirmation" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>need_confirmation</SupportStatus>
+        <RiskIfUnmet>无法自动补水，泄漏后系统失压，需人工干预，增加操作负担和风险。</RiskIfUnmet>
+        <ApplicabilityConstraint>自动补水控制逻辑和参数需按实际选用的主机厂家 Technical Data 确认，不同厂家和机型可能不同。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>按主机厂家 Technical Data 确认自动补水阀的开启液位设定值和补水流量。</Criterion>
+        <Criterion>调试期间模拟低液位，确认自动补水阀开启，补水后液位恢复正常，补水过程无异常。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【膨胀水箱自动补水控制】，来自原始需求「自动补水功能」。E-EXP-ALARM-008（Everllence 49/60DF Project Guide）间接支撑了低液位报警开关，但未明确自动补水功能；E-EXP-ALARM-005（MAN L23/30H Project Guide）间接支撑了压力维持功能。自动补水控制逻辑需结合厂家技术数据确认。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='need_confirmation'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P058-03" level="1" requirementType="safety_environment">
+      <sysml:Name>系统失压防护</sysml:Name>
+      <sysml:Text>膨胀水箱的容量和布置应保证在船舶倾斜工况下（静倾15°、动倾22.5°、纵摇7.5°）维持足够液位，防止空气吸入冷却水泵导致系统失压。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P058" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-INCL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>船舶倾斜时空气进入冷却水泵，导致冷却水循环中断，主机过热损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认膨胀水箱容量和布置满足SOLAS Reg.26规定的倾斜工况要求。</Criterion>
+        <Criterion>按项目设计基准（Design Basis）确认膨胀水箱容积和安装高度。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【系统失压防护】，来自原始需求「防止因泄漏导致系统失压」。E-SOLAS-INCL-001（SOLAS Reg.26）直接支撑了膨胀水箱在倾斜工况下维持液位防止空气吸入的要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['足够液位'].</Message>
+          <Suggestion>Specify minimum liquid level (e.g., in mm or as a percentage of tank height) under the given inclination conditions.</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P058" target="ER-P058-01" type="derive">由原始需求「低液位声光报警」和E-CTRL-COOL-002、E-ISO8861-002、E-EXP-CAP-001直接证据派生。</Relationship>
+    <Relationship source="P058" target="ER-P058-02" type="derive">由原始需求「自动补水功能」和E-EXP-ALARM-008、E-EXP-ALARM-005间接证据派生。</Relationship>
+    <Relationship source="P058" target="ER-P058-03" type="derive">由原始需求「防止因泄漏导致系统失压」和E-SOLAS-INCL-001直接证据派生。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认自动补水阀的开启液位设定值和补水流量。</Statement>
+      <Reason>现有间接证据未给出具体数值，需主机厂家 Technical Data 确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认膨胀水箱的容积和安装高度满足SOLAS Reg.26倾斜工况要求。</Statement>
+      <Reason>需结合项目设计基准和厂家数据确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

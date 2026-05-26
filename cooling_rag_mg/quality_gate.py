@@ -33,7 +33,7 @@ _VAGUE_EN = [
 _UNIT_RE = re.compile(
     r"\d+\.?\d*\s*"
     r"(%|°C|℃|bar|kPa|MPa|Pa|m³/h|m3/h|L/h|l/h|L/min|l/min"
-    r"|rpm|kW|MW|mm\b|m\b|kg\b|t\b|Hz|V\b|A\b|h\b|min\b|s\b)",
+    r"|rpm|kW|MW|mm(?![a-zA-Z])|m(?![a-zA-Z])|kg(?![a-zA-Z])|t(?![a-zA-Z])|Hz|V(?![a-zA-Z])|A(?![a-zA-Z])|h(?![a-zA-Z])|min(?![a-zA-Z])|s(?![a-zA-Z]))",
     re.IGNORECASE,
 )
 
