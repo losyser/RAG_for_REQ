@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P055" sourceRequirementId="P055" stakeholder="设备采购方" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T00:31:15">
+  <ProfessionalSummary>覆盖中央冷却器在线清洗功能、换热效率保持和可靠性提升要求，基于间接证据和证据缺口生成工程需求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P055-01" level="1" requirementType="maintainability">
+      <sysml:Name>中央冷却器在线清洗功能</sysml:Name>
+      <sysml:Text>中央冷却器应配置在线清洗装置（如反冲洗或胶球清洗接口），以在运行中清除污垢，减少停机维护频率。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P055" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-FILT-001" supportStatus="evidence_gap" />
+        <Evidence id="E-SUPP-FILT-002" supportStatus="evidence_gap" />
+        <Evidence id="E-SUPP-MAINT-002" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>无法在线清洗将导致停机维护次数增加，影响系统可用性。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【中央冷却器在线清洗功能】，来自原始需求「在线清洗功能（如反冲洗或胶球清洗接口）」。E-SUPP-FILT-001（DNV规则）和E-SUPP-FILT-002（CCS规则）间接支撑了海水侧在线清洗的可行性；E-SUPP-MAINT-002（模块化快拆设计）间接支撑了在线维护理念。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 3 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P055-02" level="1" requirementType="operation">
+      <sysml:Name>中央冷却器换热效率保持</sysml:Name>
+      <sysml:Text>在线清洗功能应能有效维持中央冷却器的换热效率，防止因污垢积累导致性能下降。</sysml:Text>
+      <sysml:VerifiedBy method="test" />
+      <sysml:DerivedFrom refId="ER-P055" />
+      <sysml:Traceability>
+        <Evidence id="E-COOLER-CLEAN-016" supportStatus="evidence_gap" />
+        <Evidence id="E-COOLER-MAINT-015" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>换热效率下降将导致冷却能力不足，影响主机运行。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【中央冷却器换热效率保持】，来自原始需求「保持换热效率」。E-COOLER-CLEAN-016（板式换热器拆解清洗）和E-COOLER-MAINT-015（MAN热交换器清洁）间接支撑了清洗对换热效率的重要性，但未给出具体效率保持指标。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='test', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['有效维持', '性能下降'].</Message>
+          <Suggestion>在线清洗功能应能维持中央冷却器的换热效率不低于设计值的95%，防止因污垢积累导致换热效率下降超过5%。</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P055-03" level="1" requirementType="reliability">
+      <sysml:Name>中央冷却器可靠性提升</sysml:Name>
+      <sysml:Text>中央冷却器在线清洗功能应能减少停机维护次数，提升系统整体可靠性。</sysml:Text>
+      <sysml:VerifiedBy method="operation_check" />
+      <sysml:DerivedFrom refId="ER-P055" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-FILT-001" supportStatus="evidence_gap" />
+        <Evidence id="E-SUPP-FILT-002" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>停机维护次数增加将降低系统可用性和可靠性。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【中央冷却器可靠性提升】，来自原始需求「减少停机维护次数」。E-SUPP-FILT-001和E-SUPP-FILT-002间接支撑了在线清洗减少停机维护的可行性。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='operation_check', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['减少停机维护次数', '提升系统整体可靠性'].</Message>
+          <Suggestion>中央冷却器在线清洗功能应能将停机维护次数减少至少50%（或具体次数），并通过连续运行1000小时无故障来验证系统可靠性。</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P055" target="ER-P055-01" type="derive">由原始需求「在线清洗功能」和间接证据派生。</Relationship>
+    <Relationship source="P055" target="ER-P055-02" type="derive">由原始需求「保持换热效率」和间接证据派生。</Relationship>
+    <Relationship source="P055" target="ER-P055-03" type="derive">由原始需求「减少停机维护次数」和间接证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="3">
+    <Gap relatedRequirementId="ER-P055-01" gapType="only_indirect">
+      <Description>只有间接证据，尚无直接证据形成工程化需求依据。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P055-02" gapType="only_indirect">
+      <Description>只有间接证据，尚无直接证据形成工程化需求依据。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P055-03" gapType="only_indirect">
+      <Description>只有间接证据，尚无直接证据形成工程化需求依据。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认中央冷却器在线清洗装置的具体类型（反冲洗或胶球清洗）及接口要求。</Statement>
+      <Reason>现有证据仅间接支持在线清洗概念，未给出具体配置参数。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认在线清洗后换热效率的验收指标。</Statement>
+      <Reason>现有证据未给出效率保持的具体数值或测试方法。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认在线清洗减少停机维护次数的量化目标。</Statement>
+      <Reason>现有证据未给出可靠性提升的具体指标。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

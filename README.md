@@ -1,4 +1,45 @@
-# cooling_rag_multigranular
+# Multi-Granular RAG for Ship Cooling Water Requirements
+
+Reference implementation for the paper:
+
+> *Multi-Granular Retrieval-Augmented Generation for Evidence-Based Engineering Requirement Formulation in Ship Cooling Systems* (JMSE, 2026).
+
+## Reproducing the paper
+
+Every number in Tables 3–9 of the paper is traceable to a `batch_*/experiment/manifest.json` file containing the exact DeepSeek model version returned by the API, all hyperparameters, random seeds, and dependency versions.
+
+**Fast path (cached replay, no API key required, < 3 minutes)**
+
+```bash
+# 1. clone
+git clone https://github.com/<anonymized-during-review>/cooling-rag-multigranular.git
+cd cooling-rag-multigranular
+
+# 2. install
+pip install -r requirements.txt
+
+# 3. download data + LLM response cache from Zenodo
+wget https://zenodo.org/record/<ZENODO_RECORD>/files/cooling_rag_data.tar.gz
+tar -xzf cooling_rag_data.tar.gz
+
+# 4. reproduce one requirement (cached, deterministic)
+jupyter notebook notebooks/quickstart.ipynb
+```
+
+**Full reproduction (rerun the LLM)**
+
+```bash
+# requires DEEPSEEK_API_KEY in .env
+python scripts/26_run_three_rounds.py --groups G1 G2 G3 G4 A1 A2
+python scripts/22_compute_metrics.py
+python scripts/27_statistics.py     # per-requirement mixed-model + bootstrap CI
+python scripts/28_baselines.py all  # external baselines (E-1, E-2, E-22, E-23, A3)
+python scripts/29_analysis.py all   # depth analyses (E-5, E-9, E-10, E-13, E-14)
+```
+
+---
+
+## 开发流程
 
 独立的新工程。旧工程不需要改。
 
@@ -18,27 +59,27 @@
 
 ## 安装
 
-```bat
-D:\Users\yando\anaconda3\envs\LangGraph_env\python.exe -m pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
 ```
 
 ## 第一次运行
 
-```bat
-python scripts/10_convert_docx_to_multigranular_jsonl.py
+```bash
+# 构建 FAISS + BM25 索引（仅需一次）
 python scripts/11_build_multigranular_indexes.py
-python scripts/12_run_requirement_ui.py
+
+# 启动 UI
+streamlit run app.py
 ```
 
 ## DeepSeek
 
-如果要启用 DeepSeek 拆分和证据审查，在 Windows 终端设置：
+在 `.env` 中配置（参考 `.env.example`）：
 
-```bat
-setx DEEPSEEK_API_KEY "你的key"
 ```
-
-然后重启 PyCharm。
+DEEPSEEK_API_KEY=你的key
+```
 
 不配置 DeepSeek 也能运行，会使用规则拆分和本地重排。
 
@@ -46,13 +87,8 @@ setx DEEPSEEK_API_KEY "你的key"
 
 检索结果保存到：
 
-```text
-data/search_results/batch_YYYYMMDD_HHMMSS/
 ```
-
-每个批次会生成：
-
-```text
-all_requirements_results.json
-all_requirements_results.md
+data/search_results/batch_YYYYMMDD_HHMMSS/
+  all_requirements_results.json
+  all_requirements_results.md
 ```

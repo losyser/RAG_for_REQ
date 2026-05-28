@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P080" sourceRequirementId="P080" stakeholder="调试人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T05:44:25">
+  <ProfessionalSummary>覆盖中央冷却器出口温度控制参数、温度调节响应时间和调试工况验证三个方面，确保系统在海水温度32℃工况下满足温度稳定性和调节周期要求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P080-01" level="1" requirementType="parameter">
+      <sysml:Name>中央冷却器出口温度控制参数</sysml:Name>
+      <sysml:Text>中央冷却器出口温度在海水温度32℃工况下应稳定在36±1℃。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P080" />
+      <sysml:Traceability>
+        <Evidence id="E-LT-CAP-001" supportStatus="need_confirmation" />
+        <Evidence id="E-TCV-TEMP-022" supportStatus="need_confirmation" />
+        <Evidence id="E-TCV-TEMP-124" supportStatus="need_confirmation" />
+        <Evidence id="E-TCV-TEMP-118" supportStatus="need_confirmation" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>need_confirmation</SupportStatus>
+        <RiskIfUnmet>出口温度超出范围可能导致主机冷却不足或过冷，影响主机性能和寿命。</RiskIfUnmet>
+        <ApplicabilityConstraint>温度控制阀设定点基于MAN 49/60DF项目指南，其他厂家和机型应按各自Technical Data确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>调试期间在海水温度32℃工况下，记录中央冷却器出口温度，确认稳定在36±1℃范围内。</Criterion>
+        <Criterion>具体稳定时间按项目调试大纲或厂家试验程序确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【中央冷却器出口温度控制参数】，来自原始需求「中央冷却器出口温度稳定在36±1℃」。E-LT-CAP-001（DNV规则）支撑了LT冷却水出口温度典型值32-38°C，36°C在此范围内；E-TCV-TEMP-022、E-TCV-TEMP-124、E-TCV-TEMP-118（厂家项目指南）支撑了温度控制阀设定点，但具体值需按厂家确认。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 4 item(s), support_status='need_confirmation'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="false" severity="error">
+          <Message>Specific quantitative value(s) ['℃', '℃'] found in shall_statement but support_status='need_confirmation' (not verified by direct evidence).</Message>
+          <Suggestion>Remove specific values or replace with a placeholder referencing the source (e.g., 'per Manufacturer Technical Data'). Only values explicitly stated in direct evidence may appear here.</Suggestion>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P080-02" level="1" requirementType="control">
+      <sysml:Name>温度调节响应时间</sysml:Name>
+      <sysml:Text>温度调节系统在海水温度32℃工况下，调节周期应不超过30秒。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P080" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-COMM-COOL-001" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>调节周期过长可能导致温度波动大，影响主机稳定运行。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>[待确认数值] 调试期间在海水温度32℃工况下，模拟负荷变化，记录温度调节周期，确认不超过30秒。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。</Criterion>
+        <Criterion>具体测试工况和记录频率按项目调试大纲或厂家试验程序确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【温度调节响应时间】，来自原始需求「调节周期不超过30秒」。E-CTRL-COOL-001（IACS UR E10）间接支撑了温控系统自动调节要求，但未给出具体调节周期数值；E-COMM-COOL-001（调试程序）支撑了温控阀功能验证，但未涉及响应时间。调节周期30秒需按项目调试大纲或厂家试验程序确认。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="false" severity="error">
+          <Message>Specific quantitative value(s) ['℃'] found in shall_statement but support_status='evidence_gap' (not verified by direct evidence).</Message>
+          <Suggestion>Remove specific values or replace with a placeholder referencing the source (e.g., 'per Manufacturer Technical Data'). Only values explicitly stated in direct evidence may appear here.</Suggestion>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P080-03" level="1" requirementType="test">
+      <sysml:Name>调试工况验证</sysml:Name>
+      <sysml:Text>调试时应验证在海水温度32℃工况下，中央冷却器出口温度稳定在36±1℃且调节周期不超过30秒。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P080" />
+      <sysml:Traceability>
+        <Evidence id="E-IACS-M28-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-DNV-COOL-003" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COMM-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>未在指定工况下验证可能导致系统在实际运行中性能不达标。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>调试记录应包含海水温度32℃工况下的中央冷却器出口温度稳定性和调节周期测试数据。</Criterion>
+        <Criterion>具体试验工况和时长按项目调试大纲或厂家试验程序确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【调试工况验证】，来自原始需求「调试时需验证在海水温度32℃工况下」。E-IACS-M28-001（IACS UR M28）直接支撑了海水温度32°C作为基准工况；E-DNV-COOL-003（DNV规则）和E-COMM-COOL-001（调试程序）直接支撑了海试期间温度稳定性和温控阀功能验证。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>Value(s) ['℃', '℃'] present and backed by direct evidence.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P080" target="ER-P080-01" type="derive">由原始需求「中央冷却器出口温度稳定在36±1℃」和E-LT-CAP-001、E-TCV-TEMP-022等证据派生。</Relationship>
+    <Relationship source="P080" target="ER-P080-02" type="derive">由原始需求「调节周期不超过30秒」和E-CTRL-COOL-001、E-COMM-COOL-001等证据派生。</Relationship>
+    <Relationship source="P080" target="ER-P080-03" type="derive">由原始需求「调试时需验证在海水温度32℃工况下」和E-IACS-M28-001、E-DNV-COOL-003等证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P080-02" gapType="parameter_source_gap">
+      <Description>缺少直接证据支撑调节周期不超过30秒的具体数值，仅有间接证据要求温控系统自动调节。</Description>
+      <SuggestedDocumentUpdate>补充主机厂家Technical Data或项目调试大纲中关于温度调节响应时间的具体要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认中央冷却器出口温度36±1℃的设定值是否与所选主机厂家Technical Data一致。</Statement>
+      <Reason>现有证据中温度控制阀设定点为32°C，与36°C存在差异，需厂家确认实际设定值。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认调节周期不超过30秒的具体测试工况和验收判据。</Statement>
+      <Reason>现有证据未给出调节周期数值，需项目调试大纲或厂家试验程序确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

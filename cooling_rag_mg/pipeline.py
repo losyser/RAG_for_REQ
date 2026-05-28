@@ -42,7 +42,7 @@ def make_services() -> PipelineServices:
     return PipelineServices(retriever=make_retriever())
 
 
-def run_requirements(requirements: list[dict[str, Any]], *, top_k: int = 5, coarse_k: int = 12, fine_k: int = 40) -> dict[str, Any]:
+def run_requirements(requirements: list[dict[str, Any]], *, top_k: int = 4, coarse_k: int = 12, fine_k: int = 40) -> dict[str, Any]:
     return run_requirements_with_services(requirements, services=make_services(), top_k=top_k, coarse_k=coarse_k, fine_k=fine_k)
 
 
@@ -50,7 +50,7 @@ def run_requirements_with_services(
     requirements: list[dict[str, Any]],
     *,
     services: PipelineServices,
-    top_k: int = 5,
+    top_k: int = 4,
     coarse_k: int = 12,
     fine_k: int = 40,
     judge_candidate_k: int = 25,

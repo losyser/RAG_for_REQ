@@ -34,10 +34,12 @@ import copy
 
 from cooling_rag_mg.config import get_config
 from cooling_rag_mg.engineering_requirement_agent import (
+    ENGINEERING_REQUIREMENT_PROMPT,
     generate_engineering_requirements,
 )
 from cooling_rag_mg.evidence_pack import make_batch_dir
 from cooling_rag_mg.jsonl import read_jsonl, write_jsonl
+from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.pipeline import make_services, run_requirements_with_services
 from cooling_rag_mg.quality_gate import QualityGate
 from cooling_rag_mg.sysml_exporter import export_batch
@@ -61,58 +63,17 @@ def _to_pipeline_input(reqs: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 # ─────────────────────────────────────────────
-# G1: Direct LLM（无检索）
+# G1: Paired baseline — same prompt as G2-G4, empty retrieval context
 # ─────────────────────────────────────────────
 
-_G1_SYSTEM = """\
-You are a marine main engine cooling water system requirements engineer.
-
-Task: Transform the stakeholder's raw requirement into structured engineering requirements
-based solely on your domain knowledge (no retrieval evidence is available).
-
-Rules:
-- Write shall_statement in clear engineering language
-- Set evidence_ids to empty list
-- Set support_status to "no_evidence_baseline"
-- For parameter values you cannot confirm, use placeholder:
-  "to be confirmed per Manufacturer Technical Data"
-- Do NOT fabricate specific numerical values
-- verification_method MUST be one of: review, inspection, calculation, test,
-  commissioning_check, operation_check, maintenance_check, class_approval
-- requirement_type MUST be one of: reliability, redundancy, parameter, control,
-  alarm_protection, configuration, verification, installation, maintainability,
-  operation, safety_environment, other
-
-Output valid JSON only (no markdown):
-{
-  "requirement_set_id": "ER-G1-<id>",
-  "source_requirement_id": "<id>",
-  "stakeholder": "<stakeholder>",
-  "generation_basis": "direct_llm_no_evidence",
-  "professional_summary": "...",
-  "assumptions": [],
-  "engineering_requirements": [
-    {
-      "id": "ER-G1-<id>-01",
-      "parent_id": "ER-G1-<id>",
-      "level": 1,
-      "requirement_type": "other",
-      "topic": "...",
-      "shall_statement": "...",
-      "engineering_rationale": "Generated from domain knowledge without evidence.",
-      "acceptance_criteria": ["..."],
-      "verification_method": "review",
-      "evidence_ids": [],
-      "support_status": "no_evidence_baseline",
-      "applicability_constraints": [],
-      "risk_if_unmet": "..."
-    }
-  ],
-  "relationships": [],
-  "evidence_gaps": [],
-  "confirmation_items": []
-}
-"""
+_G1_USER_MARKER = (
+    "This is a no-evidence baseline; produce shall statements based on the "
+    "requirement text alone. Do not fabricate evidence_ids — leave evidence_ids "
+    "empty for every engineering requirement. Set support_status to "
+    "'no_evidence_baseline'. Do not invent specific quantitative values; use "
+    "the standard placeholders defined in the prompt (e.g., '按主机厂家 "
+    "Technical Data 确认')."
+)
 
 
 def _run_g1(
@@ -120,32 +81,56 @@ def _run_g1(
     exp_dir: Path,
     cfg: Any,
 ) -> list[dict[str, Any]]:
+    """G1 paired baseline — identical system prompt to G2-G4 with empty evidence."""
     from openai import OpenAI
     client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
     results = []
     for r in reqs:
         try:
             payload = {
-                "requirement_id": r["requirement_id"],
-                "stakeholder": r.get("stakeholder", ""),
-                "raw_requirement": r.get("requirement_text", ""),
+                "original_requirement": {
+                    "requirement_id": r["requirement_id"],
+                    "stakeholder": r.get("stakeholder", ""),
+                    "raw_requirement_text": r.get("requirement_text", ""),
+                },
+                "retrieval_context": {
+                    "requirement_id": r["requirement_id"],
+                    "stakeholder": r.get("stakeholder", ""),
+                    "raw_requirement_text": r.get("requirement_text", ""),
+                    "supported_evidence": [],
+                    "supported_evidence_by_topic": {},
+                    "background_evidence_for_reference_only": [],
+                    "evidence_gap_summary": [],
+                    "allowed_engineering_aspects": [],
+                    "sub_requirement_type_distribution": {},
+                    "generation_basis": "no_evidence_baseline",
+                },
+                "no_evidence_baseline": True,
             }
-            resp = client.chat.completions.create(
+            resp = cached_completion(
+                client,
                 model=cfg.deepseek.model,
                 messages=[
-                    {"role": "system", "content": _G1_SYSTEM},
+                    {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT},
+                    {"role": "user", "content": _G1_USER_MARKER},
                     {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
                 ],
-                temperature=0.1,
+                temperature=cfg.deepseek.temperature,
                 max_tokens=cfg.deepseek.max_tokens_requirement_agent,
                 response_format={"type": "json_object"},
             )
             obj = json.loads(resp.choices[0].message.content or "{}")
             obj["_group"] = "G1"
+            obj["generation_basis"] = "no_evidence_baseline"
+            obj.setdefault("source_requirement_id", r["requirement_id"])
+            obj.setdefault("stakeholder", r.get("stakeholder", ""))
+            for er in obj.get("engineering_requirements", []) or []:
+                er["evidence_ids"] = []
+                er["support_status"] = "no_evidence_baseline"
             results.append(obj)
-            print(f"  [G1] {r['requirement_id']} ✓")
+            print(f"  [G1] {r['requirement_id']} OK")
         except Exception as exc:
-            print(f"  [G1] {r['requirement_id']} ✗ {exc}")
+            print(f"  [G1] {r['requirement_id']} FAIL {exc}")
 
     write_jsonl(str(exp_dir / "G1_direct_llm.jsonl"), results)
     return results
@@ -224,6 +209,7 @@ def _run_g2(
         results.append(rs)
         print(f"  [G2] {rs.get('source_requirement_id')} ✓")
 
+    results = _attach_judge_methods(results, retrieval_payload)
     write_jsonl(str(exp_dir / "G2_flat_rag.jsonl"), results)
     return results
 
@@ -231,6 +217,33 @@ def _run_g2(
 # ─────────────────────────────────────────────
 # G3 / G4 / A1 / A2: 使用正确的 pipeline 接口
 # ─────────────────────────────────────────────
+
+def _attach_judge_methods(
+    results: list[dict[str, Any]],
+    retrieval_payload: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Preserve stage_diagnostics.judge_method into saved results per sub_requirement."""
+    from cooling_rag_mg.text_utils import safe_text
+    by_id: dict[str, dict[str, Any]] = {}
+    for r in retrieval_payload.get("requirements", []) or []:
+        rid = safe_text(r.get("requirement_id"))
+        if rid:
+            by_id[rid] = r
+
+    for rs in results:
+        src_id = safe_text(rs.get("source_requirement_id"))
+        ctx = by_id.get(src_id, {})
+        per_sub = []
+        for sub in ctx.get("sub_requirements", []) or []:
+            diag = sub.get("stage_diagnostics", {}) or {}
+            per_sub.append({
+                "sub_requirement_id": safe_text(sub.get("sub_requirement_id")),
+                "topic": safe_text(sub.get("topic")),
+                "judge_method": safe_text(diag.get("judge_method")),
+            })
+        rs["_judge_methods"] = per_sub
+    return results
+
 
 def _attach_quality_gate(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
     qg = QualityGate()
@@ -284,6 +297,8 @@ def _run_pipeline_group(
         rs["_group"] = group
         results.append(rs)
         print(f"  [{group}] {rs.get('source_requirement_id')} ✓")
+
+    results = _attach_judge_methods(results, retrieval_payload)
 
     if with_quality_gate:
         results = _attach_quality_gate(results)

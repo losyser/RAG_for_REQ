@@ -19,6 +19,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
+import random
 import sys
 from pathlib import Path
 from typing import Any
@@ -30,6 +32,12 @@ from cooling_rag_mg.config import get_config
 from cooling_rag_mg.jsonl import read_jsonl
 from cooling_rag_mg.quality_gate import QualityGate
 from cooling_rag_mg.text_utils import safe_text
+
+# Shared sample cache so multiple groups (e.g. G4 and A2) sample the SAME
+# source_requirement_ids — this makes the M6 comparison paired rather than
+# independent.  Keyed by exp_dir to avoid leakage across runs in the same
+# Python process.
+_M6_SAMPLE_CACHE: dict[Path, list[str]] = {}
 
 
 # ─────────────────────────────────────────────
@@ -184,7 +192,102 @@ def _m6_from_review_file(exp_dir: Path) -> dict:
     }
 
 
+def _stratified_sample_source_ids(
+    exp_dir: Path,
+    group: str,
+    n: int,
+    seed: int = 42,
+) -> list[str]:
+    """Pick `n` source_requirement_ids stratified by (stakeholder, engineering_type).
+
+    The result is cached per `exp_dir` so subsequent calls for other groups
+    (e.g. A2 after G4) use the SAME ids, enabling paired comparison.
+
+    Stakeholder is read from the result_set; engineering_type is the most
+    common requirement_type among the set's engineering_requirements.
+    """
+    if exp_dir in _M6_SAMPLE_CACHE:
+        return _M6_SAMPLE_CACHE[exp_dir]
+
+    rng = random.Random()
+    rng.seed(seed)
+
+    result_sets = _load_group(exp_dir, group)
+    if not result_sets:
+        _M6_SAMPLE_CACHE[exp_dir] = []
+        return []
+
+    # Build (source_id, stakeholder, engineering_type) tuples
+    rows: list[tuple[str, str, str]] = []
+    for rs in result_sets:
+        src_id = safe_text(rs.get("source_requirement_id") or rs.get("requirement_set_id"))
+        if not src_id:
+            continue
+        stakeholder = safe_text(rs.get("stakeholder"))
+        types: dict[str, int] = {}
+        for er in rs.get("engineering_requirements", []) or []:
+            t = safe_text(er.get("requirement_type")) or "other"
+            types[t] = types.get(t, 0) + 1
+        eng_type = max(types, key=types.get) if types else "other"
+        rows.append((src_id, stakeholder, eng_type))
+
+    if not rows:
+        _M6_SAMPLE_CACHE[exp_dir] = []
+        return []
+
+    n = min(n, len(rows))
+
+    # Group by (stakeholder, engineering_type)
+    strata: dict[tuple[str, str], list[str]] = {}
+    for src_id, stk, et in rows:
+        strata.setdefault((stk, et), []).append(src_id)
+
+    # Shuffle each stratum deterministically
+    for key in strata:
+        rng.shuffle(strata[key])
+
+    # Proportional allocation with largest-remainder method
+    total = len(rows)
+    alloc: dict[tuple[str, str], int] = {}
+    remainders: list[tuple[float, tuple[str, str]]] = []
+    assigned = 0
+    for key, members in strata.items():
+        raw = n * len(members) / total
+        base = int(math.floor(raw))
+        alloc[key] = base
+        remainders.append((raw - base, key))
+        assigned += base
+    # Distribute the leftover one-by-one to strata with the largest remainders
+    remainders.sort(key=lambda x: (-x[0], x[1]))
+    leftover = n - assigned
+    i = 0
+    while leftover > 0 and remainders:
+        _, key = remainders[i % len(remainders)]
+        if alloc[key] < len(strata[key]):
+            alloc[key] += 1
+            leftover -= 1
+        i += 1
+        if i > len(remainders) * 4:  # safety
+            break
+
+    sampled: list[str] = []
+    for key, take in alloc.items():
+        sampled.extend(strata[key][:take])
+
+    # Final top-up if rounding under-allocated (e.g. strata exhausted)
+    if len(sampled) < n:
+        seen = set(sampled)
+        pool = [src for src, _, _ in rows if src not in seen]
+        rng.shuffle(pool)
+        sampled.extend(pool[: n - len(sampled)])
+
+    sampled = sampled[:n]
+    _M6_SAMPLE_CACHE[exp_dir] = sampled
+    return sampled
+
+
 def _print_m6_sampling(exp_dir: Path, group: str = "G4", n: int = 20) -> None:
+    random.seed(42)
     # If a review file exists with any judged entries, report M6 from it.
     m6 = _m6_from_review_file(exp_dir)
     decomp = m6["M6_decomp"]
@@ -206,17 +309,35 @@ def _print_m6_sampling(exp_dir: Path, group: str = "G4", n: int = 20) -> None:
         print(f"  M6_gap     Evidence gap rate         : {gap_str}")
         return
 
-    # No review file yet — generate a sampling template for manual filling
+    # No review file yet — generate a sampling template via stratified sample.
     result_sets = _load_group(exp_dir, group)
     if not result_sets:
         return
-    reqs = _flatten_requirements(result_sets)
-    sample = reqs[:n]
+
+    # Stratified pick of source_requirement_ids; shared across groups in the
+    # same exp_dir so G4 and A2 (etc.) review the SAME requirements.
+    sampled_src_ids = _stratified_sample_source_ids(exp_dir, group, n)
+    src_id_set = set(sampled_src_ids)
+
+    # Pull the engineering requirements belonging to the sampled set
+    reqs = []
+    for rs in result_sets:
+        if safe_text(rs.get("source_requirement_id")) in src_id_set:
+            for er in rs.get("engineering_requirements", []) or []:
+                er = dict(er)
+                er["_set_id"] = rs.get("requirement_set_id", "")
+                er["_source_requirement_id"] = rs.get("source_requirement_id", "")
+                reqs.append(er)
+        if len(src_id_set) and len(reqs) and len({r["_source_requirement_id"] for r in reqs}) >= len(sampled_src_ids):
+            # have collected all sampled sets; keep collecting their ERs (loop continues anyway)
+            pass
+
     out = []
-    for i, r in enumerate(sample, start=1):
+    for i, r in enumerate(reqs, start=1):
         out.append({
             "index": i,
             "requirement_id": safe_text(r.get("id")),
+            "source_requirement_id": safe_text(r.get("_source_requirement_id")),
             "shall_statement": safe_text(r.get("shall_statement"))[:200],
             "evidence_ids": r.get("evidence_ids") or [],
             "support_status": safe_text(r.get("support_status")),
@@ -227,9 +348,20 @@ def _print_m6_sampling(exp_dir: Path, group: str = "G4", n: int = 20) -> None:
         })
     sampling_path = exp_dir / "M6_sampling_template.json"
     sampling_path.write_text(
-        json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8"
+        json.dumps(
+            {
+                "sampling_method": "stratified_by_stakeholder_and_engineering_type",
+                "seed": 42,
+                "n_source_requirements": len(sampled_src_ids),
+                "sampled_source_ids": sampled_src_ids,
+                "items": out,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
     )
-    print(f"\nM6 sampling template ({n} items) saved → {sampling_path}")
+    print(f"\nM6 sampling template ({len(sampled_src_ids)} src reqs, {len(out)} ERs) saved -> {sampling_path}")
     print("Use 'm6_review_ui.py' (streamlit run scripts/m6_review_ui.py --server.port 8502)")
     print("or fill 'traceability_correct' manually, then re-run this script.")
 

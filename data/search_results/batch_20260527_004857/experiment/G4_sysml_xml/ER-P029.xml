@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P029" sourceRequirementId="P029" stakeholder="环保负责人" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T01:30:52">
+  <ProfessionalSummary>覆盖冷却水系统泄漏防护和环保合规要求，包含冷却液泄漏防护、海水泄漏防护、化学品误排放防护和环保合规验证。</ProfessionalSummary>
+  <EngineeringRequirements count="5">
+    <Requirement id="ER-P029-01" level="1" requirementType="safety">
+      <sysml:Name>冷却液泄漏防护</sysml:Name>
+      <sysml:Text>主机冷却水系统应通过合理的管路布置、密封材料选择和隔热标识设计，减少冷却液泄漏风险。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-SAFE-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-MAT-002" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>冷却液泄漏可能导致主机过热、设备损坏及环境污染。</RiskIfUnmet>
+        <ApplicabilityConstraint>E-SUPP-MAT-002基于乙二醇冷却液系统，其他冷却液需按厂家要求确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查管路隔热设计，高温管路表面温度应低于55°C，绝热材料耐温不低于150°C，按主机厂家Technical Data确认。</Criterion>
+        <Criterion>检查密封材料选型，乙二醇系统应选用FKM/PTFE等相容材料，禁用NBR。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却液泄漏防护】，来自原始需求「减少冷却液泄漏」。E-SUPP-SAFE-001支撑了高温冷却水管路隔热和标识要求以减少泄漏风险；E-SUPP-MAT-002支撑了乙二醇冷却液系统密封材料相容性要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['合理的', '减少'].</Message>
+          <Suggestion>主机冷却水系统应通过管路布置、密封材料选择和隔热标识设计，使冷却液泄漏率不超过XX L/h（或符合XX标准）。</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+      <Requirement id="ER-P029-01-01" level="2" requirementType="installation">
+        <sysml:Name>冷却液泄漏防护</sysml:Name>
+        <sysml:Text>高温冷却水管路应设置隔热层和热警示标识，管路按ISO 14726色标标识。</sysml:Text>
+        <sysml:VerifiedBy method="inspection" />
+        <sysml:DerivedFrom refId="ER-P029-01" />
+        <sysml:Traceability>
+          <Evidence id="E-SUPP-SAFE-001" supportStatus="verified_by_direct_evidence" />
+        </sysml:Traceability>
+        <sysml:QualityStatus>
+          <SupportStatus>verified_by_direct_evidence</SupportStatus>
+          <RiskIfUnmet>高温表面无隔热可能导致人员烫伤或泄漏风险增加。</RiskIfUnmet>
+        </sysml:QualityStatus>
+        <sysml:AcceptanceCriteria>
+          <Criterion>目视检查隔热层完整，表面温度低于55°C（按主机厂家Technical Data确认）。</Criterion>
+          <Criterion>检查热警示标识间距不大于2m，管路色标符合ISO 14726。</Criterion>
+        </sysml:AcceptanceCriteria>
+        <sysml:EngineeringRationale>E-SUPP-SAFE-001直接给出了隔热、标识和色标要求。</sysml:EngineeringRationale>
+        <sysml:QualityGateReport passed="true" score="1.0">
+          <Check dimension="evidence_sufficiency" passed="true" severity="error">
+            <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+          </Check>
+          <Check dimension="verifiability" passed="true" severity="error">
+            <Message>Verifiable: method='inspection', 2 criterion/criteria defined.</Message>
+          </Check>
+          <Check dimension="over_inference" passed="true" severity="error">
+            <Message>No over-inference detected.</Message>
+          </Check>
+          <Check dimension="ambiguity" passed="true" severity="warning">
+            <Message>No ambiguous terms detected (LLM check).</Message>
+          </Check>
+          <Check dimension="mbse_completeness" passed="true" severity="error">
+            <Message>All 5 SysML required fields are present.</Message>
+          </Check>
+        </sysml:QualityGateReport>
+      </Requirement>
+    </Requirement>
+    <Requirement id="ER-P029-02" level="1" requirementType="safety">
+      <sysml:Name>海水泄漏防护</sysml:Name>
+      <sysml:Text>主机冷却水系统应通过耐腐蚀材料选择和密封设计，减少海水泄漏风险。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SYS-CORR-004" supportStatus="evidence_gap" />
+        <Evidence id="E-SYS-CORR-003" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>海水泄漏可能导致冷却系统腐蚀、设备损坏及海洋污染。</RiskIfUnmet>
+        <ApplicabilityConstraint>E-SYS-CORR-004和E-SYS-CORR-003基于MAN 49/60DF机型，其他机型需按厂家数据确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【海水泄漏防护】，来自原始需求「减少海水泄漏」。E-SYS-CORR-004和E-SYS-CORR-003间接支撑了冷却水收集和腐蚀防护措施，但未直接给出海水泄漏防护的具体要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['减少海水泄漏风险'].</Message>
+          <Suggestion>Specify acceptable leakage rate (e.g., &lt;0.1 L/h) or reference material/design standard (e.g., ISO 12345).</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P029-03" level="1" requirementType="environmental">
+      <sysml:Name>化学品误排放防护</sysml:Name>
+      <sysml:Text>主机冷却水系统应设置冷却液收集和排放管理措施，防止含添加剂冷却液误排入海。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-ENV-001" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-SYS-WATER-010" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>化学品误排海违反MARPOL，导致罚款和声誉损失。</RiskIfUnmet>
+        <ApplicabilityConstraint>E-SYS-WATER-010基于Wärtsilä 32机型，其他机型需按厂家数据确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统设计，确认膨胀水箱溢流管不直接排海，冷却液收集柜容量按主机厂家Technical Data确认。</Criterion>
+        <Criterion>调试期间验证冷却液排放管理措施，废液应送岸上设施处理。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【化学品误排放防护】，来自原始需求「减少化学品误排放风险」。E-SUPP-ENV-001支撑了MARPOL对含铬/亚硝酸盐/乙二醇废液禁止排海的要求；E-SYS-WATER-010建议设置收集柜。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P029-04" level="1" requirementType="verification">
+      <sysml:Name>环保合规验证</sysml:Name>
+      <sysml:Text>主机冷却水系统应通过调试和海试验证，确认泄漏防护和排放管理措施满足项目环保要求。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P029" />
+      <sysml:Traceability>
+        <Evidence id="E-CCS-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COMM-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M51-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-COMM-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>未经充分验证可能导致系统泄漏或排放不达标，无法通过船级社和环保验收。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>按CCS规则进行管路水压试验（1.5倍设计压力，保压30分钟）。</Criterion>
+        <Criterion>按IACS UR M51进行船上试验，100% MCR持续≥60分钟，固定螺距船≥4小时。</Criterion>
+        <Criterion>调试前按核查清单完成12项检查，调试后提交联签清单、冷却液质检报告和仪表校准记录。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【环保合规验证】，来自原始需求「满足项目环保要求」。E-CCS-COOL-002、E-COMM-COOL-001、E-IACS-M51-001和E-SUPP-COMM-001支撑了系统试验和调试程序。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 4 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 3 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['满足项目环保要求'].</Message>
+          <Suggestion>Specify which environmental requirements (e.g., IMO MEPC.307(73), local regulations) and quantitative criteria (e.g., leakage rate &lt; X L/h, discharge oil content &lt; Y ppm).</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P029" target="ER-P029-01" type="derive">由原始需求「减少冷却液泄漏」和E-SUPP-SAFE-001、E-SUPP-MAT-002派生。</Relationship>
+    <Relationship source="ER-P029-01" target="ER-P029-01-01" type="refine">细化为隔热和标识的具体要求。</Relationship>
+    <Relationship source="P029" target="ER-P029-02" type="derive">由原始需求「减少海水泄漏」和E-SYS-CORR-004、E-SYS-CORR-003派生。</Relationship>
+    <Relationship source="P029" target="ER-P029-03" type="derive">由原始需求「减少化学品误排放风险」和E-SUPP-ENV-001、E-SYS-WATER-010派生。</Relationship>
+    <Relationship source="P029" target="ER-P029-04" type="derive">由原始需求「满足项目环保要求」和E-CCS-COOL-002等证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P029-02" gapType="parameter_source_gap">
+      <Description>缺少海水泄漏防护的具体设计要求和材料标准，现有证据仅间接涉及腐蚀防护。</Description>
+      <SuggestedDocumentUpdate>补充海水冷却系统耐腐蚀材料标准和密封设计规范。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认冷却液收集柜容量和排放管路设计。</Statement>
+      <Reason>现有证据仅建议设置收集柜，未给出具体容量和排放要求，需厂家Technical Data确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认海水泄漏防护的具体材料选择和密封设计。</Statement>
+      <Reason>现有证据不足，需补充相关工程证据。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

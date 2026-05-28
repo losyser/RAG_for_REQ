@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P009" sourceRequirementId="P009" stakeholder="设备采购方" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T01:30:52">
+  <ProfessionalSummary>覆盖冷却水泵、冷却器、温控阀等关键设备选型应满足主机厂家、船级社和项目技术规格书要求。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P009-01" level="1" requirementType="configuration">
+      <sysml:Name>关键设备选型合规性</sysml:Name>
+      <sysml:Text>冷却水泵、冷却器、温控阀等关键设备的选型应满足主机厂家、船级社和项目技术规格书的要求。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P009" />
+      <sysml:Traceability>
+        <Evidence id="E-CCS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M3-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-DNV-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>设备选型不满足要求可能导致冷却能力不足、系统可靠性降低，无法通过船级社审批。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>审查设备选型计算书和规格书，确认冷却水泵台数、容量、驱动方式符合船级社规则（如CCS、IACS、SOLAS）和主机厂家要求。</Criterion>
+        <Criterion>审查冷却器热平衡计算，确认冷却能力满足主机额定工况要求。</Criterion>
+        <Criterion>审查温控阀选型，确认其温度控制范围满足主机厂家和DNV规则要求。</Criterion>
+        <Criterion>所有设备选型文件应经船级社审批。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【关键设备选型合规性】，来自原始需求「满足主机厂家、船级社和项目技术规格书要求」。E-CCS-COOL-001 支撑了冷却水泵容量和冗余要求；E-IACS-M3-001 支撑了冷却水泵数量和容量要求；E-SOLAS-COOL-001 支撑了冗余和报警要求；E-DNV-COOL-001 支撑了温控阀温度控制要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 4 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 4 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P009" target="ER-P009-01" type="derive">由原始需求「关键设备选型合规性」和船级社规则证据派生。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认主机厂家对冷却水泵、冷却器、温控阀的具体技术参数要求。</Statement>
+      <Reason>原始需求要求满足主机厂家要求，但现有证据未提供具体厂家数据，需在选型时获取。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认项目技术规格书中对设备选型的附加要求。</Statement>
+      <Reason>原始需求要求满足项目技术规格书，但现有证据未包含项目规格书内容。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

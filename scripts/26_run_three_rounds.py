@@ -27,10 +27,15 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from cooling_rag_mg import seed_everything
 from cooling_rag_mg.config import get_config
-from cooling_rag_mg.engineering_requirement_agent import generate_engineering_requirements
+from cooling_rag_mg.engineering_requirement_agent import (
+    ENGINEERING_REQUIREMENT_PROMPT,
+    generate_engineering_requirements,
+)
 from cooling_rag_mg.evidence_pack import make_batch_dir
 from cooling_rag_mg.jsonl import read_jsonl, write_jsonl
+from cooling_rag_mg.llm_cache import cached_completion, cache_stats
 from cooling_rag_mg.pipeline import make_services, run_requirements_with_services
 from cooling_rag_mg.quality_gate import QualityGate
 from cooling_rag_mg.sysml_exporter import export_batch
@@ -62,57 +67,16 @@ def _to_pipeline_input(reqs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     ]
 
 
-# ── G1 ────────────────────────────────────────────────────────────────────────
+# ── G1 (paired baseline: same prompt as G2-G4 but empty retrieval context) ───
 
-_G1_SYSTEM = """\
-You are a marine main engine cooling water system requirements engineer.
-
-Task: Transform the stakeholder's raw requirement into structured engineering requirements
-based solely on your domain knowledge (no retrieval evidence is available).
-
-Rules:
-- Write shall_statement in clear engineering language
-- Set evidence_ids to empty list
-- Set support_status to "no_evidence_baseline"
-- For parameter values you cannot confirm, use placeholder:
-  "to be confirmed per Manufacturer Technical Data"
-- Do NOT fabricate specific numerical values
-- verification_method MUST be one of: review, inspection, calculation, test,
-  commissioning_check, operation_check, maintenance_check, class_approval
-- requirement_type MUST be one of: reliability, redundancy, parameter, control,
-  alarm_protection, configuration, verification, installation, maintainability,
-  operation, safety_environment, other
-
-Output valid JSON only (no markdown):
-{
-  "requirement_set_id": "ER-G1-<id>",
-  "source_requirement_id": "<id>",
-  "stakeholder": "<stakeholder>",
-  "generation_basis": "direct_llm_no_evidence",
-  "professional_summary": "...",
-  "assumptions": [],
-  "engineering_requirements": [
-    {
-      "id": "ER-G1-<id>-01",
-      "parent_id": "ER-G1-<id>",
-      "level": 1,
-      "requirement_type": "other",
-      "topic": "...",
-      "shall_statement": "...",
-      "engineering_rationale": "Generated from domain knowledge without evidence.",
-      "acceptance_criteria": ["..."],
-      "verification_method": "review",
-      "evidence_ids": [],
-      "support_status": "no_evidence_baseline",
-      "applicability_constraints": [],
-      "risk_if_unmet": "..."
-    }
-  ],
-  "relationships": [],
-  "evidence_gaps": [],
-  "confirmation_items": []
-}
-"""
+_G1_USER_MARKER = (
+    "This is a no-evidence baseline; produce shall statements based on the "
+    "requirement text alone. Do not fabricate evidence_ids — leave evidence_ids "
+    "empty for every engineering requirement. Set support_status to "
+    "'no_evidence_baseline'. Do not invent specific quantitative values; use "
+    "the standard placeholders defined in the prompt (e.g., '按主机厂家 "
+    "Technical Data 确认')."
+)
 
 
 def _run_g1_local(
@@ -120,28 +84,58 @@ def _run_g1_local(
     exp_dir: Path,
     cfg: Any,
 ) -> list[dict[str, Any]]:
+    """G1 paired baseline.
+
+    Uses the SAME system prompt as G2-G4 (ENGINEERING_REQUIREMENT_PROMPT) but
+    feeds an empty retrieval_context.supported_evidence so the only difference
+    from the proposed pipeline is the absence of retrieval evidence.
+    """
     from openai import OpenAI
     client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
     results = []
     for r in reqs:
         try:
             payload = {
-                "requirement_id": r["requirement_id"],
-                "stakeholder": r.get("stakeholder", ""),
-                "raw_requirement": r.get("requirement_text", ""),
+                "original_requirement": {
+                    "requirement_id": r["requirement_id"],
+                    "stakeholder": r.get("stakeholder", ""),
+                    "raw_requirement_text": r.get("requirement_text", ""),
+                },
+                "retrieval_context": {
+                    "requirement_id": r["requirement_id"],
+                    "stakeholder": r.get("stakeholder", ""),
+                    "raw_requirement_text": r.get("requirement_text", ""),
+                    "supported_evidence": [],
+                    "supported_evidence_by_topic": {},
+                    "background_evidence_for_reference_only": [],
+                    "evidence_gap_summary": [],
+                    "allowed_engineering_aspects": [],
+                    "sub_requirement_type_distribution": {},
+                    "generation_basis": "no_evidence_baseline",
+                },
+                "no_evidence_baseline": True,
             }
-            resp = client.chat.completions.create(
+            resp = cached_completion(
+                client,
                 model=cfg.deepseek.model,
                 messages=[
-                    {"role": "system", "content": _G1_SYSTEM},
+                    {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT},
+                    {"role": "user", "content": _G1_USER_MARKER},
                     {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
                 ],
-                temperature=0.1,
+                temperature=cfg.deepseek.temperature,
                 max_tokens=cfg.deepseek.max_tokens_requirement_agent,
                 response_format={"type": "json_object"},
             )
             obj = json.loads(resp.choices[0].message.content or "{}")
+            # Enforce baseline invariants (defensive: model may have ignored)
             obj["_group"] = "G1"
+            obj["generation_basis"] = "no_evidence_baseline"
+            obj.setdefault("source_requirement_id", r["requirement_id"])
+            obj.setdefault("stakeholder", r.get("stakeholder", ""))
+            for er in obj.get("engineering_requirements", []) or []:
+                er["evidence_ids"] = []
+                er["support_status"] = "no_evidence_baseline"
             results.append(obj)
             print(f"  [G1] {r['requirement_id']} OK")
         except Exception as exc:
@@ -159,40 +153,92 @@ def _build_flat_retrieval_payload_local(
     from cooling_rag_mg.hybrid_fusion import rrf_fuse
     from cooling_rag_mg.index_store import HybridIndexSearcher, load_index
 
+    # Reuse the shared model from services.retriever — no extra GPU load
+    shared_model = services.retriever.evidence_searcher.model
     searcher = HybridIndexSearcher(
         load_index(str(cfg.paths.indexes_dir / "evidence_units")),
         device=cfg.model.device,
+        model=shared_model,
     )
     requirement_results = []
     for r in reqs:
-        query = r.get("requirement_text", "")
-        vec = searcher.vector_search(query, top_k * 6)
-        bm25 = searcher.bm25_search(query, top_k * 6)
-        candidates = rrf_fuse([vec, bm25])
-        synthetic_sub = {
-            "sub_requirement_id": f"{r['requirement_id']}-01",
-            "requirement_type": "other",
-            "topic": r.get("requirement_text", "")[:40],
-            "text": r.get("requirement_text", ""),
-        }
-        applicable, _ = services.applicability_filter.apply(
-            synthetic_sub, candidates, top_k_for_judge=top_k * 3,
-        )
-        judge_result = services.judge(synthetic_sub, applicable, max_selected=top_k)
-        selected, _ = apply_judge(applicable, judge_result)
-        requirement_results.append({
-            "requirement_id": r["requirement_id"],
-            "stakeholder": r.get("stakeholder", ""),
-            "raw_requirement_text": r.get("requirement_text", ""),
-            "sub_requirements": [{
-                **synthetic_sub,
+        req_id = r["requirement_id"]
+        req_text = r.get("requirement_text", "")
+        stakeholder = r.get("stakeholder", "")
+
+        # Use the LLM splitter so that G2→G3 isolates multi-granularity only.
+        # Without splitting, G2 vs G3 conflates two variables (granularity + splitting).
+        # Falls back to a single synthetic sub if the splitter is unavailable.
+        try:
+            sub_reqs = services.splitter(req_id, stakeholder, req_text)
+        except Exception:
+            sub_reqs = [{
+                "sub_requirement_id": f"{req_id}-01",
+                "requirement_type": "other",
+                "topic": req_text[:40],
+                "text": req_text,
+            }]
+
+        sub_results = []
+        for sub in sub_reqs:
+            query = sub.get("text", req_text)
+            vec = searcher.vector_search(query, top_k * 6)
+            bm25 = searcher.bm25_search(query, top_k * 6)
+            candidates = rrf_fuse([vec, bm25])
+            applicable, _ = services.applicability_filter.apply(
+                sub, candidates, top_k_for_judge=top_k * 3,
+            )
+            judge_result = services.judge(sub, applicable, max_selected=top_k)
+            selected, _ = apply_judge(applicable, judge_result)
+            sub_results.append({
+                **sub,
                 "selected_results": selected,
                 "evidence_gap": None,
-            }],
+                "stage_diagnostics": {"judge_method": judge_result.get("judge_method", "")},
+            })
+
+        requirement_results.append({
+            "requirement_id": req_id,
+            "stakeholder": stakeholder,
+            "raw_requirement_text": req_text,
+            "sub_requirements": sub_results,
         })
     del searcher
     _free_gpu()
     return {"requirements": requirement_results, "diagnostics": {}}
+
+
+def _attach_judge_methods(
+    results: list[dict[str, Any]],
+    retrieval_payload: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Carry stage_diagnostics.judge_method from pipeline into the saved JSON.
+
+    The agent's engineering_requirements output collapses sub_requirements,
+    so we attach a per-set `_judge_methods` field listing the judge_method
+    used at each sub_requirement of the originating requirement.  This makes
+    it possible to audit, post-hoc, whether a given engineering requirement
+    was produced from LLM-judged vs fallback-judged evidence.
+    """
+    by_id: dict[str, dict[str, Any]] = {}
+    for r in retrieval_payload.get("requirements", []) or []:
+        rid = safe_text(r.get("requirement_id"))
+        if rid:
+            by_id[rid] = r
+
+    for rs in results:
+        src_id = safe_text(rs.get("source_requirement_id"))
+        ctx = by_id.get(src_id, {})
+        per_sub = []
+        for sub in ctx.get("sub_requirements", []) or []:
+            diag = sub.get("stage_diagnostics", {}) or {}
+            per_sub.append({
+                "sub_requirement_id": safe_text(sub.get("sub_requirement_id")),
+                "topic": safe_text(sub.get("topic")),
+                "judge_method": safe_text(diag.get("judge_method")),
+            })
+        rs["_judge_methods"] = per_sub
+    return results
 
 
 def _attach_quality_gate_local(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -247,21 +293,17 @@ def _run_g2_local(
     exp_dir: Path,
     cfg: Any,
     top_k: int,
+    services: Any,
 ) -> list[dict[str, Any]]:
-    services = make_services()
-    # G2 uses its own flat searcher; release the retriever's GPU models before loading it
-    del services.retriever
-    _free_gpu()
     pipeline_reqs = _to_pipeline_input(reqs)
     retrieval_payload = _build_flat_retrieval_payload_local(reqs, cfg, top_k, services)
-    del services
-    _free_gpu()
     output = generate_engineering_requirements(pipeline_reqs, retrieval_payload)
     results = []
     for rs in output.get("requirement_sets", []):
         rs["_group"] = "G2"
         results.append(rs)
         print(f"  [G2] {rs.get('source_requirement_id')} OK")
+    results = _attach_judge_methods(results, retrieval_payload)
     return results
 
 
@@ -274,9 +316,9 @@ def _run_pipeline_group_local(
     with_quality_gate: bool,
     with_profile_scoring: bool,
     top_k: int,
+    services: Any,
 ) -> list[dict[str, Any]]:
     pipeline_reqs = _to_pipeline_input(reqs)
-    services = make_services()
 
     if not with_profile_scoring:
         _disable_profile_scoring_local(services.retriever)
@@ -288,14 +330,14 @@ def _run_pipeline_group_local(
         coarse_k=12,
         fine_k=40,
     )
-    del services
-    _free_gpu()
     output = generate_engineering_requirements(pipeline_reqs, retrieval_payload)
     results = []
     for rs in output.get("requirement_sets", []):
         rs["_group"] = group
         results.append(rs)
         print(f"  [{group}] {rs.get('source_requirement_id')} OK")
+
+    results = _attach_judge_methods(results, retrieval_payload)
 
     if with_quality_gate:
         results = _attach_quality_gate_local(results)
@@ -450,6 +492,96 @@ def _print_summary(summary: list[dict]) -> None:
 
 # ── 单轮实验 ──────────────────────────────────────────────────────────────────
 
+def _probe_model(cfg: Any) -> str:
+    """Send a 1-token probe to the LLM endpoint and return the model id it reports.
+
+    Used to record the actual upstream model alias (which may differ from the
+    nominally requested one, e.g. when DeepSeek silently routes 'deepseek-chat'
+    to 'deepseek-chat-v4' or similar).  Returns '' on failure so manifest
+    writing never blocks a run.
+    """
+    if not cfg.deepseek.enabled:
+        return ""
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+        # Probe through the cache so identical probes don't burn quota across runs.
+        resp = cached_completion(
+            client,
+            model=cfg.deepseek.model,
+            messages=[{"role": "user", "content": "ping"}],
+            temperature=cfg.deepseek.temperature,
+            max_tokens=5,
+        )
+        return getattr(resp, "model", "") or ""
+    except Exception as exc:
+        print(f"[probe] failed: {exc}")
+        return ""
+
+
+def _gather_package_versions() -> dict[str, str]:
+    """Best-effort capture of relevant package versions for manifest.json."""
+    import importlib.metadata as md
+    pkgs = ["openai", "diskcache", "faiss-cpu", "rank-bm25", "torch", "langgraph", "lxml"]
+    out: dict[str, str] = {}
+    for name in pkgs:
+        try:
+            out[name] = md.version(name)
+        except Exception:
+            out[name] = ""
+    return out
+
+
+def _write_manifest(
+    exp_dir: Path,
+    *,
+    cfg: Any,
+    round_idx: int,
+    seed: int | None,
+    n_requirements: int,
+    seeds: list[int],
+    top_k: int,
+    started_at: str,
+    model_returned: str,
+) -> None:
+    import platform
+    import sys as _sys
+
+    bge_path = ""
+    try:
+        bge_path = str(cfg.model.embedding_model_path)
+    except Exception:
+        pass
+
+    manifest = {
+        "round": round_idx + 1,
+        "seed": seed,
+        "n_requirements": n_requirements,
+        "groups": ["G1", "G2", "G3", "G4", "A1", "A2"],
+        "model_alias_requested": cfg.deepseek.model,
+        "model_returned": model_returned,
+        "temperature": cfg.deepseek.temperature,
+        "seeds": list(seeds),
+        "top_k": top_k,
+        "coarse_k": 12,
+        "fine_k": 40,
+        "rrf_k": 60,
+        "coarse_bonus": 0.30,
+        "group_expansion_base": 0.15,
+        "started_at": started_at,
+        "git_commit": "no-git",
+        "python_version": _sys.version,
+        "platform": platform.platform(),
+        "bge_m3_model_path": bge_path,
+        "package_versions": _gather_package_versions(),
+        "llm_cache": cache_stats(),
+    }
+    (exp_dir / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+
 def _run_one_round(
     round_idx: int,
     sampled_reqs: list[dict[str, Any]],
@@ -457,6 +589,8 @@ def _run_one_round(
     top_k: int,
     groups: set[str] | None = None,
     resume_dir: Path | None = None,
+    seed: int | None = None,
+    all_seeds: list[int] | None = None,
 ) -> tuple[Path, list[dict]]:
     """Run one complete round and return (exp_dir, metrics_rows).
 
@@ -478,13 +612,37 @@ def _run_one_round(
     # Save the sampled requirements alongside results for traceability
     write_jsonl(str(exp_dir / "sampled_requirements.jsonl"), sampled_reqs)
 
+    # ── Probe the LLM endpoint to capture the actual model returned, then
+    # write the manifest BEFORE the run starts.  This guarantees we have a
+    # record even if the run aborts mid-way.
+    started_at = datetime.now().isoformat(timespec="seconds")
+    model_returned = _probe_model(cfg)
+    _write_manifest(
+        exp_dir,
+        cfg=cfg,
+        round_idx=round_idx,
+        seed=seed,
+        n_requirements=len(sampled_reqs),
+        seeds=all_seeds or [],
+        top_k=top_k,
+        started_at=started_at,
+        model_returned=model_returned,
+    )
+
     print(f"\n{'='*60}")
     print(f"ROUND {round_idx + 1} — {len(sampled_reqs)} requirements -> {exp_dir}")
+    print(f"  model_returned={model_returned!r}  temperature={cfg.deepseek.temperature}")
     if not run_all:
         print(f"  (running groups: {sorted(groups)})")
     print(f"{'='*60}")
 
     g4_results = None
+
+    # Load GPU model ONCE for the entire round; all groups share it
+    needs_gpu = any(_should_run(g) for g in ["G2", "G3", "G4", "A2"])
+    services = make_services() if needs_gpu else None
+    if services:
+        print(f"[Round {round_idx+1}] Shared model loaded on {services.retriever.evidence_searcher.model.device}")
 
     # G1
     if _should_run("G1"):
@@ -495,9 +653,8 @@ def _run_one_round(
     # G2
     if _should_run("G2"):
         print("\n--- G2: Flat RAG ---")
-        g2_results = _run_g2_local(sampled_reqs, exp_dir, cfg, top_k)
+        g2_results = _run_g2_local(sampled_reqs, exp_dir, cfg, top_k, services=services)
         _save_group(g2_results, exp_dir, "G2")
-        _free_gpu()
 
     # G3
     if _should_run("G3"):
@@ -505,9 +662,9 @@ def _run_one_round(
         g3_results = _run_pipeline_group_local(
             "G3", sampled_reqs, exp_dir, cfg,
             with_quality_gate=False, with_profile_scoring=True, top_k=top_k,
+            services=services,
         )
         _save_group(g3_results, exp_dir, "G3")
-        _free_gpu()
 
     # G4
     if _should_run("G4"):
@@ -515,9 +672,9 @@ def _run_one_round(
         g4_results = _run_pipeline_group_local(
             "G4", sampled_reqs, exp_dir, cfg,
             with_quality_gate=True, with_profile_scoring=True, top_k=top_k,
+            services=services,
         )
         _save_group(g4_results, exp_dir, "G4")
-        _free_gpu()
 
         # M6 人工审核文件（G4 保存后立即生成）
         print("\n--- M6: Generating human review file ---")
@@ -544,8 +701,13 @@ def _run_one_round(
         a2_results = _run_pipeline_group_local(
             "A2", sampled_reqs, exp_dir, cfg,
             with_quality_gate=True, with_profile_scoring=False, top_k=top_k,
+            services=services,
         )
         _save_group(a2_results, exp_dir, "A2")
+
+    # Release GPU after the whole round
+    if services:
+        del services
         _free_gpu()
 
     # 计算本轮指标（基于 exp_dir 中现有的所有组文件）
@@ -556,18 +718,61 @@ def _run_one_round(
         json.dumps(metrics, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
-    # manifest
-    (exp_dir / "manifest.json").write_text(
-        json.dumps({
-            "round": round_idx + 1,
-            "n_requirements": len(sampled_reqs),
-            "groups": ["G1", "G2", "G3", "G4", "A1", "A2"],
-            "top_k": top_k,
-        }, indent=2),
-        encoding="utf-8",
-    )
+    # manifest was written at round start (with model probe + full config).
+    # Re-read and append final cache stats + finished_at + fallback summary so
+    # reviewers can audit whether any LLM failures degraded results.
+    try:
+        manifest_path = exp_dir / "manifest.json"
+        if manifest_path.exists():
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["finished_at"] = datetime.now().isoformat(timespec="seconds")
+            manifest["llm_cache_after"] = cache_stats()
+            manifest["fallback_summary"] = _count_fallbacks(exp_dir, present_groups)
+            manifest_path.write_text(
+                json.dumps(manifest, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+    except Exception as exc:
+        print(f"[manifest] failed to update finished_at: {exc}")
 
     return exp_dir, metrics
+
+
+def _count_fallbacks(exp_dir: Path, groups: list[str]) -> dict[str, dict[str, int]]:
+    """Count LLM fallback events per group from saved result files.
+
+    Two fallback types are tracked:
+    - evidence_judge_fallback: sub-requirements where the evidence judge fell back
+      to rule-based scoring (judge_method="fallback" in _judge_methods).
+    - agent_fallback: requirement sets where the generation agent fell back
+      (generation_mode="fallback" in the result set).
+    """
+    summary: dict[str, dict[str, int]] = {}
+    for group in groups:
+        path = exp_dir / f"{group}_results.json"
+        if not path.exists():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        result_sets = data.get("result_sets", [])
+        ej_fallback = sum(
+            1
+            for rs in result_sets
+            for jm in (rs.get("_judge_methods") or [])
+            if jm.get("judge_method") == "fallback"
+        )
+        agent_fallback = sum(
+            1 for rs in result_sets
+            if rs.get("generation_mode") == "fallback"
+        )
+        summary[group] = {
+            "evidence_judge_fallback": ej_fallback,
+            "agent_fallback": agent_fallback,
+            "total_result_sets": len(result_sets),
+        }
+    return summary
 
 
 def _save_group(results: list[dict], exp_dir: Path, group: str) -> None:
@@ -737,6 +942,7 @@ def main() -> None:
             continue
 
         random.seed(seed)
+        seed_everything(seed)
         sampled = random.sample(pool, args.sample_n)
         print(f"\nRound {i+1} seed={seed}: sampled {len(sampled)} requirements")
         stakeholders = {}
@@ -748,7 +954,8 @@ def main() -> None:
         # Use resume_exp_dir only for the first active round
         use_resume = resume_exp_dir if (i == start_idx and resume_exp_dir) else None
         exp_dir, metrics = _run_one_round(i, sampled, cfg, args.top_k,
-                                          groups=groups_set, resume_dir=use_resume)
+                                          groups=groups_set, resume_dir=use_resume,
+                                          seed=seed, all_seeds=args.seeds)
         all_round_metrics.append(metrics)
         round_batch_dirs.append(str(exp_dir))
         print(f"\nRound {i+1} complete -> {exp_dir}")

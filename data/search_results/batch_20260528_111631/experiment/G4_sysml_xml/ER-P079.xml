@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P079" sourceRequirementId="P079" stakeholder="调试人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:23:59">
+  <ProfessionalSummary>覆盖冷却水系统调试用压力表接口的布置和量程要求，确保调试期间可进行压力测量。</ProfessionalSummary>
+  <EngineeringRequirements count="2">
+    <Requirement id="ER-P079-01" level="1" requirementType="installation">
+      <sysml:Name>调试用压力表接口布置</sysml:Name>
+      <sysml:Text>冷却水系统应在每台冷却水泵的出口和每个冷却用户的入口处设置可拆卸的调试用压力表接口。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P079" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-COMM-001" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-PIPE-CLEAN-011" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>缺少调试用压力表接口将无法在调试期间测量泵出口和用户入口压力，影响系统调试和故障诊断。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统图纸和现场安装，确认每台泵出口和每个冷却用户入口均设有可拆卸的压力表接口。</Criterion>
+        <Criterion>调试前核查清单中应包含压力表接口的安装检查项，并记录接口位置和状态。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【调试用压力表接口布置】，来自原始需求「可拆卸的调试用压力表接口，位于每台泵的出口和每个冷却用户的入口」。E-SUPP-COMM-001 支撑了调试前核查清单中包含压力表接口等安装检查项；E-PIPE-CLEAN-011 间接涉及调试阶段压力表接口的安装时机。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P079-02" level="1" requirementType="parameter">
+      <sysml:Name>压力表量程要求</sysml:Name>
+      <sysml:Text>调试用压力表接口应适配量程为0-1.0 MPa的压力表。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P079" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>压力表量程不匹配可能导致测量不准确或损坏仪表，影响调试数据可靠性。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【压力表量程要求】，来自原始需求「量程为0-1.0 MPa」。当前证据库缺少厂家技术数据或标准来确认该量程的适用性，属于证据缺口。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="false" severity="error">
+          <Message>Specific quantitative value(s) ['MPa'] found in shall_statement but support_status='evidence_gap' (not verified by direct evidence).</Message>
+          <Suggestion>Remove specific values or replace with a placeholder referencing the source (e.g., 'per Manufacturer Technical Data'). Only values explicitly stated in direct evidence may appear here.</Suggestion>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P079" target="ER-P079-01" type="derive">由原始需求「可拆卸的调试用压力表接口，位于每台泵的出口和每个冷却用户的入口」派生。</Relationship>
+    <Relationship source="P079" target="ER-P079-02" type="derive">由原始需求「量程为0-1.0 MPa」派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P079-02" gapType="parameter_source_gap">
+      <Description>缺少厂家技术数据或标准来确认压力表量程0-1.0 MPa的适用性。</Description>
+      <SuggestedDocumentUpdate>补充主机厂家 Technical Data 或相关标准（如船级社规范）中关于冷却水系统压力表量程的要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认压力表量程0-1.0 MPa是否适用于本系统的实际工作压力范围。</Statement>
+      <Reason>原始需求直接给出量程，但无证据支撑，需根据系统设计压力确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

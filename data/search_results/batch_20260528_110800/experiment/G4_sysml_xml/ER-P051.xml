@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P051" sourceRequirementId="P051" stakeholder="设备采购方" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:16:18">
+  <ProfessionalSummary>覆盖主机冷却水系统自动补水装置配置、低液位报警功能及泄漏与蒸发补偿能力要求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P051-01" level="1" requirementType="operation">
+      <sysml:Name>自动补水装置配置</sysml:Name>
+      <sysml:Text>主机冷却水系统应配置自动补水装置，当膨胀水箱水位下降至设定低水位时，自动补水装置应能启动并向系统补水，以维持正常水位。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P051" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-INCL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-EXP-CAP-001" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>无自动补水装置将导致系统水位无法自动维持，增加人工补水负担，可能因疏忽导致水位过低影响主机冷却。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统设计图纸，确认自动补水装置已配置且与膨胀水箱连接。</Criterion>
+        <Criterion>调试期间模拟水位下降，验证自动补水装置自动启动并补水至正常水位，具体动作水位和补水速率按主机厂家 Technical Data 确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【自动补水装置配置】，来自原始需求「配置自动补水装置」。E-SOLAS-INCL-001 间接支撑了膨胀水箱在倾斜工况下维持足够液位的必要性；E-EXP-CAP-001 间接支撑了膨胀水箱容量和液位监测要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P051-02" level="1" requirementType="alarm_protection">
+      <sysml:Name>低液位报警功能</sysml:Name>
+      <sysml:Text>膨胀水箱应设置低液位报警装置，当水位降至设定低液位时，应在集控室和驾驶台发出声光报警。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P051" />
+      <sysml:Traceability>
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-EXP-CAP-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无低液位报警将导致操作人员无法及时发现水位异常，可能因缺水导致主机冷却中断。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认低液位报警传感器及报警回路配置。</Criterion>
+        <Criterion>调试期间模拟低液位，确认集控室和驾驶台声光报警正确触发，报警设定值按主机厂家 Technical Data 确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【低液位报警功能】，来自原始需求「具有低液位报警功能」。E-ISO8861-002（直接证据）明确要求膨胀水箱低液位报警；E-CTRL-COOL-002（间接证据）要求低液位报警接入船舶报警管理系统；E-EXP-CAP-001（直接证据）要求装设低液位报警。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P051-03" level="1" requirementType="reliability">
+      <sysml:Name>泄漏与蒸发补偿能力</sysml:Name>
+      <sysml:Text>自动补水装置应能在系统发生泄漏或蒸发时及时补水，确保系统水位维持在正常范围。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P051" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-INCL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-EXP-CAP-001" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>补偿能力不足将导致系统水位持续下降，触发低液位报警甚至主机停机。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查自动补水装置的设计补水能力，应能补偿系统正常泄漏和蒸发损失，具体补水速率和容量按主机厂家 Technical Data 确认。</Criterion>
+        <Criterion>调试期间模拟泄漏工况，验证自动补水装置能维持水位在正常范围，具体试验工况和时长按项目调试大纲确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【泄漏与蒸发补偿能力】，来自原始需求「确保系统在泄漏或蒸发时能维持正常水位」。E-SOLAS-INCL-001 间接支撑了膨胀水箱在倾斜工况下维持足够液位的必要性；E-EXP-CAP-001 间接支撑了膨胀水箱容量要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['及时补水', '正常范围'].</Message>
+          <Suggestion>Specify maximum allowable time for replenishment and define normal water level range (e.g., ±5% of nominal level).</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P051" target="ER-P051-01" type="derive">由原始需求「配置自动补水装置」派生。</Relationship>
+    <Relationship source="P051" target="ER-P051-02" type="derive">由原始需求「具有低液位报警功能」和直接证据 E-ISO8861-002、E-EXP-CAP-001 派生。</Relationship>
+    <Relationship source="P051" target="ER-P051-03" type="derive">由原始需求「确保系统在泄漏或蒸发时能维持正常水位」派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="2">
+    <Gap relatedRequirementId="ER-P051-01" gapType="only_indirect">
+      <Description>缺少自动补水装置配置的直接证据，如规则条款原文、厂家 Technical Data 或安装指南。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P051-03" gapType="only_indirect">
+      <Description>缺少泄漏与蒸发补偿能力的直接证据，如规则条款原文、厂家 Technical Data 或试验程序。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认自动补水装置的启动水位设定值和补水速率。</Statement>
+      <Reason>现有证据未给出具体参数，需主机厂家 Technical Data 确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认低液位报警的设定值。</Statement>
+      <Reason>现有证据仅要求报警，未给出具体液位值，需主机厂家 Technical Data 确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认自动补水装置的补水能力（流量和总容量）是否满足泄漏和蒸发补偿需求。</Statement>
+      <Reason>现有证据未提供具体补偿能力要求，需主机厂家 Technical Data 确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

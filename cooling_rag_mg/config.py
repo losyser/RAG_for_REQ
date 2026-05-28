@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
-import torch
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,7 +12,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def get_default_device() -> str:
-    return "cuda" if torch.cuda.is_available() else "cpu"
+    try:
+        import torch
+
+        return "cuda" if torch.cuda.is_available() else "cpu"
+    except Exception:
+        return "cpu"
 
 
 def normalize_device(value: str | None) -> str:
@@ -34,9 +38,11 @@ def _path_from_env(name: str, default: Path) -> Path:
 
 @dataclass(frozen=True)
 class Paths:
-    raw_docx: Path = _path_from_env(
-        "RAW_DOCX_PATH",
-        PROJECT_ROOT / "data" / "raw" / "evidence.docx",
+    raw_docx: Path = field(
+        default_factory=lambda: _path_from_env(
+            "RAW_DOCX_PATH",
+            PROJECT_ROOT / "data" / "raw" / "evidence.docx",
+        )
     )
     processed_dir: Path = PROJECT_ROOT / "data" / "processed"
     indexes_dir: Path = PROJECT_ROOT / "data" / "indexes"
@@ -62,23 +68,23 @@ class Paths:
 
 @dataclass(frozen=True)
 class ModelConfig:
-    embedding_model_path: str = os.getenv("BGE_M3_MODEL_PATH", "D:/models/bge-m3")
-    device: str = normalize_device(os.getenv("DEVICE"))
+    embedding_model_path: str = field(default_factory=lambda: os.getenv("BGE_M3_MODEL_PATH", "D:/models/bge-m3"))
+    device: str = field(default_factory=lambda: normalize_device(os.getenv("DEVICE")))
     normalize_embeddings: bool = True
 
 
 @dataclass(frozen=True)
 class DeepSeekConfig:
-    api_key: str = os.getenv("api_key", os.getenv("DEEPSEEK_API_KEY", "")).strip()
-    base_url: str = os.getenv("base_url", os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")).strip()
-    model: str = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
-    use_requirement_splitter: bool = os.getenv("USE_REQUIREMENT_SPLITTER", "1").strip() != "0"
-    use_evidence_judge: bool = os.getenv("USE_EVIDENCE_JUDGE", "1").strip() != "0"
-    temperature: float = float(os.getenv("DEEPSEEK_TEMPERATURE", "0.1"))
-    max_tokens_split: int = int(os.getenv("MAX_TOKENS_SPLIT", "1200"))   # 900→1200，给更长的拆分结果留余量
-    max_tokens_judge: int = int(os.getenv("MAX_TOKENS_JUDGE", "2800"))   # 2200→2800，候选多时 judge 不截断
-    max_tokens_requirement_agent: int = int(os.getenv("MAX_TOKENS_REQUIREMENT_AGENT", "6000"))  # 3600→6000，防止复杂需求 JSON 截断
-    splitter_review_max_rounds: int = int(os.getenv("SPLITTER_REVIEW_MAX_ROUNDS", "3"))
+    api_key: str = field(default_factory=lambda: os.getenv("api_key", os.getenv("DEEPSEEK_API_KEY", "")).strip())
+    base_url: str = field(default_factory=lambda: os.getenv("base_url", os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")).strip())
+    model: str = field(default_factory=lambda: os.getenv("DEEPSEEK_MODEL", "deepseek-chat"))
+    use_requirement_splitter: bool = field(default_factory=lambda: os.getenv("USE_REQUIREMENT_SPLITTER", "1").strip() != "0")
+    use_evidence_judge: bool = field(default_factory=lambda: os.getenv("USE_EVIDENCE_JUDGE", "1").strip() != "0")
+    temperature: float = field(default_factory=lambda: float(os.getenv("DEEPSEEK_TEMPERATURE", "0.0")))
+    max_tokens_split: int = field(default_factory=lambda: int(os.getenv("MAX_TOKENS_SPLIT", "1200")))
+    max_tokens_judge: int = field(default_factory=lambda: int(os.getenv("MAX_TOKENS_JUDGE", "2800")))
+    max_tokens_requirement_agent: int = field(default_factory=lambda: int(os.getenv("MAX_TOKENS_REQUIREMENT_AGENT", "6000")))
+    splitter_review_max_rounds: int = field(default_factory=lambda: int(os.getenv("SPLITTER_REVIEW_MAX_ROUNDS", "3")))
 
     @property
     def enabled(self) -> bool:
@@ -87,18 +93,23 @@ class DeepSeekConfig:
 
 @dataclass(frozen=True)
 class AppConfig:
-    paths: Paths = Paths()
-    model: ModelConfig = ModelConfig()
-    deepseek: DeepSeekConfig = DeepSeekConfig()
+    paths: Paths = field(default_factory=Paths)
+    model: ModelConfig = field(default_factory=ModelConfig)
+    deepseek: DeepSeekConfig = field(default_factory=DeepSeekConfig)
 
 
 def get_config() -> AppConfig:
     cfg = AppConfig()
     if os.getenv("DEBUG_DEVICE", "0").strip() == "1":
         print(f"[Device] cfg.model.device = {cfg.model.device}")
-        print(f"[Device] torch.cuda.is_available() = {torch.cuda.is_available()}")
-        if torch.cuda.is_available():
-            print(f"[Device] GPU name = {torch.cuda.get_device_name(0)}")
+        try:
+            import torch
+
+            print(f"[Device] torch.cuda.is_available() = {torch.cuda.is_available()}")
+            if torch.cuda.is_available():
+                print(f"[Device] GPU name = {torch.cuda.get_device_name(0)}")
+        except Exception as exc:
+            print(f"[Device] torch unavailable during device check: {exc}")
     cfg.paths.processed_dir.mkdir(parents=True, exist_ok=True)
     cfg.paths.indexes_dir.mkdir(parents=True, exist_ok=True)
     cfg.paths.search_results_dir.mkdir(parents=True, exist_ok=True)

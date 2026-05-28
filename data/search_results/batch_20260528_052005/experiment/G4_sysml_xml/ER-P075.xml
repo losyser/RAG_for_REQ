@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P075" sourceRequirementId="P075" stakeholder="维修人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T05:28:53">
+  <ProfessionalSummary>覆盖冷却水管路放气阀的安装间距、规格及操作高度要求，确保便于手动排气操作。</ProfessionalSummary>
+  <EngineeringRequirements count="2">
+    <Requirement id="ER-P075-01" level="1" requirementType="installation">
+      <sysml:Name>放气阀安装间距与规格</sysml:Name>
+      <sysml:Text>冷却水管路中应每10米设置一个DN25的放气阀。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P075" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>放气阀间距过大或规格不当可能导致管路气体积聚，影响冷却水循环和主机散热。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【放气阀安装间距与规格】，来自原始需求「每10米设置一个DN25的放气阀」。当前无直接或间接证据支撑，基于原始需求文本整理。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P075-02" level="1" requirementType="maintainability">
+      <sysml:Name>放气阀操作高度要求</sysml:Name>
+      <sysml:Text>放气阀手轮应位于操作高度1.2-1.5米处，便于手动排气操作。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P075" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>手轮高度不合适将导致操作不便，影响排气效率，可能造成气堵。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【放气阀操作高度要求】，来自原始需求「放气阀手轮应位于操作高度1.2-1.5米处」。当前无直接或间接证据支撑，基于原始需求文本整理。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P075" target="ER-P075-01" type="derive">由原始需求「每10米设置一个DN25的放气阀」派生。</Relationship>
+    <Relationship source="P075" target="ER-P075-02" type="derive">由原始需求「放气阀手轮应位于操作高度1.2-1.5米处」派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="2">
+    <Gap relatedRequirementId="ER-P075-01" gapType="installation_evidence_gap">
+      <Description>缺少放气阀安装间距与规格的工程证据，如船舶管系施工规范、厂家安装手册等。</Description>
+      <SuggestedDocumentUpdate>补充船舶管系施工规范、管路布置标准、放气阀安装手册。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P075-02" gapType="judge_rejected_all">
+      <Description>缺少放气阀操作高度要求的工程证据，如人机工程标准、维护手册等。</Description>
+      <SuggestedDocumentUpdate>补充人机工程标准、设备维护手册、操作空间要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认放气阀DN25规格是否适用于冷却水管路系统压力等级。</Statement>
+      <Reason>原始需求仅给出DN25，但未说明压力等级，需根据系统设计压力确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认放气阀手轮操作高度1.2-1.5米是否适用于实际安装空间。</Statement>
+      <Reason>原始需求给出高度范围，但需结合现场管路布置和操作空间确认可行性。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

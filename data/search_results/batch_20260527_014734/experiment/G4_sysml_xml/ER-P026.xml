@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P026" sourceRequirementId="P026" stakeholder="运维管理人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T02:28:00">
+  <ProfessionalSummary>覆盖冷却水系统运行维护数据记录与追溯功能要求，基于间接证据提出监控参数记录需求，具体实现需补充直接证据。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P026-01" level="1" requirementType="operation">
+      <sysml:Name>运行维护数据记录与追溯</sysml:Name>
+      <sysml:Text>主机冷却水系统应具备运行维护数据的自动记录功能，记录数据应包含关键运行参数（如温度、压力、液位、泵运行状态等），并支持按时间、事件等维度进行追溯查询。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P026" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="evidence_gap" />
+        <Evidence id="E-ISO8861-002" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>无法建立运行维护记录，影响设备维护和故障分析。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【运行维护数据记录与追溯】，来自原始需求「便于建立运行维护记录，相关数据应能形成可追溯的运行维护数据」。E-CTRL-COOL-002（IACS UR E10）和E-ISO8861-002（ISO 8861:1998）间接支撑了监控参数清单，但未明确数据记录与追溯功能的具体要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P026" target="ER-P026-01" type="derive">由原始需求「运行维护数据记录与追溯」和间接证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P026" gapType="only_indirect">
+      <Description>只有间接证据（IACS UR E10、ISO 8861:1998）支撑监控参数，但无直接证据明确数据记录与追溯功能的具体要求。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认数据记录的具体参数范围、记录频率、存储时长及追溯方式。</Statement>
+      <Reason>现有间接证据仅列出监控参数，未涉及记录与追溯功能细节，需厂家或项目文件确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

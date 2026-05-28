@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P081" sourceRequirementId="P081" stakeholder="船级社验船师" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:23:59">
+  <ProfessionalSummary>覆盖主机冷却水系统温度控制要求，包括自动调节、手动旁通和温度控制精度。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P081-01" level="1" requirementType="control">
+      <sysml:Name>冷却水温度自动调节</sysml:Name>
+      <sysml:Text>主机冷却水系统应设置独立的温度调节阀，在主机各工况下（包括启动、部分负荷、全负荷及负荷变化过程）自动调节冷却水流量或旁通比例，使主机冷却水温度稳定在制造厂规定的范围内。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P081" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-DNV-COOL-003" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>温度失控可能导致主机热应力过大、燃烧不良或部件损坏，影响主机可靠性和寿命。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统设计图纸，确认配置有独立的温度调节阀，且控制逻辑覆盖主机所有工况。</Criterion>
+        <Criterion>调试期间在主机各负荷点（包括25%、50%、75%、100% MCR）记录冷却水温度，确认温度稳定在制造厂规定范围内，具体限值按主机厂家Technical Data确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水温度自动调节】，来自原始需求「独立的温度调节阀，确保在主机各工况下冷却水温度稳定在制造厂规定的±2°C范围内」。E-CTRL-COOL-001（IACS UR E10）支撑了全负荷范围自动调节的要求；E-DNV-COOL-003（DNV海试）支撑了全负荷范围验证的要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P081-02" level="1" requirementType="operation">
+      <sysml:Name>手动旁通功能</sysml:Name>
+      <sysml:Text>温度调节阀应具备手动旁通功能，在自动控制系统失效或维护时，可通过手动操作维持冷却水循环，确保主机安全运行。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P081" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>自动控制失效时无法手动维持冷却，可能导致主机停机。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查温度调节阀结构，确认设有手动旁通装置或手动操作机构。</Criterion>
+        <Criterion>调试期间模拟自动控制失效，手动操作旁通阀，确认冷却水流量可维持主机正常运行。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【手动旁通功能】，来自原始需求「具备手动旁通功能」。E-CTRL-COOL-001（IACS UR E10）支撑了手动备用要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P081-03" level="1" requirementType="parameter">
+      <sysml:Name>冷却水温度控制精度</sysml:Name>
+      <sysml:Text>温度调节阀应保证在主机各稳定工况下，冷却水温度波动不超过制造厂规定的±2°C范围。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P081" />
+      <sysml:Traceability>
+        <Evidence id="E-PARAM-HT-001" supportStatus="need_confirmation" />
+        <Evidence id="E-IACS-M3-002" supportStatus="need_confirmation" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>need_confirmation</SupportStatus>
+        <RiskIfUnmet>温度波动过大影响主机燃烧稳定性和部件寿命。</RiskIfUnmet>
+        <ApplicabilityConstraint>±2°C精度要求需由主机厂家Technical Data确认，不同厂家和机型可能不同。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>[待确认数值] 调试期间在主机各稳定工况（如100% MCR持续4小时）连续记录冷却水温度，确认波动幅度不超过±2°C，具体限值按主机厂家Technical Data确认。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水温度控制精度】，来自原始需求「±2°C范围内」。E-PARAM-HT-001（IACS M3.1）提供了典型温度范围但未明确精度；E-IACS-M3-002（IACS M3.1监控）支撑了温度监控要求。±2°C精度需由主机厂家确认。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='need_confirmation'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="false" severity="error">
+          <Message>Specific quantitative value(s) ['°C'] found in shall_statement but support_status='need_confirmation' (not verified by direct evidence).</Message>
+          <Suggestion>Remove specific values or replace with a placeholder referencing the source (e.g., 'per Manufacturer Technical Data'). Only values explicitly stated in direct evidence may appear here.</Suggestion>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P081" target="ER-P081-01" type="derive">由原始需求「独立的温度调节阀，确保在主机各工况下冷却水温度稳定」和E-CTRL-COOL-001派生。</Relationship>
+    <Relationship source="P081" target="ER-P081-02" type="derive">由原始需求「具备手动旁通功能」和E-CTRL-COOL-001派生。</Relationship>
+    <Relationship source="P081" target="ER-P081-03" type="derive">由原始需求「±2°C范围内」和E-PARAM-HT-001、E-IACS-M3-002派生。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认主机厂家Technical Data中规定的冷却水温度控制精度（±2°C）是否适用于本机型。</Statement>
+      <Reason>现有证据未直接给出±2°C精度的来源，需厂家确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

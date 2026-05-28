@@ -8,6 +8,7 @@ from typing import Any
 from openai import OpenAI
 
 from cooling_rag_mg.config import get_config
+from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.text_utils import safe_text
 
 logger = logging.getLogger(__name__)
@@ -108,7 +109,8 @@ def _review_aspects(
             for a in aspects
         ],
     }
-    resp = client.chat.completions.create(
+    resp = cached_completion(
+        client,
         model=cfg.deepseek.model,
         messages=[
             {"role": "system", "content": REVIEW_PROMPT},
@@ -203,7 +205,8 @@ def split_requirement(requirement_id: str, stakeholder: str, raw_text: str) -> l
             if feedback is not None:
                 payload["reviewer_feedback"] = feedback
 
-            resp = client.chat.completions.create(
+            resp = cached_completion(
+                client,
                 model=cfg.deepseek.model,
                 messages=[
                     {"role": "system", "content": SPLIT_PROMPT},

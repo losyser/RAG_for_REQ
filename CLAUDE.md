@@ -24,19 +24,14 @@ python scripts/11_build_multigranular_indexes.py   # Build FAISS + BM25 indexes
 python scripts/13_smoke_test.py
 ```
 
-**Launch Streamlit UI (new single entry point):**
+**Launch Streamlit UI:**
 ```bat
 streamlit run app.py
 ```
 
-**Legacy UI entry (still works, imports from ui/ package):**
-```bat
-streamlit run apps/requirement_collection_ui.py
-```
-
 **Experimental evaluation pipeline (run in order):**
 ```bat
-python scripts/20_generate_test_requirements.py          # Generate 20 test requirements (6 stakeholders)
+python scripts/20_generate_test_requirements.py          # Generate test requirements (pool of 100, 16 stakeholder types)
 python scripts/21_run_experiment.py [--groups G1 G2 G3 G4 A1 A2] [--top-k 4]
 python scripts/22_compute_metrics.py                     # Compute M1–M5, generate M6 template
 python scripts/23_export_latex_table.py                  # Export LaTeX table for paper
@@ -88,10 +83,10 @@ The system is a multi-granular RAG pipeline for engineering evidence retrieval, 
 
 ### Data Layer: Three Granularities
 
-`granularity_builder.py` produces three evidence representations from a single docx:
+The knowledge base is maintained manually via `scripts/30–36`. **Do not regenerate from `evidence.docx`** — that would overwrite hand-curated entries.
 
 - **`evidence_units.jsonl`** — one entry per evidence item (fine-grained). Each unit has a `parent_chunk_id` linking it to a source chunk.
-- **`source_chunks.jsonl`** — groups of up to 8 evidence units sharing the same source document + component + aspect (coarse-grained). Used for the first-pass retrieval.
+- **`source_chunks.jsonl`** — groups of evidence units sharing the same source document + component + aspect (coarse-grained). Used for first-pass retrieval.
 - **`evidence_groups.jsonl`** — groups by `(component_objects[0], requirement_intents[0], engineering_phase[0])`. Used for sibling-evidence expansion at retrieval time.
 
 All evidence metadata is normalized through `schema.py:normalize_v2_metadata()`, which maps both Chinese and English field names to canonical V2 keys (`component_objects`, `requirement_intents`, `can_support`, `evidence_strength`, `applicability_level`, `is_generalizable`, etc.).
@@ -112,7 +107,7 @@ For each raw requirement:
 3. **Coarse retrieval**: BM25 + vector search on `source_chunks` → RRF fusion → profile scoring → top-`coarse_k` chunks. Creates `allowed_chunks` set.
 4. **Fine retrieval**: BM25 + vector search on `evidence_units` → RRF fusion. Units whose `parent_chunk_id` is in `allowed_chunks` receive a `coarse_bonus` of +0.30.
 5. **Profile scoring** (`_score_by_profile`): Adjusts each item's score based on component/aspect/phase/condition/can_support matches, evidence strength, source type, and generalizability. Key weights: component match +0.40–0.60, aspect match +0.35–0.60, `direct` strength +0.50, `ship_rule`/`class_rule` source +0.40.
-6. **Group expansion**: For top results, pulls sibling evidence from `evidence_groups` (up to 4 per group, at fixed base score 0.15 to avoid score inflation).
+6. **Group expansion**: For top results, pulls sibling evidence from `evidence_groups` (up to 4 per group). Expanded items start from RRF base score 0.15 (replacing their actual RRF rank), but profile scoring is still applied on top, so high-profile-match expanded items can outrank primary candidates.
 7. **Soft filter** (`_soft_filter_by_profile`): Hard-rejects `not_applicable` and `is_noise=True`; filters low-score `paper`/`patent`; assigns `retrieval_role`.
 8. **Applicability filter** (`applicability_filter.py`): Rule-based hard-reject (e.g., `background+background_reference`, `paper+is_generalizable=no` for engineering types) and score delta adjustments. Checks `unsupported_requirements` field against requirement text via keyword-group matching.
 9. **Evidence judge** (`evidence_judge.py`): LLM (DeepSeek) classifies each candidate as `direct`/`indirect`/`background`/`not_applicable` and assigns `evidence_role`. Falls back to threshold-based rules (score ≥ 0.65) if LLM unavailable.

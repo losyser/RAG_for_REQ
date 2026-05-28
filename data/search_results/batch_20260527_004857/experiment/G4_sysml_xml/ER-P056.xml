@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P056" sourceRequirementId="P056" stakeholder="轮机长" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T01:30:52">
+  <ProfessionalSummary>覆盖中央冷却系统海水侧自动反冲洗功能、热带海域适应性及减少人工清洗频次的要求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P056-01" level="1" requirementType="function">
+      <sysml:Name>海水侧自动反冲洗功能</sysml:Name>
+      <sysml:Text>中央冷却系统海水侧应配置自动反冲洗过滤器，该过滤器应能按压差信号自动启动反冲洗程序，无需人工干预。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P056" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-FILT-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-FILT-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法自动反冲洗将导致海水侧生物附着加剧，增加人工清洗频次，影响冷却效率。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查设计图纸确认配置了自动反冲洗过滤器。</Criterion>
+        <Criterion>调试期间模拟压差信号，确认反冲洗程序自动启动。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【海水侧自动反冲洗功能】，来自原始需求「海水侧自动反冲洗功能」。E-SUPP-FILT-002（CCS规则）支撑了热带航区宜配自动反冲洗过滤器；E-SUPP-FILT-001（DNV规则）支撑了自动反冲洗型过滤器应能按压差信号自动启动。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P056-02" level="1" requirementType="capacity">
+      <sysml:Name>热带海域适应性</sysml:Name>
+      <sysml:Text>中央冷却系统应按照热带海域最高海水温度不低于35°C进行设计，确保在生物附着条件下仍能维持主机及辅助设备在最大持续功率（MCR）工况下的冷却要求。</sysml:Text>
+      <sysml:VerifiedBy method="calculation" />
+      <sysml:DerivedFrom refId="ER-P056" />
+      <sysml:Traceability>
+        <Evidence id="E-LT-CAP-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CCS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-ISO8861-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>设计温度不足将导致热带海域冷却能力下降，影响主机运行。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>审查设计计算书确认设计海水温度不低于35°C。</Criterion>
+        <Criterion>审查换热器容量计算确认净冷却能力余量≥15%。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【热带海域适应性】，来自原始需求「应对热带海域生物附着问题」。E-LT-CAP-001（DNV规则）要求设计海水温度热带≥35°C；E-CCS-COOL-001（CCS规则）要求系统按热带35°C设计；E-ISO8861-001（ISO标准）要求冷却系统在最高海水温度下维持性能，并考虑污垢余量≥15%。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='calculation', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>Value(s) ['°C'] present and backed by direct evidence.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P056-03" level="1" requirementType="maintainability">
+      <sysml:Name>减少人工清洗频次</sysml:Name>
+      <sysml:Text>中央冷却系统应通过配置自动反冲洗过滤器及合理的系统设计，减少海水侧人工清洗频次，具体清洗周期按厂家技术文件和项目维护程序确认。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P056" />
+      <sysml:Traceability>
+        <Evidence id="E-SW-CLEAN-005" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-COOLER-CLEAN-016" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>人工清洗频次过高将增加维护成本和工作量。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>审查厂家技术文件确认自动反冲洗过滤器的清洗周期。</Criterion>
+        <Criterion>调试期间验证反冲洗功能有效，人工清洗频次应低于无自动反冲洗方案。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【减少人工清洗频次】，来自原始需求「减少人工清洗频次」。E-SW-CLEAN-005和E-COOLER-CLEAN-016（间接证据）支撑了清洗维护要求，但未给出具体频次，需结合厂家文件。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P056" target="ER-P056-01" type="derive">由原始需求「海水侧自动反冲洗功能」和E-SUPP-FILT-002、E-SUPP-FILT-001直接证据派生。</Relationship>
+    <Relationship source="P056" target="ER-P056-02" type="derive">由原始需求「应对热带海域生物附着问题」和E-LT-CAP-001、E-CCS-COOL-001、E-ISO8861-001直接证据派生。</Relationship>
+    <Relationship source="P056" target="ER-P056-03" type="derive">由原始需求「减少人工清洗频次」和E-SW-CLEAN-005、E-COOLER-CLEAN-016间接证据派生。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认自动反冲洗过滤器的具体反冲洗周期和压差设定值。</Statement>
+      <Reason>现有证据未给出具体数值，需厂家技术数据确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认换热器污垢余量是否满足15%要求。</Statement>
+      <Reason>ISO 8861要求余量≥15%，需在设计计算中确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

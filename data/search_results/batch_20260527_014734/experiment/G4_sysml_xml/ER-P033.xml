@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P033" sourceRequirementId="P033" stakeholder="船东代表" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T02:28:00">
+  <ProfessionalSummary>覆盖主机冷却水系统监测仪表安装、集控室远程显示报警及流量温度报警设定要求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P033-01" level="1" requirementType="alarm_protection">
+      <sysml:Name>冷却水流量温度报警设定</sysml:Name>
+      <sysml:Text>主机冷却水系统应设置冷却水流量低限报警和温度高限报警，当冷却水流量低于设定值或温度超过上限时，应在集控室触发声光报警。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P033" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M3-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CCS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法及时报警可能导致主机冷却异常损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查报警设定值符合主机厂家Technical Data及船级社规则要求。</Criterion>
+        <Criterion>调试期间模拟流量低限和温度高限工况，确认声光报警正确触发。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水流量温度报警设定】，来自原始需求「当冷却水流量低于设定值或温度超过上限时触发声光报警」。E-CTRL-COOL-002（IACS UR E10）支撑了HT冷却水出机高温报警和进机低压报警的设置要求；E-IACS-M3-002（IACS UR M3.1）支撑了温度高限报警的设定要求；E-ISO8861-002（ISO 8861:1998）支撑了流量低限和温度高限报警的要求；E-CCS-COOL-001（CCS规则）支撑了高温报警及报警值可调的要求；E-SOLAS-COOL-001（SOLAS Reg.26）支撑了温度异常时报警的要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 5 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P033-02" level="1" requirementType="monitoring">
+      <sysml:Name>集控室远程监测报警</sysml:Name>
+      <sysml:Text>冷却水流量、压力和温度监测信号应接入集控室监控系统，实现远程显示和声光报警功能。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P033" />
+      <sysml:Traceability>
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>操作人员无法远程监控，增加值班负担，延误故障处理。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查监控系统图纸，确认信号接入点及报警显示功能。</Criterion>
+        <Criterion>调试期间验证集控室显示值与现场仪表读数一致，报警功能正常。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【集控室远程监测报警】，来自原始需求「在集控室提供远程显示和报警功能」。E-ISO8861-002（ISO 8861:1998）明确要求所有报警应在机控室和驾驶台显示；E-CTRL-COOL-002（IACS UR E10）要求所有报警接入船舶报警管理系统；E-SOLAS-COOL-001（SOLAS Reg.26）要求温度异常时报警并在集控室显示。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P033-03" level="1" requirementType="installation">
+      <sysml:Name>监测仪表安装</sysml:Name>
+      <sysml:Text>系统应安装流量、压力和温度监测仪表，仪表应满足船舶环境要求并便于维护。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P033" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>仪表安装不当可能导致测量不准或维护困难。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【监测仪表安装】，来自原始需求「系统应安装流量、压力和温度监测仪表」。E-PIPE-CLEAN-011（BN-G-Y015）间接支撑了仪表安装时机（冲洗完成前限流件和仪表安装限制）；E-SUPP-COMM-001（调试前核查清单）间接支撑了传感器安装后的验证。但缺少直接证据明确仪表选型、安装位置及环境要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.4">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['满足船舶环境要求'].</Message>
+          <Suggestion>明确船舶环境要求的具体标准或引用相关规范（如船级社标准）</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="false" severity="error">
+          <Message>Missing SysML required field(s): ['traceLinks (evidenceIds)'].</Message>
+          <Suggestion>Populate all SysML Requirement block fields before XML export.</Suggestion>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P033" target="ER-P033-01" type="derive">由原始需求「流量低限和温度高限报警」及直接证据派生。</Relationship>
+    <Relationship source="P033" target="ER-P033-02" type="derive">由原始需求「集控室远程显示和报警」及直接证据派生。</Relationship>
+    <Relationship source="P033" target="ER-P033-03" type="derive">由原始需求「安装监测仪表」及证据缺口派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P033-03" gapType="only_indirect">
+      <Description>缺少监测仪表选型、安装位置、环境适应性及维护要求的直接证据。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认流量低限和温度高限报警的具体设定值。</Statement>
+      <Reason>现有证据仅要求设置报警，未给出具体数值，需主机厂家Technical Data确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认监测仪表的选型、安装位置及环境适应性要求。</Statement>
+      <Reason>证据缺口，需补充相关工程证据。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

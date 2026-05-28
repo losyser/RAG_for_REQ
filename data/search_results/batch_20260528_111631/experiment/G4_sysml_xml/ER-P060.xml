@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P060" sourceRequirementId="P060" stakeholder="轮机长" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:23:59">
+  <ProfessionalSummary>覆盖滑油冷却器旁通管路操作、滑油系统安全保护及滑油温度控制与旁通触发要求，确保在滑油温度过高时能临时旁通冷却，保障滑油系统安全。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P060-01" level="1" requirementType="operation">
+      <sysml:Name>滑油冷却器旁通管路操作</sysml:Name>
+      <sysml:Text>冷却水系统应设置独立的滑油冷却器旁通管路，用于在滑油温度过高时临时旁通冷却，以维持滑油系统安全运行。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P060" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-DNV-COOL-002" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>滑油温度过高时无法旁通冷却，可能导致滑油系统损坏，影响主机安全。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统图纸，确认设有独立的滑油冷却器旁通管路。</Criterion>
+        <Criterion>调试期间模拟滑油温度过高工况，确认旁通管路可正常启用并实现临时冷却，具体操作步骤和判定标准按项目调试大纲确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【滑油冷却器旁通管路操作】，来自原始需求「独立的滑油冷却器旁通管路」。E-CTRL-COOL-001 间接支撑手动备用功能；E-SOLAS-COOL-001 间接支撑冷却持续手段；E-DNV-COOL-002 间接支撑冗余配置。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 3 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P060-02" level="1" requirementType="safety_environment">
+      <sysml:Name>滑油系统安全保护</sysml:Name>
+      <sysml:Text>滑油冷却器旁通管路应能在滑油温度过高时提供临时冷却旁通，防止滑油系统因过热而损坏。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P060" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-CTRL-COOL-001" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>滑油系统过热损坏，可能导致主机停机。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【滑油系统安全保护】，来自原始需求「确保滑油系统安全」。E-SOLAS-COOL-001 间接支撑温度异常时报警和保护要求；E-CTRL-COOL-001 间接支撑高温报警和自动保护动作。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['滑油温度过高', '临时冷却旁通', '防止滑油系统因过热而损坏'].</Message>
+          <Suggestion>Specify the temperature threshold for '过高' (e.g., &gt;65°C) and define '临时冷却旁通' with flow rate or duration criteria, or reference manufacturer data.</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P060-03" level="1" requirementType="control">
+      <sysml:Name>滑油温度控制与旁通触发</sysml:Name>
+      <sysml:Text>滑油冷却器旁通管路应具备温度监测或手动控制功能，以便在滑油温度过高时及时启用旁通。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P060" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="evidence_gap" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>无法及时启用旁通，滑油温度持续过高。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【滑油温度控制与旁通触发】，来自原始需求「滑油温度过高时临时旁通冷却」。E-CTRL-COOL-001 间接支撑温度监测和手动备用功能；E-SOLAS-COOL-001 间接支撑温度异常报警。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 2 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P060" target="ER-P060-01" type="derive">由原始需求「独立的滑油冷却器旁通管路」和间接证据派生。</Relationship>
+    <Relationship source="P060" target="ER-P060-02" type="derive">由原始需求「确保滑油系统安全」和间接证据派生。</Relationship>
+    <Relationship source="P060" target="ER-P060-03" type="derive">由原始需求「滑油温度过高时临时旁通冷却」和间接证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="3">
+    <Gap relatedRequirementId="ER-P060-01" gapType="judge_rejected_all">
+      <Description>缺少直接或间接支撑滑油冷却器旁通管路操作的具体标准、厂家手册或试验记录。</Description>
+      <SuggestedDocumentUpdate>补充更直接的标准条款、厂家手册、试验记录或设计说明。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P060-02" gapType="judge_rejected_all">
+      <Description>缺少直接或间接支撑滑油系统安全保护的具体标准或设计依据。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P060-03" gapType="only_indirect">
+      <Description>只有间接证据，尚无直接证据形成工程化需求依据。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认滑油冷却器旁通管路的具体操作方式（手动/自动）及触发温度阈值。</Statement>
+      <Reason>现有证据仅间接支撑手动备用和温度监测，未给出具体操作方式和温度限值，需厂家 Technical Data 确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认旁通管路启用后对冷却水系统的影响及恢复措施。</Statement>
+      <Reason>原始需求要求临时旁通，但未明确旁通后的系统恢复流程，需设计方和厂家确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

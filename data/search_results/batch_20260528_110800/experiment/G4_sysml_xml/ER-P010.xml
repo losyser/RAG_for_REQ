@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P010" sourceRequirementId="P010" stakeholder="设备采购方" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:16:18">
+  <ProfessionalSummary>覆盖冷却器、冷却水泵、温控阀等设备的采购资料完整性要求，包括型号、容量、材料、接口和厂家技术文件。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P010-01" level="1" requirementType="configuration">
+      <sysml:Name>冷却设备采购资料完整性</sysml:Name>
+      <sysml:Text>冷却器、冷却水泵、温控阀等设备的采购资料应包含型号、容量、材料、接口和厂家技术文件。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P010" />
+      <sysml:Traceability>
+        <Evidence id="E-PUMP-RED-024" supportStatus="evidence_gap" />
+        <Evidence id="E-PUMP-RED-025" supportStatus="evidence_gap" />
+        <Evidence id="E-PUMP-RED-026" supportStatus="evidence_gap" />
+        <Evidence id="E-PUMP-CAP-012" supportStatus="evidence_gap" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>采购资料不完整可能导致设备选型错误、接口不匹配，影响系统集成和运行可靠性。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却设备采购资料完整性】，来自原始需求「采购资料应完整，包括型号、容量、材料、接口和厂家技术文件」。E-PUMP-RED-024、E-PUMP-RED-025、E-PUMP-RED-026 间接支撑了冷却水泵冗余配置方面的资料完整性；E-PUMP-CAP-012 间接支撑了容量参数方面的资料完整性。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>support_status='evidence_gap' with 4 evidence ID(s) listed.</Message>
+          <Suggestion>Supplement the evidence database with relevant standards, manuals, or technical data.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P010" target="ER-P010-01" type="derive">由原始需求「采购资料完整性」直接派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P010" gapType="only_indirect">
+      <Description>只有间接证据，尚无直接证据形成工程化需求依据。缺少冷却器、冷却水泵、温控阀等设备采购资料完整性的直接证据，如厂家技术文件模板、规格书要求等。</Description>
+      <SuggestedDocumentUpdate>补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认冷却器、冷却水泵、温控阀等设备采购资料的具体内容要求，包括型号、容量、材料、接口和厂家技术文件。</Statement>
+      <Reason>现有证据仅间接支撑冗余配置和容量参数，未直接给出采购资料完整性的具体判据，需补充相关工程证据。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

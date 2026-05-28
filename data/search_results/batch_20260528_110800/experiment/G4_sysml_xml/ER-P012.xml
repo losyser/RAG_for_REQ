@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P012" sourceRequirementId="P012" stakeholder="轮机长" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:16:18">
+  <ProfessionalSummary>覆盖冷却水系统日常巡视与状态判断所需的监控仪表和报警指示，以及主要设备现场标识要求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P012-01" level="1" requirementType="monitoring">
+      <sysml:Name>冷却水系统日常巡视与状态判断</sysml:Name>
+      <sysml:Text>主机冷却水系统应配置必要的温度、压力、液位传感器及泵运行状态指示，所有监测信号应接入集控室监控系统并具备报警功能，以便船员日常巡视和状态判断。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P012" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M3-002" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>缺乏必要的监测和报警将导致船员无法及时判断系统状态，可能引发主机过热或损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认传感器布置和监控系统设计符合本条要求。</Criterion>
+        <Criterion>调试期间验证所有监测仪表指示正确，报警功能正常，具体参数限值按主机厂家 Technical Data 确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水系统日常巡视与状态判断】，来自原始需求「便于船员进行日常巡视和状态判断」。E-CTRL-COOL-002（IACS UR E10）支撑了UMS监控参数清单，包括温度、压力、液位、泵运行状态指示及报警要求；E-IACS-M3-002（IACS UR M3.1）支撑了主机冷却水温度持续监控与高温报警要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+      <Requirement id="ER-P012-01-01" level="2" requirementType="parameter">
+        <sysml:Name>冷却水系统日常巡视与状态判断</sysml:Name>
+        <sysml:Text>冷却水系统监测参数（温度、压力、液位）的报警设定值应满足主机厂家 Technical Data 要求，并能在集控室监控系统上清晰显示。</sysml:Text>
+        <sysml:VerifiedBy method="review" />
+        <sysml:DerivedFrom refId="ER-P012-01" />
+        <sysml:Traceability>
+          <Evidence id="E-PARAM-HT-001" supportStatus="need_confirmation" />
+          <Evidence id="E-IACS-M3-002" supportStatus="need_confirmation" />
+        </sysml:Traceability>
+        <sysml:QualityStatus>
+          <SupportStatus>need_confirmation</SupportStatus>
+          <RiskIfUnmet>报警设定值不当可能导致误报或漏报，影响状态判断。</RiskIfUnmet>
+          <ApplicabilityConstraint>具体报警值按主机厂家 Technical Data 确认。</ApplicabilityConstraint>
+        </sysml:QualityStatus>
+        <sysml:AcceptanceCriteria>
+          <Criterion>按主机厂家 Technical Data 确认各报警设定值，并在监控系统中正确设置。</Criterion>
+        </sysml:AcceptanceCriteria>
+        <sysml:EngineeringRationale>本条覆盖方面【冷却水系统日常巡视与状态判断】，来自原始需求「便于船员进行日常巡视和状态判断」。E-PARAM-HT-001 给出了标准参数范围但需厂家确认；E-IACS-M3-002 要求报警值不超过厂家最高允许值。</sysml:EngineeringRationale>
+        <sysml:QualityGateReport passed="true" score="1.0">
+          <Check dimension="evidence_sufficiency" passed="true" severity="error">
+            <Message>Evidence present: 2 item(s), support_status='need_confirmation'.</Message>
+          </Check>
+          <Check dimension="verifiability" passed="true" severity="error">
+            <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+          </Check>
+          <Check dimension="over_inference" passed="true" severity="error">
+            <Message>No over-inference detected.</Message>
+          </Check>
+          <Check dimension="ambiguity" passed="true" severity="warning">
+            <Message>No ambiguous terms detected (LLM check).</Message>
+          </Check>
+          <Check dimension="mbse_completeness" passed="true" severity="error">
+            <Message>All 4 SysML required fields are present.</Message>
+          </Check>
+        </sysml:QualityGateReport>
+      </Requirement>
+    </Requirement>
+    <Requirement id="ER-P012-02" level="1" requirementType="installation">
+      <sysml:Name>主要设备现场标识</sysml:Name>
+      <sysml:Text>冷却水系统主要设备应具备清楚、耐久的现场标识，包括设备名称、编号及功能说明。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P012" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>标识不清将影响船员快速识别设备，降低操作效率和安全性。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【主要设备现场标识】，来自原始需求「主要设备应具备清楚的现场标识」。当前证据库缺少与现场标识直接相关的证据，本条基于原始需求文本整理。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['清楚', '耐久'].</Message>
+          <Suggestion>冷却水系统主要设备应具备现场标识，标识内容应包括设备名称、编号及功能说明，标识应清晰可读且材质应能抵抗环境腐蚀，具体要求参照设备标识标准XX。</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P012" target="ER-P012-01" type="derive">由原始需求「便于船员进行日常巡视和状态判断」和 E-CTRL-COOL-002、E-IACS-M3-002 直接证据派生。</Relationship>
+    <Relationship source="ER-P012-01" target="ER-P012-01-01" type="refine">细化为报警设定值的参数确认要求。</Relationship>
+    <Relationship source="P012" target="ER-P012-02" type="derive">由原始需求「主要设备应具备清楚的现场标识」派生，因无直接证据，列为 evidence_gap。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P012-02" gapType="installation_evidence_gap">
+      <Description>缺少与现场标识相关的工程证据，如标识标准、耐久性要求、安装规范等。</Description>
+      <SuggestedDocumentUpdate>补充船舶设备标识标准（如 ISO 或船厂规范）及耐久性要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认主机厂家 Technical Data 中冷却水温度、压力、液位的报警设定值。</Statement>
+      <Reason>现有证据仅给出标准范围，具体值需厂家确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

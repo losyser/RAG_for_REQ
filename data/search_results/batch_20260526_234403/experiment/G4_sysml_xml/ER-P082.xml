@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P082" sourceRequirementId="P082" stakeholder="船级社验船师" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T00:31:15">
+  <ProfessionalSummary>覆盖中央冷却器设计压力及冷却水侧端盖可拆卸要求，确保压力安全裕度和维护可达性。</ProfessionalSummary>
+  <EngineeringRequirements count="2">
+    <Requirement id="ER-P082-01" level="1" requirementType="parameter">
+      <sysml:Name>中央冷却器设计压力</sysml:Name>
+      <sysml:Text>中央冷却器的设计压力应不低于系统最大工作压力的1.5倍。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P082" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>设计压力不足可能导致冷却器壳体破裂，造成冷却水泄漏和系统失效。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【中央冷却器设计压力】，来自原始需求「设计压力应不低于系统最大工作压力的1.5倍」。证据E-SUPP-MAINT-001和E-SUPP-MAINT-002均未直接给出设计压力倍数要求，属于evidence_gap。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="false" severity="error">
+          <Message>Missing SysML required field(s): ['traceLinks (evidenceIds)'].</Message>
+          <Suggestion>Populate all SysML Requirement block fields before XML export.</Suggestion>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P082-02" level="1" requirementType="maintainability">
+      <sysml:Name>冷却水侧端盖可拆卸</sysml:Name>
+      <sysml:Text>中央冷却器冷却水侧应设置可拆卸端盖，以便于内部检查和清洗。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P082" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-MAINT-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-MAINT-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COOLER-MAINT-003" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COOLER-MAINT-004" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法拆卸端盖将导致冷却器内部无法清洗和检查，影响换热效率和设备寿命。</RiskIfUnmet>
+        <ApplicabilityConstraint>E-COOLER-MAINT-003和E-COOLER-MAINT-004基于MAN机型，其他厂家应参照各自技术文件确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查冷却器图纸，确认冷却水侧端盖为可拆卸结构。</Criterion>
+        <Criterion>现场检查端盖拆卸空间，应满足板束抽出或芯子更换所需的最小空间，具体尺寸按DNV规则及厂家安装手册确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水侧端盖可拆卸】，来自原始需求「冷却水侧应设有可拆卸的端盖以便于内部检查和清洗」。E-SUPP-MAINT-001（DNV规则）要求板换留全板束抽出空间，E-SUPP-MAINT-002要求热交换器可拆芯设计，E-COOLER-MAINT-003和E-COOLER-MAINT-004（MAN项目指南）要求冷却器维护空间，均直接或间接支撑端盖可拆卸要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 4 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P082" target="ER-P082-01" type="derive">由原始需求「设计压力应不低于系统最大工作压力的1.5倍」派生。</Relationship>
+    <Relationship source="P082" target="ER-P082-02" type="derive">由原始需求「冷却水侧应设有可拆卸的端盖以便于内部检查和清洗」派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P082-01" gapType="parameter_source_gap">
+      <Description>缺少中央冷却器设计压力倍数（1.5倍）的直接证据，如船级社规范或厂家标准。</Description>
+      <SuggestedDocumentUpdate>补充船级社规范（如DNV、CCS）中关于冷却器设计压力的要求，或厂家技术数据。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认系统最大工作压力值。</Statement>
+      <Reason>设计压力倍数依赖于系统最大工作压力，需从系统设计计算书中获取。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认冷却器端盖拆卸所需的最小空间尺寸。</Statement>
+      <Reason>现有证据仅要求可拆卸，具体空间尺寸需结合厂家安装手册和DNV规则确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

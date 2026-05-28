@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P048" sourceRequirementId="P048" stakeholder="船厂建造方" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T05:44:25">
+  <ProfessionalSummary>覆盖主机冷却水系统管路穿过水密舱壁时的水密套管安装和防火分隔合规要求。</ProfessionalSummary>
+  <EngineeringRequirements count="3">
+    <Requirement id="ER-P048-01" level="1" requirementType="installation">
+      <sysml:Name>管路水密穿舱安装</sysml:Name>
+      <sysml:Text>系统管路穿过水密舱壁时，应采用焊接式水密套管，确保水密完整性。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P048" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-WELD-001" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-SUPP-WELD-002" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-IFACE-INST-001" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>水密完整性失效可能导致舱室进水，影响船舶稳性和安全。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查安装图纸和现场，确认水密套管为焊接式结构。</Criterion>
+        <Criterion>水密套管焊缝应满足船级社无损检测要求，具体检测比例按船级社规范确认。</Criterion>
+        <Criterion>安装后应进行水密试验，试验压力按船级社规范或项目技术规格书确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【管路水密穿舱安装】，来自原始需求「采用焊接式水密套管」。E-SUPP-WELD-001 和 E-SUPP-WELD-002 间接支撑了穿舱处焊接质量要求；E-IFACE-INST-001 间接支撑了穿舱详图提交要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 3 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P048-02" level="1" requirementType="safety">
+      <sysml:Name>防火分隔合规</sysml:Name>
+      <sysml:Text>管路穿过水密舱壁时，应满足船级社防火分隔要求，包括但不限于高温管路隔热、防火材料选用和贯穿密封。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P048" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-SAFE-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>不满足防火分隔要求可能导致火灾蔓延，危及船舶安全。</RiskIfUnmet>
+        <ApplicabilityConstraint>本条需求基于SOLAS/ISO标准证据，适用范围限于高温冷却水管路（70–95°C），其他管路应按各自温度等级和船级社要求确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>高温冷却水管路（70–95°C）应进行绝热，使表面温度低于55°C，绝热材料耐温不低于150°C并加铝皮护套。</Criterion>
+        <Criterion>无法绝热的高温表面应粘贴ISO 11684热警示标识，间距不大于2m。</Criterion>
+        <Criterion>管路按ISO 14726色标标识。</Criterion>
+        <Criterion>穿舱处防火密封材料应满足船级社认可的耐火等级。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【防火分隔合规】，来自原始需求「满足船级社防火分隔要求」。E-SUPP-SAFE-001 直接支撑了高温管路隔热和标识要求，间接支撑防火分隔。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 4 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P048" target="ER-P048-01" type="derive">由原始需求「采用焊接式水密套管」和间接证据派生。</Relationship>
+    <Relationship source="P048" target="ER-P048-02" type="derive">由原始需求「满足船级社防火分隔要求」和直接证据E-SUPP-SAFE-001派生。</Relationship>
+    <Relationship source="P048" target="ER-P048-03" type="derive">由证据缺口P048-01派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P048-03" gapType="only_indirect">
+      <Description>缺少直接证据明确焊接式水密套管的具体类型、安装步骤和验收标准。</Description>
+      <SuggestedDocumentUpdate>补充船级社规范中关于水密套管的条款原文、厂家安装指南或试验程序。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认水密套管的具体焊接工艺和无损检测要求。</Statement>
+      <Reason>现有间接证据仅支撑焊接质量要求，未明确水密套管的特殊要求。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认防火密封材料的耐火等级和安装要求。</Statement>
+      <Reason>E-SUPP-SAFE-001未覆盖穿舱处防火密封细节。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

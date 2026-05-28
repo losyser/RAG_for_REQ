@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P078" sourceRequirementId="P078" stakeholder="调试人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T00:31:15">
+  <ProfessionalSummary>覆盖主机冷却水系统调试时各冷却用户实际流量验证要求，包括便携式流量计接口和偏差限值。</ProfessionalSummary>
+  <EngineeringRequirements count="2">
+    <Requirement id="ER-P078-01" level="1" requirementType="verification">
+      <sysml:Name>冷却用户流量验证</sysml:Name>
+      <sysml:Text>主机冷却水系统应在各冷却用户（如空冷器、滑油冷却器）的入口或出口管路设置便携式流量计接口，以便调试时连接便携式流量计测量实际流量。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P078" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-COMM-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COMM-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法测量实际流量，无法验证冷却系统性能。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查图纸确认各冷却用户管路已预留便携式流量计接口。</Criterion>
+        <Criterion>现场检查接口尺寸和位置便于连接便携式流量计。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却用户流量验证】，来自原始需求「通过便携式流量计测量各冷却用户的实际流量」。E-SUPP-COMM-001 支撑了调试前核查清单中流量计安装和流量测量的要求；E-COMM-COOL-001 支撑了海试时验证流量的要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P078-02" level="1" requirementType="parameter">
+      <sysml:Name>冷却用户流量验证</sysml:Name>
+      <sysml:Text>调试时，应使用便携式流量计测量各冷却用户的实际流量，并与设计值比较，偏差应不超过±5%。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P078" />
+      <sysml:Traceability>
+        <Evidence id="E-COMM-COOL-001" supportStatus="need_confirmation" />
+        <Evidence id="E-SUPP-COMM-001" supportStatus="need_confirmation" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>need_confirmation</SupportStatus>
+        <RiskIfUnmet>流量偏差过大可能导致冷却不足或过度冷却，影响主机性能。</RiskIfUnmet>
+        <ApplicabilityConstraint>偏差限值±5%来自原始需求，但证据未直接支撑，需按项目调试大纲或厂家Technical Data确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>调试记录应包含各冷却用户的设计流量和实测流量，计算偏差。</Criterion>
+        <Criterion>[待确认数值] 偏差应在±5%以内，具体限值按项目调试大纲确认。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却用户流量验证】，来自原始需求「验证与设计值的偏差不超过±5%」。E-COMM-COOL-001 支撑了海试时验证流量的要求，但未给出具体偏差限值；E-SUPP-COMM-001 支撑了流量测量活动。偏差±5%来自原始需求，但证据未直接确认该数值，需按项目调试大纲确认。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='need_confirmation'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="false" severity="error">
+          <Message>Specific quantitative value(s) ['%'] found in shall_statement but support_status='need_confirmation' (not verified by direct evidence).</Message>
+          <Suggestion>Remove specific values or replace with a placeholder referencing the source (e.g., 'per Manufacturer Technical Data'). Only values explicitly stated in direct evidence may appear here.</Suggestion>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P078" target="ER-P078-01" type="derive">由原始需求「便携式流量计测量」和 E-SUPP-COMM-001 直接证据派生。</Relationship>
+    <Relationship source="P078" target="ER-P078-02" type="derive">由原始需求「偏差不超过±5%」派生，但数值需确认。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认各冷却用户的设计流量值。</Statement>
+      <Reason>原始需求要求与设计值比较，但设计值需从设计文件获取。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认偏差±5%的限值是否适用于所有冷却用户。</Statement>
+      <Reason>原始需求明确要求±5%，但证据未直接支撑，需项目调试大纲确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

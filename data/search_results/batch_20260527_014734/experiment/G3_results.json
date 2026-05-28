@@ -1,0 +1,3181 @@
+{
+  "group": "G3",
+  "result_sets": [
+    {
+      "requirement_set_id": "ER-P052",
+      "source_requirement_id": "P052",
+      "stakeholder": "设备采购方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水管道材料耐腐蚀性和阴极保护系统配置要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P052-01",
+          "parent_id": "ER-P052",
+          "level": 1,
+          "requirement_type": "material",
+          "topic": "冷却水管道材料耐腐蚀性",
+          "shall_statement": "冷却水管道（海水侧）应采用耐海水腐蚀的材料，包括但不限于铜镍合金、双相不锈钢、钛或玻璃增强环氧树脂（GRE），禁止使用碳钢或灰铸铁。",
+          "engineering_rationale": "本条覆盖方面【冷却水管道材料耐腐蚀性】，来自原始需求「耐海水腐蚀的材料（如铜镍合金或双相不锈钢）」。E-SUPP-MAT-001（DNV规则）直接支撑了海水侧管道材料选型要求，包括铜镍合金、双相不锈钢、钛或GRE，并禁止碳钢/灰铸铁。",
+          "acceptance_criteria": [
+            "检查材料证书和图纸，确认海水侧管道材料符合本条所列材料类型。",
+            "材料应符合DNV规则或等效船级社规范要求。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-MAT-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "本条需求基于DNV规则，适用于船级社入级项目，其他船级社应参照其等效规范。"
+          ],
+          "risk_if_unmet": "使用不耐海水腐蚀材料将导致管道快速腐蚀穿孔，造成冷却水泄漏和系统失效。"
+        },
+        {
+          "id": "ER-P052-02",
+          "parent_id": "ER-P052",
+          "level": 1,
+          "requirement_type": "corrosion_protection",
+          "topic": "阴极保护系统配置",
+          "shall_statement": "冷却水管道系统应设置牺牲阳极或外加电流阴极保护系统，以防护异种金属连接处的电偶腐蚀。",
+          "engineering_rationale": "本条覆盖方面【阴极保护系统配置】，来自原始需求「设置牺牲阳极或外加电流阴极保护系统」。E-SUPP-MAT-001（DNV规则）提及异种金属连接须设绝缘或阴极保护，间接支撑了阴极保护系统的必要性。",
+          "acceptance_criteria": [
+            "检查设计图纸，确认在异种金属连接处或海水侧管道上设置了牺牲阳极或外加电流阴极保护系统。",
+            "阴极保护系统的设计参数（如阳极数量、电流输出）按主机厂家Technical Data确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-MAT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "本条需求基于DNV规则，适用于船级社入级项目，其他船级社应参照其等效规范。"
+          ],
+          "risk_if_unmet": "缺少阴极保护将导致异种金属连接处电偶腐蚀加速，缩短管道寿命。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P052",
+          "target": "ER-P052-01",
+          "type": "derive",
+          "description": "由原始需求「耐海水腐蚀的材料」和E-SUPP-MAT-001直接证据派生。"
+        },
+        {
+          "source": "P052",
+          "target": "ER-P052-02",
+          "type": "derive",
+          "description": "由原始需求「设置牺牲阳极或外加电流阴极保护系统」和E-SUPP-MAT-001间接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认阴极保护系统的具体设计参数（如阳极材料、数量、电流输出等）。",
+          "reason": "现有证据仅提及需要设置阴极保护，未给出具体设计参数，需厂家Technical Data确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水管道材料耐腐蚀性",
+          "source_phrase": "耐海水腐蚀的材料（如铜镍合金或双相不锈钢）",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "阴极保护系统配置",
+          "source_phrase": "设置牺牲阳极或外加电流阴极保护系统",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:08:21",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P049",
+      "source_requirement_id": "P049",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖膨胀水柜安装高度和液位监测报警要求，确保系统静压、排气及安全监控。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P049-01",
+          "parent_id": "ER-P049",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "膨胀水柜安装高度",
+          "shall_statement": "膨胀水柜的安装位置应高于主发动机冷却水系统最高点至少1米，以保证系统静压和排气。",
+          "engineering_rationale": "本条覆盖方面【膨胀水柜安装高度】，来自原始需求「安装位置应高于主发动机最高点至少1米」。证据E-EXP-CAP-001（DNV规则）要求膨胀水箱位于回路最高点，确保自由膨胀和排气，支撑了安装高度要求。",
+          "acceptance_criteria": [
+            "检查安装图纸和现场实际安装位置，确认膨胀水柜底部（或最低液位）高于主发动机冷却水系统最高点至少1米。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-EXP-CAP-001"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "静压不足可能导致冷却水汽化、排气不畅，影响主机冷却效果。"
+        },
+        {
+          "id": "ER-P049-02",
+          "parent_id": "ER-P049",
+          "level": 1,
+          "requirement_type": "monitoring",
+          "topic": "膨胀水柜液位监测与报警",
+          "shall_statement": "膨胀水柜应设置液位计和低液位报警接口，低液位报警信号应接入集控室和驾驶台监控系统。",
+          "engineering_rationale": "本条覆盖方面【膨胀水柜液位监测与报警】，来自原始需求「柜体需设液位计和低液位报警接口」。证据E-EXP-CAP-001（DNV规则）要求装设液位计和低液位报警；E-ISO8861-002（ISO 8861）要求低液位报警在机控室和驾驶台显示；E-CTRL-COOL-002（IACS UR E10）要求低液位报警接入船舶报警管理系统。",
+          "acceptance_criteria": [
+            "检查图纸确认液位计和低液位报警接口已设置。",
+            "调试期间模拟低液位，确认报警信号在集控室和驾驶台正确显示。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-EXP-CAP-001",
+            "E-ISO8861-002",
+            "E-CTRL-COOL-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法及时发现冷却水泄漏或液位过低，可能导致主机冷却中断。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P049",
+          "target": "ER-P049-01",
+          "type": "derive",
+          "description": "由原始需求「安装位置应高于主发动机最高点至少1米」派生。"
+        },
+        {
+          "source": "P049",
+          "target": "ER-P049-02",
+          "type": "derive",
+          "description": "由原始需求「柜体需设液位计和低液位报警接口」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P049-01",
+          "gap_type": "installation_evidence_gap",
+          "description": "缺少与膨胀水柜安装高度相关的施工规范、管路布置、支架固定等直接证据。",
+          "suggested_document_update": "补充船舶管系施工规范、管路布置标准、支吊架标准。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主发动机冷却水系统最高点的具体位置，以确定膨胀水柜安装高度基准。",
+          "reason": "原始需求要求高于主发动机最高点至少1米，但最高点位置需结合主机厂家资料确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "膨胀水柜安装高度",
+          "source_phrase": "安装位置应高于主发动机最高点至少1米",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "膨胀水柜液位监测与报警",
+          "source_phrase": "柜体需设液位计和低液位报警接口",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:08:28",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P026",
+      "source_requirement_id": "P026",
+      "stakeholder": "运维管理人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统运行维护数据记录与追溯要求，基于船级社和标准规范中的监控参数要求，确保关键参数自动记录并形成可追溯数据。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P026-01-01",
+          "parent_id": "ER-P026",
+          "level": 1,
+          "requirement_type": "alarm",
+          "topic": "运行维护数据记录与追溯",
+          "shall_statement": "数据记录系统应具备报警事件记录功能，当监测参数超出设定限值时自动记录报警发生时间、参数值、恢复时间等信息，并关联对应的运行数据。",
+          "engineering_rationale": "本条覆盖方面【运行维护数据记录与追溯】，来自原始需求「便于建立运行维护记录，相关数据应能形成可追溯的运行维护数据」。E-CTRL-COOL-002和E-ISO8861-002均要求报警接入船舶报警管理系统，间接支撑报警记录需求。",
+          "acceptance_criteria": [
+            "审查系统设计，确认报警记录功能已集成。",
+            "调试期间模拟报警事件，验证报警记录内容完整性和准确性。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "报警事件无法追溯，不利于事故分析和合规性检查。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认数据保存时间的具体要求。",
+          "reason": "现有证据未明确数据保存时长，需根据项目调试大纲或船东要求确认。"
+        },
+        {
+          "item": "确认数据记录系统的存储介质和容量要求。",
+          "reason": "现有证据未涉及存储介质和容量，需根据系统设计规格书确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "运行维护数据记录与追溯",
+          "source_phrase": "便于建立运行维护记录，相关数据应能形成可追溯的运行维护数据",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:08:36",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P077",
+      "source_requirement_id": "P077",
+      "stakeholder": "调试人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖调试用临时旁通管路配置和备用泵自动切换响应时间测试要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P077-01",
+          "parent_id": "ER-P077",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "调试用临时旁通管路配置",
+          "shall_statement": "系统应配置独立的临时旁通管路，用于模拟单台泵故障时自动切换至备用泵的响应时间测试。",
+          "engineering_rationale": "本条覆盖方面【调试用临时旁通管路配置】，来自原始需求「独立的调试用临时旁通管路」。无直接或间接证据支撑。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法进行模拟故障测试，影响备用泵切换功能验证。"
+        },
+        {
+          "id": "ER-P077-02",
+          "parent_id": "ER-P077",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "备用泵自动切换响应时间测试",
+          "shall_statement": "系统应具备通过临时旁通管路模拟单台泵故障，以验证备用泵自动切换响应时间的能力。",
+          "engineering_rationale": "本条覆盖方面【备用泵自动切换响应时间测试】，来自原始需求「模拟单台泵故障时自动切换至备用泵的响应时间测试」。无直接或间接证据支撑。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法验证切换时间是否满足要求，存在主机冷却中断风险。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P077",
+          "target": "ER-P077-01",
+          "type": "derive",
+          "description": "由原始需求「独立的调试用临时旁通管路」派生。"
+        },
+        {
+          "source": "P077",
+          "target": "ER-P077-02",
+          "type": "derive",
+          "description": "由原始需求「模拟单台泵故障时自动切换至备用泵的响应时间测试」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P077-01",
+          "gap_type": "judge_rejected_all",
+          "description": "无有效证据支撑调试用临时旁通管路配置要求。",
+          "suggested_document_update": "补充系统原理图、管路布置图、厂家手册或试验程序。"
+        },
+        {
+          "related_requirement_id": "ER-P077-02",
+          "gap_type": "verification_document_gap",
+          "description": "无有效证据支撑备用泵自动切换响应时间测试要求。",
+          "suggested_document_update": "补充试验程序、调试大纲或厂家技术文件。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认临时旁通管路的管径、接口位置和阀门配置。",
+          "reason": "原始需求要求独立管路，但无具体设计参数，需设计方确认。"
+        },
+        {
+          "item": "确认备用泵自动切换响应时间的可接受限值。",
+          "reason": "原始需求要求测试响应时间，但无具体限值，需厂家或项目确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "调试用临时旁通管路配置",
+          "source_phrase": "独立的调试用临时旁通管路",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "备用泵自动切换响应时间测试",
+          "source_phrase": "模拟单台泵故障时自动切换至备用泵的响应时间测试",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:08:41",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P023",
+      "source_requirement_id": "P023",
+      "stakeholder": "材料工程师",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统管路、阀门、冷却器等材料的耐介质、耐腐蚀、耐温耐压要求，基于原始需求及间接证据生成，具体参数需厂家确认。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P023-01",
+          "parent_id": "ER-P023",
+          "level": 1,
+          "requirement_type": "material",
+          "topic": "管路材料耐介质与腐蚀性",
+          "shall_statement": "冷却水系统管路材料应耐受冷却介质（包括淡水、海水及添加剂）的腐蚀，并适用于系统设计温度和压力范围。",
+          "engineering_rationale": "本条覆盖方面【管路材料耐介质与腐蚀性】，来自原始需求「适用于冷却介质、温度、压力和腐蚀环境」。E-CCS-COOL-001 间接支撑了系统需在最高海水温度下正常工作，涉及材料耐腐蚀性；E-DNV-COOL-001 间接支撑了温度限值要求；E-PARAM-HT-001 提供了温度压力参数范围，间接涉及材料耐受性。",
+          "acceptance_criteria": [
+            "检查管路材料证书，确认其耐腐蚀性符合冷却介质要求。",
+            "管路材料的设计温度和压力等级应不低于系统设计参数，具体参数按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路腐蚀或强度不足可能导致泄漏，影响系统安全运行。"
+        },
+        {
+          "id": "ER-P023-02",
+          "parent_id": "ER-P023",
+          "level": 1,
+          "requirement_type": "material",
+          "topic": "阀门材料耐介质与腐蚀性",
+          "shall_statement": "冷却水阀门材料应耐受冷却介质（包括淡水、海水及添加剂）的腐蚀，并适用于系统设计温度和压力范围。",
+          "engineering_rationale": "本条覆盖方面【阀门材料耐介质与腐蚀性】，来自原始需求「适用于冷却介质、温度、压力和腐蚀环境」。E-CCS-COOL-001 间接支撑了系统需在最高海水温度下正常工作；E-DNV-COOL-001 间接支撑了温度限值要求；E-PARAM-HT-001 提供了温度压力参数范围。",
+          "acceptance_criteria": [
+            "检查阀门材料证书，确认其耐腐蚀性符合冷却介质要求。",
+            "阀门的设计温度和压力等级应不低于系统设计参数，具体参数按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "阀门腐蚀或强度不足可能导致泄漏或操作失效。"
+        },
+        {
+          "id": "ER-P023-03",
+          "parent_id": "ER-P023",
+          "level": 1,
+          "requirement_type": "material",
+          "topic": "冷却器材料耐介质与腐蚀性",
+          "shall_statement": "冷却器材料应耐受冷却介质（包括淡水、海水及添加剂）的腐蚀，并适用于系统设计温度和压力范围。",
+          "engineering_rationale": "本条覆盖方面【冷却器材料耐介质与腐蚀性】，来自原始需求「适用于冷却介质、温度、压力和腐蚀环境」。E-CCS-COOL-001 间接支撑了系统需在最高海水温度下正常工作；E-DNV-COOL-001 间接支撑了温度限值要求；E-PARAM-HT-001 提供了温度压力参数范围。",
+          "acceptance_criteria": [
+            "检查冷却器材料证书，确认其耐腐蚀性符合冷却介质要求。",
+            "冷却器的设计温度和压力等级应不低于系统设计参数，具体参数按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "冷却器腐蚀或强度不足可能导致泄漏，影响换热效率。"
+        },
+        {
+          "id": "ER-P023-04",
+          "parent_id": "ER-P023",
+          "level": 1,
+          "requirement_type": "material",
+          "topic": "材料耐温耐压能力",
+          "shall_statement": "冷却水系统管路、阀门、冷却器等承压部件的材料应具备足够的耐温耐压能力，确保在系统最高工作温度和压力下安全运行。",
+          "engineering_rationale": "本条覆盖方面【材料耐温耐压能力】，来自原始需求「适用于冷却介质、温度、压力和腐蚀环境」。E-PARAM-HT-001 提供了温度压力参数范围，间接支撑了耐温耐压要求；E-DNV-COOL-001 间接支撑了温度限值要求。",
+          "acceptance_criteria": [
+            "检查材料证书，确认其最高工作温度和压力等级不低于系统设计参数。",
+            "系统设计温度和压力按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-PARAM-HT-001",
+            "E-DNV-COOL-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "材料耐温耐压不足可能导致破裂或失效，危及安全。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P023",
+          "target": "ER-P023-01",
+          "type": "derive",
+          "description": "由原始需求「管路材料耐介质与腐蚀性」派生。"
+        },
+        {
+          "source": "P023",
+          "target": "ER-P023-02",
+          "type": "derive",
+          "description": "由原始需求「阀门材料耐介质与腐蚀性」派生。"
+        },
+        {
+          "source": "P023",
+          "target": "ER-P023-03",
+          "type": "derive",
+          "description": "由原始需求「冷却器材料耐介质与腐蚀性」派生。"
+        },
+        {
+          "source": "P023",
+          "target": "ER-P023-04",
+          "type": "derive",
+          "description": "由原始需求「材料耐温耐压能力」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P023-02",
+          "gap_type": "parameter_source_gap",
+          "description": "缺少阀门材料耐介质与腐蚀性的直接证据，如厂家技术数据或标准。",
+          "suggested_document_update": "补充阀门材料证书、厂家 Technical Data 或相关标准。"
+        },
+        {
+          "related_requirement_id": "ER-P023-03",
+          "gap_type": "only_indirect",
+          "description": "缺少冷却器材料耐介质与腐蚀性的直接证据，如厂家技术数据或标准。",
+          "suggested_document_update": "补充冷却器材料证书、厂家 Technical Data 或相关标准。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认系统最高工作温度和压力值。",
+          "reason": "现有证据仅提供参考范围，具体值需主机厂家 Technical Data 确认。"
+        },
+        {
+          "item": "确认冷却介质成分（如添加剂类型）。",
+          "reason": "材料耐腐蚀性需针对具体介质，需设计方明确。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路材料耐介质与腐蚀性",
+          "source_phrase": "适用于冷却介质、温度、压力和腐蚀环境",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "阀门材料耐介质与腐蚀性",
+          "source_phrase": "适用于冷却介质、温度、压力和腐蚀环境",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "冷却器材料耐介质与腐蚀性",
+          "source_phrase": "适用于冷却介质、温度、压力和腐蚀环境",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "材料耐温耐压能力",
+          "source_phrase": "适用于冷却介质、温度、压力和腐蚀环境",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:08:53",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P030",
+      "source_requirement_id": "P030",
+      "stakeholder": "项目管理方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统全生命周期资料一致性和变更可追溯性要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P030-01",
+          "parent_id": "ER-P030",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "冷却水系统全生命周期资料一致性",
+          "shall_statement": "冷却水系统从需求、设计、采购、施工、调试到验收各阶段的资料应保持一致，所有变更应有可追溯的记录。",
+          "engineering_rationale": "本条覆盖方面【冷却水系统全生命周期资料一致性】，来自原始需求「保持一致，变更应可追踪」。无直接或间接证据支撑。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "资料不一致或变更不可追溯将导致系统设计、施工和运维错误，增加安全风险和维护成本。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P030",
+          "target": "ER-P030-01",
+          "type": "derive",
+          "description": "由原始需求「保持一致，变更应可追踪」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P030",
+          "gap_type": "judge_rejected_all",
+          "description": "所有候选证据均未达到直接或间接支撑标准，缺少关于资料一致性和变更追溯的具体标准、程序或记录要求。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明，例如ISO 9001质量管理体系文件控制要求、船级社关于设计变更管理的规范等。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认冷却水系统各阶段资料清单和一致性检查方法。",
+          "reason": "现有证据不足，需项目管理方明确资料范围和一致性验证方式。"
+        },
+        {
+          "item": "确认变更管理流程和追溯记录要求。",
+          "reason": "现有证据不足，需项目管理方明确变更记录格式和审批流程。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水系统全生命周期资料一致性",
+          "source_phrase": "保持一致，变更应可追踪",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:08:58",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P032",
+      "source_requirement_id": "P032",
+      "stakeholder": "船东代表",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统闭式循环型式、冷却水水质处理及膨胀水箱功能配置要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P032-01",
+          "parent_id": "ER-P032",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "冷却水系统循环型式",
+          "shall_statement": "主机冷却水系统应设计为闭式循环系统，冷却介质采用经防锈、防垢处理的淡水。",
+          "engineering_rationale": "本条覆盖方面【冷却水系统循环型式】，来自原始需求「闭式循环」。E-CCS-COOL-001（CCS规则）间接支撑系统设计能力；E-DNV-COOL-001（DNV规则）间接支撑温度控制要求；E-SOLAS-COOL-001（SOLAS规则）间接支撑冗余和报警要求。",
+          "acceptance_criteria": [
+            "审查系统设计图纸，确认冷却水系统为闭式循环型式。",
+            "确认系统使用淡水作为冷却介质，并具备防锈、防垢处理措施。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-001",
+            "E-SOLAS-COOL-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "开式循环可能导致海水腐蚀和结垢，影响主机冷却效果和寿命。"
+        },
+        {
+          "id": "ER-P032-02",
+          "parent_id": "ER-P032",
+          "level": 1,
+          "requirement_type": "water_quality",
+          "topic": "冷却水水质处理",
+          "shall_statement": "主机冷却水系统应使用经防锈、防垢处理的淡水，冷却水中应添加腐蚀抑制剂和防冻剂（如适用），水质参数（如pH值、硬度、氯离子含量等）应满足主机厂家Technical Data要求。",
+          "engineering_rationale": "本条覆盖方面【冷却水水质处理】，来自原始需求「经防锈、防垢处理的淡水」。E-SYS-WATER-018（MAN 49/60DF）支撑腐蚀抑制剂要求；E-SYS-WATER-017（MAN 49/60DF）支撑水质处理添加剂要求；E-SYS-WATER-002（MAN L23/30DF）支撑防冻剂和腐蚀抑制剂要求；E-SYS-WATER-005（MTU）支撑冷却液工作浓度要求。",
+          "acceptance_criteria": [
+            "按主机厂家Technical Data确认冷却水水质参数限值（如pH值、硬度、氯离子含量、腐蚀抑制剂浓度等）。",
+            "调试期间取样化验，确认水质符合厂家要求。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [
+            "E-SYS-WATER-018",
+            "E-SYS-WATER-017",
+            "E-SYS-WATER-002",
+            "E-SYS-WATER-005"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "本条需求基于MAN 49/60DF、MAN L23/30DF、MTU等厂家证据，适用范围限于对应厂家和机型，其他厂家和机型应按各自Technical Data另行确认。"
+          ],
+          "risk_if_unmet": "水质不达标将导致冷却系统腐蚀、结垢，降低换热效率，甚至损坏主机。"
+        },
+        {
+          "id": "ER-P032-03",
+          "parent_id": "ER-P032",
+          "level": 1,
+          "requirement_type": "capacity",
+          "topic": "膨胀水箱功能配置",
+          "shall_statement": "主机冷却水系统应设置膨胀水箱，用于容纳冷却水热胀冷缩、提供系统补水和排气功能。膨胀水箱应位于系统最高点，其容积应满足主机厂家Technical Data或船级社规则要求，并装设液位计和低液位报警。",
+          "engineering_rationale": "本条覆盖方面【膨胀水箱功能配置】，来自原始需求「设置膨胀水箱以容纳热胀冷缩并提供系统补水和排气功能」。E-EXP-CAP-001（DNV规则）直接支撑容积≥5%及安装要求；E-SOLAS-INCL-001（SOLAS Reg.26）直接支撑倾斜工况下正常工作；E-ISO8861-002（ISO 8861）直接支撑低液位报警；E-EXP-ALARM-008（Everllence 49/60DF）间接支撑液位监测和报警。",
+          "acceptance_criteria": [
+            "审查图纸确认膨胀水箱位于系统最高点，容积按主机厂家Technical Data或船级社规则确认。",
+            "检查膨胀水箱装设液位计和低液位报警装置。",
+            "调试期间验证膨胀水箱在船舶倾斜工况下（15°静倾、22.5°动倾、7.5°纵摇）能正常补水和排气。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-EXP-CAP-001",
+            "E-SOLAS-INCL-001",
+            "E-ISO8861-002",
+            "E-EXP-ALARM-008"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "E-EXP-ALARM-008基于Everllence 49/60DF，容积推荐值15%仅适用于该机型，其他机型按各自Technical Data确认。"
+          ],
+          "risk_if_unmet": "膨胀水箱容量不足或安装不当将导致系统压力波动、补水不足或排气不畅，影响主机运行安全。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P032",
+          "target": "ER-P032-01",
+          "type": "derive",
+          "description": "由原始需求「闭式循环」和间接证据派生。"
+        },
+        {
+          "source": "P032",
+          "target": "ER-P032-02",
+          "type": "derive",
+          "description": "由原始需求「经防锈、防垢处理的淡水」和直接证据派生。"
+        },
+        {
+          "source": "P032",
+          "target": "ER-P032-03",
+          "type": "derive",
+          "description": "由原始需求「设置膨胀水箱以容纳热胀冷缩并提供系统补水和排气功能」和直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P032-01",
+          "gap_type": "only_indirect",
+          "description": "缺少直接证据明确要求闭式循环型式，现有证据仅间接支撑系统设计能力。",
+          "suggested_document_update": "补充规则条款原文或厂家Technical Data中明确要求闭式循环的直接证据。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家Technical Data中冷却水水质参数的具体限值（如pH值、硬度、氯离子含量、腐蚀抑制剂浓度等）。",
+          "reason": "现有证据来自不同厂家和机型，具体限值需按实际选定主机厂家确认。"
+        },
+        {
+          "item": "确认膨胀水箱容积的具体数值（按主机厂家Technical Data或船级社规则）。",
+          "reason": "DNV规则要求≥5%，但厂家可能要求更高（如15%），需按实际选定主机确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水系统循环型式",
+          "source_phrase": "闭式循环",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "冷却水水质处理",
+          "source_phrase": "经防锈、防垢处理的淡水",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "膨胀水箱功能配置",
+          "source_phrase": "设置膨胀水箱以容纳热胀冷缩并提供系统补水和排气功能",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:09",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P018",
+      "source_requirement_id": "P018",
+      "stakeholder": "维修人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统故障隔离与局部检修要求，包含主要设备隔离阀配置和维护空间要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P018-01",
+          "parent_id": "ER-P018",
+          "level": 1,
+          "requirement_type": "maintainability",
+          "topic": "冷却水系统故障隔离与局部检修",
+          "shall_statement": "主机冷却水系统应设计为支持故障隔离和局部检修，主要设备（如冷却水泵、冷却器、温度控制阀、滤器）应配置隔离阀，以便在不排空整个系统的情况下进行维修或更换。",
+          "engineering_rationale": "本条覆盖方面【冷却水系统故障隔离与局部检修】，来自原始需求「支持故障隔离和局部检修」。E-PUMP-MAINT-001（Caterpillar安装指南）支撑了远程水温调节器应设有隔离阀以便在不排空整个系统的情况下进行维修；E-SUPP-MAINT-002（模块化快拆设计实践）支撑了温控阀两侧设截止阀支持在线更换；E-SUPP-MAINT-001（DNV规则）支撑了设备维护空间要求。",
+          "acceptance_criteria": [
+            "检查系统P&ID，确认主要设备（泵、冷却器、温控阀、滤器）上下游均设有隔离阀。",
+            "现场检查确认隔离阀安装位置便于操作，且满足维护空间要求（如阀操作侧≥600mm，通道宽≥600mm）。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-SUPP-MAINT-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "E-PUMP-MAINT-001 适用范围限于 Caterpillar 厂家，其他厂家应参照其 Technical Data 确认。"
+          ],
+          "risk_if_unmet": "无法隔离故障设备将导致整个系统停运，增加维修时间和成本。"
+        },
+        {
+          "id": "ER-P018-02",
+          "parent_id": "ER-P018",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "主要设备隔离阀配置",
+          "shall_statement": "主要设备（如冷却水泵、冷却器）应配备隔离阀，以实现独立隔离和检修。",
+          "engineering_rationale": "本条覆盖方面【主要设备隔离阀配置】，来自原始需求「主要设备应具备合理的隔离条件」。该条目对应证据缺口 P018-02，无直接或间接证据支撑隔离阀的具体配置要求。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "缺少隔离阀将导致设备检修时需排空整个系统，影响可用性。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P018",
+          "target": "ER-P018-01",
+          "type": "derive",
+          "description": "由原始需求「支持故障隔离和局部检修」和直接证据 E-PUMP-MAINT-001、E-SUPP-MAINT-002、E-SUPP-MAINT-001 派生。"
+        },
+        {
+          "source": "P018",
+          "target": "ER-P018-02",
+          "type": "derive",
+          "description": "由原始需求「主要设备应具备合理的隔离条件」和证据缺口 P018-02 派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P018-02",
+          "gap_type": "only_indirect",
+          "description": "缺少主要设备隔离阀配置的直接证据，如规则条款、厂家指南或设计规范。",
+          "suggested_document_update": "补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认隔离阀的具体配置要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主要设备隔离阀的具体类型、尺寸和安装位置要求。",
+          "reason": "现有证据未明确隔离阀的选型标准和安装细节，需厂家 Technical Data 或项目设计规范确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水系统故障隔离与局部检修",
+          "source_phrase": "支持故障隔离和局部检修",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "主要设备隔离阀配置",
+          "source_phrase": "主要设备应具备合理的隔离条件",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:17",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P012",
+      "source_requirement_id": "P012",
+      "stakeholder": "轮机长",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统日常巡视与状态判断、主要设备现场标识两方面要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P012-01",
+          "parent_id": "ER-P012",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "冷却水系统日常巡视与状态判断",
+          "shall_statement": "冷却水系统设计应便于船员进行日常巡视和状态判断，包括设备布置、观察窗、仪表位置等。",
+          "engineering_rationale": "本条覆盖方面【冷却水系统日常巡视与状态判断】，来自原始需求「便于船员进行日常巡视和状态判断」。E-CTRL-COOL-002 间接支撑了监控参数要求，E-PUMP-MAINT-003 和 E-PUMP-MAINT-001 间接支撑了设备布置和可达性，但均未直接给出巡视设计的具体要求。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-PUMP-MAINT-003",
+            "E-PUMP-MAINT-001"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "不便于巡视可能导致状态判断不及时，增加设备故障风险。"
+        },
+        {
+          "id": "ER-P012-02",
+          "parent_id": "ER-P012",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "主要设备现场标识",
+          "shall_statement": "主要设备应具备清楚的现场标识，包括但不限于设备名称、编号、流向及安全警示标识。",
+          "engineering_rationale": "本条覆盖方面【主要设备现场标识】，来自原始需求「主要设备应具备清楚的现场标识」。E-SUPP-SAFE-001 直接支撑了高温管路隔热与安全标识要求（热警示标识、色标）；E-SUPP-COMM-001 间接支撑了调试前核查清单中阀门位置指示器安装正确的要求。",
+          "acceptance_criteria": [
+            "检查图纸确认标识方案符合 SOLAS/ISO 14726 等规范要求。",
+            "现场检查确认高温管路表面温度<55°C或贴有 ISO 11684 热警示标识（间距≤2m），管路按 ISO 14726 色标标识。",
+            "调试前核查清单应包含标识完整性检查项。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-SUPP-SAFE-001",
+            "E-SUPP-COMM-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "高温管路标识要求基于 SOLAS/ISO 14726，适用于所有船舶。"
+          ],
+          "risk_if_unmet": "标识不清可能导致误操作或安全事故。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P012",
+          "target": "ER-P012-01",
+          "type": "derive",
+          "description": "由原始需求「便于船员进行日常巡视和状态判断」派生。"
+        },
+        {
+          "source": "P012",
+          "target": "ER-P012-02",
+          "type": "derive",
+          "description": "由原始需求「主要设备应具备清楚的现场标识」和 E-SUPP-SAFE-001 直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P012-01",
+          "gap_type": "only_indirect",
+          "description": "缺少冷却水系统日常巡视与状态判断的直接工程证据，如设备布置、观察窗、仪表位置等具体要求。",
+          "suggested_document_update": "补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认冷却水系统设备布置、观察窗、仪表位置等便于巡视的具体设计要求。",
+          "reason": "现有证据仅间接支撑，需补充直接证据。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水系统日常巡视与状态判断",
+          "source_phrase": "便于船员进行日常巡视和状态判断",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "主要设备现场标识",
+          "source_phrase": "主要设备应具备清楚的现场标识",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:24",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P033",
+      "source_requirement_id": "P033",
+      "stakeholder": "船东代表",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统监测仪表安装、集控室远程显示与报警、以及流量和温度报警设定要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P033-01",
+          "parent_id": "ER-P033",
+          "level": 1,
+          "requirement_type": "monitoring",
+          "topic": "监测仪表安装",
+          "shall_statement": "主机冷却水系统应安装流量、压力和温度监测仪表，确保能够实时测量冷却水参数。",
+          "engineering_rationale": "本条覆盖方面【监测仪表安装】，来自原始需求「安装流量、压力和温度监测仪表」。E-SUPP-COMM-001（调试前核查清单）间接支撑了传感器安装的检查要求；E-CTRL-COOL-002（IACS UR E10）间接支撑了温度、压力监测的必要性。",
+          "acceptance_criteria": [
+            "检查系统图纸和安装记录，确认流量、压力、温度监测仪表已按设计安装。",
+            "调试前按核查清单确认传感器安装位置正确、接线牢固、校准有效。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-SUPP-COMM-001",
+            "E-CTRL-COOL-002"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "缺少监测仪表将无法实时掌握冷却水参数，影响主机安全运行。"
+        },
+        {
+          "id": "ER-P033-02",
+          "parent_id": "ER-P033",
+          "level": 1,
+          "requirement_type": "alarm",
+          "topic": "集控室远程显示与报警",
+          "shall_statement": "流量、压力和温度监测信号应接入集控室监控系统，实现远程显示，并在冷却水流量低于设定值或温度超过上限时触发声光报警。",
+          "engineering_rationale": "本条覆盖方面【集控室远程显示与报警】，来自原始需求「在集控室提供远程显示和报警功能」。E-ISO8861-002（ISO 8861:1998）直接支撑了报警应在机控室和驾驶台显示；E-SOLAS-COOL-001（SOLAS Reg.26）直接支撑了温度异常报警要求；E-CTRL-COOL-002（IACS UR E10）直接支撑了报警接入船舶报警管理系统。",
+          "acceptance_criteria": [
+            "检查监控系统界面，确认流量、压力、温度参数在集控室远程显示。",
+            "调试期间模拟流量低和温度高工况，确认声光报警正确触发并在集控室和驾驶台显示。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-ISO8861-002",
+            "E-SOLAS-COOL-001",
+            "E-CTRL-COOL-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法远程监控和报警将导致操作人员不能及时获知异常，可能引发主机损坏。"
+        },
+        {
+          "id": "ER-P033-03",
+          "parent_id": "ER-P033",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却水流量温度报警设定",
+          "shall_statement": "冷却水流量低报警和温度高报警的设定值应根据主机厂家Technical Data确定，并满足船级社规则要求。",
+          "engineering_rationale": "本条覆盖方面【冷却水流量温度报警设定】，来自原始需求「当冷却水流量低于设定值或温度超过上限时触发声光报警」。E-CCS-COOL-001（CCS规则）直接支撑了高温报警设定不超过制造商最高允许温度；E-DNV-COOL-001（DNV规则）直接支撑了温度保持在制造商限值内；E-PARAM-HT-001（综合标准）给出了典型报警值90-95°C，但注明以厂家文件为准。",
+          "acceptance_criteria": [
+            "审查设计文件，确认报警设定值依据主机厂家Technical Data和船级社规则。",
+            "调试期间验证报警动作值与设定值一致。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "support_status": "need_confirmation",
+          "applicability_constraints": [
+            "具体报警设定值按主机厂家Technical Data确认，不同厂家和机型限值不同。"
+          ],
+          "risk_if_unmet": "报警设定值不当可能导致误报或漏报，影响主机保护。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P033",
+          "target": "ER-P033-01",
+          "type": "derive",
+          "description": "由原始需求「安装流量、压力和温度监测仪表」派生。"
+        },
+        {
+          "source": "P033",
+          "target": "ER-P033-02",
+          "type": "derive",
+          "description": "由原始需求「在集控室提供远程显示和报警功能」派生。"
+        },
+        {
+          "source": "P033",
+          "target": "ER-P033-03",
+          "type": "derive",
+          "description": "由原始需求「当冷却水流量低于设定值或温度超过上限时触发声光报警」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P033-01",
+          "gap_type": "only_indirect",
+          "description": "监测仪表安装方面仅有间接证据（调试前核查清单），缺少直接证据（如规则条款原文、厂家安装指南）明确仪表类型、精度、安装位置等具体要求。",
+          "suggested_document_update": "补充规则条款原文、厂家Technical Data或安装指南等直接证据。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家Technical Data中冷却水流量低报警和温度高报警的具体设定值。",
+          "reason": "现有证据仅给出典型范围，具体值需厂家确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水流量温度报警设定",
+          "source_phrase": "当冷却水流量低于设定值或温度超过上限时触发声光报警",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "集控室远程显示与报警",
+          "source_phrase": "在集控室提供远程显示和报警功能",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "监测仪表安装",
+          "source_phrase": "安装流量、压力和温度监测仪表",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:34",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P050",
+      "source_requirement_id": "P050",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水管路调试前的酸洗钝化处理、冲洗合格报告提交及管路清洁度控制要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P050-01",
+          "parent_id": "ER-P050",
+          "level": 1,
+          "requirement_type": "water_treatment",
+          "topic": "管路酸洗钝化处理",
+          "shall_statement": "冷却水管路在调试前应进行酸洗钝化处理，以清除焊渣和铁锈。",
+          "engineering_rationale": "本条覆盖方面【管路酸洗钝化处理】，来自原始需求「管路酸洗钝化处理」。间接证据E-PIPE-WATER-006、E-PIPE-WATER-007、E-PIPE-WATER-003提及冷却水处理可保护管壁，间接支撑清洗要求；E-PIPE-CLEAN-008提及冷却液污染与沉积风险，间接支撑清洁度控制。但均未给出酸洗钝化的具体步骤或参数。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-PIPE-WATER-006",
+            "E-PIPE-WATER-007",
+            "E-PIPE-WATER-003",
+            "E-PIPE-CLEAN-008"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路内残留焊渣和铁锈可能导致冷却水污染、换热器堵塞或主机损坏。"
+        },
+        {
+          "id": "ER-P050-02",
+          "parent_id": "ER-P050",
+          "level": 1,
+          "requirement_type": "documentation",
+          "topic": "冲洗合格报告提交",
+          "shall_statement": "冷却水管路酸洗钝化及冲洗完成后，应提交冲洗合格报告，证明管内无焊渣和铁锈残留。",
+          "engineering_rationale": "本条覆盖方面【冲洗合格报告提交】，来自原始需求「提交冲洗合格报告」。间接证据E-SUPP-COMM-001要求调试前冲洗记录完整并提交，支撑文件完整性要求；E-SUPP-FLUSH-001要求冲洗记录归入调试文件。但未明确报告格式或具体验收指标。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-COMM-001",
+            "E-SUPP-FLUSH-001"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无合格报告可能导致调试无法通过验收，影响系统投运。"
+        },
+        {
+          "id": "ER-P050-03",
+          "parent_id": "ER-P050",
+          "level": 1,
+          "requirement_type": "cleaning",
+          "topic": "管路清洁度控制",
+          "shall_statement": "冷却水管路在酸洗钝化及冲洗后，应确保管内无焊渣和铁锈残留。",
+          "engineering_rationale": "本条覆盖方面【管路清洁度控制】，来自原始需求「确保管内无焊渣和铁锈残留」。直接证据E-PIPE-CLEAN-011要求限制妨碍冲洗的部件在试验冲洗完成前不得安装，直接支撑管路清洁度控制；间接证据E-PIPE-CLEAN-010、E-PIPE-CLEAN-008涉及清洗和污染风险，间接支撑。但未给出具体清洁度验收标准。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-PIPE-CLEAN-011",
+            "E-PIPE-CLEAN-010",
+            "E-PIPE-CLEAN-008"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "焊渣和铁锈残留可能导致冷却水系统堵塞、换热效率下降或主机故障。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P050",
+          "target": "ER-P050-01",
+          "type": "derive",
+          "description": "由原始需求「管路酸洗钝化处理」派生。"
+        },
+        {
+          "source": "P050",
+          "target": "ER-P050-02",
+          "type": "derive",
+          "description": "由原始需求「提交冲洗合格报告」派生。"
+        },
+        {
+          "source": "P050",
+          "target": "ER-P050-03",
+          "type": "derive",
+          "description": "由原始需求「确保管内无焊渣和铁锈残留」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P050-01",
+          "gap_type": "only_indirect",
+          "description": "缺少酸洗钝化处理的具体步骤、药剂浓度、温度、时间等参数的直接证据。",
+          "suggested_document_update": "补充主机厂家Technical Data、安装指南或相关标准中关于酸洗钝化的具体要求。"
+        },
+        {
+          "related_requirement_id": "ER-P050-02",
+          "gap_type": "only_indirect",
+          "description": "缺少冲洗合格报告的具体格式、内容要求和验收标准的直接证据。",
+          "suggested_document_update": "补充项目调试大纲或船厂质量程序中关于冲洗报告的规定。"
+        },
+        {
+          "related_requirement_id": "ER-P050-03",
+          "gap_type": "only_indirect",
+          "description": "缺少管路清洁度（如无焊渣、铁锈）的具体验收方法和判据的直接证据。",
+          "suggested_document_update": "补充相关标准或厂家文件中关于清洁度检查的详细要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认酸洗钝化的具体工艺参数（药剂、浓度、温度、时间等）。",
+          "reason": "现有证据仅间接支撑清洗要求，未给出具体参数，需厂家Technical Data或项目程序确认。"
+        },
+        {
+          "item": "确认冲洗合格报告的格式和内容要求。",
+          "reason": "现有证据仅要求提交记录，未明确报告细节，需项目调试大纲确认。"
+        },
+        {
+          "item": "确认管路清洁度的验收标准（如目视检查、滤网检查等）。",
+          "reason": "现有证据未给出具体判据，需相关标准或厂家文件确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路酸洗钝化处理",
+          "source_phrase": "管路酸洗钝化处理",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "冲洗合格报告提交",
+          "source_phrase": "提交冲洗合格报告",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "管路清洁度控制",
+          "source_phrase": "确保管内无焊渣和铁锈残留",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:44",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P068",
+      "source_requirement_id": "P068",
+      "stakeholder": "安全负责人",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖膨胀水箱透气管布置要求，确保引至安全区域，防止高温蒸汽伤人及腐蚀船体结构。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P068-01",
+          "parent_id": "ER-P068",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "膨胀水箱透气管布置",
+          "shall_statement": "膨胀水箱的透气管应引至安全区域，避免高温蒸汽逸出伤及人员或腐蚀船体结构。",
+          "engineering_rationale": "本条覆盖方面【膨胀水箱透气管布置】，来自原始需求「引至安全区域，避免高温蒸汽逸出伤及人员或腐蚀船体结构」。E-SOLAS-INCL-001 支撑了膨胀水箱在倾斜工况下需保持正常功能，间接要求透气管布置不影响安全；E-EXP-CAP-001 支撑了膨胀水箱位于回路最高点以利于排气，间接涉及透气管位置；E-SUPP-SAFE-001 支撑了高温管路隔热和安全标识要求，间接涉及安全区域概念。",
+          "acceptance_criteria": [
+            "检查图纸确认透气管出口位于安全区域（如露天甲板或通风良好的非危险区），远离人员通道和船体结构。",
+            "现场检查确认透气管出口无高温蒸汽直接喷向人员或船体。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-SOLAS-INCL-001",
+            "E-EXP-CAP-001",
+            "E-SUPP-SAFE-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "高温蒸汽逸出可能导致人员烫伤或船体结构腐蚀，影响安全。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P068",
+          "target": "ER-P068-01",
+          "type": "derive",
+          "description": "由原始需求「膨胀水箱透气管布置」直接派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认安全区域的具体定义（如露天甲板、通风良好区域等）是否符合船级社或船东要求。",
+          "reason": "现有证据未明确安全区域的具体位置要求，需结合项目规格书确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "膨胀水箱透气管布置",
+          "source_phrase": "引至安全区域，避免高温蒸汽逸出伤及人员或腐蚀船体结构",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:49",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P088",
+      "source_requirement_id": "P088",
+      "stakeholder": "材料工程师",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖中央冷却器材料选择要求，明确钛板与海水端管板之间应选用耐海水冲刷且抗电偶腐蚀的钛合金或超级双相不锈钢。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P088-01",
+          "parent_id": "ER-P088",
+          "level": 1,
+          "requirement_type": "material",
+          "topic": "中央冷却器材料选择",
+          "shall_statement": "中央冷却器钛板与海水端管板之间应选用耐海水冲刷且抗电偶腐蚀的钛合金或超级双相不锈钢材料。",
+          "engineering_rationale": "本条覆盖方面【中央冷却器材料选择】，来自原始需求「选用耐海水冲刷的钛合金或超级双相不锈钢，避免电偶腐蚀」。无直接或间接证据支撑，基于原始需求文本整理。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "材料选择不当可能导致电偶腐蚀，缩短冷却器寿命，影响系统可靠性。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P088",
+          "target": "ER-P088-01",
+          "type": "derive",
+          "description": "由原始需求「中央冷却器材料选择」直接派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P088",
+          "gap_type": "judge_rejected_all",
+          "description": "有候选证据，但均未达到直接或间接支撑标准。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认所选钛合金或超级双相不锈钢的具体牌号及耐海水冲刷、抗电偶腐蚀性能指标。",
+          "reason": "现有证据缺失，需厂家或标准文件确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "中央冷却器材料选择",
+          "source_phrase": "选用耐海水冲刷的钛合金或超级双相不锈钢，避免电偶腐蚀",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:53",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P069",
+      "source_requirement_id": "P069",
+      "stakeholder": "安全负责人",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水泵联轴器防护罩配置和泵房防滑措施，防止人员受伤。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P069-01",
+          "parent_id": "ER-P069",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "联轴器防护罩配置",
+          "shall_statement": "冷却水泵联轴器应配备防护罩，防止人员接触旋转部件。",
+          "engineering_rationale": "本条覆盖方面【联轴器防护罩配置】，来自原始需求「联轴器应配备防护罩」。无直接或间接证据支撑。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "人员接触旋转部件可能导致严重伤害。"
+        },
+        {
+          "id": "ER-P069-02",
+          "parent_id": "ER-P069",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "泵房防滑措施",
+          "shall_statement": "泵房地面应铺设防滑垫，防止因润滑油泄漏导致滑倒事故。",
+          "engineering_rationale": "本条覆盖方面【泵房防滑措施】，来自原始需求「在泵房地面铺设防滑垫，防止润滑油泄漏造成滑倒事故」。无直接或间接证据支撑。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "润滑油泄漏可能导致人员滑倒受伤。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P069",
+          "target": "ER-P069-01",
+          "type": "derive",
+          "description": "由原始需求「联轴器应配备防护罩」派生。"
+        },
+        {
+          "source": "P069",
+          "target": "ER-P069-02",
+          "type": "derive",
+          "description": "由原始需求「在泵房地面铺设防滑垫，防止润滑油泄漏造成滑倒事故」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P069-01",
+          "gap_type": "judge_rejected_all",
+          "description": "缺少联轴器防护罩配置的直接或间接证据。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明。"
+        },
+        {
+          "related_requirement_id": "ER-P069-02",
+          "gap_type": "judge_rejected_all",
+          "description": "缺少泵房防滑措施的直接或间接证据。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认联轴器防护罩的具体设计标准和安装要求。",
+          "reason": "现有证据不足，需补充相关标准或厂家手册。"
+        },
+        {
+          "item": "确认防滑垫的材料、铺设范围和防滑性能要求。",
+          "reason": "现有证据不足，需补充相关标准或厂家手册。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "联轴器防护罩配置",
+          "source_phrase": "联轴器应配备防护罩",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "泵房防滑措施",
+          "source_phrase": "在泵房地面铺设防滑垫，防止润滑油泄漏造成滑倒事故",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:09:58",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P092",
+      "source_requirement_id": "P092",
+      "stakeholder": "运维管理人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统排气操作要求，包含自动排气阀和手动排气点的配置，确保有效排出空气，防止气蚀和循环不畅。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P092-01",
+          "parent_id": "ER-P092",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "冷却水系统排气操作",
+          "shall_statement": "主机冷却水系统应在系统最高点或易积聚空气处配置自动排气阀，并在关键位置设置手动排气点，确保在系统加注或运行中能有效排出空气，防止气蚀和循环不畅。",
+          "engineering_rationale": "本条覆盖方面【冷却水系统排气操作】，来自原始需求「配备自动排气阀和手动排气点，确保在加注或运行中能有效排出空气，防止气蚀和循环不畅」。E-CTRL-COOL-001（IACS UR E10）支撑了手动备用功能要求，间接支撑手动排气点的必要性；E-SOLAS-INCL-001（SOLAS Reg.26）支撑了倾斜工况下防止空气吸入的设计考虑，间接支撑排气功能。",
+          "acceptance_criteria": [
+            "检查系统设计图纸，确认自动排气阀安装于系统最高点或易积聚空气处。",
+            "检查手动排气点设置位置，应覆盖各高点、弯头及可能积聚空气的管段。",
+            "调试期间进行加注和运行测试，确认自动排气阀能正常动作，手动排气点能有效排出空气。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "空气积聚可能导致气蚀、循环不畅、冷却效率下降，严重时引起主机过热停机。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P092",
+          "target": "ER-P092-01",
+          "type": "derive",
+          "description": "由原始需求「冷却水系统排气操作」和间接证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P092",
+          "gap_type": "parameter_source_gap",
+          "description": "缺少自动排气阀的具体选型参数（如排气量、压力等级）和手动排气点的具体数量、位置要求。",
+          "suggested_document_update": "补充主机厂家冷却水系统设计指南或典型布置图。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认自动排气阀的选型参数（排气量、压力等级）和手动排气点的具体布置位置。",
+          "reason": "现有证据未提供具体参数，需厂家 Technical Data 或详细设计图纸确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水系统排气操作",
+          "source_phrase": "配备自动排气阀和手动排气点，确保在加注或运行中能有效排出空气，防止气蚀和循环不畅",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:04",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P080",
+      "source_requirement_id": "P080",
+      "stakeholder": "调试人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖中央冷却器出口温度控制参数、温度调节响应时间和调试工况验证要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P080-01",
+          "parent_id": "ER-P080",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "中央冷却器出口温度控制参数",
+          "shall_statement": "在海水温度32℃工况下，中央冷却器出口温度应稳定在36±1℃。",
+          "engineering_rationale": "本条覆盖方面【中央冷却器出口温度控制参数】，来自原始需求「中央冷却器出口温度稳定在36±1℃」。E-LT-CAP-001（DNV规则）支撑了LT冷却水出口温度典型范围32–38°C，36°C在此范围内；E-TCV-TEMP-022、E-TCV-TEMP-124、E-TCV-TEMP-118（MAN 49/60DF Project Guide）支撑了LT冷却水温控阀设定点为32°C，但36°C作为稳定目标需结合系统设计确认。",
+          "acceptance_criteria": [
+            "调试期间在海水温度32℃工况下，记录中央冷却器出口温度，确认稳定在36±1℃范围内。",
+            "具体温度稳定判据（如波动幅度、持续时间）按项目调试大纲或厂家Technical Data确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-LT-CAP-001",
+            "E-TCV-TEMP-022",
+            "E-TCV-TEMP-124",
+            "E-TCV-TEMP-118"
+          ],
+          "support_status": "need_confirmation",
+          "applicability_constraints": [
+            "温度控制参数基于MAN 49/60DF机型证据，其他机型应按各自厂家Technical Data确认。"
+          ],
+          "risk_if_unmet": "出口温度偏离将影响主机冷却效果，可能导致主机性能下降或保护动作。"
+        },
+        {
+          "id": "ER-P080-02",
+          "parent_id": "ER-P080",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "温度调节响应时间",
+          "shall_statement": "温度调节系统在海水温度32℃工况下，调节周期应不超过30秒。",
+          "engineering_rationale": "本条覆盖方面【温度调节响应时间】，来自原始需求「调节周期不超过30秒」。E-CTRL-COOL-001（IACS UR E10）间接支撑了温度自动调节功能要求，但未给出调节周期具体数值；E-COMM-COOL-001（调试程序）支撑了温控阀功能验证，但未涉及响应时间。调节周期30秒无直接证据支撑，需厂家确认。",
+          "acceptance_criteria": [
+            "[待确认数值] 调试期间在海水温度32℃工况下，模拟温度扰动，记录调节周期，确认不超过30秒。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。",
+            "具体测试方法和判据按项目调试大纲或厂家Technical Data确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-COMM-COOL-001"
+          ],
+          "support_status": "need_confirmation",
+          "applicability_constraints": [
+            "调节周期限值需按实际选用的温控阀厂家Technical Data确认。"
+          ],
+          "risk_if_unmet": "调节周期过长将导致温度波动大，影响主机运行稳定性。"
+        },
+        {
+          "id": "ER-P080-03",
+          "parent_id": "ER-P080",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "调试工况验证",
+          "shall_statement": "调试时应验证在海水温度32℃工况下，中央冷却器出口温度稳定性和调节响应时间满足要求。",
+          "engineering_rationale": "本条覆盖方面【调试工况验证】，来自原始需求「调试时需验证在海水温度32℃工况下」。E-IACS-M28-001（IACS UR M28）直接支撑了海水温度32°C作为基准工况；E-COMM-COOL-001（调试程序）和E-IACS-M51-001（IACS UR M51）直接支撑了调试验证程序要求。",
+          "acceptance_criteria": [
+            "调试记录应包含海水温度32℃工况下的中央冷却器出口温度稳定性和调节响应时间测试结果。",
+            "测试工况和时长按项目调试大纲或厂家试验程序确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-IACS-M28-001",
+            "E-COMM-COOL-001",
+            "E-IACS-M51-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "未在指定工况下验证，无法保证系统在实际运行条件下的性能。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P080",
+          "target": "ER-P080-01",
+          "type": "derive",
+          "description": "由原始需求「中央冷却器出口温度稳定在36±1℃」和E-LT-CAP-001等证据派生。"
+        },
+        {
+          "source": "P080",
+          "target": "ER-P080-02",
+          "type": "derive",
+          "description": "由原始需求「调节周期不超过30秒」和E-CTRL-COOL-001等证据派生。"
+        },
+        {
+          "source": "P080",
+          "target": "ER-P080-03",
+          "type": "derive",
+          "description": "由原始需求「调试时需验证在海水温度32℃工况下」和E-IACS-M28-001等证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P080-02",
+          "gap_type": "parameter_source_gap",
+          "description": "缺少调节周期30秒的直接证据，现有证据仅间接支撑温度调节功能。",
+          "suggested_document_update": "补充温控阀厂家Technical Data或项目调试大纲中关于调节周期的具体限值。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认中央冷却器出口温度36±1℃的稳定判据（如允许波动幅度、持续时间）。",
+          "reason": "现有证据仅给出典型范围，未明确稳定判据，需厂家Technical Data或调试大纲确认。"
+        },
+        {
+          "item": "确认调节周期30秒的测试方法和验收标准。",
+          "reason": "无直接证据支撑30秒限值，需厂家Technical Data或项目调试大纲确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "中央冷却器出口温度控制参数",
+          "source_phrase": "中央冷却器出口温度稳定在36±1℃",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "温度调节响应时间",
+          "source_phrase": "调节周期不超过30秒",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "调试工况验证",
+          "source_phrase": "调试时需验证在海水温度32℃工况下",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:15",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P063",
+      "source_requirement_id": "P063",
+      "stakeholder": "自动化工程师",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水泵变频控制与节能运行要求，因缺乏直接证据，所有需求均基于原始需求文本整理，验收判据待补充证据后确认。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P063-01",
+          "parent_id": "ER-P063",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "冷却水泵变频控制",
+          "shall_statement": "冷却水泵应配置变频器，根据主机负荷信号自动调节泵转速以改变流量。",
+          "engineering_rationale": "本条覆盖方面【冷却水泵变频控制】，来自原始需求「冷却水泵变频控制功能，根据主机负荷自动调节流量」。当前无直接或间接证据支撑，基于原始需求文本整理。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法实现自动调节流量，导致能耗增加或冷却不足。"
+        },
+        {
+          "id": "ER-P063-02",
+          "parent_id": "ER-P063",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "节能运行模式",
+          "shall_statement": "变频控制应实现节能运行，在满足冷却需求前提下降低泵能耗。",
+          "engineering_rationale": "本条覆盖方面【节能运行模式】，来自原始需求「实现节能运行」。当前无直接或间接证据支撑，基于原始需求文本整理。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法量化节能效果，可能无法满足船东节能预期。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P063",
+          "target": "ER-P063-01",
+          "type": "derive",
+          "description": "由原始需求「冷却水泵变频控制功能，根据主机负荷自动调节流量」派生。"
+        },
+        {
+          "source": "P063",
+          "target": "ER-P063-02",
+          "type": "derive",
+          "description": "由原始需求「实现节能运行」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P063-01",
+          "gap_type": "control_alarm_evidence_gap",
+          "description": "缺少控制逻辑、报警阈值、传感器配置或试验验证类证据。",
+          "suggested_document_update": "补充控制逻辑说明、报警保护清单、I/O 表、传感器选型和功能试验大纲。"
+        },
+        {
+          "related_requirement_id": "ER-P063-02",
+          "gap_type": "judge_rejected_all",
+          "description": "有候选证据但均未达到直接或间接支撑标准。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认变频控制的具体控制逻辑（如PID参数、负荷信号来源）。",
+          "reason": "现有证据缺失，需设计方或厂家提供控制逻辑说明。"
+        },
+        {
+          "item": "确认节能运行模式的量化指标（如能耗降低百分比）。",
+          "reason": "原始需求仅定性要求节能，需补充具体指标。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水泵变频控制",
+          "source_phrase": "冷却水泵变频控制功能，根据主机负荷自动调节流量",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "节能运行模式",
+          "source_phrase": "实现节能运行",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:21",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P098",
+      "source_requirement_id": "P098",
+      "stakeholder": "船厂质量检验人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统压力试验时的管路及附件变形检查和法兰连接处渗漏检查要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P098-01",
+          "parent_id": "ER-P098",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "管路及附件压力试验变形检查",
+          "shall_statement": "冷却水系统压力试验时，应逐段检查管路及附件（如膨胀节、阀门）在试验压力下的变形情况，确保无异常变形。",
+          "engineering_rationale": "本条覆盖方面【管路及附件压力试验变形检查】，来自原始需求「应逐段检查管路及附件（如膨胀节、阀门）在试验压力下的变形情况」。E-PIPE-PTEST-012、E-PIPE-PTEST-AUTH-001、E-CCS-COOL-002、E-SUPP-WELD-002、E-IACS-M72-001 均支撑压力试验要求，其中 E-CCS-COOL-002 和 E-SUPP-WELD-002 明确要求管路水压试验按1.5倍设计压力保压30分钟，不得有渗漏，间接支撑变形检查。",
+          "acceptance_criteria": [
+            "压力试验过程中，逐段检查管路及附件，无肉眼可见的异常变形。",
+            "试验压力、保压时间按项目调试大纲或船级社规范确认。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-PIPE-PTEST-012",
+            "E-PIPE-PTEST-AUTH-001",
+            "E-CCS-COOL-002",
+            "E-SUPP-WELD-002",
+            "E-IACS-M72-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "试验压力值按船级社规范或项目设计文件确认，不同船级社要求可能不同。"
+          ],
+          "risk_if_unmet": "管路或附件在试验压力下发生变形可能导致泄漏或破裂，影响系统安全。"
+        },
+        {
+          "id": "ER-P098-02",
+          "parent_id": "ER-P098",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "法兰连接处渗漏检查",
+          "shall_statement": "冷却水系统压力试验时，应重点观察法兰连接处，确保无渗漏。",
+          "engineering_rationale": "本条覆盖方面【法兰连接处渗漏检查】，来自原始需求「重点观察法兰连接处无渗漏」。E-CCS-COOL-002 和 E-SUPP-WELD-002 明确要求管路水压试验不得有渗漏，直接支撑法兰连接处无渗漏的要求。",
+          "acceptance_criteria": [
+            "压力试验期间，所有法兰连接处无可见渗漏。",
+            "试验压力、保压时间按项目调试大纲或船级社规范确认。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-SUPP-WELD-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "法兰连接处渗漏会导致冷却水流失，影响系统正常运行。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P098",
+          "target": "ER-P098-01",
+          "type": "derive",
+          "description": "由原始需求「应逐段检查管路及附件（如膨胀节、阀门）在试验压力下的变形情况」派生。"
+        },
+        {
+          "source": "P098",
+          "target": "ER-P098-02",
+          "type": "derive",
+          "description": "由原始需求「重点观察法兰连接处无渗漏」派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认试验压力值和保压时间，按项目调试大纲或船级社规范确认。",
+          "reason": "现有证据虽提及1.5倍设计压力，但具体数值需按项目设计文件确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路及附件压力试验变形检查",
+          "source_phrase": "应逐段检查管路及附件（如膨胀节、阀门）在试验压力下的变形情况",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "法兰连接处渗漏检查",
+          "source_phrase": "重点观察法兰连接处无渗漏",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:27",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P054",
+      "source_requirement_id": "P054",
+      "stakeholder": "设备采购方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统流量和温度监测要求，包括各支路安装传感器并接入机舱监测报警系统。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P054-01",
+          "parent_id": "ER-P054",
+          "level": 1,
+          "requirement_type": "monitoring",
+          "topic": "冷却水支路流量温度监测",
+          "shall_statement": "主机冷却水系统各支路（包括HT冷却水回路和LT冷却水回路）应安装流量计和温度传感器，用于实时监测各支路的流量和温度。",
+          "engineering_rationale": "本条覆盖方面【冷却水支路流量温度监测】，来自原始需求「安装流量计和温度传感器，实时监测各支路流量和温度」。E-CTRL-COOL-002（IACS UR E10）支撑了各支路安装流量计和温度传感器的要求；E-ISO8861-002（ISO 8861:1998）支撑了温度监测的要求；E-IACS-M3-002（IACS UR M3.1）支撑了持续监控温度的要求。",
+          "acceptance_criteria": [
+            "检查系统设计图纸，确认各支路（HT和LT回路）均配置了流量计和温度传感器。",
+            "调试期间验证传感器信号输出正常，测量值在预期范围内。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法实时监测冷却水参数，可能导致冷却失效未被及时发现，影响主机安全。"
+        },
+        {
+          "id": "ER-P054-02",
+          "parent_id": "ER-P054",
+          "level": 1,
+          "requirement_type": "alarm",
+          "topic": "监测数据接入报警系统",
+          "shall_statement": "流量计和温度传感器的监测数据应接入机舱监测报警系统，并在参数异常时触发报警。",
+          "engineering_rationale": "本条覆盖方面【监测数据接入报警系统】，来自原始需求「接入机舱监测报警系统」。E-CTRL-COOL-002（IACS UR E10）支撑了报警接入船舶报警管理系统；E-ISO8861-002（ISO 8861:1998）支撑了报警在机控室和驾驶台显示；E-SOLAS-COOL-001（SOLAS Reg.26）支撑了温度异常时报警；E-CCS-COOL-001（CCS规则）支撑了高温报警和自动保护。",
+          "acceptance_criteria": [
+            "检查报警系统设计，确认流量和温度信号已接入机舱监测报警系统。",
+            "调试期间模拟流量过低或温度过高，验证报警功能正常。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "异常参数无法及时报警，可能导致冷却系统故障扩大，危及主机运行。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P054",
+          "target": "ER-P054-01",
+          "type": "derive",
+          "description": "由原始需求「安装流量计和温度传感器，实时监测各支路流量和温度」派生。"
+        },
+        {
+          "source": "P054",
+          "target": "ER-P054-02",
+          "type": "derive",
+          "description": "由原始需求「接入机舱监测报警系统」派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认流量计和温度传感器的具体型号、量程和精度要求。",
+          "reason": "现有证据未提供传感器选型参数，需根据系统设计规格书和厂家资料确认。"
+        },
+        {
+          "item": "确认报警设定值（如流量下限、温度上限）。",
+          "reason": "现有证据仅要求报警，未给出具体限值，需按主机厂家Technical Data和项目调试大纲确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水支路流量温度监测",
+          "source_phrase": "安装流量计和温度传感器，实时监测各支路流量和温度",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "监测数据接入报警系统",
+          "source_phrase": "接入机舱监测报警系统",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:34",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P079",
+      "source_requirement_id": "P079",
+      "stakeholder": "调试人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统调试用压力表接口的布置和量程要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P079-01",
+          "parent_id": "ER-P079",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "调试用压力表接口布置",
+          "shall_statement": "冷却水系统应在每台泵的出口和每个冷却用户的入口设置可拆卸的压力表接口，用于调试阶段压力测量。",
+          "engineering_rationale": "本条覆盖方面【调试用压力表接口布置】，来自原始需求「可拆卸的调试用压力表接口，位于每台泵的出口和每个冷却用户的入口」。无直接或间接证据支撑，基于原始需求文本整理。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "调试时无法方便地测量各关键点压力，影响系统调试效率和质量。"
+        },
+        {
+          "id": "ER-P079-02",
+          "parent_id": "ER-P079",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "压力表量程要求",
+          "shall_statement": "调试用压力表接口应适配量程为0-1.0 MPa的压力表。",
+          "engineering_rationale": "本条覆盖方面【压力表量程要求】，来自原始需求「量程为0-1.0 MPa」。无直接或间接证据支撑，基于原始需求文本整理。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "压力表量程不匹配可能导致测量不准确或损坏仪表。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P079",
+          "target": "ER-P079-01",
+          "type": "derive",
+          "description": "由原始需求「可拆卸的调试用压力表接口，位于每台泵的出口和每个冷却用户的入口」派生。"
+        },
+        {
+          "source": "P079",
+          "target": "ER-P079-02",
+          "type": "derive",
+          "description": "由原始需求「量程为0-1.0 MPa」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P079",
+          "gap_type": "installation_evidence_gap",
+          "description": "缺少与施工安装、管路布置、焊接空间、冲洗或试压直接相关的证据。",
+          "suggested_document_update": "优先补充船舶管系施工规范、管路布置标准、支吊架标准、冲洗和压力试验程序。"
+        },
+        {
+          "related_requirement_id": "ER-P079",
+          "gap_type": "parameter_source_gap",
+          "description": "缺少厂家技术数据、计算书或试验文件来确认参数限值。",
+          "suggested_document_update": "补充主机厂家 Technical Data、泵曲线、冷却器选型计算书、流量和压降计算书。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认压力表接口的螺纹规格和连接方式。",
+          "reason": "原始需求未明确接口尺寸，需根据常用压力表标准确认。"
+        },
+        {
+          "item": "确认压力表量程0-1.0 MPa是否覆盖所有工况下的压力范围。",
+          "reason": "原始需求直接给出量程，但需验证是否满足系统最高压力要求。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "调试用压力表接口布置",
+          "source_phrase": "可拆卸的调试用压力表接口，位于每台泵的出口和每个冷却用户的入口",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "压力表量程要求",
+          "source_phrase": "量程为0-1.0 MPa",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:41",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P076",
+      "source_requirement_id": "P076",
+      "stakeholder": "调试人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖中央冷却器出口临时温度传感器安装和温控阀线性调节精度校准的调试要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P076-01",
+          "parent_id": "ER-P076",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "中央冷却器出口临时温度传感器安装",
+          "shall_statement": "调试时应在中央冷却器出口管路安装临时温度传感器，传感器安装位置应便于读取和拆卸，且不应影响系统正常运行。",
+          "engineering_rationale": "本条覆盖方面【中央冷却器出口临时温度传感器安装】，来自原始需求「在中央冷却器出口安装临时温度传感器」。E-TSENS-PRESS-001 间接支撑了在热交换器出口安装温度传感器的合理性；E-TCV-TEMP-162 间接支撑了温度传感器用于温控阀校准的目的。",
+          "acceptance_criteria": [
+            "检查安装位置符合设计要求，传感器探头应完全浸入流体中。",
+            "临时传感器安装牢固，接线正确，信号可正常读取。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-TSENS-PRESS-001",
+            "E-TCV-TEMP-162"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "本条需求基于 Wärtsilä 32 和 MAN 49/60 产品指南证据，适用范围限于对应厂家和机型，其他厂家和机型应按各自 Technical Data 确认。"
+          ],
+          "risk_if_unmet": "无法准确测量冷却器出口温度，影响温控阀校准精度。"
+        },
+        {
+          "id": "ER-P076-02",
+          "parent_id": "ER-P076",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "温控阀线性调节精度校准",
+          "shall_statement": "调试期间应利用临时温度传感器，在温控阀25%-100%开度范围内校准其线性调节精度，确保温度控制特性符合设计要求。",
+          "engineering_rationale": "本条覆盖方面【温控阀线性调节精度校准】，来自原始需求「校准温控阀在25%-100%开度范围内的线性调节精度」。E-COMM-COOL-001 直接支撑了海试中在25%-100%负荷范围内验证温控阀功能；E-DNV-COOL-003 直接支撑了海试期间验证温控阀在全负荷范围内的正确操作；E-CCS-COOL-002 间接支撑了温控阀功能试验要求。",
+          "acceptance_criteria": [
+            "在温控阀25%、50%、75%、100%开度下记录冷却器出口温度，温度变化应呈线性趋势。",
+            "具体线性度偏差限值按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-COMM-COOL-001",
+            "E-DNV-COOL-003",
+            "E-CCS-COOL-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温控阀调节不线性可能导致冷却水温度波动，影响主机运行稳定性。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P076",
+          "target": "ER-P076-01",
+          "type": "derive",
+          "description": "由原始需求「在中央冷却器出口安装临时温度传感器」派生。"
+        },
+        {
+          "source": "P076",
+          "target": "ER-P076-02",
+          "type": "derive",
+          "description": "由原始需求「校准温控阀在25%-100%开度范围内的线性调节精度」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P076-01",
+          "gap_type": "only_indirect",
+          "description": "缺少直接证据明确临时温度传感器的安装方法、位置和固定方式。",
+          "suggested_document_update": "补充厂家安装指南或调试程序中的临时传感器安装要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认温控阀线性度偏差的具体验收限值。",
+          "reason": "现有证据仅要求验证功能，未给出线性度偏差的具体数值，需厂家 Technical Data 确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "中央冷却器出口临时温度传感器安装",
+          "source_phrase": "在中央冷却器出口安装临时温度传感器",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "温控阀线性调节精度校准",
+          "source_phrase": "校准温控阀在25%-100%开度范围内的线性调节精度",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:48",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P028",
+      "source_requirement_id": "P028",
+      "stakeholder": "船厂质量检验人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统安装和试验完成后的检查要求，包括管路密性、支架固定、传感器安装及交船前整改。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P028-01",
+          "parent_id": "ER-P028",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "管路密性检查",
+          "shall_statement": "冷却水系统管路安装完成后，应按设计压力进行水压试验，试验压力不低于设计压力的1.5倍，保压时间不少于30分钟，试验过程中管路应无泄漏。",
+          "engineering_rationale": "本条覆盖方面【管路密性检查】，来自原始需求「检查管路密性」。E-CCS-COOL-002（CCS规则）和E-IACS-M72-001（IACS UR M72）直接支撑了水压试验压力和保压时间要求。",
+          "acceptance_criteria": [
+            "水压试验压力不低于设计压力的1.5倍，保压时间不少于30分钟。",
+            "试验过程中管路无可见泄漏，压力无明显下降。",
+            "试验记录经验船师确认。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-IACS-M72-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路泄漏可能导致冷却水流失、主机过热，影响航行安全。"
+        },
+        {
+          "id": "ER-P028-02",
+          "parent_id": "ER-P028",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "支架固定检查",
+          "shall_statement": "冷却水系统管路支架应固定牢固，符合安装规范要求，确保管路在运行中无异常振动和位移。",
+          "engineering_rationale": "本条覆盖方面【支架固定检查】，来自原始需求「支架固定」。证据E-SUPP-MAINT-001间接支撑了安装规范概念，但无直接证据给出支架固定具体参数。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "支架固定不牢可能导致管路振动、接头松动甚至破裂。"
+        },
+        {
+          "id": "ER-P028-03",
+          "parent_id": "ER-P028",
+          "level": 1,
+          "requirement_type": "inspection",
+          "topic": "传感器安装检查",
+          "shall_statement": "冷却水系统温度传感器、压力传感器、液位传感器等应安装正确，接线牢固，信号接入监控系统，并完成校准。",
+          "engineering_rationale": "本条覆盖方面【传感器安装检查】，来自原始需求「传感器安装」。E-SUPP-COMM-001（调试前核查清单）间接支撑了传感器安装检查要求，但未给出具体校准参数。",
+          "acceptance_criteria": [
+            "传感器安装位置正确，接线牢固，信号正常。",
+            "校准记录应满足监控系统设计规格书要求。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-SUPP-COMM-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "传感器安装或校准错误可能导致监控数据失准，影响系统安全运行。"
+        },
+        {
+          "id": "ER-P028-04",
+          "parent_id": "ER-P028",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "交船前整改要求",
+          "shall_statement": "管路密性、支架固定、传感器安装等检查中发现的问题，应在交船前完成整改，并重新验证合格。",
+          "engineering_rationale": "本条覆盖方面【交船前整改要求】，来自原始需求「发现问题应在交船前整改」。E-DNV-COOL-003（DNV规则）和E-COMM-COOL-001（综合海试程序）直接支撑了试验问题需整改的要求。",
+          "acceptance_criteria": [
+            "所有发现的问题已整改并记录。",
+            "整改后经检验人员确认合格。",
+            "整改记录纳入交船文件。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-DNV-COOL-003",
+            "E-COMM-COOL-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "未整改的问题可能导致系统运行隐患，影响交船验收。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P028",
+          "target": "ER-P028-01",
+          "type": "derive",
+          "description": "由原始需求「检查管路密性」和E-CCS-COOL-002、E-IACS-M72-001直接证据派生。"
+        },
+        {
+          "source": "P028",
+          "target": "ER-P028-02",
+          "type": "derive",
+          "description": "由原始需求「支架固定」和证据缺口P028-02派生。"
+        },
+        {
+          "source": "P028",
+          "target": "ER-P028-03",
+          "type": "derive",
+          "description": "由原始需求「传感器安装」和E-SUPP-COMM-001间接证据派生。"
+        },
+        {
+          "source": "P028",
+          "target": "ER-P028-04",
+          "type": "derive",
+          "description": "由原始需求「发现问题应在交船前整改」和E-DNV-COOL-003、E-COMM-COOL-001直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P028-02",
+          "gap_type": "only_indirect",
+          "description": "支架固定检查缺少直接证据，仅有间接证据E-SUPP-MAINT-001支撑安装规范概念。",
+          "suggested_document_update": "补充规则条款原文、厂家Technical Data、安装指南或试验程序等直接证据以确认支架固定要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认管路水压试验的具体设计压力值。",
+          "reason": "试验压力为1.5倍设计压力，但设计压力需从设计文件确认。"
+        },
+        {
+          "item": "确认传感器校准的具体精度要求。",
+          "reason": "现有证据未给出传感器校准精度，需满足监控系统设计规格书要求。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路密性检查",
+          "source_phrase": "检查管路密性",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "支架固定检查",
+          "source_phrase": "支架固定",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "传感器安装检查",
+          "source_phrase": "传感器安装",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "交船前整改要求",
+          "source_phrase": "发现问题应在交船前整改",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:10:59",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P048",
+      "source_requirement_id": "P048",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水管路穿过水密舱壁时的安装要求，包括采用焊接式水密套管及满足船级社防火分隔要求。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P048-01",
+          "parent_id": "ER-P048",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "管路水密穿舱安装",
+          "shall_statement": "主机冷却水管路穿过水密舱壁时，应采用焊接式水密套管，焊接工艺和检验应满足船级社规范要求。",
+          "engineering_rationale": "本条覆盖方面【管路水密穿舱安装】，来自原始需求「采用焊接式水密套管」。E-SUPP-WELD-002（CCS规范）支撑了焊接质量、无损检测及水压试验要求；E-SUPP-WELD-001（IACS UR W7/W28）支撑了焊工资质、工艺评定及试验要求。",
+          "acceptance_criteria": [
+            "检查施工图纸确认水密套管采用焊接型式。",
+            "焊工应持有CCS或IACS认可证书。",
+            "焊接工艺评定（WPS/WPQR）应经船级社审批。",
+            "焊缝应100%外观检验，DN≥80mm高压管路应进行≥10%随机RT/UT。",
+            "安装后应进行1.5倍设计压力水压试验，保压时间不少于30分钟。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-SUPP-WELD-002",
+            "E-SUPP-WELD-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "水密性失效可能导致舱壁进水，影响船舶稳性和水密完整性。"
+        },
+        {
+          "id": "ER-P048-02",
+          "parent_id": "ER-P048",
+          "level": 1,
+          "requirement_type": "safety",
+          "topic": "穿舱防火分隔合规",
+          "shall_statement": "管路穿舱处应保持防火分隔的完整性，高温冷却水管路应进行隔热或标识，满足船级社防火分隔要求。",
+          "engineering_rationale": "本条覆盖方面【穿舱防火分隔合规】，来自原始需求「满足船级社防火分隔要求」。E-SUPP-SAFE-001（SOLAS/ISO）支撑了高温管路隔热和标识要求；E-IFACE-INST-001（46 CFR）支撑了穿舱详图提交要求。",
+          "acceptance_criteria": [
+            "高温冷却水管路（70–95°C）应进行绝热，使表面温度不超过55°C，绝热材料耐温不低于150°C并加铝皮护套。",
+            "无法绝热的高温表面应粘贴ISO 11684热警示标识，间距不大于2m。",
+            "管路应按ISO 14726进行色标标识。",
+            "穿舱详图应提交船级社审批，图中应体现材料、管径、设计压力等信息。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-SAFE-001",
+            "E-IFACE-INST-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "E-IFACE-INST-001基于USCG规则，适用范围以项目入级要求为准。"
+          ],
+          "risk_if_unmet": "防火分隔失效可能导致火灾蔓延，危及船舶安全。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P048",
+          "target": "ER-P048-01",
+          "type": "derive",
+          "description": "由原始需求「采用焊接式水密套管」和E-SUPP-WELD-002、E-SUPP-WELD-001直接证据派生。"
+        },
+        {
+          "source": "P048",
+          "target": "ER-P048-02",
+          "type": "derive",
+          "description": "由原始需求「满足船级社防火分隔要求」和E-SUPP-SAFE-001、E-IFACE-INST-001直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认E-IFACE-INST-001（USCG规则）是否适用于本项目入级船级社，若不适用则需按相应船级社规范补充穿舱详图要求。",
+          "reason": "证据来自USCG，适用范围有限。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路水密穿舱安装",
+          "source_phrase": "采用焊接式水密套管",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "穿舱防火分隔合规",
+          "source_phrase": "满足船级社防火分隔要求",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:11:07",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P090",
+      "source_requirement_id": "P090",
+      "stakeholder": "材料工程师",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖封闭式冷却水系统加热器换热管的材料选择要求，防止电偶腐蚀和应力腐蚀开裂导致的泄漏。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P090-01",
+          "parent_id": "ER-P090",
+          "level": 1,
+          "requirement_type": "material_selection",
+          "topic": "加热器换热管材料选择",
+          "shall_statement": "封闭式冷却水系统的加热器换热管应选用铜镍合金或钛材，以防止电偶腐蚀和应力腐蚀开裂导致的泄漏。",
+          "engineering_rationale": "本条覆盖方面【加热器换热管材料选择】，来自原始需求「加热器换热管应选用铜镍合金或钛材」。E-SYS-WATER-008（MTU手册）直接支撑了冷却回路中禁止使用铜、锌、黄铜及镀锌表面以防止电偶腐蚀，间接支撑了选用铜镍合金或钛材的合理性。",
+          "acceptance_criteria": [
+            "检查加热器换热管材料证明文件，确认材质为铜镍合金或钛材。",
+            "材料应符合相关标准（如ASTM B111、B338等），并提供材质证书。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SYS-WATER-008"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "本条需求基于MTU手册证据，适用范围限于MTU机型及类似系统，其他厂家和机型应按各自Technical Data确认材料兼容性。"
+          ],
+          "risk_if_unmet": "使用不当材料可能导致电偶腐蚀或应力腐蚀开裂，造成加热器泄漏，影响系统密封性和可靠性。"
+        },
+        {
+          "id": "ER-P090-02",
+          "parent_id": "ER-P090",
+          "level": 1,
+          "requirement_type": "corrosion_protection",
+          "topic": "电偶腐蚀防护",
+          "shall_statement": "加热器换热管材料应与冷却水系统其他部件材料兼容，避免形成电偶腐蚀对。",
+          "engineering_rationale": "本条覆盖方面【电偶腐蚀防护】，来自原始需求「防止因电偶腐蚀」。E-SYS-WATER-008直接支撑了冷却回路中禁止使用铜、锌、黄铜及镀锌表面以防止电偶腐蚀，间接支撑了材料兼容性要求。",
+          "acceptance_criteria": [
+            "检查系统材料清单，确认加热器换热管与管路、泵体等接触部件材料电位差在可接受范围内。",
+            "具体电位差限值按主机厂家Technical Data或相关标准确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SYS-WATER-008"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "本条需求基于MTU手册证据，适用范围限于MTU机型及类似系统，其他厂家和机型应按各自Technical Data确认材料兼容性。"
+          ],
+          "risk_if_unmet": "电偶腐蚀可能导致换热管穿孔泄漏，影响系统密封性和可靠性。"
+        },
+        {
+          "id": "ER-P090-03",
+          "parent_id": "ER-P090",
+          "level": 1,
+          "requirement_type": "corrosion_protection",
+          "topic": "应力腐蚀开裂防护",
+          "shall_statement": "加热器换热管材料应具有足够的抗应力腐蚀开裂能力，在冷却水工作环境下不发生应力腐蚀开裂。",
+          "engineering_rationale": "本条覆盖方面【应力腐蚀开裂防护】，来自原始需求「防止因应力腐蚀开裂」。E-SYS-WATER-008间接支撑了材料选择对腐蚀防护的重要性，但未直接涉及应力腐蚀开裂。",
+          "acceptance_criteria": [
+            "检查材料抗应力腐蚀开裂性能数据，确认铜镍合金或钛材在冷却水环境（含氯离子、温度等）下适用。",
+            "具体适用性按主机厂家Technical Data或相关标准确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SYS-WATER-008"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "本条需求基于MTU手册证据，适用范围限于MTU机型及类似系统，其他厂家和机型应按各自Technical Data确认材料抗应力腐蚀开裂性能。"
+          ],
+          "risk_if_unmet": "应力腐蚀开裂可能导致换热管突然泄漏，影响系统密封性和可靠性。"
+        },
+        {
+          "id": "ER-P090-04",
+          "parent_id": "ER-P090",
+          "level": 1,
+          "requirement_type": "reliability",
+          "topic": "加热器泄漏防护",
+          "shall_statement": "加热器换热管应通过材料选择防止泄漏，确保系统密封性和可靠性。",
+          "engineering_rationale": "本条覆盖方面【加热器泄漏防护】，来自原始需求「防止因电偶腐蚀或应力腐蚀开裂导致泄漏」。本条为evidence_gap，无直接证据支撑，基于原始需求整理。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "加热器泄漏可能导致冷却水流失，影响主机冷却能力，甚至造成设备损坏。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P090",
+          "target": "ER-P090-01",
+          "type": "derive",
+          "description": "由原始需求「加热器换热管应选用铜镍合金或钛材」和E-SYS-WATER-008间接证据派生。"
+        },
+        {
+          "source": "P090",
+          "target": "ER-P090-02",
+          "type": "derive",
+          "description": "由原始需求「防止因电偶腐蚀」和E-SYS-WATER-008间接证据派生。"
+        },
+        {
+          "source": "P090",
+          "target": "ER-P090-03",
+          "type": "derive",
+          "description": "由原始需求「防止因应力腐蚀开裂」和E-SYS-WATER-008间接证据派生。"
+        },
+        {
+          "source": "P090",
+          "target": "ER-P090-04",
+          "type": "derive",
+          "description": "由原始需求「防止因电偶腐蚀或应力腐蚀开裂导致泄漏」和evidence_gap派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P090-04",
+          "gap_type": "judge_rejected_all",
+          "description": "缺少直接或间接证据支撑加热器泄漏防护的具体要求，候选证据均被判定为不充分。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明，明确加热器泄漏防护的验收判据。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认加热器换热管材料（铜镍合金或钛材）在冷却水环境下的抗应力腐蚀开裂性能数据。",
+          "reason": "现有证据未直接涉及应力腐蚀开裂，需厂家Technical Data或相关标准确认。"
+        },
+        {
+          "item": "确认加热器换热管与系统其他部件的电偶腐蚀兼容性。",
+          "reason": "现有证据仅禁止铜、锌等材料，未给出电位差限值，需厂家Technical Data确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "加热器换热管材料选择",
+          "source_phrase": "加热器换热管应选用铜镍合金或钛材",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "电偶腐蚀防护",
+          "source_phrase": "防止因电偶腐蚀",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "应力腐蚀开裂防护",
+          "source_phrase": "防止因应力腐蚀开裂",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "加热器泄漏防护",
+          "source_phrase": "防止因电偶腐蚀或应力腐蚀开裂导致泄漏",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:11:18",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P081",
+      "source_requirement_id": "P081",
+      "stakeholder": "船级社验船师",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水温度自动调节、手动旁通功能及温度控制精度要求，基于IACS UR E10、M3.1、CCS规则和SOLAS公约等直接证据。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P081-01",
+          "parent_id": "ER-P081",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "冷却水温度自动调节",
+          "shall_statement": "主机冷却水系统应设置独立的温度调节阀，在主机所有运行工况下自动调节冷却水温度，使其稳定在制造厂规定的±2°C范围内。",
+          "engineering_rationale": "本条覆盖方面【冷却水温度自动调节】，来自原始需求「独立的温度调节阀，确保在主机各工况下冷却水温度稳定在制造厂规定的±2°C范围内」。E-CTRL-COOL-001（IACS UR E10）支撑了全负荷范围自动调节要求；E-IACS-M3-002（IACS UR M3.1）支撑了持续监控和温度稳定要求；E-CCS-COOL-001（CCS规则）支撑了高温报警和自动保护要求；E-SOLAS-COOL-001（SOLAS Reg.26）提供了上位依据。",
+          "acceptance_criteria": [
+            "检查设计图纸，确认配置了独立的温度调节阀，且控制回路满足全负荷范围自动调节。",
+            "调试期间在主机各典型工况（如25%、50%、75%、100%负荷）下验证温度稳定在制造厂规定值±2°C范围内，具体温度设定值按主机厂家Technical Data确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-COOL-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温度失控可能导致主机热应力过大、燃烧不良或部件损坏，影响主机可靠性和寿命。"
+        },
+        {
+          "id": "ER-P081-02",
+          "parent_id": "ER-P081",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "手动旁通功能",
+          "shall_statement": "温度调节阀应具备手动旁通功能，在自动控制失效或维护时可通过手动操作维持冷却水流通。",
+          "engineering_rationale": "本条覆盖方面【手动旁通功能】，来自原始需求「具备手动旁通功能」。E-CTRL-COOL-001（IACS UR E10）要求手动备用，直接支撑本条。",
+          "acceptance_criteria": [
+            "检查设计图纸，确认温度调节阀设有手动旁通管路或手动操作机构。",
+            "调试期间验证手动旁通操作可行，且手动模式下冷却水流量满足主机最低冷却需求，具体流量按主机厂家Technical Data确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "自动控制失效时无法手动维持冷却，可能导致主机停机。"
+        },
+        {
+          "id": "ER-P081-03",
+          "parent_id": "ER-P081",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却水温度控制精度",
+          "shall_statement": "冷却水温度控制精度应满足±2°C的偏差要求，适用于主机所有运行工况。",
+          "engineering_rationale": "本条覆盖方面【冷却水温度控制精度】，来自原始需求「稳定在制造厂规定的±2°C范围内」。E-PARAM-HT-001（间接证据）给出了典型温度范围但未明确±2°C精度，且证据缺口P081-03缺少直接证据。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "控制精度不足可能导致温度波动超出主机允许范围，影响燃烧和部件寿命。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P081",
+          "target": "ER-P081-01",
+          "type": "derive",
+          "description": "由原始需求「独立的温度调节阀，确保在主机各工况下冷却水温度稳定在制造厂规定的±2°C范围内」和E-CTRL-COOL-001等直接证据派生。"
+        },
+        {
+          "source": "P081",
+          "target": "ER-P081-02",
+          "type": "derive",
+          "description": "由原始需求「具备手动旁通功能」和E-CTRL-COOL-001直接证据派生。"
+        },
+        {
+          "source": "P081",
+          "target": "ER-P081-03",
+          "type": "derive",
+          "description": "由原始需求「稳定在制造厂规定的±2°C范围内」和证据缺口P081-03派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P081-03",
+          "gap_type": "only_indirect",
+          "description": "缺少直接证据支撑±2°C控制精度要求，仅有间接证据给出典型温度范围。",
+          "suggested_document_update": "补充主机厂家Technical Data中关于温度控制精度的规定，或相关试验报告。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家规定的冷却水温度设定值及±2°C控制精度是否适用所有工况。",
+          "reason": "原始需求要求±2°C，但证据中未明确该精度值，需厂家Technical Data确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水温度自动调节",
+          "source_phrase": "独立的温度调节阀，确保在主机各工况下冷却水温度稳定在制造厂规定的±2°C范围内",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "手动旁通功能",
+          "source_phrase": "具备手动旁通功能",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "冷却水温度控制精度",
+          "source_phrase": "稳定在制造厂规定的±2°C范围内",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:11:28",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P020",
+      "source_requirement_id": "P020",
+      "stakeholder": "调试人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统调试验证要求，包括泵组运行、阀门动作、温控调节、报警触发和主要冷却用户参数响应。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P020-01",
+          "parent_id": "ER-P020",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "泵组运行验证",
+          "shall_statement": "冷却水系统调试时应验证所有冷却水泵的启动、运行和备用泵自动切换功能。",
+          "engineering_rationale": "本条覆盖方面【泵组运行验证】，来自原始需求「验证泵组运行」。E-CCS-COOL-002 支撑了泵组功能试验要求；E-COMM-COOL-001 支撑了启动、运行和切换验证步骤；E-IACS-M51-001 支撑了船上试验中辅助系统兼容性验证；E-SUPP-COMM-001 支撑了调试前核查清单中泵的启动和备用泵自动启动检查。",
+          "acceptance_criteria": [
+            "检查调试记录，确认每台冷却水泵已启动并检查旋转方向、压力和流量。",
+            "模拟主泵故障，确认备用泵自动启动并建立正常运行压力，切换时间按项目调试大纲确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-COMM-COOL-001",
+            "E-IACS-M51-001",
+            "E-SUPP-COMM-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "泵组故障无法及时切换将导致冷却中断，影响主机安全。"
+        },
+        {
+          "id": "ER-P020-02",
+          "parent_id": "ER-P020",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "阀门动作验证",
+          "shall_statement": "冷却水系统调试时应验证所有冷却水阀件的动作，包括手动阀、电动阀及温控阀的开关和调节功能。",
+          "engineering_rationale": "本条覆盖方面【阀门动作验证】，来自原始需求「阀门动作」。E-CCS-COOL-002 支撑了阀件功能试验要求；E-COMM-COOL-001 支撑了温控阀功能验证；E-DNV-COOL-003 支撑了温控阀全范围动作验证。",
+          "acceptance_criteria": [
+            "检查调试记录，确认每个阀件已进行全行程动作测试，开关灵活、指示正确。",
+            "温控阀应在全范围（如全开至全关）内动作，调节响应符合设计要求。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-COMM-COOL-001",
+            "E-DNV-COOL-003"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "阀门动作失灵将导致冷却水流量失控，影响系统调节能力。"
+        },
+        {
+          "id": "ER-P020-03",
+          "parent_id": "ER-P020",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "温控调节验证",
+          "shall_statement": "冷却水系统调试时应验证温控阀的自动调节功能，确保冷却水温度在主机不同负荷下稳定在设定范围。",
+          "engineering_rationale": "本条覆盖方面【温控调节验证】，来自原始需求「温控调节」。E-COMM-COOL-001 支撑了温控阀功能验证和四负荷温压记录；E-DNV-COOL-003 支撑了温控阀全范围动作和100% MCR下4小时稳定温度验证。",
+          "acceptance_criteria": [
+            "在系泊和航行试验中，记录主机各负荷（如25%、50%、75%、100% MCR）下的冷却水温度，确认温控阀自动调节使温度稳定在设定范围内。",
+            "温控阀应能在全范围动作，调节响应时间按项目调试大纲确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-COMM-COOL-001",
+            "E-DNV-COOL-003"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温控调节失效将导致冷却水温度异常，影响主机性能和寿命。"
+        },
+        {
+          "id": "ER-P020-04",
+          "parent_id": "ER-P020",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "报警与参数响应验证",
+          "shall_statement": "冷却水系统调试时应验证所有报警触发功能（包括高温、低压、低液位等）以及主要冷却用户（如主机、发电机等）的参数响应。",
+          "engineering_rationale": "本条覆盖方面【报警与参数响应验证】，来自原始需求「报警触发和主要冷却用户参数响应」。E-CCS-COOL-002 支撑了报警功能试验要求；E-COMM-COOL-001 支撑了高温报警和低液位报警测试；E-IACS-M51-001 支撑了报警和跳闸功能验证；E-DNV-COOL-003 支撑了高温报警和自动保护功能验证。",
+          "acceptance_criteria": [
+            "模拟各报警条件（如冷却水高温、低压、膨胀水箱低液位），确认报警信号正确触发并传入集控室监控系统。",
+            "在主机各负荷下记录主要冷却用户的冷却水进出口温度和压力，确认参数响应在正常范围内。",
+            "报警设定值按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-COMM-COOL-001",
+            "E-IACS-M51-001",
+            "E-DNV-COOL-003"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "报警失效或参数异常无法及时发现，可能导致设备损坏。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P020",
+          "target": "ER-P020-01",
+          "type": "derive",
+          "description": "由原始需求「验证泵组运行」和直接证据派生。"
+        },
+        {
+          "source": "P020",
+          "target": "ER-P020-02",
+          "type": "derive",
+          "description": "由原始需求「阀门动作」和直接证据派生。"
+        },
+        {
+          "source": "P020",
+          "target": "ER-P020-03",
+          "type": "derive",
+          "description": "由原始需求「温控调节」和直接证据派生。"
+        },
+        {
+          "source": "P020",
+          "target": "ER-P020-04",
+          "type": "derive",
+          "description": "由原始需求「报警触发和主要冷却用户参数响应」和直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认备用泵自动切换时间限值。",
+          "reason": "现有证据要求切换功能但未给出具体时间，需按项目调试大纲确认。"
+        },
+        {
+          "item": "确认温控阀调节响应时间。",
+          "reason": "现有证据要求温控阀功能验证但未给出具体时间，需按项目调试大纲确认。"
+        },
+        {
+          "item": "确认报警设定值（如高温、低压、低液位）。",
+          "reason": "现有证据要求报警测试但未给出具体数值，需按主机厂家 Technical Data 确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "泵组运行验证",
+          "source_phrase": "验证泵组运行",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "阀门动作验证",
+          "source_phrase": "阀门动作",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "温控调节验证",
+          "source_phrase": "温控调节",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "报警与参数响应验证",
+          "source_phrase": "报警触发和主要冷却用户参数响应",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:11:40",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P060",
+      "source_requirement_id": "P060",
+      "stakeholder": "轮机长",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖滑油冷却器旁通管路操作、滑油系统安全保护和旁通管路控制逻辑，确保在滑油温度过高时能临时旁通冷却器以维持滑油系统安全。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P060-01",
+          "parent_id": "ER-P060",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "滑油冷却器旁通管路操作",
+          "shall_statement": "冷却水系统应配置独立的滑油冷却器旁通管路，允许在滑油温度过高时临时旁通冷却器，以维持滑油系统安全运行。",
+          "engineering_rationale": "本条覆盖方面【滑油冷却器旁通管路操作】，来自原始需求「独立的滑油冷却器旁通管路」。证据E-CTRL-COOL-001、E-SUPP-LDR-001、E-CCS-COOL-001、E-IACS-M3-002均涉及冷却水系统温度控制和保护，但未直接提及滑油冷却器旁通管路的具体操作要求，故设为evidence_gap。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "滑油温度过高时无法旁通冷却器，可能导致滑油系统过热失效，影响主机安全。"
+        },
+        {
+          "id": "ER-P060-02",
+          "parent_id": "ER-P060",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "滑油系统安全保护",
+          "shall_statement": "旁通管路设计应确保在滑油温度过高时能有效降低滑油温度，防止滑油系统因过热而失效。",
+          "engineering_rationale": "本条覆盖方面【滑油系统安全保护】，来自原始需求「确保滑油系统安全」。证据E-SUPP-LDR-001和E-CCS-COOL-001涉及高温保护逻辑，但未直接针对滑油冷却器旁通后的降温效果，故设为evidence_gap。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "旁通后无法有效降温，滑油系统仍可能过热失效。"
+        },
+        {
+          "id": "ER-P060-03",
+          "parent_id": "ER-P060",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "旁通管路控制逻辑",
+          "shall_statement": "滑油冷却器旁通管路应设置自动或手动控制阀，当滑油温度超过设定值时自动开启旁通，或允许操作人员手动开启旁通。",
+          "engineering_rationale": "本条覆盖方面【旁通管路控制逻辑】，来自原始需求「滑油温度过高时临时旁通冷却」。证据E-CTRL-COOL-001要求冷却水温控系统具备自动调节和手动备用功能，可类比应用于旁通控制逻辑；E-SUPP-LDR-001和E-CCS-COOL-001支持高温自动保护逻辑。但证据未直接针对滑油冷却器旁通，故设为evidence_gap。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法及时旁通冷却器，滑油温度持续升高导致保护动作或设备损坏。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P060",
+          "target": "ER-P060-01",
+          "type": "derive",
+          "description": "由原始需求「独立的滑油冷却器旁通管路」派生。"
+        },
+        {
+          "source": "P060",
+          "target": "ER-P060-02",
+          "type": "derive",
+          "description": "由原始需求「确保滑油系统安全」派生。"
+        },
+        {
+          "source": "P060",
+          "target": "ER-P060-03",
+          "type": "derive",
+          "description": "由原始需求「滑油温度过高时临时旁通冷却」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P060-01",
+          "gap_type": "judge_rejected_all",
+          "description": "缺少直接支撑滑油冷却器旁通管路操作要求的证据，现有证据均未涉及滑油冷却器旁通的具体设计或操作。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明，例如主机厂家关于滑油冷却器旁通管路的推荐配置和操作程序。"
+        },
+        {
+          "related_requirement_id": "ER-P060-02",
+          "gap_type": "judge_rejected_all",
+          "description": "缺少直接支撑旁通后降温效果和滑油系统安全保护要求的证据。",
+          "suggested_document_update": "补充滑油冷却器旁通后的热平衡计算或厂家技术数据，证明旁通后能有效降低滑油温度。"
+        },
+        {
+          "related_requirement_id": "ER-P060-03",
+          "gap_type": "judge_rejected_all",
+          "description": "缺少直接支撑旁通管路控制逻辑（自动/手动）要求的证据，现有证据仅涉及冷却水系统控制，未针对滑油冷却器旁通。",
+          "suggested_document_update": "补充滑油冷却器旁通控制逻辑的设计标准或厂家推荐方案。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认滑油冷却器旁通管路的控制方式（自动/手动）及温度设定值。",
+          "reason": "现有证据未提供具体控制逻辑和参数，需厂家Technical Data确认。"
+        },
+        {
+          "item": "确认旁通管路的设计压力、温度等级和材料要求。",
+          "reason": "原始需求未明确，需结合滑油系统设计参数确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "滑油冷却器旁通管路操作",
+          "source_phrase": "独立的滑油冷却器旁通管路",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "滑油系统安全保护",
+          "source_phrase": "确保滑油系统安全",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "旁通管路控制逻辑",
+          "source_phrase": "滑油温度过高时临时旁通冷却",
+          "implication_type": "direct_implication"
+        }
+      ],
+      "generated_at": "2026-05-27T02:11:50",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P096",
+      "source_requirement_id": "P096",
+      "stakeholder": "船厂质量检验人员",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水管路焊缝无损检测要求，包括检测比例、方法、人员资质及报告提交。",
+      "assumptions": [],
+      "engineering_requirements": [],
+      "relationships": [],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-P096-01-01",
+          "gap_type": "scope_violation",
+          "description": "topic '无损检测比例' 不在 allowed_engineering_aspects 列表中，已从工程需求中移除。若确需覆盖该方面，请在原始需求中补充相应内容。",
+          "suggested_document_update": "在原始需求中明确提及该工程方面。"
+        },
+        {
+          "related_requirement_id": "ER-P096-01-02",
+          "gap_type": "scope_violation",
+          "description": "topic '水压试验' 不在 allowed_engineering_aspects 列表中，已从工程需求中移除。若确需覆盖该方面，请在原始需求中补充相应内容。",
+          "suggested_document_update": "在原始需求中明确提及该工程方面。"
+        },
+        {
+          "related_requirement_id": "ER-P096-01-03",
+          "gap_type": "scope_violation",
+          "description": "topic '检测报告提交' 不在 allowed_engineering_aspects 列表中，已从工程需求中移除。若确需覆盖该方面，请在原始需求中补充相应内容。",
+          "suggested_document_update": "在原始需求中明确提及该工程方面。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认具体无损检测比例（如10%或更高）是否适用于本船冷却水管路的设计压力和管径。",
+          "reason": "证据中给出了不同管径的检测比例，需根据实际设计参数确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路焊缝无损检测",
+          "source_phrase": "应按比例进行无损检测（如射线或超声波探伤），确保焊缝质量符合船级社规范，并提供检测报告",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:12:01",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P044",
+      "source_requirement_id": "P044",
+      "stakeholder": "系统设计方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统应急冷却模式要求，包括备用泵自动切换、控制逻辑、低速运行工况及系统可靠性。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P044-01",
+          "parent_id": "ER-P044",
+          "level": 1,
+          "requirement_type": "redundancy",
+          "topic": "应急冷却模式与备用泵自动切换",
+          "shall_statement": "主机冷却水系统应配置应急冷却模式，当海水泵故障时，系统应能自动切换至应急海水吸入或备用泵，维持主机冷却水供应。",
+          "engineering_rationale": "本条覆盖方面【应急冷却模式与备用泵自动切换】，来自原始需求「在海水泵故障时自动切换至应急海水吸入或备用泵」。E-DNV-COOL-002（DNV规则）支撑了备用泵自动切换要求；E-SOLAS-COOL-001（SOLAS Reg.26）支撑了主泵故障时冷却持续的要求；E-CCS-COOL-001（CCS规则）支撑了自动保护要求；E-IACS-M3-001（IACS UR M3.1）支撑了冗余配置要求。",
+          "acceptance_criteria": [
+            "检查系统设计图纸，确认设有应急冷却模式及自动切换回路。",
+            "调试期间模拟海水泵故障，确认系统自动切换至备用泵或应急海水吸入，切换时间按项目调试大纲确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "海水泵故障后无法自动切换将导致主机冷却中断，可能造成主机损坏或停机。"
+        },
+        {
+          "id": "ER-P044-02",
+          "parent_id": "ER-P044",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "自动切换控制逻辑",
+          "shall_statement": "系统应设置自动检测海水泵故障的逻辑，当检测到海水泵故障（如出口压力低）时，应自动发出切换指令，启动备用泵或打开应急海水吸入阀，并触发报警。",
+          "engineering_rationale": "本条覆盖方面【自动切换控制逻辑】，来自原始需求「自动切换」。E-SUPP-LDR-001（IACS UR E10）支撑了低压报警触发自动切换备用泵的逻辑；E-DNV-COOL-002支撑了自动切换并触发报警的要求。",
+          "acceptance_criteria": [
+            "审查控制逻辑图，确认包含海水泵故障检测、自动切换指令和报警功能。",
+            "调试期间模拟海水泵低压故障，确认备用泵自动启动或应急海水吸入阀打开，同时集控室发出报警。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-DNV-COOL-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "控制逻辑缺失或错误将导致自动切换失败，无法实现应急冷却。"
+        },
+        {
+          "id": "ER-P044-03",
+          "parent_id": "ER-P044",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "主机低速运行工况",
+          "shall_statement": "在应急冷却模式下，系统应能维持主机在低速运行工况下的冷却需求，确保主机各冷却参数不超过厂家规定的限值。",
+          "engineering_rationale": "本条覆盖方面【主机低速运行工况】，来自原始需求「维持主机低速运行」。E-IACS-M3-003（IACS UR M3.1）支撑了冷却水泵容量余量要求，确保应急工况下散热能力；E-LT-CAP-001（DNV规则）支撑了低温回路容量设计；E-ISO8861-001（ISO 8861）支撑了换热器容量余量要求。",
+          "acceptance_criteria": [
+            "进行热平衡计算，确认应急冷却模式下冷却能力满足主机低速运行散热需求，具体参数按主机厂家Technical Data确认。",
+            "调试期间在应急冷却模式下运行主机，确认冷却水温度、压力等参数在厂家允许范围内。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-LT-CAP-001",
+            "E-ISO8861-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "应急冷却能力不足将导致主机过热，无法维持低速运行。"
+        },
+        {
+          "id": "ER-P044-04",
+          "parent_id": "ER-P044",
+          "level": 1,
+          "requirement_type": "reliability",
+          "topic": "应急冷却模式可靠性",
+          "shall_statement": "应急冷却模式应具有高可靠性，其关键部件（如备用泵、应急海水吸入阀、控制逻辑）应定期测试，确保在需要时能正常投入运行。",
+          "engineering_rationale": "本条覆盖方面【应急冷却模式可靠性】，来自原始需求「具备应急冷却模式」。E-SOLAS-COOL-001（SOLAS Reg.26）支撑了冷却系统可靠性要求；E-CCS-COOL-001（CCS规则）支撑了自动保护要求。",
+          "acceptance_criteria": [
+            "审查系统设计，确认应急冷却模式的关键部件具备测试手段。",
+            "调试期间进行应急冷却模式功能测试，确认各部件动作正常。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "应急冷却模式不可靠将导致实际故障时无法有效冷却主机。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P044",
+          "target": "ER-P044-01",
+          "type": "derive",
+          "description": "由原始需求「应急冷却模式与备用泵自动切换」和E-DNV-COOL-002等直接证据派生。"
+        },
+        {
+          "source": "P044",
+          "target": "ER-P044-02",
+          "type": "derive",
+          "description": "由原始需求「自动切换」和E-SUPP-LDR-001直接证据派生。"
+        },
+        {
+          "source": "P044",
+          "target": "ER-P044-03",
+          "type": "derive",
+          "description": "由原始需求「维持主机低速运行」和E-IACS-M3-003等间接证据派生。"
+        },
+        {
+          "source": "P044",
+          "target": "ER-P044-04",
+          "type": "derive",
+          "description": "由原始需求「具备应急冷却模式」和E-SOLAS-COOL-001等间接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认主机低速运行工况下的具体冷却水流量、温度限值。",
+          "reason": "现有证据未给出主机低速运行时的具体参数，需主机厂家Technical Data确认。"
+        },
+        {
+          "item": "确认应急冷却模式下备用泵的切换时间要求。",
+          "reason": "现有证据未给出具体切换时间限值，需项目调试大纲确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "应急冷却模式与备用泵自动切换",
+          "source_phrase": "在海水泵故障时自动切换至应急海水吸入或备用泵",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "自动切换控制逻辑",
+          "source_phrase": "自动切换",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "主机低速运行工况",
+          "source_phrase": "维持主机低速运行",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "应急冷却模式可靠性",
+          "source_phrase": "具备应急冷却模式",
+          "implication_type": "direct_implication"
+        }
+      ],
+      "generated_at": "2026-05-27T02:12:14",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    },
+    {
+      "requirement_set_id": "ER-P011",
+      "source_requirement_id": "P011",
+      "stakeholder": "轮机长",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统集控室监测要求，明确需显示的关键参数及报警功能。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-P011-01",
+          "parent_id": "ER-P011",
+          "level": 1,
+          "requirement_type": "monitoring",
+          "topic": "集控室参数监测",
+          "shall_statement": "主机冷却水系统应在集控室设置监测面板，清楚显示HT冷却水出机温度、HT冷却水进机压力、膨胀水箱液位、LT冷却水出中央冷却器温度、冷却水泵运行状态等关键参数，并具备超限报警功能，所有报警信号应接入船舶报警管理系统。",
+          "engineering_rationale": "本条覆盖方面【集控室参数监测】，来自原始需求「集控室应能清楚显示冷却水温度、压力、液位、泵运行状态等关键参数」。E-CTRL-COOL-002（IACS UR E10）支撑了HT出机高温报警、进机低压报警、LT出中央冷却器高温报警、膨胀水箱低液位报警、泵运行状态指示及报警接入要求；E-ISO8861-002（ISO 8861:1998）支撑了监测HT出机高温、进机低压、膨胀水箱低液位、LT冷却水高温及报警显示要求。",
+          "acceptance_criteria": [
+            "检查集控室监测面板图纸，确认包含HT出机温度、HT进机压力、膨胀水箱液位、LT出中央冷却器温度、泵运行状态等参数显示。",
+            "调试期间模拟各参数超限，确认报警信号在集控室和驾驶台正确显示，并接入船舶报警管理系统。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法实时监测关键参数可能导致冷却系统异常未被及时发现，引发主机过热或损坏。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "P011",
+          "target": "ER-P011-01",
+          "type": "derive",
+          "description": "由原始需求「集控室参数监测」和E-CTRL-COOL-002、E-ISO8861-002直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认集控室监测面板的具体显示精度和报警设定值。",
+          "reason": "现有证据仅要求显示和报警，未给出具体精度和设定值，需按监控系统设计规格书和厂家Technical Data确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "集控室参数监测",
+          "source_phrase": "集控室应能清楚显示冷却水温度、压力、液位、泵运行状态等关键参数",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-05-27T02:12:19",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G3"
+    }
+  ]
+}

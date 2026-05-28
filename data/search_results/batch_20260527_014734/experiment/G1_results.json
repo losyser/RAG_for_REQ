@@ -1,0 +1,1881 @@
+{
+  "group": "G1",
+  "result_sets": [
+    {
+      "requirement_set_id": "ER-G1-P052",
+      "source_requirement_id": "P052",
+      "stakeholder": "设备采购方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水管道需采用耐海水腐蚀材料并设置阴极保护系统，以确保长期可靠运行。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P052-01",
+          "parent_id": "ER-G1-P052",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "管道材料",
+          "shall_statement": "冷却水管道材料应选用耐海水腐蚀的材料，如铜镍合金或双相不锈钢，具体材料牌号及规格需经制造商技术资料确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "管道材料符合制造商技术资料中规定的耐海水腐蚀要求"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管道腐蚀导致冷却水泄漏，影响主机冷却系统可靠性"
+        },
+        {
+          "id": "ER-G1-P052-02",
+          "parent_id": "ER-G1-P052",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "阴极保护系统",
+          "shall_statement": "冷却水管道系统应设置牺牲阳极或外加电流阴极保护系统，具体类型、数量及安装位置需经制造商技术资料确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "阴极保护系统按制造商技术资料要求安装并有效"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管道电化学腐蚀加速，缩短使用寿命"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "管道材料具体牌号及规格",
+        "阴极保护系统类型及参数"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P049",
+      "source_requirement_id": "P049",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "膨胀水柜的安装高度需高于主发动机最高点至少1米，并配备液位计和低液位报警接口，以确保冷却系统膨胀容积和低液位报警功能。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P049-01",
+          "parent_id": "ER-G1-P049",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "膨胀水柜安装高度",
+          "shall_statement": "膨胀水柜的安装位置应高于主发动机冷却水系统最高点至少1米。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "膨胀水柜底部至主发动机冷却水系统最高点的垂直距离不小于1米"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "膨胀水柜高度不足可能导致冷却系统无法正常排气或膨胀容积不足，引起系统压力波动或气蚀。"
+        },
+        {
+          "id": "ER-G1-P049-02",
+          "parent_id": "ER-G1-P049",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "膨胀水柜液位计",
+          "shall_statement": "膨胀水柜应配备液位计，用于就地指示柜内冷却液液位。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "液位计安装牢固，刻度清晰，便于观察"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法直观监测液位，可能导致冷却液不足或溢出。"
+        },
+        {
+          "id": "ER-G1-P049-03",
+          "parent_id": "ER-G1-P049",
+          "level": 1,
+          "requirement_type": "alarm_protection",
+          "topic": "膨胀水柜低液位报警接口",
+          "shall_statement": "膨胀水柜应设置低液位报警接口，用于连接报警装置，当液位低于设定值时触发报警。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "接口规格符合设计要求，报警设定值可调，低液位时能输出报警信号"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "低液位无法及时报警，可能导致冷却系统缺水损坏发动机。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P026",
+      "source_requirement_id": "P026",
+      "stakeholder": "运维管理人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需具备运行维护记录功能，确保数据可追溯，便于运维管理。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P026-01",
+          "parent_id": "ER-G1-P026",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "运行维护记录功能",
+          "shall_statement": "冷却水系统应具备运行维护记录功能，能够自动记录关键运行参数（如温度、压力、流量等）及维护操作事件，并生成可追溯的运行维护数据。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "系统能够自动记录并存储至少最近12个月的运行数据",
+            "记录数据包括时间戳、参数值、操作事件等",
+            "数据可通过人机界面或外部接口查询和导出"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法追溯历史运行状态，影响故障分析和维护决策"
+        },
+        {
+          "id": "ER-G1-P026-02",
+          "parent_id": "ER-G1-P026",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "数据可追溯性",
+          "shall_statement": "冷却水系统的运行维护数据应具备可追溯性，每条记录应包含唯一标识、时间戳及操作人员信息，确保数据完整性和不可篡改性。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "每条记录包含唯一ID、精确到秒的时间戳",
+            "数据存储采用防篡改机制（如日志文件只读或数字签名）",
+            "支持按时间、参数、操作人员等条件检索历史记录"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "数据可信度降低，无法满足审计和合规要求"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认系统数据存储容量和记录频率的具体要求",
+        "确认操作人员身份认证方式（如工号、指纹等）"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P077",
+      "source_requirement_id": "P077",
+      "stakeholder": "调试人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "为满足调试人员对主海水冷却系统备用泵自动切换响应时间测试的需求，系统需配置独立的临时旁通管路，以便在模拟单台泵故障时，能够安全、准确地测量备用泵的启动和切换时间。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P077-01",
+          "parent_id": "ER-G1-P077",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "临时旁通管路配置",
+          "shall_statement": "主海水冷却系统应配置独立的调试用临时旁通管路，该管路应能模拟单台泵故障工况，并允许接入测试仪器以测量备用泵的自动切换响应时间。",
+          "engineering_rationale": "临时旁通管路为调试提供隔离和模拟手段，确保在不影响系统正常运行的情况下进行切换时间测试。",
+          "acceptance_criteria": [
+            "临时旁通管路应包含隔离阀门，以便在测试时隔离故障泵",
+            "管路应设有测试接口，便于连接计时或流量测量设备",
+            "管路设计应能承受系统最大工作压力"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法准确测量备用泵切换时间，影响系统可靠性验证"
+        },
+        {
+          "id": "ER-G1-P077-02",
+          "parent_id": "ER-G1-P077",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "切换响应时间测量",
+          "shall_statement": "临时旁通管路应支持测量备用泵从故障信号发出到稳定运行的响应时间，测量精度应满足调试要求。",
+          "engineering_rationale": "响应时间是评估备用泵自动切换性能的关键参数，需通过测试验证。",
+          "acceptance_criteria": [
+            "响应时间测量误差不超过±0.1秒",
+            "测试结果应记录并可与设计指标对比"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法验证切换时间是否满足设计要求"
+        },
+        {
+          "id": "ER-G1-P077-03",
+          "parent_id": "ER-G1-P077",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "临时管路安全",
+          "shall_statement": "临时旁通管路的设计和安装应确保在调试过程中不会对主海水冷却系统造成泄漏、压力波动或其他安全隐患。",
+          "engineering_rationale": "临时管路可能引入额外风险，需确保其不影响系统安全。",
+          "acceptance_criteria": [
+            "管路连接处无泄漏",
+            "压力波动在系统允许范围内",
+            "测试完成后可安全拆除"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "可能导致系统故障或人员伤害"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "临时旁通管路的接口尺寸和压力等级需与主系统匹配，具体数值待制造商技术资料确认",
+        "响应时间测试的具体方法和验收标准需进一步明确"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P023",
+      "source_requirement_id": "P023",
+      "stakeholder": "材料工程师",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该要求确保冷却水系统所有部件材料在预期工况下具有足够的耐腐蚀性、耐温性和耐压性，以保障系统长期可靠运行。",
+      "assumptions": [
+        "冷却介质为海水或淡水，具体成分待定",
+        "系统工作温度范围待定",
+        "系统工作压力范围待定"
+      ],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P023-01",
+          "parent_id": "ER-G1-P023",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "材料耐腐蚀性",
+          "shall_statement": "冷却水系统管路、阀门、冷却器等与冷却介质接触的部件材料应具有耐腐蚀性，其腐蚀速率应满足制造商技术数据要求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "材料腐蚀速率不超过制造商技术数据规定的限值",
+            "材料在冷却介质中浸泡后无点蚀、缝隙腐蚀等局部腐蚀"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "材料腐蚀导致泄漏、系统失效，危及主机安全运行"
+        },
+        {
+          "id": "ER-G1-P023-02",
+          "parent_id": "ER-G1-P023",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "材料耐温性",
+          "shall_statement": "冷却水系统管路、阀门、冷却器等部件材料应能在最高工作温度下保持足够的机械强度和尺寸稳定性，具体温度限值待制造商技术数据确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "材料在最高工作温度下拉伸强度、屈服强度不低于制造商技术数据规定值",
+            "材料在最高工作温度下无显著蠕变或变形"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "高温下材料强度下降导致破裂或泄漏"
+        },
+        {
+          "id": "ER-G1-P023-03",
+          "parent_id": "ER-G1-P023",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "材料耐压性",
+          "shall_statement": "冷却水系统管路、阀门、冷却器等部件材料应能承受系统最大工作压力而不发生永久变形或破裂，具体压力值待制造商技术数据确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "材料在最大工作压力下无泄漏或破裂",
+            "材料在压力试验后无残余变形"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "压力过高导致部件爆裂，造成严重安全事故"
+        },
+        {
+          "id": "ER-G1-P023-04",
+          "parent_id": "ER-G1-P023",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "材料选型规范",
+          "shall_statement": "冷却水系统所有与冷却介质接触的部件材料应选用耐海水腐蚀或经防腐处理的材料，如铜镍合金、不锈钢或经认可的涂层材料，具体牌号待制造商技术数据确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "材料选型符合相关船级社规范要求",
+            "材料具有有效的防腐涂层或镀层（如适用）"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "材料不适用导致腐蚀加速，缩短系统寿命"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [
+        "缺少冷却介质具体成分（海水/淡水及盐度）",
+        "缺少系统工作温度范围",
+        "缺少系统工作压力范围",
+        "缺少材料具体牌号及性能数据"
+      ],
+      "confirmation_items": [
+        "确认冷却介质类型及成分",
+        "确认系统最高工作温度和最大工作压力",
+        "确认材料制造商技术数据"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P030",
+      "source_requirement_id": "P030",
+      "stakeholder": "项目管理方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "确保冷却水系统从需求定义到最终验收的全生命周期文档一致且变更可追溯，以支持系统完整性管理和合规性审查。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P030-01",
+          "parent_id": "ER-G1-P030",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "文档一致性",
+          "shall_statement": "冷却水系统的需求、设计、采购、施工、调试和验收资料应保持一致，所有文档版本应相互对应，无矛盾或遗漏。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "所有相关文档经审核确认内容一致",
+            "文档版本号及修订记录完整"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "文档不一致可能导致系统设计错误、施工偏差、调试失败或验收不合格，增加返工成本和项目延误风险。"
+        },
+        {
+          "id": "ER-G1-P030-02",
+          "parent_id": "ER-G1-P030",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "变更可追溯性",
+          "shall_statement": "冷却水系统的所有变更应记录在案，包括变更原因、内容、审批、实施和验证信息，确保变更可追溯。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "变更记录包含完整的时间戳、责任人、变更描述和审批签名",
+            "变更后相关文档已更新并保持一致性"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "变更不可追溯可能导致系统状态失控，影响后续维护、故障排查和合规性审查。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P032",
+      "source_requirement_id": "P032",
+      "stakeholder": "船东代表",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该要求规定了主机冷却水系统应为闭式循环，使用经防锈防垢处理的淡水，并设置膨胀水箱以容纳热胀冷缩、提供补水和排气功能。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P032-01",
+          "parent_id": "ER-G1-P032",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "冷却水系统型式",
+          "shall_statement": "主机冷却水系统应设计为闭式循环系统。",
+          "engineering_rationale": "闭式循环可减少冷却水消耗，防止外部杂质进入，提高系统可靠性。",
+          "acceptance_criteria": [
+            "系统设计图纸显示为闭式循环回路"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "冷却水消耗大，易受污染，影响主机冷却效果和寿命。"
+        },
+        {
+          "id": "ER-G1-P032-02",
+          "parent_id": "ER-G1-P032",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却水水质处理",
+          "shall_statement": "冷却水应采用经防锈和防垢处理的淡水，水质参数（如pH值、硬度、氯离子含量等）应符合制造商技术规范。",
+          "engineering_rationale": "防锈防垢处理可防止冷却系统腐蚀和结垢，保证热交换效率。",
+          "acceptance_criteria": [
+            "水质处理报告符合制造商要求"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "系统腐蚀或结垢，导致冷却效率下降，设备损坏。"
+        },
+        {
+          "id": "ER-G1-P032-03",
+          "parent_id": "ER-G1-P032",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "膨胀水箱设置",
+          "shall_statement": "冷却水系统应设置膨胀水箱，其容积应能容纳系统水容积热胀冷缩的变化量，并提供系统补水和排气功能。",
+          "engineering_rationale": "膨胀水箱补偿体积变化，维持系统压力稳定，并排出空气，防止气蚀。",
+          "acceptance_criteria": [
+            "膨胀水箱容积计算书显示满足热胀冷缩需求",
+            "膨胀水箱设有补水管和排气管"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "系统压力波动，冷却水流失，气蚀导致泵和管路损坏。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P018",
+      "source_requirement_id": "P018",
+      "stakeholder": "维修人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需设计为支持故障隔离和局部检修，主要设备应配备隔离阀或类似装置，以便在不影响系统其他部分的情况下进行维修或更换。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P018-01",
+          "parent_id": "ER-G1-P018",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "故障隔离设计",
+          "shall_statement": "冷却水系统应配置隔离阀，使得每个主要设备（如泵、热交换器、冷却器）能够在系统运行时被单独隔离，以便进行维修或更换而不影响其他设备的正常运行。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "每个主要设备上下游均设有隔离阀",
+            "隔离阀操作手册或标识清晰"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法进行局部检修，导致系统停机时间延长，维修成本增加。"
+        },
+        {
+          "id": "ER-G1-P018-02",
+          "parent_id": "ER-G1-P018",
+          "level": 1,
+          "requirement_type": "maintainability",
+          "topic": "局部检修可达性",
+          "shall_statement": "冷却水系统的主要设备应布置在易于接近的位置，并留有足够的空间进行拆卸、检查和维修操作。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "设备周围留有至少 to be confirmed per Manufacturer Technical Data 的净空",
+            "维修通道无障碍"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "维修困难，延长维修时间，增加人力成本。"
+        },
+        {
+          "id": "ER-G1-P018-03",
+          "parent_id": "ER-G1-P018",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "隔离操作程序",
+          "shall_statement": "应为冷却水系统的隔离操作提供明确的程序文件，包括隔离步骤、安全注意事项和恢复操作流程。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "程序文件经审核批准",
+            "操作人员培训到位"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "操作错误可能导致系统损坏或人员伤害。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "隔离阀的具体类型和数量需根据系统设计确认",
+        "设备周围所需净空尺寸需参考制造商技术数据"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P012",
+      "source_requirement_id": "P012",
+      "stakeholder": "轮机长",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需设计为便于船员日常巡视和状态判断，主要设备应有清晰标识。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P012-01",
+          "parent_id": "ER-G1-P012",
+          "level": 1,
+          "requirement_type": "maintainability",
+          "topic": "日常巡视便利性",
+          "shall_statement": "冷却水系统的布置应确保船员能够方便地接近所有主要设备，进行日常巡视和状态检查，无需拆卸其他部件或使用特殊工具。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "所有主要设备（如泵、热交换器、阀件等）的通道宽度不小于600mm",
+            "巡视路径无障碍物，且照明充足"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "船员无法有效巡视，可能导致故障发现不及时，影响系统可靠性。"
+        },
+        {
+          "id": "ER-G1-P012-02",
+          "parent_id": "ER-G1-P012",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "设备标识清晰性",
+          "shall_statement": "冷却水系统的主要设备应配备清晰的现场标识，标识内容应包括设备名称、编号、功能及操作方向（如适用），标识应耐腐蚀、耐高温且不易脱落。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "标识牌材质为不锈钢或同等耐腐蚀材料",
+            "标识文字高度不小于5mm，且与背景对比明显",
+            "标识位置在设备正面或易于观察处"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "船员可能误操作或无法快速识别设备，增加操作风险。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认主要设备的具体清单及标识内容要求",
+        "确认巡视通道的具体尺寸要求（如船级社规范）"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P033",
+      "source_requirement_id": "P033",
+      "stakeholder": "船东代表",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该需求要求为主机冷却水系统配置流量、压力和温度监测仪表，并在集控室实现远程显示和报警功能，当冷却水流量低于设定值或温度超过上限时触发声光报警。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P033-01",
+          "parent_id": "ER-G1-P033",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却水系统监测仪表配置",
+          "shall_statement": "主机冷却水系统应安装流量、压力和温度监测仪表，其量程和精度应满足系统运行要求，具体参数待制造商技术资料确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "仪表安装位置符合设计图纸",
+            "仪表量程覆盖系统正常运行范围",
+            "仪表精度满足监控要求"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法实时监测冷却水状态，可能导致主机过热或冷却不足，造成设备损坏。"
+        },
+        {
+          "id": "ER-G1-P033-02",
+          "parent_id": "ER-G1-P033",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "集控室远程显示与报警功能",
+          "shall_statement": "冷却水系统的流量、压力和温度参数应在集控室进行远程显示，并设置报警功能：当冷却水流量低于设定值或温度超过上限时，应触发声光报警。报警设定值待制造商技术资料确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "集控室显示面板能正确显示各参数",
+            "模拟流量低于设定值时，声光报警启动",
+            "模拟温度超过上限时，声光报警启动",
+            "报警信号可手动复位"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "操作人员无法及时获知冷却水异常，可能导致主机故障或安全事故。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认流量、压力和温度仪表的量程、精度及安装位置",
+        "确认报警设定值（流量低限、温度高限）",
+        "确认集控室显示与报警系统的接口协议"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P050",
+      "source_requirement_id": "P050",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统管路在调试前必须进行酸洗钝化处理，并提交冲洗合格报告，以清除焊渣和铁锈残留，确保系统清洁度。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P050-01",
+          "parent_id": "ER-G1-P050",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "管路酸洗钝化处理",
+          "shall_statement": "冷却水系统管路在调试前应进行酸洗钝化处理，以去除管内焊渣和铁锈残留。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "酸洗钝化处理完成，管内无可见焊渣和铁锈残留"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路内残留焊渣和铁锈可能导致冷却水系统堵塞、设备损坏或性能下降。"
+        },
+        {
+          "id": "ER-G1-P050-02",
+          "parent_id": "ER-G1-P050",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "冲洗合格报告",
+          "shall_statement": "酸洗钝化处理后，应进行管路冲洗，并提交冲洗合格报告，证明管内无焊渣和铁锈残留。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "冲洗合格报告经船厂建造方审核确认"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无合格报告无法证明管路清洁度，可能导致系统调试失败或后续运行故障。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P068",
+      "source_requirement_id": "P068",
+      "stakeholder": "安全负责人",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "膨胀水箱透气管需引至安全区域，防止高温蒸汽逸出造成人员伤害或船体结构腐蚀。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P068-01",
+          "parent_id": "ER-G1-P068",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "膨胀水箱透气管布置",
+          "shall_statement": "膨胀水箱的透气管应布置至安全区域，确保排出的高温蒸汽不会直接接触人员或船体结构。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "透气管出口位于人员不易接触的区域",
+            "透气管出口远离船体结构敏感部位"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "高温蒸汽逸出可能导致人员烫伤或船体结构腐蚀，影响安全与设备寿命。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P088",
+      "source_requirement_id": "P088",
+      "stakeholder": "材料工程师",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "中央冷却器钛板与海水端管板之间的连接材料需选用耐海水冲刷且能避免电偶腐蚀的钛合金或超级双相不锈钢，以确保长期可靠性。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P088-01",
+          "parent_id": "ER-G1-P088",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "材料选择",
+          "shall_statement": "中央冷却器钛板与海水端管板之间的连接材料应选用耐海水冲刷的钛合金或超级双相不锈钢，其化学成分和力学性能应符合相关国际标准（如ASTM），具体牌号及性能参数待制造商技术数据确认。",
+          "engineering_rationale": "钛合金和超级双相不锈钢在海水中具有优异的耐腐蚀性和抗冲刷性能，且与钛板电位相近，可有效避免电偶腐蚀。",
+          "acceptance_criteria": [
+            "材料供应商提供材料化学成分和力学性能证书",
+            "材料耐海水腐蚀试验报告（如适用）",
+            "电偶腐蚀测试结果符合设计要求"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "若材料选择不当，可能导致电偶腐蚀加速，造成冷却器泄漏或失效，影响主机冷却系统运行。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认钛合金或超级双相不锈钢的具体牌号及性能参数",
+        "确认材料供应商提供的耐海水冲刷和电偶腐蚀测试数据"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P069",
+      "source_requirement_id": "P069",
+      "stakeholder": "安全负责人",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "针对冷却水泵联轴器防护罩和泵房防滑垫的安全要求，确保防止润滑油泄漏导致的滑倒事故。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P069-01",
+          "parent_id": "ER-G1-P069",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "联轴器防护罩",
+          "shall_statement": "冷却水泵的联轴器应配备防护罩，防护罩的设计和安装应符合相关安全标准，能够有效防止人员接触旋转部件。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "防护罩安装牢固，无松动",
+            "防护罩与联轴器无干涉",
+            "防护罩材料及尺寸符合制造商技术数据"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "人员可能接触旋转联轴器导致严重伤害"
+        },
+        {
+          "id": "ER-G1-P069-02",
+          "parent_id": "ER-G1-P069",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "泵房防滑垫",
+          "shall_statement": "冷却水泵房地面应铺设防滑垫，防滑垫应覆盖可能因润滑油泄漏而湿滑的区域，并具备耐油和防滑性能。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "防滑垫覆盖所有潜在泄漏区域",
+            "防滑垫材料耐油且防滑系数符合安全标准",
+            "防滑垫铺设平整无卷边"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "润滑油泄漏导致地面湿滑，增加人员滑倒风险"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P092",
+      "source_requirement_id": "P092",
+      "stakeholder": "运维管理人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "为确保冷却水系统在加注和运行过程中有效排出空气，防止气蚀和循环不畅，系统需配置自动排气阀和手动排气点。自动排气阀用于持续自动排出积聚的空气，手动排气点用于检修或初始加注时的人工排气。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P092-01",
+          "parent_id": "ER-G1-P092",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "自动排气阀配置",
+          "shall_statement": "冷却水系统应在系统最高点或空气易积聚处配置自动排气阀，其规格（如工作压力、排气能力）应满足系统设计要求，具体参数待制造商技术资料确认。",
+          "engineering_rationale": "自动排气阀可自动排出运行中产生的空气，防止气蚀和循环不畅，提高系统可靠性。",
+          "acceptance_criteria": [
+            "自动排气阀安装位置符合设计图纸",
+            "自动排气阀在系统压力范围内正常工作"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "空气积聚可能导致气蚀、循环不畅、换热效率下降，甚至设备损坏。"
+        },
+        {
+          "id": "ER-G1-P092-02",
+          "parent_id": "ER-G1-P092",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "手动排气点配置",
+          "shall_statement": "冷却水系统应在便于操作的位置设置手动排气点，用于初始加注和检修时的人工排气，其数量和位置应确保系统各高点均可排气，具体配置待制造商技术资料确认。",
+          "engineering_rationale": "手动排气点作为自动排气的补充，在系统初次加注或维修后确保空气完全排出。",
+          "acceptance_criteria": [
+            "手动排气点位置便于操作",
+            "手动排气点覆盖系统所有高点"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法有效排出空气，导致气蚀和循环不畅。"
+        },
+        {
+          "id": "ER-G1-P092-03",
+          "parent_id": "ER-G1-P092",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "排气操作要求",
+          "shall_statement": "系统应提供排气操作指南，包括自动排气阀的检查周期和手动排气点的操作步骤，确保运维人员能正确执行排气操作。",
+          "engineering_rationale": "规范操作可保证排气功能有效发挥，延长设备寿命。",
+          "acceptance_criteria": [
+            "操作指南内容完整、清晰"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "操作不当可能导致排气不彻底或系统故障。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "自动排气阀的具体型号、工作压力、排气能力需根据制造商技术资料确认。",
+        "手动排气点的具体数量和位置需根据系统设计图纸确认。"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P080",
+      "source_requirement_id": "P080",
+      "stakeholder": "调试人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该需求要求中央冷却器在海水温度32℃工况下，出口温度稳定在36±1℃，且调节周期不超过30秒。需转化为可验证的工程要求，包括温度控制精度、响应时间及调试验证方法。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P080-01",
+          "parent_id": "ER-G1-P080",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "中央冷却器出口温度控制精度",
+          "shall_statement": "在海水温度为32℃的稳定工况下，中央冷却器出口温度应稳定在36±1℃范围内。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "在海水温度32℃工况下，中央冷却器出口温度测量值在35℃至37℃之间"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [
+            "海水温度稳定在32℃±1℃"
+          ],
+          "risk_if_unmet": "冷却水温度偏差可能导致主机热负荷异常，影响燃烧效率和部件寿命。"
+        },
+        {
+          "id": "ER-G1-P080-02",
+          "parent_id": "ER-G1-P080",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "中央冷却器温度调节响应时间",
+          "shall_statement": "中央冷却器温度控制系统在海水温度32℃工况下，从检测到温度偏差到完成调节的周期应不超过30秒。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "在调试测试中，模拟温度偏差后，系统在30秒内恢复至36±1℃"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [
+            "海水温度稳定在32℃±1℃"
+          ],
+          "risk_if_unmet": "调节周期过长可能导致温度波动，影响主机运行稳定性。"
+        },
+        {
+          "id": "ER-G1-P080-03",
+          "parent_id": "ER-G1-P080",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "调试验证条件",
+          "shall_statement": "调试人员应在海水温度32℃工况下，验证中央冷却器出口温度稳定在36±1℃，且调节周期不超过30秒。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "调试记录显示海水温度32℃时，出口温度稳定在36±1℃，调节周期≤30秒"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [
+            "调试阶段，海水温度条件满足要求"
+          ],
+          "risk_if_unmet": "未验证可能导致实际运行中温度控制不达标。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认海水温度32℃工况的具体定义（如允许偏差）",
+        "确认调节周期的测量方法（从传感器检测到执行器动作完成）",
+        "确认温度稳定性的判定标准（如持续时间）"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P063",
+      "source_requirement_id": "P063",
+      "stakeholder": "自动化工程师",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该需求要求冷却水系统具备变频控制功能，能够根据主机负荷自动调节冷却水泵的流量，以实现节能运行。这需要变频器、控制器、传感器以及相应的控制逻辑。",
+      "assumptions": [
+        "冷却水泵为变频电机驱动",
+        "存在可测量的主机负荷信号（如转速、功率等）",
+        "控制系统具备处理负荷信号并输出变频控制指令的能力"
+      ],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P063-01",
+          "parent_id": "ER-G1-P063",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "变频控制功能",
+          "shall_statement": "冷却水系统应配备变频控制器，根据主机负荷信号自动调节冷却水泵的转速，以控制冷却水流量。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "变频控制器能够接收主机负荷信号并输出相应的频率指令",
+            "水泵转速随负荷变化而自动调整"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法实现节能运行，冷却水流量可能过高或过低，导致能源浪费或冷却不足。"
+        },
+        {
+          "id": "ER-G1-P063-02",
+          "parent_id": "ER-G1-P063",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "流量调节范围",
+          "shall_statement": "冷却水泵的流量调节范围应满足主机在不同负荷下的冷却需求，最小流量不低于主机最低负荷所需流量，最大流量不低于主机额定负荷所需流量。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "流量调节范围覆盖主机从最低负荷到额定负荷的冷却需求"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "可能导致主机冷却不足或过度冷却，影响主机性能和寿命。"
+        },
+        {
+          "id": "ER-G1-P063-03",
+          "parent_id": "ER-G1-P063",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "控制逻辑",
+          "shall_statement": "变频控制逻辑应确保冷却水流量与主机负荷成比例调节，并设置响应时间以平衡节能与系统稳定性。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "控制逻辑实现流量与负荷的线性或非线性比例关系",
+            "响应时间不超过 to be confirmed per Manufacturer Technical Data"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "响应过慢可能导致主机温度波动，响应过快可能引起系统振荡。"
+        },
+        {
+          "id": "ER-G1-P063-04",
+          "parent_id": "ER-G1-P063",
+          "level": 1,
+          "requirement_type": "alarm_protection",
+          "topic": "故障保护",
+          "shall_statement": "变频控制系统应具备故障保护功能，在变频器或传感器故障时自动切换至工频运行或备用泵，并发出报警。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "故障时自动切换至预设的安全模式",
+            "发出声光报警信号"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "故障时冷却中断可能导致主机过热损坏。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "主机负荷信号的类型和范围需确认",
+        "变频器与水泵的匹配参数需确认",
+        "控制逻辑的具体响应时间需根据制造商数据确认"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P098",
+      "source_requirement_id": "P098",
+      "stakeholder": "船厂质量检验人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统压力试验时，需逐段检查管路及附件（如膨胀节、阀门）在试验压力下的变形情况，并重点观察法兰连接处无渗漏。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P098-01",
+          "parent_id": "ER-G1-P098",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "压力试验检查",
+          "shall_statement": "冷却水系统压力试验时，应逐段检查管路及附件（包括膨胀节、阀门等）在试验压力下的变形情况，并重点观察法兰连接处无渗漏。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "所有管路及附件在试验压力下无可见变形",
+            "法兰连接处无渗漏"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "未发现变形或渗漏可能导致系统在运行中失效，造成冷却水泄漏、设备损坏或安全事故。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P054",
+      "source_requirement_id": "P054",
+      "stakeholder": "设备采购方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该需求要求冷却水系统配备流量计和温度传感器，用于实时监测各支路的流量和温度，并将数据接入机舱监测报警系统，以实现对冷却水系统的状态监控和异常报警。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P054-01",
+          "parent_id": "ER-G1-P054",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "流量监测",
+          "shall_statement": "冷却水系统各支路应安装流量计，流量计的量程和精度应满足系统设计要求，具体参数待制造商技术资料确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "流量计安装位置正确，信号输出正常，量程覆盖系统最大流量"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法监测各支路流量，可能导致冷却不均或流量异常无法及时发现"
+        },
+        {
+          "id": "ER-G1-P054-02",
+          "parent_id": "ER-G1-P054",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "温度监测",
+          "shall_statement": "冷却水系统各支路应安装温度传感器，温度传感器的量程和精度应满足系统设计要求，具体参数待制造商技术资料确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "温度传感器安装位置正确，信号输出正常，量程覆盖系统工作温度范围"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法监测各支路温度，可能导致过热或冷却不足"
+        },
+        {
+          "id": "ER-G1-P054-03",
+          "parent_id": "ER-G1-P054",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "数据接入报警系统",
+          "shall_statement": "流量计和温度传感器的信号应接入机舱监测报警系统，实现实时显示、记录和报警功能。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "信号接入正确，报警系统可显示流量和温度值，超限时触发报警"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法集中监控，异常情况不能及时报警"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "流量计和温度传感器的具体型号、量程、精度需与制造商确认"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P079",
+      "source_requirement_id": "P079",
+      "stakeholder": "调试人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需在每台泵出口和每个冷却用户入口设置可拆卸的调试用压力表接口，量程0-1.0 MPa，以便调试期间进行压力测量。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P079-01",
+          "parent_id": "ER-G1-P079",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "调试用压力表接口设置",
+          "shall_statement": "冷却水系统应在每台泵的出口和每个冷却用户的入口设置可拆卸的调试用压力表接口，接口规格和型式应便于安装和拆卸，且接口处应配备截止阀或隔离装置。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "每台泵出口和每个冷却用户入口均设有可拆卸压力表接口",
+            "接口配备截止阀或隔离装置",
+            "接口型式便于安装和拆卸"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法在调试期间准确测量泵出口和用户入口压力，影响系统调试和性能验证。"
+        },
+        {
+          "id": "ER-G1-P079-02",
+          "parent_id": "ER-G1-P079",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "压力表量程",
+          "shall_statement": "调试用压力表的量程应为0-1.0 MPa，精度等级应满足调试要求，具体精度等级待确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "压力表量程为0-1.0 MPa",
+            "压力表精度等级符合调试要求"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "量程不匹配可能导致测量不准确或损坏仪表。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认压力表接口的具体规格和型式",
+        "确认压力表精度等级要求"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P076",
+      "source_requirement_id": "P076",
+      "stakeholder": "调试人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该需求要求调试期间在中央冷却器出口安装临时温度传感器，用于校准温控阀在25%至100%开度范围内的线性调节精度。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P076-01",
+          "parent_id": "ER-G1-P076",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "临时温度传感器安装",
+          "shall_statement": "中央冷却器出口应安装临时温度传感器，用于温控阀线性调节精度校准。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "临时温度传感器安装位置符合调试要求，能够准确测量冷却器出口温度。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [
+            "仅适用于调试阶段"
+          ],
+          "risk_if_unmet": "无法校准温控阀线性调节精度，可能导致冷却系统控制不稳定。"
+        },
+        {
+          "id": "ER-G1-P076-02",
+          "parent_id": "ER-G1-P076",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "温控阀线性调节精度校准",
+          "shall_statement": "温控阀在25%至100%开度范围内的线性调节精度应通过临时温度传感器进行校准。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "校准后温控阀开度与温度变化呈线性关系，偏差在制造商规定范围内。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [
+            "仅适用于调试阶段"
+          ],
+          "risk_if_unmet": "温控阀调节不准确，影响冷却系统效率。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P028",
+      "source_requirement_id": "P028",
+      "stakeholder": "船厂质量检验人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该要求针对冷却水系统安装和试验后的质量检验，包括管路密性、支架固定、传感器安装等检查，并确保所有问题在交船前整改。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P028-01",
+          "parent_id": "ER-G1-P028",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "管路密性检查",
+          "shall_statement": "冷却水系统管路安装完成后，应按照制造商技术数据和相关标准进行密性试验，确保无泄漏。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "管路密性试验压力和时间符合制造商技术数据要求",
+            "试验后无可见泄漏"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路泄漏可能导致冷却水损失、设备过热或系统失效，影响主机运行安全。"
+        },
+        {
+          "id": "ER-G1-P028-02",
+          "parent_id": "ER-G1-P028",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "支架固定检查",
+          "shall_statement": "冷却水系统管路支架应牢固固定，符合制造商技术数据要求，防止振动和位移。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "支架间距和固定方式符合制造商技术数据",
+            "支架无松动、变形或腐蚀"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "支架松动可能导致管路振动、疲劳断裂或与其他部件干涉。"
+        },
+        {
+          "id": "ER-G1-P028-03",
+          "parent_id": "ER-G1-P028",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "传感器安装检查",
+          "shall_statement": "冷却水系统传感器（如温度、压力、流量传感器）应按照制造商技术数据正确安装，确保测量准确。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "传感器安装位置和方向符合制造商技术数据",
+            "接线牢固，密封良好，无泄漏"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "传感器安装不当可能导致测量误差，影响控制系统判断和报警功能。"
+        },
+        {
+          "id": "ER-G1-P028-04",
+          "parent_id": "ER-G1-P028",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "问题整改",
+          "shall_statement": "冷却水系统安装和试验后检查发现的所有问题应在船舶交付前完成整改，并重新验证。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "所有问题已关闭，整改记录完整",
+            "整改后通过相关检验"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "未整改的问题可能导致系统运行故障，影响船舶交付和后续运营安全。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P048",
+      "source_requirement_id": "P048",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该要求针对主机冷却水系统管路穿过水密舱壁时的安装方式，需采用焊接式水密套管并满足船级社防火分隔要求，以确保水密完整性和防火安全。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P048-01",
+          "parent_id": "ER-G1-P048",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "水密舱壁穿越安装",
+          "shall_statement": "主机冷却水系统管路穿过水密舱壁时，应采用焊接式水密套管，并确保套管的焊接工艺和材料符合船级社认可的标准。",
+          "engineering_rationale": "焊接式水密套管能有效维持舱壁的水密完整性，防止海水或冷却水泄漏至相邻舱室，同时满足船级社对防火分隔的要求。",
+          "acceptance_criteria": [
+            "水密套管采用焊接方式固定于舱壁，焊缝经无损检测合格",
+            "套管材料与舱壁材料兼容，且具有与舱壁同等的防火等级"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路穿越处可能发生泄漏，导致水密失效，影响船舶稳性和防火分隔完整性，增加火灾蔓延风险。"
+        },
+        {
+          "id": "ER-G1-P048-02",
+          "parent_id": "ER-G1-P048",
+          "level": 1,
+          "requirement_type": "safety_environment",
+          "topic": "防火分隔要求",
+          "shall_statement": "水密套管及其安装方式应满足船级社对防火分隔的要求，包括但不限于防火等级、隔热材料和贯穿密封措施。",
+          "engineering_rationale": "确保在火灾情况下，管路穿越处不会成为火焰或烟气传播的通道，维持舱壁的防火完整性。",
+          "acceptance_criteria": [
+            "套管及密封材料具有与舱壁同等的防火等级（如A-60级）",
+            "安装后经船级社检验合格"
+          ],
+          "verification_method": "class_approval",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "防火分隔失效，可能导致火灾蔓延至相邻舱室，危及船舶和人员安全。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "需确认具体船级社规范（如DNV、LR、CCS等）对水密套管和防火分隔的详细技术要求",
+        "需确认管路材质、壁厚及套管尺寸等参数，以进行焊接工艺评定"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P090",
+      "source_requirement_id": "P090",
+      "stakeholder": "材料工程师",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该要求针对封闭式冷却水系统加热器换热管的材料选择，旨在防止电偶腐蚀和应力腐蚀开裂导致的泄漏。铜镍合金和钛材因其优异的耐腐蚀性能被推荐使用。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P090-01",
+          "parent_id": "ER-G1-P090",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "换热管材料",
+          "shall_statement": "封闭式冷却水系统的加热器换热管材料应选用铜镍合金或钛材，以防止电偶腐蚀和应力腐蚀开裂。",
+          "engineering_rationale": "铜镍合金和钛材在海水或含氯离子环境中具有优异的耐腐蚀性能，能有效抵抗电偶腐蚀和应力腐蚀开裂，确保系统长期可靠运行。",
+          "acceptance_criteria": [
+            "换热管材料为铜镍合金或钛材，并提供材料证明文件。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "若选用不当材料，可能导致换热管腐蚀泄漏，造成冷却水系统失效，影响主机运行安全。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认铜镍合金的具体牌号（如CuNi90/10或CuNi70/30）及钛材等级（如Gr2），需符合相关标准。",
+        "确认加热器工作温度、压力及冷却水成分，以验证材料适用性。"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P081",
+      "source_requirement_id": "P081",
+      "stakeholder": "船级社验船师",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需配置独立温度调节阀，在主机所有工况下将冷却水温度稳定在制造厂规定值±2°C内，并具备手动旁通功能，以确保系统可靠性和维护便利性。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P081-01",
+          "parent_id": "ER-G1-P081",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "温度调节阀独立性",
+          "shall_statement": "冷却水系统应设置独立的温度调节阀，该阀不与其他系统共用，并直接控制主机冷却水温度。",
+          "engineering_rationale": "独立调节阀可避免其他系统干扰，确保温度控制专一性和响应速度。",
+          "acceptance_criteria": [
+            "温度调节阀为专用设备，无其他系统连接"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温度控制可能受其他系统影响，导致主机冷却水温不稳定。"
+        },
+        {
+          "id": "ER-G1-P081-02",
+          "parent_id": "ER-G1-P081",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "温度控制精度",
+          "shall_statement": "在主机所有运行工况下，冷却水温度应稳定在制造厂规定值±2°C范围内。",
+          "engineering_rationale": "精确的温度控制保证主机热效率、减少热应力，防止部件损坏。",
+          "acceptance_criteria": [
+            "在主机负荷变化时，冷却水温度偏差不超过±2°C"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温度波动过大可能导致主机性能下降或故障。"
+        },
+        {
+          "id": "ER-G1-P081-03",
+          "parent_id": "ER-G1-P081",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "手动旁通功能",
+          "shall_statement": "温度调节阀应配备手动旁通功能，允许在调节阀故障或维护时手动控制冷却水流量。",
+          "engineering_rationale": "手动旁通提供应急操作能力，确保系统在调节阀失效时仍可维持基本冷却功能。",
+          "acceptance_criteria": [
+            "手动旁通阀可独立操作，旁通管路连接正确"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "调节阀故障时无法手动控制，可能导致主机过热。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "制造厂规定的冷却水温度具体数值需确认",
+        "温度调节阀的型号和规格需根据主机技术资料确认"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P020",
+      "source_requirement_id": "P020",
+      "stakeholder": "调试人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统调试需验证泵组运行、阀门动作、温控调节、报警触发及主要冷却用户参数响应，确保系统功能完整性和可靠性。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P020-01",
+          "parent_id": "ER-G1-P020",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "泵组运行验证",
+          "shall_statement": "冷却水系统调试时，应验证所有泵组（包括主泵和备用泵）的启动、停止、运行状态及切换功能正常，且运行参数（如流量、压力）符合设计要求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "泵组启动和停止响应时间符合制造商技术数据",
+            "备用泵自动切换功能正常",
+            "运行参数在制造商技术数据规定的范围内"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "泵组故障可能导致冷却水循环中断，造成主机过热损坏。"
+        },
+        {
+          "id": "ER-G1-P020-02",
+          "parent_id": "ER-G1-P020",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "阀门动作验证",
+          "shall_statement": "冷却水系统调试时，应验证所有阀门（包括手动阀、电动阀、气动阀、止回阀等）的开关动作、行程时间、位置反馈及密封性符合设计要求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "阀门开关动作灵活，无卡涩",
+            "行程时间在制造商技术数据范围内",
+            "位置反馈信号准确",
+            "密封性试验无泄漏"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "阀门故障可能导致冷却水流量分配异常或系统隔离失效。"
+        },
+        {
+          "id": "ER-G1-P020-03",
+          "parent_id": "ER-G1-P020",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "温控调节验证",
+          "shall_statement": "冷却水系统调试时，应验证温控阀或温控系统的调节功能，确保冷却水温度在设定范围内稳定，且响应速度满足系统要求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "温度控制精度在制造商技术数据规定的范围内",
+            "调节响应时间符合设计要求",
+            "无超调或振荡现象"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温控失效可能导致主机冷却不足或过度冷却，影响主机性能和寿命。"
+        },
+        {
+          "id": "ER-G1-P020-04",
+          "parent_id": "ER-G1-P020",
+          "level": 1,
+          "requirement_type": "alarm_protection",
+          "topic": "报警触发验证",
+          "shall_statement": "冷却水系统调试时，应验证所有报警功能（包括温度、压力、流量、液位等参数越限报警）的触发条件和动作正确，报警信号准确传递至监控系统。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "报警触发值符合制造商技术数据",
+            "报警延迟时间符合设计要求",
+            "报警信号在监控系统正确显示"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "报警失效可能导致异常工况未被及时发现，引发设备损坏或安全事故。"
+        },
+        {
+          "id": "ER-G1-P020-05",
+          "parent_id": "ER-G1-P020",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "主要冷却用户参数响应验证",
+          "shall_statement": "冷却水系统调试时，应验证主要冷却用户（如主机、发电机、滑油冷却器等）的冷却水进出口温度、压力及流量等参数在系统运行工况下满足设计要求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "各冷却用户参数在制造商技术数据规定的范围内",
+            "参数响应稳定，无异常波动"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "冷却用户参数不达标可能导致设备过热或性能下降。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "泵组运行参数（流量、压力）的具体数值需根据制造商技术数据确认",
+        "阀门行程时间、密封性试验标准需根据制造商技术数据确认",
+        "温控精度和响应时间需根据制造商技术数据确认",
+        "报警触发值和延迟时间需根据制造商技术数据确认",
+        "主要冷却用户参数范围需根据制造商技术数据确认"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P060",
+      "source_requirement_id": "P060",
+      "stakeholder": "轮机长",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需配置独立的滑油冷却器旁通管路，用于在滑油温度过高时临时旁通冷却，以保障滑油系统安全运行。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P060-01",
+          "parent_id": "ER-G1-P060",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "滑油冷却器旁通管路",
+          "shall_statement": "冷却水系统应设置独立的滑油冷却器旁通管路，该管路应能在滑油温度超过设定值时，将冷却水部分或全部旁通至滑油冷却器，以降低滑油温度。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "旁通管路独立于主冷却管路，且具备手动或自动控制功能",
+            "旁通管路设计压力与冷却水系统一致，材料耐腐蚀"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "滑油温度过高可能导致滑油变质、轴承损坏，甚至主机故障。"
+        },
+        {
+          "id": "ER-G1-P060-02",
+          "parent_id": "ER-G1-P060",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "旁通控制逻辑",
+          "shall_statement": "滑油冷却器旁通管路应配备温度传感器和控制器，当滑油温度高于设定值时，自动开启旁通阀，使冷却水流经滑油冷却器；温度恢复正常后自动关闭。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "温度传感器精度不低于±1°C",
+            "控制器响应时间不超过5秒"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法及时调节滑油温度，影响滑油系统安全。"
+        },
+        {
+          "id": "ER-G1-P060-03",
+          "parent_id": "ER-G1-P060",
+          "level": 1,
+          "requirement_type": "alarm_protection",
+          "topic": "高温报警",
+          "shall_statement": "滑油冷却器旁通管路应设置高温报警功能，当滑油温度超过报警设定值时，在集控室发出声光报警。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "报警设定值可调，默认值为 to be confirmed per Manufacturer Technical Data",
+            "报警信号应传至集控室和机旁"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "操作人员无法及时获知滑油高温异常，可能延误处理。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "滑油冷却器旁通管路的具体设计压力、温度范围需根据主机技术资料确认",
+        "温度传感器和控制器型号及参数需根据制造商技术数据确认",
+        "报警设定值需根据滑油系统设计要求确认"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P096",
+      "source_requirement_id": "P096",
+      "stakeholder": "船厂质量检验人员",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统管路焊接完成后，需按比例进行无损检测（如射线或超声波探伤），确保焊缝质量符合船级社规范，并提供检测报告。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P096-01",
+          "parent_id": "ER-G1-P096",
+          "level": 1,
+          "requirement_type": "verification",
+          "topic": "无损检测比例",
+          "shall_statement": "冷却水系统管路焊接完成后，应按船级社规范要求的比例进行无损检测，检测方法包括但不限于射线探伤（RT）或超声波探伤（UT）。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "无损检测比例符合船级社规范要求",
+            "检测方法经船级社认可"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "焊缝缺陷未被发现可能导致冷却水泄漏，影响主机运行安全。"
+        },
+        {
+          "id": "ER-G1-P096-02",
+          "parent_id": "ER-G1-P096",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "焊缝质量标准",
+          "shall_statement": "冷却水系统管路焊缝质量应符合船级社规范中规定的验收标准，如无气孔、裂纹、未熔合等缺陷。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "焊缝经无损检测评定合格，缺陷等级满足船级社规范要求"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "焊缝质量不达标可能导致管路泄漏或破裂。"
+        },
+        {
+          "id": "ER-G1-P096-03",
+          "parent_id": "ER-G1-P096",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "检测报告",
+          "shall_statement": "无损检测完成后，应提供正式的检测报告，报告内容应包括检测方法、检测比例、焊缝位置、检测结果及结论，并加盖检测单位公章。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "检测报告内容完整、格式规范",
+            "报告经船级社或授权机构认可"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "缺乏有效检测报告无法证明焊缝质量符合要求，影响船检通过。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认船级社规范中无损检测的具体比例要求",
+        "确认船级社认可的焊缝验收标准"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P044",
+      "source_requirement_id": "P044",
+      "stakeholder": "系统设计方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "主机冷却水系统需设计应急冷却模式，当海水泵故障时，系统应能自动切换至应急海水吸入或备用泵，确保主机在低速下持续运行，防止过热损坏。",
+      "assumptions": [
+        "应急海水吸入或备用泵的容量足以维持主机低速运行所需的冷却流量。",
+        "自动切换逻辑可靠，且切换时间在主机允许的温升范围内。"
+      ],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P044-01",
+          "parent_id": "ER-G1-P044",
+          "level": 1,
+          "requirement_type": "redundancy",
+          "topic": "应急冷却模式",
+          "shall_statement": "主机冷却水系统应具备应急冷却模式，当主海水泵故障时，系统应自动切换至应急海水吸入或备用泵，以维持主机低速运行。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "在模拟主海水泵故障时，系统能在规定时间内自动切换至应急海水吸入或备用泵。",
+            "切换后主机冷却水流量和温度满足低速运行要求。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "主海水泵故障时无法维持主机冷却，可能导致主机过热损坏，影响船舶安全。"
+        },
+        {
+          "id": "ER-G1-P044-02",
+          "parent_id": "ER-G1-P044",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "自动切换控制",
+          "shall_statement": "应急冷却模式的自动切换控制应基于主海水泵的故障信号（如出口压力低、电机故障等），并具备手动强制切换功能。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "当主海水泵出口压力低于设定值或收到电机故障信号时，系统自动启动切换逻辑。",
+            "手动切换按钮或界面可独立于自动逻辑操作。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "自动切换可能失效或延迟，导致主机冷却中断。"
+        },
+        {
+          "id": "ER-G1-P044-03",
+          "parent_id": "ER-G1-P044",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "应急冷却能力",
+          "shall_statement": "应急冷却模式应能提供足够的冷却水流量和压力，以维持主机在低速运行（如额定转速的30-50%）时的冷却需求，具体参数待确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "在应急模式下，主机冷却水出口温度不超过制造商规定的最高允许温度。",
+            "冷却水流量和压力满足主机低速运行要求。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "应急冷却能力不足，主机仍可能过热。"
+        },
+        {
+          "id": "ER-G1-P044-04",
+          "parent_id": "ER-G1-P044",
+          "level": 1,
+          "requirement_type": "alarm_protection",
+          "topic": "故障报警与指示",
+          "shall_statement": "系统应提供主海水泵故障报警、应急冷却模式激活指示以及切换状态显示。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "主海水泵故障时，控制面板发出声光报警。",
+            "应急冷却模式激活时，有明确指示（如指示灯或屏幕显示）。",
+            "切换状态（如备用泵运行、应急吸入阀开启）可显示。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "操作人员无法及时获知系统状态，可能延误响应。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "主机低速运行的具体转速范围（如30-50%额定转速）需与主机厂商确认。",
+        "应急冷却所需的流量、压力参数需根据主机技术数据确定。",
+        "自动切换的响应时间要求需与系统设计方确认。"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-P011",
+      "source_requirement_id": "P011",
+      "stakeholder": "轮机长",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统需在集控室提供关键参数的清晰显示，包括温度、压力、液位和泵运行状态，以支持运行监测。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-P011-01",
+          "parent_id": "ER-G1-P011",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "集控室参数显示",
+          "shall_statement": "冷却水系统应在集控室提供以下参数的清晰显示：冷却水温度、冷却水压力、膨胀水箱液位、冷却水泵运行状态。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "集控室显示面板或监控系统能够同时显示所有指定参数",
+            "显示数值清晰可读，精度满足运行监测要求"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "操作人员无法及时获取关键参数，可能导致系统异常未被发现，增加设备损坏风险。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    }
+  ]
+}

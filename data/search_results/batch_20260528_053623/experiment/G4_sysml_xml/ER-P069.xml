@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P069" sourceRequirementId="P069" stakeholder="安全负责人" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T05:44:25">
+  <ProfessionalSummary>覆盖冷却水泵联轴器防护罩配置和泵房防滑措施，确保人员安全。</ProfessionalSummary>
+  <EngineeringRequirements count="2">
+    <Requirement id="ER-P069-01" level="1" requirementType="safety_environment">
+      <sysml:Name>联轴器防护罩配置</sysml:Name>
+      <sysml:Text>冷却水泵联轴器应配备防护罩，防止人员接触旋转部件。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P069" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>人员接触旋转部件可能导致严重伤害。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【联轴器防护罩配置】，来自原始需求「联轴器应配备防护罩」。无直接或间接证据支撑。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P069-02" level="1" requirementType="safety_environment">
+      <sysml:Name>泵房防滑措施</sysml:Name>
+      <sysml:Text>泵房地面应铺设防滑垫，防止因润滑油泄漏导致滑倒事故。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P069" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>润滑油泄漏导致滑倒，造成人员受伤。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【泵房防滑措施】，来自原始需求「在泵房地面铺设防滑垫，防止润滑油泄漏造成滑倒事故」。无直接或间接证据支撑。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['防滑垫'].</Message>
+          <Suggestion>泵房地面应铺设防滑垫，防滑垫的摩擦系数应不低于0.5（或符合GB/T 24539-2009标准），以防止因润滑油泄漏导致滑倒事故。</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P069" target="ER-P069-01" type="derive">由原始需求「联轴器应配备防护罩」派生。</Relationship>
+    <Relationship source="P069" target="ER-P069-02" type="derive">由原始需求「在泵房地面铺设防滑垫」派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="2">
+    <Gap relatedRequirementId="ER-P069-01" gapType="judge_rejected_all">
+      <Description>缺少联轴器防护罩配置的直接或间接证据。</Description>
+      <SuggestedDocumentUpdate>补充更直接的标准条款、厂家手册、试验记录或设计说明。</SuggestedDocumentUpdate>
+    </Gap>
+    <Gap relatedRequirementId="ER-P069-02" gapType="judge_rejected_all">
+      <Description>缺少泵房防滑措施的直接或间接证据。</Description>
+      <SuggestedDocumentUpdate>补充更直接的标准条款、厂家手册、试验记录或设计说明。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认联轴器防护罩的具体尺寸、材料和安装要求。</Statement>
+      <Reason>无证据支撑，需补充相关标准或厂家资料。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认防滑垫的材质、铺设范围和防滑性能要求。</Statement>
+      <Reason>无证据支撑，需补充相关标准或厂家资料。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

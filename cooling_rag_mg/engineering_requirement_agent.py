@@ -10,6 +10,7 @@ from typing import Any, TypedDict
 from openai import OpenAI
 
 from cooling_rag_mg.config import get_config
+from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.schema import normalize_v2_metadata
 from cooling_rag_mg.text_utils import safe_text, truncate
 
@@ -290,7 +291,8 @@ def repair_json_with_deepseek(raw_text: str) -> dict[str, Any]:
     if not cfg.deepseek.enabled:
         raise RuntimeError("DeepSeek 未配置，无法修复 JSON。")
     client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
-    resp = client.chat.completions.create(
+    resp = cached_completion(
+        client,
         model=cfg.deepseek.model,
         messages=[
             {"role": "system", "content": JSON_REPAIR_PROMPT},
@@ -443,6 +445,8 @@ def compact_requirement_context(
         "supported_evidence_by_topic": grouped_evidence,
         "supported_evidence": supported,
         "background_evidence_for_reference_only": background,
+        # 用于 normalize_agent_output 的代码级 background 排除（CR-5 hard guard）
+        "_background_evidence_ids": [b.get("id") for b in background if b.get("id")],
         "evidence_gap_summary": gaps,
         "sub_requirement_type_distribution": sub_type_dist,
         "allowed_engineering_aspects": allowed_aspects,
@@ -597,6 +601,19 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str
             else []
         )
 
+        # ── CR-5 hard guard: 强制剔除 background-strength evidence ids ──
+        # 即使 LLM 违反 prompt 第 8 条把 background 证据放入 evidence_ids，
+        # 这里也会在代码层把它们删掉，使"background 不进 selected_results"成为代码不变式。
+        bg_ids = set(obj.get("_background_evidence_ids", []) or [])
+        if bg_ids:
+            before = len(req["evidence_ids"])
+            req["evidence_ids"] = [eid for eid in req["evidence_ids"] if eid not in bg_ids]
+            if before != len(req["evidence_ids"]):
+                req.setdefault("applicability_constraints", [])
+                req["applicability_constraints"].append(
+                    f"代码层剔除了 {before - len(req['evidence_ids'])} 条 background-strength 证据引用。"
+                )
+
         # support_status 校验
         if req.get("support_status") not in allowed_status:
             req["support_status"] = (
@@ -674,6 +691,8 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str
 
     obj["generated_at"] = datetime.now().isoformat(timespec="seconds")
     obj["agent"] = "langgraph_deepseek_engineering_requirement_agent"
+    # 清理只用于内部 guard 的临时字段
+    obj.pop("_background_evidence_ids", None)
     return obj
 
 
@@ -697,7 +716,8 @@ def build_graph():
             "original_requirement": state.get("requirement", {}),
             "retrieval_context": state.get("compact_context", {}),
         }
-        resp = client.chat.completions.create(
+        resp = cached_completion(
+            client,
             model=cfg.deepseek.model,
             messages=[
                 {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT},
@@ -731,6 +751,8 @@ def build_graph():
             # inject allowed_aspects from compact_context so normalize_agent_output can validate scope
             compact = state.get("compact_context", {}) or {}
             obj["allowed_engineering_aspects"] = compact.get("allowed_engineering_aspects", [])
+            # inject background evidence ids so normalize_agent_output can strip them (CR-5 code guard)
+            obj["_background_evidence_ids"] = list(compact.get("_background_evidence_ids", []) or [])
 
             obj = normalize_agent_output(obj, requirement_id)
             if errors:

@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P014" sourceRequirementId="P014" stakeholder="自动化工程师" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:07:47">
+  <ProfessionalSummary>覆盖冷却水系统报警、联锁和保护逻辑与主机控制系统及机舱监测报警系统的协调一致要求，基于IACS UR E10和CCS规则证据。</ProfessionalSummary>
+  <EngineeringRequirements count="4">
+    <Requirement id="ER-P014-01-01" level="1" requirementType="parameter">
+      <sysml:Name>报警联锁保护逻辑协调</sysml:Name>
+      <sysml:Text>冷却水系统高温报警、自动减速和停机保护的触发值应满足主机厂家Technical Data要求，并确保报警值、减速值和停机值之间的级差合理。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P014" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-LDR-001" supportStatus="need_confirmation" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>need_confirmation</SupportStatus>
+        <RiskIfUnmet>级差不合理可能导致频繁报警或保护动作不及时。</RiskIfUnmet>
+        <ApplicabilityConstraint>具体触发值按主机厂家Technical Data确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>按主机厂家Technical Data确认高温报警、自动减速和停机保护的触发值，并验证级差符合要求。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【报警联锁保护逻辑协调】，来自原始需求「报警、联锁和保护逻辑应与主机控制系统、机舱监测报警系统协调一致」。E-SUPP-LDR-001提及减速触发点比报警高3–5°C，但具体数值需厂家确认。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='need_confirmation'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P014-01-02" level="1" requirementType="parameter">
+      <sysml:Name>报警联锁保护逻辑协调</sysml:Name>
+      <sysml:Text>冷却水系统低压报警应触发备用泵自动切换，当双泵均失效时应触发主机自动减速。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P014" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-LDR-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>低压时无法及时切换或减速可能导致主机损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>调试期间模拟低压工况，验证备用泵自动切换逻辑；模拟双泵失效，验证自动减速逻辑。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【报警联锁保护逻辑协调】，来自原始需求「报警、联锁和保护逻辑应与主机控制系统、机舱监测报警系统协调一致」。E-SUPP-LDR-001明确低压报警→自动切换备用泵；双泵失效→自动减速。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P014-01-03" level="1" requirementType="interface">
+      <sysml:Name>报警联锁保护逻辑协调</sysml:Name>
+      <sysml:Text>冷却水系统的所有报警信号应接入机舱监测报警系统，并在集控室和驾驶室显示。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P014" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>报警信号未接入可能导致操作人员无法及时获知异常。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>审查报警清单和接线图，确认所有冷却水系统报警信号已接入机舱监测报警系统。</Criterion>
+        <Criterion>调试期间验证报警信号在集控室和驾驶室的显示功能。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【报警联锁保护逻辑协调】，来自原始需求「报警、联锁和保护逻辑应与主机控制系统、机舱监测报警系统协调一致」。E-CTRL-COOL-002要求所有报警接入船舶报警管理系统。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P014-01-04" level="1" requirementType="control">
+      <sysml:Name>报警联锁保护逻辑协调</sysml:Name>
+      <sysml:Text>冷却水温度控制系统应能在全负荷范围内自动调节，并设置手动备用控制方式。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P014" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>温度失控可能导致主机热应力过大或效率下降。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>审查设计图纸，确认温度控制系统具备自动调节和手动备用功能。</Criterion>
+        <Criterion>调试期间验证自动调节性能及手动备用切换功能。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【报警联锁保护逻辑协调】，来自原始需求「报警、联锁和保护逻辑应与主机控制系统、机舱监测报警系统协调一致」。E-CTRL-COOL-001要求温度控制系统全负荷范围自动调节、手动备用。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认主机厂家Technical Data中高温报警、自动减速和停机保护的具体触发值。</Statement>
+      <Reason>现有证据仅给出级差范围（3–5°C），具体数值需厂家确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

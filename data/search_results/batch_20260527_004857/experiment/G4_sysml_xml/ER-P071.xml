@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P071" sourceRequirementId="P071" stakeholder="维修人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T01:30:52">
+  <ProfessionalSummary>覆盖海水滤器双联冗余设计，确保在线切换清洗时另一侧提供100%冷却水流量。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P071-01" level="1" requirementType="redundancy">
+      <sysml:Name>海水滤器双联冗余设计</sysml:Name>
+      <sysml:Text>海水冷却系统应配置双联切换过滤器，可在主机不停机情况下进行在线切换清洗，单侧清洗时另一侧应能提供100%冷却水流量。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P071" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-FILT-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-FILT-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法在线切换清洗将导致停机维护，影响主机连续运行。</RiskIfUnmet>
+        <ApplicabilityConstraint>本条需求基于CCS和DNV船级社规则，适用于入级船舶，其他船级社应参照相应规则确认。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统图纸，确认双联过滤器配置及切换管路设计满足双联冗余要求。</Criterion>
+        <Criterion>调试期间模拟单侧滤器清洗操作，确认另一侧滤器可独立提供100%冷却水流量，具体流量值按主机厂家Technical Data确认。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【海水滤器双联冗余设计】，来自原始需求「双联结构，可在不停机情况下切换清洗，单侧清洗时另一侧仍能提供100%冷却水流量」。E-SUPP-FILT-002（CCS规则）和E-SUPP-FILT-001（DNV规则）均直接支撑双联切换过滤器的配置要求及在线切换清洗能力。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>Value(s) ['%'] present and backed by direct evidence.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P071" target="ER-P071-01" type="derive">由原始需求「海水滤器双联冗余设计」和E-SUPP-FILT-002、E-SUPP-FILT-001直接证据派生。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认主机在单侧滤器运行时所需的最小冷却水流量。</Statement>
+      <Reason>现有证据仅要求提供100%冷却水流量，但未给出具体流量数值，需主机厂家Technical Data确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

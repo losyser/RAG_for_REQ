@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P089" sourceRequirementId="P089" stakeholder="材料工程师" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T00:31:15">
+  <ProfessionalSummary>覆盖冷却水管路调节流量用蝶阀阀板材料要求，明确材料为双相不锈钢或铝青铜，并满足抗空蚀和抗泥沙磨损性能。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P089-01" level="1" requirementType="material">
+      <sysml:Name>蝶阀阀板材料要求</sysml:Name>
+      <sysml:Text>冷却水管路中用于调节流量的蝶阀阀板材料应为双相不锈钢或铝青铜，应具备抗空蚀和抗泥沙磨损性能。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P089" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>阀板材料不满足抗空蚀和抗泥沙磨损要求，可能导致阀门过早失效，影响流量调节和系统可靠性。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【蝶阀阀板材料要求】，来自原始需求「蝶阀阀板材料应为双相不锈钢或铝青铜，满足抗空蚀和抗泥沙磨损要求」。当前无直接或间接证据支撑，基于原始需求文本整理。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.4">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['抗空蚀', '抗泥沙磨损性能'].</Message>
+          <Suggestion>Specify acceptable erosion and wear rates or reference material standards (e.g., ASTM A890 for duplex stainless steel) with quantified test conditions.</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="false" severity="error">
+          <Message>Missing SysML required field(s): ['traceLinks (evidenceIds)'].</Message>
+          <Suggestion>Populate all SysML Requirement block fields before XML export.</Suggestion>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P089" target="ER-P089-01" type="derive">由原始需求直接派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P089" gapType="parameter_source_gap">
+      <Description>缺少关于双相不锈钢或铝青铜的具体牌号、抗空蚀和抗泥沙磨损性能指标（如硬度、耐腐蚀性等）的工程证据。</Description>
+      <SuggestedDocumentUpdate>补充蝶阀厂家技术资料、材料标准（如ASTM、GB）、抗空蚀试验报告或类似应用案例。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认双相不锈钢或铝青铜的具体材料牌号及对应的抗空蚀和抗泥沙磨损性能指标。</Statement>
+      <Reason>原始需求仅指定材料类型，未给出具体牌号和性能参数，需厂家技术资料确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

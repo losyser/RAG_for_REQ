@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P016" sourceRequirementId="P016" stakeholder="安全负责人" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T05:28:53">
+  <ProfessionalSummary>覆盖冷却水系统安全防护要求，包括高温介质隔热与标识、旋转设备防护、带压管路安全措施及化学处理液防护。</ProfessionalSummary>
+  <EngineeringRequirements count="4">
+    <Requirement id="ER-P016-01" level="1" requirementType="safety">
+      <sysml:Name>高温介质防护</sysml:Name>
+      <sysml:Text>主机冷却水系统的高温冷却水管路（70–95°C）应进行绝热包扎，使可接触表面温度不超过55°C；绝热材料应能耐温不低于150°C并采用铝皮护套保护；无法绝热的高温表面应设置ISO 11684热警示标识，标识间距不大于2m；管路应按ISO 14726色标进行标识。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P016" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-SAFE-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>人员接触高温管路表面可能导致烫伤，违反SOLAS安全要求。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查隔热包扎施工记录和材料证书，确认绝热材料耐温≥150°C并采用铝皮护套。</Criterion>
+        <Criterion>现场测量可接触表面温度，确认不超过55°C。</Criterion>
+        <Criterion>检查无法绝热的高温表面是否贴有ISO 11684热警示标识，间距≤2m。</Criterion>
+        <Criterion>检查管路色标是否符合ISO 14726要求。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【高温介质防护】，来自原始需求「高温介质」。E-SUPP-SAFE-001（SOLAS/ISO 14726）直接支撑了隔热温度、材料、标识和色标要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 4 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>Value(s) ['°C', '°C', '°C', 'm'] present and backed by direct evidence.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P016-02" level="1" requirementType="safety">
+      <sysml:Name>旋转设备防护</sysml:Name>
+      <sysml:Text>冷却水系统的旋转设备（如冷却水泵）应安装防护罩或联锁装置，防止人员接触运动部件。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P016" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>人员接触旋转部件可能导致严重机械伤害。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【旋转设备防护】，来自原始需求「旋转设备」。该子需求在evidence_gap_summary中列为证据缺口（P016-02），无直接或间接证据支撑，故基于原始需求文本整理。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P016-03" level="1" requirementType="safety">
+      <sysml:Name>带压管路防护</sysml:Name>
+      <sysml:Text>冷却水系统的带压管路应设置压力监测和超压保护装置，并在管路布置上考虑防冲击和防泄漏措施，确保在泵故障或管路破裂时能通过冗余配置维持系统安全。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P016" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CCS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-INCL-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>带压管路破裂或超压可能导致人员伤害和设备损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统图纸，确认设有压力传感器和超压保护装置。</Criterion>
+        <Criterion>确认冷却水泵配置满足冗余要求（不少于2台，一用一备）。</Criterion>
+        <Criterion>确认系统设有高温报警和自动保护功能。</Criterion>
+        <Criterion>确认冷却水泵和膨胀水箱在船舶倾斜15°静倾、22.5°横摇、7.5°纵摇下能正常工作。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【带压管路防护】，来自原始需求「带压管路」。E-SOLAS-COOL-001支撑了冗余和报警要求；E-CCS-COOL-001支撑了泵冗余和高温报警；E-SOLAS-INCL-001支撑了倾斜工况下的系统可靠性。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="0.8">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 4 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="false" severity="warning">
+          <Message>Ambiguous qualitative term(s) detected (LLM): ['防冲击和防泄漏措施', '冗余配置', '维持系统安全'].</Message>
+          <Suggestion>Specify quantitative criteria for impact resistance and leak prevention, define redundancy requirements (e.g., N+1), and reference measurable safety conditions (e.g., pressure limits, leak rates).</Suggestion>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P016-04" level="1" requirementType="safety">
+      <sysml:Name>化学处理液防护</sysml:Name>
+      <sysml:Text>冷却水系统使用化学处理液（如防腐剂）时，应遵守材料安全数据表（MSDS）要求，避免皮肤接触；溅入眼睛应立即冲洗；废液（含铬、亚硝酸盐、乙二醇）禁止直接排海，应收集并送岸上设施处理；膨胀水箱溢流管不得排入大海；系统应设置防泄漏收集措施。</sysml:Text>
+      <sysml:VerifiedBy method="inspection" />
+      <sysml:DerivedFrom refId="ER-P016" />
+      <sysml:Traceability>
+        <Evidence id="E-SUPP-ENV-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-COOLANT-WATER-105" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SYS-CORR-004" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SYS-CORR-003" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>化学处理液泄漏或误排可能导致人员化学灼伤、环境污染及违反MARPOL法规。</RiskIfUnmet>
+        <ApplicabilityConstraint>E-COOLANT-WATER-105适用于MAN L23/30H机型，其他厂家和机型应按各自Technical Data确认。</ApplicabilityConstraint>
+        <ApplicabilityConstraint>E-SYS-CORR-004和E-SYS-CORR-003适用于MAN 49/60DF机型，其他机型参考。</ApplicabilityConstraint>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查MSDS文件，确认现场备有并遵守安全操作程序。</Criterion>
+        <Criterion>检查废液收集和处理方案，确认含铬/亚硝酸盐/乙二醇废液不直接排海。</Criterion>
+        <Criterion>检查膨胀水箱溢流管是否引至收集柜而非直接排海。</Criterion>
+        <Criterion>检查系统是否设有防泄漏收集措施（如冷却水收集箱）。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【化学处理液防护】，来自原始需求「化学处理液」。E-SUPP-ENV-001（MARPOL）支撑了废液排放和溢流管要求；E-COOLANT-WATER-105（MAN L23/30H）支撑了MSDS遵守和皮肤/眼睛防护要求；E-SYS-CORR-004和E-SYS-CORR-003间接支撑了收集箱用于维护排放。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 4 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='inspection', 4 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P016" target="ER-P016-01" type="derive">由原始需求「高温介质」和E-SUPP-SAFE-001直接证据派生。</Relationship>
+    <Relationship source="P016" target="ER-P016-02" type="derive">由原始需求「旋转设备」派生，证据缺口。</Relationship>
+    <Relationship source="P016" target="ER-P016-03" type="derive">由原始需求「带压管路」和E-SOLAS-COOL-001、E-CCS-COOL-001、E-SOLAS-INCL-001直接证据派生。</Relationship>
+    <Relationship source="P016" target="ER-P016-04" type="derive">由原始需求「化学处理液」和E-SUPP-ENV-001、E-COOLANT-WATER-105、E-SYS-CORR-004、E-SYS-CORR-003证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P016-02" gapType="judge_rejected_all">
+      <Description>旋转设备防护子需求（P016-02）无直接或间接证据支撑，需补充防护罩或联锁装置的具体标准或厂家要求。</Description>
+      <SuggestedDocumentUpdate>补充ISO 12100、ISO 13857或船级社关于旋转设备防护的规则，以及厂家项目指南中的防护要求。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认旋转设备防护罩或联锁装置的具体设计标准和验收判据。</Statement>
+      <Reason>现有证据缺口，需补充相关工程证据。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

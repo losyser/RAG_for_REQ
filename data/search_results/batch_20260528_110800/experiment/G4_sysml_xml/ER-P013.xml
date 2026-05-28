@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P013" sourceRequirementId="P013" stakeholder="自动化工程师" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T11:16:18">
+  <ProfessionalSummary>覆盖主机冷却水系统监控接入要求，包括冷却水泵、温控阀、传感器和流量信号的监控与报警功能。</ProfessionalSummary>
+  <EngineeringRequirements count="4">
+    <Requirement id="ER-P013-01" level="1" requirementType="monitoring">
+      <sysml:Name>冷却水泵监控接入</sysml:Name>
+      <sysml:Text>冷却水泵的运行状态信号应接入监控系统，并在集控室和驾驶台显示泵的运行状态。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P013" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法监控泵运行状态，影响故障判断和操作决策。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查监控系统图纸，确认冷却水泵运行状态信号已接入并显示。</Criterion>
+        <Criterion>调试期间验证泵启动/停止时状态显示正确。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水泵监控接入】，来自原始需求「冷却水泵、温控阀、传感器和必要的流量信号应接入监控系统」。E-CTRL-COOL-002（IACS UR E10）直接支撑泵运行状态指示要求；E-ISO8861-002（ISO 8861）支撑报警显示要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P013-02" level="1" requirementType="monitoring">
+      <sysml:Name>温控阀监控接入</sysml:Name>
+      <sysml:Text>温控阀的阀位反馈信号（如开度或状态）应接入监控系统，并在集控室显示。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P013" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-001" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>无法监控温控阀状态，影响温度控制异常诊断。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查监控系统图纸，确认温控阀反馈信号已接入。</Criterion>
+        <Criterion>调试期间验证阀位显示与实测一致。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【温控阀监控接入】，来自原始需求「冷却水泵、温控阀、传感器和必要的流量信号应接入监控系统」。E-CTRL-COOL-001（IACS UR E10）支撑温控阀控制与报警功能，间接支撑监控接入需求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 1 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P013-03" level="1" requirementType="monitoring">
+      <sysml:Name>传感器监控接入</sysml:Name>
+      <sysml:Text>冷却水系统的温度传感器、压力传感器和液位传感器信号应接入监控系统，用于关键运行参数采集和异常报警。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P013" />
+      <sysml:Traceability>
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M3-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法监测关键参数，可能导致主机损坏。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查监控系统图纸，确认温度、压力、液位传感器信号已接入。</Criterion>
+        <Criterion>调试期间验证各传感器读数正确，报警功能正常。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【传感器监控接入】，来自原始需求「传感器和必要的流量信号应接入监控系统，支持关键运行参数采集和异常报警」。E-ISO8861-002（ISO 8861）直接支撑温度、压力、液位监测要求；E-IACS-M3-002（IACS UR M3.1）支撑温度持续监控与报警；E-CTRL-COOL-002（IACS UR E10）支撑报警接入。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+    <Requirement id="ER-P013-04" level="1" requirementType="alarm">
+      <sysml:Name>流量信号异常报警</sysml:Name>
+      <sysml:Text>冷却水系统的流量信号（如流量开关或流量计）应接入监控系统，并在流量异常（如低流量或无流量）时触发报警。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P013" />
+      <sysml:Traceability>
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="supported_by_indirect_evidence" />
+        <Evidence id="E-CCS-COOL-001" supportStatus="supported_by_indirect_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>supported_by_indirect_evidence</SupportStatus>
+        <RiskIfUnmet>无法及时发现冷却水中断，导致主机过热。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查监控系统图纸，确认流量信号已接入并设置报警。</Criterion>
+        <Criterion>调试期间模拟低流量工况，验证报警触发。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【流量信号异常报警】，来自原始需求「必要的流量信号应接入监控系统，支持关键运行参数采集和异常报警」。E-SOLAS-COOL-001（SOLAS Reg.26）支撑温度异常报警，间接支撑流量异常报警需求；E-CCS-COOL-001（CCS规则）支撑报警接入。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 2 item(s), support_status='supported_by_indirect_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P013" target="ER-P013-01" type="derive">由原始需求「冷却水泵监控接入」和 E-CTRL-COOL-002 直接证据派生。</Relationship>
+    <Relationship source="P013" target="ER-P013-02" type="derive">由原始需求「温控阀监控接入」和 E-CTRL-COOL-001 间接证据派生。</Relationship>
+    <Relationship source="P013" target="ER-P013-03" type="derive">由原始需求「传感器监控接入」和 E-ISO8861-002、E-IACS-M3-002、E-CTRL-COOL-002 直接证据派生。</Relationship>
+    <Relationship source="P013" target="ER-P013-04" type="derive">由原始需求「流量信号异常报警」和 E-SOLAS-COOL-001、E-CCS-COOL-001 间接证据派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P013" gapType="parameter_source_gap">
+      <Description>缺少流量信号报警的具体阈值（如低流量报警值）和传感器精度要求。</Description>
+      <SuggestedDocumentUpdate>补充主机厂家 Technical Data 和项目调试大纲中的流量报警设定值。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认流量信号报警的具体阈值（如低流量报警值）。</Statement>
+      <Reason>现有证据未给出具体数值，需厂家 Technical Data 确认。</Reason>
+    </Item>
+    <Item>
+      <Statement>确认温控阀反馈信号类型（如模拟量或开关量）。</Statement>
+      <Reason>现有证据未明确，需根据实际选型确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

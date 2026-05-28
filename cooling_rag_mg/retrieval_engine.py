@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from typing import Any
 
+import torch
 from cooling_rag_mg.hybrid_fusion import rrf_fuse
-from cooling_rag_mg.index_store import HybridIndexSearcher, load_index
+
+from cooling_rag_mg.index_store import HybridIndexSearcher, load_index, load_sentence_transformer
 from cooling_rag_mg.jsonl import read_jsonl
 from cooling_rag_mg.retrieval_profile import build_profile
 from cooling_rag_mg.schema import normalize_v2_metadata
@@ -24,8 +26,18 @@ class MultiGranularRetriever:
         evidence_groups_path: str,
         device: str = "cpu",
     ):
-        self.source_searcher = HybridIndexSearcher(load_index(source_index_dir), device=device)
-        self.evidence_searcher = HybridIndexSearcher(load_index(evidence_index_dir), device=device)
+        source_built = load_index(source_index_dir)
+        evidence_built = load_index(evidence_index_dir)
+        model_kwargs = {"torch_dtype": torch.float16} if device.startswith("cuda") else {}
+        shared_model = load_sentence_transformer(
+            source_built.model_name,
+            device=device,
+            label="[Retriever]",
+            model_kwargs=model_kwargs,
+        )
+        actual_device = str(shared_model.device)
+        self.source_searcher = HybridIndexSearcher(source_built, device=actual_device, model=shared_model)
+        self.evidence_searcher = HybridIndexSearcher(evidence_built, device=actual_device, model=shared_model)
         self.units = read_jsonl(evidence_units_path)
         self.groups = read_jsonl(evidence_groups_path)
         for unit in self.units:
@@ -42,7 +54,7 @@ class MultiGranularRetriever:
         self,
         sub_requirement: dict[str, Any],
         *,
-        top_k: int = 6,
+        top_k: int = 4,
         coarse_k: int = 12,
         fine_k: int = 40,
     ) -> dict[str, Any]:

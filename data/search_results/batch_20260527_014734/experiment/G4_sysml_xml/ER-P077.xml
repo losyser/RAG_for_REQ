@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P077" sourceRequirementId="P077" stakeholder="调试人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T02:28:00">
+  <ProfessionalSummary>覆盖主机冷却水系统调试用临时旁通管路配置要求，用于模拟单台泵故障并测试备用泵自动切换响应时间。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P077-01" level="1" requirementType="configuration">
+      <sysml:Name>调试用临时旁通管路配置</sysml:Name>
+      <sysml:Text>系统应配置独立的调试用临时旁通管路，用于模拟单台泵故障时自动切换至备用泵的响应时间测试。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P077" />
+      <sysml:QualityStatus>
+        <SupportStatus>evidence_gap</SupportStatus>
+        <RiskIfUnmet>无法进行备用泵自动切换响应时间测试，影响调试验证和系统可靠性确认。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>待补充相关工程证据后方可确认验收判据。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【调试用临时旁通管路配置】，来自原始需求「独立的调试用临时旁通管路」。无直接或间接证据支撑，基于原始需求文本整理。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="false" score="0.6">
+        <Check dimension="evidence_sufficiency" passed="false" severity="error">
+          <Message>evidence_ids is empty — requirement has no evidence backing.</Message>
+          <Suggestion>Retrieve and link at least one supporting evidence item from the evidence database.</Suggestion>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 1 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="false" severity="error">
+          <Message>Missing SysML required field(s): ['traceLinks (evidenceIds)'].</Message>
+          <Suggestion>Populate all SysML Requirement block fields before XML export.</Suggestion>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P077" target="ER-P077-01" type="derive">由原始需求「独立的调试用临时旁通管路」直接派生。</Relationship>
+  </sysml:Relationships>
+  <EvidenceGaps count="1">
+    <Gap relatedRequirementId="ER-P077" gapType="judge_rejected_all">
+      <Description>有候选证据，但均未达到直接或间接支撑标准。</Description>
+      <SuggestedDocumentUpdate>补充更直接的标准条款、厂家手册、试验记录或设计说明。</SuggestedDocumentUpdate>
+    </Gap>
+  </EvidenceGaps>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认临时旁通管路的管径、连接方式、阀门配置及安装位置。</Statement>
+      <Reason>现有证据缺失，需补充设计文件或厂家资料确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

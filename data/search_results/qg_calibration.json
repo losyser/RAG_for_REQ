@@ -1,0 +1,1017 @@
+{
+  "n_sampled": 50,
+  "seed": 42,
+  "confusion_matrices": {
+    "evidence_sufficiency": {
+      "tp": 36,
+      "fp": 0,
+      "fn": 0,
+      "tn": 14
+    },
+    "verifiability": {
+      "tp": 34,
+      "fp": 11,
+      "fn": 5,
+      "tn": 0
+    },
+    "over_inference": {
+      "tp": 46,
+      "fp": 1,
+      "fn": 0,
+      "tn": 3
+    },
+    "ambiguity": {
+      "tp": 26,
+      "fp": 13,
+      "fn": 1,
+      "tn": 10
+    },
+    "mbse_completeness": {
+      "tp": 50,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0
+    }
+  },
+  "metrics": {
+    "evidence_sufficiency": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "verifiability": {
+      "precision": 0.7556,
+      "recall": 0.8718,
+      "f1": 0.8095
+    },
+    "over_inference": {
+      "precision": 0.9787,
+      "recall": 1.0,
+      "f1": 0.9892
+    },
+    "ambiguity": {
+      "precision": 0.6667,
+      "recall": 0.963,
+      "f1": 0.7879
+    },
+    "mbse_completeness": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "per_item": [
+    {
+      "er_id": "ER-P092-01",
+      "shall_statement": "主机冷却水系统应配置自动排气阀和手动排气点，确保在系统加注和正常运行期间能有效排出空气，防止气蚀和循环不畅。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement lacks quantification for '有效排出空气' and '防止气蚀'."
+    },
+    {
+      "er_id": "ER-P070-01",
+      "shall_statement": "化学处理剂储存和加注区域应设置泄漏收集槽，其容量应能容纳可能的最大泄漏量，防止化学品泄漏扩散至周围区域。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Vague term '可能的最大泄漏量' lacks quantification; otherwise acceptable."
+    },
+    {
+      "er_id": "ER-P095-02",
+      "shall_statement": "维护手册中应提供完整的管路图，包括所有管路、阀门、设备连接及编号，管路图应清晰标注流向、阀门位置、放水点、排气点及隔离阀组，支持快速定位和隔离故障段。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Evidence gap and vague terms like '完整' reduce quality."
+    },
+    {
+      "er_id": "ER-P081-01",
+      "shall_statement": "主机冷却水系统应设置独立的温度调节阀，该阀应能在主机全负荷范围内自动调节冷却水温度，使其稳定在制造厂规定的±2°C范围内。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P001-01",
+      "shall_statement": "主机冷却水系统应设计为在正常工况下具备充足的冷却能力，确保主机在所有运行工况下冷却水温度不超过主机厂家规定的最高允许值。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement lacks quantified temperature margin; vague term '充足的冷却能力'."
+    },
+    {
+      "er_id": "ER-P054-03",
+      "shall_statement": "流量计和温度传感器的安装位置应满足测量精度要求，并便于维护。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Vague term '便于维护' lacks quantification; acceptance criteria partially mitigate but not fully."
+    },
+    {
+      "er_id": "ER-P090-02",
+      "shall_statement": "加热器换热管材料应与冷却水系统其他部件材料兼容，避免形成电偶对，防止电偶腐蚀。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P055-01",
+      "shall_statement": "中央冷却器应配置在线清洗装置（如反冲洗或胶球清洗接口），以在运行中清除污垢，减少停机维护频率。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms like '在线清洗装置'."
+    },
+    {
+      "er_id": "ER-P090-04",
+      "shall_statement": "加热器换热管应通过材料选择和设计防止泄漏，确保系统密封性。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms like '防止泄漏'."
+    },
+    {
+      "er_id": "ER-P014-01-08",
+      "shall_statement": "冷却水系统自动保护动作应设置手动干预确认机制，防止误动作。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Shall statement uses vague term '防止误动作' without quantification."
+    },
+    {
+      "er_id": "ER-P054-03",
+      "shall_statement": "流量计和温度传感器的安装位置和方式应满足测量精度要求，并便于维护。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement lacks quantified installation details; vague terms reduce clarity."
+    },
+    {
+      "er_id": "ER-P044-03",
+      "shall_statement": "应急冷却模式应能保证主机在低速运行工况下的冷却需求，确保冷却水流量和温度在主机允许范围内。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms like 'appropriate'."
+    },
+    {
+      "er_id": "ER-P049-01",
+      "shall_statement": "膨胀水柜的安装位置应高于主发动机冷却水系统最高点至少1米，以保证系统静压和排气。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P014-01-04",
+      "shall_statement": "冷却水系统应设置HT冷却水出机高温报警和LT冷却水出中央冷却器高温报警，报警信号应接入机舱监测报警系统，并在机控室和驾驶台显示。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P018-02",
+      "shall_statement": "主要设备（如冷却水泵、冷却器）应在其进出口设置隔离阀，并配备必要的放气、放水装置，以便于隔离后进行检修。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Evidence gap present; acceptance criteria partially vague but verifiable."
+    },
+    {
+      "er_id": "ER-P054-01",
+      "shall_statement": "冷却水系统各支路应安装流量计和温度传感器，用于实时监测各支路冷却水流量和温度参数。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P036-01",
+      "shall_statement": "膨胀水箱的容积应满足主机运行时冷却水热膨胀及补水的需求，具体容积应按船级社规则或主机厂家Technical Data确认。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Vague term '应满足' without quantification; acceptance criteria provide specifics."
+    },
+    {
+      "er_id": "ER-P095-03",
+      "shall_statement": "系统管路布置应设置必要的隔离阀组，确保任一故障段可通过关闭相关阀门快速隔离，同时不影响其他正常段运行。隔离阀组的位置应在管路图中明确标注。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Evidence gap and vague terms '必要' and '合理' reduce quality."
+    },
+    {
+      "er_id": "ER-P014-01-05",
+      "shall_statement": "冷却水系统应设置冷却水泵运行状态指示，并接入机舱监测报警系统。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All quality dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P026-01",
+      "shall_statement": "主机冷却水系统应配置数据采集与记录功能，对HT冷却水出机温度、HT冷却水进机压力、LT冷却水出中央冷却器温度、膨胀水箱液位、冷却水泵运行状态等关键参数进行连续监测和记录，所有记录数据应具备时间戳并存储于船舶报警管理系统或数据记录系统中，支持历史数据查询和导出，形成可追溯的运行维护记录。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is well-supported, verifiable, unambiguous, and complete."
+    },
+    {
+      "er_id": "ER-P090-04",
+      "shall_statement": "加热器换热管应通过材料选择和设计防止泄漏，确保系统密封性。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms like '防止泄漏'."
+    },
+    {
+      "er_id": "ER-P029-02",
+      "shall_statement": "主机冷却水系统应通过耐腐蚀材料选择和密封设计，减少海水泄漏风险。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms reduce quality."
+    },
+    {
+      "er_id": "ER-P033-01",
+      "shall_statement": "主机冷却水系统应设置冷却水流量低限报警和温度高限报警，当冷却水流量低于设定值或温度超过上限时，应在集控室触发声光报警。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P044-04",
+      "shall_statement": "应急冷却模式应能在船舶倾斜工况（横倾15°、纵倾7.5°、横摇22.5°）下正常工作，且能在黑船状态下自主启动。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Quantitative inclination values lack direct evidence backing; over-inference detected."
+    },
+    {
+      "er_id": "ER-P023-01",
+      "shall_statement": "冷却水系统管路材料应适用于冷却介质、工作温度、工作压力及腐蚀环境，管路与冷却水接触的表面不应使用铜、锌、黄铜或镀锌材料。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P078-02",
+      "shall_statement": "调试时，应使用便携式流量计测量各冷却用户的实际流量，并与设计值比较，偏差应不超过±5%。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Quantitative value ±5% lacks direct evidence backing; needs confirmation."
+    },
+    {
+      "er_id": "ER-P080-03",
+      "shall_statement": "调试时应验证在海水温度32℃工况下，中央冷却器出口温度稳定在36±1℃，且调节周期不超过30秒。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Quantitative values lack direct evidence backing; over-inference detected."
+    },
+    {
+      "er_id": "ER-P081-03",
+      "shall_statement": "温度调节阀应保证在主机各稳定工况下，冷却水温度波动不超过制造厂规定的±2°C。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": false,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Value ±2°C lacks direct evidence backing; acceptance criteria note pending confirmation."
+    },
+    {
+      "er_id": "ER-P056-03",
+      "shall_statement": "中央冷却系统应通过配置自动反冲洗过滤器及合理的系统设计，减少海水侧人工清洗频次，具体清洗周期按厂家技术文件和项目维护程序确认。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Vague term '合理的' in shall_statement; lacks quantification for ambiguity."
+    },
+    {
+      "er_id": "ER-P090-01",
+      "shall_statement": "封闭式冷却水系统的加热器换热管应选用铜镍合金或钛材，以防止电偶腐蚀和应力腐蚀开裂。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P031-03",
+      "shall_statement": "在低负荷或冷启动工况下，自动旁通温度控制阀应能快速调节旁通流量，使冷却水温度在合理时间内达到主机要求的最低工作温度。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P018-01",
+      "shall_statement": "冷却水系统应设计为支持故障隔离和局部检修，主要设备（如冷却水泵、冷却器、温控阀等）应配置隔离阀，以便在不排空整个系统的情况下进行维修或更换。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is well-supported, verifiable, unambiguous, and structurally complete."
+    },
+    {
+      "er_id": "ER-P001-02",
+      "shall_statement": "主机冷却水系统应配置不少于两台冷却水泵，一用一备；任意单台泵发生故障时，备用泵应能自动启动并维持主机冷却水循环不中断。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All five dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P082-02",
+      "shall_statement": "中央冷却器冷却水侧应设置可拆卸端盖，以便于内部检查和清洗。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P089-01",
+      "shall_statement": "冷却水管路中用于调节流量的蝶阀阀板材料应为双相不锈钢或铝青铜，应具备抗空蚀和抗泥沙磨损性能。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms like '抗空蚀'."
+    },
+    {
+      "er_id": "ER-P096-01-02",
+      "shall_statement": "所有冷却水管路焊缝应进行100%外观检验，确认无裂纹、气孔、未熔合等表面缺陷。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P069-02",
+      "shall_statement": "泵房地面应铺设防滑垫，防止因润滑油泄漏导致滑倒事故。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous term '防滑垫'."
+    },
+    {
+      "er_id": "ER-P054-01",
+      "shall_statement": "主机冷却水系统各支路应安装流量计和温度传感器，用于实时监测各支路的流量和温度参数。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement lacks quantified flow/temperature ranges, causing ambiguity."
+    },
+    {
+      "er_id": "ER-P098-01",
+      "shall_statement": "冷却水系统压力试验时，应逐段检查管路及附件（如膨胀节、阀门）在试验压力下的变形情况，重点观察法兰连接处无渗漏。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P048-02",
+      "shall_statement": "管路穿舱安装应满足船级社防火分隔要求，高温冷却水管路应采取隔热措施，使表面温度不超过规定值，并设置安全标识。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Shall statement uses vague term '规定值' without quantification; acceptance criteria clarify but ambiguity remains."
+    },
+    {
+      "er_id": "ER-P069-01",
+      "shall_statement": "冷却水泵联轴器应配备防护罩，防止人员接触旋转部件。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence and vague acceptance criteria; verification method acceptable."
+    },
+    {
+      "er_id": "ER-P096-01-01",
+      "shall_statement": "冷却水管路中，公称直径不小于80mm的高压管路焊缝，应进行不少于10%的射线或超声波检测。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P090-01",
+      "shall_statement": "封闭式冷却水系统的加热器换热管应选用铜镍合金或钛材，不得使用铜、锌、黄铜或镀锌材料。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All five quality dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P065-02",
+      "shall_statement": "系统应在检测到传感器或执行器故障时自动生成诊断报告，并将报告上传至机舱监控系统。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence and vague acceptance criteria; verifiability fails."
+    },
+    {
+      "er_id": "ER-P014-01-06",
+      "shall_statement": "冷却水系统应设置温度自动调节功能，并具备手动备用控制方式，调节阀应能在全负荷范围内维持冷却水温度在设定范围内。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Vague term '设定范围内' lacks quantification; otherwise requirement is sound."
+    },
+    {
+      "er_id": "ER-P013-04",
+      "shall_statement": "监控系统应具备异常报警功能，当冷却水温度、压力、液位等参数超出设定范围时，应在集控室和驾驶台发出声光报警，并按要求触发自动保护动作。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Vague terms like '等' and '按要求' reduce clarity; otherwise well-structured."
+    },
+    {
+      "er_id": "ER-P013-01",
+      "shall_statement": "冷却水泵的运行状态（运行/停止）应接入监控系统，并在集控室和驾驶台显示。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "All dimensions pass; requirement is clear, verifiable, and well-supported."
+    },
+    {
+      "er_id": "ER-P028-03",
+      "shall_statement": "冷却水系统传感器应正确安装，确保功能正常，安装位置和方式应符合设计要求。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Missing evidence, vague acceptance criteria, and ambiguous terms like '正确' and '正常'."
+    },
+    {
+      "er_id": "ER-P058-02",
+      "shall_statement": "膨胀水箱应配置自动补水装置，当液位低于设定值时，应能自动开启补水阀向水箱补水，直至液位恢复至正常范围。",
+      "automated": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": true,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Requirement is clear, verifiable, and supported by evidence."
+    },
+    {
+      "er_id": "ER-P032-02",
+      "shall_statement": "主机冷却水应采用经防锈、防垢处理的淡水，水质处理方案应满足主机厂家要求及相关标准规定。",
+      "automated": {
+        "evidence_sufficiency": false,
+        "verifiability": true,
+        "over_inference": true,
+        "ambiguity": true,
+        "mbse_completeness": true
+      },
+      "expert": {
+        "evidence_sufficiency": false,
+        "verifiability": false,
+        "over_inference": true,
+        "ambiguity": false,
+        "mbse_completeness": true
+      },
+      "expert_comment": "Evidence gap and vague acceptance criteria; lacks quantified water quality parameters."
+    }
+  ],
+  "generated_at": "2026-05-28T02:31:08",
+  "note": "Expert verdict is an LLM (DeepSeek) acting as expert proxy via an independent prompt distinct from QualityGate's internal prompts."
+}

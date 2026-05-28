@@ -6,6 +6,7 @@ from typing import Any
 from openai import OpenAI
 
 from cooling_rag_mg.config import get_config
+from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.schema import normalize_v2_metadata
 from cooling_rag_mg.text_utils import safe_text, truncate
 
@@ -164,7 +165,8 @@ def judge_evidence(
         }
 
         client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
-        resp = client.chat.completions.create(
+        resp = cached_completion(
+            client,
             model=cfg.deepseek.model,
             messages=[
                 {"role": "system", "content": JUDGE_PROMPT},
@@ -195,7 +197,7 @@ def fallback_judge(
     无 LLM 时的降级判断。
 
     改进：
-    - 阈值从 0.70 降低到 0.45（profile 分数叠加后的合理阈值）
+    - 阈值 0.65（profile 分数叠加后的合理阈值；原始阈值 0.70 过高）
     - 优先选 direct strength 的证据
     - 最多 max_selected 条
     """
@@ -261,7 +263,7 @@ def fallback_judge(
             rejected.append({
                 "id": c.get("id"),
                 "support_type": "not_applicable",
-                "reason": f"分数不足（{score:.3f} < 0.45）或超出最大数量（{max_selected}）。",
+                "reason": f"分数不足（{score:.3f} < 0.65）或超出最大数量（{max_selected}）。",
             })
 
     return {"selected": selected, "rejected": rejected, "judge_method": "fallback"}

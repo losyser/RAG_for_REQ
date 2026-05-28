@@ -9,6 +9,7 @@ from typing import Any
 from openai import OpenAI
 
 from cooling_rag_mg.config import get_config
+from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.text_utils import safe_text
 
 # ─────────────────────────────────────────────
@@ -37,13 +38,14 @@ _UNIT_RE = re.compile(
     re.IGNORECASE,
 )
 
-# SysML Requirement block 必填字段（JSON key → 可读名称）
+# SysML Requirement block 必填结构字段（JSON key → 可读名称）
+# 注意：evidence_ids 已从 SysML 必填集中移除，因为其非空性已由 M1（evidence-free rate）
+# 独立衡量；保留 evidence_ids 会让 M5 与 M1 构造性等价，丧失独立诊断价值。
 _SYSML_REQUIRED: dict[str, str] = {
     "id":                  "id (SysML Requirement::id)",
     "topic":               "name (SysML Requirement::name)",
     "shall_statement":     "text (SysML Requirement::text)",
     "verification_method": "verificationMethod",
-    "evidence_ids":        "traceLinks (evidenceIds)",
 }
 
 _AMBIGUITY_PROMPT = """\
@@ -291,7 +293,8 @@ class QualityGate:
                 api_key=self._cfg.deepseek.api_key,
                 base_url=self._cfg.deepseek.base_url,
             )
-            resp = client.chat.completions.create(
+            resp = cached_completion(
+                client,
                 model=self._cfg.deepseek.model,
                 messages=[{
                     "role": "user",

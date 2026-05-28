@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P030" sourceRequirementId="P030" stakeholder="项目管理方" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-28T05:07:36">
+  <ProfessionalSummary>覆盖冷却水系统全生命周期文档一致性要求，确保需求、设计、采购、施工、调试和验收资料保持一致，变更可追踪。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P030-01" level="1" requirementType="documentation">
+      <sysml:Name>冷却水系统全生命周期文档一致性</sysml:Name>
+      <sysml:Text>冷却水系统的需求、设计、采购、施工、调试和验收资料应保持一致，所有变更应可追踪。</sysml:Text>
+      <sysml:VerifiedBy method="review" />
+      <sysml:DerivedFrom refId="ER-P030" />
+      <sysml:Traceability>
+        <Evidence id="E-CCS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-DNV-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SOLAS-COOL-001" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-SUPP-COMM-001" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>文档不一致或变更不可追踪将导致系统设计错误、施工偏差、调试失败，增加返工成本和安全隐患。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>审查各阶段文档，确认需求、设计、采购、施工、调试和验收资料内容一致，无矛盾。</Criterion>
+        <Criterion>变更管理记录应完整，每项变更可追溯至原始需求及影响范围。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【冷却水系统全生命周期文档一致性】，来自原始需求「保持一致，变更应可追踪」。E-CCS-COOL-001、E-DNV-COOL-001、E-SOLAS-COOL-001、E-SUPP-COMM-001分别支撑了设计、采购、施工、调试和验收各阶段的文档一致性要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 4 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='review', 2 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 4 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P030" target="ER-P030-01" type="derive">由原始需求「保持一致，变更应可追踪」和直接证据派生。</Relationship>
+  </sysml:Relationships>
+</RequirementSet>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RequirementSet xmlns:sysml="http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements" setId="ER-P026" sourceRequirementId="P026" stakeholder="运维管理人员" generationBasis="original_requirement_and_supported_evidence_only" generatedAt="2026-05-27T00:31:15">
+  <ProfessionalSummary>覆盖冷却水系统运行维护数据记录与追溯要求，基于IACS UR E10、ISO 8861:1998和IACS UR M3.1等证据，明确监控参数、报警记录和数据存储要求。</ProfessionalSummary>
+  <EngineeringRequirements count="1">
+    <Requirement id="ER-P026-01" level="1" requirementType="monitoring">
+      <sysml:Name>运行维护数据记录与追溯</sysml:Name>
+      <sysml:Text>主机冷却水系统应配置数据采集与记录功能，对HT冷却水出机温度、HT冷却水进机压力、LT冷却水出中央冷却器温度、膨胀水箱液位、冷却水泵运行状态等关键参数进行连续监测和记录，所有记录数据应具备时间戳并存储于船舶报警管理系统或数据记录系统中，支持历史数据查询和导出，形成可追溯的运行维护记录。</sysml:Text>
+      <sysml:VerifiedBy method="commissioning_check" />
+      <sysml:DerivedFrom refId="ER-P026" />
+      <sysml:Traceability>
+        <Evidence id="E-CTRL-COOL-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-ISO8861-002" supportStatus="verified_by_direct_evidence" />
+        <Evidence id="E-IACS-M3-002" supportStatus="verified_by_direct_evidence" />
+      </sysml:Traceability>
+      <sysml:QualityStatus>
+        <SupportStatus>verified_by_direct_evidence</SupportStatus>
+        <RiskIfUnmet>无法建立运行维护记录，导致维护决策缺乏数据支撑，可能增加设备故障风险。</RiskIfUnmet>
+      </sysml:QualityStatus>
+      <sysml:AcceptanceCriteria>
+        <Criterion>检查系统设计图纸和监控系统规格书，确认已配置所需传感器和数据记录功能。</Criterion>
+        <Criterion>调试期间验证各监测参数数据记录功能正常，记录数据包含时间戳，可查询和导出。</Criterion>
+        <Criterion>确认所有报警记录自动存储，并可通过船舶报警管理系统追溯。</Criterion>
+      </sysml:AcceptanceCriteria>
+      <sysml:EngineeringRationale>本条覆盖方面【运行维护数据记录与追溯】，来自原始需求「便于建立运行维护记录，相关数据应能形成可追溯的运行维护数据」。E-CTRL-COOL-002（IACS UR E10）支撑了监控参数清单和报警接入船舶报警管理系统的要求；E-ISO8861-002（ISO 8861:1998）支撑了监测参数和报警显示要求；E-IACS-M3-002（IACS UR M3.1）支撑了持续监控温度的要求。</sysml:EngineeringRationale>
+      <sysml:QualityGateReport passed="true" score="1.0">
+        <Check dimension="evidence_sufficiency" passed="true" severity="error">
+          <Message>Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.</Message>
+        </Check>
+        <Check dimension="verifiability" passed="true" severity="error">
+          <Message>Verifiable: method='commissioning_check', 3 criterion/criteria defined.</Message>
+        </Check>
+        <Check dimension="over_inference" passed="true" severity="error">
+          <Message>No over-inference detected.</Message>
+        </Check>
+        <Check dimension="ambiguity" passed="true" severity="warning">
+          <Message>No ambiguous terms detected (LLM check).</Message>
+        </Check>
+        <Check dimension="mbse_completeness" passed="true" severity="error">
+          <Message>All 5 SysML required fields are present.</Message>
+        </Check>
+      </sysml:QualityGateReport>
+    </Requirement>
+  </EngineeringRequirements>
+  <sysml:Relationships>
+    <Relationship source="P026" target="ER-P026-01" type="derive">由原始需求「运行维护数据记录与追溯」和E-CTRL-COOL-002、E-ISO8861-002、E-IACS-M3-002直接证据派生。</Relationship>
+  </sysml:Relationships>
+  <ConfirmationItems>
+    <Item>
+      <Statement>确认数据记录系统的存储容量和记录频率满足运维要求。</Statement>
+      <Reason>现有证据未明确记录频率和存储时长，需按项目调试大纲或监控系统设计规格书确认。</Reason>
+    </Item>
+  </ConfirmationItems>
+</RequirementSet>

@@ -13,6 +13,44 @@ from cooling_rag_mg.jsonl import read_jsonl
 from cooling_rag_mg.text_utils import simple_tokens
 
 
+def _is_cuda_oom(exc: Exception) -> bool:
+    message = str(exc).lower()
+    return exc.__class__.__name__ == "OutOfMemoryError" or "cuda out of memory" in message
+
+
+def _empty_cuda_cache() -> None:
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    except Exception:
+        pass
+
+
+def load_sentence_transformer(
+    model_path: str,
+    *,
+    device: str = "cpu",
+    label: str = "[Searcher]",
+    model_kwargs: dict[str, Any] | None = None,
+) -> SentenceTransformer:
+    print(f"{label} Loading SentenceTransformer on device = {device}")
+    kwargs = {"model_kwargs": model_kwargs} if model_kwargs else {}
+    try:
+        model = SentenceTransformer(model_path, device=device, **kwargs)
+        print(f"{label} Model actual device = {model.device}")
+        return model
+    except Exception as exc:
+        if device.startswith("cuda") and _is_cuda_oom(exc):
+            print(f"{label} CUDA OOM while loading SentenceTransformer; falling back to CPU.")
+            _empty_cuda_cache()
+            model = SentenceTransformer(model_path, device="cpu")
+            print(f"{label} Model actual device = {model.device}")
+            return model
+        raise
+
+
 class BuiltIndex:
     def __init__(self, records: list[dict[str, Any]], bm25: BM25Okapi, tokens: list[list[str]], faiss_index: Any, model_name: str):
         self.records = records
@@ -28,10 +66,17 @@ def build_index(*, jsonl_path: str | Path, output_dir: str | Path, text_field: s
     tokens = [simple_tokens(t) for t in texts]
     bm25 = BM25Okapi(tokens)
 
-    print(f"[Build Index] Loading SentenceTransformer on device = {device}")
-    model = SentenceTransformer(model_path, device=device)
-    print(f"[Build Index] Model actual device = {model.device}")
-    vectors = model.encode(texts, batch_size=32, normalize_embeddings=normalize, show_progress_bar=True)
+    model = load_sentence_transformer(model_path, device=device, label="[Build Index]")
+    try:
+        vectors = model.encode(texts, batch_size=32, normalize_embeddings=normalize, show_progress_bar=True)
+    except Exception as exc:
+        if str(model.device).startswith("cuda") and _is_cuda_oom(exc):
+            print("[Build Index] CUDA OOM while encoding; retrying on CPU.")
+            _empty_cuda_cache()
+            model.to("cpu")
+            vectors = model.encode(texts, batch_size=32, normalize_embeddings=normalize, show_progress_bar=True)
+        else:
+            raise
     vectors = np.asarray(vectors, dtype="float32")
     index = faiss.IndexFlatIP(vectors.shape[1])
     index.add(vectors)
@@ -62,15 +107,26 @@ def load_index(index_dir: str | Path) -> BuiltIndex:
 
 
 class HybridIndexSearcher:
-    def __init__(self, built: BuiltIndex, *, device: str = "cpu", normalize: bool = True):
+    def __init__(self, built: BuiltIndex, *, device: str = "cpu", normalize: bool = True,
+                 model: "SentenceTransformer | None" = None):
         self.built = built
-        print(f"[Searcher] Loading SentenceTransformer on device = {device}")
-        self.model = SentenceTransformer(built.model_name, device=device)
-        print(f"[Searcher] Model actual device = {self.model.device}")
+        if model is not None:
+            self.model = model
+        else:
+            self.model = load_sentence_transformer(built.model_name, device=device, label="[Searcher]")
         self.normalize = normalize
 
     def vector_search(self, query: str, top_k: int) -> list[dict[str, Any]]:
-        qv = self.model.encode([query], normalize_embeddings=self.normalize)
+        try:
+            qv = self.model.encode([query], normalize_embeddings=self.normalize)
+        except Exception as exc:
+            if str(self.model.device).startswith("cuda") and _is_cuda_oom(exc):
+                print("[Searcher] CUDA OOM while encoding query; retrying on CPU.")
+                _empty_cuda_cache()
+                self.model.to("cpu")
+                qv = self.model.encode([query], normalize_embeddings=self.normalize)
+            else:
+                raise
         qv = np.asarray(qv, dtype="float32")
         scores, idxs = self.built.faiss_index.search(qv, top_k)
         out = []
