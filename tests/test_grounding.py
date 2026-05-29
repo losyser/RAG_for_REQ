@@ -27,3 +27,17 @@ def test_load_evidence_text_map(tmp_path):
     assert m["E-A-001"] == "海水泵应一用一备。"
     assert m["E-A-002"].startswith("冷却水高温报警")
     assert "E-MISSING" not in m
+
+
+def test_iter_grounded_ers():
+    from cooling_rag_mg.grounding import iter_grounded_ers
+    result_sets = [{
+        "source_requirement_id": "P001",
+        "engineering_requirements": [
+            {"shall_statement": "应一用一备。", "evidence_ids": ["E-A-001"]},
+            {"shall_statement": "无证据条目。", "evidence_ids": []},
+            {"shall_statement": "", "evidence_ids": ["E-A-002"]},  # 空 shall 跳过
+        ],
+    }]
+    out = list(iter_grounded_ers(result_sets))
+    assert out == [("P001", "应一用一备。", ["E-A-001"])]
