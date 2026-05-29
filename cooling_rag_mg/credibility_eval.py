@@ -13,6 +13,16 @@ _CLAIM_PROMPT = """从下面这条工程需求(shall)中抽取所有**原子事�
 不要抽取空泛的意图。只输出 JSON：{{"claims":["...", ...]}}
 工程需求：{shall}"""
 
+_OI_PROMPT = """你是船舶冷却水系统的需求审查专家。判断这条工程需求(shall)是否**过度推断**：
+即它是否添加了**原始需求与证据都未授权**的义务/约束（范围蔓延），而非忠实落实原始需求。
+注意：与事实对错无关，只看是否凭空扩大了范围/义务。
+
+原始需求：{source}
+证据：{evidence}
+工程需求(shall)：{shall}
+
+只输出 JSON：{{"over_inference": true 或 false}}"""
+
 
 def extract_claims(shall: str, client: Any, model: str, temperature: float = 0.0) -> list[str]:
     """用 LLM 从 shall 抽取原子事实性 claim 列表。失败/空 → []。"""
@@ -29,6 +39,36 @@ def extract_claims(shall: str, client: Any, model: str, temperature: float = 0.0
         return [str(c).strip() for c in claims if str(c).strip()]
     except Exception:
         return []
+
+
+def judge_over_inference(
+    shall: str,
+    source_requirement: str,
+    kb_passages: list[str],
+    client: Any,
+    model: str,
+    temperature: float = 0.0,
+) -> bool | None:
+    """判断 shall 是否过度推断（超出原始需求+证据授权范围加义务）。
+
+    成功 → True/False；调用失败/空/不可解析 → None（从过推断率均值剔除，不向下偏置）。
+    与 H（事实对错）正交：OI 只看范围蔓延。"""
+    from cooling_rag_mg.llm_cache import cached_completion
+    try:
+        resp = cached_completion(
+            client, model=model,
+            messages=[{"role": "user", "content": _OI_PROMPT.format(
+                source=source_requirement, evidence="\n".join(kb_passages), shall=shall)}],
+            temperature=temperature, max_tokens=50,
+            response_format={"type": "json_object"},
+        )
+        content = resp.choices[0].message.content
+        if not content or not content.strip():
+            return None
+        val = json.loads(content).get("over_inference")
+        return bool(val) if isinstance(val, bool) else None
+    except Exception:
+        return None
 
 
 def verify_claim_against_kb(

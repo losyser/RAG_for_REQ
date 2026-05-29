@@ -59,3 +59,21 @@ def test_score_shall_no_claims_returns_none():
     out = score_shall(shall="s", extract=lambda s: [], verify=lambda c: "support")
     assert out["n_claims"] == 0
     assert out["h_hard"] is None and out["h_soft"] is None
+
+
+def test_judge_over_inference_true_false():
+    from cooling_rag_mg.credibility_eval import judge_over_inference
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [
+        _resp('{"over_inference": true}'),
+        _resp('{"over_inference": false}'),
+    ]
+    assert judge_over_inference("shall 加了原始需求没要求的冗余", "原始需求", ["证据"], client, model="m") is True
+    assert judge_over_inference("shall 忠于原始需求", "原始需求", ["证据"], client, model="m") is False
+
+
+def test_judge_over_inference_none_on_failure():
+    from cooling_rag_mg.credibility_eval import judge_over_inference
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [Exception("boom")]
+    assert judge_over_inference("s", "src", ["e"], client, model="m") is None
