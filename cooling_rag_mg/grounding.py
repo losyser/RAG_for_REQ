@@ -22,3 +22,25 @@ def iter_grounded_ers(
             shall = (er.get("shall_statement") or "").strip()
             if ev and shall:
                 yield src, shall, ev
+
+
+class RerankerScorer:
+    """CrossEncoder 包装，输出 (query, passage) 相关性分。独立于检索所用的 BGE-M3 dense 信号。"""
+
+    def __init__(self, model_path: str = "BAAI/bge-reranker-v2-m3", device: str = "cpu") -> None:
+        from sentence_transformers import CrossEncoder
+        self.model = CrossEncoder(model_path, device=device)
+
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+        if not pairs:
+            return []
+        return [float(s) for s in self.model.predict(pairs)]
+
+
+def mean_pair_score(scorer: Any, shall: str, evidence_texts: list[str]) -> float:
+    """一条 ER 的 grounding 分 = 其所有 (shall, evidence) 对得分的均值。"""
+    pairs = [(shall, ev) for ev in evidence_texts if ev]
+    if not pairs:
+        return 0.0
+    scores = scorer.score_pairs(pairs)
+    return float(sum(scores) / len(scores)) if scores else 0.0

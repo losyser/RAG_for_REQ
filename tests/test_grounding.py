@@ -41,3 +41,16 @@ def test_iter_grounded_ers():
     }]
     out = list(iter_grounded_ers(result_sets))
     assert out == [("P001", "应一用一备。", ["E-A-001"])]
+
+
+def test_mean_pair_score_reranker():
+    from cooling_rag_mg.grounding import mean_pair_score
+
+    class FakeScorer:
+        def score_pairs(self, pairs):
+            # 返回与 pair 数等长的分数；这里用 evidence 长度模拟
+            return [float(len(ev)) for _, ev in pairs]
+
+    score = mean_pair_score(FakeScorer(), "shall x", ["aa", "aaaa"])
+    assert score == 3.0  # (2 + 4) / 2
+    assert mean_pair_score(FakeScorer(), "shall x", []) == 0.0
