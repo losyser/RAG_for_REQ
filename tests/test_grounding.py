@@ -70,3 +70,22 @@ def test_llm_entailment_scorer():
     scorer = LLMEntailmentScorer(client, model="qwen-max")
     scores = scorer.score_pairs([("s", "e1"), ("s", "e2"), ("s", "e3")])
     assert scores == [1.0, 0.5, 0.0]
+
+
+def test_score_result_sets_aggregates_by_source():
+    from cooling_rag_mg.grounding import score_result_sets
+
+    class FakeScorer:
+        def score_pairs(self, pairs):
+            return [1.0 for _ in pairs]  # 全部满分
+
+    result_sets = [{
+        "source_requirement_id": "P001",
+        "engineering_requirements": [
+            {"shall_statement": "a", "evidence_ids": ["E1"]},
+            {"shall_statement": "b", "evidence_ids": ["E2", "E3"]},
+        ],
+    }]
+    text_map = {"E1": "t1", "E2": "t2", "E3": "t3"}
+    per_src = score_result_sets(result_sets, text_map, FakeScorer())
+    assert per_src == {"P001": 1.0}  # 两条 ER 均为 1.0，均值 1.0

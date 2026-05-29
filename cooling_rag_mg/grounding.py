@@ -86,3 +86,17 @@ class LLMEntailmentScorer:
 
     def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
         return [self._score_one(shall, ev) for shall, ev in pairs]
+
+
+def score_result_sets(
+    result_sets: list[dict[str, Any]],
+    text_map: dict[str, str],
+    scorer: Any,
+) -> dict[str, float]:
+    """返回 {source_requirement_id: 该 source req 下所有有证据 ER 的 grounding 分均值}。"""
+    by_src: dict[str, list[float]] = {}
+    for src, shall, ev_ids in iter_grounded_ers(result_sets):
+        ev_texts = [text_map.get(e, "") for e in ev_ids]
+        er_score = mean_pair_score(scorer, shall, ev_texts)
+        by_src.setdefault(src, []).append(er_score)
+    return {src: float(sum(v) / len(v)) for src, v in by_src.items() if v}
