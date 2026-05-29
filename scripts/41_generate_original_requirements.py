@@ -21,7 +21,6 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from cooling_rag_mg.config import get_config
 from cooling_rag_mg.grounding import load_evidence_text_map
 from cooling_rag_mg.jsonl import write_jsonl
-from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.original_requirements import (
     build_generation_prompt, parse_generated, quality_check,
 )
@@ -49,7 +48,7 @@ def _dedupe(reqs: list[dict], sim_threshold: float) -> list[dict]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=60, help="目标条数（去重+质量过滤后）")
-    ap.add_argument("--batch-size", type=int, default=12, help="每次 ERNIE 调用生成条数")
+    ap.add_argument("--batch-size", type=int, default=10, help="每次 ERNIE 调用生成条数")
     ap.add_argument("--sim-threshold", type=float, default=0.8, help="KB 查重/去重阈值")
     ap.add_argument("--out", default=None, help="输出 jsonl（缺省 processed/original_requirements_v1.jsonl）")
     args = ap.parse_args()
@@ -68,12 +67,17 @@ def main() -> None:
         # 轮换主题切片，促进多样性
         topics = SEED_TOPICS[(attempts * 3) % len(SEED_TOPICS):][:6] or SEED_TOPICS[:6]
         prompt = build_generation_prompt(n=args.batch_size, seed_topics=topics)
+        # 反重复后缀：避免与已生成需求雷同（提升多样性）
+        if collected:
+            sample = [c["requirement_text"] for c in collected[-12:]]
+            prompt += "\n\n请勿与以下已有需求重复或近义改写：\n- " + "\n- ".join(sample)
         try:
-            resp = cached_completion(
-                client, model=cfg.ernie.model,
+            # 直连 client（不走缓存）：出题要多样性采样，缓存会让相同 prompt 返回同一批
+            resp = client.chat.completions.create(
+                model=cfg.ernie.model,
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.7,  # 出题阶段要多样性，非确定
-                max_tokens=2000,
+                temperature=0.8,  # 出题阶段要多样性，非确定
+                max_tokens=3000,
                 response_format={"type": "json_object"},
             )
             batch = parse_generated(resp.choices[0].message.content or "{}",
