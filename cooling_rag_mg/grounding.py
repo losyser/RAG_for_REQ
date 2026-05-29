@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Any, Iterator
 
@@ -44,3 +45,44 @@ def mean_pair_score(scorer: Any, shall: str, evidence_texts: list[str]) -> float
         return 0.0
     scores = scorer.score_pairs(pairs)
     return float(sum(scores) / len(scores)) if scores else 0.0
+
+
+_ENTAIL_PROMPT = """你是船舶冷却水系统的需求-证据核对专家。判断下面这条"证据"是否支持这条"工程需求(shall)"。
+- support：证据直接给出该需求所需的参数、约束或规则依据。
+- partial：证据与需求相关，但不足以直接支撑该义务。
+- none：证据与需求无实质支撑关系。
+
+工程需求(shall)：{shall}
+证据：{evidence}
+
+只输出 JSON，无解释：{{"verdict": "support" 或 "partial" 或 "none"}}"""
+
+_VERDICT_SCORE = {"support": 1.0, "partial": 0.5, "none": 0.0}
+
+
+class LLMEntailmentScorer:
+    """用独立 LLM（Qwen/文心）判证据对 shall 的支持度 → 1.0/0.5/0.0。接口与 RerankerScorer 对齐。"""
+
+    def __init__(self, client: Any, model: str, temperature: float = 0.0) -> None:
+        self.client = client
+        self.model = model
+        self.temperature = temperature
+
+    def _score_one(self, shall: str, evidence: str) -> float:
+        from cooling_rag_mg.llm_cache import cached_completion
+        try:
+            resp = cached_completion(
+                self.client,
+                model=self.model,
+                messages=[{"role": "user", "content": _ENTAIL_PROMPT.format(shall=shall, evidence=evidence)}],
+                temperature=self.temperature,
+                max_tokens=50,
+                response_format={"type": "json_object"},
+            )
+            obj = json.loads(resp.choices[0].message.content or "{}")
+            return _VERDICT_SCORE.get(str(obj.get("verdict", "")).strip().lower(), 0.0)
+        except Exception:
+            return 0.0
+
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+        return [self._score_one(shall, ev) for shall, ev in pairs]

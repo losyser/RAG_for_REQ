@@ -54,3 +54,19 @@ def test_mean_pair_score_reranker():
     score = mean_pair_score(FakeScorer(), "shall x", ["aa", "aaaa"])
     assert score == 3.0  # (2 + 4) / 2
     assert mean_pair_score(FakeScorer(), "shall x", []) == 0.0
+
+
+def test_llm_entailment_scorer():
+    from unittest.mock import MagicMock
+    from cooling_rag_mg.grounding import LLMEntailmentScorer
+
+    client = MagicMock()
+    # 依次返回 support / partial / none
+    contents = ['{"verdict": "support"}', '{"verdict": "partial"}', '{"verdict": "none"}']
+    client.chat.completions.create.side_effect = [
+        MagicMock(choices=[MagicMock(message=MagicMock(content=c))], model="qwen-max")
+        for c in contents
+    ]
+    scorer = LLMEntailmentScorer(client, model="qwen-max")
+    scores = scorer.score_pairs([("s", "e1"), ("s", "e2"), ("s", "e3")])
+    assert scores == [1.0, 0.5, 0.0]
