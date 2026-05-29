@@ -71,6 +71,41 @@ def judge_over_inference(
         return None
 
 
+def _mean_nonnull(values: list) -> float | None:
+    """非 None 值的均值；全 None/空 → None。bool 视作 1.0/0.0。"""
+    nums = [float(v) for v in values if v is not None]
+    return sum(nums) / len(nums) if nums else None
+
+
+def aggregate_by_source(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """把 per-shall 行按 source_requirement_id 聚合为每条源需求的均值指标。
+
+    每行含 source_requirement_id 及 h_hard/h_soft/over_inference（可为 None，剔除不计入）。
+    返回 {src: {h_hard_mean, h_soft_mean, hallucination_mean, oi_rate, n_shalls}}。
+    配对单位 = 源需求；None 指标剔除避免向下偏置。"""
+    buckets: dict[str, list[dict]] = {}
+    for r in rows:
+        buckets.setdefault(str(r.get("source_requirement_id") or ""), []).append(r)
+    out: dict[str, dict[str, Any]] = {}
+    for src, rs in buckets.items():
+        h_hard = _mean_nonnull([r.get("h_hard") for r in rs])
+        h_soft = _mean_nonnull([r.get("h_soft") for r in rs])
+        hall = None if (h_hard is None and h_soft is None) else (h_hard or 0.0) + (h_soft or 0.0)
+        out[src] = {
+            "h_hard_mean": h_hard,
+            "h_soft_mean": h_soft,
+            "hallucination_mean": hall,
+            "oi_rate": _mean_nonnull([r.get("over_inference") for r in rs]),
+            "n_shalls": len(rs),
+        }
+    return out
+
+
+def metric_map(aggregated: dict[str, dict[str, Any]], metric: str) -> dict[str, float]:
+    """从 aggregate_by_source 的结果抽出 {src: value}（剔除 None），喂给 grounding.paired_compare。"""
+    return {src: float(d[metric]) for src, d in aggregated.items() if d.get(metric) is not None}
+
+
 def verify_claim_against_kb(
     claim: str,
     kb_search: Callable[[str, int], list[str]],
