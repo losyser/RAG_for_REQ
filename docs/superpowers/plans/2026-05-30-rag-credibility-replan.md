@@ -22,7 +22,9 @@
 - [ ] Phase 5 消融：A1/A2/A3
 - [ ] Phase 6 论文：重写叙事
 
-当前游标：**Phase 2 / Task 2.6**（Phase 1: 1.1/1.2/1.3 ✅，1.4 待数据集放行；Phase 2: 2.1–2.5 ✅）
+当前游标：**Phase 3 / Task 3.2**（Phase 1: 1.1–1.3 ✅，1.4 待放行；Phase 2: 2.1–2.5 ✅，2.6 待产线；Phase 3: 3.1 ✅）
+
+> ⚠️ **已知预存问题（非本次引入）**：`tests/test_splitter_review.py` 3 个测试失败（`_review_aspects` 对自身 mock 返回 passed=False）。与本规划新增代码无关，但 **Task 1.4 共享拆分用的正是 DeepSeek 拆分器+审核循环**——执行 1.4 前需先确认拆分器审核逻辑是否真坏（还是仅测试桩过期）。拆分器有 fallback 规则，最坏可关审核循环降级使用。
 
 > 已完成：Phase 1 的 1.1/1.2/1.3（冻结 60 条原始需求 v1）。
 > Phase 2 **纯逻辑核心 2.1–2.5 全部完成、11 测试通过、逐项 commit**：claim 抽取 / KB 回溯判定(support·contradict·not_found) / score_shall(H_hard·H_soft) / judge_over_inference(OI，与H正交) / aggregate_by_source+metric_map(配对单位=源需求,None剔除)。
