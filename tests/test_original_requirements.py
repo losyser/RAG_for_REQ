@@ -24,3 +24,16 @@ def test_parse_generated_skips_empty_text():
     out = parse_generated(raw, start_index=1, prefix="OR")
     assert len(out) == 1
     assert out[0]["requirement_id"] == "OR001"
+
+
+def test_quality_filter_flags_kb_copy():
+    from cooling_rag_mg.original_requirements import quality_check
+    kb_texts = ["海水泵应一用一备，备用泵能自动投入。"]
+    reqs = [
+        {"requirement_id": "OR001", "requirement_text": "海水泵应一用一备，备用泵能自动投入。"},  # 近似照抄
+        {"requirement_id": "OR002", "requirement_text": "冷却系统应在单点故障下维持必要冷却能力。"},  # 高层、OK
+    ]
+    report = quality_check(reqs, kb_texts, sim_threshold=0.8)
+    flagged = {r["requirement_id"]: r for r in report}
+    assert flagged["OR001"]["kb_copy_suspect"] is True
+    assert flagged["OR002"]["kb_copy_suspect"] is False

@@ -17,6 +17,31 @@ def build_generation_prompt(n: int, seed_topics: list[str]) -> str:
     return _GEN_SYSTEM.format(n=n, topics="、".join(seed_topics))
 
 
+def _char_ngrams(s: str, n: int = 4) -> set[str]:
+    s = "".join(s.split())
+    return {s[i:i + n] for i in range(max(len(s) - n + 1, 0))} or {s}
+
+
+def _jaccard(a: str, b: str) -> float:
+    A, B = _char_ngrams(a), _char_ngrams(b)
+    return len(A & B) / len(A | B) if (A | B) else 0.0
+
+
+def quality_check(reqs: list[dict], kb_texts: list[str], sim_threshold: float = 0.8) -> list[dict]:
+    """对每条原始需求计算与 KB 文本的最大字符 n-gram Jaccard 相似度，
+    超阈值则标记 kb_copy_suspect=True（防止原始需求照抄证据库原文）。"""
+    out = []
+    for r in reqs:
+        text = r.get("requirement_text", "")
+        max_sim = max((_jaccard(text, k) for k in kb_texts), default=0.0)
+        out.append({
+            "requirement_id": r["requirement_id"],
+            "max_kb_similarity": round(max_sim, 3),
+            "kb_copy_suspect": max_sim >= sim_threshold,
+        })
+    return out
+
+
 def parse_generated(raw: str, start_index: int, prefix: str = "OR") -> list[dict[str, Any]]:
     data = json.loads(raw or "{}")
     out: list[dict[str, Any]] = []
