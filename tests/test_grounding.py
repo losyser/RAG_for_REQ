@@ -91,6 +91,64 @@ def test_score_result_sets_aggregates_by_source():
     assert per_src == {"P001": 1.0}  # 两条 ER 均为 1.0，均值 1.0
 
 
+def test_llm_entailment_failure_returns_none():
+    """API 异常 / 空响应 / 不可解析 / 未知 verdict → None（缺失），区别于真实 none(0.0)。"""
+    from unittest.mock import MagicMock
+    from cooling_rag_mg.grounding import LLMEntailmentScorer
+
+    def _resp(content):
+        return MagicMock(choices=[MagicMock(message=MagicMock(content=content))], model="qwen-max")
+
+    client = MagicMock()
+    # support(ok) / 抛异常 / 不可解析 / 空内容 / 未知verdict / 真实none
+    client.chat.completions.create.side_effect = [
+        _resp('{"verdict": "support"}'),
+        Exception("rate limit"),
+        _resp("not json"),
+        _resp(""),
+        _resp('{"verdict": "maybe"}'),
+        _resp('{"verdict": "none"}'),
+    ]
+    scorer = LLMEntailmentScorer(client, model="qwen-max")
+    scores = scorer.score_pairs([("s", f"e{i}") for i in range(6)])
+    assert scores == [1.0, None, None, None, None, 0.0]
+
+
+def test_mean_pair_score_skips_failed():
+    """None（失败测量）从均值中剔除；全失败 → None。"""
+    from cooling_rag_mg.grounding import mean_pair_score
+
+    class PartialFail:
+        def score_pairs(self, pairs):
+            return [1.0, None, 0.5]  # 中间一条失败
+
+    assert mean_pair_score(PartialFail(), "s", ["a", "b", "c"]) == 0.75  # (1.0+0.5)/2
+
+    class AllFail:
+        def score_pairs(self, pairs):
+            return [None for _ in pairs]
+
+    assert mean_pair_score(AllFail(), "s", ["a", "b"]) is None
+
+
+def test_score_result_sets_skips_failed_er():
+    """整条 ER 测量全失败（per-ER 分为 None）时不计入该 source req。"""
+    from cooling_rag_mg.grounding import score_result_sets
+
+    class AllFail:
+        def score_pairs(self, pairs):
+            return [None for _ in pairs]
+
+    result_sets = [{
+        "source_requirement_id": "P001",
+        "engineering_requirements": [
+            {"shall_statement": "a", "evidence_ids": ["E1"]},
+        ],
+    }]
+    out = score_result_sets(result_sets, {"E1": "t1"}, AllFail())
+    assert out == {}
+
+
 def test_paired_compare():
     from cooling_rag_mg.grounding import paired_compare
     a = {"k1": 0.9, "k2": 0.8, "k3": 1.0, "only_a": 0.5}

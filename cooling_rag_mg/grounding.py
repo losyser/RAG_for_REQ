@@ -38,13 +38,19 @@ class RerankerScorer:
         return [float(s) for s in self.model.predict(pairs)]
 
 
-def mean_pair_score(scorer: Any, shall: str, evidence_texts: list[str]) -> float:
-    """一条 ER 的 grounding 分 = 其所有 (shall, evidence) 对得分的均值。"""
+def mean_pair_score(scorer: Any, shall: str, evidence_texts: list[str]) -> float | None:
+    """一条 ER 的 grounding 分 = 其所有 (shall, evidence) 对得分的均值。
+
+    scorer 可返回 None 表示该对测量失败（如 LLM API 失败）；失败项从均值中剔除，
+    避免把失败当作 0.0 向下偏置。若所有对都失败（无有效得分）→ 返回 None（缺失）。
+    无可评分对（证据文本为空）→ 0.0，沿用既有语义。reranker 永不返回 None，行为不变。"""
     pairs = [(shall, ev) for ev in evidence_texts if ev]
     if not pairs:
         return 0.0
-    scores = scorer.score_pairs(pairs)
-    return float(sum(scores) / len(scores)) if scores else 0.0
+    scores = [s for s in scorer.score_pairs(pairs) if s is not None]
+    if not scores:
+        return None
+    return float(sum(scores) / len(scores))
 
 
 _ENTAIL_PROMPT = """你是船舶冷却水系统的需求-证据核对专家。判断下面这条"证据"是否支持这条"工程需求(shall)"。
@@ -68,7 +74,10 @@ class LLMEntailmentScorer:
         self.model = model
         self.temperature = temperature
 
-    def _score_one(self, shall: str, evidence: str) -> float:
+    def _score_one(self, shall: str, evidence: str) -> float | None:
+        """成功判定 → 1.0/0.5/0.0；调用失败/空响应/不可解析/未知 verdict → None（缺失）。
+
+        失败返回 None 而非 0.0，使瞬时 API 失败不会被当作"无支持"向下偏置结果。"""
         from cooling_rag_mg.llm_cache import cached_completion
         try:
             resp = cached_completion(
@@ -79,12 +88,15 @@ class LLMEntailmentScorer:
                 max_tokens=50,
                 response_format={"type": "json_object"},
             )
-            obj = json.loads(resp.choices[0].message.content or "{}")
-            return _VERDICT_SCORE.get(str(obj.get("verdict", "")).strip().lower(), 0.0)
+            content = resp.choices[0].message.content
+            if not content or not content.strip():
+                return None
+            verdict = str(json.loads(content).get("verdict", "")).strip().lower()
+            return _VERDICT_SCORE.get(verdict)  # 未知 verdict → None
         except Exception:
-            return 0.0
+            return None
 
-    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float | None]:
         return [self._score_one(shall, ev) for shall, ev in pairs]
 
 
@@ -98,6 +110,8 @@ def score_result_sets(
     for src, shall, ev_ids in iter_grounded_ers(result_sets):
         ev_texts = [text_map.get(e, "") for e in ev_ids]
         er_score = mean_pair_score(scorer, shall, ev_texts)
+        if er_score is None:  # 该 ER 测量整体失败 → 不计入
+            continue
         by_src.setdefault(src, []).append(er_score)
     return {src: float(sum(v) / len(v)) for src, v in by_src.items() if v}
 
