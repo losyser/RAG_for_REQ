@@ -101,10 +101,46 @@ class DeepSeekConfig:
 
 
 @dataclass(frozen=True)
+class QwenConfig:
+    api_key: str = field(default_factory=lambda: os.getenv("QWEN_API_KEY", "").strip())
+    base_url: str = field(default_factory=lambda: os.getenv("QWEN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1").strip())
+    model: str = field(default_factory=lambda: os.getenv("QWEN_MODEL", "qwen-max"))
+    temperature: float = field(default_factory=lambda: float(os.getenv("QWEN_TEMPERATURE", "0.0")))
+    timeout: float = field(default_factory=lambda: float(os.getenv("QWEN_TIMEOUT", "60.0")))
+
+    @property
+    def enabled(self) -> bool:
+        return bool(self.api_key)
+
+    def make_client(self) -> "OpenAI":
+        from openai import OpenAI
+        return OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
+
+
+@dataclass(frozen=True)
+class ErnieConfig:
+    api_key: str = field(default_factory=lambda: os.getenv("ERNIE_API_KEY", "").strip())
+    base_url: str = field(default_factory=lambda: os.getenv("ERNIE_BASE_URL", "https://qianfan.baidubce.com/v2").strip())
+    model: str = field(default_factory=lambda: os.getenv("ERNIE_MODEL", "ernie-4.5-turbo-128k"))
+    temperature: float = field(default_factory=lambda: float(os.getenv("ERNIE_TEMPERATURE", "0.0")))
+    timeout: float = field(default_factory=lambda: float(os.getenv("ERNIE_TIMEOUT", "60.0")))
+
+    @property
+    def enabled(self) -> bool:
+        return bool(self.api_key)
+
+    def make_client(self) -> "OpenAI":
+        from openai import OpenAI
+        return OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
+
+
+@dataclass(frozen=True)
 class AppConfig:
     paths: Paths = field(default_factory=Paths)
     model: ModelConfig = field(default_factory=ModelConfig)
     deepseek: DeepSeekConfig = field(default_factory=DeepSeekConfig)
+    qwen: QwenConfig = field(default_factory=QwenConfig)
+    ernie: ErnieConfig = field(default_factory=ErnieConfig)
 
 
 def get_config() -> AppConfig:
