@@ -89,3 +89,15 @@ def test_score_result_sets_aggregates_by_source():
     text_map = {"E1": "t1", "E2": "t2", "E3": "t3"}
     per_src = score_result_sets(result_sets, text_map, FakeScorer())
     assert per_src == {"P001": 1.0}  # 两条 ER 均为 1.0，均值 1.0
+
+
+def test_paired_compare():
+    from cooling_rag_mg.grounding import paired_compare
+    a = {"k1": 0.9, "k2": 0.8, "k3": 1.0, "only_a": 0.5}
+    b = {"k1": 0.6, "k2": 0.5, "k3": 0.4, "only_b": 0.1}
+    res = paired_compare(a, b)
+    assert res["n_pairs"] == 3          # 仅交集 k1/k2/k3
+    assert round(res["mean_a"], 3) == 0.9
+    assert round(res["mean_b"], 3) == 0.5
+    assert res["mean_diff"] > 0          # a 系统性高于 b
+    assert "pvalue" in res and "ci_low" in res and "ci_high" in res

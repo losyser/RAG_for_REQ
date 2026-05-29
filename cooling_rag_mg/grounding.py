@@ -100,3 +100,46 @@ def score_result_sets(
         er_score = mean_pair_score(scorer, shall, ev_texts)
         by_src.setdefault(src, []).append(er_score)
     return {src: float(sum(v) / len(v)) for src, v in by_src.items() if v}
+
+
+def paired_compare(
+    scores_a: dict[str, float],
+    scores_b: dict[str, float],
+    *,
+    n_boot: int = 10000,
+    seed: int = 42,
+) -> dict[str, float]:
+    """在两个 {key: score} 的交集 key 上配对比较。返回 mean、配对 Wilcoxon p、bootstrap 均值差 CI。"""
+    import numpy as np
+    from scipy import stats
+
+    keys = sorted(set(scores_a) & set(scores_b))
+    a = np.array([scores_a[k] for k in keys], dtype=float)
+    b = np.array([scores_b[k] for k in keys], dtype=float)
+    n = len(keys)
+
+    if n == 0:
+        return {"n_pairs": 0, "mean_a": float("nan"), "mean_b": float("nan"),
+                "mean_diff": float("nan"), "pvalue": float("nan"),
+                "ci_low": float("nan"), "ci_high": float("nan")}
+
+    diff = a - b
+    if n < 2 or np.allclose(diff, 0.0):
+        pvalue = 1.0
+    else:
+        pvalue = float(stats.wilcoxon(a, b, zero_method="wilcox",
+                                      correction=False, alternative="two-sided").pvalue)
+
+    rng = np.random.default_rng(seed)
+    boots = np.array([rng.choice(diff, size=n, replace=True).mean() for _ in range(n_boot)])
+    lo, hi = np.percentile(boots, [2.5, 97.5])
+
+    return {
+        "n_pairs": n,
+        "mean_a": float(a.mean()),
+        "mean_b": float(b.mean()),
+        "mean_diff": float(diff.mean()),
+        "pvalue": pvalue,
+        "ci_low": float(lo),
+        "ci_high": float(hi),
+    }
