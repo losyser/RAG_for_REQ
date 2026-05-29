@@ -41,15 +41,18 @@ def _load_sets(exp_dir: Path, group: str) -> list:
 
 
 def _scored_by_group(exp_dirs, text_map, scorer, groups):
-    """返回 {group: {f'{batch}::{src}': score}}。"""
-    merged = {g: {} for g in groups}
+    """返回 {group: {src: 该 source req 跨所有 batch 的 grounding 均值}}。
+
+    多个 batch 可能对同一 source_requirement_id 重复评估（T=0 下 LLM 仍有随机性，
+    多轮生成略有差异）。这些重复非独立，若按 (batch, src) 计数会造成伪重复、
+    夸大样本量并低估 p 值。因此按唯一 src 聚合（取跨轮均值），配对单位 = 源需求。"""
+    accum: dict[str, dict[str, list[float]]] = {g: {} for g in groups}
     for exp in exp_dirs:
-        batch = exp.parent.name
         for g in groups:
             per_src = score_result_sets(_load_sets(exp, g), text_map, scorer)
             for src, sc in per_src.items():
-                merged[g][f"{batch}::{src}"] = sc
-    return merged
+                accum[g].setdefault(src, []).append(sc)
+    return {g: {src: float(sum(v) / len(v)) for src, v in d.items()} for g, d in accum.items()}
 
 
 def _latex(label, res) -> str:
