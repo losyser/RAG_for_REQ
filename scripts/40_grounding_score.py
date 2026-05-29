@@ -64,7 +64,8 @@ def _latex(label, res) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batches", nargs="*", help="experiment 目录；缺省自动找完整 batch")
-    ap.add_argument("--llm", choices=["qwen", "ernie"], help="追加 LLM 蕴含分（默认仅 reranker）")
+    ap.add_argument("--llm", nargs="*", default=[], choices=["qwen", "ernie"],
+                    help="追加 LLM 蕴含分（可多个，如 --llm qwen ernie；默认仅 reranker）")
     args = ap.parse_args()
 
     cfg = get_config()
@@ -78,11 +79,11 @@ def main() -> None:
 
     groups = ["G2", "G3", "G4"]
     scorers = {"reranker": RerankerScorer(device=cfg.model.device)}
-    if args.llm:
-        c = cfg.qwen if args.llm == "qwen" else cfg.ernie
+    for name in args.llm:
+        c = cfg.qwen if name == "qwen" else cfg.ernie
         if not c.enabled:
-            print(f"{args.llm} 未配置 API key（.env）。"); sys.exit(1)
-        scorers[args.llm] = LLMEntailmentScorer(c.make_client(), model=c.model, temperature=c.temperature)
+            print(f"{name} 未配置 API key（.env）。"); sys.exit(1)
+        scorers[name] = LLMEntailmentScorer(c.make_client(), model=c.model, temperature=c.temperature)
 
     out: dict = {"batches": [e.parent.name for e in exp_dirs], "scorers": {}}
     latex_lines = []
