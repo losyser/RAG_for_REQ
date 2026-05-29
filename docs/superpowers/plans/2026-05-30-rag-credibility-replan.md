@@ -22,11 +22,13 @@
 - [ ] Phase 5 消融：A1/A2/A3
 - [ ] Phase 6 论文：重写叙事
 
-当前游标：**Phase 2 / Task 2.1**（Phase 1 Task 1.1/1.2/1.3 ✅；Task 1.4 拆分待用户对数据集放行后再花费 DeepSeek）
+当前游标：**Phase 2 / Task 2.6**（Phase 1: 1.1/1.2/1.3 ✅，1.4 待数据集放行；Phase 2: 2.1–2.5 ✅）
 
-> 已完成：1.1 prompt 构造/解析（3 测试）、1.2 KB 查重（4 测试）、1.3 冻结 60 条原始需求 v1（commit）。
-> **Task 1.4 共享拆分**需 ~60 次 DeepSeek 调用，依赖 v1 数据集——等用户对 60 条做质量放行后执行。
-> 与此并行：**Phase 2 评估层（Task 2.1–2.5）为纯代码、零 API、不依赖数据集**，可先推进（思路干净正确的核心）。
+> 已完成：Phase 1 的 1.1/1.2/1.3（冻结 60 条原始需求 v1）。
+> Phase 2 **纯逻辑核心 2.1–2.5 全部完成、11 测试通过、逐项 commit**：claim 抽取 / KB 回溯判定(support·contradict·not_found) / score_shall(H_hard·H_soft) / judge_over_inference(OI，与H正交) / aggregate_by_source+metric_map(配对单位=源需求,None剔除)。
+> **剩余需 API 的两项**（都等数据集/产线就绪 + 用户放行花费）：
+>   - Task 1.4 共享拆分（~60 次 DeepSeek）——依赖 v1 数据集放行。
+>   - Task 2.6 评估脚本（claim/OI 用 ERNIE+DeepSeek 双裁判，KB 检索兜底，reranker 契合度，人工校准抽样）——依赖有 B0/R 产出可评，故实际在 Phase 3 产线跑通后才有数据可评。
 > 运行环境：WSL 下用 `/mnt/d/Users/yando/miniconda3/envs/cooling_rag_env/python.exe`（`python` 不在 PATH）。
 
 ---
