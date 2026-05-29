@@ -22,7 +22,11 @@
 - [ ] Phase 5 消融：A1/A2/A3
 - [ ] Phase 6 论文：重写叙事
 
-当前游标：**Phase 1 / Task 1.1**
+当前游标：**Phase 1 / Task 1.3**（Task 1.1 ✅ Task 1.2 ✅ 已完成并 commit）
+
+> 已完成：1.1 原始需求 prompt 构造/解析（3 测试过）、1.2 KB 查重 quality_check（4 测试过）。
+> 下一步 Task 1.3 起需调用 **ERNIE/DeepSeek API（产生花费 + 冻结基础数据集）**——执行前需用户确认。
+> 运行环境：WSL 下用 `/mnt/d/Users/yando/miniconda3/envs/cooling_rag_env/python.exe`（`python` 不在 PATH）。
 
 ---
 
