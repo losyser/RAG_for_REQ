@@ -38,3 +38,50 @@ def test_should_abstain_only_R_without_evidence():
     assert should_abstain(arm="R", evidence_texts=[]) is True
     assert should_abstain(arm="R", evidence_texts=["e"]) is False
     assert should_abstain(arm="B0", evidence_texts=[]) is False
+
+
+from unittest.mock import MagicMock
+
+
+def _resp(content):
+    return MagicMock(choices=[MagicMock(message=MagicMock(content=content))], model="qwen")
+
+
+def test_R_returns_none_when_abstains():
+    from cooling_rag_mg.evidence_first_generator import generate_for_sub
+    out = generate_for_sub(
+        {"sub_requirement_id": "OR001-01", "text": "x"}, evidence_ids=[], evidence_texts=[],
+        source_requirement="src", arm="R", client=MagicMock(), model="qwen",
+    )
+    assert out is None
+
+
+def test_R_generates_and_attaches_evidence_ids():
+    from cooling_rag_mg.evidence_first_generator import generate_for_sub
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [
+        _resp('{"engineering_requirements":[{"shall_statement":"海水泵应一用一备。","verification_method":"inspection"}]}')
+    ]
+    out = generate_for_sub(
+        {"sub_requirement_id": "OR001-01", "text": "海水泵冗余"},
+        evidence_ids=["E-A-001", "E-A-002"], evidence_texts=["一用一备", "自动投入"],
+        source_requirement="src", arm="R", client=client, model="qwen",
+    )
+    assert len(out) == 1
+    assert out[0]["shall_statement"] == "海水泵应一用一备。"
+    assert out[0]["evidence_ids"] == ["E-A-001", "E-A-002"]
+
+
+def test_B0_attaches_empty_evidence_ids():
+    from cooling_rag_mg.evidence_first_generator import generate_for_sub
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [
+        _resp('{"engineering_requirements":[{"shall_statement":"海水泵宜冗余。"}]}')
+    ]
+    out = generate_for_sub(
+        {"sub_requirement_id": "OR001-01", "text": "海水泵冗余"},
+        evidence_ids=[], evidence_texts=[],
+        source_requirement="src", arm="B0", client=client, model="qwen",
+    )
+    assert len(out) == 1
+    assert out[0]["evidence_ids"] == []

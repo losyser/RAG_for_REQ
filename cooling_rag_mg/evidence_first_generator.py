@@ -9,6 +9,7 @@ B0 无证据块、据共享子需求生成。R 对无证据子需求**弃权**�
 """
 from __future__ import annotations
 
+import json
 from typing import Any
 
 # 两组共用、逐字一致的 system base —— 任何改动都必须对 B0/R 同时生效，保证单变量。
@@ -49,3 +50,42 @@ def build_generation_messages(
 def should_abstain(arm: str, evidence_texts: list[str] | None) -> bool:
     """R 在无证据时弃权（不产出 shall，记入覆盖率）；B0 永不弃权。"""
     return arm == "R" and not evidence_texts
+
+
+def generate_for_sub(
+    sub_requirement: dict[str, Any],
+    evidence_ids: list[str],
+    evidence_texts: list[str],
+    source_requirement: str,
+    arm: str,
+    client: Any,
+    model: str,
+    temperature: float = 0.0,
+    max_tokens: int = 1200,
+) -> list[dict[str, Any]] | None:
+    """生成一个子需求的工程需求列表。
+
+    R 无证据 → 弃权返回 None（记入覆盖率）。否则调 LLM 生成、解析 engineering_requirements；
+    R 给每条 ER 附上检索到的 evidence_ids，B0 一律空 evidence_ids（无检索）。
+    调用失败 → 返回 []（视作该子需求未产出，不污染指标）。"""
+    if should_abstain(arm, evidence_texts):
+        return None
+    from cooling_rag_mg.llm_cache import cached_completion
+    messages = build_generation_messages(
+        sub_requirement, evidence_texts if arm == "R" else None, source_requirement,
+    )
+    try:
+        resp = cached_completion(
+            client, model=model, messages=messages,
+            temperature=temperature, max_tokens=max_tokens,
+            response_format={"type": "json_object"},
+        )
+        ers = json.loads(resp.choices[0].message.content or "{}").get("engineering_requirements", [])
+    except Exception:
+        return []
+    attach = list(evidence_ids) if arm == "R" else []
+    for er in ers:
+        er["evidence_ids"] = attach
+        er.setdefault("shall_statement", "")
+        er["_sub_requirement_id"] = sub_requirement.get("sub_requirement_id", "")
+    return ers
