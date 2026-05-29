@@ -290,7 +290,7 @@ def repair_json_with_deepseek(raw_text: str) -> dict[str, Any]:
     cfg = get_config()
     if not cfg.deepseek.enabled:
         raise RuntimeError("DeepSeek 未配置，无法修复 JSON。")
-    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    client = cfg.deepseek.make_client()
     resp = cached_completion(
         client,
         model=cfg.deepseek.model,
@@ -711,7 +711,7 @@ def build_graph():
         cfg = get_config()
         if not cfg.deepseek.enabled:
             raise RuntimeError("DeepSeek 未配置 api_key，无法生成工程化需求。")
-        client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+        client = cfg.deepseek.make_client()
         payload = {
             "original_requirement": state.get("requirement", {}),
             "retrieval_context": state.get("compact_context", {}),

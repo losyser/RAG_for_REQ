@@ -96,7 +96,7 @@ def run_g1(
     on_progress: ProgressCallback | None = None,
 ) -> list[dict[str, Any]]:
     from openai import OpenAI
-    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    client = cfg.deepseek.make_client()
     results = []
     for i, r in enumerate(reqs):
         if on_progress:

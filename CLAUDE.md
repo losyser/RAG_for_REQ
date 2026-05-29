@@ -29,13 +29,23 @@ python scripts/13_smoke_test.py
 streamlit run app.py
 ```
 
-**Experimental evaluation pipeline (run in order):**
+**Experimental evaluation pipeline — 3-round canonical (paper reproduction):**
 ```bat
-python scripts/20_generate_test_requirements.py          # Generate test requirements (pool of 100, 16 stakeholder types)
-python scripts/21_run_experiment.py [--groups G1 G2 G3 G4 A1 A2] [--top-k 4]
-python scripts/22_compute_metrics.py                     # Compute M1–M5, generate M6 template
+python scripts/25_generate_requirement_pool.py           # One-time: build 100-req pool → data/processed/requirement_pool_100.jsonl
+python scripts/26_run_three_rounds.py [--groups G1 G2 G3 G4 A1 A2] [--seeds 42 7 99]
+                                                         # Runs 3 rounds; auto-generates M6_review.json per round
+python scripts/22_compute_metrics.py                     # Compute M1–M5 from three_round_summary.json; read M6_review.json for M6
+python scripts/27_statistics.py                          # Per-requirement Wilcoxon + bootstrap CI
+python scripts/28_baselines.py all                       # Long-context LLM, KB scaling, noise-KB baselines
+python scripts/29_analysis.py all                        # Failure taxonomy, QG calibration, held-out, heatmaps
 python scripts/23_export_latex_table.py                  # Export LaTeX table for paper
 python scripts/24_export_case_study.py [--index 0]       # Export one G4 case for paper body
+```
+
+**Single-batch legacy pipeline (per-batch, not used for paper):**
+```bat
+python scripts/20_generate_test_requirements.py          # Legacy: generate 20 test requirements into test_requirements.jsonl
+python scripts/21_run_experiment.py [--groups G1 G2 G3 G4 A1 A2] [--top-k 4]
 ```
 
 ## Environment Variables (`.env`)
@@ -167,7 +177,8 @@ Post-generation 5-dimension checker. Shared `QualityGate` instance; each call to
 - M3 Over-inference rate (↓): proportion failing the over_inference check
 - M4 Verifiability score (↑): proportion passing the verifiability check
 - M5 MBSE completeness (↑): proportion with all SysML required fields
-- M6 Traceability precision: manual review; script 22 generates a 20-item sampling template
+- M6 Traceability precision: manual review (dual-dimension: decomposition_correct + traceability_correct);
+  script 26 auto-generates `M6_review.json` per round; reviewed via `m6_review.bat` / `scripts/m6_review_ui.py`
 
 **Output directory:** `data/search_results/batch_YYYYMMDD_HHMMSS/experiment/`
 

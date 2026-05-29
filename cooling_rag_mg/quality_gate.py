@@ -46,6 +46,7 @@ _SYSML_REQUIRED: dict[str, str] = {
     "topic":               "name (SysML Requirement::name)",
     "shall_statement":     "text (SysML Requirement::text)",
     "verification_method": "verificationMethod",
+    "acceptance_criteria": "acceptanceCriteria",
 }
 
 _AMBIGUITY_PROMPT = """\
@@ -289,10 +290,7 @@ class QualityGate:
 
     def _ambiguity_llm(self, shall: str) -> QualityCheckResult:
         try:
-            client = OpenAI(
-                api_key=self._cfg.deepseek.api_key,
-                base_url=self._cfg.deepseek.base_url,
-            )
+            client = self._cfg.deepseek.make_client()
             resp = cached_completion(
                 client,
                 model=self._cfg.deepseek.model,

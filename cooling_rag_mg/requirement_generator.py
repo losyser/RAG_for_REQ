@@ -184,7 +184,7 @@ def generate_test_requirements(
             "Set it in .env and restart."
         )
 
-    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    client = cfg.deepseek.make_client()
     evidence_summary = _build_evidence_summary(evidence_units_path)
     all_requirements: list[dict[str, Any]] = []
 

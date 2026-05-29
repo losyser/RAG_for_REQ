@@ -96,7 +96,7 @@ def _review_aspects(
 ) -> dict[str, Any]:
     """调用 LLM 审核方面列表，返回 review 结果 dict。"""
     cfg = get_config()
-    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    client = cfg.deepseek.make_client()
     payload = {
         "original_requirement": raw_text,
         "proposed_aspects": [
@@ -188,7 +188,7 @@ def split_requirement(requirement_id: str, stakeholder: str, raw_text: str) -> l
         return fallback_split(raw_text)
 
     try:
-        client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+        client = cfg.deepseek.make_client()
         feedback: str | None = None
         prev_aspects: list[dict[str, Any]] | None = None
         aspects: list[dict[str, Any]] = []

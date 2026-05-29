@@ -178,7 +178,7 @@ def run_long_context(
         return []
 
     from openai import OpenAI
-    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    client = cfg.deepseek.make_client()
 
     rounds: list[list[dict[str, Any]]] = []
     for i, seed in enumerate(seeds, 1):
@@ -284,7 +284,7 @@ def run_llamaindex(
         return []
 
     from openai import OpenAI
-    client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+    client = cfg.deepseek.make_client()
 
     # Build the vanilla retriever once (whether we use it or not).  The hybrid
     # searcher gives us BM25 + dense for free with the existing index.

@@ -3,8 +3,12 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from dotenv import load_dotenv
+
+if TYPE_CHECKING:
+    from openai import OpenAI
 
 load_dotenv()
 
@@ -25,7 +29,7 @@ def normalize_device(value: str | None) -> str:
         return get_default_device()
     value = value.strip().lower()
     if value in {"cuda", "cuda:0", "gpu", "nvidia"}:
-        return "cuda" if torch.cuda.is_available() else "cpu"
+        return get_default_device()
     if value == "cpu":
         return "cpu"
     return get_default_device()
@@ -85,10 +89,15 @@ class DeepSeekConfig:
     max_tokens_judge: int = field(default_factory=lambda: int(os.getenv("MAX_TOKENS_JUDGE", "2800")))
     max_tokens_requirement_agent: int = field(default_factory=lambda: int(os.getenv("MAX_TOKENS_REQUIREMENT_AGENT", "6000")))
     splitter_review_max_rounds: int = field(default_factory=lambda: int(os.getenv("SPLITTER_REVIEW_MAX_ROUNDS", "3")))
+    timeout: float = field(default_factory=lambda: float(os.getenv("DEEPSEEK_TIMEOUT", "60.0")))
 
     @property
     def enabled(self) -> bool:
         return bool(self.api_key)
+
+    def make_client(self) -> "OpenAI":
+        from openai import OpenAI
+        return OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
 
 
 @dataclass(frozen=True)

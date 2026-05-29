@@ -9,20 +9,21 @@ G1..A2 set of result files).
 Subcommands:
   failure-taxonomy   E-10  LLM-driven classification of M1/M3/M4 failures
   qg-calibration     E-13  Expert-proxy review of 50 random G4 ERs
-  ir-metrics         E-5   Silver-truth IR metrics across G1..A2
   held-out           E-9   Held-out test set of 30 NEW requirements
+                           Input:  data/processed/held_out_requirements_30.jsonl
+                           Output: held_out_test.json
   heatmaps           E-14  Stakeholder x component M1/M3 heatmaps
-  all                run every sub-analysis sequentially
+  all                run every sub-analysis sequentially (skips ir-metrics)
+
+  [REMOVED] ir-metrics (E-5): silver-truth IR evaluation removed from paper
+  due to circular-argument problem (G4/G3/A1 MRR=100% by construction).
 
 Outputs (all under `data/search_results/`):
   failure_taxonomy.json
   failure_taxonomy_pareto.png
   qg_calibration.json
   qg_calibration_table.tex
-  ir_metrics.json
-  ir_metrics_table.tex
   held_out_test.json
-  held_out_test_requirements.jsonl
   heatmap_M1.png
   heatmap_M3.png
 """
@@ -1104,7 +1105,7 @@ def run_heatmaps(cfg: Any, out_dir: Path) -> dict[str, Any]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("cmd", choices=[
-        "failure-taxonomy", "qg-calibration", "ir-metrics",
+        "failure-taxonomy", "qg-calibration",
         "held-out", "heatmaps", "all",
     ])
     parser.add_argument("--n", type=int, default=50, help="Sample size for qg-calibration (default 50)")
@@ -1121,8 +1122,6 @@ def main() -> None:
         run_failure_taxonomy(cfg, out_dir)
     if args.cmd in {"qg-calibration", "all"}:
         run_qg_calibration(cfg, out_dir, n=args.n, seed=args.seed)
-    if args.cmd in {"ir-metrics", "all"}:
-        run_ir_metrics(cfg, out_dir)
     if args.cmd in {"heatmaps", "all"}:
         run_heatmaps(cfg, out_dir)
     if args.cmd in {"held-out", "all"}:

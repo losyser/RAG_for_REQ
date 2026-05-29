@@ -164,7 +164,7 @@ def judge_evidence(
             "candidates": compact_candidates,
         }
 
-        client = OpenAI(api_key=cfg.deepseek.api_key, base_url=cfg.deepseek.base_url)
+        client = cfg.deepseek.make_client()
         resp = cached_completion(
             client,
             model=cfg.deepseek.model,
