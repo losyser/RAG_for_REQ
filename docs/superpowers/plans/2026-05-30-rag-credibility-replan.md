@@ -22,7 +22,14 @@
 - [ ] Phase 5 消融：A1/A2/A3
 - [ ] Phase 6 论文：重写叙事
 
-当前游标：**Phase 3 / Task 3.2**（Phase 1: 1.1–1.3 ✅，1.4 待放行；Phase 2: 2.1–2.5 ✅，2.6 待产线；Phase 3: 3.1 ✅）
+当前游标：**Task 1.4 / Task 3.3（均需用户放行花费 + 数据）** — 所有零成本纯逻辑核心已完成。
+
+> **已完成（全 TDD、逐项 commit）**：Phase 1 的 1.1–1.3（冻结 60 条原始需求）；Phase 2 的 2.1–2.5（claim 抽取/KB回溯判定/H_hard·H_soft/OI/按源聚合，11 测试）；Phase 3 的 3.1–3.2（B0/R 单变量生成消息+弃权+单子需求生成，7 测试）。
+> **后续全部需要外部资源 + 用户放行**，自主循环到此为止：
+>   1. **Task 1.4 共享拆分**：DeepSeek ~60 调用，依赖 ① 数据集放行 ② 先排查预存 splitter 审核测试失败。
+>   2. **Task 3.3 B0/R 产线脚本** `scripts/44`：接 retrieval + `generate_for_sub` 跑两组，需 Qwen API + 拆分产物。
+>   3. **Task 2.6 评估脚本** `scripts/43`：评 B0/R 产出，需 ERNIE+DeepSeek 裁判 + reranker + 人工校准抽样。
+>   4. Phase 4/5/6 主实验/消融/论文。
 
 > ⚠️ **已知预存问题（非本次引入）**：`tests/test_splitter_review.py` 3 个测试失败（`_review_aspects` 对自身 mock 返回 passed=False）。与本规划新增代码无关，但 **Task 1.4 共享拆分用的正是 DeepSeek 拆分器+审核循环**——执行 1.4 前需先确认拆分器审核逻辑是否真坏（还是仅测试桩过期）。拆分器有 fallback 规则，最坏可关审核循环降级使用。
 
