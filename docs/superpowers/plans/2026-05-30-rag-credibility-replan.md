@@ -22,10 +22,10 @@
 - [ ] Phase 5 消融：A1/A2/A3
 - [ ] Phase 6 论文：重写叙事
 
-当前游标：**Task 3.3 B0/R 产线脚本（需用户放行花费 Qwen）** — Phase 1 全部完成。
+当前游标：**Task 2.6 评估层产线脚本 `scripts/43`**（Phase 1 ✅ / Phase 2 逻辑 ✅ / Phase 3 ✅）
 
-> **Phase 1 完成** ✅：1.1–1.3（60 条原始需求）+ 1.4（共享拆分 `split_requirements_v1.jsonl`，60→124 子需求，avg 2.07，0 fallback，source_phrase 溯源）。splitter 预存测试失败已修（系统化调试，全套 43 测试绿）。
-> 数据集 + 拆分均已放行/验证。下一步 Task 3.3（`scripts/44` 跑 B0/R 两组生成，DeepSeek 拆分已就绪+Qwen 生成）需用户对花费再放行。
+> **Phase 1 ✅**：60 原始需求 + 124 共享子需求拆分。**Phase 3 ✅**：B0/R 主实验产物 `data/search_results/main_experiment/{B0,R}_results.json`（B0 141 ER 全覆盖、R 316 ER 覆盖率 89.5%/弃权13，0 空 shall）。splitter 预存失败已修，generate_for_sub 非 dict 防御已修，全套测试绿。
+> **下一步 Task 2.6**：写 `scripts/43`，对 B0/R 跑评估层（claim 抽取 + KB 回溯判定 H_hard/H_soft + OI + 按源聚合 + 配对 Wilcoxon），裁判用 ERNIE+DeepSeek（跨 Qwen 生成者）+ reranker，人工校准抽样。**这是最大花费步**（~457 ER × claim × 2 裁判），建议先 `--limit` 冒烟、报花费再全量。
 
 > **已完成（全 TDD、逐项 commit）**：Phase 1 的 1.1–1.3（冻结 60 条原始需求）；Phase 2 的 2.1–2.5（claim 抽取/KB回溯判定/H_hard·H_soft/OI/按源聚合，11 测试）；Phase 3 的 3.1–3.2（B0/R 单变量生成消息+弃权+单子需求生成，7 测试）。
 > **后续全部需要外部资源 + 用户放行**，自主循环到此为止：
