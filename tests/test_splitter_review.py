@@ -25,9 +25,9 @@ def test_review_passes_valid_aspects():
     ]
     review_json = '{"passed": true, "aspect_evaluations": [{"aspect_name": "冷却水泵冗余配置", "valid": true}], "missing_aspects": [], "overall_feedback": ""}'
 
-    with patch("cooling_rag_mg.requirement_splitter.OpenAI") as mock_cls:
+    with patch("cooling_rag_mg.config.DeepSeekConfig.make_client") as mk:
         mock_client = MagicMock()
-        mock_cls.return_value = mock_client
+        mk.return_value = mock_client
         mock_client.chat.completions.create.return_value = _mock_openai_response(review_json)
 
         result = _review_aspects("主机冷却水系统应保证稳定可靠的冷却能力。", aspects)
@@ -55,9 +55,9 @@ def test_review_fails_on_scope_creep():
         '"overall_feedback": "删除倾斜工况适应性"}'
     )
 
-    with patch("cooling_rag_mg.requirement_splitter.OpenAI") as mock_cls:
+    with patch("cooling_rag_mg.config.DeepSeekConfig.make_client") as mk:
         mock_client = MagicMock()
-        mock_cls.return_value = mock_client
+        mk.return_value = mock_client
         mock_client.chat.completions.create.return_value = _mock_openai_response(review_json)
 
         result = _review_aspects("主机入口冷却水温度和流量应满足厂家要求。", aspects)
@@ -83,9 +83,9 @@ def test_split_with_review_exits_on_pass():
     })
     review_json = '{"passed": true, "aspect_evaluations": [{"aspect_name": "冷却水工况稳定性", "valid": true}], "missing_aspects": [], "overall_feedback": ""}'
 
-    with patch("cooling_rag_mg.requirement_splitter.OpenAI") as mock_cls:
+    with patch("cooling_rag_mg.config.DeepSeekConfig.make_client") as mk:
         mock_client = MagicMock()
-        mock_cls.return_value = mock_client
+        mk.return_value = mock_client
         # First call = split, second call = review
         mock_client.chat.completions.create.side_effect = [
             _mock_openai_response(split_json),
@@ -120,9 +120,9 @@ def test_split_with_review_retries_on_fail():
         '{"passed": true, "aspect_evaluations": [{"aspect_name": "参数限值", "valid": true}], "missing_aspects": [], "overall_feedback": ""}'
     )
 
-    with patch("cooling_rag_mg.requirement_splitter.OpenAI") as mock_cls:
+    with patch("cooling_rag_mg.config.DeepSeekConfig.make_client") as mk:
         mock_client = MagicMock()
-        mock_cls.return_value = mock_client
+        mk.return_value = mock_client
         mock_client.chat.completions.create.side_effect = [
             _split_resp("不存在的词"),   # round 1 split
             fail_review,                 # round 1 review → fail
