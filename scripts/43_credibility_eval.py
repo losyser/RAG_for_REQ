@@ -51,7 +51,7 @@ def _make_kb_search(cfg):
 
 
 def _eval_arm(arm, result_sets, orig_map, kb_search, ds, ds_model, judge, judge_model,
-              top_k, calib, calib_n, verdicts_counter):
+              top_k, all_calib, verdicts_counter):
     rows = []
     for rs in result_sets:
         src = rs.get("source_requirement_id", "")
@@ -67,8 +67,7 @@ def _eval_arm(arm, result_sets, orig_map, kb_search, ds, ds_model, judge, judge_
                 v = judge_claim_llm(c, passages, judge, judge_model) if passages else "not_found"
                 verds.append(v)
                 verdicts_counter[v] += 1
-                if len(calib) < calib_n:
-                    calib.append({"arm": arm, "source": src, "claim": c,
+                all_calib.append({"arm": arm, "source": src, "claim": c,
                                   "verdict_auto": v, "passages": " || ".join(passages[:3])})
             n = len(claims)
             h_hard = verds.count("contradict") / n if n else None
@@ -105,13 +104,13 @@ def main() -> None:
     print(f"[eval] B0={len(b0)} R={len(r)} 源需求；抽取=DeepSeek 裁判=ERNIE top_k={args.top_k}")
 
     random.seed(42)
-    calib: list[dict] = []
+    all_calib: list[dict] = []
     vc = Counter()
     out = {"arms": {}, "comparisons": {}, "config": {"top_k": args.top_k}}
     aggs = {}
     for arm, sets in [("B0", b0), ("R", r)]:
         rows = _eval_arm(arm, sets, orig_map, kb_search, ds, cfg.deepseek.model,
-                         judge, cfg.ernie.model, args.top_k, calib, args.calib_n, vc)
+                         judge, cfg.ernie.model, args.top_k, all_calib, vc)
         agg = aggregate_by_source(rows)
         aggs[arm] = agg
 
@@ -132,14 +131,38 @@ def main() -> None:
               f"CI[{cmp['ci_low']:+.3f},{cmp['ci_high']:+.3f}] n={cmp['n_pairs']}")
 
     out["verdict_distribution"] = dict(vc)
+
+    # 分层抽样人工校准：先收全部 contradict（罕见且最该核），再在 4 个 (arm×verdict)
+    # 主格上均衡填充（优先有争议的 not_found），保证 B0/R 与各 verdict 都覆盖到。
+    from collections import defaultdict
+    groups: dict = defaultdict(list)
+    for row in all_calib:
+        groups[(row["arm"], row["verdict_auto"])].append(row)
+    for g in groups.values():
+        random.shuffle(g)
+    calib: list[dict] = []
+    for k in [("B0", "contradict"), ("R", "contradict")]:
+        calib += groups.get(k, [])
+    cells = [("B0", "not_found"), ("R", "not_found"), ("B0", "support"), ("R", "support")]
+    i = 0
+    while len(calib) < args.calib_n and any(groups[c] for c in cells):
+        c = cells[i % len(cells)]; i += 1
+        if groups[c]:
+            calib.append(groups[c].pop())
+    calib = calib[: args.calib_n]
+
     out_json = cfg.paths.search_results_dir / "credibility_eval.json"
     out_json.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     calib_csv = cfg.paths.search_results_dir / "credibility_calibration_sample.csv"
     with calib_csv.open("w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["arm", "source", "claim", "verdict_auto", "verdict_human", "passages"])
+        # verdict_human：你按 claim+passages 判 support/contradict/not_found（校准裁判准确率）。
+        # claim_reasonable：该 claim 是否是合理工程需求(y/n)，用于辨别 not_found 是 KB漏召(y) 还是编造(n)。
+        w = csv.DictWriter(f, fieldnames=["arm", "source", "claim", "verdict_auto",
+                                          "verdict_human", "claim_reasonable", "passages"])
         w.writeheader()
         for row in calib:
             row["verdict_human"] = ""
+            row["claim_reasonable"] = ""
             w.writerow(row)
     print(f"verdict 分布: {dict(vc)}")
     print(f"-> {out_json}\n-> {calib_csv}（{len(calib)} 条待人工校准）")
