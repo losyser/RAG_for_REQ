@@ -31,7 +31,7 @@
 >   3. **Task 2.6 评估脚本** `scripts/43`：评 B0/R 产出，需 ERNIE+DeepSeek 裁判 + reranker + 人工校准抽样。
 >   4. Phase 4/5/6 主实验/消融/论文。
 
-> ⚠️ **已知预存问题（非本次引入）**：`tests/test_splitter_review.py` 3 个测试失败（`_review_aspects` 对自身 mock 返回 passed=False）。与本规划新增代码无关，但 **Task 1.4 共享拆分用的正是 DeepSeek 拆分器+审核循环**——执行 1.4 前需先确认拆分器审核逻辑是否真坏（还是仅测试桩过期）。拆分器有 fallback 规则，最坏可关审核循环降级使用。
+> ✅ **预存 splitter 失败已排查并修复（系统化调试，2026-05-30）**：根因=**测试桩过期**——测试 patch 的 `requirement_splitter.OpenAI` 是重构后未使用的死符号；代码实际经 `cfg.deepseek.make_client()`+`cached_completion` 调模型，mock 从未拦截、测试穿透到真实 API。**产品代码无 bug，拆分器工作正常**，故 **Task 1.4 拆分可信赖**。已改 patch `DeepSeekConfig.make_client`，全套 43 测试通过。
 
 > 已完成：Phase 1 的 1.1/1.2/1.3（冻结 60 条原始需求 v1）。
 > Phase 2 **纯逻辑核心 2.1–2.5 全部完成、11 测试通过、逐项 commit**：claim 抽取 / KB 回溯判定(support·contradict·not_found) / score_shall(H_hard·H_soft) / judge_over_inference(OI，与H正交) / aggregate_by_source+metric_map(配对单位=源需求,None剔除)。
