@@ -4,8 +4,9 @@
 """
 from __future__ import annotations
 
-import json
 from typing import Any
+
+from cooling_rag_mg.json_utils import loads_lenient
 
 _QUERY_PROMPT = """你是船舶冷却水系统检索助手。针对下面的原始需求，生成用于在中英文混合文档库中**检索证据**的内容，追求覆盖率。
 - keywords：组成对象/部件/工程方面等关键词（中文和英文都给）。
@@ -20,10 +21,7 @@ def build_query_prompt(requirement_text: str) -> str:
 
 def parse_queries(raw: str) -> list[str]:
     """把 keywords + sentences 合并成去重的检索查询列表。解析失败 → []。"""
-    try:
-        obj = json.loads(raw or "{}")
-    except Exception:
-        return []
+    obj = loads_lenient(raw)
     out: list[str] = []
     for key in ("keywords", "sentences"):
         for x in obj.get(key, []) or []:

@@ -7,8 +7,9 @@
 """
 from __future__ import annotations
 
-import json
 from typing import Any
+
+from cooling_rag_mg.json_utils import loads_lenient
 
 _NORAG_SYSTEM = """你是资深船舶主机冷却水系统工程师。把用户给的原始需求，转化为**完整、具体、可直接指导工程建设**的结构化工程需求(shall)。
 要求：
@@ -38,10 +39,7 @@ def build_rag_messages(requirement_text: str, evidence_texts: list[str]) -> list
 
 def parse_requirements(raw: str, evidence_ids: list[str]) -> list[dict]:
     """解析 engineering_requirements；跳过非 dict 元素、非 list 直接 []；附 evidence_ids。"""
-    try:
-        ers = json.loads(raw or "{}").get("engineering_requirements", [])
-    except Exception:
-        return []
+    ers = loads_lenient(raw).get("engineering_requirements", [])
     if not isinstance(ers, list):
         return []
     out = []
@@ -54,7 +52,7 @@ def parse_requirements(raw: str, evidence_ids: list[str]) -> list[dict]:
     return out
 
 
-def _gen(messages, evidence_ids, client, model, temperature, max_tokens=2000):
+def _gen(messages, evidence_ids, client, model, temperature, max_tokens=4000):
     from cooling_rag_mg.llm_cache import cached_completion
     try:
         resp = cached_completion(client, model=model, messages=messages,
