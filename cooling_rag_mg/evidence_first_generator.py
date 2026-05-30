@@ -83,9 +83,15 @@ def generate_for_sub(
         ers = json.loads(resp.choices[0].message.content or "{}").get("engineering_requirements", [])
     except Exception:
         return []
+    if not isinstance(ers, list):  # 模型偶尔把它返回成 str/dict
+        return []
     attach = list(evidence_ids) if arm == "R" else []
+    out: list[dict[str, Any]] = []
     for er in ers:
+        if not isinstance(er, dict):  # 跳过非 dict 元素（如误返回的字符串）
+            continue
         er["evidence_ids"] = attach
         er.setdefault("shall_statement", "")
         er["_sub_requirement_id"] = sub_requirement.get("sub_requirement_id", "")
-    return ers
+        out.append(er)
+    return out

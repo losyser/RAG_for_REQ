@@ -72,6 +72,34 @@ def test_R_generates_and_attaches_evidence_ids():
     assert out[0]["evidence_ids"] == ["E-A-001", "E-A-002"]
 
 
+def test_skips_non_dict_engineering_requirements():
+    """LLM 偶尔把 engineering_requirements 里塞非 dict 元素（字符串等）——跳过，不崩。"""
+    from cooling_rag_mg.evidence_first_generator import generate_for_sub
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [
+        _resp('{"engineering_requirements":["误返回的字符串", {"shall_statement":"正常一条。"}]}')
+    ]
+    out = generate_for_sub(
+        {"sub_requirement_id": "OR001-01", "text": "x"}, evidence_ids=["E1"], evidence_texts=["e"],
+        source_requirement="src", arm="R", client=client, model="qwen",
+    )
+    assert len(out) == 1
+    assert out[0]["shall_statement"] == "正常一条。"
+    assert out[0]["evidence_ids"] == ["E1"]
+
+
+def test_non_list_engineering_requirements_returns_empty():
+    """engineering_requirements 不是 list（模型乱返回）→ 返回 []，不崩。"""
+    from cooling_rag_mg.evidence_first_generator import generate_for_sub
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [_resp('{"engineering_requirements": "not a list"}')]
+    out = generate_for_sub(
+        {"sub_requirement_id": "OR001-01", "text": "x"}, evidence_ids=[], evidence_texts=[],
+        source_requirement="src", arm="B0", client=client, model="qwen",
+    )
+    assert out == []
+
+
 def test_B0_attaches_empty_evidence_ids():
     from cooling_rag_mg.evidence_first_generator import generate_for_sub
     client = MagicMock()
