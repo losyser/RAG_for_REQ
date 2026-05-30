@@ -18,7 +18,8 @@
 - [ ] Phase 1 数据集：ERNIE 原始需求 + DeepSeek 拆分（冻结 v1）
 - [ ] Phase 2 评估层：claim 抽取 + KB 回溯判定（H_hard/H_soft/OI）+ 多裁判 + 人工校准
 - [ ] Phase 3 生成改造：证据优先生成（Qwen），B0/R 两产线
-- [ ] Phase 4 主实验：B0 vs R，配对子集 + 端到端率
+- [~] Phase 4 主实验：B0 vs R 已评估（见下）。**待人工校准 50 条**后定论。
+- [ ] Phase 5 消融 / Phase 6 论文
 - [ ] Phase 5 消融：A1/A2/A3
 - [ ] Phase 6 论文：重写叙事
 
@@ -451,6 +452,20 @@ A1（仅扁平单粒度）/A2（关 ranker）/A3（关 profile），均走「据
 重写 `paper/paper.tex` 叙事：头条「RAG 证据约束降幻觉、提工程可信度」；多粒度/ranker/profile 进消融与讨论；更新 STATUS.md 与 memory。
 
 ---
+
+## 主实验结果（2026-05-30，n=59 配对源）
+
+| 指标 | B0 | R | diff(B0−R) | p | 显著 |
+|---|---|---|---|---|---|
+| H_hard 硬幻觉 | 0.012 | 0.008 | +0.004 | 0.686 | ✗ |
+| H_soft 软幻觉 | 0.533 | 0.435 | +0.098 | **0.022** | ✓(疑覆盖偏置) |
+| OI 过推断 | 0.102 | 0.155 | −0.053 | 0.075 | 边缘(R更差) |
+
+verdict：support760/not_found519/contradict9，无 API 污染。
+**解读**：稳健的硬幻觉无差异（且 contradict 基率仅 9，功效低）；H_soft 的 R 优势疑为
+KB 覆盖/措辞循环偏置（校准样本显示 B0 not_found 多为 KB 未覆盖的真实需求）；OI 反而 R 略差。
+**待人工校准** `data/search_results/credibility_calibration_sample.csv`（50 条分层）坐实后定论文叙事。
+**当前游标**：等用户填 verdict_human + claim_reasonable → 我跑一致性/可信度比对脚本。
 
 ## 微调记录（执行中发现问题就追加）
 
