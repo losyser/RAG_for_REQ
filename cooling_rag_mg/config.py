@@ -135,12 +135,30 @@ class ErnieConfig:
 
 
 @dataclass(frozen=True)
+class KimiConfig:
+    api_key: str = field(default_factory=lambda: os.getenv("KIMI_API_KEY", "").strip())
+    base_url: str = field(default_factory=lambda: os.getenv("KIMI_BASE_URL", "https://api.moonshot.cn/v1").strip())
+    model: str = field(default_factory=lambda: os.getenv("KIMI_MODEL", "moonshot-v1-8k"))
+    temperature: float = field(default_factory=lambda: float(os.getenv("KIMI_TEMPERATURE", "0.3")))
+    timeout: float = field(default_factory=lambda: float(os.getenv("KIMI_TIMEOUT", "60.0")))
+
+    @property
+    def enabled(self) -> bool:
+        return bool(self.api_key)
+
+    def make_client(self) -> "OpenAI":
+        from openai import OpenAI
+        return OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
+
+
+@dataclass(frozen=True)
 class AppConfig:
     paths: Paths = field(default_factory=Paths)
     model: ModelConfig = field(default_factory=ModelConfig)
     deepseek: DeepSeekConfig = field(default_factory=DeepSeekConfig)
     qwen: QwenConfig = field(default_factory=QwenConfig)
     ernie: ErnieConfig = field(default_factory=ErnieConfig)
+    kimi: KimiConfig = field(default_factory=KimiConfig)
 
 
 def get_config() -> AppConfig:
