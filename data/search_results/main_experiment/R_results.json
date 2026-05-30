@@ -1,0 +1,4373 @@
+{
+  "arm": "R",
+  "result_sets": [
+    {
+      "source_requirement_id": "OR001",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱应配备直观的液位指示装置，便于操作人员实时监控液位。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "膨胀水箱上安装有可视化的液位指示装置，如视镜或其他连续液位监测设备，并且该装置能够清晰显示液位。",
+          "evidence_ids": [
+            "E-EXP-CAP-001",
+            "E-ISO8861-002",
+            "E-CTRL-COOL-002",
+            "E-EXP-ALARM-008"
+          ],
+          "_sub_requirement_id": "OR001-01"
+        },
+        {
+          "shall_statement": "膨胀水箱应配置自动补水系统，当液位低于设定值时自动补水，以防止液位过低导致冷却中断。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001"
+          ],
+          "_sub_requirement_id": "OR001-02"
+        },
+        {
+          "shall_statement": "膨胀水箱应配备液位计，以便直观显示液位。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001"
+          ],
+          "_sub_requirement_id": "OR001-02"
+        },
+        {
+          "shall_statement": "膨胀水箱的自动补水系统应在液位低于最低操作水平时触发报警，并将报警信号连接到机舱控制台和驾驶室的报警管理系统。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001"
+          ],
+          "_sub_requirement_id": "OR001-02"
+        },
+        {
+          "shall_statement": "膨胀水箱应设置液位低报警，当液位异常时发出警报，提醒操作人员及时处理，避免主机冷却中断。",
+          "verification_method": "test",
+          "acceptance_criteria": "膨胀水箱液位低于最低操作水平时，系统应触发报警，并在机舱控制室和驾驶台显示报警信号。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001"
+          ],
+          "_sub_requirement_id": "OR001-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR002",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备有效的防腐措施，如牺牲阳极或化学处理，以控制腐蚀速率。",
+          "verification_method": "review",
+          "acceptance_criteria": "防腐措施的有效性应通过设计审查确认，确保符合厂家技术数据和项目计算文件的要求。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-WATER-018",
+            "E-SYS-INSP-005"
+          ],
+          "_sub_requirement_id": "OR002-01"
+        },
+        {
+          "shall_statement": "冷却水系统中不得使用铜、锌、黄铜材料及其镀层，除非满足特定的预条件。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "冷却水系统中的所有组件应通过检查确认无铜、锌、黄铜材料及其镀层，除非这些材料在特定条件下被允许使用。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-WATER-018",
+            "E-SYS-INSP-005"
+          ],
+          "_sub_requirement_id": "OR002-01"
+        },
+        {
+          "shall_statement": "冷却水系统中使用的化学添加剂应在封闭循环系统中，并且必须遵循适用的环境保护规定。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水系统的设计文件应包括对所用化学添加剂的说明，并确保其使用符合环境保护规定。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-WATER-018",
+            "E-SYS-INSP-005"
+          ],
+          "_sub_requirement_id": "OR002-01"
+        },
+        {
+          "shall_statement": "冷却水系统应定期检查水质和防腐剂浓度，以确保其有效性。",
+          "verification_method": "maintenance_check",
+          "acceptance_criteria": "冷却水系统的水质和防腐剂浓度应至少每周检查一次，并记录结果。防腐剂浓度不应低于厂家规定的最低浓度。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-WATER-018",
+            "E-SYS-INSP-005"
+          ],
+          "_sub_requirement_id": "OR002-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR003",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "应急冷却系统应在全船失电工况下自动启动，无需人工干预。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟全船失电的情况下，应急冷却系统能够自动启动并运行，确保主机获得基本冷却保护。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-SOLAS-INCL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR003-01"
+        },
+        {
+          "shall_statement": "应急冷却系统应在全船失电等极端工况下自动启动，为主机提供基本冷却保护，防止主机过热损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "应急冷却系统在全船失电工况下能够自动启动，并且在规定时间内（待按厂家技术数据确认）为主机提供足够的冷却水流量，确保主机温度不超过制造商规定的最高允许温度。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR003-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR004",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路应合理布置隔离阀，使其便于操作且标识清晰，以支持局部泄漏时的快速隔离与维修。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀均应易于操作，并且有清晰的标识，以便在局部泄漏时能够快速进行隔离和维修。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-MAINT-004"
+          ],
+          "_sub_requirement_id": "OR004-01"
+        },
+        {
+          "shall_statement": "隔离阀的操作侧应具有至少600毫米的最小操作空间。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "隔离阀的手轮或执行器的操作侧应具有至少600毫米的净空距离。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-MAINT-004"
+          ],
+          "_sub_requirement_id": "OR004-01"
+        },
+        {
+          "shall_statement": "所有需要定期维护的设备应有清晰的铭牌，标明维护间隔和标签编号。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有需要定期维护的设备上应有清晰的铭牌，标明维护间隔和标签编号。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-MAINT-004"
+          ],
+          "_sub_requirement_id": "OR004-01"
+        },
+        {
+          "shall_statement": "冷却水系统的主要设备（泵、换热器、温度控制阀、过滤器）应有足够的空间进行常规维护和组件拆卸，而不影响相邻设备。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有主要冷却水设备应有足够的空间进行常规维护和组件拆卸，而不影响相邻设备。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-MAINT-004"
+          ],
+          "_sub_requirement_id": "OR004-01"
+        },
+        {
+          "shall_statement": "温控阀应配备上游和下游隔离阀，允许在不中断其他冷却回路的情况下，在现场更换执行器和内部部件。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "温控阀应配备上游和下游隔离阀，允许在不中断其他冷却回路的情况下，在现场更换执行器和内部部件。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-MAINT-004"
+          ],
+          "_sub_requirement_id": "OR004-01"
+        },
+        {
+          "shall_statement": "冷却水管路布置应合理，避免干涉并满足维修空间要求。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水管路的布置应确保无干涉，并且提供足够的空间以便于维护和操作。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-VALVE-INSP-010",
+            "E-IFACE-MAINT-001",
+            "E-IFACE-MAINT-004"
+          ],
+          "_sub_requirement_id": "OR004-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR005",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备温度传感器，以实现实时监测主机出口高温冷却水（HT）的温度。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "温度传感器安装位置正确，并能实时监测主机出口高温冷却水（HT）的温度。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR005-01"
+        },
+        {
+          "shall_statement": "冷却水系统应配备压力传感器，以实现实时监测主机入口高温冷却水（HT）的压力。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "压力传感器安装位置正确，并能实时监测主机入口高温冷却水（HT）的压力。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR005-01"
+        },
+        {
+          "shall_statement": "冷却水系统应配备流量传感器，以实现实时监测低温冷却水（LT）的流量。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "流量传感器安装位置正确，并能实时监测低温冷却水（LT）的流量。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR005-01"
+        },
+        {
+          "shall_statement": "所有传感器的数据应与主机控制系统形成可靠联锁，防止因参数异常导致主机损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "传感器数据能够被主机控制系统准确读取并用于控制决策；当参数超出设定范围时，控制系统能够触发相应的报警或保护措施。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR005-01"
+        },
+        {
+          "shall_statement": "冷却水监测系统应与主机控制系统联锁，在检测到冷却水温度、压力或流量参数异常时，自动触发保护动作以防止主机损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 冷却水温度超过制造商规定的最高允许温度时，系统应发出报警，并在达到更高设定点时自动减速或停机（具体设定点待按厂家技术数据确认）。\\",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到冷却水温度超过正常最大操作温度5-8°C时发出警告报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 警告报警应在冷却水温度超过正常最大操作温度5-8°C时触发。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到冷却水温度超过警告报警设定点3-5°C时自动减速。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 自动减速应在冷却水温度超过警告报警设定点3-5°C时触发。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到冷却水温度达到制造商规定的绝对最大温度限值时自动停机。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 自动停机应在冷却水温度达到制造商规定的绝对最大温度限值时触发。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到发动机入口处冷却水压力低于制造商规定的最小值0.3-0.5 bar时发出低压力报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 低压力报警应在冷却水压力低于制造商规定的最小值0.3-0.5 bar时触发。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到冷却水压力低于制造商规定的最小值持续超过30秒时自动减速（如果提供此功能）。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 自动减速应在冷却水压力低于制造商规定的最小值持续超过30秒时触发（如果提供此功能）。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到冷却水泵故障时自动切换到备用泵，并发出报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 系统应在检测到冷却水泵故障时自动切换到备用泵并发出报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在检测到双泵失效时自动减速至最低推进要求。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 自动减速应在检测到双泵失效时触发，降至最低推进要求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "冷却水监测系统应在单个冷却组件故障时保持最低冷却能力，并在降低的发动机负荷下运行，最大额定功率为75-85% MCR（需通过冷却系统容量分析确认）。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 系统应在单个冷却组件故障时保持最低冷却能力，并在降低的发动机负荷下运行，最大额定功率为75-85% MCR（需通过冷却系统容量分析确认）。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-02"
+        },
+        {
+          "shall_statement": "系统应在冷却水温度、压力或流量超出正常范围时发出报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当冷却水温度、压力或流量超出设定的正常范围时，系统能够正确触发报警信号。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-03"
+        },
+        {
+          "shall_statement": "系统应根据冷却水温度异常情况执行保护逻辑：当温度超过警告阈值（制造商最大允许工作温度以上5-8°C）时发出警告；当温度达到自动减速阈值（警告阈值之上3-5°C）时执行自动减速；当温度达到绝对最大温度限值时执行自动停机。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "系统在冷却水温度分别达到警告、减速和停机阈值时，能够准确地发出警告、执行自动减速或停机操作。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-03"
+        },
+        {
+          "shall_statement": "当发动机入口处的冷却水压力低于制造商规定的最低压力0.3-0.5巴时，系统应发出低压报警。若持续时间超过30秒，则应启动自动减速功能（如果提供）。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统能够在检测到冷却水压力低于设定值且持续时间超过30秒后，正确触发报警并执行自动减速。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-03"
+        },
+        {
+          "shall_statement": "系统应具备冷却水泵故障报警及自动切换至备用泵的功能，并在双泵同时失效时执行自动减速至最小推进需求。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "系统在检测到冷却水泵故障时能及时发出警报并切换至备用泵；若两台泵均发生故障，则应自动将主机负载降至维持最低推进所需的水平。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-03"
+        },
+        {
+          "shall_statement": "在单一冷却组件失效的情况下，系统应保持在降低后的主机负荷下运行，最大可支持75-85% MCR，具体数值待按厂家技术数据确认。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "通过计算验证，在单个冷却组件失效条件下，系统可以支持主机以75-85% MCR（具体数值待确认）继续运行。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-03"
+        },
+        {
+          "shall_statement": "所有自动保护措施都应配备手动旁路选项，并确保该旁路操作有明确指示。对于高温保护的手动旁路，需得到轮机长的认可。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "检查确认所有自动保护机制均设有手动旁路功能，并且高温保护的手动旁路需经过轮机长确认才能生效。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR005-03"
+        },
+        {
+          "shall_statement": "联锁系统应具有高可靠性，确保在传感器故障或信号异常时仍能正确动作。",
+          "verification_method": "test",
+          "acceptance_criteria": "联锁系统在传感器故障或信号异常的情况下，能够正确执行保护逻辑（如自动减速、停机等）。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR005-04"
+        },
+        {
+          "shall_statement": "联锁系统应能够在单一控制组件故障后继续保持冷却水温度控制功能。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "在单一控制组件故障后，联锁系统仍能维持冷却水温度控制功能。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR005-04"
+        },
+        {
+          "shall_statement": "当冷却水泵发生故障时，系统应自动切换到备用泵，并发出报警。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "冷却水泵故障时，系统自动切换至备用泵并触发报警指示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR005-04"
+        },
+        {
+          "shall_statement": "如果两个冷却水泵均失效，系统应自动减速至最低推进要求。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "双泵失效时，系统自动减速至最低推进要求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR005-04"
+        },
+        {
+          "shall_statement": "联锁系统应具备手动干预能力，且手动干预需有首席轮机员确认机制。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "所有自动保护功能均应具备手动干预能力，并且手动干预需得到首席轮机员的确认。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR005-04"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 4,
+        "n_subs_with_output": 4
+      }
+    },
+    {
+      "source_requirement_id": "OR006",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应记录高温冷却水在发动机出口处的温度，并具备连续监测功能，设置高报警阈值。",
+          "verification_method": "test",
+          "acceptance_criteria": "高温冷却水在发动机出口处的温度应在制造商规定的范围内（通常为85-95°C），并设置高报警阈值。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "冷却水系统应记录高温冷却水在发动机入口处的压力，并具备连续监测功能，设置低报警阈值。",
+          "verification_method": "test",
+          "acceptance_criteria": "高温冷却水在发动机入口处的压力应不低于制造商规定的最低操作压力，并设置低报警阈值。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "冷却水系统应记录低温冷却水在中央冷却器出口处的温度，并具备连续监测功能，设置高报警阈值。",
+          "verification_method": "test",
+          "acceptance_criteria": "低温冷却水在中央冷却器出口处的温度应在设计最大温度以上5°C时触发高报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "冷却水系统应记录膨胀箱的液位，并设置低液位报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当膨胀箱液位低于最低操作液位时，应触发低液位报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "冷却水系统应记录冷却水泵的运行状态。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "冷却水泵的运行状态应能被指示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "冷却水系统的所有报警信号应连接到报警管理系统，并在机舱控制台和驾驶室显示。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "所有报警信号应在机舱控制台和驾驶室正确显示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备数据存储功能，支持事后追溯与分析。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "系统应能够存储关键运行参数的数据，并支持事后分析以验证系统性能是否符合设计要求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR006-01"
+        },
+        {
+          "shall_statement": "记录的运行数据应能用于验证系统性能是否符合设计要求，包括与设计值的对比分析。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids: [E1, E2, E3, E4]",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-IACS-M51-001",
+            "E-COMM-COOL-001",
+            "E-SUPP-COMM-001"
+          ],
+          "_sub_requirement_id": "OR006-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR007",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱应设置高液位报警和低液位报警，当液位超出正常范围时触发报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001",
+            "E-EXP-ALARM-008"
+          ],
+          "_sub_requirement_id": "OR007-01"
+        },
+        {
+          "shall_statement": "膨胀水箱的液位报警信号应接入主机控制系统，实现联动控制，防止液位异常影响冷却效果。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR007-02"
+        },
+        {
+          "shall_statement": "当膨胀水箱液位过高或过低时，系统应自动采取保护措施（如调整补水或停机），以避免冷却效果受损。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统在检测到膨胀水箱液位过高或过低时，能够自动执行预设的保护措施，并且这些措施能够有效防止冷却效果受损。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-EXP-CAP-001",
+            "E-EXP-ALARM-008",
+            "E-EXP-ALARM-001"
+          ],
+          "_sub_requirement_id": "OR007-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR008",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应至少配备两台冷却水泵，其中至少一台为独立电力驱动，确保在单一部件故障时仍能维持基本运行。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水系统配置符合DNV Rules for Classification: Ships, Pt.4 Ch.3、CCS钢质海船入级规范第4篇第3章及IACS UR M3.1的要求。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR008-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备自动切换功能，在冷却水泵故障时能够自动切换到备用泵，并提供报警指示。",
+          "verification_method": "test",
+          "acceptance_criteria": "自动切换功能和报警指示正常工作，符合DNV Rules for Classification: Ships, Pt.4 Ch.3和SOLAS 2020 Consolidated Edition, Chapter II-1, Part C, Regulation 26的要求。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR008-01"
+        },
+        {
+          "shall_statement": "每台冷却水泵应能在主机从怠速到最大连续功率（MCR）的所有负载条件下维持所需的冷却水流。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "每台冷却水泵的流量计算结果符合主机制造商的技术数据要求。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR008-01"
+        },
+        {
+          "shall_statement": "冷却水系统应设置高温报警，当冷却水温度超过主机制造商规定的最高允许温度时，应发出报警并采取减速或停机保护措施。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "高温报警功能正常工作，报警值不超过主机制造商规定的最高允许温度，且系统能够自动减速或停机。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR008-01"
+        },
+        {
+          "shall_statement": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "冷却水系统在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR008-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR009",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路应选用耐海水或淡水腐蚀的材料，如铜镍合金（CuNi 70/30）、双相不锈钢（22Cr 或 25Cr）、钛合金（Grade 2）或防腐涂层钢管。对于海水侧管路，禁止使用碳钢和灰铸铁。",
+          "verification_method": "review",
+          "acceptance_criteria": "所选材料符合 DNV Rules Pt.4 Ch.6, IACS UR, ASTM B111, 和 ISO 6509 的要求。",
+          "evidence_ids": [
+            "E-SUPP-MAT-001",
+            "E-PIPE-PRESS-020",
+            "E-PIPE-PRESS-019"
+          ],
+          "_sub_requirement_id": "OR009-01"
+        },
+        {
+          "shall_statement": "在热带污染海域中，换热器管材推荐使用 CuNi 70/30 或钛合金 Grade 2。",
+          "verification_method": "review",
+          "acceptance_criteria": "所选材料符合 DNV Rules Pt.4 Ch.6, IACS UR, ASTM B111, 和 ISO 6509 的要求。",
+          "evidence_ids": [
+            "E-SUPP-MAT-001",
+            "E-PIPE-PRESS-020",
+            "E-PIPE-PRESS-019"
+          ],
+          "_sub_requirement_id": "OR009-01"
+        },
+        {
+          "shall_statement": "淡水侧管路可以使用碳钢（需加抑制剂处理），也可以使用铜合金或不锈钢 316L。",
+          "verification_method": "review",
+          "acceptance_criteria": "所选材料符合 DNV Rules Pt.4 Ch.6, IACS UR, ASTM B111, 和 ISO 6509 的要求。",
+          "evidence_ids": [
+            "E-SUPP-MAT-001",
+            "E-PIPE-PRESS-020",
+            "E-PIPE-PRESS-019"
+          ],
+          "_sub_requirement_id": "OR009-01"
+        },
+        {
+          "shall_statement": "当不同金属连接时，应采用绝缘法兰、隔离套或其他阴极保护措施以防止电化学腐蚀。",
+          "verification_method": "review",
+          "acceptance_criteria": "连接方式符合 DNV RP-0198 的要求。",
+          "evidence_ids": [
+            "E-SUPP-MAT-001",
+            "E-PIPE-PRESS-020",
+            "E-PIPE-PRESS-019"
+          ],
+          "_sub_requirement_id": "OR009-01"
+        },
+        {
+          "shall_statement": "冷却水管路应设计为便于定期检查管路完整性，包括壁厚测量和泄漏检测。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "管路布置应允许对所有关键部位进行壁厚测量和泄漏检测。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "冷却水管路的布置应确保所有主要设备（如泵、热交换器、温度控制阀、过滤器）具有足够的维护空间，以便于常规维护和组件拆卸，且不干扰相邻设备。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有主要设备应有足够的空间以满足以下要求：\\n- 泵：轴向间距 ≥ 1.5× 泵壳长度，径向间距 ≥ 轴直径 + 100 mm。\\n- 板式换热器/管束：一侧应留有全板束/管束抽出的空间。\\n- 阀门手轮/执行器：操作侧间距 ≥ 600 mm。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "冷却水系统中的所有需要定期维护的设备应设有清晰的铭牌，标明维护间隔和标签号。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有需要定期维护的设备应具有清晰的铭牌，标明维护间隔和标签号。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "冷却水系统中的泵应设计为支持就地更换叶轮和机械密封，或通过法兰连接允许整体拆除。",
+          "verification_method": "review",
+          "acceptance_criteria": "泵应采用背抽式设计支持就地更换密封，或通过法兰连接允许整体拆除。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "热交换器应设计为可拆芯清洗或板式换热器，以便在不完全移除的情况下进行清洁和检查。",
+          "verification_method": "review",
+          "acceptance_criteria": "热交换器应设计为可拆芯清洗或板式换热器，以便在不完全移除的情况下进行清洁和检查。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "温度控制阀应配备上游和下游隔离阀，以便在保持其他冷却回路运行的情况下进行就地执行器和内部部件更换。",
+          "verification_method": "review",
+          "acceptance_criteria": "温度控制阀应配备上游和下游隔离阀，以便在保持其他冷却回路运行的情况下进行就地执行器和内部部件更换。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "所有设备应使用标准化的法兰或螺纹连接，与船用标准管道尺寸兼容，以便快速更换同等备件。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有设备应使用标准化的法兰或螺纹连接，与船用标准管道尺寸兼容，以便快速更换同等备件。",
+          "evidence_ids": [
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR009-02"
+        },
+        {
+          "shall_statement": "冷却水管路应采用耐腐蚀材料。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "管路材料符合耐腐蚀标准，无明显腐蚀迹象。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SW-ALARM-002",
+            "E-SENSOR-ALARM-001",
+            "E-SYS-ALARM-001"
+          ],
+          "_sub_requirement_id": "OR009-03"
+        },
+        {
+          "shall_statement": "冷却水管路应定期检查其完整性，以防止因腐蚀导致的泄漏影响主机安全。",
+          "verification_method": "maintenance_check",
+          "acceptance_criteria": "检查记录显示管路无泄漏，且无明显腐蚀迹象。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SW-ALARM-002",
+            "E-SENSOR-ALARM-001",
+            "E-SYS-ALARM-001"
+          ],
+          "_sub_requirement_id": "OR009-03"
+        },
+        {
+          "shall_statement": "冷却系统应设置泄漏报警装置，以监测和指示任何水泄漏情况。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "泄漏报警装置在检测到泄漏时能发出视觉和听觉警报。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SW-ALARM-002",
+            "E-SENSOR-ALARM-001",
+            "E-SYS-ALARM-001"
+          ],
+          "_sub_requirement_id": "OR009-03"
+        },
+        {
+          "shall_statement": "冷却系统可采用双壁管设计，以增强系统的安全性。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文件中包含双壁管的设计细节，并且双壁管能够有效防止泄漏。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SW-ALARM-002",
+            "E-SENSOR-ALARM-001",
+            "E-SYS-ALARM-001"
+          ],
+          "_sub_requirement_id": "OR009-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR010",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备手动与自动控制切换功能，当自动控制系统失效时，操作人员可通过手动操作维持主机冷却。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟自动控制系统故障的情况下，操作人员能够通过手动操作维持主机冷却。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR010-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR011",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备在线智能诊断功能，能够实时监测运行状态并主动提示潜在故障风险。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统能够实时监测HT冷却水温度、HT冷却水压力、LT冷却水温度、膨胀水箱液位和冷却水泵运行状态，并在检测到异常时发出警报。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "冷却水系统的智能诊断功能应能够连接到报警管理系统，并在机舱控制台和驾驶台显示报警信息。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有报警信号均能在机舱控制台和驾驶台正确显示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当HT冷却水温度超过正常最大操作温度5-8°C时，系统应发出警告警报。",
+          "verification_method": "test",
+          "acceptance_criteria": "HT冷却水温度超过正常最大操作温度5-8°C时，系统能自动触发警告警报。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当HT冷却水温度达到比警告警报设定点高3-5°C时，系统应自动减速。",
+          "verification_method": "test",
+          "acceptance_criteria": "HT冷却水温度达到比警告警报设定点高3-5°C时，系统能自动减速。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当HT冷却水温度达到制造商规定的绝对最大温度限制时，系统应自动停机。",
+          "verification_method": "test",
+          "acceptance_criteria": "HT冷却水温度达到制造商规定的绝对最大温度限制时，系统能自动停机。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当发动机入口处的冷却水压力低于制造商最小值0.3-0.5巴时，系统应发出低压警报。",
+          "verification_method": "test",
+          "acceptance_criteria": "发动机入口处的冷却水压力低于制造商最小值0.3-0.5巴时，系统能自动触发低压警报。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当冷却水泵发生故障时，系统应自动切换到备用泵，并发出警报。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水泵发生故障时，系统能自动切换到备用泵，并发出警报。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当两个冷却水泵都失效时，系统应自动减速至最低推进要求。",
+          "verification_method": "test",
+          "acceptance_criteria": "两个冷却水泵都失效时，系统能自动减速至最低推进要求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当单个冷却组件（如一个冷却器或一个回路）失效时，系统应在降低发动机负荷的情况下维持最低冷却能力。",
+          "verification_method": "test",
+          "acceptance_criteria": "单个冷却组件失效时，系统能在75-85% MCR下继续运行，具体数值待按厂家技术数据确认。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "系统应能够在全负荷范围内通过自动调节温度控制阀来保持冷却水温度在制造商规定的范围内。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统能够在全负荷范围内通过自动调节温度控制阀来保持冷却水温度在制造商规定的范围内。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "系统应具备手动干预功能，以便在自动控制失败时进行手动控制。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "系统具有手动干预功能，且在自动控制失败时可以手动控制。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当冷却水温度超过高报警设定点时，系统应发出警报。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度超过高报警设定点时，系统能自动触发警报。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当提供自动减速或停机功能时，系统应在高于报警设定点5-10°C的温度下激活这些功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "当冷却水温度达到高于报警设定点5-10°C时，系统能自动激活减速或停机功能。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "当自动保护装置被触发时，系统应激活声光报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "自动保护装置被触发时，系统能激活声光报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        },
+        {
+          "shall_statement": "系统应在任何控制系统组件单次故障后仍能保持冷却水温度控制功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统在任何控制系统组件单次故障后仍能保持冷却水温度控制功能。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR011-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR012",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水滤器应配备实时压差监测装置，当压差超过设定阈值时触发报警，提示清洁需求。",
+          "verification_method": "test",
+          "acceptance_criteria": "压差监测装置在压差超过设定阈值时能准确触发报警，并且报警信号清晰可辨。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-SUPP-FILT-001"
+          ],
+          "_sub_requirement_id": "OR012-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR013",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备低温保护功能，在环境温度低于15°C或主机长期低负荷运行时，能自动启动暖机程序，防止部件因低温损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "在环境温度低于15°C或主机长期低负荷运行的条件下，系统能够自动启动暖机程序，并且暖机程序能够使冷却水温度达到至少60°C（±5°C）。",
+          "evidence_ids": [
+            "E-SYS-CLEAN-020",
+            "E-SYS-CLEAN-019",
+            "E-WAR46DF-PARAM-001"
+          ],
+          "_sub_requirement_id": "OR013-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR014",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵应配备变频驱动，根据主机负荷信号自动调节转速以匹配所需流量。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水泵在不同主机负荷下能够自动调节转速，并且流量与主机负荷相匹配。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-CCS-COOL-001",
+            "E-PUMP-CTRL-001",
+            "E-PUMP-TEMP-003"
+          ],
+          "_sub_requirement_id": "OR014-01"
+        },
+        {
+          "shall_statement": "冷却水泵应支持变频软启停功能，以减少机械冲击和磨损。",
+          "verification_method": "test",
+          "acceptance_criteria": "在启动和停止过程中，水泵的机械冲击和磨损应在厂家技术数据规定的范围内。",
+          "evidence_ids": [
+            "E-PUMP-SHUT-008",
+            "E-PUMP-RED-005"
+          ],
+          "_sub_requirement_id": "OR014-03"
+        },
+        {
+          "shall_statement": "冷却水泵在低负荷时应能以低速运行，以延长设备寿命。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "在低负荷工况下，水泵的运行速度应低于正常工作速度，并且设备寿命应符合厂家技术数据的要求。",
+          "evidence_ids": [
+            "E-PUMP-SHUT-008",
+            "E-PUMP-RED-005"
+          ],
+          "_sub_requirement_id": "OR014-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR015",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路应设置多级隔离阀，以便在局部维修时隔离相关管段而不影响其他系统运行。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "确认冷却水管路上设置了多级隔离阀，并且这些阀门的位置和布置方式使得在局部维修时可以有效地隔离相关管段而不影响其他系统的正常运行。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-SUPP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR015-01"
+        },
+        {
+          "shall_statement": "隔离阀的安装位置应便于轮机员在机舱内快速操作。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀的位置应在轮机员可快速到达和操作的范围内，且不影响其他系统运行。",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR015-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR016",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备独立的备用传感器，当主传感器故障时能够自动切换至备用传感器。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟主传感器故障的情况下，系统能够在5秒内自动切换至备用传感器并继续监测参数。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR016-01"
+        },
+        {
+          "shall_statement": "当主传感器故障时，系统应触发报警以提示操作人员。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟主传感器故障的情况下，系统应在5秒内触发报警，并且报警信号应清晰可辨。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR016-01"
+        },
+        {
+          "shall_statement": "备用传感器的性能和精度应与主传感器相同，确保参数监测不中断。",
+          "verification_method": "review",
+          "acceptance_criteria": "备用传感器的技术规格和性能指标应与主传感器一致，确保在主传感器故障时能够无缝切换。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR016-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR017",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备远程监控接口，支持将关键运行参数实时传输至岸基管理系统。",
+          "verification_method": "review",
+          "acceptance_criteria": "确认系统设计文档中包含远程监控接口的详细描述，并明确说明该接口能够实时传输以下关键运行参数：HT冷却水温度（发动机出口）、HT冷却水压力（发动机入口）、LT冷却水温度（中央冷却器出口）、膨胀水箱液位、冷却水泵运行状态以及温度控制阀位置（如适用）。所有这些参数都应能被连续监测，并且报警信号需连接到报警管理系统，在机舱控制台和驾驶室显示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR017-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备实时传输关键运行参数（包括但不限于高温冷却水出口温度、高温冷却水入口压力、低温冷却水中央冷却器出口温度、膨胀水箱液位、冷却水泵运行状态和温度控制阀位置）至岸基管理系统的功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "所有指定的关键运行参数均能准确无误地实时传输至岸基管理系统，数据更新频率满足远程监控需求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR017-02"
+        },
+        {
+          "shall_statement": "冷却水系统应支持远程诊断和性能优化功能，允许岸基人员分析数据并调整运行参数。",
+          "verification_method": "test",
+          "acceptance_criteria": "岸基管理系统能够接收并显示冷却水系统的实时运行参数，并且岸基人员能够通过该系统进行数据分析和运行参数的调整。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-DNV-COOL-003",
+            "E-COMM-COOL-001"
+          ],
+          "_sub_requirement_id": "OR017-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR018",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应设置快速泄放功能，通过单一阀门操作即可排空管路内的冷却水。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "确认冷却水系统中存在一个或多个手动排水阀，且这些阀门位于管路的最低点，能够通过单一操作排空管路内的冷却水。",
+          "evidence_ids": [
+            "E-VALVE-INSP-010",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR018-01"
+        },
+        {
+          "shall_statement": "冷却水系统的快速泄放功能应能缩短维修准备时间。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "在实际操作中，通过单一阀门操作能够在合理时间内（待按厂家技术数据确认）排空管路内的冷却水，从而减少维修准备时间。",
+          "evidence_ids": [
+            "E-VALVE-INSP-010",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR018-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR019",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备压力波动监测装置，当系统压力异常波动时触发报警，提示可能的管路泄漏或泵故障。",
+          "verification_method": "test",
+          "acceptance_criteria": "压力波动监测装置在系统压力异常波动时能够及时触发报警，并且报警信息能够准确提示可能的管路泄漏或泵故障。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR019-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR020",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应通过减少管路阻力和优化泵组匹配来降低能耗，提升经济性。",
+          "verification_method": "review",
+          "acceptance_criteria": "系统设计文件中应包含减少管路阻力和优化泵组匹配的具体措施，并且这些措施能够有效降低系统能耗，提升经济性。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-LT-CAP-001"
+          ],
+          "_sub_requirement_id": "OR020-01"
+        },
+        {
+          "shall_statement": "冷却水泵的总安装容量应比最大计算流量需求高出至少25%的余量。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "冷却水泵的总安装容量计算结果应满足IACS UR M3.1的要求，即总安装容量应比最大计算流量需求高出至少25%的余量。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-LT-CAP-001"
+          ],
+          "_sub_requirement_id": "OR020-01"
+        },
+        {
+          "shall_statement": "低温淡水回路的容量应足以处理所有连接设备在最高海水温度下同时满负荷运行的需求。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "低温淡水回路的设计容量应满足DNV规则的要求，即在最高海水温度（至少32°C）下，能够处理所有连接设备同时满负荷运行的热排放需求。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-LT-CAP-001"
+          ],
+          "_sub_requirement_id": "OR020-01"
+        },
+        {
+          "shall_statement": "循环水泵及循环水管道提供的循环冷却水流量和压力应满足换热器的换热需要，并在满足各工况流量和压力的前提下，节省电能消耗。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "循环水泵及循环水管道的设计参数应依据来源文件、厂家技术数据或项目计算文件确定，并确保在满足各工况流量和压力的前提下，节省电能消耗。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-LT-CAP-001"
+          ],
+          "_sub_requirement_id": "OR020-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR021",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应能在不同海域水质条件下稳定运行，包括海水盐度、浊度、生物附着等变化。",
+          "verification_method": "review",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-LT-CAP-001",
+            "E-SUPP-FILT-002",
+            "E-SUPP-FILT-001"
+          ],
+          "_sub_requirement_id": "OR021-01"
+        },
+        {
+          "shall_statement": "海水滤器堵塞监测装置应具备高灵敏度，能够及时检测滤器堵塞状态。",
+          "verification_method": "test",
+          "acceptance_criteria": "压差指示装置在滤器堵塞导致压差超过设定值时应能准确发出报警信号。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-SUPP-FILT-001"
+          ],
+          "_sub_requirement_id": "OR021-02"
+        },
+        {
+          "shall_statement": "冷却水系统应配置双联过滤器，以确保在不停机条件下进行清洗和维护，从而保证系统的连续运行能力。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "系统中安装了双联过滤器，并且可以在不停机条件下进行切换和清洗。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "海水滤器的进出口间应设置压差指示装置，当压差超过设定值时应发出报警，提示操作人员清洗或切换过滤器。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "压差指示装置安装正确并在压差超过设定值时能发出报警信号。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "对于在热带海域和海生物附着高风险航区长期运营的船舶，冷却水系统宜配置具有自动反冲洗功能的过滤器，以减少人工清洗频次，防止冷却水流量不足。",
+          "verification_method": "review",
+          "acceptance_criteria": "系统设计文件中明确指出，在特定航区运营的船舶配备了具有自动反冲洗功能的过滤器。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "冷却主机等重要设备的海水进水管路中的过滤器壳体及管路连接件应按1.5倍最高工作压力进行水压试验，保压时间不少于30分钟，不得有渗漏现象。",
+          "verification_method": "test",
+          "acceptance_criteria": "过滤器壳体及管路连接件通过了1.5倍最高工作压力的水压试验，保压时间不少于30分钟，无渗漏现象。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应能在全负荷范围内自动调节温度控制阀，以保持冷却水温度在制造商规定的限值内。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "冷却水温度控制系统能够在全负荷范围内自动调节温度控制阀，使冷却水温度保持在制造商规定的限值内。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应具备手动干预功能，以便在自动控制失效时使用。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "冷却水温度控制系统能够被手动干预，并在自动控制失效时仍能正常工作。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "当冷却水温度超过设定的高报警点时，系统应提供报警信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度超过设定的高报警点时，系统能够发出报警信号。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "当冷却水温度达到自动降速或停机设定点时，系统应激活相应的保护措施。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度达到自动降速或停机设定点时，系统能够激活相应的保护措施。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应在单一故障情况下仍能维持基本功能。",
+          "verification_method": "maintenance_check",
+          "acceptance_criteria": "冷却水温度控制系统在单一故障情况下仍能维持基本功能。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR021-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR022",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应在低温环境下自动启动暖机程序，以控制冷却水温度以一定速率上升，避免温度骤变。",
+          "verification_method": "test",
+          "acceptance_criteria": "在低温环境下，冷却水系统能够自动启动暖机程序，并且冷却水温度以平稳的速率上升，无温度骤变现象。",
+          "evidence_ids": [
+            "E-SYS-CLEAN-020",
+            "E-SYS-CLEAN-019",
+            "E-WAR46DF-PARAM-001"
+          ],
+          "_sub_requirement_id": "OR022-01"
+        },
+        {
+          "shall_statement": "冷却水系统在暖机过程中应控制冷却水温度变化率，以防止因温度骤变导致主机部件产生热应力损伤。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-IACS-M3-002",
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-001",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR022-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR023",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备变频调节功能，根据主机实际负荷自动调节冷却水流量，实现精准匹配。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR023-01"
+        },
+        {
+          "shall_statement": "冷却水系统的设计应确保在所有运行条件下，包括最大连续功率（MCR）和预期最高环境海水温度下，冷却水温度保持在主机制造商规定的范围内。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文件中明确列出冷却水温度范围，并与主机制造商提供的技术数据一致。",
+          "evidence_ids": [
+            "E-DNV-COOL-001",
+            "E-CCS-COOL-001",
+            "E-ISO8861-001",
+            "E-IACS-M3-003"
+          ],
+          "_sub_requirement_id": "OR023-02"
+        },
+        {
+          "shall_statement": "冷却水系统应设有不少于2台冷却水泵，其中至少1台为独立电力驱动。各泵应在主机额定功率工况下单独满足冷却水流量需求。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "系统配置符合要求，且每台泵在额定功率工况下的流量测试结果符合主机制造商的技术数据。",
+          "evidence_ids": [
+            "E-DNV-COOL-001",
+            "E-CCS-COOL-001",
+            "E-ISO8861-001",
+            "E-IACS-M3-003"
+          ],
+          "_sub_requirement_id": "OR023-02"
+        },
+        {
+          "shall_statement": "冷却水系统应设置高温报警，报警值不超过主机制造商规定的最高允许温度。当冷却水温度超过允许值时，系统应能自动减速或停机保护。",
+          "verification_method": "test",
+          "acceptance_criteria": "高温报警功能正常工作，报警值符合主机制造商的规定；系统在温度超过允许值时能够自动减速或停机。",
+          "evidence_ids": [
+            "E-DNV-COOL-001",
+            "E-CCS-COOL-001",
+            "E-ISO8861-001",
+            "E-IACS-M3-003"
+          ],
+          "_sub_requirement_id": "OR023-02"
+        },
+        {
+          "shall_statement": "冷却水系统的总安装泵容量应提供比最大计算流量需求高出至少25%的余量。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "计算结果显示总安装泵容量比最大计算流量需求高出至少25%。",
+          "evidence_ids": [
+            "E-DNV-COOL-001",
+            "E-CCS-COOL-001",
+            "E-ISO8861-001",
+            "E-IACS-M3-003"
+          ],
+          "_sub_requirement_id": "OR023-02"
+        },
+        {
+          "shall_statement": "中央冷却系统的低温回路应具有足够的容量，在船舶预期航行区域的最高海水温度下，同时处理所有连接设备的最大负荷热量。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "计算结果显示低温回路的容量满足所有连接设备在最高海水温度下同时满负荷运行的需求。",
+          "evidence_ids": [
+            "E-DNV-COOL-001",
+            "E-CCS-COOL-001",
+            "E-ISO8861-001",
+            "E-IACS-M3-003"
+          ],
+          "_sub_requirement_id": "OR023-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR024",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水滤器应配备堵塞监测装置，当滤器堵塞达到需清洁程度时，自动向驾驶台和机舱发出明确提示信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "堵塞监测装置在滤器堵塞达到需清洁程度时，能够自动向驾驶台和机舱发出明确的提示信号。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-SUPP-FILT-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR024-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR025",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统在低温启动时，应具备温度控制功能，确保主机各部件的温度不低于安全下限，防止低温脆化损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水系统在低温启动时，能够将主机各部件的温度维持在不低于安全下限的范围内，防止低温脆化损坏。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SYS-CLEAN-020",
+            "E-SYS-CLEAN-019",
+            "E-WAR46DF-PARAM-001"
+          ],
+          "_sub_requirement_id": "OR025-01"
+        },
+        {
+          "shall_statement": "冷却水系统应设置低温报警及保护动作，当冷却水温度低于设定阈值时触发报警并采取相应保护措施。",
+          "verification_method": "test",
+          "acceptance_criteria": "在冷却水温度低于设定阈值时，系统能够正确触发低温报警，并自动执行相应的保护措施。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR025-02"
+        },
+        {
+          "shall_statement": "The safe lower temperature limit for each component of the main engine during cold start shall be defined, based on the manufacturer's technical data, to serve as the basis for system design and protection logic.",
+          "verification_method": "review",
+          "acceptance_criteria": "The defined safe lower temperature limits are consistent with the manufacturer's technical data and applicable standards (e.g., IACS UR M3.1, ISO 8861, DNV Rules).",
+          "evidence_ids": [
+            "E-PARAM-HT-001",
+            "E-DNV-COOL-001",
+            "E-ISO8861-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR025-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR026",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵的变频调节系统应具备根据主机负荷自动调整转速的智能控制功能，以实现冷却水流量与主机需求的最佳匹配。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "在不同主机负荷下，冷却水泵能够自动调整转速，使冷却水流量与主机需求相匹配。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-IACS-M3-002",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR026-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR027",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备海水滤器堵塞预警功能，在滤器堵塞影响系统性能前发出预警信号，以便安排清洁维护。",
+          "verification_method": "test",
+          "acceptance_criteria": "压差报警装置应在滤器堵塞导致系统性能下降之前触发报警信号。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-SUPP-FILT-001",
+            "E-ISO8861-002",
+            "E-CTRL-COOL-002"
+          ],
+          "_sub_requirement_id": "OR027-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR028",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备根据环境温度和主机状态自动调整暖机时间和温度上升速率的控制功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "在低温环境下，控制系统能够根据环境温度和主机状态自动调整暖机时间和温度上升速率，并确保主机安全启动。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-WAR46DF-PARAM-001"
+          ],
+          "_sub_requirement_id": "OR028-01"
+        },
+        {
+          "shall_statement": "冷却水系统应支持在低温环境下执行暖机程序，以预热主机至安全启动温度。",
+          "verification_method": "test",
+          "acceptance_criteria": "主机在低温环境下通过冷却水系统的暖机程序预热后，能够达到安全启动温度。",
+          "evidence_ids": [
+            "E-SYS-CLEAN-020",
+            "E-SYS-CLEAN-019"
+          ],
+          "_sub_requirement_id": "OR028-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR029",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应通过优化管路布局和泵组效率等措施，降低系统整体能耗。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "系统整体能耗较优化前有显著降低，具体数值待按厂家技术数据确认。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "冷却水系统的总安装泵容量应提供至少比最大计算流量需求高出25%的余量。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "总泵容量 ≥ 最大计算流量需求 × 1.25",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "中央冷却系统的低温淡水回路应具备在所有连接设备同时满负荷运行时，包括在最高预期海水温度下，处理其综合热负荷的能力。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "低温淡水回路的设计应满足在最高预期海水温度下，所有连接设备同时满负荷运行时的热负荷需求。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "循环水泵及循环水管道提供的循环冷却水流量和压力应满足换热器的换热需要，并在满足各工况流量和压力的前提下，节省电能消耗。",
+          "verification_method": "test",
+          "acceptance_criteria": "循环冷却水流量和压力满足换热器的需求，且在各工况下实现电能节约。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "主机冷却水进机温度应在发动机制造商规定的范围内维持。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "主机冷却水进机温度不超过发动机制造商规定的上限值。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "高温淡水回路的最大进机温度不应超过温控阀开启温度之上36°C。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "高温淡水回路的最大进机温度 ≤ 温控阀开启温度 + 36°C。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应自动调节温控阀以保持冷却水温度在制造商规定的范围内。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度控制系统能够在全负荷范围内自动调节温控阀，保持冷却水温度在制造商规定的范围内。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应具备手动超控功能，在自动控制失效时能够进行手动操作。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度控制系统在自动控制失效时能够切换到手动模式并正常工作。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "当冷却水温度超过高报警设定点时，冷却水温度控制系统应发出报警信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度超过高报警设定点时，系统应发出报警信号。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "若提供了自动减速或停机功能，冷却水温度控制系统应在高于报警设定点（通常为报警设定点之上5-10°C）激活该功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度达到高于报警设定点5-10°C时，系统应自动减速或停机。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "当自动保护装置触发时，冷却水温度控制系统应发出声光报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "自动保护装置触发时，系统应发出声光报警。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统在单一故障情况下仍应保持温度控制功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "在单一故障情况下，系统仍能保持冷却水温度控制功能。",
+          "evidence_ids": [
+            "E-IACS-M3-003",
+            "E-PUMP-CAP-011",
+            "E-DNV-COOL-001",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR029-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR030",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 0
+      }
+    },
+    {
+      "source_requirement_id": "OR031",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水泵组应配置至少两台冷却水泵，其中一台为主泵，另一台为备用泵，且备用泵的容量应不小于主泵。",
+          "verification_method": "review",
+          "acceptance_criteria": "审查设计文件和设备清单，确认海水泵组配置了至少两台冷却水泵，且备用泵的容量不低于主泵。",
+          "evidence_ids": [
+            "E-PUMP-RED-004",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR031-01"
+        },
+        {
+          "shall_statement": "当主泵发生故障时，备用泵应能自动无缝投入运行，确保主机冷却水供应不中断。",
+          "verification_method": "test",
+          "acceptance_criteria": "通过测试验证，在主泵故障的情况下，备用泵能够自动启动并保持冷却水系统的正常运行。",
+          "evidence_ids": [
+            "E-PUMP-RED-004",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR031-01"
+        },
+        {
+          "shall_statement": "海水泵组中至少有一台泵应具有独立驱动装置。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "检查现场安装情况，确认至少有一台海水泵配备了独立驱动装置。",
+          "evidence_ids": [
+            "E-PUMP-RED-004",
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR031-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR032",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "淡水冷却系统应配备高精度温度监测装置，确保温度测量误差在允许范围内。",
+          "verification_method": "test",
+          "acceptance_criteria": "温度测量误差不超过主机制造商技术文件规定的允许范围。",
+          "evidence_ids": [
+            "E-PARAM-HT-001",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR032-01"
+        },
+        {
+          "shall_statement": "当淡水温度超过正常范围时，系统应能立即触发高温报警，并明确显示报警位置。",
+          "verification_method": "test",
+          "acceptance_criteria": "报警应在淡水温度超过制造商规定的最高允许温度时立即触发。",
+          "报警位置应明确显示在机器控制台和驾驶台上。": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-CTRL-COOL-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "E3": "engineering_requirements",
+          "_sub_requirement_id": "OR032-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR033",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器及换热器的结构设计应便于清洁、检查和维修，包括可拆卸盖板、易于接近的管束、足够的操作空间等。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却器及换热器的设计应包含可拆卸盖板，易于接近的管束，并提供足够的操作空间以方便维护人员进行清洁、检查和维修工作。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "所有主要冷却水设备（泵、换热器、温度控制阀、过滤器）应有足够的间距以便于常规维护和组件移除，而不影响相邻设备。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "泵的轴向间距应≥1.5倍泵长；板式换热器需留全板束抽出空间；通道宽度≥600mm；>25kg设备须有吊装点；设备须有维护标牌。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "冷却水泵应设计为支持就地更换叶轮/机械密封，或具有法兰连接允许整体移除并在维护间距内操作。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水泵应采用背抽式设计，支持就地更换密封，或具有法兰连接允许整体移除并在维护间距内操作。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "换热器应为可拆芯或带垫片的板式框架类型，以便在不完全移除的情况下进行清洁和检查。",
+          "verification_method": "review",
+          "acceptance_criteria": "换热器应为可拆芯或带垫片的板式框架类型，允许在不完全移除的情况下进行清洁和检查。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "温度控制阀应配备上游和下游隔离阀，允许在不停止其他冷却回路的情况下进行就地执行机构和内部部件的更换。",
+          "verification_method": "review",
+          "acceptance_criteria": "温度控制阀应配备上游和下游隔离阀，允许在不停止其他冷却回路的情况下进行就地执行机构和内部部件的更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "所有设备应使用与船用标准管道尺寸兼容的标准法兰或螺纹连接，以便快速更换等效备件。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有设备应使用与船用标准管道尺寸兼容的标准法兰或螺纹连接，以便快速更换等效备件。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "关键组件（泵机械密封、TCV执行机构、过滤器篮子、换热器垫片）的备件应列入入级认可的备件清单，并附有制造商零件编号。",
+          "verification_method": "review",
+          "acceptance_criteria": "关键组件的备件应列入入级认可的备件清单，并附有制造商零件编号。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        },
+        {
+          "shall_statement": "板式换热器的拆解清洗应满足以下要求：a) 不应使用金属刷刷洗板片；b) 宜采用甲酸类清洗液进行辅助刷洗，其他清洗液不应腐蚀板片；c) 拆解清洗过程中应检查板片与密封垫圈的粘合是否完好并应更换损坏密封垫圈；d) 损坏板片应及时更换；e) 重新压紧板片时应根据上一次压紧的刻度位置，防止压紧过度；f) 螺栓应对角压紧，受力均匀；g) 清洗的质量应符合GB/T 25146的规定。",
+          "verification_method": "maintenance_check",
+          "acceptance_criteria": "板式换热器的拆解清洗应满足上述要求，清洗质量应符合GB/T 25146的规定。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-CLEAN-016",
+            "E-COOLER-MAINT-015"
+          ],
+          "_sub_requirement_id": "OR033-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR034",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The expansion tank shall be equipped with a level monitoring device that can accurately and reliably measure the liquid level.",
+          "verification_method": "inspection",
+          "acceptance_criteria": "The level monitoring device is installed and functional, and it provides accurate and reliable measurements of the liquid level in the expansion tank.",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR034-01"
+        },
+        {
+          "shall_statement": "When the liquid level in the expansion tank falls below the safe lower limit, the system shall automatically activate the water replenishment device to refill the tank.",
+          "verification_method": "test",
+          "acceptance_criteria": "The water replenishment device is activated when the liquid level in the expansion tank falls below the safe lower limit, and the tank is refilled to the required level.",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR034-01"
+        },
+        {
+          "shall_statement": "当膨胀水箱液位低于安全范围时，系统应发出液位过低报警信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "当膨胀水箱液位低于制造商规定的最低操作液位时，系统应能准确触发液位过低报警，并在机舱控制室和驾驶台显示报警信号。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001"
+          ],
+          "_sub_requirement_id": "OR034-02"
+        },
+        {
+          "shall_statement": "The level monitoring device for the expansion tank shall have sufficient measurement accuracy and reliability to ensure accurate level readings.",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-EXP-CAP-001",
+            "E-ISO8861-002",
+            "E-COMM-COOL-001"
+          ],
+          "_sub_requirement_id": "OR034-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR035",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的所有金属部件（包括管道、换热器等）应选用耐腐蚀材料或采取有效防腐措施，确保在设计寿命内不发生腐蚀失效。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有金属部件的材料选择和防腐措施需符合项目技术文件的要求，并且在设计寿命内无腐蚀失效现象。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-001",
+            "E-SYS-WATER-002",
+            "E-PIPE-CLEAN-008"
+          ],
+          "_sub_requirement_id": "OR035-01"
+        },
+        {
+          "shall_statement": "冷却水系统中不得使用镀锌表面及含锌、铜、黄铜材质的组件，以避免电化学反应导致的腐蚀问题。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "系统内无镀锌表面及含锌、铜、黄铜材质的组件，且通过现场检查确认无上述材料存在。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-001",
+            "E-SYS-WATER-002",
+            "E-PIPE-CLEAN-008"
+          ],
+          "_sub_requirement_id": "OR035-01"
+        },
+        {
+          "shall_statement": "冷却水系统中应添加防冻剂作为防腐保护，具体防冻剂种类和最低浓度待按厂家技术数据确认。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "冷却水系统中已添加指定类型的防冻剂，且其浓度不低于厂家技术文件规定的最低值。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-001",
+            "E-SYS-WATER-002",
+            "E-PIPE-CLEAN-008"
+          ],
+          "_sub_requirement_id": "OR035-01"
+        },
+        {
+          "shall_statement": "冷却水系统的清洗和维护工作应遵循项目维护程序或厂家文件的规定执行，清洗后需复查残留清洗剂、泄漏、沉积物或换热能力恢复情况。",
+          "verification_method": "maintenance_check",
+          "acceptance_criteria": "清洗和维护过程记录完整，复查结果表明无残留清洗剂、泄漏、沉积物，且换热能力恢复正常。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-001",
+            "E-SYS-WATER-002",
+            "E-PIPE-CLEAN-008"
+          ],
+          "_sub_requirement_id": "OR035-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR036",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备不少于2台冷却水泵，其中至少1台为独立电力驱动，并且每台泵在主机额定功率工况下能够单独满足冷却水流量需求。",
+          "verification_method": "review",
+          "acceptance_criteria": "根据设计文件和设备规格书确认系统配置符合要求。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统应在船舶失电时提供应急冷却能力，确保主机关键部件不会因温度过高而损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "通过模拟失电工况测试，确认冷却水系统能够继续运行并维持主机关键部件的温度在安全范围内。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统应设置高温报警，报警值不应超过主机制造商规定的最高允许温度。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "在调试过程中验证报警系统的设定值，并确认其与主机制造商的技术数据一致。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "通过热力学计算确认系统在指定温度条件下的性能符合要求。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备自动切换功能，在任一泵故障时能自动切换到备用泵，并发出报警指示。",
+          "verification_method": "test",
+          "acceptance_criteria": "通过实际操作测试，确认泵的自动切换功能及报警指示正常工作。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统中的膨胀水箱和冷却水储罐必须在船舶横倾15°、横摇22.5°、纵摇7.5°的情况下保持足够的液位，以防止空气吸入。",
+          "verification_method": "design_review",
+          "acceptance_criteria": "通过设计审查确认膨胀水箱和冷却水储罐的容量和位置设计符合要求。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水泵的吸水管路必须在所有横倾角度下保持浸没状态。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "通过现场检查确认吸水管路的位置和安装符合要求。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统必须能够在机舱黑船状态下自主启动。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "通过实际操作检查确认系统在无外部辅助的情况下能够自主启动。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR036-01"
+        },
+        {
+          "shall_statement": "冷却水系统应监测主机关键部件的高温HT冷却水温度，并在温度超过制造商规定的正常最大运行温度5-8°C时触发警告报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "在测试过程中，当高温HT冷却水温度达到制造商规定的正常最大运行温度5-8°C以上时，系统应当正确触发警告报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "冷却水系统应在高温HT冷却水温度比警告报警设定值高3-5°C时自动减速。",
+          "verification_method": "test",
+          "acceptance_criteria": "在测试过程中，当高温HT冷却水温度达到警告报警设定值3-5°C以上时，系统应当自动执行减速操作。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "冷却水系统应在高温HT冷却水温度达到制造商规定的绝对最高温度限制时自动停机。",
+          "verification_method": "test",
+          "acceptance_criteria": "在测试过程中，当高温HT冷却水温度达到制造商规定的绝对最高温度限制时，系统应当自动执行停机操作。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "冷却水系统应监测发动机入口处的低温LT冷却水压力，并在压力低于制造商最小规定值0.3-0.5巴时触发低压报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "在测试过程中，当低温LT冷却水压力低于制造商最小规定值0.3-0.5巴时，系统应当正确触发低压报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "冷却水系统应在低温LT冷却水压力持续低于制造商最小规定值超过30秒时自动减速。",
+          "verification_method": "test",
+          "acceptance_criteria": "在测试过程中，当低温LT冷却水压力持续低于制造商最小规定值超过30秒时，系统应当自动执行减速操作。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "冷却水系统应监测冷却水泵的工作状态，并在检测到泵故障时自动切换至备用泵并触发警报。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "在调试检查中，当主冷却水泵发生故障时，系统应当自动切换至备用泵并触发警报。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "冷却水系统应设置冷却水高温报警，报警值不应超过主机制造商规定的最高允许温度。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文件和图纸应显示冷却水高温报警值不超过主机制造商规定的最高允许温度。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        },
+        {
+          "shall_statement": "当冷却水温度超过制造商规定的允许值时，系统应能够自动减速或停机保护。",
+          "verification_method": "test",
+          "acceptance_criteria": "在测试过程中，当冷却水温度超过制造商规定的允许值时，系统应当自动执行减速或停机操作。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR036-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR037",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水泵自动投入功能应在所有工况下可靠工作，确保备用泵在主泵故障时迅速启动，不中断主机冷却。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟主泵故障的情况下，备用泵应能在10秒内自动启动并恢复冷却水流量至正常水平，确保主机冷却不间断。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-IACS-M3-001",
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR037-01"
+        },
+        {
+          "shall_statement": "海水泵控制系统应具备自动检测主泵故障并启动备用泵的逻辑。",
+          "verification_method": "test",
+          "acceptance_criteria": "在主泵模拟故障时，控制系统应在规定时间内自动启动备用泵。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR037-02"
+        },
+        {
+          "shall_statement": "海水泵控制系统的切换时间应满足主机运行要求。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "切换时间待按厂家技术数据确认，并确保不影响主机正常运行。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR037-02"
+        },
+        {
+          "shall_statement": "备用泵应在主泵故障时于30秒内启动，以确保主机冷却水系统不间断运行。",
+          "verification_method": "test",
+          "acceptance_criteria": "备用泵在主泵故障后30秒内成功启动并维持主机冷却水系统的正常运行。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR037-03"
+        },
+        {
+          "shall_statement": "系统应配置至少两台独立的海水泵，其中至少一台应为独立电力驱动，以实现主泵故障时的自动切换。",
+          "verification_method": "review",
+          "acceptance_criteria": "系统设计文件中明确显示配置了至少两台独立的海水泵，并且其中至少一台为独立电力驱动。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR037-04"
+        },
+        {
+          "shall_statement": "备用海水泵应在主泵故障时能够自动启动，确保主机正常运行不受影响。",
+          "verification_method": "test",
+          "acceptance_criteria": "通过模拟主泵故障情况，验证备用泵能够在规定时间内自动启动并维持主机正常运行。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR037-04"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 4,
+        "n_subs_with_output": 4
+      }
+    },
+    {
+      "source_requirement_id": "OR038",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "淡水冷却温度监测系统应具备数据记录功能，能够记录温度变化历史，以供故障排查和系统优化使用。",
+          "verification_method": "test",
+          "acceptance_criteria": "数据记录功能应能连续记录至少30天的温度变化历史数据。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-IACS-M3-002",
+            "E-ISO8861-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR038-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR039",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱的设计应确保在船舶航行过程中，即使液位波动也能维持冷却水系统的正常运行。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟船舶航行条件下的测试中，膨胀水箱的液位波动不应导致系统失效。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-EXP-ACCESS-001",
+            "E-SOLAS-INCL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR039-01"
+        },
+        {
+          "shall_statement": "膨胀水箱应便于操作人员观察和操作。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "膨胀水箱的位置、标识和操作接口应符合项目安装规范，并且易于访问和使用。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-EXP-ACCESS-001",
+            "E-SOLAS-INCL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR039-01"
+        },
+        {
+          "shall_statement": "膨胀水箱应配备低液位报警装置，该报警信号应连接到报警管理系统，并在机舱控制台和驾驶室显示。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "膨胀水箱的低液位报警功能应在调试阶段得到验证，确认其能够正确触发并在指定位置显示报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-EXP-ACCESS-001",
+            "E-SOLAS-INCL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR039-01"
+        },
+        {
+          "shall_statement": "膨胀水箱及其相关管路的设计应确保在船舶横倾至15°、横摇至22.5°及纵摇至7.5°时，仍能保持足够的液位以防止空气吸入。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "通过计算或模拟验证，在上述倾斜条件下，膨胀水箱内的液位应始终保持在泵吸口之上。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-EXP-ACCESS-001",
+            "E-SOLAS-INCL-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR039-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR040",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的设计应根据不同海域的水质差异进行防腐设计，包括材料选择和牺牲阳极配置。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文件中明确描述了针对不同海域水质差异的材料选择和牺牲阳极配置方案，并符合来源文件的要求。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-CORR-002"
+          ],
+          "_sub_requirement_id": "OR040-01"
+        },
+        {
+          "shall_statement": "冷却水系统中的材料选择应避免使用铜、锌、黄铜及其镀锌表面，以防止电化学反应导致的腐蚀。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "冷却水系统中未发现铜、锌、黄铜及其镀锌表面的组件，且整个冷却系统无锌组件。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-CORR-002"
+          ],
+          "_sub_requirement_id": "OR040-01"
+        },
+        {
+          "shall_statement": "冷却水系统中不得使用镀锌铁管或锌牺牲阳极作为腐蚀保护措施。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "冷却水系统中未发现镀锌铁管或锌牺牲阳极。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-CORR-002"
+          ],
+          "_sub_requirement_id": "OR040-01"
+        },
+        {
+          "shall_statement": "冷却水系统的连接设计应确保没有连续的电位施加在任何冷却系统组件上。",
+          "verification_method": "test",
+          "acceptance_criteria": "通过电压/欧姆表检测，确认发动机上的电气组件与电池负极之间的电阻小于0.3欧姆，所有接地连接紧固且无腐蚀。",
+          "evidence_ids": [
+            "E-SYS-WATER-008",
+            "E-SYS-WATER-017",
+            "E-SYS-CORR-002"
+          ],
+          "_sub_requirement_id": "OR040-01"
+        },
+        {
+          "shall_statement": "冷却水系统的防腐设计应考虑不同海域的水质差异，通过优化牺牲阳极的更换周期和系统可维护性，减少维护成本和停机时间。",
+          "verification_method": "review",
+          "acceptance_criteria": "防腐设计文档中明确描述了针对不同海域水质差异的考虑，并提出了优化牺牲阳极更换周期的具体措施。系统设计文件中包括了模块化快拆设计要求，如泵采用背抽式设计支持就地更换密封，板式换热器可拆芯清洗，温控阀两侧有截止阀支持在线更换等。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-002",
+            "E-SYS-WATER-010",
+            "E-SYS-CLEAN-010"
+          ],
+          "_sub_requirement_id": "OR040-03"
+        },
+        {
+          "shall_statement": "冷却水系统中的关键设备（如冷却水泵、热交换器、温度控制阀）应采用标准化的法兰或螺纹连接，以便快速更换备件。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "现场检查确认所有关键设备均使用标准法兰或螺纹连接，且与船用标准管尺寸兼容。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-002",
+            "E-SYS-WATER-010",
+            "E-SYS-CLEAN-010"
+          ],
+          "_sub_requirement_id": "OR040-03"
+        },
+        {
+          "shall_statement": "冷却水系统的关键备件（如泵机械密封、温控阀执行器、过滤器篮子、热交换器垫片）应列入入级认可的备件清单，并提供制造商零件编号。",
+          "verification_method": "review",
+          "acceptance_criteria": "备件清单中包含所有关键备件及其制造商零件编号，并经过入级认可。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-002",
+            "E-SYS-WATER-010",
+            "E-SYS-CLEAN-010"
+          ],
+          "_sub_requirement_id": "OR040-03"
+        },
+        {
+          "shall_statement": "冷却水系统应配备排水罐，用于收集含添加剂的冷却水，以便在系统需要排空进行维护时再利用。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "系统中安装了排水罐，并配备了泵以将冷却水重新泵回系统。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-002",
+            "E-SYS-WATER-010",
+            "E-SYS-CLEAN-010"
+          ],
+          "_sub_requirement_id": "OR040-03"
+        },
+        {
+          "shall_statement": "冷却水系统的清洗程序应按照来源文件或项目维护程序执行，清洗后应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "清洗过程中使用的清洁剂浓度、流速、周期和验收指标符合来源文件或项目维护程序的要求。清洗后重新投运前，进行了残留清洗剂、泄漏、沉积物或换热能力恢复情况的检查。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-002",
+            "E-SYS-WATER-010",
+            "E-SYS-CLEAN-010"
+          ],
+          "_sub_requirement_id": "OR040-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR041",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The expansion tank shall be designed to allow for simple and quick replenishment of the cooling water level during both in-port and at-sea operations, without requiring complex procedures.",
+          "verification_method": "inspection",
+          "acceptance_criteria": "The design of the expansion tank allows for easy and rapid refilling of the cooling water level, as verified by inspection during in-port and at-sea operations.",
+          "evidence_ids": [
+            "E-EXP-CAP-001",
+            "E-EXP-ALARM-004",
+            "E-EXP-ALARM-002",
+            "E-EXP-ARR-002"
+          ],
+          "_sub_requirement_id": "OR041-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR042",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "牺牲阳极的更换操作应设计为简单快捷，以减少对系统正常运行的影响。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "牺牲阳极的更换操作能够在不拆除相邻设备的情况下进行，并且操作时间不超过30分钟。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-COOLER-MAINT-003",
+            "E-PUMP-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR042-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR043",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "应急冷却系统应在船舶失电后自动或手动快速启动，响应时间满足主机关键部位冷却要求。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟失电工况下，应急冷却系统应能在规定时间内启动，并确保主机关键部位得到有效冷却。",
+          "evidence_ids": [
+            "E-SOLAS-INCL-001",
+            "E-PUMP-TEMP-003",
+            "E-SYS-SHUT-001",
+            "E-COMM-COOL-001"
+          ],
+          "_sub_requirement_id": "OR043-01"
+        },
+        {
+          "shall_statement": "应急冷却系统应能在规定时间内为主机关键部位提供有效冷却，防止温度超限导致设备损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟失电工况下，应急冷却系统应在规定时间内启动并保持主机关键部位的温度不超过制造商规定的最高允许温度。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-IACS-M3-002",
+            "E-CCS-COOL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR043-02"
+        },
+        {
+          "shall_statement": "应急冷却系统在失电工况下应可靠运行，确保主机关键部位冷却不中断，防止设备损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-003"
+          ],
+          "_sub_requirement_id": "OR043-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR044",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的管路布置应合理，确保所有主要设备（如泵、热交换器、温度控制阀、过滤器）有足够的维护和操作空间。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有主要设备的维护间距应符合DNV/IACS/ISO 14122-3标准要求。具体包括：泵轴向间距≥1.5倍泵长，板式换热器需留全板束抽出空间；通道宽度≥600mm；>25kg设备须有吊装点；设备须有维护标牌。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        },
+        {
+          "shall_statement": "隔离阀应设置在便于操作和维护的位置，以便在检修或更换部件时快速隔离相关管路。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "隔离阀的手轮/执行机构应至少有600mm的操作侧间隙，并且位置应便于人员接近和操作。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        },
+        {
+          "shall_statement": "冷却水系统中的泵应设计为支持就地更换叶轮和机械密封，无需从管道中移除泵壳（背抽式设计），或者应具有法兰连接，允许作为整体单元在维护间距内移除。",
+          "verification_method": "design_review",
+          "acceptance_criteria": "泵的设计应符合DNV规则和国际造船实践的要求，支持快速维护和组件更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        },
+        {
+          "shall_statement": "热交换器应采用可拆卸芯或垫片式板框结构，以便在不完全移出冷却回路的情况下进行清洁和检查。",
+          "verification_method": "design_review",
+          "acceptance_criteria": "热交换器的设计应符合DNV规则和国际造船实践的要求，支持快速维护和组件更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        },
+        {
+          "shall_statement": "温度控制阀应在其上游和下游安装隔离阀，以便在保持其他冷却回路运行的同时，在现场更换执行器和内部部件。",
+          "verification_method": "design_review",
+          "acceptance_criteria": "温度控制阀的设计应符合DNV规则和国际造船实践的要求，支持快速维护和组件更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        },
+        {
+          "shall_statement": "冷却水系统的所有设备应使用与船用标准管道尺寸兼容的标准法兰或螺纹连接，以允许快速更换同等备件。",
+          "verification_method": "design_review",
+          "acceptance_criteria": "设备的连接方式应符合DNV规则和国际造船实践的要求，支持快速维护和组件更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        },
+        {
+          "shall_statement": "关键组件（如泵机械密封、温度控制阀执行器、过滤器篮子、热交换器垫片）的备件应列在入级批准的备件清单中，并附有制造商零件编号。",
+          "verification_method": "review",
+          "acceptance_criteria": "备件清单应符合DNV规则和国际造船实践的要求。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-PUMP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PIPE-INSP-013"
+          ],
+          "_sub_requirement_id": "OR044-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR045",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统传感器应具有高精度和长期稳定性，以确保实时测量参数准确反映系统运行状态。",
+          "verification_method": "test",
+          "acceptance_criteria": "传感器的精度和稳定性应在厂家技术数据规定的范围内，并且在连续运行条件下能够准确反映系统的运行状态。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR045-01"
+        },
+        {
+          "shall_statement": "冷却水系统的控制联锁逻辑应设计可靠，避免因逻辑错误或误触发导致主机运行异常。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR045-02"
+        },
+        {
+          "shall_statement": "冷却水系统应具备实时监测高温冷却水（HT）在发动机出口的温度的能力，并在温度超过制造商规定的最大允许值时触发高报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "高温冷却水在发动机出口的温度监测和报警功能正常，且报警阈值符合制造商规定。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备实时监测高温冷却水（HT）在发动机入口的压力的能力，并在压力低于制造商规定的最小值时触发低报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "高温冷却水在发动机入口的压力监测和报警功能正常，且报警阈值符合制造商规定。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备实时监测低温冷却水（LT）在中央冷却器出口的温度的能力，并在温度超过设计值时触发高报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "低温冷却水在中央冷却器出口的温度监测和报警功能正常，且报警阈值符合设计要求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备实时监测膨胀水箱液位的能力，并在液位低于最低运行水平时触发低报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "膨胀水箱液位监测和报警功能正常，且报警阈值符合最低运行水平。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备实时监测冷却水泵运行状态的能力，并在水泵故障时触发报警并自动切换至备用泵。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水泵运行状态监测、报警及自动切换功能正常。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统的所有报警信号应连接到报警管理系统，并在机舱控制台和驾驶室显示。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有报警信号均能正确连接到报警管理系统，并在机舱控制台和驾驶室显示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备根据高温冷却水（HT）温度变化进行分级保护的能力，包括警告报警、自动减速和自动停机。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "高温冷却水温度分级保护功能正常，各阶段的设定值符合制造商规定。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备在冷却水压力低于制造商规定的最小值时触发低报警，并在持续30秒后自动减速的能力。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "冷却水压力低报警和自动减速功能正常，设定值符合制造商规定。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统应具备在单个冷却组件故障时维持最低冷却能力，并在减少发动机负荷的情况下继续运行的能力。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "单个冷却组件故障时，系统能够维持最低冷却能力，并在减少发动机负荷的情况下继续运行，最大额定功率为75-85% MCR（需通过冷却系统容量分析确认）。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        },
+        {
+          "shall_statement": "冷却水系统的自动保护功能应具有手动干预能力，并在干预高温度保护时需要轮机长确认。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "自动保护功能的手动干预能力和轮机长确认机制正常。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR045-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR046",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应设计为允许通过多种方式对温度、压力等运行参数进行校准和检查，确保数据真实可靠。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-DNV-COOL-003",
+            "E-COMM-COOL-001",
+            "E-SUPP-COMM-001"
+          ],
+          "_sub_requirement_id": "OR046-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR047",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱液位显示装置应设计为清晰直观，便于船员在正常操作位置读取液位。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-EXP-CAP-001",
+            "E-ISO8861-002",
+            "E-CTRL-COOL-002"
+          ],
+          "_sub_requirement_id": "OR047-01"
+        },
+        {
+          "shall_statement": "液位显示装置应在船舶横倾不超过15°、纵摇不超过7.5°的情况下，保持准确显示膨胀水箱的液位。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟船舶横倾15°和纵摇7.5°的条件下，液位显示装置应能够准确显示膨胀水箱的液位，误差不超过厂家技术数据确认的范围。",
+          "evidence_ids": [
+            "E-SOLAS-INCL-001",
+            "E-EXP-CAP-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR047-02"
+        },
+        {
+          "shall_statement": "液位显示装置应便于船员在无需复杂操作或额外工具的情况下及时掌握膨胀水箱的液位情况。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "液位显示装置的设计和安装应确保船员能够直观、快速地读取液位信息，且无需使用额外工具或进行复杂操作。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-EXP-CAP-001",
+            "E-EXP-INSP-002"
+          ],
+          "_sub_requirement_id": "OR047-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR048",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "应急冷却功能应同时支持手动和自动启动方式。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文件中明确列出应急冷却功能的手动和自动启动方式，并且在控制逻辑图中有相应的表示。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR048-01"
+        },
+        {
+          "shall_statement": "当自动启动方式失效时，应急冷却功能能够通过手动操作独立启动。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟自动启动失效的情况下，通过手动操作能够成功启动应急冷却功能，并且系统运行正常。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001"
+          ],
+          "_sub_requirement_id": "OR048-01"
+        },
+        {
+          "shall_statement": "在自动启动失效时，冷却水系统的应急冷却功能应能通过手动操作及时启动，确保系统可靠性。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR048-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR049",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路布置应通过合理支撑、柔性连接和膨胀补偿等措施，抵抗船舶运行中的振动和船体变形，防止管路损坏。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "管路在振动和变形条件下无损坏，且能够正常工作。",
+          "evidence_ids": [
+            "E-SUPP-WELD-001",
+            "E-SUPP-WELD-002",
+            "E-SUPP-SAFE-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR049-01"
+        },
+        {
+          "shall_statement": "所有冷却水管道、阀门和设备的可接触表面温度超过60°C的部分应进行热绝缘处理，以确保环境温度为25°C时，表面温度不超过55°C。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有相关表面温度在环境温度25°C下不超过55°C。",
+          "evidence_ids": [
+            "E-SUPP-WELD-001",
+            "E-SUPP-WELD-002",
+            "E-SUPP-SAFE-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR049-01"
+        },
+        {
+          "shall_statement": "对于无法完全绝热的高温表面（例如阀盖、泵壳），应在可接近区域每隔不超过2米处贴上符合ISO 11684标准的'热表面'警告标志。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有无法完全绝热的高温表面均按规定张贴警告标志，间距不超过2米。",
+          "evidence_ids": [
+            "E-SUPP-WELD-001",
+            "E-SUPP-WELD-002",
+            "E-SUPP-SAFE-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR049-01"
+        },
+        {
+          "shall_statement": "冷却水系统的主要设备应携带铭牌，标明标签号、系统名称和维护间隔。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有主要设备均带有正确的铭牌信息。",
+          "evidence_ids": [
+            "E-SUPP-WELD-001",
+            "E-SUPP-WELD-002",
+            "E-SUPP-SAFE-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR049-01"
+        },
+        {
+          "shall_statement": "冷却水系统的布置应考虑足够的空间，以便拆卸增压空气冷却器元件、涡轮增压器的空气滤清器、润滑机油冷却器、润滑机油滤芯和支架螺栓。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "系统布置允许对上述部件进行无障碍的拆卸和维护。",
+          "evidence_ids": [
+            "E-SUPP-WELD-001",
+            "E-SUPP-WELD-002",
+            "E-SUPP-SAFE-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR049-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR050",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的传感器和控制联锁装置应具备故障自诊断能力，检测到故障时发出报警信号，并指示故障位置和类型。",
+          "verification_method": "test",
+          "acceptance_criteria": "当传感器或控制联锁装置出现故障时，系统应能自动检测到故障并发出报警信号，同时在报警信号中明确指示故障的位置和类型。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR050-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR051",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统管路布置应科学合理，避免不必要的弯头和死区，确保流动顺畅且便于检修。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水系统管路布置图应显示所有管路的布局，避免不必要的弯头和死区，并确保流体流动顺畅。同时，布置图应考虑维护可达性原则，包括但不限于最低点放水阀和最高点排气阀的安装位置。",
+          "evidence_ids": [
+            "E-VALVE-INSP-010",
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR051-01"
+        },
+        {
+          "shall_statement": "冷却水系统的主要设备（如泵、热交换器、温度控制阀、过滤器）应有足够的空间以便于常规维护和组件拆卸，而不影响相邻设备。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "主要冷却水设备周围的空间应满足以下要求：泵轴向间距≥1.5倍泵长；板式换热器/管束一侧应留有全板束或管束抽出的空间；阀门手轮/执行器操作侧最小间距为600mm；通道宽度在人员通过时至少为600mm，在仅用于检查时至少为500mm。",
+          "evidence_ids": [
+            "E-VALVE-INSP-010",
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR051-01"
+        },
+        {
+          "shall_statement": "重量超过25kg的冷却水系统设备应配备适当的吊装设施（如吊环或单轨吊）以方便移除。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有需要定期维护且重量超过25kg的设备应设有吊装点，以确保能够安全地进行设备的移除和安装。",
+          "evidence_ids": [
+            "E-VALVE-INSP-010",
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR051-01"
+        },
+        {
+          "shall_statement": "冷却水系统中所有需要定期维护的设备应有清晰的铭牌，标明维护间隔和标签号。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有需要定期维护的冷却水系统设备应具有清晰可见的铭牌，上面注明了维护间隔和设备编号，以便于识别和管理。",
+          "evidence_ids": [
+            "E-VALVE-INSP-010",
+            "E-PIPE-INSP-013",
+            "E-SUPP-MAINT-001",
+            "E-IFACE-MAINT-001"
+          ],
+          "_sub_requirement_id": "OR051-01"
+        },
+        {
+          "shall_statement": "系统应具备紧急切断功能，在主机故障或火灾等紧急情况下能够快速隔离冷却水回路，防止事故扩大。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟紧急情况（如主机故障或火灾）下，系统应在30秒内完成冷却水回路的隔离，并确保无泄漏。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR051-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR052",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统控制联锁的传感器应配置冗余，以确保在单一传感器故障时，其他传感器能够无缝接管，保证控制逻辑的连续性和准确性。",
+          "verification_method": "test",
+          "acceptance_criteria": "当单一传感器发生故障时，其余传感器能够自动接管并保持系统的正常运行，且控制逻辑无误。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR052-01"
+        },
+        {
+          "shall_statement": "冷却水系统控制逻辑在传感器切换时应保持连续，不因单一传感器故障导致控制中断或异常。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟单一传感器故障的情况下，系统能够无缝切换到其他传感器，并且控制逻辑保持连续，无中断或异常。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-DNV-COOL-002",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR052-02"
+        },
+        {
+          "shall_statement": "冷却水系统控制联锁应具备高可靠性，传感器冗余设计以降低单点故障风险。",
+          "verification_method": "review",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-SUPP-LDR-001",
+            "E-CTRL-COOL-002",
+            "E-IACS-M3-002"
+          ],
+          "_sub_requirement_id": "OR052-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR053",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备对高温（HT）冷却水温度在发动机出口处的连续监控功能，并设置高报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "高温报警设定值应在制造商规定的范围内，通常为85-95°C。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR053-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备对低温（LT）冷却水温度在中央冷却器出口处的连续监控功能，并设置高报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "低温冷却水温度报警设定值应比设计最大温度高5°C。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR053-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备对高温（HT）冷却水压力在发动机入口处的连续监控功能，并设置低报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "低温报警设定值由制造商规定。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR053-01"
+        },
+        {
+          "shall_statement": "冷却水系统应具备对膨胀箱液位的监控功能，并设置低液位报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当膨胀箱液位低于最低运行液位时触发报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR053-01"
+        },
+        {
+          "shall_statement": "冷却水系统应记录所有运行参数的历史数据，确保参数可追溯。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "历史数据记录应包括温度、压力等关键参数，并能够通过系统进行查询和验证。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR053-01"
+        },
+        {
+          "shall_statement": "冷却水系统的所有报警信号应连接到报警管理系统，并在机舱控制台和驾驶室显示。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "报警信号应在机舱控制台和驾驶室清晰可见并能被正确识别。",
+          "evidence_ids": [
+            "E-CTRL-COOL-002",
+            "E-ISO8861-002",
+            "E-IACS-M3-002",
+            "E-PARAM-HT-001"
+          ],
+          "_sub_requirement_id": "OR053-01"
+        },
+        {
+          "shall_statement": "冷却水系统的监控与记录系统应能够验证温度、压力等参数的准确性，以满足船舶安全审计要求。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-IACS-M51-001",
+            "E-CTRL-COOL-001",
+            "E-COMM-COOL-001"
+          ],
+          "_sub_requirement_id": "OR053-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR054",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水滤器应配备实时堵塞监测装置，当滤器压差或流量达到设定阈值时，系统应发出警报，提示船员进行清理或更换。",
+          "verification_method": "test",
+          "acceptance_criteria": "1. 实时堵塞监测装置应能准确测量滤器的压差或流量，并在达到设定阈值时发出警报。2. 警报应清晰可辨，且应在控制室和驾驶台显示。",
+          "evidence_ids": [
+            "E-SUPP-FILT-002",
+            "E-SUPP-FILT-001",
+            "E-ISO8861-002",
+            "E-SOLAS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR054-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR055",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备暖机程序，在极寒海域启动前对主机进行预热，确保主机达到启动所需温度。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "冷却水出口温度应至少保持在60°C（±5°C）以上，以确保主机能够正常启动和运行。",
+          "evidence_ids": [
+            "E-SYS-CLEAN-019",
+            "E-SYS-CLEAN-020"
+          ],
+          "_sub_requirement_id": "OR055-01"
+        },
+        {
+          "shall_statement": "冷却水系统应配置防冻措施，以防止在极寒海域停机或运行时冷却水结冰，保护系统管路和设备。",
+          "verification_method": "review",
+          "acceptance_criteria": "系统设计文件中应明确描述防冻措施的具体实施方案，包括但不限于使用防冻液、加热装置等。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-SUPP-MAT-002",
+            "E-SUPP-ENV-001"
+          ],
+          "_sub_requirement_id": "OR055-02"
+        },
+        {
+          "shall_statement": "冷却水系统中使用的密封材料应与乙二醇基冷却液兼容，确保在低温环境下不会发生泄漏。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有密封材料应符合ISO 6194标准，并且在乙二醇浓度为20-50%的条件下能够正常工作。对于乙二醇浓度超过30%的情况，应避免使用NBR（丁腈橡胶）。推荐使用FKM（氟橡胶）和PTFE作为密封材料。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-SUPP-MAT-002",
+            "E-SUPP-ENV-001"
+          ],
+          "_sub_requirement_id": "OR055-02"
+        },
+        {
+          "shall_statement": "冷却水系统应配备备用电动冷却泵，以便在紧急停机后立即启动，确保冷却水循环不中断超过5分钟。",
+          "verification_method": "test",
+          "acceptance_criteria": "备用电动冷却泵应在紧急停机后自动启动，并在5分钟内恢复冷却水循环。备用泵的流量应满足发动机制造商的技术数据要求。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-SUPP-MAT-002",
+            "E-SUPP-ENV-001"
+          ],
+          "_sub_requirement_id": "OR055-02"
+        },
+        {
+          "shall_statement": "冷却水系统应具备检测冷却水温度异常的能力，并在温度超出正常范围时发出报警。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "系统应安装温度传感器，并在温度异常时触发报警。报警阈值应根据发动机制造商的技术数据确认。",
+          "evidence_ids": [
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-SUPP-MAT-002",
+            "E-SUPP-ENV-001"
+          ],
+          "_sub_requirement_id": "OR055-02"
+        },
+        {
+          "shall_statement": "冷却水系统应具备温度控制功能，通过自动调节温度控制阀，在极寒海域维持主机冷却水温度在制造商规定的范围内。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度在制造商规定的范围内，且能够自动调节温度控制阀。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "冷却水系统应能够在自动控制失效时进行手动操作。",
+          "verification_method": "operation_check",
+          "acceptance_criteria": "当自动控制系统失效时，能够通过手动操作维持冷却水温度在制造商规定的范围内。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "冷却水系统应提供报警功能，当冷却水温度超过高报警设定值时发出警报。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "当冷却水温度超过高报警设定值时，系统能够发出声光报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "如果系统配备了自动降速或停机保护功能，则应在高于报警设定值的设定点激活该功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "自动降速或停机保护功能在高于报警设定值的设定点（通常为报警设定值以上5-10°C）激活。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "冷却水系统的温度控制功能在单个控制组件故障后仍能保持有效。",
+          "verification_method": "test",
+          "acceptance_criteria": "在单个控制组件故障的情况下，冷却水温度仍能维持在制造商规定的范围内。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "冷却水系统应配置至少两台冷却水泵，其中至少一台应为独立电力驱动，并能在主机额定功率工况下单独满足冷却水流量需求。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "系统中至少有两台冷却水泵，其中至少一台为独立电力驱动，并能在主机额定功率工况下单独满足冷却水流量需求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "冷却水系统应设置高温报警，报警值不超过主机制造商规定的最高允许温度。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "高温报警值设置不超过主机制造商规定的最高允许温度。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        },
+        {
+          "shall_statement": "冷却水系统应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SOLAS-COOL-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR055-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    },
+    {
+      "source_requirement_id": "OR056",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应根据主机负荷和冷却需求自动调节流量，采用变频泵等节能技术实现能效优化。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应通过自动调节温度控制阀，在整个发动机负荷范围内维持冷却水温度在制造商规定的范围内。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度在所有主机负荷下均保持在制造商规定范围内。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "冷却水温度控制系统应具备在自动控制失效时的手动控制功能。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "手动控制功能可正常切换并有效调节冷却水温度。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "当冷却水温度超过高报警设定点时，系统应提供报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度超过高报警设定点时，系统能够发出报警信号。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "若提供了自动减速或停机功能，该功能应在高于报警设定点的设定点（通常为报警设定点以上5-10°C）触发。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水温度达到特定值（报警设定点以上5-10°C）时，自动减速或停机功能被激活。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "当自动保护装置被触发时，系统应激活声音和视觉报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "自动保护装置触发时，系统能够同时发出声音和视觉报警。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "在控制系统任一组件发生单次故障后，冷却水温度控制系统仍应保持其控制功能。",
+          "verification_method": "test",
+          "acceptance_criteria": "即使控制系统中的一个组件发生故障，系统仍能继续维持冷却水温度控制。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "主发动机冷却回路应至少配备两台冷却水泵，且这些泵应布置成使得一台泵的故障不会妨碍另一台泵的操作。其中一台泵应由发动机驱动，另一台则应由电力驱动。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "存在两台冷却水泵，并且它们的驱动方式分别为发动机驱动和电力驱动；任一泵故障时，其他泵仍能正常工作。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "每台冷却水泵都应能在从怠速到最大连续额定功率的所有发动机负荷条件下维持所需的冷却水流。",
+          "verification_method": "test",
+          "acceptance_criteria": "各冷却水泵在不同主机负荷条件下都能满足冷却水流量要求。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "在泵发生故障时，系统应自动切换至备用泵，并给出报警指示。",
+          "verification_method": "test",
+          "acceptance_criteria": "检测到泵故障时，系统能够自动切换至备用泵并且发出报警信号。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-DNV-COOL-002"
+          ],
+          "_sub_requirement_id": "OR056-01"
+        },
+        {
+          "shall_statement": "冷却水系统应设计为能效优化运行模式，以降低能耗和运营成本。",
+          "verification_method": "review",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-PUMP-CAP-011"
+          ],
+          "_sub_requirement_id": "OR056-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR057",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的管路和设备布局应便于日常检查和维护，隔离阀和关键部件应易于接近，以减少维护时间和难度。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有主要冷却水设备（泵、换热器、温度控制阀、过滤器）应有足够的空间进行日常维护和组件拆除，而不影响相邻设备。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "泵的轴向间距应不小于泵壳长度的1.5倍，径向间距应不小于轴直径加100毫米。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "泵的轴向间距≥1.5倍泵长；径向间距≥轴直径+100mm。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "板式换热器或管束换热器应在其一侧留出足够的空间，以便完全抽出板束或管束。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "板式换热器/管束换热器：一侧需留全板束/管束抽出空间。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "阀门的手轮或执行机构的操作侧应至少有600毫米的间隙。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "阀门手轮/执行机构：操作侧最小间隙600mm。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "人员通行的走道宽度应不小于600毫米，仅用于检查的走道宽度应不小于500毫米。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "通道宽度：人员通行≥600mm；仅检查≥500mm。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "重量超过25公斤的设备应配备吊装点（如吊环或单轨吊）。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "重量>25kg的设备须有吊装点。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "所有需要定期维护的设备应具有清晰的铭牌，标明维护间隔和标签编号。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有需要定期维护的设备须有维护标牌。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "冷却水泵应设计为可在原位更换叶轮和机械密封，无需从管道中拆除泵壳（背抽式设计），或者应具有法兰连接，允许在维护间隙内整体拆除。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水泵采用背抽式设计支持就地更换密封，或具有法兰连接允许整体拆除。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "换热器应设计为可拆卸管束或带垫片的板框式，以便于清洗和检查，而无需完全从冷却回路中移除。",
+          "verification_method": "review",
+          "acceptance_criteria": "换热器须可拆芯清洗。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "温度控制阀应安装上游和下游隔离阀，以便在保持其他冷却回路运行的情况下，在原位更换执行器和内部部件。",
+          "verification_method": "review",
+          "acceptance_criteria": "温控阀两侧须有截止阀支持在线更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "所有设备应使用与船用标准管道尺寸兼容的标准法兰或螺纹连接，以便快速更换同等备件。",
+          "verification_method": "review",
+          "acceptance_criteria": "所有设备使用标准法兰或螺纹连接，便于快速更换。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        },
+        {
+          "shall_statement": "关键组件的备件（泵机械密封、TCV执行器、过滤器篮、换热器垫片）应在经船级社批准的备件清单中列出，并附有制造商零件编号。",
+          "verification_method": "review",
+          "acceptance_criteria": "备品配件须入级认可备件清单。",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-SUPP-MAINT-002",
+            "E-PUMP-MAINT-001",
+            "E-COOLER-MAINT-003"
+          ],
+          "_sub_requirement_id": "OR057-01"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 1,
+        "n_subs_with_output": 1
+      }
+    },
+    {
+      "source_requirement_id": "OR058",
+      "stakeholder": "轮机长",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应具备自动控制联锁功能，在温度过高或压力过低等异常工况下，自动执行降低主机负荷或启动应急冷却等保护动作，防止设备损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-001",
+            "E-IACS-M3-002",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR058-01"
+        },
+        {
+          "shall_statement": "系统应监测高温冷却水（HT）在主机出口处的温度，并在温度超过制造商规定的正常最大操作温度5-8°C时触发警告报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当高温冷却水温度达到制造商规定的正常最大操作温度以上5-8°C时，系统应触发警告报警。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "系统应监测高温冷却水（HT）在主机入口处的压力，并在压力低于制造商规定的最小值0.3-0.5bar时触发低压报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当高温冷却水压力降至制造商规定的最小值以下0.3-0.5bar时，系统应触发低压报警。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "系统应在高温冷却水温度超过警告报警设定点3-5°C时自动降低主机负荷。",
+          "verification_method": "test",
+          "acceptance_criteria": "当高温冷却水温度超出警告报警设定点3-5°C时，系统应自动启动减速保护措施。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "系统应在高温冷却水温度达到制造商规定的绝对最高温度限制时自动停机。",
+          "verification_method": "test",
+          "acceptance_criteria": "当高温冷却水温度达到制造商规定的绝对最高温度限制时，系统应自动停机以防止设备损坏。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "系统应监测低温冷却水（LT）在中央冷却器出口处的温度，并在温度超过设计值时触发报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当低温冷却水温度超过中央冷却器的设计值时，系统应触发报警。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "系统应监测膨胀水箱的液位，并在液位低于最低运行液位时触发低液位报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "当膨胀水箱液位降至最低运行液位以下时，系统应触发低液位报警。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "所有报警信号应连接至报警管理系统并在机舱控制台和驾驶室显示。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "确认所有报警信号均已正确连接到报警管理系统，并且在机舱控制台和驾驶室均有显示。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-CTRL-COOL-002",
+            "E-SUPP-LDR-001",
+            "E-ISO8861-002"
+          ],
+          "_sub_requirement_id": "OR058-02"
+        },
+        {
+          "shall_statement": "系统应配置应急冷却功能，在常规冷却失效时能自动或手动投入，确保主机安全。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "在常规冷却失效的情况下，应急冷却功能能够自动或手动启动，并且能够在规定时间内（待按厂家技术数据确认）将冷却水温度控制在制造商规定的范围内。",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-003",
+            "E-SUPP-LDR-001"
+          ],
+          "_sub_requirement_id": "OR058-03"
+        },
+        {
+          "shall_statement": "当冷却水系统出现异常，如温度过高或压力过低时，控制联锁系统应能迅速响应，自动采取保护措施，包括但不限于降低主机负荷或启动应急冷却，以防止因冷却异常导致的主机设备损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "在高温和低压情况下，系统应能按照预设逻辑触发报警、减速及停机等保护措施。具体阈值待按厂家技术数据确认。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR058-04"
+        },
+        {
+          "shall_statement": "系统应配置至少两台冷却水泵，其中至少一台为独立电力驱动，并且每台泵都应能在主机额定功率工况下单独满足冷却水流量需求。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "现场检查确认系统配置符合要求，且每台泵都能在主机额定功率工况下单独提供足够的冷却水流量。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR058-04"
+        },
+        {
+          "shall_statement": "系统应设置冷却水高温报警，报警值不应超过主机制造商规定的最高允许温度。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文件中应明确冷却水高温报警的设定值，且该值不超过主机制造商规定的最高允许温度。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR058-04"
+        },
+        {
+          "shall_statement": "当冷却水温度超过允许值时，系统应能自动减速或停机保护。",
+          "verification_method": "test",
+          "acceptance_criteria": "通过测试验证，在冷却水温度超过允许值时，系统能够自动触发减速或停机保护。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR058-04"
+        },
+        {
+          "shall_statement": "系统应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C，热带航区不低于35°C）时保持正常工作。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "通过计算验证，系统在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C，热带航区不低于35°C）时能够保持正常工作。",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-COOL-001",
+            "E-SUPP-SHUT-001",
+            "E-CCS-COOL-001"
+          ],
+          "_sub_requirement_id": "OR058-04"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 4,
+        "n_subs_with_output": 4
+      }
+    },
+    {
+      "source_requirement_id": "OR059",
+      "stakeholder": "船东",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的管路和设备应进行抗振和抗冲击设计，确保在恶劣海况下保持结构完整性和功能稳定性。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-DNV-COOL-003",
+            "E-IACS-M51-001",
+            "E-SUPP-COMM-001"
+          ],
+          "_sub_requirement_id": "OR059-01"
+        },
+        {
+          "shall_statement": "冷却水系统在船舶横倾不超过15°、横摇不超过22.5°、纵摇不超过7.5°的条件下应能保持稳定运行。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水系统在上述倾斜条件下无故障运行，且泵吸口始终处于液面以下。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-INCL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR059-02"
+        },
+        {
+          "shall_statement": "冷却水系统应在主机最大连续功率（MCR）条件下，在航行海区最高海水温度不低于32°C时保持正常工作；热带航区应不低于35°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "冷却水系统在上述温度条件下无故障运行，并满足主机制造商规定的最高允许温度。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-INCL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR059-02"
+        },
+        {
+          "shall_statement": "冷却水系统应至少配备两台独立驱动的冷却水泵，其中一台为电驱动。每台泵应能在主机从怠速到MCR的所有负载条件下维持所需的冷却水流。",
+          "verification_method": "review",
+          "acceptance_criteria": "冷却水系统设计文件中包含符合要求的泵配置和驱动方式。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-INCL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR059-02"
+        },
+        {
+          "shall_statement": "冷却水系统应具备自动切换功能，在一个泵发生故障时能够自动切换至备用泵，并发出报警信号。",
+          "verification_method": "commissioning_check",
+          "acceptance_criteria": "泵故障时自动切换至备用泵并发出报警信号。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-INCL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR059-02"
+        },
+        {
+          "shall_statement": "冷却水系统应设置高温报警，报警值不超过主机制造商规定的最高允许温度。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "冷却水系统安装了高温报警装置，并且报警值设置正确。",
+          "evidence_ids": [
+            "E-DNV-COOL-002",
+            "E-CCS-COOL-001",
+            "E-SOLAS-INCL-001",
+            "E-IACS-M3-001"
+          ],
+          "_sub_requirement_id": "OR059-02"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 2,
+        "n_subs_with_output": 2
+      }
+    },
+    {
+      "source_requirement_id": "OR060",
+      "stakeholder": "船检",
+      "_arm": "R",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的应急冷却功能应通过严格测试，验证其在主机失电或其他紧急情况下能迅速启动并为主机提供必要冷却。",
+          "verification_method": "test",
+          "acceptance_criteria": "应急冷却功能在主机失电或其他紧急情况下能够迅速启动，并且在试验过程中能够为主机提供必要的冷却。",
+          "evidence_ids": [
+            "E-CCS-COOL-002",
+            "E-IACS-M51-001",
+            "E-COMM-COOL-001"
+          ],
+          "_sub_requirement_id": "OR060-01"
+        },
+        {
+          "shall_statement": "应急冷却功能应在主机失电或其他紧急情况下自动或手动迅速启动，确保冷却水系统快速投入运行。",
+          "verification_method": "test",
+          "acceptance_criteria": "evidence_ids",
+          "evidence_ids": [
+            "E-SUPP-LDR-001",
+            "E-SOLAS-INCL-001",
+            "E-COMM-COOL-001",
+            "E-DNV-COOL-003"
+          ],
+          "_sub_requirement_id": "OR060-02"
+        },
+        {
+          "shall_statement": "应急冷却系统应具备高可靠性，确保在紧急情况下能够持续为主机提供必要的冷却，以保障船舶安全。",
+          "verification_method": "test",
+          "acceptance_criteria": "应急冷却系统在模拟主机失电或其他紧急情况下的测试中，应能迅速启动并持续为主机提供冷却，直至恢复正常运行状态。",
+          "evidence_ids": [
+            "E-CCS-COOL-001",
+            "E-DNV-COOL-002",
+            "E-IACS-M3-001",
+            "E-SOLAS-INCL-001"
+          ],
+          "_sub_requirement_id": "OR060-03"
+        }
+      ],
+      "_coverage": {
+        "n_subs": 3,
+        "n_subs_with_output": 3
+      }
+    }
+  ]
+}
