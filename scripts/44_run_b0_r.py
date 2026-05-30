@@ -79,6 +79,10 @@ def main() -> None:
 
     b0_sets, r_sets = [], []
     r_abstain = 0
+    # 熔断：B0 永不该弃权，正常必产 ER；连续多个空 B0 ≈ API/计费故障，立即停，
+    # 不再静默磨完一堆空结果（见 2026-05-30 Qwen 欠费教训）。
+    consec_empty_b0 = 0
+    CIRCUIT_BREAK = 5
     for i, src in enumerate(sources, start=1):
         src_id = src["source_requirement_id"]
         stake = src.get("stakeholder", "")
@@ -93,6 +97,11 @@ def main() -> None:
                                   source_requirement=src_text, arm="B0",
                                   client=qwen, model=cfg.qwen.model, temperature=cfg.qwen.temperature)
             b0_ers.extend(b0 or [])
+            consec_empty_b0 = consec_empty_b0 + 1 if not b0 else 0
+            if consec_empty_b0 >= CIRCUIT_BREAK:
+                print(f"\n[ABORT] 连续 {CIRCUIT_BREAK} 个 B0 生成为空——疑似 API/计费故障"
+                      f"（如 Qwen 欠费）。停止，不保存残缺结果。请检查 API 后重跑。")
+                sys.exit(2)
 
             # ── R：多粒度检索 → 据证据生成 ──
             stage = run_sub_requirement_stage(
