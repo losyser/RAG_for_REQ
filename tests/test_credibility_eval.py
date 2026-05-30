@@ -103,6 +103,22 @@ def test_aggregate_by_source_excludes_none():
     assert agg["P002"]["oi_rate"] == 1.0       # 仅一条有效 over_inference=True
 
 
+def test_judge_claim_llm_verdicts():
+    from cooling_rag_mg.credibility_eval import judge_claim_llm
+    client = MagicMock()
+    client.chat.completions.create.side_effect = [
+        _resp('{"verdict":"support"}'), _resp('{"verdict":"contradict"}'),
+        _resp('{"verdict":"not_found"}'), _resp('{"verdict":"garbage"}'),
+        Exception("boom"),
+    ]
+    # 每次用不同 claim，避免 cached_completion 因相同 prompt 命中缓存而不消费 side_effect
+    assert judge_claim_llm("c1", ["p"], client, model="m") == "support"
+    assert judge_claim_llm("c2", ["p"], client, model="m") == "contradict"
+    assert judge_claim_llm("c3", ["p"], client, model="m") == "not_found"
+    assert judge_claim_llm("c4", ["p"], client, model="m") == "not_found"   # 非法 verdict 归一
+    assert judge_claim_llm("c5", ["p"], client, model="m") == "not_found"   # 失败归一（不抛）
+
+
 def test_metric_map_excludes_none_and_pairs():
     from cooling_rag_mg.credibility_eval import aggregate_by_source, metric_map
     from cooling_rag_mg.grounding import paired_compare

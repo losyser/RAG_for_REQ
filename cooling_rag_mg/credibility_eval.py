@@ -106,6 +106,35 @@ def metric_map(aggregated: dict[str, dict[str, Any]], metric: str) -> dict[str, 
     return {src: float(d[metric]) for src, d in aggregated.items() if d.get(metric) is not None}
 
 
+_CLAIM_JUDGE_PROMPT = """你是船舶冷却水系统的证据核对专家。判断「证据」与这条事实性 claim 的关系：
+- support：证据明确支持该 claim。
+- contradict：证据与该 claim 直接冲突（如数值/规则不一致）。
+- not_found：证据中找不到可判定该 claim 的信息。
+claim：{claim}
+证据：
+{passages}
+只输出 JSON：{{"verdict": "support" 或 "contradict" 或 "not_found"}}"""
+
+
+def judge_claim_llm(claim: str, passages: list[str], client: Any, model: str, temperature: float = 0.0) -> str:
+    """NLI 式 claim 裁判：返回 'support'|'contradict'|'not_found'。非法/失败 → not_found。
+
+    注意：失败归一为 not_found（不抛）。warm-cache 下失败率应近零，脚本侧另报 verdict 分布。"""
+    from cooling_rag_mg.llm_cache import cached_completion
+    try:
+        resp = cached_completion(
+            client, model=model,
+            messages=[{"role": "user", "content": _CLAIM_JUDGE_PROMPT.format(
+                claim=claim, passages="\n".join(f"- {p}" for p in passages))}],
+            temperature=temperature, max_tokens=40,
+            response_format={"type": "json_object"},
+        )
+        verdict = str(json.loads(resp.choices[0].message.content or "{}").get("verdict", "")).strip().lower()
+        return verdict if verdict in {"support", "contradict", "not_found"} else "not_found"
+    except Exception:
+        return "not_found"
+
+
 def verify_claim_against_kb(
     claim: str,
     kb_search: Callable[[str, int], list[str]],
