@@ -454,6 +454,12 @@ A1（仅扁平单粒度）/A2（关 ranker）/A3（关 profile），均走「据
 
 ## 微调记录（执行中发现问题就追加）
 
+### 2026-05-30 · Task 3.3 B0/R 全量跑：Qwen 账户欠费中断（非代码 bug）
+- **现象**：全量跑 exit 0 但 B0 仅 25 ER（应≈124+）、R 仅 75 ER；B0/R 均**精确在 OR011 之后全空**（OR001–011 正常，OR012–060 全 0）。
+- **根因**：Qwen(DashScope/阿里云 Model Studio) 实时探针返回 `400 Access denied ... overdue-payment`——**账户欠费/计费暂停**。跑到第 11 条后 API 全拒，`generate_for_sub` 捕获异常返回 `[]`，故 exit 0 但结果大面积为空。
+- **非代码问题**：OR001–011 两组都正常生成，冒烟也通过，pipeline 正确。**产物作废、未 commit 为 canonical**。
+- **待用户决策**：① 充值恢复 Qwen（保持干净分工：Qwen 生成 / ERNIE 出题+裁判 / DeepSeek 拆分+裁判）后重跑 scripts/44；或 ② 改派生成器为 DeepSeek（裁判退为 ERNIE+reranker，仍满足生成≠裁判）。
+
 ### 2026-05-30 · Task 1.3 首跑只得 36 条（目标 60）
 - **现象**：ERNIE 生成 batch 6–19 累计去重后始终 36 条，零新增；部分 batch JSON 截断（`Expecting ',' delimiter`）。
 - **根因**：(1) 用了 `cached_completion`——相同 prompt 命中缓存返回同一批，去重后全丢；缓存是为可复现打分设计，不适合多样性采样。(2) `max_tokens=2000` 对 12 条详细需求不够，JSON 被截断。
