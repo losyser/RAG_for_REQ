@@ -20,11 +20,16 @@
 - [x] Task 3 覆盖优先检索（coverage_retrieval.py）
 - [x] Task 4 no-RAG 强基线 + RAG 据证据生成（req_generation_v2.py）
 - [x] Task 5 盲评质量裁判（quality_judge.py，左右交换）
-- [ ] Task 6 两条产线脚本（scripts/45）+ 跑数 ← **需 Kimi/DeepSeek API，待用户放行花费**
+- [x] Task 6 两条产线脚本（scripts/45）+ 跑数 ← 全量 60 源已跑完并 commit（ba67878）
 - [ ] Task 7 评估脚本（scripts/46：可靠性复用 + 质量盲评 + 描述性 + 校准抽样）← 需 Qwen/DeepSeek API
 - [ ] Task 8 消融（去 Kimi / 覆盖vs精准）+ 论文叙事
 
-当前游标：**Task 6**（Task 1–5 ✅ 全 TDD 通过、逐项 commit；全套 63 测试绿）
+当前游标：**Task 7**（Task 1–6 ✅；全套 68 测试绿）
+
+### 微调记录（Task 6 全量跑）
+- 首次全量跑暴露 2 类静默失败：① Kimi 偶发 ```json``` 围栏 → parse_queries 失败 → OR048 零查询零证据却凭空生成；② DeepSeek 证据多时输出 >2000 token 被截断 → parse_requirements 返回 []（OR015/OR052 有 30+ 证据却 0 ER）。
+- 修复（commit fd884e4）：新增 `json_utils.loads_lenient`（剥围栏+抽首个 {} 块）；`_gen` max_tokens 2000→4000 统一全数据集（避免混杂变量）。删旧产物重跑。
+- 规范产物（commit ba67878）：no-RAG 60 源 325 ER（57% shall 含数字，强基线未阉割）；RAG 60 源 572 ER（0 空源、0 零证据源、平均 32.0 证据/源、40% 含数字，据证据更保守）。
 
 ---
 
