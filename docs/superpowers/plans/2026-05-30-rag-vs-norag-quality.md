@@ -15,16 +15,16 @@
 
 ## 进度状态（断网后先读这里）
 
-- [ ] Task 1 KimiConfig（config.py + 测试）
-- [ ] Task 2 Kimi 检索内容生成（retrieval_query_gen.py）
-- [ ] Task 3 覆盖优先检索（coverage_retrieval.py）
-- [ ] Task 4 no-RAG 强基线 + RAG 据证据生成（req_generation_v2.py）
-- [ ] Task 5 盲评质量裁判（quality_judge.py，左右交换）
-- [ ] Task 6 两条产线脚本（scripts/45）+ 跑数
-- [ ] Task 7 评估脚本（scripts/46：可靠性复用 + 质量盲评 + 描述性 + 校准抽样）
+- [x] Task 1 KimiConfig（config.py + 测试）
+- [x] Task 2 Kimi 检索内容生成（retrieval_query_gen.py）
+- [x] Task 3 覆盖优先检索（coverage_retrieval.py）
+- [x] Task 4 no-RAG 强基线 + RAG 据证据生成（req_generation_v2.py）
+- [x] Task 5 盲评质量裁判（quality_judge.py，左右交换）
+- [ ] Task 6 两条产线脚本（scripts/45）+ 跑数 ← **需 Kimi/DeepSeek API，待用户放行花费**
+- [ ] Task 7 评估脚本（scripts/46：可靠性复用 + 质量盲评 + 描述性 + 校准抽样）← 需 Qwen/DeepSeek API
 - [ ] Task 8 消融（去 Kimi / 覆盖vs精准）+ 论文叙事
 
-当前游标：**Task 1**
+当前游标：**Task 6**（Task 1–5 ✅ 全 TDD 通过、逐项 commit；全套 63 测试绿）
 
 ---
 
