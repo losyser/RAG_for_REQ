@@ -1,0 +1,109 @@
+{
+  "reliability": {
+    "arms": {
+      "no-RAG": {
+        "n_sources": 60,
+        "n_shalls": 325,
+        "h_hard": 0.0027380952380952383,
+        "h_soft": 0.8522913445681302,
+        "oi_rate": 0.7985251322751322
+      },
+      "RAG": {
+        "n_sources": 60,
+        "n_shalls": 572,
+        "h_hard": 0.0018518518518518517,
+        "h_soft": 0.3963306874079721,
+        "oi_rate": 0.15300919212209535
+      }
+    },
+    "comparisons": {
+      "H_hard": {
+        "n_pairs": 60,
+        "mean_a": 0.0027380952380952383,
+        "mean_b": 0.0018518518518518517,
+        "mean_diff": 0.0008862433862433863,
+        "pvalue": 0.5001842570707944,
+        "ci_low": -0.004007936507936507,
+        "ci_high": 0.005039682539682539
+      },
+      "H_soft": {
+        "n_pairs": 60,
+        "mean_a": 0.8522913445681303,
+        "mean_b": 0.3963306874079723,
+        "mean_diff": 0.4559606571601579,
+        "pvalue": 3.602332107739981e-11,
+        "ci_low": 0.40004423856717675,
+        "ci_high": 0.5090231595842003
+      },
+      "OI": {
+        "n_pairs": 60,
+        "mean_a": 0.7985251322751322,
+        "mean_b": 0.15300919212209535,
+        "mean_diff": 0.6455159401530371,
+        "pvalue": 4.9305075161713444e-11,
+        "ci_low": 0.569029777644697,
+        "ci_high": 0.7172866428299896
+      }
+    },
+    "config": {
+      "top_k": 8
+    },
+    "verdict_distribution": {
+      "support": 1667,
+      "not_found": 2140,
+      "contradict": 6
+    }
+  },
+  "quality": {
+    "n_pairs": 60,
+    "dimensions": {
+      "completeness": {
+        "R": 4,
+        "B0": 20,
+        "tie": 36
+      },
+      "actionability": {
+        "R": 4,
+        "B0": 32,
+        "tie": 24
+      },
+      "consistency": {
+        "R": 0,
+        "B0": 4,
+        "tie": 56
+      },
+      "verifiability": {
+        "R": 8,
+        "B0": 28,
+        "tie": 24
+      },
+      "overall": {
+        "R": 16,
+        "B0": 84,
+        "tie": 140
+      }
+    },
+    "position_bias_count": {
+      "completeness": 36,
+      "actionability": 23,
+      "verifiability": 24,
+      "consistency": 21
+    }
+  },
+  "descriptive": {
+    "no-RAG": {
+      "n_shalls": 325,
+      "traceability_rate": 0.0,
+      "numeric_fraction": 0.5723076923076923,
+      "avg_shall_len": 68.30153846153846,
+      "avg_shalls_per_source": 5.416666666666667
+    },
+    "RAG": {
+      "n_shalls": 572,
+      "traceability_rate": 1.0,
+      "numeric_fraction": 0.4020979020979021,
+      "avg_shall_len": 54.64335664335665,
+      "avg_shalls_per_source": 9.533333333333333
+    }
+  }
+}
