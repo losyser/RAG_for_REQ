@@ -8,7 +8,7 @@ Grade = Literal["A", "B", "C", "X"]
 
 _TBD_PATTERN = re.compile(r"\{\{TBD\|")
 _NUM_PATTERN = re.compile(
-    r"\d+\.?\d*\s*(?:°C|℃|MPa|bar|kPa|L/min|m³/h|mm|%|秒|分钟|s\b|min\b|rpm|kW|m/s|N\b)"
+    r"\d+\.?\d*\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
 )
 
 
@@ -31,7 +31,6 @@ def classify_grade(measurable_criterion: str, evidence_citations: list[dict]) ->
     if not evidence_citations:
         return "X"
 
-    tiers = [c.get("tier", "") for c in evidence_citations]
     has_l1_clause = any(
         c.get("tier") == "L1" and c.get("has_clause", False)
         for c in evidence_citations
@@ -39,7 +38,7 @@ def classify_grade(measurable_criterion: str, evidence_citations: list[dict]) ->
 
     if has_l1_clause:
         return "A"
-    if any(t in ("L1", "L2", "L3") for t in tiers):
+    if any(c.get("tier") in ("L1", "L2", "L3") for c in evidence_citations):
         return "B"
     return "X"
 

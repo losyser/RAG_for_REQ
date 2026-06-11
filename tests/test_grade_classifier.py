@@ -62,3 +62,13 @@ def test_classify_result_set_adds_grade_to_each_shall():
     classified = classify_result_set(result_set)
     grades = [er["_grade"] for er in classified["engineering_requirements"]]
     assert grades == ["C", "A", "X"]
+
+
+def test_grade_x_for_unknown_tier_citation():
+    mc = "不超过 85°C"
+    citations = [{"tier": "L4", "has_clause": False}]
+    assert classify_grade(mc, citations) == "X"
+
+
+def test_grade_c_for_none_criterion():
+    assert classify_grade(None, []) == "C"
