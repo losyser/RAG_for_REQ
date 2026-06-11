@@ -53,7 +53,16 @@ def test_generate_norag_shalls_has_no_evidence_citations():
     client.chat.completions.create.return_value = _resp('{"shalls": [{"shall_statement": "系统应稳定运行", "measurable_criterion": "10秒", "applicable_condition": "正常工况", "verification_method": "测试", "acceptance_criteria": ["10秒内完成"], "evidence_citations": []}]}')
     result = generate_norag_shalls("冷却系统应稳定运行", client, "m")
     assert isinstance(result, list)
+    assert len(result) >= 1
     assert result[0]["evidence_citations"] == []
+
+
+def test_generate_structured_shalls_bad_json_returns_empty():
+    from cooling_rag_mg.structured_req_generator import generate_structured_shalls
+    client = MagicMock()
+    client.chat.completions.create.return_value = _resp("not valid json at all")
+    result = generate_structured_shalls("需求", [], client, "m")
+    assert result == []
 
 
 def test_build_evidence_block_includes_extracted_values():

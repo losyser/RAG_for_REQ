@@ -65,7 +65,7 @@ def _build_evidence_block(annotated_evidence: list[dict]) -> str:
         lines.append(f"  内容: {text}")
         values = eu.get("_extracted_values", [])
         if values:
-            vstr = "、".join(v.get("value_text", "") for v in values)
+            vstr = "、".join(v["value_text"] for v in values if v.get("value_text"))
             lines.append(f"  [量化参数] {vstr}")
         lines.append("")
     return "\n".join(lines)
@@ -77,7 +77,10 @@ def _parse_shalls(raw: str) -> list[dict]:
     shalls = data.get("shalls", [])
     if not isinstance(shalls, list):
         return []
-    return [s for s in shalls if isinstance(s, dict) and "shall_statement" in s]
+    filtered = [s for s in shalls if isinstance(s, dict) and "shall_statement" in s]
+    if len(filtered) < len(shalls):
+        _log.warning("_parse_shalls: dropped %d malformed items", len(shalls) - len(filtered))
+    return filtered
 
 
 def generate_structured_shalls(
@@ -89,6 +92,8 @@ def generate_structured_shalls(
 ) -> list[dict]:
     """Stage 3 RAG：根据证据值提取结果生成结构化 shall 列表。出错返回空列表。"""
     evidence_block = _build_evidence_block(annotated_evidence)
+    if not annotated_evidence:
+        _log.warning("generate_structured_shalls called with empty annotated_evidence — consider generate_norag_shalls")
     prompt = _STRUCTURED_GEN_PROMPT.format(
         source_requirement=source_requirement,
         evidence_block=evidence_block or "（无检索证据）",
@@ -102,7 +107,7 @@ def generate_structured_shalls(
         )
         return _parse_shalls(resp.choices[0].message.content)
     except Exception as exc:
-        _log.warning("generate_structured_shalls failed: %s", exc)
+        _log.warning("generate_structured_shalls failed for %r: %s", source_requirement[:60], exc)
         return []
 
 
@@ -123,5 +128,5 @@ def generate_norag_shalls(
         )
         return _parse_shalls(resp.choices[0].message.content)
     except Exception as exc:
-        _log.warning("generate_norag_shalls failed: %s", exc)
+        _log.warning("generate_norag_shalls failed for %r: %s", source_requirement[:60], exc)
         return []
