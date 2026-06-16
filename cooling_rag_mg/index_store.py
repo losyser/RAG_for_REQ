@@ -150,3 +150,91 @@ class HybridIndexSearcher:
             r["retrieval_method"] = "bm25"
             out.append(r)
         return out
+
+    # ── Metadata-filtered search ─────────────────────────────────────────────
+    # Filters the index to records whose primary_component and primary_intent
+    # match the requested values, then scores within that subset.
+    # For the current KB size (~1200 records) this is fast enough in numpy.
+
+    def _matching_indices(
+        self,
+        components: list[str] | None,
+        intents: list[str] | None,
+    ) -> list[int]:
+        """Return record indices whose primary labels match the filter."""
+        comp_set   = set(components) if components else None
+        intent_set = set(intents)    if intents    else None
+        return [
+            i for i, r in enumerate(self.built.records)
+            if (comp_set   is None or r.get("primary_component") in comp_set)
+            and (intent_set is None or r.get("primary_intent")    in intent_set)
+        ]
+
+    def filtered_vector_search(
+        self,
+        query: str,
+        top_k: int,
+        *,
+        components: list[str] | None = None,
+        intents: list[str] | None = None,
+    ) -> list[dict[str, Any]]:
+        """Vector search restricted to records matching (components, intents).
+
+        Uses FAISS reconstruct to retrieve stored vectors for the filtered
+        subset and computes cosine similarity in numpy — no index rebuild needed.
+        Falls back to unfiltered vector_search if the subset is empty.
+        """
+        indices = self._matching_indices(components, intents)
+        if not indices:
+            return []
+
+        # Encode query
+        try:
+            qv = self.model.encode([query], normalize_embeddings=self.normalize)
+        except Exception as exc:
+            if str(self.model.device).startswith("cuda") and _is_cuda_oom(exc):
+                _empty_cuda_cache()
+                self.model.to("cpu")
+                qv = self.model.encode([query], normalize_embeddings=self.normalize)
+            else:
+                raise
+        qv = np.asarray(qv, dtype="float32").flatten()
+
+        # Reconstruct stored vectors for the subset
+        d = self.built.faiss_index.d
+        vecs = np.zeros((len(indices), d), dtype="float32")
+        for j, idx in enumerate(indices):
+            self.built.faiss_index.reconstruct(idx, vecs[j])
+
+        scores = vecs @ qv          # cosine (vectors are normalised)
+        order  = np.argsort(scores)[::-1][:top_k]
+        return [
+            {**self.built.records[indices[k]],
+             "retrieval_score":  float(scores[k]),
+             "retrieval_method": "vector_filtered"}
+            for k in order
+        ]
+
+    def filtered_bm25_search(
+        self,
+        query: str,
+        top_k: int,
+        *,
+        components: list[str] | None = None,
+        intents: list[str] | None = None,
+    ) -> list[dict[str, Any]]:
+        """BM25 search restricted to records matching (components, intents)."""
+        indices = self._matching_indices(components, intents)
+        if not indices:
+            return []
+
+        q_tokens   = simple_tokens(query)
+        all_scores = self.built.bm25.get_scores(q_tokens)
+
+        ranked = sorted(indices, key=lambda i: all_scores[i], reverse=True)[:top_k]
+        return [
+            {**self.built.records[i],
+             "retrieval_score":  float(all_scores[i]),
+             "retrieval_method": "bm25_filtered"}
+            for i in ranked
+        ]

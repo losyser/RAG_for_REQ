@@ -11,8 +11,18 @@ from typing import Any
 DIMS = ["completeness", "actionability", "consistency", "verifiability"]
 
 _PROMPT = """你是船舶冷却水系统资深评审。下面是同一原始需求的两份工程需求方案 A 和 B。
-就每个维度判断哪份更好：完整性 completeness、具体可操作性 actionability、内部一致性 consistency、可验证性 verifiability。
-不要因为某份"带证据引用"而偏向它，只看工程需求本身质量。
+就以下四个维度逐一判断哪份更好（A / B / tie）：
+
+1. completeness（完整性）：是否覆盖了原始需求应当明确的所有工程方面，有无遗漏重要子要求。
+2. actionability（可操作性）：能否直接指导设计或施工——注意：写"待按厂家技术数据/规则条款确认"不是缺点，无来源依据的具体数值也不是优点；真正可操作是指具体且有合理依据的要求，而非填入任意数字。
+3. consistency（一致性）：内部无矛盾、逻辑连贯，各条 shall 之间不冲突。
+4. verifiability（可验证性）：能否用明确方法客观判断合格与否，有无可测的验收准则。
+
+重要提示：
+- 不要因为某份带有引用标记或编号而偏向它；
+- 不要因为某份数字更多就判它更好——数字的合理性比数字的数量更重要；
+- 若两份在某维度无实质差别，判 tie。
+
 原始需求：{req}
 方案A：{a}
 方案B：{b}

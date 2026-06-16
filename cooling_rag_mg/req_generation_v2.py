@@ -70,3 +70,102 @@ def generate_norag(requirement_text: str, client: Any, model: str, temperature: 
 def generate_rag(requirement_text: str, evidence_texts: list[str], evidence_ids: list[str],
                  client: Any, model: str, temperature: float = 0.2) -> list[dict]:
     return _gen(build_rag_messages(requirement_text, evidence_texts), evidence_ids, client, model, temperature)
+
+
+# ── Per-shall evidence attribution (v3) ─────────────────────────────────────
+# Each shall now cites only the specific evidence IDs that support it,
+# rather than attributing all retrieved evidence to every shall.
+
+_RAG_SYSTEM_V3 = """你是资深船舶主机冷却水系统工程师。依据**检索到的证据**，把原始需求转化为结构化工程需求(shall)。
+
+要求：
+- 判断每条证据与需求的相关性，只用相关证据；据证据给出具体工程要求与参数。
+- 证据未覆盖的具体参数不要臆造，可写"待按厂家技术数据/规则条款确认"。
+- **关键**：每条 shall 只引用真正支撑该 shall 内容的证据编号（E1/E2…）；
+  若某 shall 无对应证据支撑，evidence_refs 写空列表 []。
+
+输出 JSON：
+{"engineering_requirements":[
+  {"shall_statement":"...","verification_method":"...","acceptance_criteria":["..."],"evidence_refs":["E1","E3"]},
+  {"shall_statement":"...","verification_method":"...","acceptance_criteria":["..."],"evidence_refs":[]}
+]}"""
+
+
+def build_rag_messages_v3(
+    requirement_text: str,
+    evidence_list: list[dict],
+) -> list[dict]:
+    """Build prompt with numbered evidence block for per-shall attribution."""
+    lines = []
+    for i, ev in enumerate(evidence_list, 1):
+        text = ev.get("text") or ev.get("search_text") or ""
+        comp = ev.get("primary_component", "")
+        intent = ev.get("primary_intent", "")
+        tag = f"[E{i}]({comp}×{intent})"
+        lines.append(f"{tag} {text[:300]}")
+    block = "\n".join(lines)
+    return [
+        {"role": "system", "content": _RAG_SYSTEM_V3},
+        {"role": "user",   "content": f"原始需求：{requirement_text}\n\n证据：\n{block}"},
+    ]
+
+
+def parse_requirements_v3(
+    raw: str,
+    evidence_list: list[dict],
+) -> list[dict]:
+    """Parse v3 output: resolve evidence_refs (E1/E2…) → actual evidence IDs."""
+    ers = loads_lenient(raw).get("engineering_requirements", [])
+    if not isinstance(ers, list):
+        return []
+
+    # build index: "E1" → actual evidence id
+    ref_to_id: dict[str, str] = {
+        f"E{i}": ev.get("id") or ev.get("chunk_id") or f"E{i}"
+        for i, ev in enumerate(evidence_list, 1)
+    }
+
+    out = []
+    for er in ers:
+        if not isinstance(er, dict):
+            continue
+        refs = er.pop("evidence_refs", []) or []
+        if isinstance(refs, str):
+            refs = [refs]
+        # resolve to real IDs, skip unknown refs
+        resolved = [ref_to_id[r] for r in refs if r in ref_to_id]
+        er["evidence_ids"] = resolved
+        er.setdefault("shall_statement", "")
+        out.append(er)
+    return out
+
+
+def generate_rag_v3(
+    requirement_text: str,
+    evidence_list: list[dict],
+    client: Any,
+    model: str,
+    temperature: float = 0.2,
+) -> list[dict]:
+    """Generate RAG requirements with per-shall evidence attribution.
+
+    Parameters
+    ----------
+    evidence_list : list of evidence dicts from aligned_retrieve (with 'id',
+                    'text', 'primary_component', 'primary_intent').
+    Returns list of requirement dicts, each with evidence_ids = only the
+    specific evidence IDs that support that particular shall.
+    """
+    from cooling_rag_mg.llm_cache import cached_completion
+    if not evidence_list:
+        return []
+    messages = build_rag_messages_v3(requirement_text, evidence_list)
+    try:
+        resp = cached_completion(
+            client, model=model, messages=messages,
+            temperature=temperature, max_tokens=4000,
+            response_format={"type": "json_object"},
+        )
+        return parse_requirements_v3(resp.choices[0].message.content or "{}", evidence_list)
+    except Exception:
+        return []

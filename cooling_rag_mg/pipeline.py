@@ -311,5 +311,7 @@ def simplify_results(results: list[dict[str, Any]], text_key: str = "text") -> l
             "profile_match": r.get("profile_match", {}),
             "applicability": r.get("applicability", {}),
             "llm_judge": r.get("llm_judge", {}),
+            "kb_tier": r.get("kb_tier"),
+            "constraint": r.get("constraint"),
         })
     return out

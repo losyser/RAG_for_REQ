@@ -1,0 +1,911 @@
+{
+  "arm": "no_RAG_tiered",
+  "result_sets": [
+    {
+      "source_requirement_id": "OR001",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱应配备液位计，液位计显示范围应覆盖水箱有效容积的0%至100%，刻度清晰，便于操作人员目视检查。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "液位计刻度清晰，显示范围覆盖0%-100%有效容积。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "膨胀水箱应配备自动补水阀，当液位低于设定低液位（如有效容积的30%）时，自动补水阀应开启补水，直至液位恢复至设定高液位（如有效容积的80%）后关闭。",
+          "verification_method": "test",
+          "acceptance_criteria": "液位降至30%时自动补水，升至80%时停止补水，补水阀动作可靠。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "膨胀水箱应设置低液位报警，当液位低于有效容积的20%时，发出声光报警，提醒操作人员注意。",
+          "verification_method": "test",
+          "acceptance_criteria": "液位降至20%时触发声光报警，报警信号持续直至液位恢复。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR002",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system shall be equipped with sacrificial anodes made of zinc or aluminum alloy, with a replacement interval of at least 12 months under normal operating conditions.",
+          "verification_method": "review",
+          "acceptance_criteria": "Sacrificial anode replacement interval documented in maintenance plan is ≥12 months.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR003",
+      "engineering_requirements": [
+        {
+          "shall_statement": "应急冷却系统应在全船失电后10秒内自动启动，并维持主机滑油出口温度不超过85°C，冷却水出口温度不超过90°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟全船失电工况，系统在10秒内启动，且主机滑油出口温度≤85°C，冷却水出口温度≤90°C。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR004",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路系统应配置隔离阀，隔离阀的布置位置应便于操作人员接近，操作高度不超过1.6米，且每个隔离阀应配备永久性标识牌，标识牌内容应包括阀门编号、所隔离的设备或管路区域。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀操作高度≤1.6米，标识牌清晰可见且内容完整。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR005",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水温度传感器应实时监测温度，测量范围0-100°C，精度±0.5°C，响应时间≤2秒。",
+          "verification_method": "test",
+          "acceptance_criteria": "在0-100°C范围内，传感器输出误差≤±0.5°C，响应时间≤2秒。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水压力传感器应实时监测压力，测量范围0-10 bar，精度±0.1 bar，响应时间≤1秒。",
+          "verification_method": "test",
+          "acceptance_criteria": "在0-10 bar范围内，传感器输出误差≤±0.1 bar，响应时间≤1秒。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水流量传感器应实时监测流量，测量范围0-500 L/min，精度±2%读数，响应时间≤3秒。",
+          "verification_method": "test",
+          "acceptance_criteria": "在0-500 L/min范围内，传感器输出误差≤±2%读数，响应时间≤3秒。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "传感器信号应通过硬接线或现场总线传输至主机控制系统，传输延迟≤100 ms。",
+          "verification_method": "test",
+          "acceptance_criteria": "从传感器输出到控制系统接收的延迟≤100 ms。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "主机控制系统应设置冷却水温度高限报警（≥95°C）和停机阈值（≥100°C），联锁动作应在1秒内触发。",
+          "verification_method": "test",
+          "acceptance_criteria": "当温度≥95°C时触发报警，≥100°C时触发停机，联锁动作时间≤1秒。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "主机控制系统应设置冷却水压力低限报警（≤1.5 bar）和停机阈值（≤1.0 bar），联锁动作应在1秒内触发。",
+          "verification_method": "test",
+          "acceptance_criteria": "当压力≤1.5 bar时触发报警，≤1.0 bar时触发停机，联锁动作时间≤1秒。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "主机控制系统应设置冷却水流量低限报警（≤100 L/min）和停机阈值（≤50 L/min），联锁动作应在2秒内触发。",
+          "verification_method": "test",
+          "acceptance_criteria": "当流量≤100 L/min时触发报警，≤50 L/min时触发停机，联锁动作时间≤2秒。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "传感器应具备自诊断功能，故障时输出故障信号，控制系统应识别并触发报警。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟传感器故障，控制系统在5秒内识别并触发报警。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR006",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备数据记录装置，以不低于1 Hz的采样频率连续记录冷却水进出口温度、压力、流量及主机转速，记录数据应存储至少30天，并支持导出为CSV格式。",
+          "verification_method": "test",
+          "acceptance_criteria": "数据记录装置在连续运行72小时内，记录数据完整率≥99.9%，且导出文件格式正确、可读。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR007",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱应设置高液位报警和低液位报警，报警信号应传输至主机控制系统，当液位高于高液位设定值（如水箱容量的90%）或低于低液位设定值（如水箱容量的20%）时，控制系统应触发报警并采取相应保护动作（如降低主机负荷或停机）。",
+          "verification_method": "test",
+          "acceptance_criteria": "在液位达到高液位设定值（90%容量）和低液位设定值（20%容量）时，报警信号正确触发，主机控制系统接收到信号并执行预设动作，响应时间不超过2秒。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR008",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配置两台100%容量的冷却水泵，其中一台作为备用，当主泵故障时，备用泵应在10秒内自动启动并达到额定流量。",
+          "verification_method": "test",
+          "acceptance_criteria": "备用泵在10秒内启动，且流量不低于额定流量的95%。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配置两台100%容量的冷却器，当一台冷却器故障时，另一台应能独立承担全部热负荷，确保主机冷却水出口温度不超过45°C。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "单台冷却器在最大热负荷下，冷却水出口温度≤45°C。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配置双电源供电，当主电源失效时，备用电源应在5秒内自动切换，确保冷却水泵和控制系统持续运行。",
+          "verification_method": "test",
+          "acceptance_criteria": "电源切换时间≤5秒，切换后系统功能正常。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配置冗余的控制阀和传感器，当任一控制阀或传感器故障时，系统应能通过备用设备维持冷却水流量和温度在允许范围内。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文档显示所有关键控制阀和传感器均有冗余配置，且故障模式下系统仍能维持主机冷却水温度在40-45°C之间。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR009",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路材料应选用耐腐蚀材料，如铜镍合金或316L不锈钢，其腐蚀速率不超过0.1 mm/年。",
+          "verification_method": "review",
+          "acceptance_criteria": "材料证书显示腐蚀速率≤0.1 mm/年，且符合相关标准（如ASTM B111或AISI 316L）。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水管路应每6个月进行一次完整性检查，包括壁厚测量和泄漏检测，确保管路无腐蚀穿孔或泄漏。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "壁厚减薄量不超过原始壁厚的10%，且无任何泄漏迹象。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR010",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备手动/自动切换功能，当自动控制系统故障时，手动操作应能在5分钟内启动并维持主机冷却水流量不低于设计流量的90%。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟自动控制系统故障，手动操作启动时间≤5分钟，冷却水流量≥90%设计流量。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR011",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system shall incorporate an intelligent diagnostic function that continuously monitors system parameters and proactively alerts operators to potential failure risks, such as abnormal temperature rise, pressure drop, or flow deviation, with a minimum of 30 minutes advance warning before a critical failure occurs.",
+          "verification_method": "test",
+          "acceptance_criteria": "During a 72-hour continuous test with simulated fault conditions, the system shall generate at least 90% of alerts at least 30 minutes before the simulated failure point, with no false alarms exceeding 5% of total alerts.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR012",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The seawater filter shall be equipped with a real-time differential pressure monitoring device that triggers an alarm when the differential pressure exceeds 0.5 bar and indicates cleaning is required.",
+          "verification_method": "test",
+          "acceptance_criteria": "During testing, when the differential pressure reaches 0.5 bar, the alarm shall activate within 2 seconds and a cleaning indication shall be displayed.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR013",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应设计低温保护机制，当冷却水温度低于5°C或主机负荷低于10%持续30分钟时，自动启动暖机程序，将冷却水温度提升至至少40°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟环境温度-10°C或主机负荷5%条件下，系统应在30分钟内自动启动暖机程序，并将冷却水温度升至40°C以上。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR014",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵应配备变频驱动器，能够在主机负荷变化时自动调节转速，使冷却水流量在额定流量的30%至100%范围内连续可调，调节响应时间不超过10秒。",
+          "verification_method": "test",
+          "acceptance_criteria": "在主机负荷从25%至100%变化时，水泵流量调节范围覆盖30%-100%额定流量，响应时间≤10秒，且系统能耗较定频泵降低至少20%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR015",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路应在每个主要设备（如主机、发电机、中央冷却器）的进出口设置隔离阀，阀门操作手柄距地面高度不超过1.8米，且阀门间距不小于0.5米，以便于轮机员在机舱内快速操作。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀安装位置符合图纸要求，操作手柄高度≤1.8m，阀门间距≥0.5m，且阀门标识清晰。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "隔离阀应能承受1.5倍设计压力（设计压力为0.6MPa），且关闭状态下泄漏率不超过0.1%额定流量。",
+          "verification_method": "test",
+          "acceptance_criteria": "阀门在1.5倍设计压力（0.9MPa）下保压30分钟无泄漏，泄漏率≤0.1%额定流量。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "隔离阀的布置应确保局部维修时，仅隔离相关设备，不影响其他冷却水回路正常运行，且隔离后系统压力降不超过0.05MPa。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "通过系统水力计算，隔离任一设备后，其他回路流量变化≤10%，压力降≤0.05MPa。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR016",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system shall be equipped with independent backup sensors for each monitored parameter (temperature, pressure, flow). Upon failure of the primary sensor, the system shall automatically switch to the backup sensor within 100 ms and trigger an audible and visual alarm in the control room. The switching shall not cause any interruption in parameter monitoring or control.",
+          "verification_method": "test",
+          "acceptance_criteria": "During simulated primary sensor failure, backup sensor activation occurs within 100 ms, alarm is triggered, and no data loss or control interruption is observed.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR017",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system shall provide a remote monitoring interface capable of transmitting key operating parameters (including but not limited to temperature, pressure, and flow rate) to a shore-based management system in real-time, with a data update interval not exceeding 5 seconds.",
+          "verification_method": "test",
+          "acceptance_criteria": "The system successfully transmits all specified parameters to the shore-based system with a maximum latency of 5 seconds under normal operating conditions.",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "The remote monitoring interface shall support remote diagnostics and performance optimization functions, allowing authorized personnel to access historical data and adjust system parameters remotely.",
+          "verification_method": "test",
+          "acceptance_criteria": "Remote diagnostics can retrieve at least 30 days of historical data, and parameter adjustments are executed within 10 seconds of command issuance.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR018",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配置一个快速泄放阀，该阀门的公称通径不小于DN50，且能在5分钟内排空系统总容积的90%以上。",
+          "verification_method": "test",
+          "acceptance_criteria": "在最大工作压力下，开启泄放阀后5分钟内，系统内冷却水剩余量不超过总容积的10%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR019",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备压力波动监测装置，当系统压力波动超过±0.05 MPa/s时，应在1秒内触发报警，并提示可能的管路泄漏或泵故障。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟压力波动测试中，当压力变化率超过±0.05 MPa/s时，报警在1秒内触发，报警信息明确指示管路泄漏或泵故障。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR020",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统管路总压降不得超过0.15 MPa，以降低泵组能耗。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "管路总压降 ≤ 0.15 MPa",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水泵组效率应不低于75%，且泵组运行点位于高效区（流量偏差不超过设计流量的±10%）。",
+          "verification_method": "test",
+          "acceptance_criteria": "泵组效率 ≥ 75%，运行流量在设计流量的90%-110%范围内",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配置变频控制，使泵组能耗随负荷变化自动调节，节能率不低于20%。",
+          "verification_method": "test",
+          "acceptance_criteria": "与定速运行相比，变频运行节能率 ≥ 20%",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR021",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统海水滤器堵塞监测装置应能在滤器压差达到0.05 bar时发出报警信号，灵敏度不低于±0.01 bar。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟测试中，当滤器压差达到0.05 bar时，报警信号在1秒内触发，且重复测量10次，报警触发压差偏差不超过±0.01 bar。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应能在海水盐度不超过35 ppt、浊度不超过50 NTU、pH值在6.5-8.5范围内稳定运行，主机冷却水出口温度不超过85°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "在实验室条件下，分别使用盐度35 ppt、浊度50 NTU、pH 6.5和8.5的海水进行连续8小时运行测试，主机冷却水出口温度始终≤85°C。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "海水滤器堵塞监测系统应具备自检功能，每24小时自动执行一次自检，自检结果应显示在控制面板上。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计文档中明确自检功能逻辑，且样机测试中自检功能正常执行，控制面板显示自检结果。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR022",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统在低温环境（环境温度低于5°C）下应具备自动暖机功能，暖机过程中冷却水温升速率不超过2°C/min，以避免主机部件因温度骤变产生应力损伤。",
+          "verification_method": "test",
+          "acceptance_criteria": "在环境温度低于5°C时启动暖机程序，冷却水温度从初始温度升至目标温度（如60°C）过程中，温升速率始终≤2°C/min。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR023",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统变频调节功能应根据主机负荷信号（0-100%）在30秒内调整冷却水流量，流量偏差不超过设定值的±5%。",
+          "verification_method": "test",
+          "acceptance_criteria": "在主机负荷从25%至100%变化时，实测流量与设定流量偏差≤±5%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR024",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The seawater filter blockage monitoring device shall provide a self-cleaning indication when the filter blockage level reaches 80% of the maximum allowable pressure drop (e.g., 0.5 bar), by activating visual and audible alarms at both the bridge and engine control room.",
+          "verification_method": "test",
+          "acceptance_criteria": "Alarms are activated within 2 seconds after blockage reaches 80% threshold; visual indicator (e.g., red LED) and audible alarm (≥85 dB at 1 m) are confirmed at both locations.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR025",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统在低温启动时，应自动启动预热循环，确保主机冷却水温度在启动前不低于5°C，并在启动后10分钟内达到至少40°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "在环境温度-10°C条件下，系统启动后冷却水温度在10分钟内从5°C升至40°C以上。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配备低温报警装置，当冷却水温度低于2°C时发出声光报警，并自动启动加热器。",
+          "verification_method": "test",
+          "acceptance_criteria": "在冷却水温度降至2°C时，报警器在5秒内触发，加热器在10秒内启动。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应设计有旁通回路，在低温启动时允许冷却水绕过主机直接循环，直至温度达到安全阈值。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计图纸显示旁通回路，且控制逻辑在温度低于40°C时自动切换至旁通模式。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR026",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵变频控制系统应根据主机负荷信号（如转速或功率）自动调节水泵转速，使冷却水流量在主机额定负荷的25%-110%范围内与需求偏差不超过±5%。",
+          "verification_method": "test",
+          "acceptance_criteria": "在主机负荷变化时，实测冷却水流量与目标流量的偏差≤±5%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR027",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备海水滤器压差监测装置，当滤器前后压差达到0.05 MPa时，系统应自动发出预警信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟滤器堵塞条件下，当压差达到0.05 MPa时，预警信号在2秒内触发。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR028",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system preheating program shall automatically adjust the preheating duration and temperature rise rate based on ambient temperature (range: -20°C to 10°C) and engine status (e.g., coolant temperature, oil temperature) to ensure the engine coolant temperature reaches at least 40°C within 30 minutes before start.",
+          "verification_method": "test",
+          "acceptance_criteria": "During a cold start test at ambient temperature of -10°C, the preheating program shall achieve a coolant temperature of 40°C ± 2°C within 30 minutes, with a temperature rise rate not exceeding 5°C per minute.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR029",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统在额定工况下，总能耗应不超过主机额定功率的2.5%。",
+          "verification_method": "test",
+          "acceptance_criteria": "在额定工况下，系统总能耗≤主机额定功率×2.5%。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水泵组效率在额定流量和扬程下应不低于75%。",
+          "verification_method": "test",
+          "acceptance_criteria": "泵组效率≥75%。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "管路布局应优化以减少局部阻力，管路总压降不超过0.15 MPa。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "管路总压降≤0.15 MPa。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR030",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水滤器堵塞监测系统应具备数据记录功能，能够记录滤器堵塞的历史数据，包括堵塞发生时间、持续时间、堵塞程度（如压差百分比）及恢复时间，数据存储容量应至少支持连续记录30天的历史数据。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统在模拟堵塞事件后，能够记录至少30天的历史数据，且数据完整、可检索，记录频率不低于每10分钟一次。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR031",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水泵组应具备冗余设计，当主泵故障时，备用泵应在2秒内自动启动并投入运行，确保主机冷却水流量不低于设计流量的95%。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟主泵故障后，备用泵在2秒内启动，冷却水流量不低于设计流量的95%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR032",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The freshwater cooling system shall be equipped with temperature sensors with an accuracy of ±0.5°C to monitor the freshwater temperature at the engine outlet.",
+          "verification_method": "test",
+          "acceptance_criteria": "Temperature sensor accuracy verified by calibration against a reference standard with deviation ≤ ±0.5°C.",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "The freshwater cooling system shall trigger a high-temperature alarm when the freshwater temperature exceeds 95°C at the engine outlet.",
+          "verification_method": "test",
+          "acceptance_criteria": "Alarm activates within 2 seconds when temperature exceeds 95°C during functional test.",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "The alarm system shall clearly indicate the location of the high temperature (e.g., engine outlet) on the control panel.",
+          "verification_method": "inspection",
+          "acceptance_criteria": "Control panel displays 'Engine Outlet High Temp' or equivalent text when alarm is triggered.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR033",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器及换热器的设计应确保维护人员无需拆卸相邻设备即可进行清洁、检查和维修，且所有可拆卸部件应能在30分钟内由单人完成拆装。",
+          "verification_method": "review",
+          "acceptance_criteria": "设计图纸和说明书应证明所有维护操作可在30分钟内由单人完成，且无需拆卸相邻设备。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR034",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱液位监测系统在液位低于设定下限值（如水箱总容积的20%）时，应在2秒内自动启动补水装置，并同时发出声光报警信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "液位降至20%时，补水装置在2秒内启动，报警信号在2秒内发出。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR035",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的所有金属部件（包括管道、换热器）的腐蚀速率应不超过0.1 mm/年，并配备镁合金牺牲阳极保护装置，阳极设计寿命不低于5年。",
+          "verification_method": "test",
+          "acceptance_criteria": "腐蚀速率≤0.1 mm/年，牺牲阳极在5年内有效保护电位（-0.85V至-1.1V vs Cu/CuSO4）。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR036",
+      "engineering_requirements": [
+        {
+          "shall_statement": "在船舶失电工况下，冷却水系统应能通过应急冷却泵或重力循环方式，为主机关键部件提供至少30分钟的冷却，冷却水流量不低于设计流量的50%，且冷却水出口温度不超过85°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟失电工况，应急冷却启动后30分钟内，主机关键部件温度不超过允许值，冷却水出口温度≤85°C。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR037",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水泵自动投入功能应确保在主泵故障时，备用泵在2秒内自动启动，且切换过程中主机冷却水流量波动不超过5%。",
+          "verification_method": "test",
+          "acceptance_criteria": "备用泵启动时间≤2秒，冷却水流量波动≤5%",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR038",
+      "engineering_requirements": [
+        {
+          "shall_statement": "淡水冷却温度监测系统应具备数据记录功能，能够以不低于1次/秒的采样率记录冷却水温度数据，并存储至少30天的历史数据，数据存储精度为±0.1°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统连续运行30天，数据记录完整，采样率不低于1次/秒，温度数据精度在±0.1°C以内。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR039",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱的容积应不小于系统总容积的10%，且最低液位应高于系统最高点1米以上，以确保在船舶航行过程中液位波动不会导致系统进气或压力波动影响正常运行。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "膨胀水箱容积 ≥ 0.1 × 系统总容积；最低液位与系统最高点高差 ≥ 1 m",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "膨胀水箱应配备液位计，液位计刻度范围应覆盖正常工作液位上下各20%，且液位计应安装在便于观察的位置，观察距离不超过1.5米。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "液位计刻度范围覆盖正常工作液位±20%；观察距离 ≤ 1.5 m",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "膨胀水箱应设置溢流管和低位报警装置，溢流管直径不小于25mm，低位报警在液位低于最低工作液位50mm时触发。",
+          "verification_method": "test",
+          "acceptance_criteria": "溢流管直径 ≥ 25 mm；低位报警触发液位 ≤ 最低工作液位 - 50 mm",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR040",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应设计牺牲阳极保护，阳极材料选用锌或铝，在海水盐度3.2%-3.8%、温度0-35°C条件下，阳极消耗率不超过0.5 kg/(A·年)，更换周期不小于2年。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "基于电化学计算和海水腐蚀数据，阳极寿命≥2年，且维护成本降低20%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR041",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱的补水接口应位于易于操作的位置，且补水操作应在5分钟内完成从低液位报警到正常液位的补充。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟低液位报警条件下，操作人员从开始补水到液位恢复至正常范围的时间不超过5分钟。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR042",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system shall incorporate an adaptive corrosion protection mechanism that automatically adjusts sacrificial anode output based on real-time water quality parameters (e.g., salinity, pH, temperature) with a response time of less than 5 minutes.",
+          "verification_method": "test",
+          "acceptance_criteria": "During testing with simulated seawater of varying salinity (10-40 ppt) and pH (6.5-8.5), the anode current output shall adjust within ±10% of the target value within 5 minutes.",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "The sacrificial anode replacement procedure shall be designed to be completed by a single operator within 30 minutes without requiring system shutdown or draining of cooling water.",
+          "verification_method": "test",
+          "acceptance_criteria": "In a simulated replacement test, the operation shall be completed in ≤30 minutes by one person, with no leakage or system interruption.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR043",
+      "engineering_requirements": [
+        {
+          "shall_statement": "应急冷却系统应在船舶失电后30秒内自动启动，并在启动后5分钟内将主机缸套冷却水出口温度降至85°C以下。",
+          "verification_method": "test",
+          "acceptance_criteria": "失电后30秒内启动，5分钟内缸套冷却水出口温度≤85°C",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "应急冷却系统应能提供至少50%额定流量的冷却水，以维持主机关键部件（如缸套、活塞、喷油器）的冷却。",
+          "verification_method": "calculation",
+          "acceptance_criteria": "冷却水流量≥50%额定流量",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "应急冷却系统的电源应独立于主电源，采用蓄电池或应急发电机供电，并能在失电后10秒内切换至应急电源。",
+          "verification_method": "test",
+          "acceptance_criteria": "电源切换时间≤10秒",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR044",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的管路布置应确保隔离阀位于易于操作和维护的位置，距离地面或平台不超过1.5米，且阀门手轮或执行机构周围应有至少0.5米的净空空间。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀位置符合上述要求，且操作空间满足0.5米净空。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应在每个主要设备（如主机、泵、热交换器）的进出口管路上设置隔离阀，以便在检修或更换部件时，能在5分钟内完成相关管路的隔离。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟隔离操作，从开始操作到完全隔离的时间不超过5分钟。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR045",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水温度传感器在0-100°C范围内测量精度应优于±0.5°C，长期稳定性优于0.1°C/年。",
+          "verification_method": "test",
+          "acceptance_criteria": "在标准温度源下校准，误差≤±0.5°C；连续运行1000小时后漂移≤0.1°C。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水压力传感器在0-10 bar范围内测量精度应优于±0.1 bar，长期稳定性优于0.02 bar/年。",
+          "verification_method": "test",
+          "acceptance_criteria": "在标准压力源下校准，误差≤±0.1 bar；连续运行1000小时后漂移≤0.02 bar。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "控制联锁逻辑应确保在冷却水温度超过95°C或压力低于1.5 bar时触发报警，但不会自动停机，仅当温度超过100°C或压力低于1.0 bar持续10秒以上才触发停机。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟故障条件下，报警和停机动作符合设定阈值和时间延迟，误动作率≤0.1%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR046",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的温度传感器和压力传感器应支持现场校准，校准周期不超过12个月，校准后温度测量误差不超过±1°C，压力测量误差不超过±0.5%满量程。",
+          "verification_method": "test",
+          "acceptance_criteria": "校准记录显示所有传感器在12个月内完成校准，且校准结果满足误差要求。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配备冗余温度传感器和压力传感器，以便通过交叉比对验证测量数据的准确性，冗余传感器读数偏差应不超过±2°C和±1%满量程。",
+          "verification_method": "test",
+          "acceptance_criteria": "在系统运行时，冗余传感器读数偏差在允许范围内。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应提供手动和自动两种方式对温度、压力参数进行定期检查，检查频率不低于每4小时一次，并记录检查结果。",
+          "verification_method": "review",
+          "acceptance_criteria": "检查记录显示每4小时至少有一次检查记录，且数据完整。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR047",
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱的液位显示装置在船舶横倾±15°、纵倾±5°范围内，液位读数误差不超过±5%满量程。",
+          "verification_method": "test",
+          "acceptance_criteria": "在横倾±15°、纵倾±5°条件下，液位显示值与实际液位偏差≤±5%满量程。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR048",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的应急冷却功能应具备手动和自动两种启动方式，自动启动失效时，手动操作应在30秒内启动应急冷却。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟自动启动失效条件下，手动启动应急冷却的时间不超过30秒。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR049",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路系统在船舶正常航行和恶劣海况下，应能承受±15mm的船体变形和10Hz至50Hz、振幅±2mm的振动，而不发生泄漏或结构损坏。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟船体变形和振动条件下，管路系统无泄漏，且所有支撑和连接件无永久变形或裂纹。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR050",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的传感器和控制联锁装置应具备故障自诊断功能，当传感器或联锁装置发生故障时，系统应在2秒内发出声光报警信号，并显示故障位置和类型代码。",
+          "verification_method": "test",
+          "acceptance_criteria": "模拟传感器故障或联锁装置故障，系统在2秒内发出声光报警，且显示正确的故障位置和类型代码。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR051",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统管路布置应确保隔离阀在紧急情况下能在30秒内完成全开或全关操作，且操作力不超过200N。",
+          "verification_method": "test",
+          "acceptance_criteria": "隔离阀在模拟紧急工况下，从全开至全关或全关至全开的时间≤30秒，操作力≤200N。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统管路布置应避免死水区，确保所有隔离阀在正常工况下可触及且操作空间不小于0.5m。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "现场检查确认无死水区，隔离阀周围操作空间≥0.5m。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR052",
+      "engineering_requirements": [
+        {
+          "shall_statement": "The cooling water system control logic shall maintain continuous and accurate operation with no loss of functionality when any single temperature, pressure, or flow sensor fails, by automatically switching to redundant sensors within 100 ms.",
+          "verification_method": "test",
+          "acceptance_criteria": "During fault injection testing, the system shall demonstrate uninterrupted control with no deviation exceeding ±2% of setpoint for temperature, ±5% for pressure, and ±3% for flow rate.",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR053",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的温度、压力等运行参数应通过历史数据记录或实时监控系统进行记录，数据存储周期不少于12个月，且数据采样间隔不超过10秒。",
+          "verification_method": "test",
+          "acceptance_criteria": "系统应能回放任意连续24小时内的历史数据，温度精度±0.5°C，压力精度±0.1 bar，且数据完整率≥99.9%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR054",
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水滤器应配备实时堵塞监测装置，当滤器压差达到0.05 MPa时，系统应在5秒内发出声光报警信号。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟堵塞条件下，压差达到0.05 MPa时，报警信号在5秒内触发，声光报警器正常工作。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR055",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统在环境温度低于-20°C时，应具备自动暖机程序，确保主机启动前冷却水温度不低于5°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "在-20°C环境温度下，暖机程序启动后，主机冷却水温度在30分钟内达到5°C以上。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应配备防冻措施，包括加热器和循环泵，防止冷却水在停机状态下结冰。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "防冻加热器功率不低于2kW，循环泵流量不低于10L/min，且系统在-30°C环境下停机24小时后无冰堵现象。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统应具备低温报警功能，当冷却水温度低于2°C时触发报警，并自动启动防冻措施。",
+          "verification_method": "test",
+          "acceptance_criteria": "在冷却水温度降至2°C时，报警信号在5秒内触发，且防冻措施在10秒内自动启动。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR056",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配备变频驱动的主机冷却水泵，根据主机负荷和冷却需求自动调节流量，在主机25%至100%负荷范围内，泵的能耗应比定速泵降低至少30%。",
+          "verification_method": "test",
+          "acceptance_criteria": "在主机25%、50%、75%、100%负荷工况下，变频泵的实测功率与同工况下定速泵功率相比，节能率≥30%。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR057",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的管路和设备布局应确保所有隔离阀和关键部件（如泵、热交换器、温控阀）在正常操作位置可接近，且与最近的可操作空间距离不超过1.5米。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀和关键部件在安装后，从最近的可操作空间（如走道、平台）测量，距离不超过1.5米，且无永久性障碍物阻挡。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统的管路应设置足够的检修空间，管路与管路、管路与结构件之间的净距不小于600毫米，以便于维护工具操作。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "管路与管路、管路与结构件之间的净距不小于600毫米，且该空间内无其他设备或管线干扰。",
+          "evidence_ids": []
+        },
+        {
+          "shall_statement": "冷却水系统的隔离阀应安装在易于操作的高度，阀杆中心距地面或平台的高度应在0.8米至1.5米之间。",
+          "verification_method": "inspection",
+          "acceptance_criteria": "所有隔离阀的阀杆中心距最近的操作地面或平台高度在0.8米至1.5米范围内。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR058",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统控制联锁系统应在冷却水温度超过85°C或压力低于0.15 MPa时，在2秒内自动触发保护动作，包括降低主机负荷至50%或启动应急冷却泵。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟故障条件下，系统响应时间≤2秒，主机负荷降至50%以下或应急冷却泵启动。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR059",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统管路及设备应能承受船舶在恶劣海况下产生的振动和冲击，振动频率范围为5-100 Hz，加速度幅值不超过2g，冲击加速度峰值不超过10g，持续时间为11 ms。",
+          "verification_method": "test",
+          "acceptance_criteria": "在振动和冲击试验后，管路无泄漏、无永久变形，设备功能正常，紧固件无松动。",
+          "evidence_ids": []
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR060",
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的应急冷却功能应在主机失电后10秒内自动启动，并能在30分钟内维持主机缸套水出口温度不超过85°C。",
+          "verification_method": "test",
+          "acceptance_criteria": "在模拟主机失电测试中，应急冷却泵在10秒内启动，且30分钟内缸套水出口温度≤85°C。",
+          "evidence_ids": []
+        }
+      ]
+    }
+  ]
+}

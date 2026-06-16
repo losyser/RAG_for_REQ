@@ -1,0 +1,179 @@
+﻿seq,eu_id,tier,source_document,text,extracted_values,n_extracted,correct_count,missed_count,notes
+1,L1-CCS2025-7-539-023,L1,CCS《钢质海船入级规范》2025,"冷却水膨胀箱水位低报警
+条款 7-53 9
+冷却水膨胀箱水位低时应发出报警。",,0,,,
+2,E-DRAFT-CONTRO-DOCUMENT-001,L1,KB_DRAFT_v1,"厂家说明书内容要求
+Control system manufacturer's manual shall include system architecture, hardware configuration, I/O list, power supply and grounding details, communication protocol, and software version. It must also provide alarm and shutdown logic diagrams, setpoint tables, and sequence of operation for all automatic modes (e.g., start/stop, load sharing, emergency shutdown). The manual should be in English and comply with CCS/DNV/ABS requirements for onboard documentation.",,0,,,
+3,E-SYS-PRESS-023,L1,S43 ABS Marine Vessel Rules Part 4 2021,"冷却水温度与压力参数
+bar kgf/cm2 psi °C °F m3 ft3 mm in. a) Fired heater for ≤41.4 >1.0 ≤42.2 >1.0 ≤600 - all all - all all - all all 4/5 4-4-1/1.11 4-4-1/7 b) Pressure vessels & heat exchangers other than Group I b(6) ≤41.4 >6.9 ≤42.2 ≤600 >100 and ≤371(1) ≤204(2) ≤700(1) ≤400(2) and all all and ≤3.8 ≤1.5 4/5 4-4-1/1.11 4-4-1/7 c) Pressure vessels & heat exchangers other than Group II b ≤6.9 >1.0 >1.0 ≤100 >149(3) >66(4) >90(5) >300(3) >15 (4) >200(5) and >0.14 >5 and ≤38 ≤1.5 4/5 4-4-1/1.11 4-4-1/7 Notes:
+整理说明：原文给出了冷却水相关参数、阈值或适用条件，可用于对应厂家、机型或规则范围内的参数约束。该证据不应跨系统型式或跨机型直接泛化。
+可支撑：main_engine_cooling_water",,0,,,
+4,E-DRAFT-FILTER-REDUNDAN-003,L1,KB_DRAFT_v1,"验证方法与测试标准
+Redundancy verification of filters is performed during sea trials or commissioning by simulating a clogged condition (e.g., partially closing the inlet valve) and measuring the differential pressure rise. The standby filter must automatically or manually activate within a specified time (e.g., <10 seconds) without causing cooling water flow interruption or temperature excursion. The test confirms that the switching logic, valve actuation, and alarm system (e.g., high differential pressure alarm) function correctly per the design specification and class society requirements.",<10 seconds(seconds),1,,,
+5,E-VALVE-PRESS-029,L1,S43 ABS Marine Vessel Rules Part 4 2021,"冷却水温度与压力参数
+programming of level switch sensors, flow sensors, pressure sensors, temperature sensors, pressure relief valve operation, coolant conductivity sensor, etc., shall be checked to ensure correct calibration and functionality.
+整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。
+可支撑：valve 的 pressure
+temperature
+inspection 参数应依据来源文件
+厂家技术数据或项目计算文件确定。
+若原文给出明确限值
+可作为对应适用对象和工况下的参数约束。
+不能支撑：1. 不能直接给出可用于设计输入的具体数值。
+2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。
+3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。",,0,,,
+6,E-DRAFT-ALARM-DOCUMENT-002,L1,KB_DRAFT_v1,"图纸与接线图文件要求
+The documentation shall provide detailed electrical schematic diagrams and wiring diagrams for the alarm system, covering all sensors, control units, and actuators. These drawings must clearly indicate cable types, terminal numbers, and signal flow. Additionally, a system block diagram showing the interface with the main engine control system and other ship systems is required to facilitate troubleshooting and system integration.",,0,,,
+7,E-DRAFT-ALARM-DOCUMENT-003,L1,KB_DRAFT_v1,"备件目录与维护手册要求
+The spare parts catalog for the alarm system must list all replaceable components, including sensors, relays, fuses, and display units, with part numbers and recommended stock levels. The maintenance manual should include periodic testing procedures, calibration intervals, and troubleshooting guides. This documentation supports the ship's planned maintenance system and ensures availability of critical spares for alarm system reliability.",,0,,,
+8,E-PUMP-RED-021,L1,S43 ABS Marine Vessel Rules Part 4 2021,"冷却水泵冗余配置
+3.5.3(c) Cooling water supply. Cooling water supply to the refrigerating plant (where required) is to be provided from at least two circulating pumps one of which being used as a stand-by. The stand-by pump may be a pump used for other services so long as its use for cooling would not interfere with any other essential service of the vessel. Cooling water is to be taken from not less than two sea connections, preferably one port and one starboard.
+整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。
+可支撑：cooling_water_pump 的 redundancy
+flow 参数应依据来源文件
+厂家技术数据或项目计算文件确定。",,0,,,
+9,E-DRAFT-VALVE-LOCKOUT-002,L2,KB_DRAFT_v1,"锁定装置参数要求
+用于 valve lockout 的装置（如锁具、挂锁、标签）应符合 ISO 或 OSHA 标准，具有唯一钥匙或密码，且能承受船舶环境振动和腐蚀。对于 DNV 或 ABS 规范，锁定装置需与阀门操作手柄或手轮匹配，确保在锁定状态下无法手动或自动开启。",,0,,,
+10,E-TSENS-WATER-001,L2,S10 MAN L23/30DF Project Guide Internal cooling water system,"水质参数要求
+the tank with water and inhibitors. The vent pipe should be installed below the minimum water level to reduce oxidation of the cooling water due to splashing from the vent pipe. Volume: Min 15% of water volume, however, min 100 litres. Preheating As optional the engines can be equipped with electrical preheating. It is re- commended to preheat engines operating on MGO/Gas due to the prolonged life time of the engines' wearing parts. The preheating is arranged for auto- matic operation, so that the preheating is disconnected when the engine is running, and connected when the engine is in",15%(%) | 100 litres(litres) | >=60°C(°C) | 25 to 45°C(°C),4,,,
+11,E-SW-CORR-010,L2,S42 MAN 49/60DF Project Guide,"冷却系统腐蚀与气蚀风险
+Every 2 to 6 months, a coolant sample must be sent to an independent labor- atory or to the engine manufacturer for an integrated analysis. If chemical additives or antifreeze agents are used, coolant should be re- placed after 3 years at the latest. If there is a high concentration of solids (rust) in the system, the water must be completely replaced and entire system carefully cleaned. Deposits in the cooling system may be caused by fluids that enter the coolant or by emulsion break-up, corrosion in the system, and limescale deposits if the water is very hard. If the concentratio",2 to 6 months(months) | 3 years(years) | 50 mg(mg per kg),3,,,
+12,E-DRAFT-PIPE-VENTDRA-002,L2,KB_DRAFT_v1,"放水点设置要求
+在冷却水管路的最低点（如热交换器底部、管路低洼处）应设置放水阀，以便系统检修或防冻时排空管路。放水阀通常为球阀或闸阀，并需考虑排水去向（如接至舱底或收集柜）。放水点数量应确保管路无积水死角。",,0,,,
+13,E-HT-PRESS-007,L2,S38 MAN L16/24 GenSet Project Guide,"冷却水温度与压力参数
+8 ( 10 ) L16/24, 2012.01.16 - Tier II Turbocharger system The turbocharger system of the engine, which is a constant pressure system, consists of an exhaust gas receiver, a turbocharger, a charge air cooler and a charge air receiver. The turbine wheel of the turbocharger is driven by the engine exhaust gas, and the turbine wheel drives the turbocharger compressor, which is mounted on the common shaft. The compressor draws air from the engine room through the air filters. The turbocharger forces the air through the charge air cooler to the charge air receiver. From the charge air rec",,0,,,
+14,E-DRAFT-SEACH-REDUNDAN-002,L2,KB_DRAFT_v1,"切换方式与操作要求
+The changeover between sea chests is performed via remotely actuated butterfly valves or gate valves, with interlocking to prevent simultaneous closure. In CCS/DNV/ABS class, the system must allow manual local operation and be designed for single-failure tolerance. Typical design practice: the standby chest is kept pressurized with a small bypass to avoid air entrapment.",,0,,,
+15,E-DRAFT-FILTER-INSPECTI-003,L2,KB_DRAFT_v1,"性能验证与压差监控
+After cleaning or replacement, verify filter performance by measuring the pressure drop at normal flow rate. A clean filter should show a pressure drop within 0.05-0.1 bar. If the pressure drop remains high, inspect for clogging or incorrect mesh size. Continuous monitoring via differential pressure gauges with alarm setpoints (e.g., 0.3 bar) is recommended per class requirements.",0.05-0.1(bar) | 0.3(bar),2,,,
+16,E-COOLANT-INSP-052,L2,S32 HY/T 海水循环冷却系统运行管理规范,"冷却液水质检测方法
+11.4.8 海水循环冷却系统补充水水质和循环冷却水水质的检测项目、 检测频率、 检测方法和依据标准 宜符合表 6 的规定。 表6 补充水水质和循环冷却水水质的检测项目、检测频率、检测方法和依据标准 序号 检测项目 检测频率 检测方法 依据标准
+整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。
+可支撑：coolant 的 inspection
+water_quality
+flow 参数应依据来源文件
+厂家技术数据或项目计算文件确定。
+若原文给出明确限值
+可作为对应适用对象和工况下的参数约束。
+不能支撑：1. 不能直接给出可用于设计输入的具体数值。
+2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。
+3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。",,0,,,
+17,E-HT-WATER-004,L2,S41 Everllence 49/60DF Project Guide,"冷却液冰点与乙二醇比例
+The cooling water is to be conditioned by using a corrosion inhibitor, see sec- tion Specification of engine coolant, Page 311. Cooling water that is not treated properly may cause serious corrosion during storage or operation of the engine. LT = Low temperature HT = High temperature Cooler dimensioning, gen- eral For coolers operated by seawater (not treated water), lube oil or DMA/DMB on the primary side and treated freshwater on the secondary side, an addi- tional safety margin of 10% related to the heat transfer coefficient is to be considered. If treated water is applied on bo",10%(%),1,,,
+18,E-SYS-INSP-001,L2,S39 MAN L21/31 Project Guide,"冷却系统泄漏检查要求
+1035 (D) Turbocharger speed SI 89 (L) SAH 89 (J) 3 Alternator Cooling water leakage LAH LAH 98 switch 3 Winding temperature °C TI 98 100 TAH 98 130 3 Bearing temperature °C TI 27 40-60 TAH 27 60 Miscellaneous 2017-10-11 - en Operation data and set points 3700060-3.10 IMO Tier II Project Guide MAN Energy Solutions Project GuideMAN L16/24
+整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。
+可支撑：main_engine_cooling_water_system 的 inspection
+maintenance
+temperature 参数应依据来源文件
+厂家技术数据或项目计算文件确定。
+若原文给出明确限值
+可作为对应适用对象和工况下的参数约束。
+不能支撑：1. 不能直接给出可用于设计输入的具体数值。
+2. 不能超出来源文件限定的厂家、机型",89() | 98() | 98(°C) | 100(°C) | 130(°C) | 27(°C) | 40-60(°C) | 27(°C) | 60(°C) | 2017-10-11() | 3700060-3.10() | II(),12,,,
+19,E-DRAFT-PIPE-VENTDRA-001,L2,KB_DRAFT_v1,"排气点设置要求
+在冷却水管路的高点（如泵出口、热交换器顶部、管路最高处）应设置自动或手动排气阀，以确保系统启动时空气能顺利排出，避免气塞影响冷却效果。排气阀通常选用球阀或截止阀，并布置在易于操作的位置。",,0,,,
+20,E-PUMP-CAP-002,L2,S21 Caterpillar Cooling Systems Application and Installation Guide,"冷却水流量与泵容量参数
+mechanical seal and impeller. Once initial priming has taken place, there is no need to re-fill the pump unless the system has been fully drained. Seawater Pumps Two centrifugal seawater pumps are typically required for marine propulsion applications; one is engine driven and one electrically driven. The engine driven seawater pump is not self-priming, so it must be located below the light water line of the ship or a priming arrangement must be provided. The engine power required to drive the Caterpillar supplied pump is shown in TMI. The electrically driven seawater pump capacity ",,0,,,
+21,E-JACKET-PRESS-024,L2,S42 MAN 49/60DF Project Guide,"主机冷却型式与设计条件
+2.17.10 Load specific values at tropical conditions – MAN L/V49/60DF IMO Tier II, gas mode – Electric propulsion/EPROX-AC 1,300 kW/cyl.; 600 rpm – Electric propulsion/EPROX-AC Reference conditions: Tropics Air temperature °C 45 Cooling water temp. before charge air cooler (LT stage) 38 Total atmospheric pressure mbar 1,000 Relative humidity % 60 Table 60: Reference conditions: Tropics Engine output % 100 85 75 50 Speed rpm 600 Heat to be dissipated HT circuit: + Charge air cooler LP and HP HT stage + Jacket cooling + Turbocharger cooling SUM: kJ/kWh 1,166 1,037 1,010 LT circuit (ch","45(°C) | 38(°C) | 1,000(mbar) | 60(%) | 600(rpm) | 1,166(kJ/kWh) | 1,037(kJ/kWh) | 1,010(kJ/kWh)",8,,,
+22,E-PUMP-CAP-013,L2,S41 Everllence 49/60DF Project Guide,"冷却水流量与泵容量参数
+74 82 82 88 113 Air data Temperature of charge air at charge air cooler out- let HP °C 50 Air flow rate kg/kWh 6.83 6.79 7.06 7.11 8.36 Charge air pressure (absolute) bar abs 6.73 5.43 5.67 5.07 3.41 Exhaust gas data Mass flow kg/kWh 7.02 6.97 7.25 7.3 8.57 Exhaust gas temperature at LP turbine outlet °C 278 273 273 279 283 Heat content (190°C) kJ/kWh 656 617 642 694 887 Permissible exhaust gas back pressure after tur- bocharger mbar ≤ 50 - Tolerances refer to 100% load.
+整理说明：原文给出了冷却水相关参数、阈值或适用条件，可用于对应厂家、机型或规则范围内的参数约束。该证据不应跨系统型式或跨机型直接泛化。
+可支撑：cooling_water_pump 的 capacity
+flow
+press",,0,,,
+23,E-DRAFT-ALARM-REDUNDAN-003,L2,KB_DRAFT_v1,"参数要求与设计惯例
+For alarm system redundancy, the setpoints for primary and backup sensors should be identical to avoid hysteresis. However, a small deadband (e.g., 2% of range) may be allowed to prevent chattering during switchover. The backup channel must have independent adjustment and calibration, with tamper-proof settings. In MAN/WinGD engines, the cooling water high-temperature alarm uses dual PT100 sensors; one feeds the main alarm panel, the other the engine safety system. The switchover condition is based on sensor health status (e.g., resistance out of range) rather than process value devi",2%(%),1,,,
+24,E-DRAFT-ALARM-DOCUMENT-001,L2,KB_DRAFT_v1,"报警触发条件与设定值文件要求
+The alarm system documentation must include a complete list of alarm set points and their triggering conditions, such as high temperature, low pressure, or overspeed. For each alarm, the manufacturer's manual should specify the sensor type, location, and the logic for activation (e.g., delay time, voting logic). This ensures that the alarm system can be properly calibrated and tested during commissioning and maintenance.",,0,,,
+25,E-TCV-TEMP-059,L2,S10 MAN L23/30DF Project Guide Internal cooling water system,"温度控制阀配置
+19 00 0 ""Operating Data and Set Points"". External pipe velocities For external pipe connections we prescribe the following maximum water ve- locities: Fresh water: 3.0 m/s Sea water: 3.0 m/s Pressure drop across engine The pressure drop across the engines HT system, exclusive pump and ther- mostatic valve, is approx. 0.5 bar. Lubricating oil cooler The pressure drop of cooling water across the built-on lub. oil cooler is ap- prox. 0.3 bar; the pressure drop may be different depending on the actual cooler design. Thermostatic valve The pressure drop across the built-on thermostatic valv",3.0(m/s) | 3.0(m/s) | 0.5(bar) | 0.3(bar) | 0.5(bar),5,,,
+26,E-SYS-INSP-007,L2,S36 MAN L23/30H GenSet Project Guide,"冷却液水质检测方法
+▪ Testing equipment in accordance with the supplier's recommendations. Testing kits from the supplier also include equipment that can be used to determine the fresh water quality. Testing the typical values of water Typical value/property Water for filling and refilling (without additive) Circulating water (with additive) Water type Fresh water, free of foreign matter Treated cooling water Total hardness ≤ 10°dGH 1) ≤ 10°dGH 1) pH value 6.5 - 8 at 20 °C ≥ 7.5 at 20 °C Chloride ion content ≤ 50 mg/l ≤ 50 mg/l 2) Table 1: Quality specifications for cooling water (abbreviated version) 1",<=10(°dGH) | <=10(°dGH) | 6.5 - 8() | 20(°C) | >=7.5() | 20(°C) | <=50(mg/l) | <=50(mg/l) | =10(mg/l CaO) | =17.9(mg/l CaCO3) | =0.179(mmol/L),11,,,
+27,E-SW-FLOW-005,L3,S18 Caterpillar C32 SCAC Marine Project Guide,"海水侧流向
+For a HEX (heat exchanger) cooled engine, raw sea water is used to provide cooling water flow through the cooler. The engine’s sea water circuit on this C32 SCAC engine can be used in two different ways to provide raw water flow through a gear cooler. It can be configured as partial flow or full flow. Partial Flow (Before Engine Heat Exchangers) For gear oil coolers requiring up to 30kW of heat rejection, partial sea water flow to the gear oil cooler can be routed from the port located at the sea water pump discharge as indicated in Figure 14. This should be configured by removing the pl",30kW(kW),1,,,
+28,E-VALVE-PRESS-031,L3,"S29 Caterpillar, Know Your Cooling System","冷却水温度与压力参数
+overheating. Once overheating begins, continued operation only worsens the condition. Three factors can change the boiling temperature of the coolant. • The amount and type of coolant • The pressure in the cooling system • The altitude or barometric pressure Increasing the pressure of the cooling system raises the boiling point of the coolant. For this reason, most cooling systems are designed to operate under pressure. The maximum amount of pressure is controlled by a valve in the radiator cap or the pressure relief valve. A higher altitude causes a lower boiling point.
+整理说明：原文说明了参",,0,,,
+29,E-COOLER-PRESS-028,L3,S39 MAN L21/31 Project Guide,"冷却水温度与压力参数
+be two different systems to ensure that the power house/ engine room temperature is not too low caused by the ambient air temperature. ▪ It is necessary to ensure that the charge air cooler cannot freeze when the engine is out of operation (and the cold air is at the air inlet side). An air intake temperature of the engine ≥ 5°C has to be ensured by preheating. Ventilation of power house/engine room: 2018-06-12 - en Engine operation under arctic conditions 1689459-9.1 IMO Tier II Project Guide MAN Energy Solutions Project GuideMAN L16/24
+整理说明：原文给出了冷却水相关参数、阈值或适用条件，可用于对应厂家、机型或规则范围内的参数",>=5(°C),1,,,
+30,E-SYS-CLEAN-017,L3,S41 Everllence 49/60DF Project Guide,"冷却系统清洗要求
+Cooling water systems containing deposits or contamination prevent effective cooling of parts. Contamination and deposits must be regularly eliminated. This comprises the following: Cleaning the system and, if required removal of limescale deposits, flushing the system. Cleaning The coolant system must be checked for contamination at regular intervals. Cleaning is required if the degree of contamination is high. This work should ideally be carried out by a specialist who can provide the right cleaning agents for the type of deposits and materials in the cooling circuit. The cleaning s",,0,,,
+31,E-DRAFT-ALARM-TESTPRO-003,L3,KB_DRAFT_v1,"验收试验中的功能验证方法
+在验收试验中，alarm system 的 test procedure 包括逐项功能测试：通过改变实际运行参数（如关闭冷却水阀）触发报警，确认声光报警正常，并记录报警历史。同时需验证报警屏蔽功能（如试航时临时屏蔽）的恢复正确性，以及备用传感器切换逻辑的可靠性。",,0,,,
+32,E-DRAFT-VALVE-LOCKOUT-003,L3,KB_DRAFT_v1,"锁定验证与解除程序
+lockout 实施后，应通过压力表或流量计验证阀门确实处于关闭或隔离状态。解除锁定前，需确认所有作业已完成、人员已撤离，并按照 MAN/WinGD 维护手册要求执行解锁流程，记录在轮机日志中。",,0,,,
+33,E-HT-SHUT-003,L3,S38 MAN L16/24 GenSet Project Guide,"高温冷却水系统组成
+100 % load Delay sec. Auto stop of engine Stop signal SS 84 switch Stop failure sec < 30 SX 84 switch 30 Engine run 1200/1000 rpm SI 90 SS 90A (I) Ready to start SS 87 switch 0 * Acceptable value at shop test or after repair Soft shut down For the following alarms we recommend to implement soft shut down in the power management system: PAL 22 Lubricating oil pressure inlet engine TAH 12 HT cooling water temperature - high TAH 60 Exhaust temperature deviation - high If applicant: LAH 92 High oil mist level TAH 58 Splash oil temperature - high TDAH 58 Splash oil temperature deviation a",100(%) | <30(sec) | 30() | 1200/1000(rpm) | 0(),5,,,
+34,E-HT-COMP-025,L3,S21 Caterpillar Cooling Systems Application and Installation Guide,"高温冷却水系统组成
+engine jacket water; therefore, the oil cooler heat rejection may not be stated separately in the engine technical data. However, for the sake of completeness, the oil cooler heat rejection may be stated separately as well as being included with the jacket water total. The heat balance equation is a quick and reliable way to verify whether or not the oil cooler heat rejection is included in the jacket water heat rejection figure. Aftercooler Heat Rejection (Q The aftercooler heat rejection is the amount of heat imparted by the turbocharger on the boost air that must be rejected via t",25°C(°C) | 77°F(°F) | 150 m(m) | 500 ft(ft),4,,,
+35,E-DRAFT-LEVEL-ALARMSE-003,L3,KB_DRAFT_v1,"报警定值对系统保护的作用
+The low-level alarm setpoint for the cooling water expansion tank is critical to protect the main engine from overheating due to insufficient coolant. If the level drops below the setpoint, the alarm alerts the operator to take corrective action before the pump cavitates. This design practice follows WinGD recommendations and is mandatory for classification society approval.",,0,,,
+36,E-SYS-WATER-013,L3,"S29 Caterpillar, Know Your Cooling System","冷却液污染与沉积风险
+Corrosion is a chemical or electrochemical action that gradually wears away metal surfaces in the cooling system. In some instances, corrosion can eventually destroy an engine. All cooling system components need protection from corrosion. Supplemental coolant additives are used to protect metal surfaces. They coat these surfaces and prevent the formation of scale, rust, and cavitation erosion. Types of cooling system corrosion are pitting and cavitation erosion, rust, acidity-alkalinity imbalance caused erosion, and galvanic and electrolytic corrosion. Other functional effects of co",,0,,,
+37,E-DRAFT-VALVE-LOCKOUT-001,L3,KB_DRAFT_v1,"阀门锁定触发条件
+在船舶主机冷却水系统中，当进行维修或隔离作业时，必须对相关阀门实施 lockout。典型触发条件包括：冷却水泵更换、热交换器清洗、管路维修等。锁定对象通常为截止阀、蝶阀或球阀，以防止误操作导致冷却水泄漏或系统压力波动。",,0,,,
+38,E-COOLER-COMP-002,L3,S21 Caterpillar Cooling Systems Application and Installation Guide,"中央冷却器选型要求
+Types of Cooling Systems There is a myriad of different types of cooling systems. No one system is correct for every location, size and application of Cat engine. It is important to work with our experienced engineers and/or the local dealer when designing the best cooling system for each application. This section discusses some of the more common types of cooling systems. There are two basic types of cooling systems, open and closed. Open System Open systems include cooling towers (without heat exchanger), spray ponds and bodies of water. Open systems are not recommended. In the ope",75%(%) | 25%(%),2,,,
+39,E-SYS-CORR-001,L3,S21 Caterpillar Cooling Systems Application and Installation Guide,"冷却水连接关系
+cooler systems require the installation of strainers between the cooler and the pump inlet. Material, such as weld slag and corrosion products, must be removed from the system to prevent wear and plugging of cooling system components. Use a continuous bypass filter to remove smaller particles and sediment.
+整理说明：该证据针对 main_engine_cooling_water_system 的 corrosion_protection / installation / material 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。
+可支撑：冷却水系统布置应考虑来源文件提出的安装
+操作或维护可达性原则。
+具体施工空间
+支架
+接口和验收要求仍应由项目安装规范确认。
+不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。
+2. 不能替代船厂施工规范、管系布置标准或安装验",,0,,,
+40,E-COOLANT-WATER-016,L3,S09 MAN Energy Solutions SL2014-584 Cooling Water System,"冷却液污染与沉积风险
+have introduced a modified design of the cooling jacket on the cylinder cover in order to improve cooling water circu - lation. In order to do so, the previous radial cooling water inlet has been changed to a more “tangential” inlet in order to create a forced water rotation and hereby pull out more of the foreign particles from the cooling water space and preventing deposits and creating a more uniform cooling of the entire circumference of the cylinder cover. The men - tioned inlets are marked in blue in Figs. 3 and 4. Fig. 3: Previous design Fig. 4: New design Slim design cylinde",,0,,,
+41,E-DRAFT-EXPANS-LEVELCO-003,L3,KB_DRAFT_v1,"膨胀水箱液位控制验证方法
+在系泊试验中，通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",,0,,,
+42,E-DRAFT-FILTER-REDUNDAN-002,L3,KB_DRAFT_v1,"切换方式与操作要求
+The switching method for redundant filters is often manual or automatic. For manual systems, a handle-operated three-way valve diverts flow to the standby filter while the clogged one is isolated for cleaning. Automatic systems use motorized valves controlled by a PLC based on differential pressure or timer. The changeover must be smooth to avoid pressure surges; a slow-closing valve or equalizing line is sometimes installed. This ensures compliance with MAN/WinGD guidelines for cooling water system reliability.",,0,,,
+43,E-HT-DRAW-008,L3,S36 MAN L23/30H GenSet Project Guide,"高温冷却水系统组成
+The high temperature cooling water is used for the cooling of cylinder liners and cylinder heads. An engine outlet temperature of 80°C ensures a perfect combustion in the entire load area when running on Heavy Fuel Oil (HFO), i.e. this tempera- ture limits the thermal loads in the high-load area, and hot corrosion in the combustion area is avoi- ded. In the low-load area, the temperature is sufficiently high to secure a perfect combustion and at the same time cold corrosion is avoided; the latter is also the reason why the engine, in stand-by position and when starting on HFO, should",80°C(°C) | >=60°C(°C),2,,,
+44,E-DRAFT-CONTRO-REDUNDAN-003,L3,KB_DRAFT_v1,"验证方法
+Redundancy verification includes a simulated failure test: while the system is running, the primary PLC is deliberately disconnected or its power is cut. The standby PLC must assume control within the specified time, and all process variables must remain within normal operating ranges. Additionally, a 'return-to-primary' test after fault recovery should confirm that the system can switch back automatically or manually without process disturbance.",,0,,,
+45,E-EXP-WATER-003,L3,S07 Scania Marine Cooling System Issue 8,"膨胀水箱作用
+Expansion tank 5. Coolant level monitor 6. Bleed pipe from highest point of cooling coil 7. Cooling coil 8. Coolant return pipe to engine 9. Static line pipe 10. Outlet from thermostat housing to coolant pipes 11. Bypass pipe
+整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。
+可支撑：expansion_tank 的 water_quality
+monitoring
+function 参数应依据来源文件
+厂家技术数据或项目计算文件确定。
+若原文给出明确限值
+可作为对应适用对象和工况下的参数约束。
+不能支撑：1. 不能直接给出可用于设计输入的具体数值。
+2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。
+3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。",,0,,,
+46,E-ALARM-ALARM-006,L3,S06 Scania DI16 船用发动机车主手册（中文）,"冷却液温度95°C扭矩降低保护
+冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度超过 95°C，且激活了扭矩降低功能，则警告灯和诊断指 示灯将点亮，而燃油量将降至 70%。
+整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。
+可支撑：冷却水温度
+压力
+液位或传感器异常应按厂家或规则要求设置报警
+降负荷或停机保护。
+报警阈值和保护动作应受具体厂家
+机型和控制系统配置约束。
+不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。
+3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。",95(°C) | 105(°C) | >95(°C) | 70(%),4,,,
+47,E-DRAIN-INSP-001,L3,S51 NASA NTRS 19800002357 Piping Specification,"水管路最低点放水和最高点排气要求
+Install manual drain valves at every low point of water piping systems and a manual air vent at every high point. S52 BN-G-Y015 Piping Systems Inspection and Testing
+整理说明：该证据针对 drain_point 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。
+可支撑：冷却水系统布置应考虑来源文件提出的安装
+操作或维护可达性原则。
+具体施工空间
+支架
+接口和验收要求仍应由项目安装规范确认。
+不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。
+2. 不能替代船厂施工规范、管系布置标准或安装验收程序。
+3. 不能直接支撑冷却水温度、压力和流量参数限值。",,0,,,
+48,E-DRAFT-ALARM-REDUNDAN-001,L3,KB_DRAFT_v1,"冗余配置与切换条件
+Alarm system redundancy typically adopts a 1+1 or N+1 architecture. For critical parameters (e.g., lube oil pressure, cooling water temperature), dual sensors are installed with independent power supplies and signal paths. Automatic switchover occurs when the primary sensor fails (e.g., signal out of range, short circuit, or open circuit) or during scheduled maintenance. The switchover logic is usually hardwired in the PLC or safety system, with a manual override for testing. The changeover time should be less than 1 second to avoid false alarms or loss of protection.",<1 second(second),1,,,
+49,E-PUMP-PRESS-004,L3,S21 Caterpillar Cooling Systems Application and Installation Guide,"冷却水温度与压力参数
+tower, the coolant temperature can only be maintained down to about 5.6°C (10°F) above the wet-bulb temperature. There are two types of cooling towers. • Open-Type • Closed-loop-Type or Evaporative Cooler Open Cooling Tower In open cooling systems using cooling towers, the engine cooling water is sprayed directly into the tower and is subjected to the inherent concentration of water contaminants of this system. Unless special provisions are made, such as a cleanable aftercooler and corrosion resistant plumbing, the use of an open cooling system is not recommended for Cat engines. Cl",5.6°C(°C) | 10°F(°F),2,,,
+50,E-SYS-PRESS-012,L3,"S29 Caterpillar, Know Your Cooling System","冷却水温度与压力参数
+60 cfm) at a pressure of 350 kPa (50 psi) to clean the core. Hold the air nozzle approximately 6 mm (1/4 "") from the fins. Slowly move the air nozzle from the top of the core to the bottom of the core in order to clean the debris from between the vertically positioned tubes in the radiator core. The debris in a radiator core on machines equipped with a blower fan is thicker and packed more tightly than the debris in a radiator core on machines equipped with a suction fan. If necessary, use a light bulb behind the radiator core to see if it is completely clean. Use the air to check f","60 cfm(cfm) | 350 kPa(kPa) | 50 psi(psi) | 6 mm(mm) | 1/4 ""(in)",5,,,

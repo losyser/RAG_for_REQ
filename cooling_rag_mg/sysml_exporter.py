@@ -16,6 +16,7 @@ Typical usage::
 """
 from __future__ import annotations
 
+import io
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
@@ -252,3 +253,83 @@ def export_batch(
         sid = safe_text(rs.get("requirement_set_id")) or "RS-unknown"
         paths.append(export_requirement_set(rs, out_dir / f"{sid}.xml"))
     return paths
+
+
+def export_payload_bytes(payload: dict[str, Any]) -> bytes:
+    """Serialize the full UI engineering payload to a single SysML XML document.
+
+    Args:
+        payload: Dict with key ``requirement_sets`` (list of requirement set dicts),
+                 as produced by ``generate_engineering_requirements()``.
+
+    Returns:
+        UTF-8 encoded bytes of the combined XML document, suitable for a
+        Streamlit ``st.download_button`` call.
+    """
+    req_sets: list[dict[str, Any]] = payload.get("requirement_sets") or []
+
+    root = ET.Element("RequirementPackage")
+    root.set("generatedAt", datetime.now().isoformat(timespec="seconds"))
+    root.set("count", str(len(req_sets)))
+
+    for rs in req_sets:
+        rs_el = ET.SubElement(root, "RequirementSet")
+        rs_el.set("setId",               safe_text(rs.get("requirement_set_id")))
+        rs_el.set("sourceRequirementId", safe_text(rs.get("source_requirement_id")))
+        rs_el.set("stakeholder",         safe_text(rs.get("stakeholder")))
+        rs_el.set("generationBasis",     safe_text(rs.get("generation_basis", "")))
+
+        summary = safe_text(rs.get("professional_summary"))
+        if summary:
+            _sub(rs_el, "ProfessionalSummary", summary)
+
+        assumptions: list[str] = rs.get("assumptions") or []
+        if assumptions:
+            asmp_el = _sub(rs_el, "Assumptions")
+            for a in assumptions:
+                _sub(asmp_el, "Assumption", safe_text(a))
+
+        all_reqs: list[dict[str, Any]] = rs.get("engineering_requirements") or []
+        top_level = [r for r in all_reqs if r.get("level", 1) == 1]
+        reqs_el = _sub(rs_el, "EngineeringRequirements", count=str(len(all_reqs)))
+        for req in top_level:
+            _requirement_to_xml(req, reqs_el, all_reqs)
+
+        relationships: list[dict[str, Any]] = rs.get("relationships") or []
+        if relationships:
+            rels_el = _sub(rs_el, _sysml("Relationships"))
+            for rel in relationships:
+                rel_el = _sub(rels_el, "Relationship",
+                              source=safe_text(rel.get("source")),
+                              target=safe_text(rel.get("target")),
+                              type=safe_text(rel.get("type")))
+                desc = safe_text(rel.get("description"))
+                if desc:
+                    rel_el.text = desc
+
+        gaps: list[dict[str, Any]] = rs.get("evidence_gaps") or []
+        if gaps:
+            gaps_el = _sub(rs_el, "EvidenceGaps", count=str(len(gaps)))
+            for gap in gaps:
+                gap_el = _sub(gaps_el, "Gap",
+                              relatedRequirementId=safe_text(gap.get("related_requirement_id")),
+                              gapType=safe_text(gap.get("gap_type")))
+                _sub(gap_el, "Description", safe_text(gap.get("description")))
+                suggested = safe_text(gap.get("suggested_document_update"))
+                if suggested:
+                    _sub(gap_el, "SuggestedDocumentUpdate", suggested)
+
+        items: list[dict[str, Any]] = rs.get("confirmation_items") or []
+        if items:
+            conf_el = _sub(rs_el, "ConfirmationItems")
+            for item in items:
+                ci_el = _sub(conf_el, "Item")
+                _sub(ci_el, "Statement", safe_text(item.get("item")))
+                reason = safe_text(item.get("reason"))
+                if reason:
+                    _sub(ci_el, "Reason", reason)
+
+    ET.indent(root, space="  ")
+    buf = io.BytesIO()
+    ET.ElementTree(root).write(buf, encoding="utf-8", xml_declaration=True)
+    return buf.getvalue()

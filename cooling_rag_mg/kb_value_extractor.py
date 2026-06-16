@@ -18,6 +18,46 @@ _EXTRACT_PROMPT = (
 )
 
 
+def _parse_values_response(raw: str) -> list[dict] | None:
+    """尝试从 LLM 响应中提取 values 列表；失败返回 None。"""
+    import json, re
+    if not raw:
+        return None
+    # 剥 markdown 围栏
+    text = re.sub(r"^\s*```(?:json)?\s*|\s*```\s*$", "", raw.strip(), flags=re.IGNORECASE)
+    # 尝试标准 {"values": [...]} 格式
+    try:
+        obj = json.loads(text)
+        if isinstance(obj, dict):
+            v = obj.get("values", [])
+            return v if isinstance(v, list) else []
+        if isinstance(obj, list):
+            return obj  # LLM 直接返回列表
+    except Exception:
+        pass
+    # 退路：抽取第一个 [...] 块
+    start = text.find("[")
+    if start >= 0:
+        depth = 0
+        for i in range(start, len(text)):
+            if text[i] == "[":
+                depth += 1
+            elif text[i] == "]":
+                depth -= 1
+                if depth == 0:
+                    try:
+                        obj = json.loads(text[start:i + 1])
+                        return obj if isinstance(obj, list) else []
+                    except Exception:
+                        break
+    # 退路：抽取第一个 {...} 块（兼容旧格式）
+    data = loads_lenient(raw)
+    if data:
+        v = data.get("values", [])
+        return v if isinstance(v, list) else []
+    return None
+
+
 def extract_values_from_evidence(text: str, client, model: str) -> list[dict]:
     """从单条 evidence unit 文本提取量化参数值列表。无文本或出错返回空列表。"""
     if not text or not text.strip():
@@ -25,15 +65,25 @@ def extract_values_from_evidence(text: str, client, model: str) -> list[dict]:
     try:
         resp = client.chat.completions.create(
             model=model,
-            messages=[{"role": "user", "content": _EXTRACT_PROMPT.format(text=text[:800])}],
+            messages=[{"role": "user", "content": _EXTRACT_PROMPT.format(text=text[:1200])}],
             temperature=0,
-            max_tokens=400,
+            max_tokens=600,
+            response_format={"type": "json_object"},
         )
-        data = loads_lenient(resp.choices[0].message.content)
-        if not data and resp.choices[0].message.content.strip():
+        raw = resp.choices[0].message.content
+        values = _parse_values_response(raw)
+        if values is None:
+            # 最后兜底：尝试把整个响应当JSON解析
+            try:
+                import json
+                obj = json.loads(raw.strip())
+                if isinstance(obj, list):
+                    return [v for v in obj if isinstance(v, dict)]
+            except Exception:
+                pass
             _log.warning("extract_values_from_evidence: failed to parse LLM response")
-        values = data.get("values", [])
-        return values if isinstance(values, list) else []
+            return []
+        return [v for v in values if isinstance(v, dict)]
     except Exception as exc:
         _log.warning("extract_values_from_evidence failed: %s", exc)
         return []

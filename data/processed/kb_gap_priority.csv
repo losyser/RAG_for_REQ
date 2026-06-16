@@ -1,0 +1,184 @@
+﻿component,component_zh,intent,intent_zh,demand,in_kb,requiring_reqs
+control_system,自动控制系统（PLC / 集控）,control_logic,自动控制逻辑（启停、调节、联锁）,21,True,OR003|OR005|OR007|OR011|OR013|OR014|OR022|OR023|OR025|OR026|OR028|OR037|OR043|OR045|OR048|OR050|OR052|OR055|OR056|OR058|OR060
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,system_description,系统功能描述、工作原理、系统边界,21,True,OR002|OR006|OR011|OR013|OR017|OR018|OR020|OR021|OR022|OR023|OR025|OR028|OR029|OR040|OR042|OR048|OR055|OR056|OR057|OR059|OR060
+alarm_system,报警与保护系统,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,10,True,OR005|OR007|OR016|OR019|OR024|OR027|OR032|OR036|OR050|OR053
+control_system,自动控制系统（PLC / 集控）,fail_safe,故障安全状态（失电 / 失信号后的默认位置）,9,True,OR003|OR010|OR013|OR036|OR043|OR048|OR050|OR058|OR060
+pipe,冷却水管路,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,9,True,OR004|OR015|OR020|OR029|OR044|OR049|OR051|OR057|OR059
+cooling_water_pump,冷却水泵（含海水泵）,auto_start,备用设备自动启动逻辑与条件,8,False,OR003|OR023|OR026|OR031|OR036|OR037|OR043|OR056
+alarm_system,报警与保护系统,alarm_response,报警处置程序（操作员响应、自动联锁动作）,7,True,OR011|OR019|OR024|OR032|OR037|OR050|OR058
+cooling_water_pump,冷却水泵（含海水泵）,redundancy,冗余配置（一用一备、切换条件、切换方式）,7,True,OR003|OR008|OR020|OR031|OR036|OR037|OR043
+cooling_water_pump,冷却水泵（含海水泵）,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,6,True,OR014|OR020|OR023|OR026|OR029|OR056
+temperature_sensor,温度传感器 / 温度计,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,6,True,OR005|OR013|OR016|OR028|OR032|OR050
+expansion_tank,膨胀水箱 / 高位水箱,level_control,,5,False,OR001|OR034|OR039|OR041|OR047
+filter,过滤器 / 滤网,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,5,False,OR012|OR021|OR024|OR027|OR054
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,5,True,OR004|OR015|OR044|OR051|OR057
+pressure_sensor,压力传感器 / 压力表,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,4,False,OR005|OR016|OR019|OR050
+filter,过滤器 / 滤网,cleaning,清洗方式与周期（机械清洗、化学清洗）,4,True,OR012|OR024|OR027|OR054
+temperature_sensor,温度传感器 / 温度计,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,4,True,OR005|OR028|OR038|OR045
+anode,牺牲阳极（锌块 / 铝块）,replacement_cycle,更换周期（介质更换、阳极更换等）,3,False,OR002|OR040|OR042
+control_system,自动控制系统（PLC / 集控）,interface,与其他系统或设备的接口要求,3,False,OR005|OR017|OR026
+expansion_tank,膨胀水箱 / 高位水箱,makeup_water,,3,False,OR001|OR034|OR041
+filter,过滤器 / 滤网,pressure_drop,,3,False,OR012|OR020|OR021
+expansion_tank,膨胀水箱 / 高位水箱,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,3,True,OR001|OR007|OR034
+alarm_system,报警与保护系统,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,2,False,OR030|OR038
+alarm_system,报警与保护系统,redundancy,冗余配置（一用一备、切换条件、切换方式）,2,False,OR008|OR016
+anode,牺牲阳极（锌块 / 铝块）,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,2,False,OR035|OR042
+control_system,自动控制系统（PLC / 集控）,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,2,False,OR038|OR053
+control_system,自动控制系统（PLC / 集控）,redundancy,冗余配置（一用一备、切换条件、切换方式）,2,False,OR008|OR052
+flow_meter,流量计,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,2,False,OR005|OR050
+flow_meter,流量计,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,2,False,OR005|OR045
+level_sensor,液位传感器 / 液位计,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,2,False,OR016|OR050
+pipe,冷却水管路,pipe_support,管路支架间距、固定方式、减振要求,2,False,OR049|OR059
+pipe_support,管路支架 / 吊架,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,2,False,OR049|OR059
+pipe_support,管路支架 / 吊架,vibration_isolation,,2,False,OR049|OR059
+pressure_sensor,压力传感器 / 压力表,calibration,仪表校验（校验方法、周期、允许误差）,2,False,OR046|OR053
+temperature_sensor,温度传感器 / 温度计,calibration,仪表校验（校验方法、周期、允许误差）,2,False,OR046|OR053
+temperature_sensor,温度传感器 / 温度计,redundancy,冗余配置（一用一备、切换条件、切换方式）,2,False,OR016|OR052
+alarm_system,报警与保护系统,trip_setpoint,停机保护定值（超温、失压、失流等触发停机的阈值）,2,True,OR005|OR058
+anode,牺牲阳极（锌块 / 铝块）,inspection,检查项目与周期（外观、性能、完整性检查）,2,True,OR002|OR042
+anode,牺牲阳极（锌块 / 铝块）,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,2,True,OR035|OR042
+anode,牺牲阳极（锌块 / 铝块）,material,材料选择（牌号、标准、兼容性要求）,2,True,OR040|OR042
+control_system,自动控制系统（PLC / 集控）,manual_override,手动操控要求（就地操作、手动旁通）,2,True,OR010|OR048
+expansion_tank,膨胀水箱 / 高位水箱,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,2,True,OR039|OR047
+pipe,冷却水管路,corrosion_protection,防腐处理（涂层、电化学保护、材料防腐措施）,2,True,OR009|OR035
+pressure_sensor,压力传感器 / 压力表,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,2,True,OR005|OR045
+temperature_control_valve,温控阀 / 温度调节阀,control_logic,自动控制逻辑（启停、调节、联锁）,2,True,OR022|OR025
+temperature_control_valve,温控阀 / 温度调节阀,set_point,调节设定值（温度设定、开启点、全开点）,2,True,OR022|OR025
+alarm_system,报警与保护系统,test_procedure,功能试验程序（调试前、调试中、验收试验）,1,False,OR046
+cooler,冷却器 / 热交换器,pressure_drop,,1,False,OR020
+filter,过滤器 / 滤网,inspection,检查项目与周期（外观、性能、完整性检查）,1,False,OR030
+filter,过滤器 / 滤网,maintenance,维护保养程序（定期维护、易损件更换）,1,False,OR030
+filter,过滤器 / 滤网,redundancy,冗余配置（一用一备、切换条件、切换方式）,1,False,OR008
+flow_meter,流量计,calibration,仪表校验（校验方法、周期、允许误差）,1,False,OR046
+pipe,冷却水管路,labeling,色标（ISO 14726）、流向标识、铭牌,1,False,OR004
+pipe,冷却水管路,vent_drain,排气点与放水点的设置位置、数量、阀门要求,1,False,OR018
+pipe,冷却水管路,wall_thickness,壁厚 / 强度等级,1,False,OR020
+pressure_sensor,压力传感器 / 压力表,trip_setpoint,停机保护定值（超温、失压、失流等触发停机的阈值）,1,False,OR005
+sea_chest,海水箱（金水箱）,redundancy,冗余配置（一用一备、切换条件、切换方式）,1,False,OR008
+sea_water,海水（冷却侧介质）,corrosion_protection,防腐处理（涂层、电化学保护、材料防腐措施）,1,False,OR040
+temperature_sensor,温度传感器 / 温度计,trip_setpoint,停机保护定值（超温、失压、失流等触发停机的阈值）,1,False,OR005
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,lockout,,1,False,OR051
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,antifreeze,防冻剂（乙二醇比例、冰点要求）,1,True,OR055
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,initial_fill,首次充注程序（冲洗、加药、排气）,1,True,OR055
+cooler,冷却器 / 热交换器,cleaning,清洗方式与周期（机械清洗、化学清洗）,1,True,OR033
+cooler,冷却器 / 热交换器,corrosion_protection,防腐处理（涂层、电化学保护、材料防腐措施）,1,True,OR035
+cooler,冷却器 / 热交换器,inspection,检查项目与周期（外观、性能、完整性检查）,1,True,OR033
+cooler,冷却器 / 热交换器,maintenance,维护保养程序（定期维护、易损件更换）,1,True,OR033
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,1,True,OR006
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,interface,与其他系统或设备的接口要求,1,True,OR017
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,test_procedure,功能试验程序（调试前、调试中、验收试验）,1,True,OR060
+expansion_tank,膨胀水箱 / 高位水箱,control_logic,自动控制逻辑（启停、调节、联锁）,1,True,OR007
+expansion_tank,膨胀水箱 / 高位水箱,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,1,True,OR039
+pipe,冷却水管路,inspection,检查项目与周期（外观、性能、完整性检查）,1,True,OR009
+pipe,冷却水管路,material,材料选择（牌号、标准、兼容性要求）,1,True,OR009
+pipe,冷却水管路,pressure_rating,设计压力等级（PN 等级、管路类别）,1,True,OR020
+sea_water,海水（冷却侧介质）,water_quality,水质指标（pH、硬度、电导率、氯离子、含氧量等）,1,True,OR021
+temperature_control_valve,温控阀 / 温度调节阀,redundancy,冗余配置（一用一备、切换条件、切换方式）,1,True,OR008
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,drain,,1,True,OR018
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,maintenance,维护保养程序（定期维护、易损件更换）,1,True,OR044
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,1,True,OR020
+alarm_system,报警与保护系统,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+control_system,自动控制系统（PLC / 集控）,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,replacement_cycle,更换周期（介质更换、阳极更换等）,0,False,
+cooler,冷却器 / 热交换器,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+cooler,冷却器 / 热交换器,spare_parts,备品备件清单与最低储量要求,0,False,
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,spare_parts,备品备件清单与最低储量要求,0,False,
+cooling_water_pump,冷却水泵（含海水泵）,material,材料选择（牌号、标准、兼容性要求）,0,False,
+cooling_water_pump,冷却水泵（含海水泵）,pressure_test,水压试验（试验压力倍数、保压时间、合格判据）,0,False,
+cooling_water_pump,冷却水泵（含海水泵）,spare_parts,备品备件清单与最低储量要求,0,False,
+expansion_tank,膨胀水箱 / 高位水箱,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+expansion_tank,膨胀水箱 / 高位水箱,corrosion_protection,防腐处理（涂层、电化学保护、材料防腐措施）,0,False,
+expansion_tank,膨胀水箱 / 高位水箱,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,0,False,
+expansion_tank,膨胀水箱 / 高位水箱,material,材料选择（牌号、标准、兼容性要求）,0,False,
+expansion_tank,膨胀水箱 / 高位水箱,trip_setpoint,停机保护定值（超温、失压、失流等触发停机的阈值）,0,False,
+filter,过滤器 / 滤网,bypass,旁通阀配置与旁通逻辑,0,False,
+flow_meter,流量计,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,False,
+insulation,隔热保温材料及护套,hot_surface_warning,高温表面警示标识（ISO 11684）,0,False,
+insulation,隔热保温材料及护套,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,False,
+level_sensor,液位传感器 / 液位计,calibration,仪表校验（校验方法、周期、允许误差）,0,False,
+level_sensor,液位传感器 / 液位计,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,False,
+level_sensor,液位传感器 / 液位计,trip_setpoint,停机保护定值（超温、失压、失流等触发停机的阈值）,0,False,
+pipe,冷却水管路,cathodic_protection,阴极保护（牺牲阳极布置、连接方式、电气隔离）,0,False,
+pipe,冷却水管路,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,0,False,
+pipe,冷却水管路,hot_surface_warning,高温表面警示标识（ISO 11684）,0,False,
+pipe,冷却水管路,thermal_insulation,隔热保温材料、厚度、护套施工,0,False,
+pipe,冷却水管路,welding,焊接工艺（WPS/WPQR）、焊工资质、无损检测比例,0,False,
+pipe_fitting,管件（弯头、三通、异径管、法兰等）,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+pipe_fitting,管件（弯头、三通、异径管、法兰等）,material,材料选择（牌号、标准、兼容性要求）,0,False,
+pipe_fitting,管件（弯头、三通、异径管、法兰等）,pressure_rating,设计压力等级（PN 等级、管路类别）,0,False,
+pipe_fitting,管件（弯头、三通、异径管、法兰等）,welding,焊接工艺（WPS/WPQR）、焊工资质、无损检测比例,0,False,
+pipe_support,管路支架 / 吊架,material,材料选择（牌号、标准、兼容性要求）,0,False,
+pipe_support,管路支架 / 吊架,spacing,,0,False,
+pressure_sensor,压力传感器 / 压力表,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+pressure_sensor,压力传感器 / 压力表,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,False,
+sea_chest,海水箱（金水箱）,cathodic_protection,阴极保护（牺牲阳极布置、连接方式、电气隔离）,0,False,
+sea_chest,海水箱（金水箱）,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+sea_chest,海水箱（金水箱）,corrosion_protection,防腐处理（涂层、电化学保护、材料防腐措施）,0,False,
+sea_chest,海水箱（金水箱）,inspection,检查项目与周期（外观、性能、完整性检查）,0,False,
+sea_chest,海水箱（金水箱）,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,False,
+sea_chest,海水箱（金水箱）,material,材料选择（牌号、标准、兼容性要求）,0,False,
+sea_chest,海水箱（金水箱）,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,0,False,
+sea_water,海水（冷却侧介质）,biofouling,防海生物附着（防污涂料、机械清除）,0,False,
+sea_water,海水（冷却侧介质）,cathodic_protection,阴极保护（牺牲阳极布置、连接方式、电气隔离）,0,False,
+temperature_control_valve,温控阀 / 温度调节阀,bypass,旁通阀配置与旁通逻辑,0,False,
+temperature_control_valve,温控阀 / 温度调节阀,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+temperature_control_valve,温控阀 / 温度调节阀,fail_safe,故障安全状态（失电 / 失信号后的默认位置）,0,False,
+temperature_control_valve,温控阀 / 温度调节阀,inspection,检查项目与周期（外观、性能、完整性检查）,0,False,
+temperature_control_valve,温控阀 / 温度调节阀,maintenance,维护保养程序（定期维护、易损件更换）,0,False,
+temperature_control_valve,温控阀 / 温度调节阀,material,材料选择（牌号、标准、兼容性要求）,0,False,
+temperature_sensor,温度传感器 / 温度计,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,class_approval,船级社审批 / 认可 / 检验要求,0,False,
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,material,材料选择（牌号、标准、兼容性要求）,0,False,
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,position_indicator,,0,False,
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,type,,0,False,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,compatibility,介质与管材 / 设备材料的兼容性限制,0,True,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,corrosion_inhibitor,缓蚀剂种类、浓度范围、补加方法,0,True,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,environmental_protection,废液处置（乙二醇含量、排放标准）,0,True,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,inspection,检查项目与周期（外观、性能、完整性检查）,0,True,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,sampling,取样检测方法、频率、送检要求,0,True,
+coolant,淡水冷却液（含缓蚀剂、防冻剂）,water_quality,水质指标（pH、硬度、电导率、氯离子、含氧量等）,0,True,
+cooler,冷却器 / 热交换器,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,0,True,
+cooler,冷却器 / 热交换器,bypass,旁通阀配置与旁通逻辑,0,True,
+cooler,冷却器 / 热交换器,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,0,True,
+cooler,冷却器 / 热交换器,drawing_requirement,图纸提交要求（系统图、布置图、单线图提交节点）,0,True,
+cooler,冷却器 / 热交换器,fouling,,0,True,
+cooler,冷却器 / 热交换器,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,True,
+cooler,冷却器 / 热交换器,interface,与其他系统或设备的接口要求,0,True,
+cooler,冷却器 / 热交换器,material,材料选择（牌号、标准、兼容性要求）,0,True,
+cooler,冷却器 / 热交换器,pressure_test,水压试验（试验压力倍数、保压时间、合格判据）,0,True,
+cooler,冷却器 / 热交换器,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,0,True,
+cooling_system,冷却水系统（系统级，不能归入具体部件时使用）,drawing_requirement,图纸提交要求（系统图、布置图、单线图提交节点）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,alarm_setpoint,报警定值（高温、低压、低液位、高压差等）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,class_approval,船级社审批 / 认可 / 检验要求,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,corrosion_protection,防腐处理（涂层、电化学保护、材料防腐措施）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,documentation,文件要求（厂家说明书、图纸、计算书、备件目录）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,inspection,检查项目与周期（外观、性能、完整性检查）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,maintenance,维护保养程序（定期维护、易损件更换）,0,True,
+cooling_water_pump,冷却水泵（含海水泵）,trip_setpoint,停机保护定值（超温、失压、失流等触发停机的阈值）,0,True,
+expansion_tank,膨胀水箱 / 高位水箱,capacity,,0,True,
+expansion_tank,膨胀水箱 / 高位水箱,drawing_requirement,图纸提交要求（系统图、布置图、单线图提交节点）,0,True,
+expansion_tank,膨胀水箱 / 高位水箱,inspection,检查项目与周期（外观、性能、完整性检查）,0,True,
+expansion_tank,膨胀水箱 / 高位水箱,maintenance,维护保养程序（定期维护、易损件更换）,0,True,
+expansion_tank,膨胀水箱 / 高位水箱,pressure,,0,True,
+expansion_tank,膨胀水箱 / 高位水箱,venting,,0,True,
+filter,过滤器 / 滤网,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,True,
+filter,过滤器 / 滤网,material,材料选择（牌号、标准、兼容性要求）,0,True,
+filter,过滤器 / 滤网,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,0,True,
+insulation,隔热保温材料及护套,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,0,True,
+insulation,隔热保温材料及护套,thickness,,0,True,
+level_sensor,液位传感器 / 液位计,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,0,True,
+pipe,冷却水管路,class_approval,船级社审批 / 认可 / 检验要求,0,True,
+pipe,冷却水管路,cleaning,清洗方式与周期（机械清洗、化学清洗）,0,True,
+pipe,冷却水管路,connection_type,连接方式（焊接、法兰、螺纹、卡压等）,0,True,
+pipe,冷却水管路,drawing_requirement,图纸提交要求（系统图、布置图、单线图提交节点）,0,True,
+pipe,冷却水管路,pressure_test,水压试验（试验压力倍数、保压时间、合格判据）,0,True,
+sea_water,海水（冷却侧介质）,cleaning,清洗方式与周期（机械清洗、化学清洗）,0,True,
+sea_water,海水（冷却侧介质）,material,材料选择（牌号、标准、兼容性要求）,0,True,
+temperature_control_valve,温控阀 / 温度调节阀,drawing_requirement,图纸提交要求（系统图、布置图、单线图提交节点）,0,True,
+temperature_control_valve,温控阀 / 温度调节阀,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,True,
+temperature_control_valve,温控阀 / 温度调节阀,specification,额定参数（容量、流量、扬程、功率、换热量、压力等级等）,0,True,
+temperature_sensor,温度传感器 / 温度计,installation,安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）,0,True,
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,drawing_requirement,图纸提交要求（系统图、布置图、单线图提交节点）,0,True,
+valve,阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）,inspection,检查项目与周期（外观、性能、完整性检查）,0,True,

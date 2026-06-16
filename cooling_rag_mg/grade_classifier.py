@@ -20,7 +20,8 @@ def classify_grade(measurable_criterion: str, evidence_citations: list[dict]) ->
     C：{{TBD}} 占位符 或 无数值（定性表述）
     X：有数值 + 无任何引用
     """
-    mc = measurable_criterion or ""
+    # 鲁棒处理：部分 LLM 可能把 measurable_criterion 返回为数字/None 而非字符串。
+    mc = "" if measurable_criterion is None else str(measurable_criterion)
 
     if _TBD_PATTERN.search(mc):
         return "C"
@@ -31,14 +32,21 @@ def classify_grade(measurable_criterion: str, evidence_citations: list[dict]) ->
     if not evidence_citations:
         return "X"
 
+    # 仅采信结构化（dict）引用：含 tier/has_clause 才计为有效引用。
+    # isinstance 守卫避免某些 LLM 把引用返回为字符串时崩溃；非 dict 引用
+    # 不在此处采信——跨模型时由带 KB 校验的独立重分级处理（见论文跨模型小节）。
     has_l1_clause = any(
-        c.get("tier") == "L1" and c.get("has_clause", False)
+        isinstance(c, dict) and c.get("tier") == "L1" and c.get("has_clause", False)
         for c in evidence_citations
     )
-
     if has_l1_clause:
         return "A"
-    if any(c.get("tier") in ("L1", "L2", "L3") for c in evidence_citations):
+
+    has_citation = any(
+        isinstance(c, dict) and c.get("tier") in ("L1", "L2", "L3")
+        for c in evidence_citations
+    )
+    if has_citation:
         return "B"
     return "X"
 

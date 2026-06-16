@@ -1,5 +1,10 @@
 """
-Stage 2.5+3+4 RAG v4：复用 v3 检索结果，生成结构化 shall，分类 Grade。
+Stage 2.5+3+4 RAG v4：复用 v3 检索结果中的 evidence_ids（v3 agent 归因），
+生成结构化 shall，分类 Grade。
+
+输入：data/search_results/exp_v3/rag_v3_results.json
+      data/processed/evidence_units_v2.jsonl
+      data/processed/original_requirements_v2.jsonl
 输出：data/search_results/exp_v4/rag_v4_results.json
 """
 from __future__ import annotations
@@ -13,11 +18,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from cooling_rag_mg.config import DeepSeekConfig
+from cooling_rag_mg.grade_classifier import classify_result_set
 from cooling_rag_mg.kb_value_extractor import annotate_evidence_units
 from cooling_rag_mg.structured_req_generator import generate_structured_shalls
-from cooling_rag_mg.grade_classifier import classify_result_set
 
-V3_RAG  = ROOT / "data/search_results/exp_v3/rag_v3_results.json"
+V3_RAG   = ROOT / "data/search_results/exp_v3/rag_v3_results.json"
 EU_JSONL = ROOT / "data/processed/evidence_units_v2.jsonl"
 OR_JSONL = ROOT / "data/processed/original_requirements_v2.jsonl"
 OUT_DIR  = ROOT / "data/search_results/exp_v4"
@@ -34,7 +39,6 @@ def load_eu_index(path: Path) -> dict[str, dict]:
 
 
 def load_or_map(path: Path) -> dict[str, str]:
-    """Returns {requirement_id: requirement_text}."""
     result = {}
     with open(path, encoding="utf-8") as f:
         for line in f:
@@ -48,14 +52,14 @@ def main():
     client = cfg.make_client()
     model = cfg.model
 
-    print(f"Loading v3 RAG results from {V3_RAG}")
+    print(f"加载 v3 RAG 结果（{V3_RAG.name}）...")
     with open(V3_RAG, encoding="utf-8") as f:
         v3 = json.load(f)
 
-    print(f"Loading evidence unit index ({EU_JSONL.name})")
+    print(f"加载证据单元索引（{EU_JSONL.name}）...")
     eu_idx = load_eu_index(EU_JSONL)
 
-    print(f"Loading original requirements ({OR_JSONL.name})")
+    print(f"加载原始需求文本（{OR_JSONL.name}）...")
     or_map = load_or_map(OR_JSONL)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -68,18 +72,18 @@ def main():
         source_req_text = or_map.get(or_id, or_id)
         print(f"[{i+1:02d}/{n_total}] {or_id}", end=" ", flush=True)
 
-        # Collect evidence units for this source requirement
+        # 收集 v3 agent 归因的证据单元（每条 shall 引用的 KB evidence_ids 并集）
         all_eids: set[str] = set()
         for er in rs.get("engineering_requirements", []):
             all_eids.update(er.get("evidence_ids", []))
         evidence_units = [eu_idx[eid] for eid in all_eids if eid in eu_idx]
 
-        # Stage 2.5: value extraction
+        # Stage 2.5：值提取标注
         annotated = annotate_evidence_units(evidence_units, client, model)
         n_with_values = sum(1 for eu in annotated if eu["_has_quantitative"])
         print(f"evidence={len(annotated)} with_values={n_with_values}", end=" ", flush=True)
 
-        # Stage 3: structured generation
+        # Stage 3：结构化 shall 生成
         new_shalls = generate_structured_shalls(
             source_requirement=source_req_text,
             annotated_evidence=annotated,
@@ -88,7 +92,7 @@ def main():
         )
         print(f"shalls={len(new_shalls)}", end=" ", flush=True)
 
-        # Stage 4: Grade classification
+        # Stage 4：Grade 分类
         new_rs = {
             "source_requirement_id": or_id,
             "stakeholder": stakeholder,
@@ -107,8 +111,8 @@ def main():
     output = {"arm": "rag-v4", "result_sets": output_result_sets}
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    print(f"\nSaved to {OUT_FILE}")
-    print(f"Total shalls: {sum(len(rs['engineering_requirements']) for rs in output_result_sets)}")
+    print(f"\n已保存到 {OUT_FILE}")
+    print(f"总 shall 数: {sum(len(rs['engineering_requirements']) for rs in output_result_sets)}")
 
 
 if __name__ == "__main__":

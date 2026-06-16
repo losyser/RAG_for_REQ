@@ -1,0 +1,1050 @@
+[
+  {
+    "requirement_id": "OR002",
+    "requirement_text": "冷却系统最好有一定备用能力，泵或者某个关键设备出问题时，不要马上导致主机冷却中断。",
+    "stakeholder": "船东",
+    "layer": "A",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动。",
+      "每台冷却水泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力。",
+      "冷却水系统应设置高温报警，报警值应不超过主机制造商规定的最高允许温度。",
+      "当冷却水温度超过允许值时，系统应能自动减速或停机保护。",
+      "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "备用冷却水泵应能自动启动，当主泵故障或出口压力低于设定值时，备用泵应在3-5秒内自动启动并建立正常压力。",
+      "自动启动逻辑中应设定压力开关或变送器的动作值，一般取正常压力的70%-80%作为低限报警值，60%-70%作为备用泵启动值，并设置1-2秒延时。",
+      "冷却水系统应设计为在单台泵故障时，备用泵自动投入，确保主机冷却水循环不中断。"
+    ],
+    "shalls_b": [
+      "主机冷却水系统应配置两台100%容量的冷却水泵（一台运行，一台备用），当运行泵故障时，备用泵应在10秒内自动启动并投入运行，确保冷却水流量不中断。",
+      "冷却水系统应配置一台备用冷却器（或冗余冷却回路），其冷却能力不低于主冷却器的100%，当主冷却器故障或需清洗时，可通过切换阀组在5分钟内将冷却水切换至备用冷却器，保证主机冷却水温度在允许范围内。",
+      "冷却水系统应设置自动旁通或应急冷却回路，当主循环泵或冷却器同时失效时，可通过应急海水泵或消防泵提供临时冷却水，维持主机最低冷却需求（如缸套水温度不超过70°C）至少30分钟。",
+      "冷却水系统应配备独立的温度、压力和流量监测仪表，并设置报警和自动保护逻辑，当检测到冷却水流量低于额定值的80%或温度超过设定值时，触发声光报警，并在延时10秒后自动启动备用设备或执行降负荷程序。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "B",
+      "actionability": "tie",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T13:55:56.993903"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR040",
+    "requirement_text": "报警设定和延时不要太随意，既不能太迟，也不能因为误报警频繁影响运行。",
+    "stakeholder": "安全负责人",
+    "layer": "A",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "主机冷却水系统的高温报警设定值应基于主机设计最高允许温度减去5°C（需校核主机规格书），且不低于85°C（需校核），延时设定为3秒（可调范围1-5秒）。",
+      "主机冷却水系统的低温报警设定值应基于主机设计最低允许温度加上5°C（需校核主机规格书），且不低于50°C（需校核），延时设定为5秒（可调范围3-10秒）。",
+      "主机冷却水系统的压力报警设定值应基于主机设计最低允许压力加上0.1 bar（需校核主机规格书），且不低于1.0 bar（需校核），延时设定为2秒（可调范围1-3秒）。",
+      "所有报警延时应在系统调试期间根据实际运行工况进行优化，确保避免因瞬时波动导致的误报警，同时保证在持续异常时及时报警。"
+    ],
+    "shalls_b": [
+      "主推进发动机高温冷却水出口温度应设置高温报警，报警设定值不得超过发动机制造商允许的最高冷却水温度。",
+      "高温报警应设置延时，延时时间应避免因瞬时波动导致误报警，同时确保在持续超温时及时触发。",
+      "冷却水温度报警应具有两级阈值：较低级别报警阈值（如95°C）和较高级别报警阈值（如105°C），具体值按发动机制造商规定。",
+      "报警触发后，应在温度恢复到低于报警阈值并持续稳定一段时间（如2秒）后自动重置报警。",
+      "冷却系统应设置高温报警装置，并能在持续有人值班的控制站发出声光报警。",
+      "对于无人机舱（UMS），高温冷却水出口温度应连续监测并报警，报警设定值应满足IACS UR E10要求。",
+      "冷却水温度控制系统应能通过自动调节温控阀，在全负荷范围内将冷却水温度维持在制造商规定的限值内。",
+      "报警设定值和延时参数应依据发动机制造商的技术数据或相关规则条款确定，不得随意设置。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "B",
+      "traceability": "tie",
+      "completeness": "B",
+      "actionability": "A",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:02:43.746055"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR001",
+    "requirement_text": "主机冷却水系统平时要稳定一点，不能因为温度、压力或者流量波动就影响推进设备正常运行。",
+    "stakeholder": "船东",
+    "layer": "A",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "主机冷却水系统在正常工况下，冷却水温度波动范围应控制在±2°C以内，压力波动范围应控制在±0.05 MPa以内，流量波动范围应控制在±5%以内，以确保推进设备稳定运行。",
+      "主机冷却水系统应配备自动调节装置（如温控阀、压力调节阀），在负荷变化时自动调整冷却水参数，响应时间不超过30秒，以抑制波动。",
+      "主机冷却水系统应设置冗余泵组（一用一备），当主泵故障时，备用泵应在10秒内自动启动并投入运行，确保冷却水流量不中断。",
+      "主机冷却水系统应安装高精度传感器（温度精度±0.5°C，压力精度±0.01 MPa，流量精度±1%），并定期校准（每6个月一次），确保监测数据准确。",
+      "主机冷却水系统应设置报警和联锁保护，当冷却水温度超过60°C、压力低于0.1 MPa或流量低于额定值80%时，触发声光报警，并在持续10秒后自动降负荷或停机（需校核主机厂限值）。",
+      "主机冷却水系统应设计缓冲容积（如膨胀水箱），其容积至少为系统总容积的10%，以吸收热胀冷缩引起的压力波动。"
+    ],
+    "shalls_b": [
+      "The HT cooling water system shall maintain engine jacket water inlet temperature within 70–85°C under steady-state conditions.",
+      "The HT cooling water system shall be designed to maintain cooling water temperatures at the engine inlet within the limits specified by the engine manufacturer.",
+      "Each engine in a multi-engine HT cooling water system shall be provided with an individual HT temperature control valve.",
+      "The HT cooling water system shall include a temperature control valve to regulate coolant temperature.",
+      "The HT cooling water system shall be capable of maintaining temperature within required limits under varying load conditions.",
+      "The HT cooling water system shall be designed to prevent excessive temperature fluctuations that could affect propulsion equipment operation.",
+      "The HT cooling water system shall maintain cooling water pressure within limits specified by the engine manufacturer to ensure stable flow.",
+      "The HT cooling water system shall be designed to provide adequate flow rate to maintain stable engine cooling."
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "B",
+      "completeness": "A",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:04:38.668096"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR032",
+    "requirement_text": "低供水、低压力或者泵故障时，系统要能给出明确报警，必要时支持人工或自动切换。",
+    "stakeholder": "自动化工程师",
+    "layer": "A",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "系统应设置低供水压力报警，当冷却水供水压力低于设定阈值（如0.15 MPa，需根据系统设计校核）时，触发声光报警。",
+      "系统应设置低冷却水流量报警，当冷却水流量低于设计流量的80%（需校核）时，触发声光报警。",
+      "系统应设置冷却水泵故障报警，当主冷却水泵或备用泵发生电气或机械故障（如电机过载、断路器跳闸、泵轴卡阻）时，触发声光报警。",
+      "系统应具备自动切换功能，当主冷却水泵故障或供水压力/流量低于设定阈值时，自动启动备用泵并关闭主泵，切换时间不超过10秒。",
+      "系统应提供手动切换功能，允许操作人员在控制面板上手动选择主泵或备用泵运行，手动切换应优先于自动切换。",
+      "所有报警信号应传送至机舱集控室和驾驶室，并记录在报警日志中，报警历史数据应保存至少30天。"
+    ],
+    "shalls_b": [
+      "系统应设置冷却水低压报警，报警设定值按正常压力的70%-80%确定，并设置1-2秒延时以避免误报。",
+      "系统应设置冷却水高温报警，报警值应不超过主机制造商规定的最高允许温度。",
+      "当冷却水压力低于预设值时，备用冷却水泵应自动启动，启动压力设定值为正常压力的60%-70%，并设置1-2秒延时。",
+      "备用泵自动启动后，若出口压力未恢复至正常范围，应触发报警并闭锁后续自动启动尝试。",
+      "系统应配置至少两台冷却水泵，其中至少一台为独立电力驱动，且每台泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力。",
+      "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "当冷却水温度超过允许值时，系统应能自动减速或停机保护。",
+      "备用冷却水泵的自动启动应在主泵故障停机或出口压力低于设定值时触发，并在3-5秒内启动并建立正常压力。",
+      "备用泵自动启动功能应在系泊试验或航行试验中通过模拟主泵故障（如切断主泵电源或关闭出口阀）进行验证，从主泵停止到备用泵启动并达到额定压力的时间应不超过10秒。",
+      "系统应设置冷却水高温报警，报警值应不超过主机制造商规定的最高允许温度。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "A",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:07:57.689534"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR036",
+    "requirement_text": "冷却水高温、低压、低液位和流量不足这类情况要能及时报警，不能等主机已经过热才发现。",
+    "stakeholder": "安全负责人",
+    "layer": "A",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "主推进发动机冷却水出口温度应连续监测，并设置高温报警，报警设定值不得超过发动机制造商允许的最高冷却水温度。",
+      "主推进发动机冷却水系统应设置低压报警，报警设定值应基于发动机制造商建议和船级社规范，通常高于最低允许压力0.1-0.2 bar以防止气蚀。",
+      "主推进发动机冷却水膨胀水箱应设置低液位报警，报警设定值通常为正常液位的10%-15%，以防止空气进入冷却水泵。",
+      "主推进发动机冷却水系统应设置流量不足报警，报警设定值应基于发动机制造商推荐的最小流量，以防止冷却不足。",
+      "冷却水系统报警应在持续有人值班的控制站提供声光指示，以指示任何冷却系统故障。",
+      "对于关键系统，应安装冗余压力传感器，其独立报警设定值偏差不应超过量程的5%，并采用更保守的设定值触发报警。"
+    ],
+    "shalls_b": [
+      "冷却水高温报警系统应在冷却水出口温度达到设定阈值时触发报警，设定阈值应低于主机允许的最高工作温度，通常为85°C（需根据主机型号校核），报警响应时间不超过2秒。",
+      "冷却水低压报警系统应在冷却水压力低于设定阈值时触发报警，设定阈值通常为0.15 MPa（需根据系统设计校核），报警响应时间不超过2秒。",
+      "冷却水低液位报警系统应在膨胀水箱液位低于设定阈值时触发报警，设定阈值通常为膨胀水箱总容积的20%（需根据系统设计校核），报警响应时间不超过2秒。",
+      "冷却水流量不足报警系统应在冷却水流量低于设定阈值时触发报警，设定阈值通常为设计流量的80%（需根据主机要求校核），报警响应时间不超过2秒。",
+      "所有报警系统应具备自检功能，在系统启动时自动检测传感器和报警回路是否正常，并在故障时发出声光报警。",
+      "报警系统应具有延时功能，避免因瞬时波动导致误报警，延时时间设定为3秒（可调），但需确保在持续异常时及时报警。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "tie",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:09:36.288466"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR003",
+    "requirement_text": "冷却器和冷却水泵的容量要留得合理一些，不要刚好够用，后面海水温度高或者设备脏了就不够。",
+    "stakeholder": "船东",
+    "layer": "B",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "冷却器容量应留有裕量，以补偿海水温度升高和冷却表面脏污导致的性能下降。",
+      "冷却水泵容量应留有裕量，以补偿泵制造公差和系统长期运行后的性能下降。",
+      "冷却水泵的NPSH（净正吸入压头）应满足ISO 9906:2012的要求，确保泵在额定工况下不发生汽蚀。",
+      "冷却器（两侧）应进行液压试验，试验压力取1.5倍最大工作压力。",
+      "冷却系统应设计为在海水温度升高和冷却器脏污时，仍能维持冷却水温度在主机厂家规定的范围内。",
+      "冷却水泵的容量裕量应考虑泵制造公差，由泵制造商确认。"
+    ],
+    "shalls_b": [
+      "中央冷却器（板式或管壳式）的换热容量应在设计工况（主机额定功率、海水设计温度32℃、冷却水出口温度36℃）基础上留有至少15%的裕量，以应对海水温度升高（最高至38℃）及换热器污垢热阻增加（污垢系数按0.0002 m²·K/W计）的影响。",
+      "冷却水泵（中央冷却水泵或主海水泵）的流量应在主机额定工况所需冷却水流量基础上留有至少10%的裕量，扬程应满足管路阻力损失（含冷却器、阀门、管路）并留有10%的余量，同时泵的选型应确保在最高海水温度（38℃）和冷却器污堵工况下仍能提供足够流量。",
+      "冷却水系统应配置自动温度控制阀（三通或四通），在海水温度变化时调节旁通流量，确保主机冷却水进口温度稳定在设定值（通常为36±2℃），且控制阀的响应时间不超过30秒。",
+      "冷却水系统应设置备用冷却水泵（100%容量），当主泵故障时自动切换，切换时间不超过10秒，且备用泵的容量裕量要求与主泵相同。",
+      "冷却器应设计为可在线清洗（如板式冷却器可拆卸），并设置反冲洗或化学清洗接口，清洗周期建议不超过6个月，以维持换热效率。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:11:19.595828"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR004",
+    "requirement_text": "冷却水系统的主要报警要可靠，船员要能早点知道水温、水压或者液位不正常。",
+    "stakeholder": "船东",
+    "layer": "B",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "The main engine cooling water system shall provide local and remote alarms at a continuously manned location for high temperature, low pressure, and low level conditions.",
+      "The high temperature alarm setpoint for HT cooling water at engine outlet shall be set according to engine manufacturer's maximum permissible temperature, and shall not exceed that value.",
+      "The low pressure alarm setpoint for main engine cooling water shall be set based on manufacturer's recommendations and class society rules, typically 0.1-0.2 bar above the minimum allowable pressure to prevent cavitation.",
+      "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the tank's normal operating level to prevent air ingestion into the cooling water pump.",
+      "The high-level alarm setpoint for the cooling water expansion tank shall be set at 85-90% of the tank's normal operating level to avoid overflow.",
+      "During commissioning and periodic surveys, the alarm setpoints of pressure sensors shall be functionally tested by simulating the alarm condition and confirming that the alarm activates within ±2% of the setpoint.",
+      "During commissioning, the level sensor alarm setpoints shall be verified by manually adjusting the water level in the expansion tank and confirming the reading matches the setpoint within ±2% of the sensor range.",
+      "For critical systems, dual pressure sensors with independent alarm setpoints shall be installed; the alarm setpoint deviation between redundant sensors shall not exceed 5% of the operating range.",
+      "In case of failure of the cooling system, an alarm shall be given both locally and remotely at a continuously manned location, and the output current shall be reduced automatically.",
+      "The cooling water temperature control system shall maintain cooling water temperature within manufacturer's limits across the full engine load range through automatic modulation of the temperature control valve.",
+      "The cooling water system shall provide audible and visual alarms at a continually-manned control station to indicate any malfunction of the cooling systems.",
+      "The diesel engine cooling system shall be provided with a high temperature alarm device."
+    ],
+    "shalls_b": [
+      "冷却水系统应设置高温报警、低压报警和低液位报警，报警信号应可靠触发并传递至集控室和驾驶室。",
+      "冷却水系统应配备独立的温度、压力和液位传感器，传感器应具有冗余配置，确保单点故障不影响报警功能。",
+      "报警系统应具有自检功能，定期自动检测传感器和线路的完整性，并在检测到故障时发出系统故障报警。",
+      "报警设定值应可调，并具有防误操作保护，调整需通过授权密码或钥匙开关。",
+      "报警信号应具有延时功能，防止瞬时波动引起误报，延时时间应可调。",
+      "报警系统应记录所有报警事件，包括时间、参数值、报警类型，并支持历史查询。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "A",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:12:58.249227"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR005",
+    "requirement_text": "冷却水系统后期维护不要太复杂，像滤器、冷却器、泵和阀门这些地方要能方便处理。",
+    "stakeholder": "船东",
+    "layer": "B",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "冷却水系统滤器应设计为便于维护，粗滤器（网孔0.5-1 mm）的维护周期应为3-6个月，精滤器（网孔0.1-0.5 mm）的维护周期应为6-12个月，且每次维护时应更换垫片和O型圈。",
+      "滤器维护后应进行完整性验证，包括：在正常流量下检查压差（清洁元件应低于0.05 bar）、目视检查密封和旁通情况，对于自动滤器应执行手动反冲洗循环以确认机构操作正常。",
+      "冷却水系统滤器应设置压差监测，当压差超过0.1 bar（或制造商规定值，通常为0.05-0.15 bar）时，应触发滤芯清洗或更换。",
+      "冷却水系统应提供足够的拆卸空间，以便抽出中冷器元件、滑油冷却器、滑油滤器滤芯、滑油泵和水泵等部件。",
+      "冷却水系统应设置隔离阀，以便在维护热交换器、泵等设备时隔离相应部分，减少系统排空和停机时间。",
+      "冷却水系统应提供测量主要部件压差和温度差的接口，以支持状态监测和维护决策。",
+      "冷却水系统应设计为便于排放和加注冷却液，包括在系统最低点设置排放阀，并确保膨胀水箱加注口易于接近。",
+      "冷却水系统应配备加热器管路隔离阀，以便在夏季关闭，防止软管泄漏时冷却液流失。"
+    ],
+    "shalls_b": [
+      "冷却水系统应设计为所有滤器（包括海水滤器和淡水滤器）可在线清洗或更换，无需停机或拆卸管路，且滤器安装位置应留有至少500mm的维护空间。",
+      "冷却器（包括滑油冷却器、淡水冷却器等）应设计为可抽出式管束或可拆卸端盖结构，以便于机械清洗和检查，且冷却器安装位置应预留至少800mm的抽芯空间。",
+      "冷却水泵（包括主海水泵、主淡水泵等）应设计为可独立拆卸和更换，泵进出口应设置隔离阀，且泵周围应留有至少600mm的维修通道。",
+      "冷却水系统所有阀门（包括截止阀、止回阀、调节阀等）应布置在易于接近的位置，阀门手轮或执行机构距地面或平台高度不应超过1.6m，且阀门周围应留有至少300mm的操作空间。",
+      "冷却水系统应设置必要的放气阀、放水阀和取样阀，以便于系统排气、排水和水质监测，放气阀应位于系统最高点，放水阀位于最低点。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "tie",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:15:39.393314"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR006",
+    "requirement_text": "主机进出口冷却水温度和压力要按厂家技术资料来，不要按经验随便设。",
+    "stakeholder": "主机厂家",
+    "layer": "B",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "主机冷却水系统的进出口温度和压力设定值必须严格遵循主机厂家提供的技术资料（如操作手册、设计图纸、性能曲线等），不得依据操作人员经验或通用惯例进行调整。",
+      "主机冷却水系统应配置温度、压力传感器，其量程和精度应满足厂家技术资料中规定的监测要求，并定期校准。",
+      "在主机运行期间，冷却水进出口温度、压力应实时显示并记录，当偏离厂家技术资料规定的正常范围时，系统应发出声光报警。",
+      "冷却水系统的安全阀、膨胀水箱、温控阀等附件应按照厂家技术资料的要求选型、安装和调试，确保系统压力、温度在安全范围内。",
+      "主机冷却水系统初次调试及后续维护后，必须按照厂家技术资料规定的步骤进行参数设定和功能测试，并形成书面记录。"
+    ],
+    "shalls_b": [
+      "主机冷却水系统的高温冷却水温度传感器（如HT冷却水出口）的报警设定值应依据厂家技术资料设定，典型值为90°C。",
+      "主机冷却水系统的高温冷却水温度传感器（如缸套冷却水出口）的停机保护设定值应依据厂家技术资料设定，典型值为95°C，且应可调。",
+      "温度传感器的响应时间应不大于10秒，以确保快速停机保护。",
+      "停机保护设定值应至少低于最高允许温度5°C，以考虑传感器漂移和系统惯性。",
+      "用于停机保护的温度传感器应采用双冗余配置（如两个PT100元件），并安装在发动机出口。",
+      "温度传感器应每年校准一次，校准公差为±0.5°C。",
+      "停机逻辑应采用三取二（2-out-of-3）表决方式，以避免误停机。",
+      "冷却水压力传感器的低压力报警设定值应依据厂家技术资料设定，典型值为0.1-0.2 bar高于最低允许压力。",
+      "冷却水压力传感器的低压力停机设定值应依据厂家技术资料设定，典型值为0.5 bar。",
+      "压力传感器的报警设定值应在调试和定期检验时通过模拟报警条件进行功能测试，确认报警在设定值的±2%内激活。",
+      "压力传感器的停机设定值应在调试时通过逐渐降低冷却水压力进行验证，实际停机压力应在设计设定值的±2%内。",
+      "压力传感器的量程应选择使得停机设定值位于满量程的25%至75%之间，以确保精度。",
+      "压力传感器的响应时间应小于100毫秒。",
+      "对于关键系统，应安装双压力传感器，且报警设定值偏差不应超过量程的5%。",
+      "冷却水系统应配备电导率传感器，当电导率超过厂家规定值时，应在连续有人值守位置发出报警。",
+      "冷却水系统发生故障时，应在本地和远程连续有人值守位置发出报警，并自动降低输出电流。",
+      "主机冷却水系统的温度传感器（如HT冷却水出口、LT冷却水进口等）的安装位置和参数应按照厂家技术资料（如MAN Energy Solutions图纸）进行配置。",
+      "主机冷却水系统的压力传感器（如HT冷却水压力、LT冷却水压力等）的安装位置和参数应按照厂家技术资料（如MAN Energy Solutions图纸）进行配置。",
+      "冷却水系统应具备预加热功能，对于使用HFO启动的发动机和备用发动机必须进行预加热，使用MDO的发动机也建议预加热。",
+      "冷却水收集箱的尺寸和布置应能容纳缸套、涡轮增压器和喷嘴冷却系统的冷却水，以便排放。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "A",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:17:46.647224"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR007",
+    "requirement_text": "高温冷却水和低温冷却水的回路要分清楚，不能把不同服务对象混在一个模糊系统里。",
+    "stakeholder": "主机厂家",
+    "layer": "B",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "高温冷却水回路和低温冷却水回路应作为独立系统设计，不得共用管路或混合冷却介质。",
+      "高温冷却水回路应包含以下冷却对象：增压空气冷却器（低压和高压HT级）、缸套冷却器和涡轮增压器冷却。",
+      "低温冷却水回路应包含以下冷却对象：增压空气冷却器（低压和高压LT级）。",
+      "高温冷却水回路和低温冷却水回路的流量应根据发动机输出功率和转速确定，具体数值应依据发动机厂家技术数据。",
+      "高温冷却水回路和低温冷却水回路的热耗散量应根据发动机输出功率和转速确定，具体数值应依据发动机厂家技术数据。",
+      "高温冷却水回路应配备预热模块，用于主机启动前预热，预热功率和泵容量应依据厂家技术数据。",
+      "高温冷却水回路和低温冷却水回路的设计应满足船级社规范（如DNV）关于冷却水温度的要求，确保发动机入口温度在厂家规定范围内。",
+      "冷却水系统应使用乙二醇基冷却液，并考虑冰点和沸点安全裕度，具体比例和压力盖额定值应依据厂家推荐。"
+    ],
+    "shalls_b": [
+      "高温冷却水（HT）回路和低温冷却水（LT）回路应设计为完全独立的封闭循环系统，两回路之间不得有任何直接的水路连接，包括共用管路、阀门或膨胀水箱。",
+      "高温冷却水回路应仅服务于需要高温冷却的设备，包括但不限于：主发动机缸套、缸盖、涡轮增压器（若需高温冷却）、高温淡水冷却器（HT冷却器）等。",
+      "低温冷却水回路应仅服务于需要低温冷却的设备，包括但不限于：滑油冷却器、中冷器（空冷器）、齿轮箱油冷却器、轴系轴承、发电机、空调冷凝器、低温淡水冷却器（LT冷却器）等。",
+      "高温冷却水回路和低温冷却水回路应分别设置独立的膨胀水箱，且膨胀水箱的容积应满足系统水容积膨胀及补水需求，高温膨胀水箱容积不小于系统水容积的10%，低温膨胀水箱容积不小于系统水容积的10%。",
+      "高温冷却水回路和低温冷却水回路应分别设置独立的循环水泵，且水泵的流量和扬程应满足各自回路的设计要求，水泵选型需经校核。",
+      "高温冷却水回路和低温冷却水回路应分别设置独立的温度调节阀（如三通阀或温控阀），以维持各自回路出口温度在设计范围内。高温回路出口温度通常为80-95°C，低温回路出口温度通常为30-45°C（具体值需根据设备要求校核）。",
+      "高温冷却水回路和低温冷却水回路应分别设置独立的冷却器（如板式换热器或管壳式换热器），高温冷却器使用海水或低温淡水作为冷却介质，低温冷却器使用海水作为冷却介质。冷却器的换热面积应满足设计热负荷要求，并留有10%余量。",
+      "高温冷却水回路和低温冷却水回路应分别设置独立的压力监测、温度监测和流量监测仪表，并接入机舱监控系统。高温回路应设置高温报警和低压报警，低温回路应设置低温报警和低压报警。",
+      "高温冷却水回路和低温冷却水回路应分别设置独立的化学处理投药口和取样口，以便进行水质处理和水质监测。",
+      "高温冷却水回路和低温冷却水回路的所有管路、阀门、接头等部件应选用耐腐蚀材料，如铜镍合金、不锈钢或经防腐处理的钢材，且设计压力不低于0.6 MPa（需校核）。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "A",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:19:37.059386"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR008",
+    "requirement_text": "温度控制阀的设定值和安装位置要按主机要求核对，不然水温可能控制不到合适范围。",
+    "stakeholder": "主机厂家",
+    "layer": "C",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "The temperature control valve shall be installed as a mixing valve with a pressure loss of 0.3–0.6 bar and an actuator with low positioning speed for HT system or high positioning speed for LT system, and shall permit manual emergency adjustment.",
+      "The temperature sensor for the three-way mixing valve shall be installed in the supply pipe to stage 1 of the charge air cooler, at a distance of 10 to 15 times the pipe diameter from the valve.",
+      "The engine outlet water temperature shall be controlled to 100°C even under frequent load changes, with adjustable outlet temperature range between 90 and 100°C via inlet temperature control.",
+      "The thermostatic control valve shall be used to control the minimum temperature of the cooling circuit; maximum temperature control shall be achieved by correct sizing of radiator, heat exchanger, or similar device.",
+      "The temperature sensor for the thermostatic 3-way valve shall not be installed in a non-flow, low temperature piping location to avoid incorrect valve operation.",
+      "Temperature regulation in HT and LT systems shall be performed in the external system, where pumps and fresh water heat exchangers are located, and these components may be common for propulsion engine(s) and GenSets.",
+      "The cooling water system shall be arranged as a centralized or closed cooling water system, as the engine is designed for freshwater cooling only.",
+      "If a common LT temperature control valve is used for cooling external equipment (e.g., reduction gear or generator) via the engine-driven LT pump, the valve shall be installed in the external system instead of individual valves for each engine."
+    ],
+    "shalls_b": [
+      "主机冷却水系统温度控制阀的设定值（包括开启温度、关闭温度及比例带）必须与主机制造商提供的技术文件（如操作手册、系统设计图）中的规定值完全一致，偏差不得超过±1°C。",
+      "温度控制阀的安装位置必须严格按照主机制造商的要求执行，包括但不限于：阀体应安装在冷却水系统的回水管路上（通常为缸套水出口至冷却器之间），且阀体前后应留有至少5倍管径的直管段，以确保水流稳定和温度传感器准确感知水温。",
+      "温度控制阀的选型（包括通径、材质、耐压等级）必须与主机冷却水系统的设计参数（如最大流量、工作压力、水温范围）相匹配，且应通过主机制造商的认可。",
+      "温度控制阀的安装方向（如箭头指示流向）必须与冷却水实际流向一致，且阀体不得承受额外的管道应力（如通过支架或膨胀节补偿）。",
+      "温度控制阀的调试应在主机首次启动前完成，并记录实际动作温度与设定值的偏差，若偏差超出±1°C，应调整或更换阀体。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "B",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:21:59.637680"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR026",
+    "requirement_text": "集控室要能看到主要冷却水温度、压力、液位和泵运行状态，不要只靠机旁仪表。",
+    "stakeholder": "轮机长",
+    "layer": "C",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "集控室应设置中央监控系统，能够实时显示主机冷却水系统的主要参数，包括但不限于：缸套冷却水进/出口温度、缸套冷却水进/出口压力、中央冷却水进/出口温度、中央冷却水进/出口压力、膨胀水柜液位、各冷却水泵（缸套水泵、中央冷却水泵、备用泵）的运行状态（运行/停止/故障）。",
+      "集控室监控系统应具备参数越限报警功能，当冷却水温度、压力、液位超出预设范围时，在集控室发出声光报警。报警设定值应依据主机说明书和系统设计值确定，并可在集控室调整（需权限保护）。",
+      "集控室监控系统应能记录并存储主要冷却水参数的实时趋势和历史数据，历史数据存储时间不少于30天，并支持数据导出。",
+      "集控室监控系统应具备冷却水泵的远程启停控制功能，并设置控制权限，防止误操作。远程控制应优先于机旁控制（需设置机旁/遥控切换开关）。"
+    ],
+    "shalls_b": [
+      "The control system shall provide remote monitoring of main cooling water temperature, pressure, level, and pump running status in the continuously manned location (e.g., control room), with alarms for abnormal conditions.",
+      "Temperature sensor alarm setpoints for the main engine cooling water system shall be set based on manufacturer's recommendations and class society rules, and functionally tested during commissioning and periodic surveys to ensure activation within ±2% of the setpoint.",
+      "Pressure sensor alarm setpoints for the main engine cooling water system shall be set based on manufacturer's recommendations and class society rules; low pressure alarm setpoint typically 0.1-0.2 bar above minimum allowable pressure to prevent cavitation.",
+      "For critical cooling water systems, dual pressure sensors with independent alarm setpoints shall be installed; the alarm setpoint deviation between redundant sensors shall not exceed 5% of the operating range.",
+      "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the tank's normal operating level to prevent air ingestion into the cooling water pump; the high-level alarm setpoint shall be at 85-90% to avoid overflow.",
+      "The engine control system shall automatically start the cooling water pump if the cooling water pressure drops below a preset level when the engine is running, using a dedicated sensor on the engine.",
+      "If the main cooling water pump (HT) is engine driven, the preheater pump shall start when the engine stops and stop when the engine starts, controlled automatically by the engine control system.",
+      "All interface parameters (e.g., setpoints for pressure, temperature, flow) shall be documented in an interface control document (ICD); for Modbus RTU or CAN bus communication, baud rate, parity, and data format must match between PLC and connected devices.",
+      "The control system interface shall define clear trigger conditions for start/stop, load change, and alarm; the PLC shall receive a 4-20 mA analog signal from the cooling water temperature sensor; if temperature exceeds 95°C, the control system shall trigger an alarm.",
+      "During commissioning, each interface shall be verified by simulating sensor inputs and observing correct control response; for safety-critical interfaces (e.g., low cooling water pressure alarm), dual redundancy (two independent sensors) is required, and the control system must trigger alarm on either sensor."
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "A",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:23:21.434159"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR034",
+    "requirement_text": "温度控制阀相关信号和控制逻辑要能反映实际水温变化，不要出现控制滞后太明显的情况。",
+    "stakeholder": "自动化工程师",
+    "layer": "C",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "温度控制阀的传感器采样周期应不大于1秒，且控制逻辑的循环周期应不大于2秒，以确保水温变化能被及时反映。",
+      "温度控制阀的PID控制器参数（比例增益、积分时间、微分时间）应经过整定，使得在阶跃扰动下，水温超调量不超过设定值的5%，调节时间不超过30秒。",
+      "温度控制阀的执行机构（如电动或气动阀门）的响应时间（从接收到控制信号到阀门动作到位）应不大于5秒。",
+      "控制系统应具备前馈补偿功能，当检测到主机负荷变化（如转速或功率变化）时，提前调整温度控制阀开度，以减小水温波动。",
+      "温度控制阀的控制逻辑应包含防积分饱和措施，防止在阀门全开或全关时积分项持续累积导致控制滞后。",
+      "温度传感器应安装在冷却水管道中能代表平均水温的位置，且距离温度控制阀至少10倍管径，以避免湍流影响测量精度。"
+    ],
+    "shalls_b": [
+      "The temperature control valve shall be a motor-actuated three-way regulating valve with linear characteristic, installed as a mixing valve, to maintain LT cooling water at set point temperature (32°C standard).",
+      "The control logic shall use temperature sensors located in the flow path to reflect actual water temperature changes, avoiding control lag.",
+      "The thermostatic valve shall regulate cooling water flow based on engine load, directing appropriate amount to external system or recirculation.",
+      "For HT cooling water systems with multiple main engines, each engine shall have an individual HT temperature control valve.",
+      "The electronic water temperature control shall adjust cooling water inlet temperature to maintain engine outlet temperature between 90°C and 100°C, even during frequent load changes.",
+      "The temperature control valve shall be capable of maintaining minimum temperature of the cooling circuit; maximum temperature control shall be ensured by correct sizing of radiator/heat exchanger."
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "B",
+      "traceability": "B",
+      "completeness": "A",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:24:44.602476"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR039",
+    "requirement_text": "传感器异常不能被当成正常状态，系统要能提示测量信号可能有问题。",
+    "stakeholder": "安全负责人",
+    "layer": "C",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "The cooling water system shall provide a diagnostic alarm to indicate a potential sensor fault when a measurement signal deviates from expected behavior, such as a stuck or drifting sensor, to prevent false normal status indications.",
+      "For redundant pressure sensors, the system shall monitor the deviation between sensor readings and generate an alarm if the deviation exceeds 5% of the operating range, indicating a possible sensor fault.",
+      "The system shall perform functional testing of alarm setpoints for pressure, temperature, level, and flow sensors during commissioning and periodic surveys by simulating alarm conditions and confirming activation within ±2% of the setpoint.",
+      "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the normal operating level to prevent air ingestion into the cooling water pump.",
+      "The high-level alarm setpoint for the cooling water expansion tank shall be set at 85-90% of the normal operating level to avoid overflow.",
+      "The low flow alarm setpoint for main engine jacket cooling water shall be set at 60% of the rated flow as per MAN engine recommendations.",
+      "The low pressure alarm setpoint for main engine cooling water shall be set 0.1-0.2 bar above the minimum allowable pressure to prevent cavitation.",
+      "In case of cooling system failure, an alarm shall be given both locally and remotely at a continuously manned location, and the output current shall be reduced automatically."
+    ],
+    "shalls_b": [
+      "主机冷却水系统应具备传感器故障诊断功能，当传感器信号超出正常范围、信号跳变速率超过设定阈值或信号持续不变时，系统应判定为传感器异常，并发出报警。",
+      "系统应能区分传感器异常与真实过程异常，避免误报警；当传感器异常时，系统应自动切换至备用传感器或采用冗余信号进行逻辑判断，并提示操作员当前测量信号可能不可靠。",
+      "传感器异常报警应具有最高优先级，并在人机界面中以明显方式（如闪烁、颜色变化）显示，同时记录事件日志，包括异常发生时间、传感器编号、异常类型及处理措施。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "B",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:25:54.368248"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR050",
+    "requirement_text": "冷却器换热效果要结合运行温度数据判断，不要只在低负荷时认为正常。",
+    "stakeholder": "调试工程师",
+    "layer": "C",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "The main engine cooling water system shall be designed such that the heat exchanger performance is evaluated across the full load range, including high load conditions, using actual operating temperature data, and not solely at low load."
+    ],
+    "shalls_b": [
+      "冷却器的换热效果评估应结合运行温度数据，不得仅依据低负荷工况下的温度表现判定正常。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "tie",
+      "traceability": "tie",
+      "completeness": "A",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:26:39.442064"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR056",
+    "requirement_text": "安装完成后要检查阀门方向、管路连接、支架和仪表安装位置，不能只看外观。",
+    "stakeholder": "质量检验员",
+    "layer": "D",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "系统安装完成后，所有阀门的方向必须与设计图纸一致，确保介质流向正确，且阀门操作手柄位置便于操作和维护。",
+      "管路连接必须牢固，法兰螺栓扭矩符合规范，密封面无泄漏；管路支撑间距和类型符合设计要求，避免振动和应力集中。",
+      "所有支架（包括固定支架、滑动支架和导向支架）的安装位置、类型和焊接质量必须符合设计图纸和结构强度要求，确保管路热膨胀补偿有效。",
+      "仪表（温度计、压力表、流量计等）的安装位置必须符合设计图纸，且安装方向正确，便于读数；仪表根部阀和取压口位置正确，无堵塞或安装错误。",
+      "安装检查不能仅依赖外观目视，必须进行功能性验证，包括管路冲洗、压力试验和仪表校准，确保系统实际性能满足设计要求。"
+    ],
+    "shalls_b": [
+      "冷却水管路系统应在每个低点安装手动放水阀，在每个高点安装手动放气阀。",
+      "海水冷却系统应至少设置两个进水阀，一个位于船底，另一个位于船舷侧，且两阀应相互连接。",
+      "若使用电磁阀控制冷却水，电磁阀应安装在热交换器的上游，且热交换器的放水口应保持常开。",
+      "高温冷却水管路、阀门及设备应进行隔热，并按照SOLAS、ISO 14726等标准设置警告标识。",
+      "冷却水管路支架的安装间距应符合制造厂推荐或船级社规则，对于DN50-100的钢管，典型间距为3-4米，较小直径管路间距为1.5-2米。",
+      "对于存在热膨胀的冷却水管路，支架应允许轴向移动并限制横向位移，在设备连接处设置固定支架，其他位置使用滑动或弹簧吊架。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "A",
+      "completeness": "A",
+      "actionability": "A",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:30:44.200082"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR016",
+    "requirement_text": "冷却水管路布置要便于施工，焊接、安装、冲洗和压力试验都要留出操作条件。",
+    "stakeholder": "船厂",
+    "layer": "D",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "冷却水管路系统应在每个低点设置手动放水阀，在每个高点设置手动排气阀。",
+      "在试验和冲洗完成之前，不得安装妨碍充水、排气或排水的限流件或仪表。",
+      "所有设备和管路在压力试验前应彻底清除污垢、焊渣和施工碎屑。",
+      "冷却水系统使用清洗剂清洗后，必须多次冲洗，并在使用酸类清洗后中和系统，然后冲洗，最后重新加注冷却水。",
+      "冷却水管路、阀门和设备的高温部分应按SOLAS第II-2章、ISO 13702、IMO MSC/Circ.1321、ISO 14726管道颜色编码及DNV规则进行绝缘和警告标识。"
+    ],
+    "shalls_b": [
+      "冷却水管路布置应预留足够的施工空间，确保焊接、安装、冲洗和压力试验等操作可顺利进行。管路与船体结构、其他设备及管路的间距应不小于100mm，且关键操作区域（如法兰连接处、阀门、焊缝）周围应有至少500mm的净空，以便工具操作和人员通过。",
+      "冷却水管路应设置必要的冲洗口、排放口和压力试验接口，且接口位置应便于连接冲洗设备和压力泵。冲洗口直径应不小于DN50，排放口应位于管路最低点，压力试验接口应配备截止阀和标准压力表接头。",
+      "冷却水管路焊接接头应避开高应力区域和密集管束区，焊缝周围应留有至少150mm的清洁和检验空间。对于直径大于DN100的管路，焊缝应进行100%无损检测（如射线或超声波），且焊接工艺需经评定合格。",
+      "冷却水管路安装完成后，应进行管路冲洗，冲洗流速不低于1.5m/s，冲洗时间不少于30分钟，直至排出水质清洁无杂质。冲洗后应进行压力试验，试验压力为设计压力的1.5倍，保压时间不少于10分钟，无泄漏和永久变形。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "tie",
+      "traceability": "A",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:32:21.554604"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR010",
+    "requirement_text": "冷却液的水质、添加剂和防冻比例要符合厂家要求，否则容易出现腐蚀、沉积或者换热变差。",
+    "stakeholder": "主机厂家",
+    "layer": "D",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "主机冷却水系统使用的冷却液水质（包括pH值、氯离子含量、总硬度、电导率等指标）必须符合发动机制造商规定的技术标准，且添加剂（如防锈剂、抗泡剂）的种类和浓度应按制造商推荐配方添加，防冻液（如乙二醇）的混合比例应根据环境温度按制造商要求调整，以确保冷却液具有足够的防腐蚀、防沉积和换热性能。"
+    ],
+    "shalls_b": [
+      "冷却液应按照厂家规范添加防腐剂，防腐剂浓度不得低于MAN Diesel & Turbo规定的最低值。",
+      "冷却液的水质参数（如硬度、氯离子浓度、pH值）应控制在厂家规定的限值内，以防止腐蚀、沉积和换热变差。",
+      "冷却液应使用合适的容器存放，保持盖子盖紧，不得与其他液体或化学品混合。",
+      "若环境温度可能导致冷却液结冰，应添加防冻剂（如乙二醇），且防冻剂必须为纯乙二醇，不得与含亚硝酸盐的防腐剂同时使用。",
+      "冷却液应定期检查防腐剂浓度、水质参数和污染情况，并在每次大量更换或添加冷却液后立即检查。",
+      "冷却系统中不得使用镀锌铁管或锌牺牲阳极，以防止与冷却液添加剂发生不良反应。",
+      "若喷嘴冷却水因喷嘴故障被燃油污染，应设置排放至污油舱的管路。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "tie",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "A",
+      "note": "",
+      "updated_at": "2026-06-04T14:34:52.761602"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR027",
+    "requirement_text": "报警信息要能说明大概是哪一路出了问题，比如高温、低压、低液位或者泵故障。",
+    "stakeholder": "轮机长",
+    "layer": "D",
+    "system_a": "no_rag",
+    "system_b": "rag_v3",
+    "shalls_a": [
+      "主机冷却水系统应具备故障定位报警功能，能够区分并指示以下具体故障类型：冷却水高温、冷却水低压、膨胀水箱低液位、冷却水泵故障。"
+    ],
+    "shalls_b": [
+      "主机冷却水系统应设置高温报警，报警设定值应不超过发动机制造商允许的最高冷却水温度。",
+      "主机冷却水系统应设置低压报警，报警设定值应不低于发动机制造商允许的最低冷却水压力。",
+      "主机冷却水系统应设置低液位报警，报警设定值应不低于发动机制造商允许的最低冷却水液位。",
+      "主机冷却水系统应设置冷却水泵故障报警，当泵停止或压力不足时触发。",
+      "高温报警的复位条件应为温度降至设定值以下并持续至少2秒。",
+      "冷却水系统报警应在持续有人值守的控制站提供声光指示。"
+    ],
+    "expert1": {
+      "decomposition": "A",
+      "accuracy": "A",
+      "traceability": "B",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:36:38.636464"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  },
+  {
+    "requirement_id": "OR024",
+    "requirement_text": "膨胀水箱要确认容积、液位显示、低液位报警和补水接口，不能只看外形尺寸。",
+    "stakeholder": "设备采购方",
+    "layer": "D",
+    "system_a": "rag_v3",
+    "system_b": "no_rag",
+    "shalls_a": [
+      "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%~15%。",
+      "膨胀水箱应设置低液位报警，当液位低于设定低位时，在机舱集控站（室）显示并发出报警。",
+      "膨胀水箱应设置高液位报警，当液位高于设定高位时，触发高位报警并停止补水。",
+      "膨胀水箱的低液位报警设定值应为有效容积的20%，高液位报警设定值应为有效容积的80%。",
+      "膨胀水箱应设置补水接口，补水泵的流量应能在10~15分钟内将水箱从低位补至高位，扬程需克服系统背压。",
+      "膨胀水箱应设置液位显示装置。"
+    ],
+    "shalls_b": [
+      "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%，且至少满足系统因温度变化引起的膨胀量及补水量要求。",
+      "膨胀水箱应配备液位计，液位计应清晰显示正常液位范围、最低报警液位和最高液位，且液位计应便于观察和维护。",
+      "膨胀水箱应设置低液位报警装置，当液位降至设定低报警值时，应触发声光报警信号，并输出至机舱监控系统。",
+      "膨胀水箱应设有补水接口，接口应位于水箱顶部或侧面高位，并配备截止阀，补水水源应来自淡水舱或淡水压力柜，补水压力应满足水箱顶部压力要求。"
+    ],
+    "expert1": {
+      "decomposition": "B",
+      "accuracy": "B",
+      "traceability": "B",
+      "completeness": "B",
+      "actionability": "B",
+      "overall": "B",
+      "note": "",
+      "updated_at": "2026-06-04T14:38:05.247846"
+    },
+    "expert2": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    },
+    "final": {
+      "decomposition": "",
+      "accuracy": "",
+      "traceability": "",
+      "completeness": "",
+      "actionability": "",
+      "overall": "",
+      "note": ""
+    }
+  }
+]

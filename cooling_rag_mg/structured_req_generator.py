@@ -53,14 +53,26 @@ _NORAG_PROMPT = """你是船舶主机冷却水系统需求工程师，为 MBSE/S
 """
 
 
+_MAX_EVIDENCE_ITEMS = 12
+_EU_TEXT_LIMIT = 500
+
+
 def _build_evidence_block(annotated_evidence: list[dict]) -> str:
-    """将标注后的证据单元格式化为 prompt 中的证据块文本。"""
+    """将标注后的证据单元格式化为 prompt 中的证据块文本。
+
+    优先保留有量化参数的 EU；总数上限 _MAX_EVIDENCE_ITEMS，避免 prompt 过长。
+    """
+    # 有量化参数的排前面
+    with_vals  = [eu for eu in annotated_evidence if eu.get("_extracted_values")]
+    without_vals = [eu for eu in annotated_evidence if not eu.get("_extracted_values")]
+    ordered = (with_vals + without_vals)[:_MAX_EVIDENCE_ITEMS]
+
     lines = []
-    for eu in annotated_evidence:
-        eu_id = eu.get("id", "?")
-        tier = eu.get("kb_tier", "?")
+    for eu in ordered:
+        eu_id  = eu.get("id", "?")
+        tier   = eu.get("kb_tier", "?")
         source = eu.get("source_document", "?")
-        text = eu.get("text", "")[:300]
+        text   = eu.get("text", "")[:_EU_TEXT_LIMIT]
         lines.append(f"[{eu_id}] 层级:{tier} 来源:{source}")
         lines.append(f"  内容: {text}")
         values = eu.get("_extracted_values", [])
@@ -73,8 +85,39 @@ def _build_evidence_block(annotated_evidence: list[dict]) -> str:
 
 def _parse_shalls(raw: str) -> list[dict]:
     """从 LLM 响应中解析 shalls 列表。"""
-    data = loads_lenient(raw)
-    shalls = data.get("shalls", [])
+    import json, re
+    if not raw:
+        return []
+    text = re.sub(r"^\s*```(?:json)?\s*|\s*```\s*$", "", raw.strip(), flags=re.IGNORECASE)
+    # 标准格式 {"shalls": [...]}
+    try:
+        obj = json.loads(text)
+        if isinstance(obj, dict):
+            shalls = obj.get("shalls", [])
+        elif isinstance(obj, list):
+            shalls = obj
+        else:
+            shalls = []
+    except Exception:
+        # 退路：抽取第一个 [...] 块
+        shalls = []
+        start = text.find("[")
+        if start >= 0:
+            depth = 0
+            for i in range(start, len(text)):
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                    if depth == 0:
+                        try:
+                            shalls = json.loads(text[start:i + 1])
+                        except Exception:
+                            pass
+                        break
+        if not shalls:
+            data = loads_lenient(raw)
+            shalls = data.get("shalls", [])
     if not isinstance(shalls, list):
         return []
     filtered = [s for s in shalls if isinstance(s, dict) and "shall_statement" in s]
@@ -104,6 +147,7 @@ def generate_structured_shalls(
             messages=[{"role": "user", "content": prompt}],
             temperature=0,
             max_tokens=max_tokens,
+            response_format={"type": "json_object"},
         )
         return _parse_shalls(resp.choices[0].message.content)
     except Exception as exc:
@@ -125,6 +169,7 @@ def generate_norag_shalls(
             messages=[{"role": "user", "content": prompt}],
             temperature=0,
             max_tokens=max_tokens,
+            response_format={"type": "json_object"},
         )
         return _parse_shalls(resp.choices[0].message.content)
     except Exception as exc:

@@ -9,7 +9,11 @@ def test_parse_pairwise():
     from cooling_rag_mg.quality_judge import parse_pairwise
     raw = '{"completeness":"A","actionability":"B","consistency":"tie","verifiability":"A"}'
     d = parse_pairwise(raw)
-    assert d == {"completeness": "A", "actionability": "B", "consistency": "tie", "verifiability": "A"}
+    assert d["completeness"] == "A"
+    assert d["actionability"] == "B"
+    assert d["consistency"] == "tie"
+    assert d["verifiability"] == "A"
+    assert "groundedness" not in d
 
 
 def test_parse_pairwise_normalizes_illegal_to_tie():

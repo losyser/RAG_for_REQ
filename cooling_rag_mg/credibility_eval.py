@@ -13,12 +13,31 @@ _CLAIM_PROMPT = """从下面这条工程需求(shall)中抽取所有**原子事�
 不要抽取空泛的意图。只输出 JSON：{{"claims":["...", ...]}}
 工程需求：{shall}"""
 
+# OI prompt when evidence was retrieved (RAG arm) ─────────────────────────
 _OI_PROMPT = """你是船舶冷却水系统的需求审查专家。判断这条工程需求(shall)是否**过度推断**：
 即它是否添加了**原始需求与证据都未授权**的义务/约束（范围蔓延），而非忠实落实原始需求。
 注意：与事实对错无关，只看是否凭空扩大了范围/义务。
 
 原始需求：{source}
-证据：{evidence}
+证据（已检索到的支撑文本）：{evidence}
+工程需求(shall)：{shall}
+
+只输出 JSON：{{"over_inference": true 或 false}}"""
+
+# OI prompt when NO evidence was retrieved (no-RAG arm) ───────────────────
+# Without evidence, OI must be judged purely on whether the obligation exceeds
+# what a competent engineer would reasonably infer from the requirement alone.
+# Penalising normal engineering extrapolation (e.g. specifying a test method)
+# would be unfair; only flag genuine scope-creep obligations.
+_OI_PROMPT_NORAG = """你是船舶冷却水系统的需求审查专家。判断这条工程需求(shall)是否**过度推断**。
+
+本 shall 是在**没有检索证据**的条件下纯靠领域知识生成的。
+判断标准：该 shall 添加的义务/约束是否**超出了原始需求合理的工程解读范围**？
+- 若一个称职的工程师在无额外参考资料时，通常也会把这项要求纳入该类需求的工程落实中，则**不算**过度推断。
+- 只有当 shall 引入了原始需求完全未暗示、且无工程惯例支撑的全新义务时，才算过度推断。
+- 补充说明验证方法、给出合理的工程参数范围（即使无精确文件来源）、对原始需求作正常工程细化——均**不算**过度推断。
+
+原始需求：{source}
 工程需求(shall)：{shall}
 
 只输出 JSON：{{"over_inference": true 或 false}}"""
@@ -48,17 +67,29 @@ def judge_over_inference(
     client: Any,
     model: str,
     temperature: float = 0.0,
+    *,
+    arm: str = "rag",
 ) -> bool | None:
-    """判断 shall 是否过度推断（超出原始需求+证据授权范围加义务）。
+    """判断 shall 是否过度推断（超出原始需求授权范围增加义务）。
 
-    成功 → True/False；调用失败/空/不可解析 → None（从过推断率均值剔除，不向下偏置）。
-    与 H（事实对错）正交：OI 只看范围蔓延。"""
+    Parameters
+    ----------
+    kb_passages : 用于判断的证据文本列表。RAG 组传实际检索证据；no-RAG 组传 []。
+    arm         : "rag"（默认）使用含证据的 prompt；"no-rag" 使用去证据的公平 prompt，
+                  避免对纯领域知识生成的 shall 做结构性惩罚。
+
+    Returns True/False；不可解析 → None（从均值剔除，不向下偏置）。
+    """
     from cooling_rag_mg.llm_cache import cached_completion
+    if arm == "no-rag" or not kb_passages:
+        content_str = _OI_PROMPT_NORAG.format(source=source_requirement, shall=shall)
+    else:
+        content_str = _OI_PROMPT.format(
+            source=source_requirement, evidence="\n".join(kb_passages), shall=shall)
     try:
         resp = cached_completion(
             client, model=model,
-            messages=[{"role": "user", "content": _OI_PROMPT.format(
-                source=source_requirement, evidence="\n".join(kb_passages), shall=shall)}],
+            messages=[{"role": "user", "content": content_str}],
             temperature=temperature, max_tokens=50,
             response_format={"type": "json_object"},
         )

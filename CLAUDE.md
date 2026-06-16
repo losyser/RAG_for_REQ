@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 工作记录自动更新规则
+
+每次会话涉及以下任何变更时，**必须主动、及时**更新 `/home/yan/.claude/projects/-mnt-d-cooling-rag-multigranular/memory/` 下对应的记忆文件和 MEMORY.md 索引，无需等用户提醒：
+
+- 论文状态变化（投稿/拒稿/修改/题目更新）
+- 实验结果或数据更新
+- KB 内容变更
+- 项目方向或定位调整
+- 代码/脚本关键修改
+
+更新原则：**直接修改对应记忆文件**，不要新建冗余条目；如原记忆已过时，覆盖更新并在 MEMORY.md 同步修改摘要行。
+
 ## Commands
 
 All commands run from `cooling_rag_multigranular/` (the inner project directory that contains `requirements.txt`).

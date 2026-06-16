@@ -1,0 +1,1291 @@
+{
+  "h_hard": {
+    "rag_v3": {
+      "OR001": {
+        "n_claims": 31,
+        "h_hard": 0.0,
+        "h_soft": 0.967741935483871,
+        "oi_rate": 0.45161290322580644,
+        "verdict_dist": {
+          "not_found": 30,
+          "support": 1
+        }
+      },
+      "OR002": {
+        "n_claims": 14,
+        "h_hard": 0.0,
+        "h_soft": 1.0,
+        "oi_rate": 1.0,
+        "verdict_dist": {
+          "not_found": 14
+        }
+      },
+      "OR003": {
+        "n_claims": 22,
+        "h_hard": 0.0,
+        "h_soft": 0.8181818181818182,
+        "oi_rate": 0.9090909090909091,
+        "verdict_dist": {
+          "not_found": 18,
+          "support": 4
+        }
+      }
+    },
+    "no_rag": {
+      "OR001": {
+        "n_claims": 35,
+        "h_hard": 0.0,
+        "h_soft": 0.9428571428571428,
+        "oi_rate": 0.0,
+        "verdict_dist": {
+          "not_found": 33,
+          "support": 2
+        }
+      },
+      "OR002": {
+        "n_claims": 14,
+        "h_hard": 0.0,
+        "h_soft": 1.0,
+        "oi_rate": 0.0,
+        "verdict_dist": {
+          "not_found": 14
+        }
+      },
+      "OR003": {
+        "n_claims": 27,
+        "h_hard": 0.0,
+        "h_soft": 0.8888888888888888,
+        "oi_rate": 0.0,
+        "verdict_dist": {
+          "not_found": 24,
+          "support": 3
+        }
+      }
+    },
+    "wilcoxon": {},
+    "per_claim_rows": [
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置液位显示装置，直观显示当前液位。",
+        "claim": "膨胀水箱应设置液位显示装置",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置液位显示装置，直观显示当前液位。",
+        "claim": "液位显示装置应能直观显示当前液位",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应具备自动补水功能，当液位低于设定低位时自动启动补水泵补水，当液位高于设定高位时停止补水。",
+        "claim": "膨胀水箱应具备自动补水功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应具备自动补水功能，当液位低于设定低位时自动启动补水泵补水，当液位高于设定高位时停止补水。",
+        "claim": "当液位低于设定低位时自动启动补水泵补水",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应具备自动补水功能，当液位低于设定低位时自动启动补水泵补水，当液位高于设定高位时停止补水。",
+        "claim": "当液位高于设定高位时停止补水",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱液位低位报警应在机舱集控站（室）显示并发出极限报警。",
+        "claim": "膨胀水箱液位低位报警应在机舱集控站（室）显示",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱液位低位报警应在机舱集控站（室）显示并发出极限报警。",
+        "claim": "膨胀水箱液位低位报警应发出极限报警",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%~15%。",
+        "claim": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%~15%。",
+        "claim": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的15%",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "补水泵的流量应能在10~15分钟内将膨胀水箱从低位补至高位，扬程需克服系统背压。",
+        "claim": "补水泵流量应在10~15分钟内将膨胀水箱从低位补至高位",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "补水泵的流量应能在10~15分钟内将膨胀水箱从低位补至高位，扬程需克服系统背压。",
+        "claim": "补水泵扬程需克服系统背压",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱液位低位报警设定值应为水箱有效容积的20%，高位报警设定值应为80%。",
+        "claim": "膨胀水箱液位低位报警设定值应为水箱有效容积的20%",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱液位低位报警设定值应为水箱有效容积的20%，高位报警设定值应为80%。",
+        "claim": "膨胀水箱液位高位报警设定值应为水箱有效容积的80%",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱补水水质应满足pH 6.5-8.5、氯离子含量<50 ppm、总硬度<10 ppm的要求。",
+        "claim": "膨胀水箱补水水质pH值应在6.5-8.5范围内",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱补水水质应满足pH 6.5-8.5、氯离子含量<50 ppm、总硬度<10 ppm的要求。",
+        "claim": "膨胀水箱补水氯离子含量应小于50 ppm",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱补水水质应满足pH 6.5-8.5、氯离子含量<50 ppm、总硬度<10 ppm的要求。",
+        "claim": "膨胀水箱补水总硬度应小于10 ppm",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱补水流量应设计为冷却水系统主循环流量的1%~2%。",
+        "claim": "膨胀水箱补水流量应设计为冷却水系统主循环流量的1%~2%",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "在系泊试验中，应通过手动排水模拟低液位",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "验证低位报警功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "验证补水泵自动启动功能",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "通过持续补水至高位，验证高位报警功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "验证补水泵停止功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "检查液位开关的电气接线",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在系泊试验中，应通过手动排水模拟低液位，验证低位报警和补水泵自动启动功能；再通过持续补水至高位，验证高位报警和补水泵停止功能。同时检查液位开关的电气接线和报警信号传输至机舱监控系统（AMS）的准确性。",
+        "claim": "检查报警信号传输至机舱监控系统（AMS）的准确性",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置液位开关或浮球阀，用于自动补水控制。",
+        "claim": "膨胀水箱应设置液位开关或浮球阀",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置液位开关或浮球阀，用于自动补水控制。",
+        "claim": "液位开关或浮球阀用于自动补水控制",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱自动补水触发点应设定为水箱总高度的1/3，补水停止点应设定为2/3。",
+        "claim": "膨胀水箱自动补水触发点设定为水箱总高度的1/3",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱自动补水触发点应设定为水箱总高度的1/3，补水停止点应设定为2/3。",
+        "claim": "补水停止点设定为水箱总高度的2/3",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在调试或定期测试中，应通过模拟低液位（如将水箱排至报警设定点）验证补水阀自动打开并在规定时间内（如5分钟）将水箱补至正常液位。",
+        "claim": "模拟低液位（如将水箱排至报警设定点）",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在调试或定期测试中，应通过模拟低液位（如将水箱排至报警设定点）验证补水阀自动打开并在规定时间内（如5分钟）将水箱补至正常液位。",
+        "claim": "补水阀自动打开",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "在调试或定期测试中，应通过模拟低液位（如将水箱排至报警设定点）验证补水阀自动打开并在规定时间内（如5分钟）将水箱补至正常液位。",
+        "claim": "在规定时间内（如5分钟）将水箱补至正常液位",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应配备液位计，液位计应能直观显示液位，其量程应覆盖水箱有效容积的0%至100%，刻度清晰，便于操作人员从正常操作位置读取。",
+        "claim": "膨胀水箱应配备液位计",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应配备液位计，液位计应能直观显示液位，其量程应覆盖水箱有效容积的0%至100%，刻度清晰，便于操作人员从正常操作位置读取。",
+        "claim": "液位计应能直观显示液位",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应配备液位计，液位计应能直观显示液位，其量程应覆盖水箱有效容积的0%至100%，刻度清晰，便于操作人员从正常操作位置读取。",
+        "claim": "液位计量程应覆盖水箱有效容积的0%至100%",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应配备液位计，液位计应能直观显示液位，其量程应覆盖水箱有效容积的0%至100%，刻度清晰，便于操作人员从正常操作位置读取。",
+        "claim": "液位计刻度清晰",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应配备液位计，液位计应能直观显示液位，其量程应覆盖水箱有效容积的0%至100%，刻度清晰，便于操作人员从正常操作位置读取。",
+        "claim": "液位计便于操作人员从正常操作位置读取",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置自动补水系统，包括液位传感器、控制阀及补水水源接口。当液位降至设定低限（如水箱有效容积的30%）时，自动开启补水阀；当液位恢复至设定高限（如水箱有效容积的70%）时，自动关闭补水阀。",
+        "claim": "膨胀水箱应设置自动补水系统",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置自动补水系统，包括液位传感器、控制阀及补水水源接口。当液位降至设定低限（如水箱有效容积的30%）时，自动开启补水阀；当液位恢复至设定高限（如水箱有效容积的70%）时，自动关闭补水阀。",
+        "claim": "自动补水系统包括液位传感器、控制阀及补水水源接口",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置自动补水系统，包括液位传感器、控制阀及补水水源接口。当液位降至设定低限（如水箱有效容积的30%）时，自动开启补水阀；当液位恢复至设定高限（如水箱有效容积的70%）时，自动关闭补水阀。",
+        "claim": "当液位降至设定低限（水箱有效容积的30%）时，自动开启补水阀",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置自动补水系统，包括液位传感器、控制阀及补水水源接口。当液位降至设定低限（如水箱有效容积的30%）时，自动开启补水阀；当液位恢复至设定高限（如水箱有效容积的70%）时，自动关闭补水阀。",
+        "claim": "当液位恢复至设定高限（水箱有效容积的70%）时，自动关闭补水阀",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "自动补水系统应具备手动旁路功能，以便在自动系统故障时进行手动补水。手动旁路阀应标识清晰，操作方便。",
+        "claim": "自动补水系统应具备手动旁路功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "自动补水系统应具备手动旁路功能，以便在自动系统故障时进行手动补水。手动旁路阀应标识清晰，操作方便。",
+        "claim": "手动旁路功能用于在自动系统故障时进行手动补水",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "自动补水系统应具备手动旁路功能，以便在自动系统故障时进行手动补水。手动旁路阀应标识清晰，操作方便。",
+        "claim": "手动旁路阀应标识清晰",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "自动补水系统应具备手动旁路功能，以便在自动系统故障时进行手动补水。手动旁路阀应标识清晰，操作方便。",
+        "claim": "手动旁路阀应操作方便",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "膨胀水箱应设置低液位报警装置",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "低液位报警触发条件为液位降至低于设定低限",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "设定低限为水箱有效容积的20%",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "报警方式为声光报警",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "报警后自动启动备用补水措施",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "备用补水措施包括备用泵或手动补水提示",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱应设置低液位报警装置，当液位降至低于设定低限（如水箱有效容积的20%）时，发出声光报警，并自动启动备用补水措施（如备用泵或手动补水提示），防止主机冷却中断。",
+        "claim": "目的是防止主机冷却中断",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应具备防溢流功能，当液位达到高限（如水箱有效容积的90%）时，自动关闭补水阀并发出高液位报警，防止水箱溢流。",
+        "claim": "膨胀水箱的自动补水系统应具备防溢流功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应具备防溢流功能，当液位达到高限（如水箱有效容积的90%）时，自动关闭补水阀并发出高液位报警，防止水箱溢流。",
+        "claim": "当液位达到高限（水箱有效容积的90%）时，自动关闭补水阀",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应具备防溢流功能，当液位达到高限（如水箱有效容积的90%）时，自动关闭补水阀并发出高液位报警，防止水箱溢流。",
+        "claim": "当液位达到高限（水箱有效容积的90%）时，发出高液位报警",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应具备防溢流功能，当液位达到高限（如水箱有效容积的90%）时，自动关闭补水阀并发出高液位报警，防止水箱溢流。",
+        "claim": "防溢流功能用于防止水箱溢流",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位传感器应采用冗余配置（至少两个独立传感器），一个用于自动补水控制，另一个用于低液位报警，确保单一故障不会导致功能丧失。",
+        "claim": "膨胀水箱的液位传感器应采用冗余配置",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位传感器应采用冗余配置（至少两个独立传感器），一个用于自动补水控制，另一个用于低液位报警，确保单一故障不会导致功能丧失。",
+        "claim": "至少两个独立传感器",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位传感器应采用冗余配置（至少两个独立传感器），一个用于自动补水控制，另一个用于低液位报警，确保单一故障不会导致功能丧失。",
+        "claim": "一个传感器用于自动补水控制",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位传感器应采用冗余配置（至少两个独立传感器），一个用于自动补水控制，另一个用于低液位报警，确保单一故障不会导致功能丧失。",
+        "claim": "另一个传感器用于低液位报警",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位传感器应采用冗余配置（至少两个独立传感器），一个用于自动补水控制，另一个用于低液位报警，确保单一故障不会导致功能丧失。",
+        "claim": "确保单一故障不会导致功能丧失",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应能在主机运行期间持续工作，补水水源应来自主机冷却水系统的淡水膨胀管或专用淡水补给管路，水质符合主机冷却水要求。",
+        "claim": "膨胀水箱的自动补水系统应能在主机运行期间持续工作",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应能在主机运行期间持续工作，补水水源应来自主机冷却水系统的淡水膨胀管或专用淡水补给管路，水质符合主机冷却水要求。",
+        "claim": "补水水源应来自主机冷却水系统的淡水膨胀管或专用淡水补给管路",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的自动补水系统应能在主机运行期间持续工作，补水水源应来自主机冷却水系统的淡水膨胀管或专用淡水补给管路，水质符合主机冷却水要求。",
+        "claim": "水质符合主机冷却水要求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位显示和自动补水系统应通过船级社检验，满足相关规范要求（如CCS、DNV等），并提供型式认可证书。",
+        "claim": "膨胀水箱的液位显示和自动补水系统应通过船级社检验",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位显示和自动补水系统应通过船级社检验，满足相关规范要求（如CCS、DNV等），并提供型式认可证书。",
+        "claim": "膨胀水箱的液位显示和自动补水系统应满足相关规范要求（如CCS、DNV等）",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR001",
+        "shall_snippet": "膨胀水箱的液位显示和自动补水系统应通过船级社检验，满足相关规范要求（如CCS、DNV等），并提供型式认可证书。",
+        "claim": "膨胀水箱的液位显示和自动补水系统应提供型式认可证书",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The sacrificial anodes in the main engine fresh water cooling system shall be replaced every 12 to 24 months, based on w",
+        "claim": "sacrificial anodes in the main engine fresh water cooling system shall be replaced every 12 to 24 months",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The sacrificial anodes in the main engine fresh water cooling system shall be replaced every 12 to 24 months, based on w",
+        "claim": "replacement interval based on water quality and operating hours",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The sacrificial anodes in the main engine fresh water cooling system shall be replaced every 12 to 24 months, based on w",
+        "claim": "visual inspection confirming no more than 50% mass loss",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "After anode replacement, the cathodic protection potential shall be measured between -0.85 V and -1.10 V vs. Ag/AgCl ref",
+        "claim": "After anode replacement, the cathodic protection potential shall be measured between -0.85 V and -1.10 V vs. Ag/AgCl reference electrode.",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "Sacrificial anodes shall be replaced when the measured potential of the protected component is less negative than -0.85 ",
+        "claim": "Sacrificial anodes shall be replaced when the measured potential of the protected component is less negative than -0.85 V vs. Ag/AgCl.",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The cooling water system shall be designed to avoid continuous electrical potential on components to prevent electrolyti",
+        "claim": "The cooling water system shall be designed to avoid continuous electrical potential on components",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The cooling water system shall be designed to avoid continuous electrical potential on components to prevent electrolyti",
+        "claim": "The design shall prevent electrolytic corrosion",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "Components made of copper, zinc, and brass shall not be used in the coolant circuit unless specific preconditions are ob",
+        "claim": "Components made of copper, zinc, and brass shall not be used in the coolant circuit unless specific preconditions are observed to prevent electrochemical reactions.",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The cooling water system shall be arranged to allow cooling during operation in hazardous atmosphere without direct seaw",
+        "claim": "The cooling water system shall be arranged to allow cooling during operation in hazardous atmosphere",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The cooling water system shall be arranged to allow cooling during operation in hazardous atmosphere without direct seaw",
+        "claim": "The cooling water system shall not use direct seawater intake",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "The cooling water system shall be arranged to allow cooling during operation in hazardous atmosphere without direct seaw",
+        "claim": "The cooling water system may use box coolers or similar equipment",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "Contamination and deposits in the cooling water system shall be regularly eliminated by cleaning, including limescale re",
+        "claim": "Cooling water system contamination and deposits shall be regularly eliminated by cleaning",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "Contamination and deposits in the cooling water system shall be regularly eliminated by cleaning, including limescale re",
+        "claim": "Cleaning includes limescale removal",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "Contamination and deposits in the cooling water system shall be regularly eliminated by cleaning, including limescale re",
+        "claim": "Cleaning includes flushing",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "冷却水系统应配备牺牲阳极作为防腐措施，阳极材料应选用锌合金或铝合金，其电化学性能应符合GB/T 4950或相关船级社规范。",
+        "claim": "冷却水系统应配备牺牲阳极作为防腐措施",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "冷却水系统应配备牺牲阳极作为防腐措施，阳极材料应选用锌合金或铝合金，其电化学性能应符合GB/T 4950或相关船级社规范。",
+        "claim": "阳极材料应选用锌合金或铝合金",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "冷却水系统应配备牺牲阳极作为防腐措施，阳极材料应选用锌合金或铝合金，其电化学性能应符合GB/T 4950或相关船级社规范。",
+        "claim": "阳极材料的电化学性能应符合GB/T 4950",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "冷却水系统应配备牺牲阳极作为防腐措施，阳极材料应选用锌合金或铝合金，其电化学性能应符合GB/T 4950或相关船级社规范。",
+        "claim": "阳极材料的电化学性能应符合相关船级社规范",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的更换周期应不小于12个月，且与船舶常规坞修或维护周期一致，以减少额外停机维护需求。",
+        "claim": "牺牲阳极的更换周期应不小于12个月",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的更换周期应不小于12个月，且与船舶常规坞修或维护周期一致，以减少额外停机维护需求。",
+        "claim": "牺牲阳极的更换周期与船舶常规坞修或维护周期一致",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的更换周期应不小于12个月，且与船舶常规坞修或维护周期一致，以减少额外停机维护需求。",
+        "claim": "减少额外停机维护需求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的安装数量及分布应基于冷却水系统管路材质、流速、温度及电化学计算确定，确保系统各部位保护电位在-0.85V至-1.10V（相对于Ag/AgCl参比电极）范围内。",
+        "claim": "牺牲阳极的安装数量及分布应基于冷却水系统管路材质、流速、温度及电化学计算确定",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的安装数量及分布应基于冷却水系统管路材质、流速、温度及电化学计算确定，确保系统各部位保护电位在-0.85V至-1.10V（相对于Ag/AgCl参比电极）范围内。",
+        "claim": "系统各部位保护电位应在-0.85V至-1.10V（相对于Ag/AgCl参比电极）范围内",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "冷却水系统应设置阳极检查口或可拆卸法兰，以便于定期检查阳极消耗情况，检查周期不超过6个月。",
+        "claim": "冷却水系统应设置阳极检查口或可拆卸法兰",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "冷却水系统应设置阳极检查口或可拆卸法兰，以便于定期检查阳极消耗情况，检查周期不超过6个月。",
+        "claim": "检查周期不超过6个月",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的安装应避免与异种金属直接接触，防止电偶腐蚀加剧，阳极与管壁之间应使用绝缘垫片。",
+        "claim": "牺牲阳极的安装应避免与异种金属直接接触",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的安装应避免与异种金属直接接触，防止电偶腐蚀加剧，阳极与管壁之间应使用绝缘垫片。",
+        "claim": "防止电偶腐蚀加剧",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR002",
+        "shall_snippet": "牺牲阳极的安装应避免与异种金属直接接触，防止电偶腐蚀加剧，阳极与管壁之间应使用绝缘垫片。",
+        "claim": "阳极与管壁之间应使用绝缘垫片",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应在全船失电工况下自动启动，确保主机冷却水循环不中断。",
+        "claim": "应急冷却系统在全船失电工况下自动启动",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应在全船失电工况下自动启动，确保主机冷却水循环不中断。",
+        "claim": "确保主机冷却水循环不中断",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用冷却水泵的自动启动应由主泵运行状态信号和系统低压信号共同触发。",
+        "claim": "备用冷却水泵的自动启动由主泵运行状态信号触发",
+        "verdict": "support",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用冷却水泵的自动启动应由主泵运行状态信号和系统低压信号共同触发。",
+        "claim": "备用冷却水泵的自动启动由系统低压信号触发",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用冷却水泵的自动启动应由主泵运行状态信号和系统低压信号共同触发。",
+        "claim": "备用冷却水泵的自动启动需要主泵运行状态信号和系统低压信号共同触发",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "自动启动逻辑中应设定压力开关或变送器的动作值，并设置延时避免误启动。",
+        "claim": "压力开关或变送器的动作值应设定",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "自动启动逻辑中应设定压力开关或变送器的动作值，并设置延时避免误启动。",
+        "claim": "应设置延时避免误启动",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用泵启动后，若出口压力未恢复至正常范围，应触发报警并闭锁后续自动启动尝试。",
+        "claim": "备用泵启动后，出口压力未恢复至正常范围",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用泵启动后，若出口压力未恢复至正常范围，应触发报警并闭锁后续自动启动尝试。",
+        "claim": "触发报警",
+        "verdict": "support",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用泵启动后，若出口压力未恢复至正常范围，应触发报警并闭锁后续自动启动尝试。",
+        "claim": "闭锁后续自动启动尝试",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动。",
+        "claim": "主推进机械的冷却水系统应设有不少于2台冷却水泵",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动。",
+        "claim": "至少1台冷却水泵应为独立电力驱动",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "各冷却水泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力。",
+        "claim": "冷却水泵在主机额定功率工况下单独满足冷却水流量需求",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "冷却水系统应设置冷却水高温报警，报警值应不超过主机制造商规定的最高允许温度。",
+        "claim": "冷却水系统应设置冷却水高温报警",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "冷却水系统应设置冷却水高温报警，报警值应不超过主机制造商规定的最高允许温度。",
+        "claim": "报警值应不超过主机制造商规定的最高允许温度",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "当冷却水温度超过允许值时，系统应能自动减速或停机保护。",
+        "claim": "冷却水温度超过允许值时",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "当冷却水温度超过允许值时，系统应能自动减速或停机保护。",
+        "claim": "系统应能自动减速或停机保护",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+        "claim": "冷却水系统应在主机最大连续功率（MCR）条件下正常工作",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+        "claim": "冷却水系统应在航行海区最高海水温度不低于32°C时正常工作",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+        "claim": "冷却水系统应在热带航区海水温度不低于35°C时正常工作",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "备用冷却水泵的容量不应小于主泵的容量。",
+        "claim": "备用冷却水泵的容量不应小于主泵的容量",
+        "verdict": "not_found",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "冷却水泵的布置应确保一台泵故障时不影响其余泵的运行。",
+        "claim": "冷却水泵的布置应确保一台泵故障时不影响其余泵的运行",
+        "verdict": "support",
+        "over_inference": true,
+        "_arm": "rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应在全船失电工况下自动启动，无需外部电源或人工干预，以提供主机基本冷却保护。",
+        "claim": "应急冷却系统在全船失电工况下自动启动",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应在全船失电工况下自动启动，无需外部电源或人工干预，以提供主机基本冷却保护。",
+        "claim": "应急冷却系统无需外部电源",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应在全船失电工况下自动启动，无需外部电源或人工干预，以提供主机基本冷却保护。",
+        "claim": "应急冷却系统无需人工干预",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应在全船失电工况下自动启动，无需外部电源或人工干预，以提供主机基本冷却保护。",
+        "claim": "应急冷却系统提供主机基本冷却保护",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应独立于主冷却系统，采用独立泵组、管路及热交换器，且泵组由应急配电板供电或采用柴油机直驱。",
+        "claim": "应急冷却系统应独立于主冷却系统",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应独立于主冷却系统，采用独立泵组、管路及热交换器，且泵组由应急配电板供电或采用柴油机直驱。",
+        "claim": "应急冷却系统采用独立泵组",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应独立于主冷却系统，采用独立泵组、管路及热交换器，且泵组由应急配电板供电或采用柴油机直驱。",
+        "claim": "应急冷却系统采用独立管路",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应独立于主冷却系统，采用独立泵组、管路及热交换器，且泵组由应急配电板供电或采用柴油机直驱。",
+        "claim": "应急冷却系统采用独立热交换器",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应独立于主冷却系统，采用独立泵组、管路及热交换器，且泵组由应急配电板供电或采用柴油机直驱。",
+        "claim": "泵组由应急配电板供电",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应独立于主冷却系统，采用独立泵组、管路及热交换器，且泵组由应急配电板供电或采用柴油机直驱。",
+        "claim": "泵组采用柴油机直驱",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应具备自动检测失电并启动的功能，控制逻辑应简单可靠，避免误动作。",
+        "claim": "应急冷却系统应具备自动检测失电的功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应具备自动检测失电并启动的功能，控制逻辑应简单可靠，避免误动作。",
+        "claim": "应急冷却系统应具备自动启动的功能",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应具备自动检测失电并启动的功能，控制逻辑应简单可靠，避免误动作。",
+        "claim": "控制逻辑应简单可靠",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应具备自动检测失电并启动的功能，控制逻辑应简单可靠，避免误动作。",
+        "claim": "控制逻辑应避免误动作",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应能维持主机滑油温度、缸套水温度在安全范围内，确保主机在应急工况下可低速运行。",
+        "claim": "应急冷却系统应能维持主机滑油温度在安全范围内",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应能维持主机滑油温度、缸套水温度在安全范围内，确保主机在应急工况下可低速运行。",
+        "claim": "应急冷却系统应能维持缸套水温度在安全范围内",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应能维持主机滑油温度、缸套水温度在安全范围内，确保主机在应急工况下可低速运行。",
+        "claim": "确保主机在应急工况下可低速运行",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应设置手动启动和停止功能，并配备状态指示（运行/故障）及报警输出至机舱集中监控系统。",
+        "claim": "应急冷却系统应设置手动启动功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应设置手动启动和停止功能，并配备状态指示（运行/故障）及报警输出至机舱集中监控系统。",
+        "claim": "应急冷却系统应设置手动停止功能",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应设置手动启动和停止功能，并配备状态指示（运行/故障）及报警输出至机舱集中监控系统。",
+        "claim": "应急冷却系统应配备状态指示（运行/故障）",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应设置手动启动和停止功能，并配备状态指示（运行/故障）及报警输出至机舱集中监控系统。",
+        "claim": "应急冷却系统应具备报警输出至机舱集中监控系统",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应满足相关船级社规范（如CCS、DNV、LR等）对应急系统的要求，包括冗余设计、防火等级及材料耐腐蚀性。",
+        "claim": "应急冷却系统应满足CCS规范对应急系统的要求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应满足相关船级社规范（如CCS、DNV、LR等）对应急系统的要求，包括冗余设计、防火等级及材料耐腐蚀性。",
+        "claim": "应急冷却系统应满足DNV规范对应急系统的要求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应满足相关船级社规范（如CCS、DNV、LR等）对应急系统的要求，包括冗余设计、防火等级及材料耐腐蚀性。",
+        "claim": "应急冷却系统应满足LR规范对应急系统的要求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应满足相关船级社规范（如CCS、DNV、LR等）对应急系统的要求，包括冗余设计、防火等级及材料耐腐蚀性。",
+        "claim": "应急冷却系统应满足冗余设计要求",
+        "verdict": "support",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应满足相关船级社规范（如CCS、DNV、LR等）对应急系统的要求，包括冗余设计、防火等级及材料耐腐蚀性。",
+        "claim": "应急冷却系统应满足防火等级要求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      },
+      {
+        "source_requirement_id": "OR003",
+        "shall_snippet": "应急冷却系统应满足相关船级社规范（如CCS、DNV、LR等）对应急系统的要求，包括冗余设计、防火等级及材料耐腐蚀性。",
+        "claim": "应急冷却系统应满足材料耐腐蚀性要求",
+        "verdict": "not_found",
+        "over_inference": false,
+        "_arm": "no-rag"
+      }
+    ]
+  },
+  "blind_quality": {
+    "per_source": [
+      {
+        "source_requirement_id": "OR001",
+        "blind_completeness": "tie",
+        "blind_actionability": "tie",
+        "blind_consistency": "tie",
+        "blind_verifiability": "tie",
+        "bias_completeness": true,
+        "bias_actionability": true,
+        "bias_consistency": true,
+        "bias_verifiability": true
+      },
+      {
+        "source_requirement_id": "OR002",
+        "blind_completeness": "tie",
+        "blind_actionability": "tie",
+        "blind_consistency": "tie",
+        "blind_verifiability": "tie",
+        "bias_completeness": true,
+        "bias_actionability": true,
+        "bias_consistency": true,
+        "bias_verifiability": true
+      },
+      {
+        "source_requirement_id": "OR003",
+        "blind_completeness": "tie",
+        "blind_actionability": "tie",
+        "blind_consistency": "tie",
+        "blind_verifiability": "tie",
+        "bias_completeness": true,
+        "bias_actionability": true,
+        "bias_consistency": false,
+        "bias_verifiability": true
+      }
+    ],
+    "aggregate": {
+      "completeness": {
+        "R": 0,
+        "B0": 0,
+        "tie": 3
+      },
+      "actionability": {
+        "R": 0,
+        "B0": 0,
+        "tie": 3
+      },
+      "consistency": {
+        "R": 0,
+        "B0": 0,
+        "tie": 3
+      },
+      "verifiability": {
+        "R": 0,
+        "B0": 0,
+        "tie": 3
+      },
+      "overall": {
+        "R": 0,
+        "B0": 0,
+        "tie": 12
+      }
+    }
+  },
+  "descriptive": {
+    "rag_v3": {
+      "n_sources": 3,
+      "n_shalls": 30,
+      "numeric_fraction": 0.4,
+      "attribution_rate": 1.0
+    },
+    "no_rag": {
+      "n_sources": 3,
+      "n_shalls": 19,
+      "numeric_fraction": 0.42105263157894735,
+      "attribution_rate": 0.0
+    }
+  }
+}

@@ -55,7 +55,8 @@ class Paths:
 
     @property
     def evidence_units_jsonl(self) -> Path:
-        return self.processed_dir / "evidence_units.jsonl"
+        v2 = self.processed_dir / "evidence_units_v2.jsonl"
+        return v2 if v2.exists() else self.processed_dir / "evidence_units.jsonl"
 
     @property
     def source_chunks_jsonl(self) -> Path:
@@ -104,7 +105,7 @@ class DeepSeekConfig:
 class QwenConfig:
     api_key: str = field(default_factory=lambda: os.getenv("QWEN_API_KEY", "").strip())
     base_url: str = field(default_factory=lambda: os.getenv("QWEN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1").strip())
-    model: str = field(default_factory=lambda: os.getenv("QWEN_MODEL", "qwen-max"))
+    model: str = field(default_factory=lambda: os.getenv("QWEN_MODEL", "qwen-max").strip())
     temperature: float = field(default_factory=lambda: float(os.getenv("QWEN_TEMPERATURE", "0.0")))
     timeout: float = field(default_factory=lambda: float(os.getenv("QWEN_TIMEOUT", "60.0")))
 

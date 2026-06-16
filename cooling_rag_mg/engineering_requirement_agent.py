@@ -163,6 +163,16 @@ engineering_rationale 必须说明每个证据 ID 支撑了 shall 的哪个具�
 证据来自特定厂家/机型时，applicability_constraints 必须写明限制。
 格式："本条需求基于 [厂家/机型] 证据，适用范围限于 [限定条件]，其他厂家和机型应按各自 Technical Data 另行确认。"
 
+### D4 结构化约束字段的使用（最高优先级）
+部分证据条目附带 `constraint` 字段，包含从规范原文提取的结构化信息。当证据存在 `constraint` 字段时：
+- `constraint.核心要求` 即为规范原文确定的 shall 核心语句，**必须直接使用**（而不是从冗长的 text 中自行提炼）
+- `constraint.可接受标准` 若非 null，**必须原文引用**到 acceptance_criteria 中
+- `constraint.验证方式` 若非 null，**必须作为 verification_method 的依据**
+- `constraint.规范依据` 若非 null，**必须写入 engineering_rationale**（格式："依据 [规范依据]"）
+- `constraint.强制级别` 为"强制"时，support_status 不得低于 supported_by_indirect_evidence
+
+这些字段经过规范原文提取校验，优先级高于从 text 字段自行推断。
+
 ---
 
 ## 【E】verification_method 选择
@@ -328,7 +338,7 @@ def compact_evidence(ev: dict[str, Any], text_limit: int = 600) -> dict[str, Any
     if len(summary) > 250:
         summary = summary[:250] + "…"
 
-    return {
+    out = {
         "id": ev.get("id"),
         "support_type": judge.get("support_type", ""),
         "evidence_role": judge.get("evidence_role", ""),
@@ -356,6 +366,16 @@ def compact_evidence(ev: dict[str, Any], text_limit: int = 600) -> dict[str, Any
         "supportable_requirements": meta.get("supportable_requirements", []),
         "unsupported_requirements": unsupported,
     }
+
+    # Inject L1 structured constraint fields when available (v2 KB).
+    # These provide the LLM with precise regulatory clause, mandatory level,
+    # acceptance criteria and verification method — directly improving SHALL quality.
+    constraint = ev.get("constraint") or {}
+    if constraint.get("核心要求"):
+        out["constraint"] = {k: v for k, v in constraint.items()
+                             if k != "_extraction_meta" and v is not None}
+
+    return out
 
 
 def _group_evidence_by_type(evidence_list: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:

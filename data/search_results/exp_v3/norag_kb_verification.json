@@ -1,0 +1,4482 @@
+{
+  "summary": {
+    "rag_v3": {
+      "total_shalls": 117,
+      "label_supported": 112,
+      "label_conflict": 2,
+      "label_unverifiable": 1,
+      "pct_supported": 95.72649572649573,
+      "pct_conflict": 1.7094017094017095,
+      "pct_unverifiable": 0.8547008547008548,
+      "num_supported": 175,
+      "num_contradicted": 3,
+      "num_unverifiable": 9,
+      "num_pct_supported": 93.58288770053476,
+      "num_pct_contradicted": 1.6042780748663104
+    },
+    "no_rag": {
+      "total_shalls": 79,
+      "label_supported": 18,
+      "label_conflict": 9,
+      "label_unverifiable": 52,
+      "pct_supported": 22.78481012658228,
+      "pct_conflict": 11.39240506329114,
+      "pct_unverifiable": 65.82278481012658,
+      "num_supported": 22,
+      "num_contradicted": 12,
+      "num_unverifiable": 115,
+      "num_pct_supported": 14.76510067114094,
+      "num_pct_contradicted": 8.053691275167784
+    }
+  },
+  "details": [
+    {
+      "arm": "rag_v3",
+      "sid": "OR001",
+      "stmt": "The HT cooling water system shall maintain engine jacket water inlet temperature within 70–85°C under steady-state conditions.",
+      "numbers": [
+        "70°C"
+      ],
+      "evidence_ids": [
+        "E-PARAM-HT-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "70–85°C | SUPPORTED | 证据中明确列出主机HT冷却水进水温度范围为70–85°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "70–85°C | SUPPORTED | 证据中明确列出主机HT冷却水进水温度范围为70–85°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR002",
+      "stmt": "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动。",
+      "numbers": [
+        "2台",
+        "1台"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-001",
+        "E-DNV-COOL-002",
+        "E-IACS-M3-001",
+        "E-PUMP-RED-004"
+      ],
+      "retrieval": "cited",
+      "n_units": 4,
+      "label": "no_numeric",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "NO_NUMERIC_CLAIMS"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR002",
+      "stmt": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "numbers": [
+        "32°C",
+        "35°C"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。",
+          "35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。  \n35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR002",
+      "stmt": "备用冷却水泵应能自动启动，当主泵故障或出口压力低于设定值时，备用泵应在3-5秒内自动启动并建立正常压力。",
+      "numbers": [
+        "3秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-COOLIN-AUTOSTA-001",
+        "E-DRAFT-COOLIN-AUTOSTA-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "3-5秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-001]明确要求备用泵应在3-5秒内自动启动。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "0.15 MPa | UNVERIFIABLE | 需求中未明确给出压力设定值，证据虽提及0.15 MPa但需求未引用该数值。"
+        ]
+      },
+      "llm_raw": "3-5秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-001]明确要求备用泵应在3-5秒内自动启动。  \n0.15 MPa | UNVERIFIABLE | 需求中未明确给出压力设定值，证据虽提及0.15 MPa但需求未引用该数值。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR002",
+      "stmt": "自动启动逻辑中应设定压力开关或变送器的动作值，一般取正常压力的70%-80%作为低限报警值，60%-70%作为备用泵启动值，并设置1-2秒延时。",
+      "numbers": [
+        "70%",
+        "80%",
+        "60%",
+        "1秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-COOLIN-AUTOSTA-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "70%-80% | SUPPORTED | 证据明确要求低限报警值取正常压力的70%-80%。",
+          "60%-70% | SUPPORTED | 证据明确要求备用泵启动值取正常压力的60%-70%。",
+          "1-2秒 | SUPPORTED | 证据明确要求设置延时约1-2秒。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "70%-80% | SUPPORTED | 证据明确要求低限报警值取正常压力的70%-80%。  \n60%-70% | SUPPORTED | 证据明确要求备用泵启动值取正常压力的60%-70%。  \n1-2秒 | SUPPORTED | 证据明确要求设置延时约1-2秒。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR004",
+      "stmt": "The low pressure alarm setpoint for main engine cooling water shall be set based on manufacturer's recommendations and class society rules, typically 0.1-0.2 bar above the minimum allowable pressure to prevent cavitation.",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据明确写明低压报警设定值通常为最低允许压力以上0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据明确写明低压报警设定值通常为最低允许压力以上0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR004",
+      "stmt": "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the tank's normal operating level to prevent air ingestion into the cooling water pump.",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10-15% | SUPPORTED | 证据明确说明低液位报警设定值通常为正常液位的10-15%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10-15% | SUPPORTED | 证据明确说明低液位报警设定值通常为正常液位的10-15%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR004",
+      "stmt": "The high-level alarm setpoint for the cooling water expansion tank shall be set at 85-90% of the tank's normal operating level to avoid overflow.",
+      "numbers": [
+        "85%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "85-90% | SUPPORTED | 证据明确给出高液位报警定值为正常液位的85-90%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "85-90% | SUPPORTED | 证据明确给出高液位报警定值为正常液位的85-90%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR004",
+      "stmt": "During commissioning and periodic surveys, the alarm setpoints of pressure sensors shall be functionally tested by simulating the alarm condition and confirming that the alarm activates within ±2% of the setpoint.",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求报警在设定点的±2%范围内激活。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求报警在设定点的±2%范围内激活。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR004",
+      "stmt": "During commissioning, the level sensor alarm setpoints shall be verified by manually adjusting the water level in the expansion tank and confirming the reading matches the setpoint within ±2% of the sensor range.",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求报警定值验证误差在传感器量程的±2%以内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求报警定值验证误差在传感器量程的±2%以内。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR004",
+      "stmt": "For critical systems, dual pressure sensors with independent alarm setpoints shall be installed; the alarm setpoint deviation between redundant sensors shall not exceed 5% of the operating range.",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确要求冗余传感器之间的报警设定点偏差不超过工作范围的5%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确要求冗余传感器之间的报警设定点偏差不超过工作范围的5%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR005",
+      "stmt": "冷却水系统滤器应设计为便于维护，粗滤器（网孔0.5-1 mm）的维护周期应为3-6个月，精滤器（网孔0.1-0.5 mm）的维护周期应为6-12个月，且每次维护时应更换垫片和O型圈。",
+      "numbers": [
+        "0.5mm",
+        "0.1mm"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FILTER-MAINTENA-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.5-1 mm | SUPPORTED | 证据明确列出粗滤器网孔尺寸为0.5-1 mm",
+          "3-6个月 | SUPPORTED | 证据明确列出粗滤器维护周期为3-6个月",
+          "0.1-0.5 mm | SUPPORTED | 证据明确列出精滤器网孔尺寸为0.1-0.5 mm",
+          "6-12个月 | SUPPORTED | 证据明确列出精滤器维护周期为6-12个月",
+          "每次维护时应更换垫片和O型圈 | SUPPORTED | 证据明确要求每次检修时更换垫片和O型圈"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.5-1 mm | SUPPORTED | 证据明确列出粗滤器网孔尺寸为0.5-1 mm  \n3-6个月 | SUPPORTED | 证据明确列出粗滤器维护周期为3-6个月  \n0.1-0.5 mm | SUPPORTED | 证据明确列出精滤器网孔尺寸为0.1-0.5 mm  \n6-12个月 | SUPPORTED | 证据明确列出精滤器维护周期为6-12个月  \n每次维护时应更换垫片和O型圈 | SUPPORTED | 证据明确要求每次检修时更换垫片和O型圈"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR005",
+      "stmt": "滤器维护后应进行完整性验证，包括：在正常流量下检查压差（清洁元件应低于0.05 bar）、目视检查密封和旁通情况，对于自动滤器应执行手动反冲洗循环以确认机构操作正常。",
+      "numbers": [
+        "0.05bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FILTER-MAINTENA-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.05 bar | SUPPORTED | 证据明确要求清洁元件压差应低于0.05 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.05 bar | SUPPORTED | 证据明确要求清洁元件压差应低于0.05 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR005",
+      "stmt": "冷却水系统滤器应设置压差监测，当压差超过0.1 bar（或制造商规定值，通常为0.05-0.15 bar）时，应触发滤芯清洗或更换。",
+      "numbers": [
+        "0.1bar",
+        "0.05bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FILTER-MAINTENA-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1 bar | SUPPORTED | 证据明确提及压差超过0.1 bar作为触发条件。",
+          "0.05-0.15 bar | SUPPORTED | 证据明确包含该典型范围。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1 bar | SUPPORTED | 证据明确提及压差超过0.1 bar作为触发条件。  \n0.05-0.15 bar | SUPPORTED | 证据明确包含该典型范围。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "主机冷却水系统的高温冷却水温度传感器（如HT冷却水出口）的报警设定值应依据厂家技术资料设定，典型值为90°C。",
+      "numbers": [
+        "90°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-TRIPSET-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "90°C | SUPPORTED | 证据明确给出报警值为90°C，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "90°C | SUPPORTED | 证据明确给出报警值为90°C，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "主机冷却水系统的高温冷却水温度传感器（如缸套冷却水出口）的停机保护设定值应依据厂家技术资料设定，典型值为95°C，且应可调。",
+      "numbers": [
+        "95°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-TRIPSET-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "95°C | SUPPORTED | 证据明确给出高温停机保护典型值为95°C。",
+          "±2°C | SUPPORTED | 证据明确要求设定值在±2°C范围内可调。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "95°C | SUPPORTED | 证据明确给出高温停机保护典型值为95°C。  \n±2°C | SUPPORTED | 证据明确要求设定值在±2°C范围内可调。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "温度传感器的响应时间应不大于10秒，以确保快速停机保护。",
+      "numbers": [
+        "10秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-TRIPSET-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据明确要求响应时间≤10秒，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10秒 | SUPPORTED | 证据明确要求响应时间≤10秒，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "停机保护设定值应至少低于最高允许温度5°C，以考虑传感器漂移和系统惯性。",
+      "numbers": [
+        "5°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-TRIPSET-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5°C | SUPPORTED | 证据明确要求停机设定值应低于最高允许温度5°C，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5°C | SUPPORTED | 证据明确要求停机设定值应低于最高允许温度5°C，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "温度传感器应每年校准一次，校准公差为±0.5°C。",
+      "numbers": [
+        "0.5°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-TRIPSET-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "每年一次 | SUPPORTED | 证据明确要求“每年校准一次”。",
+          "±0.5°C | SUPPORTED | 证据明确要求“校准公差±0.5°C”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "每年一次 | SUPPORTED | 证据明确要求“每年校准一次”。  \n±0.5°C | SUPPORTED | 证据明确要求“校准公差±0.5°C”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "冷却水压力传感器的低压力报警设定值应依据厂家技术资料设定，典型值为0.1-0.2 bar高于最低允许压力。",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据明确说明低压力报警定值典型值为最低允许压力以上0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据明确说明低压力报警定值典型值为最低允许压力以上0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "冷却水压力传感器的低压力停机设定值应依据厂家技术资料设定，典型值为0.5 bar。",
+      "numbers": [
+        "0.5bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-TRIPSET-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.5 bar | SUPPORTED | 证据明确列出低压力停机设定值为0.5 bar，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.5 bar | SUPPORTED | 证据明确列出低压力停机设定值为0.5 bar，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "压力传感器的报警设定值应在调试和定期检验时通过模拟报警条件进行功能测试，确认报警在设定值的±2%内激活。",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求报警在设定点的±2%范围内激活。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求报警在设定点的±2%范围内激活。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "压力传感器的停机设定值应在调试时通过逐渐降低冷却水压力进行验证，实际停机压力应在设计设定值的±2%内。",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-TRIPSET-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求实际停机压力必须在设计设定值的±2%内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求实际停机压力必须在设计设定值的±2%内。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "压力传感器的量程应选择使得停机设定值位于满量程的25%至75%之间，以确保精度。",
+      "numbers": [
+        "25%",
+        "75%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-TRIPSET-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "25%至75% | SUPPORTED | 证据明确要求停机设定值位于满量程的25%至75%之间。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "压力传感器量程 | UNVERIFIABLE | 证据未明确提及具体量程数值，仅给出0-10 bar示例。"
+        ]
+      },
+      "llm_raw": "压力传感器量程 | UNVERIFIABLE | 证据未明确提及具体量程数值，仅给出0-10 bar示例。  \n25%至75% | SUPPORTED | 证据明确要求停机设定值位于满量程的25%至75%之间。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR006",
+      "stmt": "对于关键系统，应安装双压力传感器，且报警设定值偏差不应超过量程的5%。",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确要求报警设定值偏差不应超过量程的5%，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确要求报警设定值偏差不应超过量程的5%，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR008",
+      "stmt": "The temperature control valve shall be installed as a mixing valve with a pressure loss of 0.3–0.6 bar and an actuator with low positioning speed for HT system or high positioning speed for LT system, and shall permit manual emergency adjustment.",
+      "numbers": [
+        "0.3bar"
+      ],
+      "evidence_ids": [
+        "E-TCV-TEMP-099",
+        "E-TCV-TEMP-047"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [
+          "0.3–0.6 bar | SUPPORTED | 两条证据均明确要求压力损失为0.3–0.6 bar。",
+          "manual emergency adjustment | SUPPORTED | 两条证据均明确要求执行器必须允许手动紧急调节。"
+        ],
+        "contradicted": [
+          "low positioning speed | CONTRADICTED | 证据[E-TCV-TEMP-099]要求低定位速度，但[E-TCV-TEMP-047]要求高定位速度，且需求中同时提及两种速度，与证据矛盾。",
+          "high positioning speed | CONTRADICTED | 同上，证据[E-TCV-TEMP-047]要求高定位速度，但[E-TCV-TEMP-099]要求低定位速度，需求中同时提及两种速度，与证据矛盾。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "0.3–0.6 bar | SUPPORTED | 两条证据均明确要求压力损失为0.3–0.6 bar。  \nlow positioning speed | CONTRADICTED | 证据[E-TCV-TEMP-099]要求低定位速度，但[E-TCV-TEMP-047]要求高定位速度，且需求中同时提及两种速度，与证据矛盾。  \nhigh positioning speed | CONTRADICTED | 同上，证据[E-TCV-TEMP-047]要求高定位速度，但[E-TCV-TEMP-099]要求低定位速度，需求中同时提及两种速度，与证据矛盾。  \nmanual emergency adjustment | SUPPORTED | 两条证据均明确要求执行器必须允许手动紧急调节。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR008",
+      "stmt": "The engine outlet water temperature shall be controlled to 100°C even under frequent load changes, with adjustable outlet temperature range between 90 and 100°C via inlet temperature control.",
+      "numbers": [
+        "100°C"
+      ],
+      "evidence_ids": [
+        "E-SYS-COMP-006"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "100°C | SUPPORTED | 证据明确提到“100 °C at the engine outlet – even in case of frequent load changes”。",
+          "90 and 100°C | SUPPORTED | 证据提到“adjusting the outlet water temperature (between 90 and 100°C)”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "100°C | SUPPORTED | 证据明确提到“100 °C at the engine outlet – even in case of frequent load changes”。  \n90 and 100°C | SUPPORTED | 证据提到“adjusting the outlet water temperature (between 90 and 100°C)”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR011",
+      "stmt": "原理图应标明高温冷却水回路的主要组成设备，包括缸套、缸盖冷却通道，并标注发动机出口温度设定值（如80°C）。",
+      "numbers": [
+        "80°C"
+      ],
+      "evidence_ids": [
+        "E-HT-DRAW-008"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "80°C | SUPPORTED | 证据明确标注发动机出口温度为80°C，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "80°C | SUPPORTED | 证据明确标注发动机出口温度为80°C，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR011",
+      "stmt": "原理图应标明低温冷却水回路中，中冷器第二级（HE-008）前的LT冷却水温度应维持在32°C（参考海水温度25°C）。",
+      "numbers": [
+        "32°C",
+        "25°C"
+      ],
+      "evidence_ids": [
+        "E-SYS-DRAW-018",
+        "E-SW-DRAW-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确要求中冷器第二级前LT冷却水温度维持在32°C。",
+          "25°C | SUPPORTED | 证据明确将25°C作为参考海水温度。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确要求中冷器第二级前LT冷却水温度维持在32°C。  \n25°C | SUPPORTED | 证据明确将25°C作为参考海水温度。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR011",
+      "stmt": "原理图应标明HT冷却水预热的温度要求（≥60°C）及滑油预热温度要求（≥40°C）。",
+      "numbers": [
+        "60°C",
+        "40°C"
+      ],
+      "evidence_ids": [
+        "E-HT-DRAW-007"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "≥60°C | SUPPORTED | 证据明确要求HT冷却水温度≥60°C。",
+          "≥40°C | SUPPORTED | 证据明确要求滑油温度≥40°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "≥60°C | SUPPORTED | 证据明确要求HT冷却水温度≥60°C。  \n≥40°C | SUPPORTED | 证据明确要求滑油温度≥40°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR012",
+      "stmt": "冷却水系统图纸应包含高温冷却水系统（用于气缸套和气缸盖冷却）的详细布置，并标明发动机出口温度80°C（HFO运行）等关键参数。",
+      "numbers": [
+        "80°C"
+      ],
+      "evidence_ids": [
+        "E-HT-DRAW-008"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "80°C | SUPPORTED | 证据明确写明发动机出口温度为80°C，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "80°C | SUPPORTED | 证据明确写明发动机出口温度为80°C，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR013",
+      "stmt": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%~15%，以确保热膨胀补偿和补水需求。",
+      "numbers": [
+        "10%",
+        "15%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10%~15% | SUPPORTED | 证据明确要求膨胀水箱有效容积不小于主机冷却水系统总容积的10%~15%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10%~15% | SUPPORTED | 证据明确要求膨胀水箱有效容积不小于主机冷却水系统总容积的10%~15%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR013",
+      "stmt": "补水泵的流量应能在10~15分钟内将膨胀水箱从低位补至高位，扬程需克服系统背压。",
+      "numbers": [
+        "10分钟"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10~15分钟 | SUPPORTED | 证据明确要求补水泵流量应能在10~15分钟内将水箱从低位补至高位。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "扬程需克服系统背压 | UNVERIFIABLE | 证据仅提及扬程需克服系统背压，未给出具体数值。"
+        ]
+      },
+      "llm_raw": "10~15分钟 | SUPPORTED | 证据明确要求补水泵流量应能在10~15分钟内将水箱从低位补至高位。  \n扬程需克服系统背压 | UNVERIFIABLE | 证据仅提及扬程需克服系统背压，未给出具体数值。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR013",
+      "stmt": "膨胀水箱应设置高低位报警，低位报警触发补水泵自动启动，高位报警触发补水泵停止。低位设定值为水箱有效容积的20%，高位为80%。",
+      "numbers": [
+        "20%",
+        "80%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-003",
+        "E-DRAFT-EXPANS-LEVELCO-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "20% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确说明低位设定值为水箱有效容积的20%。",
+          "80% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确说明高位设定值为水箱有效容积的80%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "20% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确说明低位设定值为水箱有效容积的20%。  \n80% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确说明高位设定值为水箱有效容积的80%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR013",
+      "stmt": "补水系统应能在5分钟内将膨胀水箱从低位补水至正常水位。",
+      "numbers": [
+        "5分钟"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-MAKEUPW-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5分钟 | SUPPORTED | 证据中明确提及“5 minutes”作为膨胀水箱补水至正常水位的指定时间。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5分钟 | SUPPORTED | 证据中明确提及“5 minutes”作为膨胀水箱补水至正常水位的指定时间。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR013",
+      "stmt": "膨胀水箱的补水水质应满足：pH值6.5-8.5，氯离子含量<50 ppm，总硬度<10 ppm，以防止冷却系统腐蚀和结垢。",
+      "numbers": [
+        "50ppm",
+        "10ppm"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-MAKEUPW-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "pH值6.5-8.5 | SUPPORTED | 证据明确列出pH值范围为6.5-8.5。",
+          "氯离子含量<50 ppm | SUPPORTED | 证据明确列出氯离子含量<50 ppm。",
+          "总硬度<10 ppm | SUPPORTED | 证据明确列出总硬度<10 ppm。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "pH值6.5-8.5 | SUPPORTED | 证据明确列出pH值范围为6.5-8.5。  \n氯离子含量<50 ppm | SUPPORTED | 证据明确列出氯离子含量<50 ppm。  \n总硬度<10 ppm | SUPPORTED | 证据明确列出总硬度<10 ppm。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR013",
+      "stmt": "冷却水系统的高点应设置透气管，确保系统充分排气，透气管内径应保证在最大转速下从发动机高温透气管至膨胀水箱的流速不低于1%的高温冷却水流量。",
+      "numbers": [
+        "1%"
+      ],
+      "evidence_ids": [
+        "E-EXP-INST-017",
+        "E-EXP-WATER-009"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1% | SUPPORTED | 两条证据均明确要求“minimum flow rate of 1% of the HT-cooling water flow”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "1% | SUPPORTED | 两条证据均明确要求“minimum flow rate of 1% of the HT-cooling water flow”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR015",
+      "stmt": "高温冷却水系统图应明确标注冷却对象（如气缸套、气缸盖）及出口温度要求（如80°C），并体现系统组成。",
+      "numbers": [
+        "80°C"
+      ],
+      "evidence_ids": [
+        "E-HT-DRAW-008"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "80°C | SUPPORTED | 证据明确提到“An engine outlet temperature of 80°C”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "80°C | SUPPORTED | 证据明确提到“An engine outlet temperature of 80°C”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR015",
+      "stmt": "冷却水系统图应标注关键温度与压力参数，如LT冷却水温度（32°C）等，并注明参考条件。",
+      "numbers": [
+        "32°C"
+      ],
+      "evidence_ids": [
+        "E-SYS-DRAW-007",
+        "E-SYS-DRAW-008",
+        "E-SYS-DRAW-018"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据E-SYS-DRAW-018明确要求LT冷却水温度维持在32°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据E-SYS-DRAW-018明确要求LT冷却水温度维持在32°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR017",
+      "stmt": "冷却水泵吸入口管路流速应符合厂家推荐值：淡水吸水管2.0-2.5 m/s，海水吸水管1.0-1.5 m/s。",
+      "numbers": [
+        "2.0m/s",
+        "1.0m/s"
+      ],
+      "evidence_ids": [
+        "E-PUMP-CLEAN-005"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2.0-2.5 m/s | SUPPORTED | 证据明确列出淡水吸水管流速范围为2.0-2.5 m/s。",
+          "1.0-1.5 m/s | SUPPORTED | 证据明确列出海水吸水管流速范围为1.0-1.5 m/s。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "2.0-2.5 m/s | SUPPORTED | 证据明确列出淡水吸水管流速范围为2.0-2.5 m/s。  \n1.0-1.5 m/s | SUPPORTED | 证据明确列出海水吸水管流速范围为1.0-1.5 m/s。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR017",
+      "stmt": "冷却水泵出口管路流速应符合厂家推荐值：淡水出口管2.0-2.5 m/s，海水出口管1.5-2.5 m/s。",
+      "numbers": [
+        "2.0m/s",
+        "1.5m/s"
+      ],
+      "evidence_ids": [
+        "E-PUMP-CLEAN-005"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "淡水出口管2.0-2.5 m/s | SUPPORTED | 证据中淡水出口管流速范围与需求一致。",
+          "海水出口管1.5-2.5 m/s | SUPPORTED | 证据中海水出口管流速范围与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "淡水出口管2.0-2.5 m/s | SUPPORTED | 证据中淡水出口管流速范围与需求一致。  \n海水出口管1.5-2.5 m/s | SUPPORTED | 证据中海水出口管流速范围与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR018",
+      "stmt": "过滤器壳体及管路连接件应按1.5倍最高工作压力进行水压试验，保压时间不少于30分钟，不得有渗漏。",
+      "numbers": [
+        "30分钟"
+      ],
+      "evidence_ids": [
+        "E-SUPP-FILT-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍最高工作压力 | SUPPORTED | 证据第4条明确要求按1.5倍最高工作压力进行水压试验。",
+          "30分钟 | SUPPORTED | 证据第4条明确要求保压时间不少于30分钟。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "1.5倍最高工作压力 | SUPPORTED | 证据第4条明确要求按1.5倍最高工作压力进行水压试验。  \n30分钟 | SUPPORTED | 证据第4条明确要求保压时间不少于30分钟。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR019",
+      "stmt": "隔振支架的刚度应使系统固有频率低于激励频率的1/√2倍，通常取1/3至1/5，阻尼比应在0.05-0.15之间，橡胶隔振垫静压缩量控制在10%-20%，弹簧支架动挠度不超过额定行程的60%。",
+      "numbers": [
+        "10%",
+        "20%",
+        "60%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PIPES-VIBRATIO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1/√2倍 | SUPPORTED | 证据明确包含“系统固有频率低于激励频率的1/√2倍”。",
+          "1/3至1/5 | SUPPORTED | 证据明确包含“通常取1/3至1/5”。",
+          "0.05-0.15 | SUPPORTED | 证据明确包含“阻尼比建议在0.05-0.15之间”。",
+          "10%-20% | SUPPORTED | 证据明确包含“橡胶隔振垫的静压缩量宜控制在10%-20%范围内”。",
+          "60% | SUPPORTED | 证据明确包含“弹簧支架的动挠度不应超过其额定行程的60%”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "1/√2倍 | SUPPORTED | 证据明确包含“系统固有频率低于激励频率的1/√2倍”。  \n1/3至1/5 | SUPPORTED | 证据明确包含“通常取1/3至1/5”。  \n0.05-0.15 | SUPPORTED | 证据明确包含“阻尼比建议在0.05-0.15之间”。  \n10%-20% | SUPPORTED | 证据明确包含“橡胶隔振垫的静压缩量宜控制在10%-20%范围内”。  \n60% | SUPPORTED | 证据明确包含“弹簧支架的动挠度不应超过其额定行程的60%”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR019",
+      "stmt": "安装后应进行振动测量，在主机额定转速及常用转速下，测量支架两侧的振动加速度或速度，隔振效率η应≥80%。",
+      "numbers": [
+        "80%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PIPES-VIBRATIO-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "80% | SUPPORTED | 证据明确要求隔振效率η≥80%，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "80% | SUPPORTED | 证据明确要求隔振效率η≥80%，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR021",
+      "stmt": "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动；各泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力。",
+      "numbers": [
+        "2台",
+        "1台"
+      ],
+      "evidence_ids": [
+        "E-DNV-COOL-002",
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2台 | SUPPORTED | 两条证据均明确要求“不少于2台”冷却水泵。",
+          "1台 | SUPPORTED | 两条证据均明确要求“至少1台应为独立电力驱动”。",
+          "主机额定功率工况 | SUPPORTED | CCS证据明确要求“在主机额定功率工况下单独满足冷却水流量需求”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "2台 | SUPPORTED | 两条证据均明确要求“不少于2台”冷却水泵。  \n1台 | SUPPORTED | 两条证据均明确要求“至少1台应为独立电力驱动”。  \n主机额定功率工况 | SUPPORTED | CCS证据明确要求“在主机额定功率工况下单独满足冷却水流量需求”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR021",
+      "stmt": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "numbers": [
+        "32°C",
+        "35°C"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确要求“不低于32°C”，与需求一致。",
+          "35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确要求“不低于32°C”，与需求一致。  \n35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR022",
+      "stmt": "冷却器选型时，海水温度设计值应基于船舶航行区域的历史最高海水温度，并考虑至少5°C的裕量。",
+      "numbers": [
+        "5°C"
+      ],
+      "evidence_ids": [
+        "E-ISO8861-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "5°C | CONTRADICTED | 证据要求换热器净冷却能力增加至少15%安全余量，而非海水温度设计值增加5°C裕量。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "5°C | CONTRADICTED | 证据要求换热器净冷却能力增加至少15%安全余量，而非海水温度设计值增加5°C裕量。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR022",
+      "stmt": "冷却器换热面积应包含至少10%的余量，以补偿长期脏污对换热性能的影响。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [
+        "E-SW-CLEAN-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "10% | UNVERIFIABLE | 证据仅提及污垢系数概念和计算公式，未明确指定换热面积需包含10%余量。"
+        ]
+      },
+      "llm_raw": "10% | UNVERIFIABLE | 证据仅提及污垢系数概念和计算公式，未明确指定换热面积需包含10%余量。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR024",
+      "stmt": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%~15%。",
+      "numbers": [
+        "10%",
+        "15%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10%~15% | SUPPORTED | 证据明确要求膨胀水箱有效容积不小于主机冷却水系统总容积的10%~15%，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10%~15% | SUPPORTED | 证据明确要求膨胀水箱有效容积不小于主机冷却水系统总容积的10%~15%，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR024",
+      "stmt": "膨胀水箱的低液位报警设定值应为有效容积的20%，高液位报警设定值应为有效容积的80%。",
+      "numbers": [
+        "20%",
+        "80%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "20% | SUPPORTED | 证据明确说明低位设定值通常为有效容积的20%。",
+          "80% | SUPPORTED | 证据明确说明高位设定值通常为有效容积的80%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "20% | SUPPORTED | 证据明确说明低位设定值通常为有效容积的20%。  \n80% | SUPPORTED | 证据明确说明高位设定值通常为有效容积的80%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR024",
+      "stmt": "膨胀水箱应设置补水接口，补水泵的流量应能在10~15分钟内将水箱从低位补至高位，扬程需克服系统背压。",
+      "numbers": [
+        "10分钟"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10~15分钟 | SUPPORTED | 证据明确要求补水泵流量应在10~15分钟内将水箱从低位补至高位。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "低位 | UNVERIFIABLE | 证据未定义“低位”的具体数值或水位标记。",
+          "高位 | UNVERIFIABLE | 证据未定义“高位”的具体数值或水位标记。",
+          "系统背压 | UNVERIFIABLE | 证据仅提及“扬程需克服系统背压”，未给出背压的具体数值。"
+        ]
+      },
+      "llm_raw": "10~15分钟 | SUPPORTED | 证据明确要求补水泵流量应在10~15分钟内将水箱从低位补至高位。  \n低位 | UNVERIFIABLE | 证据未定义“低位”的具体数值或水位标记。  \n高位 | UNVERIFIABLE | 证据未定义“高位”的具体数值或水位标记。  \n系统背压 | UNVERIFIABLE | 证据仅提及“扬程需克服系统背压”，未给出背压的具体数值。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR025",
+      "stmt": "海水管路流速应受控以防止冲蚀腐蚀：铜镍合金（如90/10 CuNi）管路流速不超过3 m/s，钢管路流速不超过2 m/s；泵叶轮和阀门应使用双相不锈钢或镍铝青铜。",
+      "numbers": [
+        "3m/s",
+        "2m/s"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-SEAWA-CORROSIO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "3 m/s | SUPPORTED | 证据明确支持铜镍合金管路流速不超过3 m/s。",
+          "2 m/s | SUPPORTED | 证据明确支持钢管路流速不超过2 m/s。",
+          "双相不锈钢或镍铝青铜 | SUPPORTED | 证据明确指定泵叶轮和阀门使用双相不锈钢或镍铝青铜。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "3 m/s | SUPPORTED | 证据明确支持铜镍合金管路流速不超过3 m/s。  \n2 m/s | SUPPORTED | 证据明确支持钢管路流速不超过2 m/s。  \n双相不锈钢或镍铝青铜 | SUPPORTED | 证据明确指定泵叶轮和阀门使用双相不锈钢或镍铝青铜。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR026",
+      "stmt": "Temperature sensor alarm setpoints for the main engine cooling water system shall be set based on manufacturer's recommendations and class society rules, and functionally tested during commissioning and periodic surveys to ensure activation within ±2% of the setpoint.",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-SENSOR-ALARM-003",
+        "E-SENSOR-ALARM-001",
+        "E-DRAFT-PRESSU-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-002]明确要求报警在设定点的±2%范围内激活。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-002]明确要求报警在设定点的±2%范围内激活。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR026",
+      "stmt": "Pressure sensor alarm setpoints for the main engine cooling water system shall be set based on manufacturer's recommendations and class society rules; low pressure alarm setpoint typically 0.1-0.2 bar above minimum allowable pressure to prevent cavitation.",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据明确列出低压报警定值范围为0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据明确列出低压报警定值范围为0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR026",
+      "stmt": "For critical cooling water systems, dual pressure sensors with independent alarm setpoints shall be installed; the alarm setpoint deviation between redundant sensors shall not exceed 5% of the operating range.",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确要求冗余传感器报警设定点偏差不超过5%运行范围。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确要求冗余传感器报警设定点偏差不超过5%运行范围。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR026",
+      "stmt": "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the tank's normal operating level to prevent air ingestion into the cooling water pump; the high-level alarm setpoint shall be at 85-90% to avoid overflow.",
+      "numbers": [
+        "10%",
+        "85%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-001",
+        "E-DRAFT-LEVEL-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确支持该范围。",
+          "85-90% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确支持该范围。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确支持该范围。  \n85-90% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确支持该范围。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR026",
+      "stmt": "The control system interface shall define clear trigger conditions for start/stop, load change, and alarm; the PLC shall receive a 4-20 mA analog signal from the cooling water temperature sensor; if temperature exceeds 95°C, the control system shall trigger an alarm.",
+      "numbers": [
+        "95°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-CONTRO-INTERFAC-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "95°C | SUPPORTED | 证据明确提到“if temperature exceeds 95°C”，与需求中的数值一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "95°C | SUPPORTED | 证据明确提到“if temperature exceeds 95°C”，与需求中的数值一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR027",
+      "stmt": "高温报警的复位条件应为温度降至设定值以下并持续至少2秒。",
+      "numbers": [
+        "2秒"
+      ],
+      "evidence_ids": [
+        "E-ALARM-ALARM-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2秒 | SUPPORTED | 证据明确要求“将认可值记录2秒以上，以重置警报”，与需求中的“持续至少2秒”一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "2秒 | SUPPORTED | 证据明确要求“将认可值记录2秒以上，以重置警报”，与需求中的“持续至少2秒”一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR028",
+      "stmt": "滤器清洗或更换的触发条件应基于压差，当压差超过0.1 bar（或厂家规定值）时应进行维护。",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FILTER-MAINTENA-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1 bar | SUPPORTED | 证据明确提到压差超过0.1 bar时需维护，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1 bar | SUPPORTED | 证据明确提到压差超过0.1 bar时需维护，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR029",
+      "stmt": "补水水质应满足pH值6.5-8.5、氯离子含量<50 ppm、总硬度<10 ppm的要求，以防止冷却系统腐蚀和结垢。",
+      "numbers": [
+        "50ppm",
+        "10ppm"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-MAKEUPW-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "pH值6.5-8.5 | SUPPORTED | 证据明确列出pH值范围为6.5-8.5。",
+          "氯离子含量<50 ppm | SUPPORTED | 证据明确列出氯离子含量<50 ppm。",
+          "总硬度<10 ppm | SUPPORTED | 证据明确列出总硬度<10 ppm。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "pH值6.5-8.5 | SUPPORTED | 证据明确列出pH值范围为6.5-8.5。  \n氯离子含量<50 ppm | SUPPORTED | 证据明确列出氯离子含量<50 ppm。  \n总硬度<10 ppm | SUPPORTED | 证据明确列出总硬度<10 ppm。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR031",
+      "stmt": "Pressure sensor alarm setpoints for the main engine cooling water system shall be set based on manufacturer's recommendations and class society rules, with low pressure alarm typically set at 0.1-0.2 bar above the minimum allowable pressure.",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-002",
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]明确给出低压力报警设定点为0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]明确给出低压力报警设定点为0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR031",
+      "stmt": "For critical cooling water systems, dual pressure sensors with independent alarm setpoints shall be installed, and the alarm setpoint deviation between redundant sensors shall not exceed 5% of the operating range.",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确要求冗余传感器报警设定点偏差不超过5%工作范围。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确要求冗余传感器报警设定点偏差不超过5%工作范围。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR031",
+      "stmt": "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the tank's normal operating level to prevent air ingestion into the cooling water pump.",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-003",
+        "E-DRAFT-LEVEL-ALARMSE-001",
+        "E-DRAFT-LEVEL-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确说明低液位报警定值通常设为正常操作液位的10-15%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确说明低液位报警定值通常设为正常操作液位的10-15%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR031",
+      "stmt": "The high-level alarm setpoint for the cooling water expansion tank shall be set at 85-90% of the tank's normal operating level to avoid overflow.",
+      "numbers": [
+        "85%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-001",
+        "E-DRAFT-LEVEL-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "85-90% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确写明高液位报警定值通常设为正常液位的85-90%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "85-90% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确写明高液位报警定值通常设为正常液位的85-90%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR032",
+      "stmt": "系统应设置冷却水低压报警，报警设定值按正常压力的70%-80%确定，并设置1-2秒延时以避免误报。",
+      "numbers": [
+        "70%",
+        "80%",
+        "1秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-COOLIN-AUTOSTA-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "70%-80% | SUPPORTED | 证据明确要求低限报警值取正常压力的70%-80%。",
+          "1-2秒 | SUPPORTED | 证据明确要求设置延时约1-2秒。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "70%-80% | SUPPORTED | 证据明确要求低限报警值取正常压力的70%-80%。  \n1-2秒 | SUPPORTED | 证据明确要求设置延时约1-2秒。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR032",
+      "stmt": "当冷却水压力低于预设值时，备用冷却水泵应自动启动，启动压力设定值为正常压力的60%-70%，并设置1-2秒延时。",
+      "numbers": [
+        "60%",
+        "70%",
+        "1秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-COOLIN-AUTOSTA-001",
+        "E-DRAFT-COOLIN-AUTOSTA-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "60%-70% | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]明确写明“60%-70%作为备用泵启动值”。",
+          "1-2秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]明确写明“设置延时约1-2秒”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "60%-70% | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]明确写明“60%-70%作为备用泵启动值”。  \n1-2秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]明确写明“设置延时约1-2秒”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR032",
+      "stmt": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "numbers": [
+        "32°C",
+        "35°C"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。",
+          "35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。  \n35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR032",
+      "stmt": "备用冷却水泵的自动启动应在主泵故障停机或出口压力低于设定值时触发，并在3-5秒内启动并建立正常压力。",
+      "numbers": [
+        "3秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-COOLIN-AUTOSTA-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "3-5秒 | SUPPORTED | 证据明确要求备用泵在3-5秒内自动启动并建立正常压力。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "0.15 MPa | UNVERIFIABLE | 证据中提及0.15 MPa作为低压设定值示例，但需求未明确该数值，仅描述为“低于设定值”。"
+        ]
+      },
+      "llm_raw": "3-5秒 | SUPPORTED | 证据明确要求备用泵在3-5秒内自动启动并建立正常压力。  \n0.15 MPa | UNVERIFIABLE | 证据中提及0.15 MPa作为低压设定值示例，但需求未明确该数值，仅描述为“低于设定值”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR032",
+      "stmt": "备用泵自动启动功能应在系泊试验或航行试验中通过模拟主泵故障（如切断主泵电源或关闭出口阀）进行验证，从主泵停止到备用泵启动并达到额定压力的时间应不超过10秒。",
+      "numbers": [
+        "10秒"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-COOLIN-AUTOSTA-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据明确写明“通常不超过10秒”，与需求中的10秒一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10秒 | SUPPORTED | 证据明确写明“通常不超过10秒”，与需求中的10秒一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR033",
+      "stmt": "冷却水压力传感器量程和报警设定值应依据主机厂家推荐值及船级社规范设定，低压报警设定值通常为最低允许压力以上0.1-0.2 bar。",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-SYS-COMP-015",
+        "E-SYS-COMP-013",
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]明确说明低压报警设定值通常为最低允许压力以上0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]明确说明低压报警设定值通常为最低允许压力以上0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR033",
+      "stmt": "冷却水液位传感器报警设定值应依据系统保护要求设定，低液位报警设定值通常为膨胀箱正常液位的10%-15%，高液位报警设定值为85%-90%。",
+      "numbers": [
+        "10%",
+        "15%",
+        "85%",
+        "90%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-003",
+        "E-DRAFT-LEVEL-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10%-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确给出低液位报警设定值为10-15%。",
+          "85%-90% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确给出高液位报警设定值为85-90%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10%-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确给出低液位报警设定值为10-15%。  \n85%-90% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确给出高液位报警设定值为85-90%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR033",
+      "stmt": "冷却水流量计精度应不低于±1%读数，安装位置应满足上游至少10倍管径、下游至少5倍管径的直管段要求。",
+      "numbers": [
+        "1%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FLOWM-SPECIFIC-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±1%读数 | SUPPORTED | 证据明确要求精度为±1% of reading or better。",
+          "10倍管径 | SUPPORTED | 证据明确要求上游至少10D直管段。",
+          "5倍管径 | SUPPORTED | 证据明确要求下游至少5D直管段。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±1%读数 | SUPPORTED | 证据明确要求精度为±1% of reading or better。  \n10倍管径 | SUPPORTED | 证据明确要求上游至少10D直管段。  \n5倍管径 | SUPPORTED | 证据明确要求下游至少5D直管段。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR033",
+      "stmt": "在调试和定期检验期间，应通过模拟报警条件（如降低压力或升高温度）对压力传感器报警设定值进行功能测试，确认报警在设定值±2%范围内触发。",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求报警在设定点的±2%范围内激活。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求报警在设定点的±2%范围内激活。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR033",
+      "stmt": "在调试期间，应通过手动调节膨胀箱液位验证液位传感器报警设定值，低液位报警触发值与设定值偏差不超过传感器量程的±2%。",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求偏差不超过传感器量程的±2%，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求偏差不超过传感器量程的±2%，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR033",
+      "stmt": "对于关键系统，若安装冗余压力传感器，其报警设定值偏差不应超过工作范围的5%，且应选用更保守的设定值（如较低的低压报警值）作为实际报警点。",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确要求冗余传感器报警设定值偏差不应超过工作范围的5%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确要求冗余传感器报警设定值偏差不应超过工作范围的5%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR034",
+      "stmt": "The temperature control valve shall be a motor-actuated three-way regulating valve with linear characteristic, installed as a mixing valve, to maintain LT cooling water at set point temperature (32°C standard).",
+      "numbers": [
+        "32°C"
+      ],
+      "evidence_ids": [
+        "E-TCV-TEMP-162"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确写明“set point temperature (32°C standard)”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确写明“set point temperature (32°C standard)”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR034",
+      "stmt": "The electronic water temperature control shall adjust cooling water inlet temperature to maintain engine outlet temperature between 90°C and 100°C, even during frequent load changes.",
+      "numbers": [
+        "90°C",
+        "100°C"
+      ],
+      "evidence_ids": [
+        "E-SYS-COMP-006"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "90°C | SUPPORTED | 证据明确提到调整出水温度范围在90至100°C之间。",
+          "100°C | SUPPORTED | 证据明确提到发动机出口温度为100°C，并包含90-100°C范围。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "90°C | SUPPORTED | 证据明确提到调整出水温度范围在90至100°C之间。  \n100°C | SUPPORTED | 证据明确提到发动机出口温度为100°C，并包含90-100°C范围。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR036",
+      "stmt": "主推进发动机冷却水系统应设置低压报警，报警设定值应基于发动机制造商建议和船级社规范，通常高于最低允许压力0.1-0.2 bar以防止气蚀。",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-002",
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]明确写明低压报警设定值通常高于最低允许压力0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]明确写明低压报警设定值通常高于最低允许压力0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR036",
+      "stmt": "主推进发动机冷却水膨胀水箱应设置低液位报警，报警设定值通常为正常液位的10%-15%，以防止空气进入冷却水泵。",
+      "numbers": [
+        "10%",
+        "15%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-003",
+        "E-DRAFT-LEVEL-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10%-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确说明低液位报警设定值通常为正常液位的10-15%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10%-15% | SUPPORTED | 证据[E-DRAFT-LEVEL-ALARMSE-001]明确说明低液位报警设定值通常为正常液位的10-15%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR036",
+      "stmt": "对于关键系统，应安装冗余压力传感器，其独立报警设定值偏差不应超过量程的5%，并采用更保守的设定值触发报警。",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确要求冗余传感器报警设定值偏差不超过量程的5%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确要求冗余传感器报警设定值偏差不超过量程的5%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR038",
+      "stmt": "主机冷却水系统应设置高温报警装置，当冷却水温度超过95°C时触发报警（仅提醒，不自动降负荷或停机）。",
+      "numbers": [
+        "95°C"
+      ],
+      "evidence_ids": [
+        "L1-CCS2025-9.4.2.2-032",
+        "E-ALARM-ALARM-001",
+        "E-ALARM-ALARM-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "95°C | SUPPORTED | 证据[E-ALARM-ALARM-001]和[E-ALARM-ALARM-003]明确列出冷却液温度报警阈值为95°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "95°C | SUPPORTED | 证据[E-ALARM-ALARM-001]和[E-ALARM-ALARM-003]明确列出冷却液温度报警阈值为95°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR038",
+      "stmt": "主机冷却水系统应设置扭矩降低保护功能，当冷却水温度超过95°C且扭矩降低功能激活时，自动将燃油量降至70%以降低发动机负荷。",
+      "numbers": [
+        "95°C",
+        "70%"
+      ],
+      "evidence_ids": [
+        "E-ALARM-ALARM-006"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "95°C | SUPPORTED | 证据明确提到冷却液温度超过95°C时激活扭矩降低保护。",
+          "70% | SUPPORTED | 证据明确说明燃油量将降至70%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "95°C | SUPPORTED | 证据明确提到冷却液温度超过95°C时激活扭矩降低保护。  \n70% | SUPPORTED | 证据明确说明燃油量将降至70%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR038",
+      "stmt": "主机冷却水系统应设置熄火保护功能，当冷却水温度超过105°C且发动机熄火功能激活时，自动执行发动机熄火。",
+      "numbers": [
+        "105°C"
+      ],
+      "evidence_ids": [
+        "E-ALARM-SHUT-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "105°C | SUPPORTED | 证据明确提到“温度超过105°C且发动机熄火功能激活时，发动机将熄火”，与需求数值一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "105°C | SUPPORTED | 证据明确提到“温度超过105°C且发动机熄火功能激活时，发动机将熄火”，与需求数值一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR038",
+      "stmt": "主机冷却水系统的高温报警应具备手动重置功能，当温度降至认可值以下并持续2秒以上时，报警可自动重置。",
+      "numbers": [
+        "2秒"
+      ],
+      "evidence_ids": [
+        "E-ALARM-ALARM-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2秒 | SUPPORTED | 证据明确要求“将认可值记录2秒以上”以重置警报。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "2秒 | SUPPORTED | 证据明确要求“将认可值记录2秒以上”以重置警报。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR039",
+      "stmt": "For redundant pressure sensors, the system shall monitor the deviation between sensor readings and generate an alarm if the deviation exceeds 5% of the operating range, indicating a possible sensor fault.",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据明确提到“alarm setpoint deviation between redundant sensors should not exceed 5% of the operating range”，与需求中的5%一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据明确提到“alarm setpoint deviation between redundant sensors should not exceed 5% of the operating range”，与需求中的5%一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR039",
+      "stmt": "The system shall perform functional testing of alarm setpoints for pressure, temperature, level, and flow sensors during commissioning and periodic surveys by simulating alarm conditions and confirming activation within ±2% of the setpoint.",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-002",
+        "E-DRAFT-LEVEL-ALARMSE-002",
+        "E-DRAFT-FLOWM-ALARMSE-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 三条证据均明确要求报警激活偏差在设定点的±2%范围内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 三条证据均明确要求报警激活偏差在设定点的±2%范围内。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR039",
+      "stmt": "The low-level alarm setpoint for the cooling water expansion tank shall be set at 10-15% of the normal operating level to prevent air ingestion into the cooling water pump.",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10-15% | SUPPORTED | 证据明确说明低液位报警定值通常设为正常液位的10-15%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10-15% | SUPPORTED | 证据明确说明低液位报警定值通常设为正常液位的10-15%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR039",
+      "stmt": "The high-level alarm setpoint for the cooling water expansion tank shall be set at 85-90% of the normal operating level to avoid overflow.",
+      "numbers": [
+        "85%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-LEVEL-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "85-90% | SUPPORTED | 证据明确给出高液位报警定值为85-90%，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "85-90% | SUPPORTED | 证据明确给出高液位报警定值为85-90%，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR039",
+      "stmt": "The low flow alarm setpoint for main engine jacket cooling water shall be set at 60% of the rated flow as per MAN engine recommendations.",
+      "numbers": [
+        "60%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FLOWM-ALARMSE-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "60% | SUPPORTED | 证据明确提到MAN发动机缸套冷却水低流量报警定值通常设为额定流量的60%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "60% | SUPPORTED | 证据明确提到MAN发动机缸套冷却水低流量报警定值通常设为额定流量的60%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR039",
+      "stmt": "The low pressure alarm setpoint for main engine cooling water shall be set 0.1-0.2 bar above the minimum allowable pressure to prevent cavitation.",
+      "numbers": [
+        "0.1bar"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-ALARMSE-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "0.1-0.2 bar | SUPPORTED | 证据明确写明低报警定值通常为最低允许压力以上0.1-0.2 bar。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "0.1-0.2 bar | SUPPORTED | 证据明确写明低报警定值通常为最低允许压力以上0.1-0.2 bar。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR040",
+      "stmt": "冷却水温度报警应具有两级阈值：较低级别报警阈值（如95°C）和较高级别报警阈值（如105°C），具体值按发动机制造商规定。",
+      "numbers": [
+        "95°C",
+        "105°C"
+      ],
+      "evidence_ids": [
+        "E-ALARM-ALARM-001",
+        "E-ALARM-ALARM-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "95°C | SUPPORTED | 证据明确列出较低级别报警阈值为95°C。",
+          "105°C | SUPPORTED | 证据明确列出较高级别报警阈值为105°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "95°C | SUPPORTED | 证据明确列出较低级别报警阈值为95°C。  \n105°C | SUPPORTED | 证据明确列出较高级别报警阈值为105°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR040",
+      "stmt": "报警触发后，应在温度恢复到低于报警阈值并持续稳定一段时间（如2秒）后自动重置报警。",
+      "numbers": [
+        "2秒"
+      ],
+      "evidence_ids": [
+        "E-ALARM-ALARM-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2秒 | SUPPORTED | 证据明确要求“将认可值记录2秒以上，以重置警报”，与需求中的“持续稳定一段时间（如2秒）”一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "2秒 | SUPPORTED | 证据明确要求“将认可值记录2秒以上，以重置警报”，与需求中的“持续稳定一段时间（如2秒）”一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR041",
+      "stmt": "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动，且各泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力。",
+      "numbers": [
+        "2台",
+        "1台"
+      ],
+      "evidence_ids": [
+        "E-DNV-COOL-002",
+        "E-CCS-COOL-001",
+        "E-IACS-M3-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 3,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2台 | SUPPORTED | 三条证据均明确要求“不少于2台冷却水泵”。",
+          "1台 | SUPPORTED | 三条证据均要求“至少1台为独立电力驱动”。",
+          "主机额定功率工况 | SUPPORTED | CCS证据明确要求“在主机额定功率工况下单独满足冷却水流量需求”，IACS证据要求“在最大持续功率工况下满足全部冷却水流量”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "2台 | SUPPORTED | 三条证据均明确要求“不少于2台冷却水泵”。  \n1台 | SUPPORTED | 三条证据均要求“至少1台为独立电力驱动”。  \n主机额定功率工况 | SUPPORTED | CCS证据明确要求“在主机额定功率工况下单独满足冷却水流量需求”，IACS证据要求“在最大持续功率工况下满足全部冷却水流量”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR041",
+      "stmt": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "numbers": [
+        "32°C",
+        "35°C"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。",
+          "35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。  \n35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR042",
+      "stmt": "冷却水系统设计应满足IACS统一要求M28规定的标准环境参考条件，包括涡轮增压器进口温度45°C等。",
+      "numbers": [
+        "45°C"
+      ],
+      "evidence_ids": [
+        "E-IACS-M28-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "45°C | SUPPORTED | 证据明确要求涡轮增压器进口温度为45°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "45°C | SUPPORTED | 证据明确要求涡轮增压器进口温度为45°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR042",
+      "stmt": "冷却水系统应具备预热功能，确保主机在备用或启动燃用重油时冷却水温度不低于60°C。",
+      "numbers": [
+        "60°C"
+      ],
+      "evidence_ids": [
+        "E-COOLER-DRAW-015"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "60°C | SUPPORTED | 证据明确要求冷却水温度≥60°C，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "60°C | SUPPORTED | 证据明确要求冷却水温度≥60°C，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR045",
+      "stmt": "冷却水系统管路安装后，应进行水压试验，试验压力为系统最大允许工作压力的1.5倍，并保持至少10分钟。",
+      "numbers": [
+        "10分钟"
+      ],
+      "evidence_ids": [
+        "E-PIPE-PTEST-007",
+        "E-PIPE-PTEST-AUTH-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。",
+          "10分钟 | SUPPORTED | 证据[E-PIPE-PTEST-AUTH-002]明确要求水压试验压力保持至少10分钟。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。  \n10分钟 | SUPPORTED | 证据[E-PIPE-PTEST-AUTH-002]明确要求水压试验压力保持至少10分钟。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR046",
+      "stmt": "主推进机械的冷却水系统应设有不少于2台冷却水泵，其中至少1台应为独立电力驱动。各泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力。",
+      "numbers": [
+        "2台",
+        "1台"
+      ],
+      "evidence_ids": [
+        "E-DNV-COOL-002",
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 2,
+      "label": "no_numeric",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "NO_NUMERIC_CLAIMS"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR046",
+      "stmt": "冷却水系统的设计应能在主机最大连续功率（MCR）条件下，在航行海区最高海水温度（不低于32°C）时保持正常工作，热带航区应不低于35°C。",
+      "numbers": [
+        "32°C",
+        "35°C"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。",
+          "35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "32°C | SUPPORTED | 证据明确要求“航行海区最高海水温度（不低于32°C）时保持正常工作”。  \n35°C | SUPPORTED | 证据明确要求“热带航区应不低于35°C”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR047",
+      "stmt": "冷却水系统安装完成后应进行管路水压试验，试验压力为设计压力的1.5倍，保压时间不少于30分钟，无渗漏。",
+      "numbers": [
+        "30分钟"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍 | SUPPORTED | 证据明确要求“按设计压力的1.5倍进行水压试验”。",
+          "30分钟 | SUPPORTED | 证据明确要求“保压时间不少于30分钟”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "1.5倍 | SUPPORTED | 证据明确要求“按设计压力的1.5倍进行水压试验”。  \n30分钟 | SUPPORTED | 证据明确要求“保压时间不少于30分钟”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR049",
+      "stmt": "膨胀水箱的低液位报警设定值应为水箱有效容积的20%，高液位报警设定值应为80%。",
+      "numbers": [
+        "20%",
+        "80%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "20% | SUPPORTED | 证据明确说明低位报警设定值为水箱有效容积的20%。",
+          "80% | SUPPORTED | 证据明确说明高位报警设定值为水箱有效容积的80%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "20% | SUPPORTED | 证据明确说明低位报警设定值为水箱有效容积的20%。  \n80% | SUPPORTED | 证据明确说明高位报警设定值为水箱有效容积的80%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR049",
+      "stmt": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%~15%。",
+      "numbers": [
+        "10%",
+        "15%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10%~15% | SUPPORTED | 证据明确要求膨胀水箱有效容积不小于主机冷却水系统总容积的10%~15%，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10%~15% | SUPPORTED | 证据明确要求膨胀水箱有效容积不小于主机冷却水系统总容积的10%~15%，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR049",
+      "stmt": "补水泵的流量应能在10~15分钟内将膨胀水箱从低位补至高位。",
+      "numbers": [
+        "10分钟"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-EXPANS-LEVELCO-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10~15分钟 | SUPPORTED | 证据明确要求补水泵流量应在10~15分钟内将水箱从低位补至高位。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10~15分钟 | SUPPORTED | 证据明确要求补水泵流量应在10~15分钟内将水箱从低位补至高位。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR052",
+      "stmt": "主机机器处所应设置应急舱底水吸口，连接至一台主冷却水泵，并安装截止止回阀，阀杆手轮应高出花钢板450mm以上。",
+      "numbers": [
+        "450mm"
+      ],
+      "evidence_ids": [
+        "L1-CCS2025-3.3.3.1-040"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "450mm | SUPPORTED | 证据明确要求手轮高出花钢板以上450mm，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "450mm | SUPPORTED | 证据明确要求手轮高出花钢板以上450mm，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR054",
+      "stmt": "对于Scania发动机，防腐剂体积比应为8-12%，且仅使用Scania防腐剂（无亚硝酸盐）。",
+      "numbers": [
+        "8%"
+      ],
+      "evidence_ids": [
+        "E-COOLANT-WATER-004"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "8-12% | SUPPORTED | 证据明确说明防腐剂体积比为8-12%。",
+          "Scania防腐剂（无亚硝酸盐） | SUPPORTED | 证据指出使用Scania Corrosion Inhibitor且不含亚硝酸盐。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "8-12% | SUPPORTED | 证据明确说明防腐剂体积比为8-12%。  \nScania防腐剂（无亚硝酸盐） | SUPPORTED | 证据指出使用Scania Corrosion Inhibitor且不含亚硝酸盐。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR054",
+      "stmt": "补足冷却液时，必须使用预混合冷却液（水+10% Scania防腐剂），不得仅用水或防腐剂加注。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [
+        "E-COOLANT-WATER-005"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10% | SUPPORTED | 证据明确要求“水 + 10% Scania防腐剂（体积比）”，与需求中的10%一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10% | SUPPORTED | 证据明确要求“水 + 10% Scania防腐剂（体积比）”，与需求中的10%一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR055",
+      "stmt": "牺牲阳极的更换周期应根据水质和运行小时数确定，通常为12至24个月，且阳极质量损失不应超过50%。",
+      "numbers": [
+        "50%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-ANODE-REPLACEM-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "12至24个月 | SUPPORTED | 证据明确提到“typically replaced every 12-24 months”。",
+          "50% | SUPPORTED | 证据明确要求“no more than 50% mass loss”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "12至24个月 | SUPPORTED | 证据明确提到“typically replaced every 12-24 months”。  \n50% | SUPPORTED | 证据明确要求“no more than 50% mass loss”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR057",
+      "stmt": "冷却水系统管路安装完成后，应按设计压力的1.5倍进行水压试验，保压时间不少于30分钟，试验过程中不得有渗漏现象。",
+      "numbers": [
+        "30分钟"
+      ],
+      "evidence_ids": [
+        "E-CCS-COOL-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍 | SUPPORTED | 证据明确要求“按设计压力的1.5倍进行水压试验”。",
+          "30分钟 | SUPPORTED | 证据明确要求“保压时间不少于30分钟”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "1.5倍 | SUPPORTED | 证据明确要求“按设计压力的1.5倍进行水压试验”。  \n30分钟 | SUPPORTED | 证据明确要求“保压时间不少于30分钟”。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "The alarm system shall verify that each sensor triggers the correct alarm (pre-alarm and main alarm) at the set threshold, e.g., cooling water outlet high temperature alarm at 95°C, and that main alarm automatically triggers slowdown or shutdown protection.",
+      "numbers": [
+        "95°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-ALARM-TESTPRO-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "95°C | SUPPORTED | 证据明确提到冷却水出口高温报警设定阈值为95°C。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "95°C | SUPPORTED | 证据明确提到冷却水出口高温报警设定阈值为95°C。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "Temperature sensors in the main engine cooling water system shall be calibrated at least once every 5 years or during major overhauls, with calibration traceable to national or international standards and an allowable error of ±1°C.",
+      "numbers": [
+        "1°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-CALIBRAT-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5年 | SUPPORTED | 证据明确要求“至少每5年”校准，与需求一致。",
+          "±1°C | SUPPORTED | 证据规定允许误差为±1°C（量程0-100°C），与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5年 | SUPPORTED | 证据明确要求“至少每5年”校准，与需求一致。  \n±1°C | SUPPORTED | 证据规定允许误差为±1°C（量程0-100°C），与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "Temperature sensors in jacket cooling water systems shall have an allowable error of ±1.5°C over the operating range (0-120°C). Calibration records shall include sensor ID, date, method, results, and next due date, and be kept onboard for at least 5 years.",
+      "numbers": [
+        "1.5°C",
+        "0°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-CALIBRAT-003"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±1.5°C | SUPPORTED | 证据明确写明允许误差为±1.5°C。",
+          "0-120°C | SUPPORTED | 证据提及典型工作范围为0-120°C。",
+          "5年 | SUPPORTED | 证据要求校准记录至少保存5年。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±1.5°C | SUPPORTED | 证据明确写明允许误差为±1.5°C。  \n0-120°C | SUPPORTED | 证据提及典型工作范围为0-120°C。  \n5年 | SUPPORTED | 证据要求校准记录至少保存5年。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "Temperature sensors shall be calibrated when deviation exceeds ±2°C compared to a reference standard during routine checks, or after any repair/replacement of the sensor or its wiring. Verification shall be performed using a calibrated temperature bath at three points covering the operating range.",
+      "numbers": [
+        "2°C"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-TEMPER-CALIBRAT-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2°C | SUPPORTED | 证据明确提到校准触发条件为偏差超过±2°C。",
+          "three points | SUPPORTED | 证据明确提到在三个点进行验证。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "20°C, 50°C, 80°C | UNVERIFIABLE | 证据仅举例三个点（如20°C、50°C、80°C），但需求未指定具体温度值，仅说“覆盖工作范围”，故无法直接验证。"
+        ]
+      },
+      "llm_raw": "±2°C | SUPPORTED | 证据明确提到校准触发条件为偏差超过±2°C。  \nthree points | SUPPORTED | 证据明确提到在三个点进行验证。  \n20°C, 50°C, 80°C | UNVERIFIABLE | 证据仅举例三个点（如20°C、50°C、80°C），但需求未指定具体温度值，仅说“覆盖工作范围”，故无法直接验证。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "Pressure sensors in main engine cooling water systems shall be calibrated at least once every 2 years, or when deviation exceeds ±2% of full scale from a reference standard, or after repair/replacement of the sensor or its wiring.",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-CALIBRAT-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求“超过满量程的±2%”作为校准触发条件，与需求一致。",
+          "2 years | SUPPORTED | 证据明确要求“至少每2年校准一次”，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求“超过满量程的±2%”作为校准触发条件，与需求一致。  \n2 years | SUPPORTED | 证据明确要求“至少每2年校准一次”，与需求一致。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "Pressure sensor calibration shall be performed using a certified pressure calibrator with accuracy at least 4 times better than the sensor's specified accuracy. The sensor output shall be within ±1% of applied pressure over the operating range (0-10 bar typical). For critical alarms, the allowable error shall be ±0.5%.",
+      "numbers": [
+        "1%",
+        "0bar",
+        "0.5%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-PRESSU-CALIBRAT-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±1% | SUPPORTED | 证据明确要求传感器输出在±1%以内。",
+          "0-10 bar | SUPPORTED | 证据明确提及工作范围为0到10 bar。",
+          "±0.5% | SUPPORTED | 证据明确要求关键报警允许误差为±0.5%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±1% | SUPPORTED | 证据明确要求传感器输出在±1%以内。  \n0-10 bar | SUPPORTED | 证据明确提及工作范围为0到10 bar。  \n±0.5% | SUPPORTED | 证据明确要求关键报警允许误差为±0.5%。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "Flow meters in main engine cooling water systems shall be calibrated at intervals not exceeding 2 years, or when deviation exceeds ±2% of rated flow during routine checks, or after repair/replacement of the meter, or when system anomalies indicate drift.",
+      "numbers": [
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FLOWM-CALIBRAT-001"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±2% | SUPPORTED | 证据明确要求偏差超过额定流量的±2%时触发校验。",
+          "2 years | SUPPORTED | 证据明确要求校验周期不超过2年。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±2% | SUPPORTED | 证据明确要求偏差超过额定流量的±2%时触发校验。  \n2 years | SUPPORTED | 证据明确要求校验周期不超过2年。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR058",
+      "stmt": "The permissible error for flow meters in main engine cooling water circuits shall be ±1.5% of actual flow rate for electromagnetic and ultrasonic types, and ±2% for mechanical types. Calibration must be traceable to national or international standards (e.g., ISO 8316).",
+      "numbers": [
+        "1.5%",
+        "2%"
+      ],
+      "evidence_ids": [
+        "E-DRAFT-FLOWM-CALIBRAT-002"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "±1.5% | SUPPORTED | 证据明确列出电磁式和超声波式流量计允许误差为±1.5%。",
+          "±2% | SUPPORTED | 证据明确列出机械式流量计允许误差为±2%。",
+          "ISO 8316 | SUPPORTED | 证据明确提及ISO 8316作为校准标准。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "±1.5% | SUPPORTED | 证据明确列出电磁式和超声波式流量计允许误差为±1.5%。  \n±2% | SUPPORTED | 证据明确列出机械式流量计允许误差为±2%。  \nISO 8316 | SUPPORTED | 证据明确提及ISO 8316作为校准标准。"
+    },
+    {
+      "arm": "rag_v3",
+      "sid": "OR060",
+      "stmt": "高温冷却水系统应包含缸套和缸盖冷却，出口温度应维持在80°C以确保HFO燃烧。",
+      "numbers": [
+        "80°C"
+      ],
+      "evidence_ids": [
+        "E-HT-DRAW-008"
+      ],
+      "retrieval": "cited",
+      "n_units": 1,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "80°C | SUPPORTED | 证据明确要求出口温度维持80°C以确保HFO燃烧。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "80°C | SUPPORTED | 证据明确要求出口温度维持80°C以确保HFO燃烧。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR001",
+      "stmt": "主机冷却水系统在正常工况下，冷却水温度波动范围应控制在±2°C以内，压力波动范围应控制在±0.05 MPa以内，流量波动范围应控制在±5%以内，以确保推进设备稳定运行。",
+      "numbers": [
+        "2°C",
+        "0.05MPa",
+        "5%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "±2°C | UNVERIFIABLE | 证据未明确提及冷却水温度波动范围应控制在±2°C以内。",
+          "±0.05 MPa | UNVERIFIABLE | 证据未明确提及冷却水压力波动范围应控制在±0.05 MPa以内。",
+          "±5% | UNVERIFIABLE | 证据未明确提及冷却水流量波动范围应控制在±5%以内。"
+        ]
+      },
+      "llm_raw": "±2°C | UNVERIFIABLE | 证据未明确提及冷却水温度波动范围应控制在±2°C以内。\n\n±0.05 MPa | UNVERIFIABLE | 证据未明确提及冷却水压力波动范围应控制在±0.05 MPa以内。\n\n±5% | UNVERIFIABLE | 证据未明确提及冷却水流量波动范围应控制在±5%以内。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR001",
+      "stmt": "主机冷却水系统应配备自动调节装置（如温控阀、压力调节阀），在负荷变化时自动调整冷却水参数，响应时间不超过30秒，以抑制波动。",
+      "numbers": [
+        "30秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "30秒 | UNVERIFIABLE | 证据中未提及冷却水系统自动调节装置的响应时间要求。"
+        ]
+      },
+      "llm_raw": "30秒 | UNVERIFIABLE | 证据中未提及冷却水系统自动调节装置的响应时间要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR001",
+      "stmt": "主机冷却水系统应设置冗余泵组（一用一备），当主泵故障时，备用泵应在10秒内自动启动并投入运行，确保冷却水流量不中断。",
+      "numbers": [
+        "10秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间“通常不超过10秒”，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间“通常不超过10秒”，与需求一致。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR001",
+      "stmt": "主机冷却水系统应安装高精度传感器（温度精度±0.5°C，压力精度±0.01 MPa，流量精度±1%），并定期校准（每6个月一次），确保监测数据准确。",
+      "numbers": [
+        "0.5°C",
+        "0.01MPa",
+        "1%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [
+          "±1% | SUPPORTED | 证据[E-DRAFT-FLOWM-SPECIFIC-002]明确要求流量计精度为±1% of reading。"
+        ],
+        "contradicted": [
+          "±0.5°C | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]规定温度传感器可接受误差为±1°C，与需求中的±0.5°C矛盾。",
+          "每6个月一次 | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]规定温度传感器校准周期为至少每5年一次，与需求中的每6个月一次矛盾。"
+        ],
+        "unverifiable": [
+          "±0.01 MPa | UNVERIFIABLE | 证据未涉及压力传感器的具体精度数值。"
+        ]
+      },
+      "llm_raw": "±0.5°C | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]规定温度传感器可接受误差为±1°C，与需求中的±0.5°C矛盾。  \n±0.01 MPa | UNVERIFIABLE | 证据未涉及压力传感器的具体精度数值。  \n±1% | SUPPORTED | 证据[E-DRAFT-FLOWM-SPECIFIC-002]明确要求流量计精度为±1% of reading。  \n每6个月一次 | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]规定温度传感器校准周期为至少每5年一次，与需求中的每6个月一次矛盾。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR001",
+      "stmt": "主机冷却水系统应设置报警和联锁保护，当冷却水温度超过60°C、压力低于0.1 MPa或流量低于额定值80%时，触发声光报警，并在持续10秒后自动降负荷或停机（需校核主机厂限值）。",
+      "numbers": [
+        "60°C",
+        "0.1MPa",
+        "80%",
+        "10秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "60°C | UNVERIFIABLE | 证据[E-SYS-DRAW-021]提及80°C，但未明确60°C为报警阈值。",
+          "0.1 MPa | UNVERIFIABLE | 证据仅要求压力低报警，未给出具体压力数值。",
+          "80% | UNVERIFIABLE | 证据要求流量低报警，但未给出额定值百分比。",
+          "10秒 | UNVERIFIABLE | 证据未涉及延时时间参数。"
+        ]
+      },
+      "llm_raw": "60°C | UNVERIFIABLE | 证据[E-SYS-DRAW-021]提及80°C，但未明确60°C为报警阈值。  \n0.1 MPa | UNVERIFIABLE | 证据仅要求压力低报警，未给出具体压力数值。  \n80% | UNVERIFIABLE | 证据要求流量低报警，但未给出额定值百分比。  \n10秒 | UNVERIFIABLE | 证据未涉及延时时间参数。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR001",
+      "stmt": "主机冷却水系统应设计缓冲容积（如膨胀水箱），其容积至少为系统总容积的10%，以吸收热胀冷缩引起的压力波动。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求膨胀水箱有效容积为系统总容积的10%~15%，包含10%。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求膨胀水箱有效容积为系统总容积的10%~15%，包含10%。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR002",
+      "stmt": "主机冷却水系统应配置两台100%容量的冷却水泵（一台运行，一台备用），当运行泵故障时，备用泵应在10秒内自动启动并投入运行，确保冷却水流量不中断。",
+      "numbers": [
+        "100%",
+        "10秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间“通常不超过10秒”，与需求一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "100%容量 | UNVERIFIABLE | 证据未明确提及“100%容量”这一具体数值，仅涉及泵的容量需依据厂家数据确定。"
+        ]
+      },
+      "llm_raw": "100%容量 | UNVERIFIABLE | 证据未明确提及“100%容量”这一具体数值，仅涉及泵的容量需依据厂家数据确定。\n\n10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间“通常不超过10秒”，与需求一致。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR002",
+      "stmt": "冷却水系统应配置一台备用冷却器（或冗余冷却回路），其冷却能力不低于主冷却器的100%，当主冷却器故障或需清洗时，可通过切换阀组在5分钟内将冷却水切换至备用冷却器，保证主机冷却水温度在允许范围内。",
+      "numbers": [
+        "100%",
+        "5分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "5分钟 | UNVERIFIABLE | 证据仅涉及备用泵启动时间（3-5秒），未提及冷却水切换至备用冷却器的切换时间要求。",
+          "100% | UNVERIFIABLE | 证据未明确提及备用冷却器冷却能力与主冷却器的百分比关系。"
+        ]
+      },
+      "llm_raw": "5分钟 | UNVERIFIABLE | 证据仅涉及备用泵启动时间（3-5秒），未提及冷却水切换至备用冷却器的切换时间要求。\n\n100% | UNVERIFIABLE | 证据未明确提及备用冷却器冷却能力与主冷却器的百分比关系。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR002",
+      "stmt": "冷却水系统应设置自动旁通或应急冷却回路，当主循环泵或冷却器同时失效时，可通过应急海水泵或消防泵提供临时冷却水，维持主机最低冷却需求（如缸套水温度不超过70°C）至少30分钟。",
+      "numbers": [
+        "70°C",
+        "30分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "70°C | SUPPORTED | 证据[E-SYS-PRESS-028]明确提到主机冷却水温度参数包含70°C，与需求中缸套水温度不超过70°C一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "30分钟 | UNVERIFIABLE | 所有证据均未提及应急冷却持续时间30分钟这一具体时间参数。"
+        ]
+      },
+      "llm_raw": "70°C | SUPPORTED | 证据[E-SYS-PRESS-028]明确提到主机冷却水温度参数包含70°C，与需求中缸套水温度不超过70°C一致。  \n30分钟 | UNVERIFIABLE | 所有证据均未提及应急冷却持续时间30分钟这一具体时间参数。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR002",
+      "stmt": "冷却水系统应配备独立的温度、压力和流量监测仪表，并设置报警和自动保护逻辑，当检测到冷却水流量低于额定值的80%或温度超过设定值时，触发声光报警，并在延时10秒后自动启动备用设备或执行降负荷程序。",
+      "numbers": [
+        "80%",
+        "10秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间不超过10秒。"
+        ],
+        "contradicted": [
+          "80% | CONTRADICTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]规定备用泵启动值为正常压力的60%-70%，而非80%。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "80% | CONTRADICTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]规定备用泵启动值为正常压力的60%-70%，而非80%。  \n10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间不超过10秒。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR003",
+      "stmt": "中央冷却器（板式或管壳式）的换热容量应在设计工况（主机额定功率、海水设计温度32℃、冷却水出口温度36℃）基础上留有至少15%的裕量，以应对海水温度升高（最高至38℃）及换热器污垢热阻增加（污垢系数按0.0002 m²·K/W计）的影响。",
+      "numbers": [
+        "32℃",
+        "36℃",
+        "15%",
+        "38℃"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "15% | UNVERIFIABLE | 证据未涉及换热容量裕量百分比的具体数值要求。",
+          "32℃ | UNVERIFIABLE | 证据未涉及海水设计温度的具体数值。",
+          "36℃ | UNVERIFIABLE | 证据未涉及冷却水出口温度的具体数值。",
+          "38℃ | UNVERIFIABLE | 证据未涉及海水温度升高至38℃的具体数值。",
+          "0.0002 m²·K/W | UNVERIFIABLE | 证据未涉及污垢系数的具体数值。"
+        ]
+      },
+      "llm_raw": "15% | UNVERIFIABLE | 证据未涉及换热容量裕量百分比的具体数值要求。  \n32℃ | UNVERIFIABLE | 证据未涉及海水设计温度的具体数值。  \n36℃ | UNVERIFIABLE | 证据未涉及冷却水出口温度的具体数值。  \n38℃ | UNVERIFIABLE | 证据未涉及海水温度升高至38℃的具体数值。  \n0.0002 m²·K/W | UNVERIFIABLE | 证据未涉及污垢系数的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR003",
+      "stmt": "冷却水泵（中央冷却水泵或主海水泵）的流量应在主机额定工况所需冷却水流量基础上留有至少10%的裕量，扬程应满足管路阻力损失（含冷却器、阀门、管路）并留有10%的余量，同时泵的选型应确保在最高海水温度（38℃）和冷却器污堵工况下仍能提供足够流量。",
+      "numbers": [
+        "10%",
+        "38℃"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "10% | UNVERIFIABLE | 证据未提及冷却水泵流量裕量的具体百分比要求。",
+          "10% | UNVERIFIABLE | 证据未提及扬程余量的具体百分比要求。",
+          "38℃ | UNVERIFIABLE | 证据未提及最高海水温度的具体数值。"
+        ]
+      },
+      "llm_raw": "10% | UNVERIFIABLE | 证据未提及冷却水泵流量裕量的具体百分比要求。\n\n10% | UNVERIFIABLE | 证据未提及扬程余量的具体百分比要求。\n\n38℃ | UNVERIFIABLE | 证据未提及最高海水温度的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR003",
+      "stmt": "冷却水系统应配置自动温度控制阀（三通或四通），在海水温度变化时调节旁通流量，确保主机冷却水进口温度稳定在设定值（通常为36±2℃），且控制阀的响应时间不超过30秒。",
+      "numbers": [
+        "2℃",
+        "30秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "36±2℃ | UNVERIFIABLE | 证据未明确提及主机冷却水进口温度设定值为36±2℃。",
+          "30秒 | UNVERIFIABLE | 证据未涉及温度控制阀响应时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "36±2℃ | UNVERIFIABLE | 证据未明确提及主机冷却水进口温度设定值为36±2℃。  \n30秒 | UNVERIFIABLE | 证据未涉及温度控制阀响应时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR003",
+      "stmt": "冷却水系统应设置备用冷却水泵（100%容量），当主泵故障时自动切换，切换时间不超过10秒，且备用泵的容量裕量要求与主泵相同。",
+      "numbers": [
+        "100%",
+        "10秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求切换时间不超过10秒。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "100%容量 | UNVERIFIABLE | 证据未明确要求备用泵容量与主泵相同，仅要求总容量裕量≥25%。"
+        ]
+      },
+      "llm_raw": "100%容量 | UNVERIFIABLE | 证据未明确要求备用泵容量与主泵相同，仅要求总容量裕量≥25%。\n\n10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求切换时间不超过10秒。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR005",
+      "stmt": "冷却水系统应设计为所有滤器（包括海水滤器和淡水滤器）可在线清洗或更换，无需停机或拆卸管路，且滤器安装位置应留有至少500mm的维护空间。",
+      "numbers": [
+        "500mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "500mm | UNVERIFIABLE | 证据仅要求“足够空间”，未明确指定500mm的具体数值。"
+        ]
+      },
+      "llm_raw": "500mm | UNVERIFIABLE | 证据仅要求“足够空间”，未明确指定500mm的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR005",
+      "stmt": "冷却器（包括滑油冷却器、淡水冷却器等）应设计为可抽出式管束或可拆卸端盖结构，以便于机械清洗和检查，且冷却器安装位置应预留至少800mm的抽芯空间。",
+      "numbers": [
+        "800mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "800mm | UNVERIFIABLE | 证据未提及冷却器抽芯空间的具体尺寸要求。"
+        ]
+      },
+      "llm_raw": "800mm | UNVERIFIABLE | 证据未提及冷却器抽芯空间的具体尺寸要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR005",
+      "stmt": "冷却水泵（包括主海水泵、主淡水泵等）应设计为可独立拆卸和更换，泵进出口应设置隔离阀，且泵周围应留有至少600mm的维修通道。",
+      "numbers": [
+        "600mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "600mm | UNVERIFIABLE | 证据中未提及维修通道的具体尺寸要求。"
+        ]
+      },
+      "llm_raw": "600mm | UNVERIFIABLE | 证据中未提及维修通道的具体尺寸要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR005",
+      "stmt": "冷却水系统所有阀门（包括截止阀、止回阀、调节阀等）应布置在易于接近的位置，阀门手轮或执行机构距地面或平台高度不应超过1.6m，且阀门周围应留有至少300mm的操作空间。",
+      "numbers": [
+        "300mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1.6m | UNVERIFIABLE | 证据未涉及阀门手轮或执行机构距地面或平台高度的具体数值要求。",
+          "300mm | UNVERIFIABLE | 证据未涉及阀门周围操作空间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "1.6m | UNVERIFIABLE | 证据未涉及阀门手轮或执行机构距地面或平台高度的具体数值要求。  \n300mm | UNVERIFIABLE | 证据未涉及阀门周围操作空间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR007",
+      "stmt": "高温冷却水回路和低温冷却水回路应分别设置独立的膨胀水箱，且膨胀水箱的容积应满足系统水容积膨胀及补水需求，高温膨胀水箱容积不小于系统水容积的10%，低温膨胀水箱容积不小于系统水容积的10%。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求膨胀水箱有效容积不小于系统水容积的10%~15%，需求中的10%在此范围内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求膨胀水箱有效容积不小于系统水容积的10%~15%，需求中的10%在此范围内。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR007",
+      "stmt": "高温冷却水回路和低温冷却水回路应分别设置独立的温度调节阀（如三通阀或温控阀），以维持各自回路出口温度在设计范围内。高温回路出口温度通常为80-95°C，低温回路出口温度通常为30-45°C（具体值需根据设备要求校核）。",
+      "numbers": [
+        "80°C",
+        "30°C"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "80-95°C | UNVERIFIABLE | 证据仅涉及温度报警，未规定高温回路出口温度具体范围。",
+          "30-45°C | UNVERIFIABLE | 证据未涉及低温回路出口温度具体范围。"
+        ]
+      },
+      "llm_raw": "80-95°C | UNVERIFIABLE | 证据仅涉及温度报警，未规定高温回路出口温度具体范围。  \n30-45°C | UNVERIFIABLE | 证据未涉及低温回路出口温度具体范围。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR007",
+      "stmt": "高温冷却水回路和低温冷却水回路应分别设置独立的冷却器（如板式换热器或管壳式换热器），高温冷却器使用海水或低温淡水作为冷却介质，低温冷却器使用海水作为冷却介质。冷却器的换热面积应满足设计热负荷要求，并留有10%余量。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "10%余量 | CONTRADICTED | 证据[E-ISO8861-001]要求换热器净冷却能力应额外增加至少15%的安全余量，与需求中的10%余量矛盾。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "10%余量 | CONTRADICTED | 证据[E-ISO8861-001]要求换热器净冷却能力应额外增加至少15%的安全余量，与需求中的10%余量矛盾。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR007",
+      "stmt": "高温冷却水回路和低温冷却水回路的所有管路、阀门、接头等部件应选用耐腐蚀材料，如铜镍合金、不锈钢或经防腐处理的钢材，且设计压力不低于0.6 MPa（需校核）。",
+      "numbers": [
+        "0.6MPa"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0.6 MPa | UNVERIFIABLE | 证据中未提及设计压力具体数值，仅提到PN16/40等法兰等级，无法直接验证0.6 MPa。"
+        ]
+      },
+      "llm_raw": "0.6 MPa | UNVERIFIABLE | 证据中未提及设计压力具体数值，仅提到PN16/40等法兰等级，无法直接验证0.6 MPa。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR008",
+      "stmt": "主机冷却水系统温度控制阀的设定值（包括开启温度、关闭温度及比例带）必须与主机制造商提供的技术文件（如操作手册、系统设计图）中的规定值完全一致，偏差不得超过±1°C。",
+      "numbers": [
+        "1°C"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "±1°C | UNVERIFIABLE | 证据中未提及温度控制阀设定值的允许偏差范围。"
+        ]
+      },
+      "llm_raw": "±1°C | UNVERIFIABLE | 证据中未提及温度控制阀设定值的允许偏差范围。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR008",
+      "stmt": "温度控制阀的调试应在主机首次启动前完成，并记录实际动作温度与设定值的偏差，若偏差超出±1°C，应调整或更换阀体。",
+      "numbers": [
+        "1°C"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "±1°C | UNVERIFIABLE | 证据中未提及温度控制阀调试偏差允许值。"
+        ]
+      },
+      "llm_raw": "±1°C | UNVERIFIABLE | 证据中未提及温度控制阀调试偏差允许值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR009",
+      "stmt": "冷却水泵的额定流量和压头应基于主机技术数据中规定的冷却水系统设计工况点确定，且泵的工作点（流量、压头）在主机额定功率及常用功率范围内均需落在泵性能曲线的高效区（效率不低于泵最高效率的85%），并满足主机冷却水流量和压头要求。",
+      "numbers": [
+        "85%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "冷却水泵的额定流量和压头应基于主机技术数据中规定的冷却水系统设计工况点确定 | UNVERIFIABLE | 证据未明确提及“基于主机技术数据中规定的设计工况点”这一具体数值要求。",
+          "泵的工作点（流量、压头）在主机额定功率及常用功率范围内均需落在泵性能曲线的高效区（效率不低于泵最高效率的85%） | UNVERIFIABLE | 证据未涉及泵高效区或效率不低于85%的具体数值要求。",
+          "满足主机冷却水流量和压头要求 | UNVERIFIABLE | 证据未给出主机冷却水流量和压头的具体数值要求。"
+        ]
+      },
+      "llm_raw": "冷却水泵的额定流量和压头应基于主机技术数据中规定的冷却水系统设计工况点确定 | UNVERIFIABLE | 证据未明确提及“基于主机技术数据中规定的设计工况点”这一具体数值要求。\n\n泵的工作点（流量、压头）在主机额定功率及常用功率范围内均需落在泵性能曲线的高效区（效率不低于泵最高效率的85%） | UNVERIFIABLE | 证据未涉及泵高效区或效率不低于85%的具体数值要求。\n\n满足主机冷却水流量和压头要求 | UNVERIFIABLE | 证据未给出主机冷却水流量和压头的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR013",
+      "stmt": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%（或按具体系统设计校核），并考虑因温度变化、泄漏和排气引起的水位波动，确保最低水位时仍有足够补水能力。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求有效容积不小于总容积的10%~15%，需求中的10%在此范围内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求有效容积不小于总容积的10%~15%，需求中的10%在此范围内。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR014",
+      "stmt": "排气阀和放水阀的材质应与冷却水介质兼容，耐腐蚀且耐温不低于系统最高工作温度（通常为85℃），建议采用青铜或不锈钢材质。",
+      "numbers": [
+        "85℃"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "85℃ | UNVERIFIABLE | 证据中未提及冷却水系统最高工作温度的具体数值。"
+        ]
+      },
+      "llm_raw": "85℃ | UNVERIFIABLE | 证据中未提及冷却水系统最高工作温度的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR016",
+      "stmt": "冷却水管路布置应预留足够的施工空间，确保焊接、安装、冲洗和压力试验等操作可顺利进行。管路与船体结构、其他设备及管路的间距应不小于100mm，且关键操作区域（如法兰连接处、阀门、焊缝）周围应有至少500mm的净空，以便工具操作和人员通过。",
+      "numbers": [
+        "100mm",
+        "500mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "100mm | UNVERIFIABLE | 证据未涉及管路与船体结构、其他设备及管路的具体间距数值。",
+          "500mm | UNVERIFIABLE | 证据未涉及关键操作区域净空的具体数值要求。"
+        ]
+      },
+      "llm_raw": "100mm | UNVERIFIABLE | 证据未涉及管路与船体结构、其他设备及管路的具体间距数值。  \n500mm | UNVERIFIABLE | 证据未涉及关键操作区域净空的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR016",
+      "stmt": "冷却水管路焊接接头应避开高应力区域和密集管束区，焊缝周围应留有至少150mm的清洁和检验空间。对于直径大于DN100的管路，焊缝应进行100%无损检测（如射线或超声波），且焊接工艺需经评定合格。",
+      "numbers": [
+        "150mm",
+        "100%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "DN100 | CONTRADICTED | 证据[E-SUPP-WELD-002]要求DN≥80mm即需抽检，而需求要求DN>100mm才进行100%无损检测，数值不一致。",
+          "100% | CONTRADICTED | 证据[E-SUPP-WELD-001]和[E-SUPP-WELD-002]均要求抽检比例≥10%，而非100%无损检测。"
+        ],
+        "unverifiable": [
+          "150mm | UNVERIFIABLE | 证据未提及焊缝周围清洁和检验空间的具体尺寸要求。"
+        ]
+      },
+      "llm_raw": "150mm | UNVERIFIABLE | 证据未提及焊缝周围清洁和检验空间的具体尺寸要求。  \nDN100 | CONTRADICTED | 证据[E-SUPP-WELD-002]要求DN≥80mm即需抽检，而需求要求DN>100mm才进行100%无损检测，数值不一致。  \n100% | CONTRADICTED | 证据[E-SUPP-WELD-001]和[E-SUPP-WELD-002]均要求抽检比例≥10%，而非100%无损检测。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR016",
+      "stmt": "冷却水管路安装完成后，应进行管路冲洗，冲洗流速不低于1.5m/s，冲洗时间不少于30分钟，直至排出水质清洁无杂质。冲洗后应进行压力试验，试验压力为设计压力的1.5倍，保压时间不少于10分钟，无泄漏和永久变形。",
+      "numbers": [
+        "1.5m/s",
+        "30分钟",
+        "10分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "1.5m/s | UNVERIFIABLE | 证据未涉及管路冲洗流速的具体数值要求。",
+          "30分钟 | UNVERIFIABLE | 证据未涉及管路冲洗时间的具体数值要求。",
+          "10分钟 | UNVERIFIABLE | 证据未涉及保压时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "1.5m/s | UNVERIFIABLE | 证据未涉及管路冲洗流速的具体数值要求。\n30分钟 | UNVERIFIABLE | 证据未涉及管路冲洗时间的具体数值要求。\n1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。\n10分钟 | UNVERIFIABLE | 证据未涉及保压时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR017",
+      "stmt": "管路安装完成后应进行水压试验，试验压力为设计压力的1.5倍，保压30分钟，无泄漏。",
+      "numbers": [
+        "30分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "30分钟 | UNVERIFIABLE | 证据未明确提及保压时间的具体数值。"
+        ]
+      },
+      "llm_raw": "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。  \n30分钟 | UNVERIFIABLE | 证据未明确提及保压时间的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR018",
+      "stmt": "所有阀门、滤器和仪表的安装位置应满足人员在不借助梯子或特殊工具的情况下，从操作面或通道直接触及，且操作空间不小于600mm×600mm。",
+      "numbers": [
+        "600mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "600mm×600mm | UNVERIFIABLE | 证据中未提及操作空间的具体尺寸要求。"
+        ]
+      },
+      "llm_raw": "600mm×600mm | UNVERIFIABLE | 证据中未提及操作空间的具体尺寸要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR018",
+      "stmt": "所有仪表（如温度计、压力表）的安装位置应便于读数，表盘直径不小于100mm，且无遮挡物。",
+      "numbers": [
+        "100mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "100mm | UNVERIFIABLE | 证据未涉及仪表表盘直径的具体数值要求。"
+        ]
+      },
+      "llm_raw": "100mm | UNVERIFIABLE | 证据未涉及仪表表盘直径的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR020",
+      "stmt": "临时接管应配备足够的长度和柔性，以适应不同调试工况，且接管材料应耐海水腐蚀（如橡胶软管或316L不锈钢管），工作压力不低于1.0 MPa。",
+      "numbers": [
+        "1.0MPa"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1.0 MPa | UNVERIFIABLE | 证据未涉及临时接管的工作压力具体数值要求。"
+        ]
+      },
+      "llm_raw": "1.0 MPa | UNVERIFIABLE | 证据未涉及临时接管的工作压力具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR020",
+      "stmt": "系统冲洗方案应在调试前完成编制，明确冲洗介质（淡水或化学清洗剂）、冲洗流量（不低于设计流量的1.5倍）、冲洗时间（不少于4小时）及排放要求，并预留取样口用于水质检测。",
+      "numbers": [
+        "4小时"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1.5倍 | UNVERIFIABLE | 证据未提及冲洗流量与设计流量的倍数关系。",
+          "4小时 | UNVERIFIABLE | 证据未规定具体的冲洗时间要求。"
+        ]
+      },
+      "llm_raw": "1.5倍 | UNVERIFIABLE | 证据未提及冲洗流量与设计流量的倍数关系。\n\n4小时 | UNVERIFIABLE | 证据未规定具体的冲洗时间要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR021",
+      "stmt": "冷却水泵的额定流量应满足主机冷却系统在最大连续功率（MCR）工况下的散热需求，并留有至少10%的裕量。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10% | SUPPORTED | 证据[E-SYS-DRAW-015]和[E-SYS-DRAW-013]均明确提及流量公差为±10%，与需求中“留有至少10%的裕量”一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10% | SUPPORTED | 证据[E-SYS-DRAW-015]和[E-SYS-DRAW-013]均明确提及流量公差为±10%，与需求中“留有至少10%的裕量”一致。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR021",
+      "stmt": "冷却水泵的额定扬程应克服系统管路、阀门、热交换器及主机冷却水套的总阻力损失，并留有至少5%的裕量。",
+      "numbers": [
+        "5%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "5% | SUPPORTED | 证据[E-COOLER-MAINT-015]中明确列出了5%的清洁剂浓度，与需求中“至少5%的裕量”数值一致。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "5% | SUPPORTED | 证据[E-COOLER-MAINT-015]中明确列出了5%的清洁剂浓度，与需求中“至少5%的裕量”数值一致。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR022",
+      "stmt": "冷却器选型时，设计海水进口温度应取船舶航行海域可能出现的最高温度，通常不低于32°C（热带海域）或按船级社规范（如CCS、DNV）要求选取，并需校核实际航线极端值。",
+      "numbers": [
+        "32°C"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "32°C | UNVERIFIABLE | 证据中未提及海水进口温度的具体数值。"
+        ]
+      },
+      "llm_raw": "32°C | UNVERIFIABLE | 证据中未提及海水进口温度的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR022",
+      "stmt": "冷却器换热面积应留有至少10%的余量，以应对主机负荷波动、冷却水流量偏差及制造公差，确保在额定工况下出口温度不超过主机允许值。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "10% | UNVERIFIABLE | 证据仅要求设置冷却水出口温度高报警，未涉及换热面积余量具体数值。"
+        ]
+      },
+      "llm_raw": "10% | UNVERIFIABLE | 证据仅要求设置冷却水出口温度高报警，未涉及换热面积余量具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR023",
+      "stmt": "温控阀的调节范围（如开度0-100%或温度设定范围）应覆盖主机冷却水系统正常运行及瞬态工况所需的温度控制区间，且执行器行程时间满足系统响应要求（如全行程时间≤30秒）。",
+      "numbers": [
+        "0%",
+        "30秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "开度0-100% | UNVERIFIABLE | 证据未提及温控阀开度范围的具体数值。",
+          "温度设定范围 | UNVERIFIABLE | 证据仅提及标准设定点32°C，未明确设定范围。",
+          "全行程时间≤30秒 | UNVERIFIABLE | 证据未涉及执行器行程时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "开度0-100% | UNVERIFIABLE | 证据未提及温控阀开度范围的具体数值。\n\n温度设定范围 | UNVERIFIABLE | 证据仅提及标准设定点32°C，未明确设定范围。\n\n全行程时间≤30秒 | UNVERIFIABLE | 证据未涉及执行器行程时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR023",
+      "stmt": "温度传感器（如PT100、热电偶）的量程应覆盖冷却水系统可能出现的最高和最低温度（如0-120℃），且精度等级不低于A级（PT100）或1级（热电偶），并具有冗余配置（如双支传感器）用于高可靠性报警。",
+      "numbers": [
+        "0℃"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0-120℃ | UNVERIFIABLE | 证据中仅提及0-100℃量程，未覆盖120℃上限。",
+          "A级（PT100） | UNVERIFIABLE | 证据未提及PT100的精度等级分类。",
+          "1级（热电偶） | UNVERIFIABLE | 证据未提及热电偶的精度等级分类。",
+          "双支传感器 | UNVERIFIABLE | 证据未提及冗余配置或双支传感器要求。"
+        ]
+      },
+      "llm_raw": "0-120℃ | UNVERIFIABLE | 证据中仅提及0-100℃量程，未覆盖120℃上限。\nA级（PT100） | UNVERIFIABLE | 证据未提及PT100的精度等级分类。\n1级（热电偶） | UNVERIFIABLE | 证据未提及热电偶的精度等级分类。\n双支传感器 | UNVERIFIABLE | 证据未提及冗余配置或双支传感器要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR023",
+      "stmt": "压力传感器（如压阻式、电容式）的量程应覆盖冷却水系统可能出现的最高和最低压力（如0-1.0MPa），且精度不低于0.5%FS，并具有过压保护能力（如1.5倍量程）。",
+      "numbers": [
+        "0MPa",
+        "0.5%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0-1.0MPa | UNVERIFIABLE | 证据中未明确提及0-1.0MPa量程，仅示例0-10 bar传感器适用于0.5 bar跳闸点。",
+          "0.5%FS | UNVERIFIABLE | 证据中未提及精度0.5%FS，仅提到校准可接受标准为±2%FS。",
+          "1.5倍量程 | UNVERIFIABLE | 证据中未提及过压保护能力的具体倍数。"
+        ]
+      },
+      "llm_raw": "0-1.0MPa | UNVERIFIABLE | 证据中未明确提及0-1.0MPa量程，仅示例0-10 bar传感器适用于0.5 bar跳闸点。  \n0.5%FS | UNVERIFIABLE | 证据中未提及精度0.5%FS，仅提到校准可接受标准为±2%FS。  \n1.5倍量程 | UNVERIFIABLE | 证据中未提及过压保护能力的具体倍数。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR024",
+      "stmt": "膨胀水箱的有效容积应不小于主机冷却水系统总容积的10%，且至少满足系统因温度变化引起的膨胀量及补水量要求。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求有效容积不小于系统总容积的10%~15%，需求中的10%在此范围内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-002]明确要求有效容积不小于系统总容积的10%~15%，需求中的10%在此范围内。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR025",
+      "stmt": "海水滤器应设计为双联式或可在线清洗结构，滤网材质应为耐海水腐蚀的金属（如316L不锈钢或镍铜合金），过滤精度应不低于1.0 mm（粗滤）或按系统要求（如板式换热器前需0.5 mm），且滤器应配备压差指示或报警装置。",
+      "numbers": [
+        "1.0mm",
+        "0.5mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1.0 mm | UNVERIFIABLE | 证据未明确提及粗滤精度1.0 mm的具体数值要求。",
+          "0.5 mm | UNVERIFIABLE | 证据未明确提及板式换热器前需0.5 mm过滤精度的具体数值。"
+        ]
+      },
+      "llm_raw": "1.0 mm | UNVERIFIABLE | 证据未明确提及粗滤精度1.0 mm的具体数值要求。\n\n0.5 mm | UNVERIFIABLE | 证据未明确提及板式换热器前需0.5 mm过滤精度的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR031",
+      "stmt": "主机冷却水系统应配置温度传感器，分别测量缸套水进口、缸套水出口、淡水冷却器出口及海水冷却器出口的温度，并将信号接入监控系统。温度传感器量程应为0-120℃，精度不低于±0.5℃。",
+      "numbers": [
+        "0℃",
+        "0.5℃"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "0-120℃ | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]中传感器量程为0-100℃，与需求中的0-120℃矛盾。",
+          "±0.5℃ | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]中可接受误差为±1℃，与需求中的±0.5℃矛盾。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "0-120℃ | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]中传感器量程为0-100℃，与需求中的0-120℃矛盾。  \n±0.5℃ | CONTRADICTED | 证据[E-DRAFT-TEMPER-CALIBRAT-001]中可接受误差为±1℃，与需求中的±0.5℃矛盾。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR031",
+      "stmt": "主机冷却水系统应配置压力传感器，分别测量缸套水进口、缸套水出口、淡水冷却器进出口及海水冷却器进出口的压力，并将信号接入监控系统。压力传感器量程应为0-1.0MPa，精度不低于±0.5%FS。",
+      "numbers": [
+        "0MPa",
+        "0.5%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "0-1.0MPa | CONTRADICTED | 证据[E-DRAFT-PRESSU-TRIPSET-003]要求跳闸设定值在量程的25%-75%之间，0.5bar跳闸对应0-10bar量程，而0-1.0MPa量程会导致0.5bar跳闸点仅占5%，不符合该要求。"
+        ],
+        "unverifiable": [
+          "±0.5%FS | UNVERIFIABLE | 证据[E-DRAFT-PRESSU-CALIBRAT-001]仅规定校准偏差标准为±2%FS，未涉及传感器精度等级要求。"
+        ]
+      },
+      "llm_raw": "0-1.0MPa | CONTRADICTED | 证据[E-DRAFT-PRESSU-TRIPSET-003]要求跳闸设定值在量程的25%-75%之间，0.5bar跳闸对应0-10bar量程，而0-1.0MPa量程会导致0.5bar跳闸点仅占5%，不符合该要求。\n\n±0.5%FS | UNVERIFIABLE | 证据[E-DRAFT-PRESSU-CALIBRAT-001]仅规定校准偏差标准为±2%FS，未涉及传感器精度等级要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR031",
+      "stmt": "主机冷却水系统应配置液位传感器，测量膨胀水箱液位，并将信号接入监控系统。液位传感器量程应为0-1000mm，精度不低于±1%FS。",
+      "numbers": [
+        "0mm",
+        "1%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0-1000mm | UNVERIFIABLE | 证据未提及液位传感器量程的具体数值。",
+          "±1%FS | UNVERIFIABLE | 证据未涉及液位传感器精度要求。"
+        ]
+      },
+      "llm_raw": "0-1000mm | UNVERIFIABLE | 证据未提及液位传感器量程的具体数值。  \n±1%FS | UNVERIFIABLE | 证据未涉及液位传感器精度要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR031",
+      "stmt": "监控系统应具备历史趋势记录功能，对所有接入的温度、压力、液位及泵状态参数进行连续记录，存储周期不低于30天，采样间隔不超过1秒。",
+      "numbers": [
+        "1秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "30天 | UNVERIFIABLE | 证据仅提及校准记录保存5年，未涉及历史趋势数据存储周期。",
+          "1秒 | UNVERIFIABLE | 证据未提及采样间隔要求。"
+        ]
+      },
+      "llm_raw": "30天 | UNVERIFIABLE | 证据仅提及校准记录保存5年，未涉及历史趋势数据存储周期。  \n1秒 | UNVERIFIABLE | 证据未提及采样间隔要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR032",
+      "stmt": "系统应设置低供水压力报警，当冷却水供水压力低于设定阈值（如0.15 MPa，需根据系统设计校核）时，触发声光报警。",
+      "numbers": [
+        "0.15MPa"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0.15 MPa | UNVERIFIABLE | 证据仅要求设置压力低报警，未提及具体阈值数值。"
+        ]
+      },
+      "llm_raw": "0.15 MPa | UNVERIFIABLE | 证据仅要求设置压力低报警，未提及具体阈值数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR032",
+      "stmt": "系统应设置低冷却水流量报警，当冷却水流量低于设计流量的80%（需校核）时，触发声光报警。",
+      "numbers": [
+        "80%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "80% | UNVERIFIABLE | 证据中未明确提及冷却水流量报警阈值或设计流量的80%这一具体数值。"
+        ]
+      },
+      "llm_raw": "80% | UNVERIFIABLE | 证据中未明确提及冷却水流量报警阈值或设计流量的80%这一具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR032",
+      "stmt": "系统应具备自动切换功能，当主冷却水泵故障或供水压力/流量低于设定阈值时，自动启动备用泵并关闭主泵，切换时间不超过10秒。",
+      "numbers": [
+        "10秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求切换时间“通常不超过10秒”。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求切换时间“通常不超过10秒”。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR034",
+      "stmt": "温度控制阀的传感器采样周期应不大于1秒，且控制逻辑的循环周期应不大于2秒，以确保水温变化能被及时反映。",
+      "numbers": [
+        "1秒",
+        "2秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1秒 | UNVERIFIABLE | 证据未涉及温度控制阀传感器采样周期的具体数值要求。",
+          "2秒 | UNVERIFIABLE | 证据未涉及控制逻辑循环周期的具体数值要求。"
+        ]
+      },
+      "llm_raw": "1秒 | UNVERIFIABLE | 证据未涉及温度控制阀传感器采样周期的具体数值要求。  \n2秒 | UNVERIFIABLE | 证据未涉及控制逻辑循环周期的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR034",
+      "stmt": "温度控制阀的PID控制器参数（比例增益、积分时间、微分时间）应经过整定，使得在阶跃扰动下，水温超调量不超过设定值的5%，调节时间不超过30秒。",
+      "numbers": [
+        "5%",
+        "30秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "5% | UNVERIFIABLE | 证据未涉及PID控制器超调量指标",
+          "30秒 | UNVERIFIABLE | 证据未涉及PID控制器调节时间指标"
+        ]
+      },
+      "llm_raw": "5% | UNVERIFIABLE | 证据未涉及PID控制器超调量指标  \n30秒 | UNVERIFIABLE | 证据未涉及PID控制器调节时间指标"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR034",
+      "stmt": "温度控制阀的执行机构（如电动或气动阀门）的响应时间（从接收到控制信号到阀门动作到位）应不大于5秒。",
+      "numbers": [
+        "5秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "5秒 | UNVERIFIABLE | 证据中未提及温度控制阀执行机构响应时间的具体数值。"
+        ]
+      },
+      "llm_raw": "5秒 | UNVERIFIABLE | 证据中未提及温度控制阀执行机构响应时间的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR036",
+      "stmt": "冷却水高温报警系统应在冷却水出口温度达到设定阈值时触发报警，设定阈值应低于主机允许的最高工作温度，通常为85°C（需根据主机型号校核），报警响应时间不超过2秒。",
+      "numbers": [
+        "85°C",
+        "2秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "85°C | UNVERIFIABLE | 证据未明确提及冷却水出口温度高报警的具体设定阈值数值。",
+          "2秒 | UNVERIFIABLE | 证据未涉及报警响应时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "85°C | UNVERIFIABLE | 证据未明确提及冷却水出口温度高报警的具体设定阈值数值。  \n2秒 | UNVERIFIABLE | 证据未涉及报警响应时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR036",
+      "stmt": "冷却水低压报警系统应在冷却水压力低于设定阈值时触发报警，设定阈值通常为0.15 MPa（需根据系统设计校核），报警响应时间不超过2秒。",
+      "numbers": [
+        "0.15MPa",
+        "2秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2秒 | SUPPORTED | 证据[E-DRAFT-ALARM-TESTPRO-002]明确要求报警响应时间通常不超过2秒。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "0.15 MPa | UNVERIFIABLE | 证据中滤器低压报警定值单位为bar，未涉及0.15 MPa（即1.5 bar）的具体数值。"
+        ]
+      },
+      "llm_raw": "0.15 MPa | UNVERIFIABLE | 证据中滤器低压报警定值单位为bar，未涉及0.15 MPa（即1.5 bar）的具体数值。  \n2秒 | SUPPORTED | 证据[E-DRAFT-ALARM-TESTPRO-002]明确要求报警响应时间通常不超过2秒。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR036",
+      "stmt": "冷却水低液位报警系统应在膨胀水箱液位低于设定阈值时触发报警，设定阈值通常为膨胀水箱总容积的20%（需根据系统设计校核），报警响应时间不超过2秒。",
+      "numbers": [
+        "20%",
+        "2秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "20% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确说明低位设定值为水箱有效容积的20%。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "2秒 | UNVERIFIABLE | 证据未涉及报警响应时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "20% | SUPPORTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确说明低位设定值为水箱有效容积的20%。  \n2秒 | UNVERIFIABLE | 证据未涉及报警响应时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR036",
+      "stmt": "冷却水流量不足报警系统应在冷却水流量低于设定阈值时触发报警，设定阈值通常为设计流量的80%（需根据主机要求校核），报警响应时间不超过2秒。",
+      "numbers": [
+        "80%",
+        "2秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "2秒 | SUPPORTED | 证据[E-DRAFT-ALARM-TESTPRO-002]明确要求报警响应时间通常不超过2秒。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "80% | UNVERIFIABLE | 证据未提及冷却水流量报警阈值具体为设计流量的80%。"
+        ]
+      },
+      "llm_raw": "80% | UNVERIFIABLE | 证据未提及冷却水流量报警阈值具体为设计流量的80%。  \n2秒 | SUPPORTED | 证据[E-DRAFT-ALARM-TESTPRO-002]明确要求报警响应时间通常不超过2秒。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR036",
+      "stmt": "报警系统应具有延时功能，避免因瞬时波动导致误报警，延时时间设定为3秒（可调），但需确保在持续异常时及时报警。",
+      "numbers": [
+        "3秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "3秒 | UNVERIFIABLE | 证据中未提及报警延时时间的具体数值。"
+        ]
+      },
+      "llm_raw": "3秒 | UNVERIFIABLE | 证据中未提及报警延时时间的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR037",
+      "stmt": "泄漏检测系统应满足船级社（如CCS、DNV、LR等）相关规范要求，并经过型式认可。报警设定值应基于冷却器设计压力和流量计算，并留有安全裕度（建议不低于设计值的10%）。",
+      "numbers": [
+        "10%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "10% | UNVERIFIABLE | 证据未提及报警设定值安全裕度的具体百分比数值。"
+        ]
+      },
+      "llm_raw": "10% | UNVERIFIABLE | 证据未提及报警设定值安全裕度的具体百分比数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR038",
+      "stmt": "冷却水系统应提供两级报警：一级为预警（提醒），二级为保护动作（触发主机降速或停机）。预警阈值应低于保护动作阈值，且两者之间应有至少5°C或10kPa的裕度（具体值需根据主机厂家规范校核）。",
+      "numbers": [
+        "5°C",
+        "10kPa"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "5°C | UNVERIFIABLE | 证据中未提及5°C的裕度要求，仅提到3°C的偏差报警。",
+          "10kPa | UNVERIFIABLE | 证据中未涉及压力单位kPa的阈值或裕度。"
+        ]
+      },
+      "llm_raw": "5°C | UNVERIFIABLE | 证据中未提及5°C的裕度要求，仅提到3°C的偏差报警。  \n10kPa | UNVERIFIABLE | 证据中未涉及压力单位kPa的阈值或裕度。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR040",
+      "stmt": "主机冷却水系统的高温报警设定值应基于主机设计最高允许温度减去5°C（需校核主机规格书），且不低于85°C（需校核），延时设定为3秒（可调范围1-5秒）。",
+      "numbers": [
+        "5°C",
+        "85°C",
+        "3秒",
+        "1秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [
+          "5°C | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]指出高温报警设定值通常低于最高允许温度5-10°C，5°C在此范围内。"
+        ],
+        "contradicted": [
+          "85°C | CONTRADICTED | 证据[E-DRAFT-TEMPER-REDUNDAN-002]明确给出MAN主机高温报警值为95°C，与85°C矛盾。"
+        ],
+        "unverifiable": [
+          "3秒 | UNVERIFIABLE | 证据未涉及延时设定值。",
+          "1-5秒 | UNVERIFIABLE | 证据未涉及延时可调范围。"
+        ]
+      },
+      "llm_raw": "85°C | CONTRADICTED | 证据[E-DRAFT-TEMPER-REDUNDAN-002]明确给出MAN主机高温报警值为95°C，与85°C矛盾。  \n5°C | SUPPORTED | 证据[E-DRAFT-PRESSU-ALARMSE-001]指出高温报警设定值通常低于最高允许温度5-10°C，5°C在此范围内。  \n3秒 | UNVERIFIABLE | 证据未涉及延时设定值。  \n1-5秒 | UNVERIFIABLE | 证据未涉及延时可调范围。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR040",
+      "stmt": "主机冷却水系统的低温报警设定值应基于主机设计最低允许温度加上5°C（需校核主机规格书），且不低于50°C（需校核），延时设定为5秒（可调范围3-10秒）。",
+      "numbers": [
+        "5°C",
+        "50°C",
+        "5秒",
+        "3秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "5°C | UNVERIFIABLE | 证据未提及主机设计最低允许温度加5°C的设定原则。",
+          "50°C | UNVERIFIABLE | 证据未涉及低温报警设定值不低于50°C的具体要求。",
+          "5秒 | UNVERIFIABLE | 证据未提及延时设定为5秒或3-10秒的可调范围。"
+        ]
+      },
+      "llm_raw": "5°C | UNVERIFIABLE | 证据未提及主机设计最低允许温度加5°C的设定原则。\n\n50°C | UNVERIFIABLE | 证据未涉及低温报警设定值不低于50°C的具体要求。\n\n5秒 | UNVERIFIABLE | 证据未提及延时设定为5秒或3-10秒的可调范围。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR040",
+      "stmt": "主机冷却水系统的压力报警设定值应基于主机设计最低允许压力加上0.1 bar（需校核主机规格书），且不低于1.0 bar（需校核），延时设定为2秒（可调范围1-3秒）。",
+      "numbers": [
+        "0.1bar",
+        "1.0bar",
+        "2秒",
+        "1秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0.1 bar | UNVERIFIABLE | 证据未提及主机设计最低允许压力加0.1 bar的设定规则。",
+          "1.0 bar | UNVERIFIABLE | 证据未提及主机冷却水压力报警设定值不低于1.0 bar的要求。",
+          "2秒 | UNVERIFIABLE | 证据未提及延时设定为2秒或可调范围1-3秒。"
+        ]
+      },
+      "llm_raw": "0.1 bar | UNVERIFIABLE | 证据未提及主机设计最低允许压力加0.1 bar的设定规则。  \n1.0 bar | UNVERIFIABLE | 证据未提及主机冷却水压力报警设定值不低于1.0 bar的要求。  \n2秒 | UNVERIFIABLE | 证据未提及延时设定为2秒或可调范围1-3秒。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR041",
+      "stmt": "海水冷却系统的主循环泵配置应包含低供水流量或低供水压力监测功能，当供水流量低于设计流量的80%或供水压力低于0.15 MPa（需根据具体系统设计校核）时，系统应自动发出声光报警信号，并显示在集控室或机旁控制面板上。",
+      "numbers": [
+        "80%",
+        "0.15MPa"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "80% | UNVERIFIABLE | 证据仅要求压力或流量低报警，未规定具体流量阈值（如设计流量的80%）。",
+          "0.15 MPa | UNVERIFIABLE | 证据仅要求压力低报警，未规定具体压力阈值（如0.15 MPa）。"
+        ]
+      },
+      "llm_raw": "80% | UNVERIFIABLE | 证据仅要求压力或流量低报警，未规定具体流量阈值（如设计流量的80%）。  \n0.15 MPa | UNVERIFIABLE | 证据仅要求压力低报警，未规定具体压力阈值（如0.15 MPa）。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR041",
+      "stmt": "海水冷却系统应配置备用泵或切换装置，当主循环泵低供水报警触发后，系统应能自动或手动启动备用泵，并在30秒内完成切换，确保冷却水供应不中断。",
+      "numbers": [
+        "30秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "30秒 | CONTRADICTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]和[E-DRAFT-COOLIN-AUTOSTA-001]均要求切换时间不超过10秒或3-5秒，与需求中的30秒矛盾。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "30秒 | CONTRADICTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]和[E-DRAFT-COOLIN-AUTOSTA-001]均要求切换时间不超过10秒或3-5秒，与需求中的30秒矛盾。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR041",
+      "stmt": "海水冷却系统应设置低供水报警的延时功能，避免因瞬时波动误报警，延时时间设定为5～10秒（可调），且报警应具有自锁功能，直至人工复位。",
+      "numbers": [
+        "5秒"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "5～10秒 | UNVERIFIABLE | 证据仅要求报警，未提及延时时间的具体数值。"
+        ]
+      },
+      "llm_raw": "5～10秒 | UNVERIFIABLE | 证据仅要求报警，未提及延时时间的具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR045",
+      "stmt": "冷却水系统在安装完成后，应按照船级社规范（如DNV、LR、CCS等）及制造厂技术文件要求，对系统进行压力试验，试验压力为设计压力的1.5倍，保压时间不少于30分钟，试验过程中不得有泄漏或压降。",
+      "numbers": [
+        "30分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。"
+        ],
+        "contradicted": [],
+        "unverifiable": [
+          "30分钟 | UNVERIFIABLE | 证据未提及保压时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "1.5倍 | SUPPORTED | 证据[E-PIPE-PTEST-007]明确要求试验压力为系统最大允许工作压力的1.5倍。  \n30分钟 | UNVERIFIABLE | 证据未提及保压时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR045",
+      "stmt": "冷却水系统在压力试验合格后，应按照系统清洁度要求进行冲洗，冲洗介质为清洁淡水，冲洗流速不低于1.5 m/s，冲洗时间不少于2小时，直至目视检查出水清洁、无杂质。",
+      "numbers": [
+        "1.5m/s",
+        "2小时"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1.5 m/s | UNVERIFIABLE | 证据未提及冲洗流速的具体数值要求。",
+          "2小时 | UNVERIFIABLE | 证据未提及冲洗时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "1.5 m/s | UNVERIFIABLE | 证据未提及冲洗流速的具体数值要求。  \n2小时 | UNVERIFIABLE | 证据未提及冲洗时间的具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR046",
+      "stmt": "冷却水泵在额定转速下运行时，其出口压力应满足系统设计压力要求（通常为0.25~0.35 MPa，具体值需根据系统设计图纸校核），且压力波动不超过±5%。",
+      "numbers": [
+        "0.25MPa",
+        "5%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0.25~0.35 MPa | UNVERIFIABLE | 证据未提及冷却水泵出口压力的具体数值或范围。",
+          "±5% | UNVERIFIABLE | 证据未涉及压力波动允许范围的具体百分比。"
+        ]
+      },
+      "llm_raw": "0.25~0.35 MPa | UNVERIFIABLE | 证据未提及冷却水泵出口压力的具体数值或范围。  \n±5% | UNVERIFIABLE | 证据未涉及压力波动允许范围的具体百分比。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR046",
+      "stmt": "冷却水泵在额定转速下运行时，其流量应满足系统设计流量要求（通常为冷却系统总流量的100%~110%，具体值需根据热平衡计算校核），且流量偏差不超过±5%。",
+      "numbers": [
+        "100%",
+        "110%",
+        "5%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "100%~110% | UNVERIFIABLE | 证据未明确提及冷却水泵流量需为系统总流量的100%~110%，仅要求总安装容量余量≥25%。",
+          "±5% | UNVERIFIABLE | 证据未涉及流量偏差的具体允许范围。"
+        ]
+      },
+      "llm_raw": "100%~110% | UNVERIFIABLE | 证据未明确提及冷却水泵流量需为系统总流量的100%~110%，仅要求总安装容量余量≥25%。  \n±5% | UNVERIFIABLE | 证据未涉及流量偏差的具体允许范围。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR046",
+      "stmt": "冷却水泵组应具备自动备用切换功能，当主用泵故障（如出口压力低于设定值或电机过载）时，备用泵应在10秒内自动启动并投入运行，切换过程中系统压力降不应导致主机冷却水流量低于最低安全流量（通常为设计流量的70%，需校核）。",
+      "numbers": [
+        "10秒",
+        "70%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "supported",
+      "verdicts": {
+        "supported": [
+          "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间“通常不超过10秒”。",
+          "70% | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]指出备用泵启动值取正常压力的60%-70%，70%在此范围内。"
+        ],
+        "contradicted": [],
+        "unverifiable": []
+      },
+      "llm_raw": "10秒 | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-003]明确要求备用泵启动时间“通常不超过10秒”。  \n70% | SUPPORTED | 证据[E-DRAFT-COOLIN-AUTOSTA-002]指出备用泵启动值取正常压力的60%-70%，70%在此范围内。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR047",
+      "stmt": "冲洗水应采用清洁淡水，水温应控制在20-40°C范围内，冲洗流速应不低于1.5 m/s且不高于3.0 m/s，以确保有效清除沉积物且不损伤管道内壁。",
+      "numbers": [
+        "20°C",
+        "1.5m/s",
+        "3.0m/s"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "20°C | UNVERIFIABLE | 证据未涉及冲洗水温下限的具体数值。",
+          "40°C | UNVERIFIABLE | 证据未涉及冲洗水温上限的具体数值。",
+          "1.5 m/s | UNVERIFIABLE | 证据未涉及冲洗流速下限的具体数值。",
+          "3.0 m/s | UNVERIFIABLE | 证据中海水流速限制针对铜镍合金（3 m/s）和钢（2 m/s），但未明确适用于淡水冲洗流速上限。"
+        ]
+      },
+      "llm_raw": "20°C | UNVERIFIABLE | 证据未涉及冲洗水温下限的具体数值。  \n40°C | UNVERIFIABLE | 证据未涉及冲洗水温上限的具体数值。  \n1.5 m/s | UNVERIFIABLE | 证据未涉及冲洗流速下限的具体数值。  \n3.0 m/s | UNVERIFIABLE | 证据中海水流速限制针对铜镍合金（3 m/s）和钢（2 m/s），但未明确适用于淡水冲洗流速上限。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR047",
+      "stmt": "冲洗时间应持续至少30分钟，或直到出水浊度连续10分钟低于10 NTU（或根据系统清洁度要求确定），以确认系统内部无可见杂质。",
+      "numbers": [
+        "30分钟",
+        "10分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "30分钟 | UNVERIFIABLE | 证据未提及具体的冲洗持续时间要求。",
+          "10分钟 | UNVERIFIABLE | 证据未提及连续监测浊度的具体时间窗口。",
+          "10 NTU | UNVERIFIABLE | 证据未涉及浊度单位或具体数值。"
+        ]
+      },
+      "llm_raw": "30分钟 | UNVERIFIABLE | 证据未提及具体的冲洗持续时间要求。\n\n10分钟 | UNVERIFIABLE | 证据未提及连续监测浊度的具体时间窗口。\n\n10 NTU | UNVERIFIABLE | 证据未涉及浊度单位或具体数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR049",
+      "stmt": "试车前应检查膨胀水箱液位是否在正常范围（通常为水箱高度的50%~80%），并确认补水系统及报警功能正常。",
+      "numbers": [
+        "50%",
+        "80%"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "conflict",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [
+          "50%~80% | CONTRADICTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确低位报警设定值为20%，高位为80%，与需求中50%~80%的正常范围不一致。"
+        ],
+        "unverifiable": []
+      },
+      "llm_raw": "50%~80% | CONTRADICTED | 证据[E-DRAFT-EXPANS-LEVELCO-001]明确低位报警设定值为20%，高位为80%，与需求中50%~80%的正常范围不一致。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR051",
+      "stmt": "冷却器端盖前方应预留不小于端盖直径1.5倍或600mm（取较大值）的净空，以便端盖完全拆卸和抽出管束。",
+      "numbers": [
+        "600mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "1.5倍 | UNVERIFIABLE | 证据未涉及冷却器端盖前方净空的具体倍数要求。",
+          "600mm | UNVERIFIABLE | 证据未涉及冷却器端盖前方净空的具体尺寸要求。"
+        ]
+      },
+      "llm_raw": "1.5倍 | UNVERIFIABLE | 证据未涉及冷却器端盖前方净空的具体倍数要求。  \n600mm | UNVERIFIABLE | 证据未涉及冷却器端盖前方净空的具体尺寸要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR051",
+      "stmt": "冷却器顶部及侧面应留有至少500mm的检修通道，以便进行管束清洗、堵管及检查作业。",
+      "numbers": [
+        "500mm"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "500mm | UNVERIFIABLE | 证据未涉及冷却器顶部及侧面检修通道的具体距离数值。"
+        ]
+      },
+      "llm_raw": "500mm | UNVERIFIABLE | 证据未涉及冷却器顶部及侧面检修通道的具体距离数值。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR057",
+      "stmt": "冷却水系统压力试验的试验压力应为系统设计压力的1.5倍，且不低于0.6 MPa（需校核具体法规要求）。",
+      "numbers": [
+        "0.6MPa"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "0.6 MPa | UNVERIFIABLE | 证据未明确给出0.6 MPa这一具体数值要求。"
+        ]
+      },
+      "llm_raw": "0.6 MPa | UNVERIFIABLE | 证据未明确给出0.6 MPa这一具体数值要求。"
+    },
+    {
+      "arm": "no_rag",
+      "sid": "OR057",
+      "stmt": "冷却水系统压力试验的保压时间应不少于30分钟。",
+      "numbers": [
+        "30分钟"
+      ],
+      "evidence_ids": [],
+      "retrieval": "bm25_posthoc",
+      "n_units": 5,
+      "label": "unverifiable",
+      "verdicts": {
+        "supported": [],
+        "contradicted": [],
+        "unverifiable": [
+          "30分钟 | UNVERIFIABLE | 证据中未提及保压时间的具体数值要求。"
+        ]
+      },
+      "llm_raw": "30分钟 | UNVERIFIABLE | 证据中未提及保压时间的具体数值要求。"
+    }
+  ]
+}

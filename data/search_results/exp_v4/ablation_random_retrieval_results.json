@@ -1,0 +1,4202 @@
+{
+  "arm": "random-retrieval-v4",
+  "result_sets": [
+    {
+      "source_requirement_id": "OR001",
+      "stakeholder": "船东",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 5,
+      "_n_with_quantitative": 2,
+      "engineering_requirements": [
+        {
+          "shall_statement": "主机冷却水系统应保持冷却水温度稳定，避免因温度波动影响推进设备正常运行。",
+          "measurable_criterion": "{{TBD|unit:℃|ref:MAN 49/60DF Project Guide|component:冷却水系统|intent:温度稳定|hint:需根据发动机设计确定允许温度波动范围}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水温度波动不超过允许范围"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-PRESS-005",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机冷却水系统应保持冷却水压力稳定，避免因压力波动影响推进设备正常运行。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:MAN L23/30H GenSet Project Guide|component:冷却水系统|intent:压力稳定|hint:需根据发动机设计确定允许压力波动范围}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水压力波动不超过允许范围"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-PRESS-005",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机冷却水系统应保持冷却水流量稳定，避免因流量波动影响推进设备正常运行。",
+          "measurable_criterion": "{{TBD|unit:m³/h|ref:MAN 49/60DF Project Guide|component:冷却水系统|intent:流量稳定|hint:需根据发动机设计确定允许流量波动范围}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水流量波动不超过允许范围"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-CORR-010",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却系统腐蚀与气蚀风险"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机冷却水系统应具备膨胀水箱，以补偿冷却水体积变化并维持系统压力稳定。",
+          "measurable_criterion": "膨胀水箱容积至少为系统总容积的3%",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "膨胀水箱容积不小于系统总容积的3%"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-WATER-001",
+              "tier": "L3",
+              "source": "S07 Scania Marine Cooling System Issue 8",
+              "has_clause": "膨胀水箱作用"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "主机冷却水系统应设置油污染报警装置，当冷却水中检测到油污染时发出报警。",
+          "measurable_criterion": "{{TBD|unit:ppm|ref:CCS《钢质海船入级规范》2025|component:冷却水系统|intent:油污染报警|hint:需根据规范确定报警阈值}}",
+          "applicable_condition": "十字头式柴油机或冷却水用于冷却燃油和滑油热交换器的主机",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "油污染报警功能正常"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-7-251.6-003",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "主机冷却水油污染报警"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机冷却水系统应定期进行冷却液取样分析，以监测腐蚀与气蚀风险。",
+          "measurable_criterion": "每2至6个月进行一次冷却液取样分析",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "取样分析周期符合2至6个月的要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-CORR-010",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却系统腐蚀与气蚀风险"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机冷却水系统应设置排气管道，以排出系统中的空气。",
+          "measurable_criterion": "{{TBD|unit:无|ref:Wärtsilä 32 Product Guide|component:冷却水系统|intent:排气|hint:需根据发动机设计确定排气管道布置}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "排气管道连接正确，能够有效排气"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-MAINT-003",
+              "tier": "L3",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "Air venting"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR002",
+      "stakeholder": "船东",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却系统应具备备用能力，当泵或关键设备故障时，不应立即导致主机冷却中断。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN 49/60 Project Guide|component:冷却系统|intent:冗余设计|hint:备用泵或关键设备切换时间}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "故障切换后冷却水流量和压力维持在设计范围内",
+            "切换时间不超过规定值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-CAP-024",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却水流量与泵容量参数"
+            },
+            {
+              "kb_id": "E-HT-COMP-074",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR003",
+      "stakeholder": "船东",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 7,
+      "_n_with_quantitative": 3,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器容量应留有裕量，确保在海水温度升高或冷却器脏污时仍能满足冷却需求。",
+          "measurable_criterion": "冷却器设计容量应不小于最大热负荷的110%。",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "设计计算书显示冷却器容量裕度≥10%"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MON-009",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "100% 至 110% 燃油供给范围仅允许短时用于调速目的"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "冷却水泵容量应留有裕量，确保在泵叶轮磨损或管路阻力增加时仍能提供足够流量。",
+          "measurable_criterion": "冷却水泵设计流量应不小于发动机最大需求流量的110%。",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "设计计算书显示水泵流量裕度≥10%"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-FLOW-002",
+              "tier": "L3",
+              "source": "S07 Scania Marine Cooling System Issue 8",
+              "has_clause": "DI13 XPI：发动机转速 2300 rpm 时，流量 295 l/min"
+            }
+          ],
+          "_grade": "B"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR004",
+      "stakeholder": "船东",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 11,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应提供高温报警功能，当冷却水出口温度超过设定值时触发报警。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:MAN L23/30DF Project Guide|component:冷却水系统|intent:高温报警阈值|hint:参考MAN L23/30DF Project Guide中高温报警设定值}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "报警功能正常触发",
+            "报警值在设定范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-7-27表4主燃气轮机-024",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "冷却水或冷却空气出口温度应设高温报警，并在机舱集控站和驾驶室控制站显示。"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应提供压力低报警功能，当冷却水压力低于设定值时触发报警。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:MAN L23/30DF Project Guide|component:冷却水系统|intent:压力低报警阈值|hint:参考MAN L23/30DF Project Guide中压力报警设定值}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "报警功能正常触发",
+            "报警值在设定范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-PRESS-019",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "Cavitation of the cylinder wall begins when air bubbles remove the wall's protective oxide film. ... Concentration of air bubbles increases when cooling system pressure is low or when the system leaks."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应提供液位低报警功能，当膨胀水箱液位低于设定值时触发报警。",
+          "measurable_criterion": "{{TBD|unit:mm|ref:MAN L23/30DF Project Guide|component:膨胀水箱|intent:液位低报警阈值|hint:参考MAN L23/30DF Project Guide中膨胀水箱液位报警设定值}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "报警功能正常触发",
+            "报警值在设定范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-RED-001",
+              "tier": "L3",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "no cold cooling water is pressed through the engine and thus spoiling the pre-heating during stand-by. ... Preheating of stand-by auxiliary engines during sea operation Auxiliary engines in stand-by position are preheated via the venting pipe (F3), leading to the expansion tank, with HT water"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应确保报警信号在机舱集控站和驾驶室控制站显示。",
+          "measurable_criterion": "{{TBD|unit:无|ref:CCS规范|component:报警显示系统|intent:显示位置|hint:报警信号需在集控站和驾驶室显示}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "机舱集控站显示报警",
+            "驾驶室控制站显示报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-7-27表4主燃气轮机-024",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "冷却水或冷却空气出口温度应设高温报警，并在机舱集控站和驾驶室控制站显示。"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设置滤器高温报警，当滤器出口温度超过设定值时触发报警。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:KB_DRAFT_v1|component:滤器|intent:高温报警阈值|hint:参考E-DRAFT-FILTER-ALARMSE-002，淡水系统55-60°C，海水系统45-50°C}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "报警功能正常触发",
+            "报警值在设定范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FILTER-ALARMSE-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "For engine cooling water filters, a high temperature alarm is often set at 55-60°C for freshwater systems and 45-50°C for seawater systems."
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR005",
+      "stakeholder": "船东",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 11,
+      "_n_with_quantitative": 3,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应设计为便于维护，滤器、冷却器、泵和阀门等部件应易于接近和操作。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:冷却水系统|intent:维护便利性|hint:需定义具体可达性要求，如工具操作空间、拆卸时间等}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "滤器、冷却器、泵和阀门等部件应布置在易于接近的位置，无需拆卸其他主要设备即可进行维护。",
+            "维护操作应可使用标准工具完成，无需专用工具。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MAINT-019",
+              "tier": "L1",
+              "source": "S51 NASA NTRS 19800002357 Piping Specification",
+              "has_clause": "Piping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes."
+            },
+            {
+              "kb_id": "E-PIPE-ARR-002",
+              "tier": "L1",
+              "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+              "has_clause": "9 Piping Systems for Steam Turbines ..."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设计为便于清洗，包括冷却器、滤器和管路。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:冷却水系统|intent:清洗便利性|hint:需定义清洗周期、方法或可达性要求}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却器应设计为可拆卸端盖，以便于机械清洗或化学清洗。",
+            "滤器应设计为可在线清洗或易于拆卸清洗。",
+            "管路应设有足够的清洗口或法兰连接，以便于分段清洗。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-016",
+              "tier": "L1",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "冷却系统清洗要求"
+            },
+            {
+              "kb_id": "E-COOLER-MAINT-019",
+              "tier": "L1",
+              "source": "S51 NASA NTRS 19800002357 Piping Specification",
+              "has_clause": "Piping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设计为便于检查，包括冷却水质、压力和温度监测点。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:冷却水系统|intent:检查便利性|hint:需定义监测点位置、数量或类型}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "系统应设有冷却水取样点，便于定期水质分析。",
+            "关键位置应设有压力表和温度计，便于日常巡检。",
+            "监测仪表应布置在易于读取和操作的高度。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-016",
+              "tier": "L1",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "Every 2 to 6 months send a cooling water sample to an independent laboratory or to the engine manufacturer for integrated analysis."
+            },
+            {
+              "kb_id": "E-VALVE-PRESS-029",
+              "tier": "L1",
+              "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+              "has_clause": "programming of level switch sensors, flow sensors, pressure sensors, temperature sensors, pressure relief valve operation, coolant conductivity sensor, etc., shall be checked to ensure correct calibration and functionality."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设计为便于更换部件，如滤器滤芯、冷却器芯子和泵密封件。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:冷却水系统|intent:部件更换便利性|hint:需定义更换时间、工具或空间要求}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "滤器应设计为可快速更换滤芯，无需拆卸管路。",
+            "冷却器应设计为可抽出芯子进行维修或更换。",
+            "泵应设计为可方便地更换机械密封，无需拆卸泵体。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MAINT-019",
+              "tier": "L1",
+              "source": "S51 NASA NTRS 19800002357 Piping Specification",
+              "has_clause": "Piping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设计为便于排放和充注冷却液，包括设置排放阀和排气阀。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:冷却水系统|intent:排放和充注便利性|hint:需定义排放阀位置、数量或排气方式}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "系统最低点应设有排放阀，便于完全排空冷却液。",
+            "系统最高点应设有排气阀，便于充注时排出空气。",
+            "膨胀水箱应设有充注口和液位指示。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-RED-001",
+              "tier": "L3",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "no cold cooling water is pressed through the engine and thus spoiling the pre-heating during stand-by. ... Preheating of stand-by auxiliary engines during sea operation Auxiliary engines in stand-by position are preheated via the venting pipe (F3), leading to the expansion tank, with HT wa"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR006",
+      "stakeholder": "主机厂家",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 17,
+      "_n_with_quantitative": 6,
+      "engineering_requirements": [
+        {
+          "shall_statement": "主机进口冷却水温度应按照厂家技术资料设定。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:厂家技术资料|component:主机进口|intent:温度设定|hint:需查阅具体机型项目指南}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温度设定值与厂家技术资料一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-DRAW-015",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "设计参考冷却水系统图"
+            },
+            {
+              "kb_id": "E-HT-ALARM-002",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机出口冷却水温度应按照厂家技术资料设定。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:厂家技术资料|component:主机出口|intent:温度设定|hint:需查阅具体机型项目指南}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温度设定值与厂家技术资料一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-DRAW-015",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "设计参考冷却水系统图"
+            },
+            {
+              "kb_id": "E-HT-ALARM-002",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机进口冷却水压力应按照厂家技术资料设定。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:厂家技术资料|component:主机进口|intent:压力设定|hint:需查阅具体机型项目指南}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "压力设定值与厂家技术资料一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-ALARM-002",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机出口冷却水压力应按照厂家技术资料设定。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:厂家技术资料|component:主机出口|intent:压力设定|hint:需查阅具体机型项目指南}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "压力设定值与厂家技术资料一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-ALARM-002",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR007",
+      "stakeholder": "主机厂家",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 11,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "高温冷却水回路和低温冷却水回路应明确分离，各自服务于指定的热交换对象。",
+          "measurable_criterion": "HT回路服务对象包括：HP TC增压空气冷却器、缸套冷却、涡轮增压器冷却；LT回路服务对象包括：LP TC增压空气冷却器、空气冷却器。",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "系统设计图中HT回路与LT回路无交叉连接",
+            "各回路服务对象与证据清单一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-003",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "HT冷却水温度在HP TC增压空气冷却器出口处 = 80 °C；HT冷却水在缸套冷却出口处温度未明确给出；LT冷却水在LP TC增压空气冷却器出口处（= 最后一个增压空气冷却器）温度未明确给出；LT冷却水在空气冷却器进口处温度 = 38 °C"
+            },
+            {
+              "kb_id": "E-HT-COMP-071",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "HT circuit (charge air cooler LP and HP HT stage, Jacket cooling and turbocharger cooling) 流量 180.4 /h；LT circuit (charge air cooler LP and HP LT stage) 流量 209.4 /h"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "高温冷却水回路在HP TC增压空气冷却器出口处的温度应满足设计值。",
+          "measurable_criterion": "80 °C",
+          "applicable_condition": "V49/60 IMO Tier II – Electric propulsion/EPROX-AC 1,300 kW/cyl.; 600 rpm – Electric propulsion/EPROX-AC，参考条件：热带，空气温度45 °C，冷却水温度在增压空气冷却器前（LT级）38 °C，总大气压力1000 mbar，相对湿度60%",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在指定工况下测量HP TC增压空气冷却器出口HT冷却水温度，偏差在±2°C内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-003",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "HT冷却水温度在HP TC增压空气冷却器出口处 = 80 °C"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "低温冷却水回路在空气冷却器进口处的温度应满足设计值。",
+          "measurable_criterion": "38 °C",
+          "applicable_condition": "V49/60 IMO Tier II – Electric propulsion/EPROX-AC 1,300 kW/cyl.; 600 rpm – Electric propulsion/EPROX-AC，参考条件：热带，空气温度45 °C，冷却水温度在增压空气冷却器前（LT级）38 °C，总大气压力1000 mbar，相对湿度60%",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在指定工况下测量空气冷却器进口LT冷却水温度，偏差在±2°C内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-003",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "LT冷却水在空气冷却器进口处温度 = 38 °C（设定点32 °C）"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "低温冷却水回路在中央冷却器出口处的温度应满足设计值。",
+          "measurable_criterion": "38 °C",
+          "applicable_condition": "Wärtsilä 46F Series，满负荷热带工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在满负荷热带工况下测量中央冷却器出口LT冷却水温度，不超过38°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-WAR-46F-LT-001",
+              "tier": "L2",
+              "source": "Wärtsilä 46F Series Product Manual",
+              "has_clause": "LT water temperature at central cooler outlet (max, full load, tropical): 38°C"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "高温冷却水回路应设置超温报警和停机保护，报警阈值和停机定值应可调。",
+          "measurable_criterion": "报警：90°C；停机：95°C；可调范围：±2°C",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当缸套冷却水出口温度达到90°C时触发报警",
+            "当温度达到95°C时触发停机",
+            "设定值可在±2°C范围内调整",
+            "海试期间验证"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-TEMPER-TRIPSET-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "high temperature trip setpoint for the jacket cooling water outlet is typically set at 95°C, with an alarm at 90°C. The setpoint must be adjustable within ±2°C and verified during sea trials."
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "高温冷却水回路在预热和后冷却期间应满足最小流量需求。",
+          "measurable_criterion": "{{TBD|unit:m³/h|ref:E-HT-ALARM-005|component:HT冷却水泵|intent:最小流量|hint:根据缸数配置选择对应流量范围}}",
+          "applicable_condition": "预热和后冷却期间",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在预热和后冷却期间，HT冷却水流量不低于对应缸数配置的最小流量需求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-ALARM-005",
+              "tier": "L3",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "6L缸数配置：最小流量需求 14 – 21；7L：16 – 24；8L：18 – 27；9L：20 – 30；10L：22 – 33；12V：28 – 42；14V：32 – 48"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设置膨胀水箱，用于补偿体积变化和维持系统压力。",
+          "measurable_criterion": "{{TBD|unit:L|ref:E-EXP-WATER-008|component:膨胀水箱|intent:容积|hint:根据系统总容积确定}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "膨胀水箱容积满足系统最大膨胀量要求",
+            "膨胀水箱连接位置正确，确保预加热不被干扰"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-WATER-008",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "an expansion tank and heat exchanger perform the same function as the radiator"
+            },
+            {
+              "kb_id": "E-EXP-RED-001",
+              "tier": "L3",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "Preheating of stand-by auxiliary engines during sea operation Auxiliary engines in stand-by position are preheated via the venting pipe (F3), leading to the expansion tank, with HT wa"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水水质应满足防腐和清洁要求，定期进行水质检测。",
+          "measurable_criterion": "检测周期：每2至6个月一次；防腐剂更换周期：约12个月",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "每2至6个月送检冷却水样品",
+            "乳化型防腐剂约12个月更换一次"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-016",
+              "tier": "L1",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "Every 2 to 6 months send a cooling water sample to an independent laboratory or to the engine manufacturer for integrated analysis. Emulsifiable anticorrosive agents must generally be replaced after abt. 12 months"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR008",
+      "stakeholder": "主机厂家",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 11,
+      "_n_with_quantitative": 6,
+      "engineering_requirements": [
+        {
+          "shall_statement": "温度控制阀的设定值和安装位置应根据主机要求进行核对，以确保冷却水温度控制在合适范围内。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:主机技术手册|component:温度控制阀|intent:设定值|hint:需根据主机型号确定}}",
+          "applicable_condition": "主机冷却水系统设计及安装阶段",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温度控制阀设定值与主机要求一致",
+            "温度控制阀安装位置符合主机要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-003",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": "冷却液温度报警阈值"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR009",
+      "stakeholder": "主机厂家",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 13,
+      "_n_with_quantitative": 8,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵的流量、压头和工作点应与主机技术数据匹配。",
+          "measurable_criterion": "{{TBD|unit:m³/h, kPa|ref:主机技术数据|component:冷却水泵|intent:匹配性|hint:需根据主机项目指南确定具体数值}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "泵的工作点落在主机允许的流量和压头范围内",
+            "泵的额定值不低于主机要求的最低值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-DRAW-007",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR010",
+      "stakeholder": "主机厂家",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 12,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却液的水质、添加剂和防冻比例应符合厂家要求。",
+          "measurable_criterion": "{{TBD|unit:mg/l|ref:MAN Energy Solutions 49/60 Project Guide|component:冷却液|intent:水质|hint:具体限值见来源文件}}",
+          "applicable_condition": "发动机冷却系统运行期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液水质检测结果符合厂家规定",
+            "添加剂浓度符合要求",
+            "防冻比例符合要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-049",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却液水质检测方法"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水温度与压力参数应满足设计要求。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:Caterpillar Cooling Systems Application and Installation Guide|component:冷却水|intent:温度|hint:具体限值见来源文件}}",
+          "applicable_condition": "发动机冷却系统运行期间",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水温度在允许范围内",
+            "冷却水压力在允许范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-PRESS-002",
+              "tier": "L2",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "热交换器应定期清洁维护，防止沉积物影响换热。",
+          "measurable_criterion": "{{TBD|unit:%|ref:MTU Fluids and Lubricants Specifications|component:热交换器|intent:清洁度|hint:沉积物限值见来源文件}}",
+          "applicable_condition": "热交换器运行期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "热交换器水侧无严重沉积",
+            "清洁维护按厂家要求执行"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MAINT-007",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": "热交换器清洁与维护"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "温度控制阀应正确配置，确保冷却水温度在设定点范围内。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:设定点|hint:具体值见来源文件}}",
+          "applicable_condition": "发动机冷却系统运行期间",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "HT冷却水出口温度在设定点范围内",
+            "LT冷却水温度控制正常"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-051",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "温度控制阀配置"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-055",
+              "tier": "L3",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "温度控制阀配置"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应能容纳冷却液的热膨胀体积。",
+          "measurable_criterion": "{{TBD|unit:L|ref:Caterpillar C32 SCAC Marine Project Guide|component:膨胀水箱|intent:容积|hint:具体容积见来源文件}}",
+          "applicable_condition": "闭式冷却系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "膨胀水箱容积满足热膨胀要求",
+            "膨胀水箱安装正确"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-INST-001",
+              "tier": "L3",
+              "source": "S18 Caterpillar C32 SCAC Marine Project Guide",
+              "has_clause": "膨胀水箱作用"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主推进机械冷却系统应至少配备两台独立冷却水泵。",
+          "measurable_criterion": "{{TBD|unit:台|ref:IACS Unified Requirements M3.1|component:冷却水泵|intent:数量|hint:至少2台}}",
+          "applicable_condition": "主推进机械冷却系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "至少两台独立冷却水泵",
+            "每台泵容量满足MCR工况冷却水流量"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-IACS-M3-001",
+              "tier": "L1",
+              "source": "S60 IACS Unified Requirements M3.1 Cooling Systems",
+              "has_clause": "冷却水泵要求"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "海水侧流向应正确，防止腐蚀和堵塞。",
+          "measurable_criterion": "{{TBD|unit:无|ref:Caterpillar Cooling Systems Application and Installation Guide|component:海水系统|intent:流向|hint:按厂家要求}}",
+          "applicable_condition": "海水冷却系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "海水泵、冷却器等部件流向正确",
+            "使用耐腐蚀材料"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-FLOW-010",
+              "tier": "L1",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "海水侧流向"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却液应定期检测水质，并按维护计划添加添加剂。",
+          "measurable_criterion": "{{TBD|unit:mg/l|ref:Caterpillar Know Your Cooling System|component:冷却液|intent:添加剂浓度|hint:具体值见来源文件}}",
+          "applicable_condition": "冷却系统维护期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "水质检测结果合格",
+            "添加剂浓度符合要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-029",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "冷却液水质检测方法"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "柴油机冷却水系统原理图或等效文件应提交批准。",
+          "measurable_criterion": "{{TBD|unit:无|ref:CCS《钢质海船入级规范》2025|component:冷却水系统|intent:文件|hint:按规范要求}}",
+          "applicable_condition": "设计阶段",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却水系统原理图已提交",
+            "文件经批准"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-9.1.12.112-036",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "柴油机冷却水系统原理图或等效文件应提交批准"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "燃气轮机冷却剂温度高时应发出报警。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025|component:燃气轮机冷却剂|intent:温度报警|hint:具体限值见来源文件}}",
+          "applicable_condition": "燃气轮机运行期间",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却剂温度高时报警触发"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-7-34-010",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "燃气轮机冷却剂温度高报警"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR011",
+      "stakeholder": "系统设计方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 10,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统原理图应清晰区分淡水侧、海水侧、高温回路和低温回路，避免歧义。",
+          "measurable_criterion": "{{TBD|unit:-|ref:系统设计规范|component:冷却水系统|intent:原理图清晰度|hint:需明确标识各回路}}",
+          "applicable_condition": "所有冷却水系统设计阶段",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "原理图中淡水侧、海水侧、高温回路和低温回路应有明确图例或标注",
+            "各回路连接关系清晰，无需额外解释"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-DRAW-002",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "淡水侧系统组成"
+            },
+            {
+              "kb_id": "E-PIPE-DRAW-012",
+              "tier": "L1",
+              "source": "S45 46 CFR 56.01-10 Plan approval",
+              "has_clause": "管系图材料和设计参数完整性要求"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统原理图应标注各回路的关键设备（如泵、换热器、膨胀水箱）及其连接关系。",
+          "measurable_criterion": "{{TBD|unit:-|ref:系统设计规范|component:冷却水系统|intent:设备标注|hint:需包含泵、换热器、膨胀水箱等}}",
+          "applicable_condition": "所有冷却水系统设计阶段",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "原理图中包含所有主要设备",
+            "设备连接关系正确"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CTRL-004",
+              "tier": "L2",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "膨胀水箱作用"
+            },
+            {
+              "kb_id": "E-PUMP-CAP-024",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "Charge air cooler outlet"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统原理图应包含必要的仪表和控制元件（如温度传感器、压力传感器、调节阀）及其位置。",
+          "measurable_criterion": "{{TBD|unit:-|ref:系统设计规范|component:冷却水系统|intent:仪表控制元件|hint:需包含温度、压力传感器及调节阀}}",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "原理图中标注了温度传感器、压力传感器、调节阀等",
+            "传感器位置合理"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CTRL-004",
+              "tier": "L2",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "膨胀水箱作用"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统原理图应标明各管路的流向和关键参数（如设计压力、设计温度）。",
+          "measurable_criterion": "{{TBD|unit:-|ref:系统设计规范|component:冷却水系统|intent:管路参数|hint:需标注流向、设计压力、设计温度}}",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "管路流向箭头清晰",
+            "关键管路标注设计压力和设计温度"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PIPE-DRAW-012",
+              "tier": "L1",
+              "source": "S45 46 CFR 56.01-10 Plan approval",
+              "has_clause": "管系图材料和设计参数完整性要求"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统原理图应包含图例和标题栏，确保图纸可读性和可追溯性。",
+          "measurable_criterion": "{{TBD|unit:-|ref:系统设计规范|component:冷却水系统|intent:图纸完整性|hint:需包含图例和标题栏}}",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "原理图包含图例，解释所有符号",
+            "标题栏包含图纸名称、编号、版本、日期"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PIPE-DRAW-012",
+              "tier": "L1",
+              "source": "S45 46 CFR 56.01-10 Plan approval",
+              "has_clause": "管系图材料和设计参数完整性要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR012",
+      "stakeholder": "系统设计方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 20,
+      "_n_with_quantitative": 11,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统图纸应清晰表达冷却水流向、设备连接关系和接口位置，包括泵、冷却器、温控阀和膨胀水箱。",
+          "measurable_criterion": "图纸中应标注所有设备的连接关系、接口位置及流向箭头。",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "图纸包含所有指定设备",
+            "流向箭头清晰",
+            "接口位置标注明确"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SUPP-ENV-001",
+              "tier": "L1",
+              "source": "S81 MARPOL Annex I IMO MEPC Cooling Water Chemical Management",
+              "has_clause": "Environmental requirements for cooling water chemical treatment and discharge"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应使用可生物降解的缓蚀剂，禁止使用铬酸盐和亚硝酸盐基缓蚀剂。",
+          "measurable_criterion": "缓蚀剂浓度：50 mg/L 至 150 mg/L",
+          "applicable_condition": "所有工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "缓蚀剂浓度在50 mg/L至150 mg/L之间",
+            "缓蚀剂为可生物降解配方"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SUPP-ENV-001",
+              "tier": "L1",
+              "source": "S81 MARPOL Annex I IMO MEPC Cooling Water Chemical Management",
+              "has_clause": "Environmental requirements for cooling water chemical treatment and discharge"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "喷嘴冷却水温度应始终保持在至少55°C，以确保使用重油时的可靠运行。",
+          "measurable_criterion": "55°C",
+          "applicable_condition": "使用重油（HFO）时，包括待机和启动",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "喷嘴冷却水温度≥55°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-001",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "温控阀应在约55°C时开始打开冷却器旁通，在约65°C时完全打开冷却器旁通。",
+          "measurable_criterion": "55°C、65°C",
+          "applicable_condition": "所有工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温控阀在55°C时开始打开旁通",
+            "温控阀在65°C时完全打开旁通"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-001",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "冷却水系统应配备滤网，滤网孔径不大于1 mm，以保护喷嘴。",
+          "measurable_criterion": "1 mm",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "滤网孔径≤1 mm"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-001",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "在100%负荷下，冷却水流量应满足设计值：74 kg/kWh、82 kg/kWh、88 kg/kWh或113 kg/kWh。",
+          "measurable_criterion": "74、82、88、113",
+          "applicable_condition": "100%负荷",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水流量为74 kg/kWh、82 kg/kWh、88 kg/kWh或113 kg/kWh之一"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-CAP-021",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "冷却水流量与泵容量参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "高温冷却水系统在HP TC增压空气冷却器出口处的温度应为60°C至80°C。",
+          "measurable_criterion": "60°C至80°C",
+          "applicable_condition": "测量点TE3145 (3102)",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度在60°C至80°C之间"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "高温冷却水系统在缸套冷却出口处的温度应为60°C至92°C。",
+          "measurable_criterion": "60°C至92°C",
+          "applicable_condition": "测量点TE3170",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度在60°C至92°C之间"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "高温冷却水系统在LP TC增压空气冷却器出口处的标称温度应为90°C。",
+          "measurable_criterion": "90°C",
+          "applicable_condition": "测量点TE3180",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度接近90°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "发动机启动前预热时，高温冷却水温度应达到-100°C（实际应为预热温度，原文如此）。",
+          "measurable_criterion": "-100°C",
+          "applicable_condition": "启动前预热，测量点3111, TE3190",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度达到-100°C（原文如此，可能为笔误，实际应为预热温度）"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "在V49/60 IMO Tier II机械推进带CPP、1300 kW/cyl、600 rpm、热带条件下，HT冷却水在HP TC增压空气冷却器出口处温度应为80°C。",
+          "measurable_criterion": "80",
+          "applicable_condition": "V49/60 IMO Tier II，机械推进带CPP，1300 kW/cyl，600 rpm，参考条件：热带，空气温度45°C，增压空气冷却器前冷却水温度（LT级）38°C，总大气压力1000 mbar，相对湿度60%",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度等于80°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-006",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "主机冷却型式与设计条件"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "在V49/60 IMO Tier II条件下，LT冷却水在空气冷却器进口处温度应为38°C（设定点32°C）。",
+          "measurable_criterion": "38、32",
+          "applicable_condition": "V49/60 IMO Tier II，机械推进带CPP，1300 kW/cyl，600 rpm，参考条件：热带",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度接近38°C，设定点32°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-006",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "主机冷却型式与设计条件"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "在V49/60 IMO Tier II条件下，滑油在发动机进口处温度应为65°C。",
+          "measurable_criterion": "65",
+          "applicable_condition": "V49/60 IMO Tier II，机械推进带CPP，1300 kW/cyl，600 rpm，参考条件：热带",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度等于65°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-006",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "主机冷却型式与设计条件"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "在V49/60 IMO Tier II条件下，喷嘴冷却水在发动机进口处温度应为60°C。",
+          "measurable_criterion": "60",
+          "applicable_condition": "V49/60 IMO Tier II，机械推进带CPP，1300 kW/cyl，600 rpm，参考条件：热带",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度等于60°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-006",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "主机冷却型式与设计条件"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "双回路冷却系统应在低负荷（低于30% MCR）时提高增压空气温度以改善燃烧。",
+          "measurable_criterion": "30%",
+          "applicable_condition": "发动机负荷低于30% MCR",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "低负荷时增压空气温度升高"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-PRESS-001",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "GVU安装环境温度应≥5°C，低于此温度需进行设计修改。",
+          "measurable_criterion": "5",
+          "applicable_condition": "GVU安装",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "环境温度≥5°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-PRESS-034",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "机舱最低设计温度应≥5°C，以防止系统液体冻结。",
+          "measurable_criterion": "5",
+          "applicable_condition": "机舱设计",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "机舱温度≥5°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-PRESS-034",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "清洁过滤器在设计流量下的压降应为0.02至0.05 bar。",
+          "measurable_criterion": "0.02 and 0.05 bar",
+          "applicable_condition": "设计流量",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "压降在0.02 bar至0.05 bar之间"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FILTER-PRESSURE-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "过滤器压降设计参数要求"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "过滤器最大允许压降（需清洗前）应为0.1-0.2 bar。",
+          "measurable_criterion": "0.1-0.2 bar",
+          "applicable_condition": "所有工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "压降在0.1 bar至0.2 bar之间时需清洗"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FILTER-PRESSURE-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "过滤器压降设计参数要求"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "预热发动机时，滑油温度应≥40°C，冷却水温度应≥60°C。",
+          "measurable_criterion": "40、60",
+          "applicable_condition": "预热发动机",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "滑油温度≥40°C",
+            "冷却水温度≥60°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-PRESS-019",
+              "tier": "L2",
+              "source": "S37 MAN L27/38 Propulsion Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "海水冷却系统过滤器压降超过0.1 bar时应进行清洗或反冲洗。",
+          "measurable_criterion": "0.1 bar",
+          "applicable_condition": "海水冷却系统",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "压降超过0.1 bar时触发清洗"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FILTER-PRESSURE-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "过滤器压降触发清洗条件"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "冷却液应添加防冻剂，确保在-22°C时不冻结。",
+          "measurable_criterion": "-22°C",
+          "applicable_condition": "所有工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液冰点≤-22°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-132",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "冷却液冰点与乙二醇比例"
+            }
+          ],
+          "_grade": "B"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR013",
+      "stakeholder": "系统设计方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 12,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱的容量应满足系统补水、排气和水位变化的需求，其位置应确保有效排气和维持系统压力。",
+          "measurable_criterion": "{{TBD|unit:L|ref:MAN L21/31 Project Guide|component:膨胀水箱|intent:容量|hint:根据系统水容量和膨胀量计算}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "膨胀水箱容量应能容纳系统水膨胀体积，并保证最低水位时仍有足够补水余量",
+            "膨胀水箱顶部应设排气口，连接至系统最高点"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CORR-006",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀水箱：冷却水连接口位于顶部，便于安装和运行控制；冷却水被吸入悬挂在全焊接容器内的橡胶袋中；全焊接容器被排除腐蚀风险；橡胶袋可更换。"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应连接至冷却水系统靠近冷却水进口接头的位置，以维持系统正压并允许水膨胀。",
+          "measurable_criterion": "{{TBD|unit:位置|ref:MAN L21/31 Project Guide|component:膨胀水箱|intent:连接位置|hint:靠近冷却水进口接头G1/F1}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "膨胀水箱连接管应接在冷却水泵吸入侧或系统最低压力点附近",
+            "连接管应无截止阀（或仅设常开阀）"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CORR-006",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀容器应连接至系统靠近冷却水进口接头（G1/F1）的位置，以维持系统正压并允许水膨胀；安全阀安装在集管上；压力表安装在集管上，位置应便于从补水点读取；补水点应靠近压力膨胀容器。"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应设置水位指示装置，并能在补水点方便地观察水位。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN L21/31 Project Guide|component:膨胀水箱|intent:水位指示|hint:便于从补水点读取}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "水位计应清晰可见，刻度范围覆盖最低和最高工作水位",
+            "补水点应靠近膨胀水箱，便于操作"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CORR-006",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "压力表安装在集管上，位置应便于从补水点读取；补水点应靠近压力膨胀容器。"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱的安装位置应高于冷却水系统最高点，以保证自然排气。",
+          "measurable_criterion": "{{TBD|unit:m|ref:MAN L21/31 Project Guide|component:膨胀水箱|intent:安装高度|hint:高于系统最高点}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "膨胀水箱底部应高于系统所有冷却水管道和设备最高点至少0.5m",
+            "排气管道应连续向上倾斜至膨胀水箱"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CORR-006",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀水箱：冷却水连接口位于顶部，便于安装和运行控制；冷却水被吸入悬挂在全焊接容器内的橡胶袋中；全焊接容器被排除腐蚀风险；橡胶袋可更换。"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR014",
+      "stakeholder": "系统设计方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 6,
+      "_n_with_quantitative": 6,
+      "engineering_requirements": [
+        {
+          "shall_statement": "管路高点应设置排气装置，低点应设置放水装置。",
+          "measurable_criterion": "{{TBD|unit:无|ref:通用工程实践|component:管路|intent:排气与放水|hint:高点排气、低点放水}}",
+          "applicable_condition": "所有冷却水管路",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "管路高点设有排气阀或自动排气阀",
+            "管路低点设有放水阀或堵头"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR015",
+      "stakeholder": "系统设计方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 15,
+      "_n_with_quantitative": 8,
+      "engineering_requirements": [
+        {
+          "shall_statement": "中央冷却器海水侧和淡水侧之间的边界应清晰标识，确保设计、审图和施工时理解一致。",
+          "measurable_criterion": "{{TBD|unit:无|ref:无|component:中央冷却器|intent:边界标识|hint:需在图纸或模型中明确区分海水侧和淡水侧边界}}",
+          "applicable_condition": "中央冷却器设计、审图和施工阶段",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "图纸或模型中海水侧和淡水侧边界有明确标识或颜色区分",
+            "审图记录中无边界歧义问题"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR016",
+      "stakeholder": "船厂",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 7,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水管路布置应便于施工，焊接、安装、冲洗和压力试验应留出操作条件。",
+          "measurable_criterion": "{{TBD|unit:无|ref:船厂施工规范|component:管路|intent:操作空间|hint:需根据具体布置确定最小操作空间}}",
+          "applicable_condition": "所有冷却水管路",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "管路布置应满足焊接、安装、冲洗和压力试验的操作空间要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-038",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水管路布置要便于施工，焊接、安装、冲洗和压力试验都要留出操作条件。"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR017",
+      "stakeholder": "船厂",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 10,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "泵入口和冷却器附近的管路布置应避免过度弯曲，以确保水流顺畅。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN L27/38 Project Guide|component:管路|intent:弯曲程度|hint:需根据现场安装条件确定管路弯曲半径限制}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "管路布置图显示泵入口和冷却器附近无急弯或死弯",
+            "现场安装后管路走向平顺，无可见的过度弯曲"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-LT-MAINT-001",
+              "tier": "L3",
+              "source": "S37 MAN L27/38 Propulsion Project Guide",
+              "has_clause": "热交换器清洁与维护：MAN Diesel & Turbo L27/38冷却水系统。设计数据：热传递：参见规划数据；通过所有冷却器的压降：最大 0.5 bar；MCR 工况下最低船速：通常大于 3 节。"
+            },
+            {
+              "kb_id": "E-SYS-DRAW-001",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "外部冷却水系统设计原则：Ad 1) Cooling water systems have a tendency to be unnecessarily complicated and thus uneconomic in installation and operation. Therfore, we have attached great importance to simple diagram design with optimal cooling of the engines and at the same time installation- and operation-friendly systems resulting in economic advantages."
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR018",
+      "stakeholder": "船厂",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 9,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "阀门、滤器和仪表应安装在易于操作和检修的位置。",
+          "measurable_criterion": "{{TBD|unit:无|ref:通用工程实践|component:阀门、滤器、仪表|intent:可达性|hint:需根据具体布置图确定可操作空间和检修通道}}",
+          "applicable_condition": "所有冷却水系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "安装位置应留有足够的操作空间，便于人员接近和操作",
+            "安装位置应留有足够的检修空间，便于拆卸和维修"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-INSP-022",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却液水质检测方法"
+            },
+            {
+              "kb_id": "E-DRAFT-FLOWM-SPECIFIC-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "流量计精度与安装要求"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": "冷却液冰点与乙二醇比例"
+            },
+            {
+              "kb_id": "E-EXP-DRAW-001",
+              "tier": "L3",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "膨胀水箱作用"
+            },
+            {
+              "kb_id": "E-CENTRAL-COMP-001",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "中央冷却系统总体组成"
+            },
+            {
+              "kb_id": "E-TCV-DRAW-003",
+              "tier": "L3",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "温度控制阀配置"
+            },
+            {
+              "kb_id": "E-PUMP-PRESS-010",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "冷却水温度与压力参数"
+            },
+            {
+              "kb_id": "E-PIPE-PTEST-010",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            },
+            {
+              "kb_id": "E-COOLER-MAINT-008",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": "热交换器清洁与维护"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR019",
+      "stakeholder": "船厂",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 5,
+      "_n_with_quantitative": 0,
+      "engineering_requirements": [
+        {
+          "shall_statement": "管路支架应合理布置，确保泵、冷却器和阀门接口不承受管路重量。",
+          "measurable_criterion": "{{TBD|unit:N|ref:管路支架设计规范|component:管路支架|intent:承载能力|hint:需根据管路重量和支架间距计算接口受力}}",
+          "applicable_condition": "所有冷却水管路系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "管路支架布置图应标明支架位置和间距",
+            "支架应靠近泵、冷却器和阀门接口布置",
+            "接口处无管路重量导致的变形或应力"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-INST-003",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "中央冷却器选型要求"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-044",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "温度控制阀配置"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR020",
+      "stakeholder": "船厂",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 5,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "系统应设计冲洗接口和临时接管位置，以便在调试前进行系统冲洗。",
+          "measurable_criterion": "{{TBD|unit:个|ref:项目设计|component:冷却水系统|intent:接口数量|hint:根据系统布局确定冲洗接口和临时接管位置的数量}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冲洗接口和临时接管位置在系统设计图纸中明确标注",
+            "接口位置便于操作和连接临时管路"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-CLEAN-023",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水系统；换热器或相关管路的清洗；冲洗和复查应按来源文件或项目维护程序执行"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR021",
+      "stakeholder": "设备采购方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵的流量、压力、材料、接口和备用要求应根据厂家技术数据或项目计算文件确定，不得仅按名称采购。",
+          "measurable_criterion": "{{TBD|unit:多种|ref:厂家技术数据或项目计算文件|component:冷却水泵|intent:流量、压力、材料、接口和备用要求|hint:需核对具体参数}}",
+          "applicable_condition": "冷却水泵采购时",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "采购文件应明确流量、压力、材料、接口和备用要求",
+            "采购文件应引用厂家技术数据或项目计算文件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-015",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却水泵参数应依据来源文件厂家技术数据或项目计算文件确定"
+            },
+            {
+              "kb_id": "E-SYS-PRESS-021",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "冷却水温度与压力参数应依据来源文件厂家技术数据或项目计算文件确定"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR022",
+      "stakeholder": "设备采购方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 4,
+      "_n_with_quantitative": 3,
+      "engineering_requirements": [
+        {
+          "shall_statement": "中央冷却器选型必须考虑海水温度、换热余量和长期脏污影响，不能仅满足理想工况。",
+          "measurable_criterion": "{{TBD|unit:℃|ref:Scania Marine Cooling System Issue 8|component:中央冷却器|intent:海水温度|hint:需根据项目海域确定设计海水温度}}",
+          "applicable_condition": "中央冷却器选型设计阶段",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "选型计算书包含海水温度、换热余量和脏污系数等参数",
+            "选型结果满足设计工况要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-003",
+              "tier": "L3",
+              "source": "S07 Scania Marine Cooling System Issue 8",
+              "has_clause": "中央冷却器选型要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR023",
+      "stakeholder": "设备采购方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 20,
+      "_n_with_quantitative": 12,
+      "engineering_requirements": [
+        {
+          "shall_statement": "温控阀、传感器和报警元件的量程、信号和接口必须与自动化系统匹配。",
+          "measurable_criterion": "{{TBD|unit:无|ref:项目自动化系统接口规范|component:温控阀、传感器、报警元件|intent:量程、信号、接口匹配|hint:需根据自动化系统接口规范确定具体量程、信号类型和接口定义}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温控阀、传感器和报警元件的量程覆盖自动化系统要求的范围",
+            "信号类型（如4-20mA、PT100等）与自动化系统输入模块兼容",
+            "接口（如螺纹、法兰、电气连接器）与自动化系统接口一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-028",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-152",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "温度控制阀配置"
+            },
+            {
+              "kb_id": "E-WAR46DF-PARAM-001",
+              "tier": "L3",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "Wärtsilä 46DF Product Guide — Cooling Water System Verified Parameters"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR024",
+      "stakeholder": "设备采购方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 7,
+      "_n_with_quantitative": 2,
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱的容积应满足系统冷却水膨胀和补水的需求。",
+          "measurable_criterion": "{{TBD|unit:L|ref:项目计算文件|component:膨胀水箱|intent:容积|hint:根据系统总容积和热膨胀系数计算}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "容积计算书经审核确认"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-002",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": "冷却液成分"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应配备液位显示装置，便于观察液位。",
+          "measurable_criterion": "{{TBD|unit:-|ref:设计规范|component:膨胀水箱|intent:液位显示|hint:如玻璃管液位计或电子液位传感器}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "液位显示装置安装牢固，刻度清晰可见"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应设置低液位报警功能，当液位低于设定值时发出报警。",
+          "measurable_criterion": "{{TBD|unit:mm|ref:IACS UR M35|component:膨胀水箱|intent:低液位报警|hint:报警设定值根据系统要求确定}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "低液位报警功能正常，报警信号输出正确"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-IACS-M35-001",
+              "tier": "L1",
+              "source": "IACS Unified Requirements M35 Rev.8",
+              "has_clause": "Deaerating/expansion tank low level: mandatory alarm"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应设有补水接口，便于系统补水。",
+          "measurable_criterion": "{{TBD|unit:-|ref:设计规范|component:膨胀水箱|intent:补水接口|hint:接口尺寸和型式根据系统要求确定}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "补水接口位置合理，连接方便"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR025",
+      "stakeholder": "设备采购方",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 4,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水侧滤器和阀门材料应适合海水环境，以防止腐蚀、堵塞或维护频繁。",
+          "measurable_criterion": "{{TBD|unit:无|ref:CCS《钢质海船入级规范》2025|component:海水侧滤器和阀门|intent:材料耐海水腐蚀性|hint:需根据海水环境选择耐腐蚀材料，如青铜、不锈钢或特殊涂层}}",
+          "applicable_condition": "所有海水冷却系统运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "材料证书或规格书证明所选材料适用于海水环境",
+            "材料符合相关船级社规范要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-9.4.2.2-032",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "9.4.2.2"
+            },
+            {
+              "kb_id": "L1-CCS2025-7-46-017",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "7-46"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR026",
+      "stakeholder": "轮机长",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 17,
+      "_n_with_quantitative": 9,
+      "engineering_requirements": [
+        {
+          "shall_statement": "集控室应显示主机冷却水温度。",
+          "measurable_criterion": "85°C 至 99°C",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "集控室显示温度值在85°C至99°C范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-PRESS-011",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "集控室应显示主机冷却水压力。",
+          "measurable_criterion": "{{TBD|unit:kPa|ref:MAN 49/60DF Project Guide|component:冷却水泵|intent:压力显示|hint:需根据系统设计确定压力范围}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "集控室显示压力值在系统设计范围内"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "集控室应显示膨胀水箱液位。",
+          "measurable_criterion": "{{TBD|unit:%|ref:MAN L16/24 GenSet Project Guide|component:膨胀水箱|intent:液位显示|hint:需根据水箱容量确定液位范围}}",
+          "applicable_condition": "主机正常运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "集控室显示液位值在正常范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-RED-002",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "膨胀水箱配置"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "集控室应显示冷却水泵运行状态。",
+          "measurable_criterion": "{{TBD|unit:状态|ref:MAN 49/60DF Project Guide|component:冷却水泵|intent:运行状态显示|hint:需定义运行/停止/故障状态}}",
+          "applicable_condition": "主机运行期间",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "集控室显示泵的运行状态（运行/停止/故障）"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR027",
+      "stakeholder": "轮机长",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "主机冷却水系统应能检测并报警高温、低压、低液位或泵故障，并指示具体故障回路（如HT回路、LT回路）。",
+          "measurable_criterion": "报警信息应明确指示故障回路类型（高温、低压、低液位、泵故障）及所属回路（HT或LT）。",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "模拟各回路高温、低压、低液位、泵故障时，报警信息应正确显示故障类型和回路标识"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-7-54项10-029",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "条款 7-54 项10"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "HT冷却水回路应监测冷却水温度，并在温度超过限值时发出高温报警。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:Everllence 49/60DF Project Guide|component:HT冷却水回路|intent:高温报警阈值|hint:需根据厂家数据确定}}",
+          "applicable_condition": "基于机舱温度55°C工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当HT冷却水温度超过设定阈值时，应触发高温报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-057",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "HT冷却水回路应监测冷却水压力，并在压力低于限值时发出低压报警。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:MAN L16/24 GenSet Project Guide|component:HT冷却水回路|intent:低压报警阈值|hint:需根据厂家数据确定}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当HT冷却水压力低于设定阈值时，应触发低压报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-COMP-013",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "HT冷却水压力传感器PT10"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱应监测液位，并在液位低于限值时发出低液位报警。",
+          "measurable_criterion": "{{TBD|unit:%|ref:MAN L16/24 GenSet Project Guide|component:膨胀水箱|intent:低液位报警阈值|hint:需根据厂家数据确定}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当膨胀水箱液位低于设定阈值时，应触发低液位报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-DRAW-004",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "膨胀水箱作用"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水泵应监测运行状态，并在泵故障时发出泵故障报警。",
+          "measurable_criterion": "泵故障报警应指示具体故障泵（如HT泵、LT泵）。",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "模拟冷却水泵故障时，应触发泵故障报警并指示故障泵"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-7-54项10-029",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "条款 7-54 项10"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR028",
+      "stakeholder": "轮机长",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 10,
+      "_n_with_quantitative": 3,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器、滤器和泵等常维护设备应布置在易于接近的位置，以便船员进行日常巡检和维护操作。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN L21/31 Project Guide, MAN L23/30H GenSet Project Guide, Caterpillar Cooling Systems Application and Installation Guide|component:冷却器、滤器、泵|intent:可达性|hint:需根据具体设备尺寸和空间确定最小操作距离}}",
+          "applicable_condition": "所有船舶主机冷却水系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "设备前方应有足够的操作空间，满足制造商规定的维护通道要求",
+            "设备安装位置应避免被其他管路或结构遮挡"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MAINT-015",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "热交换器清洁与维护"
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "冷却液水质检测方法"
+            },
+            {
+              "kb_id": "E-PUMP-PRESS-016",
+              "tier": "L2",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR029",
+      "stakeholder": "轮机长",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 9,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却系统的补水、排气、放水和换液操作应简单明确，无需查阅大量资料即可完成。",
+          "measurable_criterion": "操作步骤不超过5步，且每个步骤有明确标识。",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "操作手册中每个操作步骤不超过5步",
+            "每个步骤在设备上有清晰标识或标签"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": "冷却液成分"
+            },
+            {
+              "kb_id": "E-SYS-DRAW-021",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却水温度与压力参数"
+            },
+            {
+              "kb_id": "E-WAR-EXPANSION-001",
+              "tier": "L2",
+              "source": "Wärtsilä 46F Series Product Manual",
+              "has_clause": "Wärtsilä Cooling Water Expansion Tank / Deaerating Tank Requirements"
+            },
+            {
+              "kb_id": "E-HT-COMP-025",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "高温冷却水系统组成"
+            },
+            {
+              "kb_id": "E-PUMP-INSP-014",
+              "tier": "L1",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却系统泄漏检查要求"
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-003",
+              "tier": "L3",
+              "source": "S08 MAN Energy Solutions SL2016-623 Cooling water treatment",
+              "has_clause": "冷却液水质检测方法"
+            },
+            {
+              "kb_id": "E-EXP-INSP-023",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却液水质检测方法"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-084",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却液污染与沉积风险"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-101",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "温度控制阀配置"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR030",
+      "stakeholder": "轮机长",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 4,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水侧滤器应能在不中断冷却水供应的情况下进行清洗。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:海水侧滤器|intent:清洗操作|hint:需设计旁通或双联滤器实现不停机清洗}}",
+          "applicable_condition": "主机运行期间，海水冷却系统正常工作时",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在清洗滤器时，冷却水流量波动不超过10%",
+            "清洗过程中主机冷却水温度保持在正常范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-CLEAN-015",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "海水侧生物附着与清洗要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR031",
+      "stakeholder": "自动化工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 13,
+      "_n_with_quantitative": 11,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应提供温度、压力、液位和泵状态信号至监控系统。",
+          "measurable_criterion": "{{TBD|unit:℃/bar/mm/开关量|ref:原始需求|component:冷却水系统|intent:监控参数|hint:需明确具体传感器类型和量程}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "监控系统可显示温度、压力、液位和泵状态信号"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SUPP-MAINT-001",
+              "tier": "L1",
+              "source": "S72 DNV Rules Pt4 Ch1 Machinery Space Access Requirements",
+              "has_clause": "冷却水系统设备（泵）：轴向间隙 ≥ 1.5 × 泵壳长度，用于叶轮/轴拆卸；径向间隙 ≥ 轴直径 + 100 mm。适用条件：基于DNV规范Pt.4 Ch.1、IACS UR M3、ISO 14122-3及标准船舶工程实践。"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "监控系统应支持趋势观察和异常判断功能。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:监控系统|intent:功能|hint:需定义趋势曲线显示周期和异常报警阈值}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "监控系统可显示历史趋势曲线",
+            "监控系统可触发异常报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SUPP-MAINT-001",
+              "tier": "L1",
+              "source": "S72 DNV Rules Pt4 Ch1 Machinery Space Access Requirements",
+              "has_clause": "冷却水系统设备（泵）：轴向间隙 ≥ 1.5 × 泵壳长度，用于叶轮/轴拆卸；径向间隙 ≥ 轴直径 + 100 mm。适用条件：基于DNV规范Pt.4 Ch.1、IACS UR M3、ISO 14122-3及标准船舶工程实践。"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR032",
+      "stakeholder": "自动化工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 5,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "当冷却水供水压力低于0.2 MPa时，系统应发出明确报警。",
+          "measurable_criterion": "0.2 MPa",
+          "applicable_condition": "系统运行期间，供水压力低于设定阈值",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟低供水压力工况下，报警信号在压力低于0.2 MPa时触发"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-EXPANS-MAKEUPW-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "补水水质与参数要求"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "当冷却水泵发生故障时，系统应发出明确报警。",
+          "measurable_criterion": "{{TBD|unit:无|ref:泵故障检测逻辑|component:冷却水泵|intent:故障报警|hint:需定义泵故障的检测方式，如电机过载、转速为零等}}",
+          "applicable_condition": "泵运行期间，检测到故障信号",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟泵故障工况下，报警信号在故障发生时触发"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-CAP-001",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "当冷却水供水压力低于0.2 MPa时，系统应支持自动切换至备用泵。",
+          "measurable_criterion": "0.2 MPa",
+          "applicable_condition": "系统运行期间，供水压力低于设定阈值且备用泵可用",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟低供水压力工况下，自动切换至备用泵，切换时间不超过规定值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-EXPANS-MAKEUPW-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "补水水质与参数要求"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "当冷却水泵发生故障时，系统应支持自动切换至备用泵。",
+          "measurable_criterion": "{{TBD|unit:无|ref:泵故障检测逻辑|component:冷却水泵|intent:自动切换|hint:需定义泵故障的检测方式及切换逻辑}}",
+          "applicable_condition": "泵运行期间，检测到故障信号且备用泵可用",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟泵故障工况下，自动切换至备用泵，切换时间不超过规定值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-CAP-001",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "当冷却水供水压力低于0.2 MPa时，系统应支持人工切换至备用泵。",
+          "measurable_criterion": "0.2 MPa",
+          "applicable_condition": "系统运行期间，供水压力低于设定阈值且备用泵可用",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟低供水压力工况下，操作人员可通过手动控制切换至备用泵"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-EXPANS-MAKEUPW-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "补水水质与参数要求"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "当冷却水泵发生故障时，系统应支持人工切换至备用泵。",
+          "measurable_criterion": "{{TBD|unit:无|ref:泵故障检测逻辑|component:冷却水泵|intent:人工切换|hint:需定义泵故障的检测方式及人工切换操作界面}}",
+          "applicable_condition": "泵运行期间，检测到故障信号且备用泵可用",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟泵故障工况下，操作人员可通过手动控制切换至备用泵"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-CAP-001",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "高温冷却水系统组成"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR033",
+      "stakeholder": "自动化工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 13,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水温度、压力和补水液位等传感器量程及报警设定值应依据厂家技术数据或项目计算文件确定，不得现场随意填写。",
+          "measurable_criterion": "{{TBD|unit:℃|ref:MAN L21/31 Project Guide|component:冷却水系统|intent:温度传感器量程|hint:依据MAN L21/31 Project Guide确定}}",
+          "applicable_condition": "所有适用机型（V28/32S; L28/32DF; L23/30DF; L23/30S; L23/30H; L27/38S; L16/24S; L21/31S; L16/24; L21/31; L27/38）",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "传感器量程和报警设定值有明确的来源文件依据",
+            "现场无随意填写现象"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-PRESS-030",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水温度传感器报警设定值应依据厂家技术数据确定，确保在100% MCR工况下稳定运行至少4小时。",
+          "measurable_criterion": "100%、4",
+          "applicable_condition": "海试期间，100% MCR工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水温度在100% MCR工况下稳定在厂家限值内至少4小时"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DNV-COOL-003",
+              "tier": "L1",
+              "source": "S61 DNV Rules for Classification Ships Pt4 Ch3 Machinery",
+              "has_clause": "Sea Trial Requirements for Cooling Systems"
+            }
+          ],
+          "_grade": "A"
+        },
+        {
+          "shall_statement": "海水冷却系统过滤器压差报警设定值应依据过滤器设计参数确定，报警触发后应提示清洗或切换。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:CCS钢质海船入级规范|component:海水过滤器|intent:压差报警设定值|hint:依据CCS规范及厂家数据确定}}",
+          "applicable_condition": "海水冷却系统运行期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "压差报警设定值有依据",
+            "报警功能正常"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SUPP-FILT-002",
+              "tier": "L1",
+              "source": "S71 CCS 钢质海船入级规范 海水冷却系统过滤器",
+              "has_clause": "过滤器应安装在冷却水泵进口前，进出口间应设置压差指示装置；当压差超过设定值时应发出报警"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱补水液位报警设定值应依据水箱高度确定，低液位报警点通常设为水箱总高度的1/3，正常补水至2/3至3/4。",
+          "measurable_criterion": "1/3、2/3、3/4",
+          "applicable_condition": "膨胀水箱运行期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "低液位报警设定值为水箱总高度的1/3",
+            "补水后液位恢复至2/3至3/4"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-EXPANS-MAKEUPW-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "Expansion tank makeup water is typically triggered when the water level drops below a preset low-level alarm point, often set at 1/3 of the tank's total height."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却器水侧压降报警设定值应依据厂家指南确定，通常限制在0.5-1.0 bar（50-100 kPa）设计流量下。",
+          "measurable_criterion": "0.5-1.0 bar、50-100 kPa",
+          "applicable_condition": "主机缸套水冷却器和扫气空气冷却器在设计流量下",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "压降报警设定值在0.5-1.0 bar范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-COOLER-PRESSURE-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "For main engine jacket water and charge air coolers, the allowable pressure drop on the water side is typically limited to 0.5-1.0 bar (50-100 kPa) at design flow rate"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "应急舱底水吸口连接主冷却水泵的截止止回阀手轮应高出花钢板以上450mm。",
+          "measurable_criterion": "450mm",
+          "applicable_condition": "每一主机机器处所",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "手轮高出花钢板以上450mm"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "L1-CCS2025-3.3.3.1-040",
+              "tier": "L1",
+              "source": "CCS《钢质海船入级规范》2025",
+              "has_clause": "每一主机机器处所应设1个应急舱底水吸口，一般应通向1台主冷却水泵并装设截止止回阀，阀杆应适当延伸以使手轮高出花钢板以上450mm。"
+            }
+          ],
+          "_grade": "A"
+        },
+        {
+          "shall_statement": "冷却水处理化学品排放浓度应满足MARPOL要求，铬酸盐和亚硝酸盐基抑制剂不得排放，可生物降解抑制剂排放浓度限值依据MARPOL规定。",
+          "measurable_criterion": "50 mg/L、150 mg/L",
+          "applicable_condition": "冷却水处理化学品排放",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "铬酸盐和亚硝酸盐基抑制剂不得排放",
+            "可生物降解抑制剂排放浓度不超过规定限值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SUPP-ENV-001",
+              "tier": "L1",
+              "source": "S81 MARPOL Annex I IMO MEPC Cooling Water Chemical Management",
+              "has_clause": "Chromate-based and nitrite-based inhibitors: classified as hazardous to marine environment; spent coolant shall NOT be discharged overboard."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。",
+          "measurable_criterion": "{{TBD|unit:℃/bar/%|ref:PRS Ship Machinery Piping Systems|component:冷却水系统|intent:报警阈值|hint:依据厂家或规则要求确定}}",
+          "applicable_condition": "冷却水系统运行期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "报警、降负荷或停机保护设置符合厂家或规则要求",
+            "阈值和动作逻辑在对应厂家、机型和控制系统配置范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-LT-ALARM-001",
+              "tier": "L1",
+              "source": "S44 PRS Ship Machinery Piping Systems",
+              "has_clause": "冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR034",
+      "stakeholder": "自动化工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "温度控制阀的控制逻辑应包含前馈控制功能，以反映实际水温变化，避免控制滞后。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN 49/60DF Project Guide|component:温度控制阀|intent:控制精度|hint:前馈控制功能应保证控制精度最佳}}",
+          "applicable_condition": "主机冷却水系统（HT和LT）运行时",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度控制阀在工况变化时响应时间不超过设计值",
+            "水温波动幅度在允许范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-056",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "The cylinder cooling water (HT) temperature control is equipped with performance-related feed forward control, in order to guarantee the best control accuracy possible"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "温度控制阀的信号采集和响应周期应足够短，以反映实际水温变化，避免控制滞后。",
+          "measurable_criterion": "{{TBD|unit:秒|ref:MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:响应时间|hint:信号采集和响应周期应小于系统时间常数}}",
+          "applicable_condition": "主机冷却水系统运行时",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度传感器采样周期不大于1秒",
+            "控制阀执行机构响应时间不大于2秒"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-050",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "Thermostatic valve on outlet, LT-system; Thermostatic valve on outlet, HT-system"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应设计为能够适应温度变化引起的体积变化，并设有膨胀水箱以补偿体积变化和泄漏。",
+          "measurable_criterion": "{{TBD|unit:立方米|ref:MAN L23/30DF Project Guide|component:膨胀水箱|intent:容积|hint:膨胀水箱容积应满足体积变化和泄漏补偿需求}}",
+          "applicable_condition": "双回路冷却水系统（HT和LT）",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "膨胀水箱容积不小于系统水容积的10%",
+            "膨胀水箱能维持系统压力稳定"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-INSP-006",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "separate expansion tanks for the LT system and HT system must be installed. This to accommodate for changes of volume due to varying temperatures and possible leakage"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应进行压力试验，以确保系统密封性和安全性，避免因泄漏导致温度控制失效。",
+          "measurable_criterion": "{{TBD|unit:MPa|ref:46 CFR 197.462|component:冷却水管系|intent:试验压力|hint:试验压力按适用法规或项目文件确定}}",
+          "applicable_condition": "冷却水管系安装后",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "试验压力不低于设计压力的1.5倍",
+            "保压期间无压降或泄漏"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PIPE-PTEST-001",
+              "tier": "L1",
+              "source": "S48 46 CFR 197.462 Pressure vessels and pressure piping",
+              "has_clause": "Pressure tests shall be conducted only after suitable precautions are taken to protect personnel and equipment."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应定期检查冷却液质量，防止沉积物堵塞导致温度控制响应变慢。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN Energy Solutions SL2016-623|component:冷却液|intent:水质|hint:冷却液应定期检测，防止污染和沉积}}",
+          "applicable_condition": "主机运行期间",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液水质符合主机厂家要求",
+            "无可见油污或沉积物"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-004",
+              "tier": "L3",
+              "source": "S08 MAN Energy Solutions SL2016-623 Cooling water treatment",
+              "has_clause": "Regular analysis of coolant is very important for safe engine operation."
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR035",
+      "stakeholder": "自动化工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 19,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵的运行、停止、故障和备用状态应能反馈到监控界面。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN L16/24 Project Guide, MAN 49/60DF Project Guide|component:冷却水泵|intent:状态反馈|hint:需明确状态信号类型和接口}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "监控界面能正确显示每台冷却水泵的运行、停止、故障和备用状态",
+            "状态变化响应时间不超过2秒"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-CAP-004",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却水泵相关"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-017",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "冷却水泵配置"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR036",
+      "stakeholder": "安全负责人",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 14,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水高温报警系统应在冷却液温度超过95°C时，在1秒内发出报警。",
+          "measurable_criterion": "95°C、1秒",
+          "applicable_condition": "适用于Scania DI16船用发动机，EMS/S6控制系统。",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当冷却液温度达到95°C时，报警信号在1秒内触发。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": "冷却液温度95°C报警"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "冷却水低压报警系统应在冷却水压力低于设定阈值时及时报警。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:MAN L21/31 Project Guide|component:冷却水系统|intent:低压报警阈值|hint:需根据具体机型确定低压报警值}}",
+          "applicable_condition": "适用于MAN L21/31系列发动机。",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当冷却水压力低于设定阈值时，报警信号触发。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-ARR-003",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀水箱：系统基于热虹吸冷却和反向水流方向"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水低液位报警系统应在膨胀水箱液位低于最低水位时及时报警。",
+          "measurable_criterion": "{{TBD|unit:m|ref:MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:最低液位|hint:最低水位应高于曲轴中心线8-10 m}}",
+          "applicable_condition": "适用于MAN L23/30H发电机组。",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当膨胀水箱液位低于最低水位时，报警信号触发。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-INSP-022",
+              "tier": "L1",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "膨胀水箱最低水位应高于曲轴中心线最小8-10 m"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水流量不足报警系统应在流量低于设定阈值时及时报警。",
+          "measurable_criterion": "{{TBD|unit:L/min|ref:MAN L21/31 Project Guide|component:冷却水系统|intent:流量不足报警阈值|hint:需根据具体机型确定流量报警值}}",
+          "applicable_condition": "适用于MAN L21/31系列发动机。",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当冷却水流量低于设定阈值时，报警信号触发。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-ARR-003",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀水箱：系统基于热虹吸冷却和反向水流方向"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR037",
+      "stakeholder": "安全负责人",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 10,
+      "_n_with_quantitative": 6,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器应配备泄漏检测装置，并在有人值守位置提供声光报警。",
+          "measurable_criterion": "{{TBD|unit:无|ref:无|component:冷却器|intent:泄漏检测与报警|hint:需明确检测方式、报警类型及位置}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "泄漏检测装置安装到位",
+            "声光报警在有人值守位置可被感知"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR038",
+      "stakeholder": "安全负责人",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 11,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "主机冷却水系统应区分关键报警和保护动作，明确哪些仅用于提醒，哪些会影响主机运行。",
+          "measurable_criterion": "报警和保护动作分类清单",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "报警和保护动作清单中明确标注每个报警的类别（提醒或保护）",
+            "保护动作清单包含触发后影响主机运行的详细说明"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FLOWM-ALARMSE-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "流量计报警定值触发条件"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "流量计低流量报警应在流量低于设计流量的80%时触发。",
+          "measurable_criterion": "80%",
+          "applicable_condition": "主机冷却水系统正常运行",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当流量降至设计流量的80%时，系统发出低流量报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FLOWM-ALARMSE-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "流量计报警定值触发条件"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "流量计高差压报警应在差压达到正常压降的1.5倍时触发。",
+          "measurable_criterion": "1.5 times",
+          "applicable_condition": "主机冷却水系统正常运行",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当差压达到正常压降的1.5倍时，系统发出高差压报警"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-FLOWM-ALARMSE-001",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "流量计报警定值触发条件"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "海水冷却系统的管道和热交换器内表面应涂覆环氧树脂或橡胶衬里，并安装牺牲锌阳极进行阴极保护。",
+          "measurable_criterion": "{{TBD|unit:无|ref:E-DRAFT-SEAWA-CORROSIO-001|component:管道和热交换器|intent:防腐|hint:涂层和阳极类型}}",
+          "applicable_condition": "海水冷却系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "管道和热交换器内表面有环氧树脂或橡胶衬里",
+            "海水箱和滤器中安装有牺牲锌阳极"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-SEAWA-CORROSIO-001",
+              "tier": "L3",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "海水侧防腐涂层与牺牲阳极联合保护"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "牺牲阳极的消耗率应每年监测，当阳极质量减少80%时应更换。",
+          "measurable_criterion": "80%",
+          "applicable_condition": "海水冷却系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "每年检查阳极质量",
+            "当阳极质量减少80%时进行更换"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-SEAWA-CORROSIO-001",
+              "tier": "L3",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "海水侧防腐涂层与牺牲阳极联合保护"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "HT冷却水预热温度在发动机进口处必须低于90°C。",
+          "measurable_criterion": "90°C",
+          "applicable_condition": "发动机预热工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "发动机进口HT冷却水温度低于90°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-038",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "Engine type L/V engine: Min. heating power = 14 kW/cylinder"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "HT冷却水循环量不得超过额定流量的30%。",
+          "measurable_criterion": "30%",
+          "applicable_condition": "发动机预热工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "HT冷却水循环量不超过额定流量的30%"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-038",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "Engine type L/V engine: Min. heating power = 14 kW/cylinder"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "主机冷却型式设计条件应基于热带条件：空气温度≤45°C，冷却水温度（LT级）在增压空气冷却器前为38°C，总大气压1000 mbar，相对湿度60%。",
+          "measurable_criterion": "45°C, 38°C, 1000 mbar, 60%",
+          "applicable_condition": "热带条件",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "设计条件满足空气温度≤45°C",
+            "LT冷却水温度在增压空气冷却器前为38°C",
+            "总大气压1000 mbar",
+            "相对湿度60%"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-PRESS-014",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "主机冷却型式与设计条件"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "膨胀水箱应连接至系统靠近冷却水进口接头的位置，以维持系统正压并允许水膨胀。",
+          "measurable_criterion": "{{TBD|unit:无|ref:E-EXP-CORR-006|component:膨胀水箱|intent:连接位置|hint:靠近冷却水进口接头}}",
+          "applicable_condition": "所有适用机型",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "膨胀水箱连接在系统靠近冷却水进口接头处"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CORR-006",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀水箱"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "安全阀应安装在集管上，压力表应安装在集管上且位置便于从补水点读取。",
+          "measurable_criterion": "{{TBD|unit:无|ref:E-EXP-CORR-006|component:安全阀和压力表|intent:安装位置|hint:集管上}}",
+          "applicable_condition": "所有适用机型",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "安全阀安装在集管上",
+            "压力表安装在集管上且从补水点可读"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-CORR-006",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "膨胀水箱"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR039",
+      "stakeholder": "安全负责人",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 6,
+      "engineering_requirements": [
+        {
+          "shall_statement": "系统应能检测传感器异常，并在检测到异常时提示测量信号可能有问题。",
+          "measurable_criterion": "{{TBD|unit:无|ref:无|component:传感器|intent:异常检测|hint:需定义传感器异常的具体判据，如信号超出正常范围、漂移、噪声等}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "当传感器信号异常时，系统在1秒内发出提示",
+            "提示信息明确指示传感器可能故障"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR040",
+      "stakeholder": "安全负责人",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 9,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "报警设定和延时参数应依据厂家技术数据或项目计算文件确定，避免因设定不当导致误报警或报警延迟。",
+          "measurable_criterion": "{{TBD|unit:秒|ref:厂家技术数据|component:报警系统|intent:延时|hint:需根据具体机型确定报警延时值}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "报警设定值和延时参数符合厂家技术文件或项目计算文件的要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-EXP-INSP-011",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "膨胀水箱作用：预加热和预冷却期间所需最小流量取决于气缸数量和配置"
+            },
+            {
+              "kb_id": "E-PUMP-PRESS-002",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-048",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "主机冷却型式与设计条件"
+            },
+            {
+              "kb_id": "E-JACKET-COMP-002",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "淡水侧系统组成"
+            },
+            {
+              "kb_id": "E-HT-PRESS-006",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            },
+            {
+              "kb_id": "E-VALVE-DRAW-005",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "外部冷却水系统设计原则"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-013",
+              "tier": "L3",
+              "source": "S09 MAN Energy Solutions SL2014-584 Cooling Water System",
+              "has_clause": "冷却液污染与沉积风险"
+            },
+            {
+              "kb_id": "E-PUMP-DRAW-010",
+              "tier": "L1",
+              "source": "S45 46 CFR 56.01-10 Plan approval",
+              "has_clause": "泵容量和关断扬程图纸标注要求"
+            },
+            {
+              "kb_id": "E-SYS-WATER-017",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": "水质参数要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR041",
+      "stakeholder": "船检",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 7,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水冷却系统在主循环泵相关配置下，当供水流量低于设定阈值时应发出报警，以便及时启动或切换备用泵。",
+          "measurable_criterion": "{{TBD|unit:m3/h|ref:S10 MAN L23/30DF Project Guide|component:海水冷却系统|intent:低供水报警阈值|hint:需根据泵容量参数确定}}",
+          "applicable_condition": "主循环泵相关配置运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在模拟低供水条件下，系统在1秒内发出报警信号",
+            "报警信号包括警告灯和诊断指示灯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-DRAW-004",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却水流量与泵容量参数"
+            },
+            {
+              "kb_id": "E-ALARM-ALARM-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": "冷却液温度95°C报警"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR042",
+      "stakeholder": "船检",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 2,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵、冷却器、管路和报警保护的配置应在图纸和资料中明确引用规范依据。",
+          "measurable_criterion": "{{TBD|unit:无|ref:项目规范|component:冷却系统|intent:规范依据|hint:需在图纸和资料中标注所引用的规范标准}}",
+          "applicable_condition": "所有冷却水系统设计",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "图纸和资料中应列出所依据的规范标准编号及条款"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水温度与压力参数应依据来源文件厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:℃/bar|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统|intent:温度压力参数|hint:参考证据E-LT-PRESS-005}}",
+          "applicable_condition": "推进发动机冷却水系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "参数值应来源于厂家技术数据或项目计算文件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-LT-PRESS-005",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "热交换器清洁与维护应确保冷却水温度不超过93°C。",
+          "measurable_criterion": "93°C",
+          "applicable_condition": "热交换器清洁维护时",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水温度不超过93°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-MAINT-004",
+              "tier": "L2",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "热交换器清洁与维护"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "冷却液冰点与乙二醇比例应依据厂家建议，使用防冻剂前需咨询MAN Energy Solutions。",
+          "measurable_criterion": "{{TBD|unit:无|ref:S10 MAN L23/30DF Project Guide|component:冷却液|intent:冰点与乙二醇比例|hint:参考证据E-COOLANT-WATER-020}}",
+          "applicable_condition": "使用防冻剂时",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "防冻剂使用前已咨询MAN Energy Solutions"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-020",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却液冰点与乙二醇比例"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "温度控制阀的冗余参数应依据来源文件厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:冗余参数|hint:参考证据E-TCV-TEMP-036}}",
+          "applicable_condition": "推进发动机HT回路",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冗余参数来源于厂家技术数据或项目计算文件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-036",
+              "tier": "L3",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "温度控制阀：HT水温度通过温控阀用LT水混合调节"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却液应避免污染与沉积，防止热过载导致部件损坏。",
+          "measurable_criterion": "{{TBD|unit:无|ref:S08 MAN Energy Solutions SL2016-623|component:冷却液|intent:污染与沉积|hint:参考证据E-COOLANT-WATER-009}}",
+          "applicable_condition": "冷却水系统运行",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液无污染和沉积迹象"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-009",
+              "tier": "L3",
+              "source": "S08 MAN Energy Solutions SL2016-623 Cooling water treatment",
+              "has_clause": "冷却液污染与沉积风险"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统应提供监测压力差和温度差的测量位置。",
+          "measurable_criterion": "{{TBD|unit:无|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却水系统|intent:监测位置|hint:参考证据E-JACKET-MAINT-001}}",
+          "applicable_condition": "所有冷却水系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "图纸中标注了压力差和温度差的测量位置"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-JACKET-MAINT-001",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "热交换器清洁与维护"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统布置应考虑安装操作或维护可达性原则。",
+          "measurable_criterion": "{{TBD|unit:无|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统|intent:维护空间|hint:参考证据E-COOLER-MAINT-004}}",
+          "applicable_condition": "L16/24机型",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "布置满足维护空间要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MAINT-004",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却水系统维护空间要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR043",
+      "stakeholder": "船检",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 4,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水侧直接冷却时，滤器布置应支持在运行中清洗，且清洗时不得中断冷却供应。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:滤器|intent:运行中清洗不影响冷却|hint:需明确滤器切换或旁通设计}}",
+          "applicable_condition": "海水直接冷却系统运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "滤器布置应包含旁通管路或双联滤器，确保清洗时冷却水连续供应"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-075",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-EXP-CORR-003",
+              "tier": "L3",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-VALVE-PRESS-026",
+              "tier": "L1",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-PIPE-DRAW-011",
+              "tier": "L1",
+              "source": "S45 46 CFR 56.01-10 Plan approval",
+              "has_clause": false
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR044",
+      "stakeholder": "船检",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 10,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却系统应配备泄漏检测装置，并在检测到泄漏时发出声光报警。",
+          "measurable_criterion": "{{TBD|unit:无|ref:适用规则|component:冷却系统|intent:泄漏检测|hint:需根据适用规则确定具体检测阈值和报警方式}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "泄漏检测装置安装正确",
+            "声光报警功能正常"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-INSP-013",
+              "tier": "L1",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却系统泄漏检查要求"
+            },
+            {
+              "kb_id": "E-PUMP-SHUT-001",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却系统泄漏检查要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR045",
+      "stakeholder": "船检",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 11,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的压力试验、冲洗和检查记录必须完整，并形成书面文件。",
+          "measurable_criterion": "{{TBD|unit:无|ref:项目规范|component:冷却水系统|intent:记录完整性|hint:需明确记录内容、格式和保存要求}}",
+          "applicable_condition": "所有冷却水系统",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "压力试验记录完整，包含试验压力、保压时间、结果",
+            "冲洗记录完整，包含冲洗介质、流量、时间、结果",
+            "检查记录完整，包含检查项目、结果、签字"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR046",
+      "stakeholder": "调试工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 6,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "调试时，冷却水泵的压力、流量和备用切换功能必须通过验证。",
+          "measurable_criterion": "{{TBD|unit:bar|ref:MAN L27/38 Project Guide|component:冷却水泵|intent:压力|hint:需根据具体系统设计确定}}",
+          "applicable_condition": "调试阶段",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水泵在额定转速下出口压力达到设计值",
+            "冷却水泵流量满足系统要求",
+            "备用泵自动切换时间不超过规定值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-PRESS-022",
+              "tier": "L2",
+              "source": "S37 MAN L27/38 Propulsion Project Guide",
+              "has_clause": "冷却水温度与压力参数"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR047",
+      "stakeholder": "调试工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 12,
+      "_n_with_quantitative": 6,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却系统冲洗应制定明确的步骤，包括冲洗速度、冲洗时间和清洁结果检查。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN L23/30H GenSet Project Guide|component:冷却系统|intent:冲洗步骤|hint:需明确冲洗速度、时间和清洁结果}}",
+          "applicable_condition": "首次启动前或管路维修后",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冲洗步骤文档应包含冲洗速度、冲洗时间和清洁结果检查方法"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-038",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "The entire system must therefore be cleaned with the engine switched off using a suitable cleaning agent... Loose solid matter in particular must be removed by flushing the system thoroughly"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却系统冲洗速度应足够高以清除松散固体颗粒，防止侵蚀。",
+          "measurable_criterion": "{{TBD|unit:m/s|ref:MAN L23/30H GenSet Project Guide|component:冷却系统|intent:冲洗速度|hint:需根据管路设计确定最小流速}}",
+          "applicable_condition": "首次启动前或管路维修后",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冲洗流速应高于临界流速，确保固体颗粒被带出"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-038",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "Loose solid matter in particular must be removed by flushing the system thoroughly as otherwise erosion may occur in locations where the flow velocity is high."
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却系统冲洗时间应足够长，确保系统清洁。",
+          "measurable_criterion": "{{TBD|unit:min|ref:MAN L23/30H GenSet Project Guide|component:冷却系统|intent:冲洗时间|hint:需根据系统容积和流速确定}}",
+          "applicable_condition": "首次启动前或管路维修后",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冲洗时间应保证至少循环一次系统容积"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-038",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "The entire system must therefore be cleaned with the engine switched off using a suitable cleaning agent... Loose solid matter in particular must be removed by flushing the system thoroughly"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冲洗后应检查冷却水清洁度，确认无固体杂质。",
+          "measurable_criterion": "{{TBD|unit:mg/l|ref:MAN Energy Solutions 49/60 Project Guide|component:冷却水|intent:清洁度|hint:可参考冷却液水质检测方法}}",
+          "applicable_condition": "冲洗完成后",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却水固体杂质含量应低于规定限值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-045",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "1 mg/l ≙ 1 ppm Testing equipment"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR048",
+      "stakeholder": "调试工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 10,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "温控阀实际动作情况应在试车中确认。",
+          "measurable_criterion": "{{TBD|unit:无|ref:试车规程|component:温控阀|intent:动作确认|hint:需在试车中验证温控阀开启/关闭动作}}",
+          "applicable_condition": "主机冷却水系统试车期间",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温控阀在试车中动作正常，符合设计预期"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-FLOW-003",
+              "tier": "L3",
+              "source": "S07 Scania Marine Cooling System Issue 8",
+              "has_clause": "淡水侧流向"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR049",
+      "stakeholder": "调试工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 5,
+      "_n_with_quantitative": 2,
+      "engineering_requirements": [
+        {
+          "shall_statement": "膨胀水箱液位、补水和低液位报警应在试车前后进行检查。",
+          "measurable_criterion": "{{TBD|unit:无|ref:无|component:膨胀水箱|intent:检查时机|hint:试车前后}}",
+          "applicable_condition": "试车前后",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "试车前完成检查",
+            "试车后完成检查"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱低液位报警功能应正常，避免运行中液位异常。",
+          "measurable_criterion": "{{TBD|unit:无|ref:无|component:膨胀水箱|intent:报警功能|hint:低液位报警}}",
+          "applicable_condition": "运行中",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "低液位报警触发时发出声光信号"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR050",
+      "stakeholder": "调试工程师",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 4,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器换热效果应结合运行温度数据判断，不应仅在低负荷时认为正常。",
+          "measurable_criterion": "{{TBD|unit:℃|ref:Wärtsilä 46DF Product Guide|component:冷却器|intent:换热效果判断|hint:需结合运行温度数据，如LT冷却水温度设定点35℃等}}",
+          "applicable_condition": "所有运行工况，包括低负荷和高负荷。",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "在低负荷和高负荷工况下，冷却器出口温度均符合设计范围。",
+            "温度数据记录完整，可追溯。"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-WAR46DF-PARAM-001",
+              "tier": "L3",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "LT circuit temperature control set-point: 35°C"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR051",
+      "stakeholder": "维修主管",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 7,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器应设计为便于打开、清洗和检查，周围管路不应遮挡端盖或检修空间。",
+          "measurable_criterion": "{{TBD|unit:无|ref:无|component:冷却器|intent:可维护性|hint:需明确最小检修空间尺寸}}",
+          "applicable_condition": "所有工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却器端盖可无障碍打开",
+            "检修空间满足工具操作要求"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR052",
+      "stakeholder": "维修主管",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 7,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水泵的密封、轴承和电机应具有足够的维护空间，无需拆卸大量管路即可进行维护。",
+          "measurable_criterion": "{{TBD|unit:mm|ref:MAN B&W Two-Stroke Engine Project Guide|component:冷却水泵|intent:维护空间|hint:需根据泵的尺寸和管路布置确定最小空间要求}}",
+          "applicable_condition": "冷却水泵安装及维护时",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "密封、轴承和电机周围有足够的空间进行拆卸和更换",
+            "维护时无需拆卸超过3根相邻管路"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-CAPACITY-001",
+              "tier": "L2",
+              "source": "MAN B&W Two-Stroke Engine Project Guide Cooling Water System",
+              "has_clause": "冷却水泵容量设计要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR053",
+      "stakeholder": "维修主管",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 8,
+      "_n_with_quantitative": 4,
+      "engineering_requirements": [
+        {
+          "shall_statement": "海水侧和淡水侧容易结垢、沉积或污染的地方应方便检查和清洗。",
+          "measurable_criterion": "{{TBD|unit:无|ref:设计规范|component:冷却系统|intent:可维护性|hint:需明确具体位置和清洗周期}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "设计图纸中标注了所有需要检查和清洗的位置",
+            "检查口或清洗口尺寸满足人工或工具操作要求",
+            "维护手册中规定了清洗周期和方法"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-033",
+              "tier": "L3",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "Lime and rust deposits can form if the water is especially hard or if the concentration of the anticorrosive agent is too low. ... limescale deposits with a thickness of more than 0.5 mm obstruct the transfer of heat"
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-089",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": "冷却液水质检测方法：总硬度 ≤ 10 dGH；pH值 6.5 – 8 at 20 °C；氯离子含量 ≤ 50 mg/l"
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-055",
+              "tier": "L3",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "deposits that could interfere with the transfer of heat to the cooling water ... distilled water must be handled particularly carefully"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR054",
+      "stakeholder": "维修主管",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 15,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却系统应使用符合要求的冷却液，并添加防腐剂。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN L27/38 Project Guide, Caterpillar Know Your Cooling System|component:冷却系统|intent:冷却液与防腐剂要求|hint:具体冷却液类型和防腐剂种类及浓度需根据发动机制造商要求确定}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液类型和防腐剂添加符合发动机制造商规定"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-006",
+              "tier": "L3",
+              "source": "S37 MAN L27/38 Propulsion Project Guide",
+              "has_clause": "冷却液与防腐剂要求"
+            },
+            {
+              "kb_id": "E-COOLANT-PRESS-025",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": "冷却液浓度与沸点关系"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水水质应定期检测，包括pH值、硬度和氯离子含量。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN 49/60 Project Guide, MAN L21/31 Project Guide|component:冷却水系统|intent:水质检测参数|hint:具体限值和检测周期需根据发动机制造商要求确定}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "水质检测结果符合发动机制造商规定的水质标准"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SW-DRAW-004",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+              "has_clause": "冷却液水质检测方法"
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-076",
+              "tier": "L3",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": "冷却液水质检测方法"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却系统应配备温度控制阀，以维持冷却水温度在设定范围内。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:MAN L27/38 Project Guide, Caterpillar Cooling Systems Guide|component:温度控制阀|intent:温度设定值|hint:具体温度设定值需根据发动机制造商要求确定}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度控制阀动作正常，冷却水温度维持在设定范围内"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-006",
+              "tier": "L3",
+              "source": "S37 MAN L27/38 Propulsion Project Guide",
+              "has_clause": "温度控制阀配置"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-020",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": "温度控制阀配置"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却系统应设置高温报警和停机保护，报警设定值应参考发动机制造商推荐值。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:Marine Engineering Operational Reference|component:冷却水系统|intent:报警设定值|hint:具体报警值需根据发动机制造商要求确定，例如四冲程发动机缸套水高温报警105°C}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "高温报警和停机保护功能正常，设定值符合要求"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-GENERAL-ALARM-TEMP-001",
+              "tier": "L3",
+              "source": "Marine Engineering Operational Reference — Cooling Water System Alarm Setpoints",
+              "has_clause": "典型报警设定值"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "温度传感器应定期校准，校准偏差超过±2°C时应进行调整或更换。",
+          "measurable_criterion": "±2°C",
+          "applicable_condition": "定期检查或传感器维修后",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "校准偏差不超过±2°C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-DRAFT-TEMPER-CALIBRAT-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": "校准触发条件与验证方法"
+            }
+          ],
+          "_grade": "B"
+        },
+        {
+          "shall_statement": "冷却系统应配备至少两台冷却水泵，其中一台为备用泵。",
+          "measurable_criterion": "{{TBD|unit:台|ref:ABS Marine Vessel Rules Part 4, DNV Rules Pt4 Ch3|component:冷却水泵|intent:冗余配置|hint:至少两台泵，一台备用}}",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却水泵数量不少于两台，且备用泵可自动或手动切换"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-RED-021",
+              "tier": "L1",
+              "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+              "has_clause": "冷却水泵冗余配置"
+            },
+            {
+              "kb_id": "E-DNV-COOL-002",
+              "tier": "L1",
+              "source": "S61 DNV Rules for Classification Ships Pt4 Ch3 Machinery",
+              "has_clause": "冷却水泵冗余要求"
+            }
+          ],
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却系统应具备清洗功能，以清除固体杂质，防止侵蚀。",
+          "measurable_criterion": "{{TBD|unit:无|ref:MAN 49/60 Project Guide|component:冷却系统|intent:清洗要求|hint:清洗方法和周期需根据发动机制造商要求确定}}",
+          "applicable_condition": "系统脏污或定期维护时",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "清洗后系统内无固体杂质，无侵蚀迹象"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-CLEAN-013",
+              "tier": "L3",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+              "has_clause": "冷却系统清洗要求"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR055",
+      "stakeholder": "维修主管",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 6,
+      "_n_with_quantitative": 2,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统应配置牺牲阳极或其他防腐部件，并设计为便于检查和更换。",
+          "measurable_criterion": "{{TBD|unit:无|ref:船舶设计规范|component:防腐部件|intent:可维护性|hint:需明确检查周期和更换空间要求}}",
+          "applicable_condition": "当系统配置牺牲阳极或其他防腐部件时",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "防腐部件安装位置应设有可接近的检查口或检修门",
+            "防腐部件更换无需拆卸相邻主要设备",
+            "设计图纸中应标注防腐部件的检查与更换空间"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MAINT-004",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却水系统维护空间要求：必须考虑有足够的空间用于拉出增压空气冷却器元件、滑油冷却器、滑油滤器滤芯、润滑油泵和水泵。"
+            },
+            {
+              "kb_id": "E-SUPP-MAINT-002",
+              "tier": "L1",
+              "source": "S73 Marine Cooling System Modular Maintenance Design Practice",
+              "has_clause": "Design requirements to minimise downtime during maintenance and component exchange"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR056",
+      "stakeholder": "质量检验员",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 9,
+      "_n_with_quantitative": 5,
+      "engineering_requirements": [
+        {
+          "shall_statement": "安装完成后，应检查阀门方向、管路连接、支架和仪表安装位置，确保符合设计要求。",
+          "measurable_criterion": "{{TBD|unit:N/A|ref:安装程序|component:阀门、管路、支架、仪表|intent:安装检查|hint:依据设计图纸和安装手册}}",
+          "applicable_condition": "冷却水系统安装完成后",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "阀门方向与设计图纸一致",
+            "管路连接牢固、无泄漏",
+            "支架安装位置正确、固定可靠",
+            "仪表安装位置正确、读数清晰"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-118",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "冷却液冰点与乙二醇比例"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-048",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "主机冷却型式与设计条件"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-049",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": "主机冷却型式与设计条件"
+            },
+            {
+              "kb_id": "E-COOLER-MAINT-015",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": "热交换器清洁与维护"
+            },
+            {
+              "kb_id": "E-PUMP-RED-005",
+              "tier": "L2",
+              "source": "S37 MAN L27/38 Propulsion Project Guide",
+              "has_clause": "冷却水泵冗余配置"
+            },
+            {
+              "kb_id": "E-TCV-TEMP-074",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": "温度控制阀配置"
+            },
+            {
+              "kb_id": "E-SYS-CLEAN-005",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": "冷却系统清洗要求"
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-152",
+              "tier": "L2",
+              "source": "S50 Washington State Department of Ecology Antifreeze",
+              "has_clause": "防冻液容器和混放限制要求"
+            },
+            {
+              "kb_id": "E-IACS-M35-001",
+              "tier": "L1",
+              "source": "IACS Unified Requirements M35 Rev.8 Alarms and Safeguards for Main IC Engines in UMS",
+              "has_clause": "IACS UR M35 Rev.8 — Mandatory Alarms and Safeguards for Main IC Engines in Unattended Machinery Spaces (UMS)"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR057",
+      "stakeholder": "质量检验员",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 4,
+      "_n_with_quantitative": 1,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统压力试验应规定试验压力、保压时间和泄漏检查记录。",
+          "measurable_criterion": "{{TBD|unit:MPa|ref:待定|component:冷却水系统|intent:试验压力|hint:需根据系统设计确定}}",
+          "applicable_condition": "系统安装或维修后",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "试验压力达到规定值",
+            "保压时间满足要求",
+            "泄漏检查记录完整"
+          ],
+          "evidence_citations": [],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR058",
+      "stakeholder": "质量检验员",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 12,
+      "_n_with_quantitative": 7,
+      "engineering_requirements": [
+        {
+          "shall_statement": "报警和传感器应进行实际动作测试，以验证其功能正常。",
+          "measurable_criterion": "{{TBD|unit:无|ref:原始需求|component:报警和传感器|intent:功能验证|hint:需制定具体测试方案}}",
+          "applicable_condition": "所有报警和传感器",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "报警和传感器在实际动作测试中能够正确触发和响应"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "原始需求",
+              "tier": "L0",
+              "source": "原始需求",
+              "has_clause": "报警和传感器要做实际动作测试，不要只确认监控画面上有信号。"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR059",
+      "stakeholder": "质量检验员",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 17,
+      "_n_with_quantitative": 12,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却液水质、污染物和沉积风险应具备检查办法，确保在系统运行前发现潜在问题。",
+          "measurable_criterion": "{{TBD|unit:mg/l|ref:E-COOLANT-INSP-045|component:冷却液|intent:水质检测|hint:检测方法如1 mg/l ≙ 1 ppm}}",
+          "applicable_condition": "冷却液加注后、系统运行前",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "检查办法应能检测冷却液中的污染物和沉积风险",
+            "检查办法应依据厂家提供的检测设备或方法"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-045",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": "冷却液水质检测方法"
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR060",
+      "stakeholder": "项目经理",
+      "_arm": "random-retrieval-v4",
+      "_n_evidence": 20,
+      "_n_with_quantitative": 11,
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却水系统的厂家资料、规范要求、采购清单和施工图应保持一致。",
+          "measurable_criterion": "{{TBD|unit:无|ref:项目文档|component:冷却水系统|intent:一致性|hint:通过文档比对确认一致性}}",
+          "applicable_condition": "冷却水系统设计、采购和施工全过程",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "厂家资料、规范要求、采购清单和施工图之间无矛盾",
+            "变更管理流程已执行"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLER-MON-010",
+              "tier": "L2",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-PUMP-RED-026",
+              "tier": "L1",
+              "source": "S44 PRS Ship Machinery Piping Systems",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-117",
+              "tier": "L1",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-JACKET-PRESS-012",
+              "tier": "L2",
+              "source": "S41 Everllence 49/60DF Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-EXP-WATER-002",
+              "tier": "L1",
+              "source": "S07 Scania Marine Cooling System Issue 8",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-087",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-HT-COMP-090",
+              "tier": "L3",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-DRAFT-EXPANS-MAKEUPW-003",
+              "tier": "L3",
+              "source": "KB_DRAFT_v1",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-050",
+              "tier": "L2",
+              "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-DRAFT-PIPES-VIBRATIO-002",
+              "tier": "L2",
+              "source": "KB_DRAFT_v1",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-SYS-WATER-004",
+              "tier": "L2",
+              "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-PUMP-CLEAN-024",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": false
+            }
+          ],
+          "_grade": "C"
+        }
+      ]
+    }
+  ]
+}

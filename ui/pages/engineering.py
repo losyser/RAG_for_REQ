@@ -13,6 +13,7 @@ from cooling_rag_mg.engineering_requirement_agent import (
     generate_engineering_requirements,
     save_engineering_requirements,
 )
+from cooling_rag_mg.sysml_exporter import export_payload_bytes
 from ui.state import ENGINEERING_STATUS_LABELS, normalize_df
 from ui.components.shared import (
     render_workspace_header,
@@ -268,6 +269,22 @@ def render_engineering_workspace(cfg: Any) -> None:
         st.info("尚未生成工程化需求。点击上方按钮后可在需求图中查看层级结构和支撑状态。")
         return
     render_engineering_requirement_overview(payload)
+
+    # ── Export row ──────────────────────────────────────────────────────────
+    export_col, _ = st.columns([1.1, 4])
+    with export_col:
+        try:
+            xml_bytes = export_payload_bytes(payload)
+            st.download_button(
+                label="导出 SysML XML",
+                data=xml_bytes,
+                file_name="requirements_sysml.xml",
+                mime="application/xml",
+                width="stretch",
+            )
+        except Exception as _exc:
+            st.error(f"SysML XML 导出失败：{_exc}")
+
     diagram_tab, table_tab, gap_tab, raw_tab = st.tabs(["需求图", "SysML 需求表", "证据缺口", "原始 JSON"])
     with diagram_tab:
         render_sysml_requirement_diagram(payload)
