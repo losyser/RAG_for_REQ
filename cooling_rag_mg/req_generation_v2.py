@@ -163,7 +163,7 @@ def generate_rag_v3(
     try:
         resp = cached_completion(
             client, model=model, messages=messages,
-            temperature=temperature, max_tokens=4000,
+            temperature=temperature, max_tokens=8192,
             response_format={"type": "json_object"},
         )
         return parse_requirements_v3(resp.choices[0].message.content or "{}", evidence_list)

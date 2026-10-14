@@ -132,7 +132,7 @@ def generate_structured_shalls(
     annotated_evidence: list[dict],
     client,
     model: str,
-    max_tokens: int = 4000,
+    max_tokens: int = 8192,
 ) -> list[dict]:
     """Stage 3 RAG：根据证据值提取结果生成结构化 shall 列表。出错返回空列表。"""
     evidence_block = _build_evidence_block(annotated_evidence)
@@ -160,7 +160,7 @@ def generate_norag_shalls(
     source_requirement: str,
     client,
     model: str,
-    max_tokens: int = 4000,
+    max_tokens: int = 8192,
 ) -> list[dict]:
     """Stage 3 no-RAG：无证据的结构化基线生成。出错返回空列表。"""
     prompt = _NORAG_PROMPT.format(source_requirement=source_requirement)
