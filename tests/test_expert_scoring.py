@@ -22,3 +22,14 @@ def test_prf_micro():
 
 def test_prf_empty_gold_no_crash():
     assert sc.prf({"OR1": set()}, {"OR1": set()})["f1"] is None
+
+
+def test_stage3_prf_by_tier_skips_blank_rows():
+    rows = [{"tier": "L1", "n_extracted": 4, "n_correct": 3, "n_missed": 1},
+            {"tier": "L2", "n_extracted": 2, "n_correct": 2, "n_missed": 0},
+            {"tier": "L2", "n_extracted": 1, "n_correct": None, "n_missed": None}]
+    r = sc.stage3_prf(rows)
+    assert r["ALL"]["n_units"] == 2 and r["n_skipped"] == 1
+    assert r["ALL"]["precision"] == round(5 / 6 * 100, 1)
+    assert r["ALL"]["recall"] == round(5 / 6 * 100, 1)
+    assert r["L1"]["recall"] == 75.0

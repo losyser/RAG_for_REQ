@@ -51,6 +51,18 @@ def bootstrap_f1(pred: dict, gold: dict, n: int = 1000, seed: int = 42):
     return (vals[int(0.025 * len(vals))], vals[int(0.975 * len(vals)) - 1]) if vals else (None, None)
 
 
+def stage3_prf(rows: list[dict]) -> dict:
+    """Stage-3 extraction accuracy from expert counts; rows lacking counts are skipped."""
+    ok = [r for r in rows if isinstance(r.get("n_correct"), (int, float)) and isinstance(r.get("n_missed"), (int, float))]
+    out = {"n_skipped": len(rows) - len(ok)}
+    for tier in ("L1", "L2", "L3", "ALL"):
+        rs = [r for r in ok if tier == "ALL" or r["tier"] == tier]
+        c = sum(r["n_correct"] for r in rs); m = sum(r["n_missed"] for r in rs); x = sum(r["n_extracted"] for r in rs)
+        out[tier] = {"n_units": len(rs), "precision": round(c / x * 100, 1) if x else None,
+                     "recall": round(c / (c + m) * 100, 1) if c + m else None}
+    return out
+
+
 def _sheet(wb, name):
     ws = wb[name]; rows = list(ws.iter_rows(values_only=True)); hdr = rows[0]
     return [dict(zip(hdr, r)) for r in rows[1:] if r and r[0] is not None]
@@ -114,6 +126,14 @@ def main() -> None:
     out["S3_blind"] = {"counts": {k: dict(v) for k, v in tab.items()},
                        "p_correct_or_approx": fisher({"correct", "approx"}),
                        "p_correct": fisher({"correct"}), "p_wrong": fisher({"wrong"})}
+
+    if "S4_extraction" in wb.sheetnames:
+        s4 = _sheet(wb, "S4_extraction")
+        rows4 = [{"tier": key["S4"][str(r["item"])]["tier"], "n_extracted": key["S4"][str(r["item"])]["n_extracted"],
+                  "n_correct": r.get("n_correct"), "n_missed": r.get("n_missed")} for r in s4]
+        st3 = stage3_prf(rows4)
+        out["S4_stage3"] = st3
+        (E4 / "stage3_accuracy_subset.json").write_text(json.dumps(st3, ensure_ascii=False, indent=1), encoding="utf-8")
 
     if len(sys.argv) > 2:
         wb2 = load_workbook(sys.argv[2], read_only=True)
