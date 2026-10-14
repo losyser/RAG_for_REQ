@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -79,7 +80,9 @@ def main():
         evidence_units = [eu_idx[eid] for eid in all_eids if eid in eu_idx]
 
         # Stage 2.5：值提取标注
+        _t0 = time.perf_counter()
         annotated = annotate_evidence_units(evidence_units, client, model)
+        _t1 = time.perf_counter()
         n_with_values = sum(1 for eu in annotated if eu["_has_quantitative"])
         print(f"evidence={len(annotated)} with_values={n_with_values}", end=" ", flush=True)
 
@@ -90,6 +93,7 @@ def main():
             client=client,
             model=model,
         )
+        _t2 = time.perf_counter()
         print(f"shalls={len(new_shalls)}", end=" ", flush=True)
 
         # Stage 4：Grade 分类
@@ -100,8 +104,11 @@ def main():
             "_n_evidence": len(annotated),
             "_n_with_quantitative": n_with_values,
             "engineering_requirements": new_shalls,
+            "_timing": {**rs.get("_timing", {}), "extraction_s": round(_t1 - _t0, 3),
+                        "generation_s": round(_t2 - _t1, 3)},
+            "_evidence_values": {eu["id"]: eu["_extracted_values"] for eu in annotated},
         }
-        classified_rs = classify_result_set(new_rs)
+        classified_rs = classify_result_set(new_rs, eu_idx)
         output_result_sets.append(classified_rs)
 
         grades = [er["_grade"] for er in classified_rs["engineering_requirements"]]

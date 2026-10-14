@@ -13,10 +13,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from cooling_rag_mg.grade_classifier import valid_citation_ids
 
 EXP_DIR  = ROOT / "data/search_results/exp_v4"
 RAG_FILE = EXP_DIR / "rag_v4_results.json"
 NOR_FILE = EXP_DIR / "norag_v4_results.json"
+KB = {json.loads(l)["id"]: json.loads(l) for l in
+      open(ROOT / "data/processed/evidence_units_v3_audited.jsonl", encoding="utf-8")}
 OUT_JSON = EXP_DIR / "eval_v4_summary.json"
 OUT_CSV  = EXP_DIR / "eval_v4_grades.csv"
 
@@ -38,14 +41,10 @@ def compute_metrics(shalls: list[dict], arm: str) -> dict:
         return {"arm": arm, "n_shalls": 0}
 
     grade_counts = Counter(er.get("_grade", "?") for er in shalls)
-    cited = sum(1 for er in shalls if er.get("evidence_citations"))
-    has_l1 = sum(
-        1 for er in shalls
-        if any(c.get("tier") == "L1" for c in er.get("evidence_citations", []))
-    )
-    multi_src = sum(
-        1 for er in shalls if len(er.get("evidence_citations", [])) >= 2
-    )
+    vids = [valid_citation_ids(er.get("evidence_citations", []), KB) for er in shalls]
+    cited = sum(1 for v in vids if v)
+    has_l1 = sum(1 for v in vids if any(KB[i].get("kb_tier") == "L1" for i in v))
+    multi_src = sum(1 for v in vids if len(v) >= 2)
 
     return {
         "arm": arm,

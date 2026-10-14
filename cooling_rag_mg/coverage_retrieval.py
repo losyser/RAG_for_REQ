@@ -44,6 +44,7 @@ def aligned_retrieve(
     per_pair_k: int = 8,
     max_total: int = 30,
     fallback_k: int = 15,
+    timing: dict | None = None,
 ) -> tuple[list[dict], list[tuple[str, str]]]:
     """元数据对齐的精准检索。
 
@@ -65,7 +66,17 @@ def aligned_retrieve(
     """
     from cooling_rag_mg.requirement_analyzer import analyze_requirement
 
+    import time as _t
+    _t0 = _t.perf_counter()
     pairs = analyze_requirement(requirement_text, analyzer_client, analyzer_model)
+    _t1 = _t.perf_counter()
+    if timing is not None:
+        timing["stage1_s"] = round(_t1 - _t0, 3)
+
+    def _done(result):
+        if timing is not None:
+            timing["retrieval_s"] = round(_t.perf_counter() - _t1, 3)
+        return result
 
     if not pairs:
         # fallback：退化为无过滤的单条查询
@@ -76,7 +87,7 @@ def aligned_retrieve(
             for r in rrf_fuse([vec, bm])
             if r.get("id") or r.get("chunk_id")
         }
-        return list(candidates.values()), []
+        return _done((list(candidates.values()), []))
 
     seen: dict[str, dict] = {}
     for comp, intent in pairs:
@@ -93,6 +104,6 @@ def aligned_retrieve(
             if cid and cid not in seen:
                 seen[cid] = cand
             if len(seen) >= max_total:
-                return list(seen.values()), pairs
+                return _done((list(seen.values()), pairs))
 
-    return list(seen.values()), pairs
+    return _done((list(seen.values()), pairs))

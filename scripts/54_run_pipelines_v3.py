@@ -45,6 +45,8 @@ def _load_searcher(cfg) -> HybridIndexSearcher:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--rag-only", action="store_true",
+                    help="只跑 RAG（不重新生成、不覆盖 norag_results.json）")
     args = ap.parse_args()
 
     cfg = get_config()
@@ -75,26 +77,30 @@ def main() -> None:
         print(f"\n[{i:2d}/{len(reqs)}] {rid}: {text[:50]}...")
 
         # ── no-RAG 基线 ────────────────────────────────────────────────────
-        norag_ers = generate_norag(text, ds_client, ds_model)
-        norag_results.append({
-            "source_requirement_id": rid,
-            "stakeholder": stakeholder,
-            "_arm": "no-rag",
-            "engineering_requirements": norag_ers,
-        })
-        print(f"  no-RAG: {len(norag_ers)} shall")
+        if not args.rag_only:
+            norag_ers = generate_norag(text, ds_client, ds_model)
+            norag_results.append({
+                "source_requirement_id": rid,
+                "stakeholder": stakeholder,
+                "_arm": "no-rag",
+                "engineering_requirements": norag_ers,
+            })
+            print(f"  no-RAG: {len(norag_ers)} shall")
 
         # ── v3 RAG：对齐检索 + per-shall 归因 ──────────────────────────────
+        timing: dict = {}
         evidence_list, pairs_used = aligned_retrieve(
             text, searcher, ds_client, ds_model,
-            per_pair_k=8, max_total=20,
+            per_pair_k=8, max_total=20, timing=timing,
         )
         print(f"  aligned_retrieve: {len(pairs_used)} 对 → {len(evidence_list)} 条证据")
         if pairs_used:
             for c, i2 in pairs_used:
                 print(f"    ({c} × {i2})")
 
-        rag_ers = generate_rag_v3(text, evidence_list, ds_client, ds_model)
+        _ts = time.perf_counter()
+        rag_ers = generate_rag_v3(text, evidence_list, ds_client, ds_model, temperature=0.0)
+        timing["selection_s"] = round(time.perf_counter() - _ts, 3)
 
         if not rag_ers:
             n_breaker += 1
@@ -119,6 +125,8 @@ def main() -> None:
             "_pairs_used": [f"{c}×{i2}" for c, i2 in pairs_used],
             "_n_evidence": len(evidence_list),
             "_n_pairs":    len(pairs_used),
+            "_timing":     timing,
+            "_retrieved_ids": [e.get("id") for e in evidence_list],
             "engineering_requirements": rag_ers,
         })
 
@@ -126,7 +134,8 @@ def main() -> None:
 
     # ── 落盘 ──────────────────────────────────────────────────────────────
     _save(OUT_DIR / "rag_v3_results.json",   {"arm": "rag-v3",  "result_sets": rag_results})
-    _save(OUT_DIR / "norag_results.json",    {"arm": "no-rag",  "result_sets": norag_results})
+    if not args.rag_only:
+        _save(OUT_DIR / "norag_results.json", {"arm": "no-rag", "result_sets": norag_results})
 
     # ── 汇总 ──────────────────────────────────────────────────────────────
     total_rag  = sum(len(r["engineering_requirements"]) for r in rag_results)
@@ -144,7 +153,8 @@ def main() -> None:
     print("\n" + "=" * 55)
     print("v3 流程完成")
     print("=" * 55)
-    print(f"no-RAG: {len(norag_results)} 源 / {total_norag} shall")
+    if not args.rag_only:
+        print(f"no-RAG: {len(norag_results)} 源 / {total_norag} shall")
     print(f"RAG v3: {len(rag_results)} 源 / {total_rag} shall")
     print(f"  有证据归因 shall: {total_with_ev}/{total_rag} "
           f"({total_with_ev/total_rag*100:.1f}%)" if total_rag else "")

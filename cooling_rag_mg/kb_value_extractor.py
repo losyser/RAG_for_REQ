@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 import logging
 
 from cooling_rag_mg.json_utils import loads_lenient
@@ -65,7 +67,7 @@ def extract_values_from_evidence(text: str, client, model: str) -> list[dict]:
     try:
         resp = client.chat.completions.create(
             model=model,
-            messages=[{"role": "user", "content": _EXTRACT_PROMPT.format(text=text[:1200])}],
+            messages=[{"role": "user", "content": _EXTRACT_PROMPT.format(text=text[:int(os.getenv("RAG_EXTRACT_CHAR_LIMIT", "1200"))])}],
             temperature=0,
             max_tokens=600,
             response_format={"type": "json_object"},

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import os
 
 from cooling_rag_mg.json_utils import loads_lenient
 
@@ -53,8 +54,8 @@ _NORAG_PROMPT = """你是船舶主机冷却水系统需求工程师，为 MBSE/S
 """
 
 
-_MAX_EVIDENCE_ITEMS = 12
-_EU_TEXT_LIMIT = 500
+_MAX_EVIDENCE_ITEMS = int(os.getenv("RAG_MAX_EVIDENCE_ITEMS", "12"))
+_EU_TEXT_LIMIT = int(os.getenv("RAG_EU_TEXT_LIMIT", "500"))
 
 
 def _build_evidence_block(annotated_evidence: list[dict]) -> str:
