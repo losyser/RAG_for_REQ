@@ -12,55 +12,69 @@ _NUM_PATTERN = re.compile(
 )
 
 
-def classify_grade(measurable_criterion: str, evidence_citations: list[dict]) -> Grade:
-    """将 shall 的 measurable_criterion 分类为 Grade A/B/C/X。
+_KBID = re.compile(r"\b(?:E|L1)-[A-Za-z0-9.\-]+")
+_CLAUSE = re.compile(
+    r"(\d+(?:\.\d+){1,}|\d+-\d+|Reg(?:ulation)?\.?\s*\d+|Rule\s*\d+|Table\s*\d|Tbl\.?\s*\d|"
+    r"§\s*\d|条款|第\s*\d+\s*[条章节篇]|Pt\.?\s*\d+|Part\s*\d+|Ch(?:apter)?\.?\s*\d+|UR\s*[A-Z]\d+|CFR\s*\d+)"
+)
 
-    A：精确值 + L1 引用 + has_clause=True
-    B：有数值 + 任意引用（非 Grade A）
-    C：{{TBD}} 占位符 或 无数值（定性表述）
-    X：有数值 + 无任何引用
-    """
-    # 鲁棒处理：部分 LLM 可能把 measurable_criterion 返回为数字/None 而非字符串。
+
+def kb_has_clause(u: dict) -> bool:
+    """KB 记录本身是否带有条款定位信息（位置、节标题或正文开头）。"""
+    meta = u.get("metadata") or {}
+    blob = " ".join([str(meta.get("location", "")), str(meta.get("section_title", "")),
+                     (u.get("text") or "")[:200]])
+    return bool(_CLAUSE.search(blob))
+
+
+def valid_citation_ids(evidence_citations, kb_index: dict) -> list[str]:
+    """返回在 KB 中真实存在的被引 ID。兼容 dict 和字符串两种引用格式；去重并保持顺序。"""
+    out: list[str] = []
+    for c in evidence_citations or []:
+        if isinstance(c, dict):
+            cands = [str(c.get("kb_id") or "")]
+        else:
+            cands = _KBID.findall(str(c))
+        for cid in cands:
+            cid = cid.strip()
+            if cid and cid in kb_index and cid not in out:
+                out.append(cid)
+    return out
+
+
+def classify_grade(measurable_criterion: str, evidence_citations: list, kb_index: dict | None = None) -> Grade:
     mc = "" if measurable_criterion is None else str(measurable_criterion)
-
     if _TBD_PATTERN.search(mc):
         return "C"
-
     if not _NUM_PATTERN.search(mc):
         return "C"
-
+    if kb_index is not None:
+        ids = valid_citation_ids(evidence_citations, kb_index)
+        if not ids:
+            return "X"
+        if any(kb_index[i].get("kb_tier") == "L1" and kb_has_clause(kb_index[i]) for i in ids):
+            return "A"
+        return "B"
+    # ---- 旧行为（kb_index=None），保留以兼容旧测试和旧结果 ----
     if not evidence_citations:
         return "X"
-
-    # 仅采信结构化（dict）引用：含 tier/has_clause 才计为有效引用。
-    # isinstance 守卫避免某些 LLM 把引用返回为字符串时崩溃；非 dict 引用
-    # 不在此处采信——跨模型时由带 KB 校验的独立重分级处理（见论文跨模型小节）。
-    has_l1_clause = any(
-        isinstance(c, dict) and c.get("tier") == "L1" and c.get("has_clause", False)
-        for c in evidence_citations
-    )
-    if has_l1_clause:
+    if any(isinstance(c, dict) and c.get("tier") == "L1" and c.get("has_clause", False)
+           for c in evidence_citations):
         return "A"
-
-    has_citation = any(
-        isinstance(c, dict) and c.get("tier") in ("L1", "L2", "L3")
-        for c in evidence_citations
-    )
-    if has_citation:
+    if any(isinstance(c, dict) and c.get("tier") in ("L1", "L2", "L3") for c in evidence_citations):
         return "B"
     return "X"
 
 
-def classify_result_set(result_set: dict) -> dict:
-    """对单个 source requirement 的所有 shall 添加 _grade 字段，返回副本。"""
+def classify_result_set(result_set: dict, kb_index: dict | None = None) -> dict:
     rs = dict(result_set)
-    classified_ers = []
+    ers = []
     for er in rs.get("engineering_requirements", []):
-        er_copy = dict(er)
-        er_copy["_grade"] = classify_grade(
-            er.get("measurable_criterion", ""),
-            er.get("evidence_citations", []),
-        )
-        classified_ers.append(er_copy)
-    rs["engineering_requirements"] = classified_ers
+        e = dict(er)
+        e["_grade"] = classify_grade(er.get("measurable_criterion", ""),
+                                     er.get("evidence_citations", []), kb_index)
+        if kb_index is not None:
+            e["_valid_citation_ids"] = valid_citation_ids(er.get("evidence_citations", []), kb_index)
+        ers.append(e)
+    rs["engineering_requirements"] = ers
     return rs
