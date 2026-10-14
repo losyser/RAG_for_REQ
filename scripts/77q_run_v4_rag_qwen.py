@@ -3,7 +3,7 @@ Stage 2.5+3+4 RAG v4：复用 v3 检索结果中的 evidence_ids（v3 agent 归�
 生成结构化 shall，分类 Grade。
 
 输入：data/search_results/exp_v3/rag_v3_results.json
-      data/processed/evidence_units_v2.jsonl
+      data/processed/evidence_units_v3_audited.jsonl
       data/processed/original_requirements_v2.jsonl
 输出：data/search_results/exp_v4/rag_v4_qwen_results.json
 """
@@ -23,7 +23,7 @@ from cooling_rag_mg.kb_value_extractor import annotate_evidence_units
 from cooling_rag_mg.structured_req_generator import generate_structured_shalls
 
 V3_RAG   = ROOT / "data/search_results/exp_v3/rag_v3_results.json"
-EU_JSONL = ROOT / "data/processed/evidence_units_v2.jsonl"
+EU_JSONL = ROOT / "data/processed/evidence_units_v3_audited.jsonl"
 OR_JSONL = ROOT / "data/processed/original_requirements_v2.jsonl"
 OUT_DIR  = ROOT / "data/search_results/exp_v4"
 OUT_FILE = OUT_DIR / "rag_v4_qwen_results.json"

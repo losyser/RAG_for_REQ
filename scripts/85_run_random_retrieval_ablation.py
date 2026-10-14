@@ -14,7 +14,7 @@
 
 输入：
   data/search_results/exp_v4/rag_v4_results.json   （取各OR的证据数量 _n_evidence）
-  data/processed/evidence_units_v2.jsonl
+  data/processed/evidence_units_v3_audited.jsonl
   data/processed/original_requirements_v2.jsonl
 输出：
   data/search_results/exp_v4/ablation_random_retrieval_results.json
@@ -38,7 +38,7 @@ from cooling_rag_mg.structured_req_generator import generate_structured_shalls
 
 EXP_DIR  = ROOT / "data/search_results/exp_v4"
 RAG_FILE = EXP_DIR / "rag_v4_results.json"
-EU_JSONL = ROOT / "data/processed/evidence_units_v2.jsonl"
+EU_JSONL = ROOT / "data/processed/evidence_units_v3_audited.jsonl"
 OR_JSONL = ROOT / "data/processed/original_requirements_v2.jsonl"
 OUT_FILE = EXP_DIR / "ablation_random_retrieval_results.json"
 SUM_FILE = EXP_DIR / "ablation_random_retrieval_summary.json"

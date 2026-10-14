@@ -41,7 +41,7 @@ from cooling_rag_mg.text_utils import simple_tokens
 
 EXP     = PROJECT_ROOT / "data" / "search_results" / "exp_v4"
 IDX_DIR = PROJECT_ROOT / "data" / "indexes" / "evidence_units"
-KB_PATH = PROJECT_ROOT / "data" / "processed" / "evidence_units_v2.jsonl"
+KB_PATH = PROJECT_ROOT / "data" / "processed" / "evidence_units_v3_audited.jsonl"
 
 # ── 数字抽取（同 script 68）────────────────────────────────────────────────
 NUMBER_RE = re.compile(

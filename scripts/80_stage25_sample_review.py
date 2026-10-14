@@ -24,7 +24,7 @@ sys.path.insert(0, str(ROOT))
 from cooling_rag_mg.config import DeepSeekConfig
 from cooling_rag_mg.kb_value_extractor import extract_values_from_evidence
 
-EU_JSONL = ROOT / "data/processed/evidence_units_v2.jsonl"
+EU_JSONL = ROOT / "data/processed/evidence_units_v3_audited.jsonl"
 OUT_DIR  = ROOT / "data/search_results/exp_v4"
 OUT_CSV  = OUT_DIR / "stage25_sample_review.csv"
 
