@@ -89,11 +89,26 @@ GRADE_STYLE = {
     "_src": (_cr(232, 232, 232), _cr(110, 110, 110)),  # 灰(源需求)
 }
 
-# 图块样式与尺寸：完整内容放在元素的 text 属性（打开元素可见），
-# 图上只显示 «requirement» + 名称——Tag=0 隐藏 tagged-value 隔间，
-# 否则 EA 会把整段 text 画在块上，框被撑大、信息密度低。
-DIAG_ELEM_STYLE = "HideIcon=0;UCRect=1;Tag=0;AttCustom=0;OpCustom=0;"
-BOX_W, BOX_H = 300, 88
+# 图块样式与尺寸，对齐 EA 原生需求图（XML/XML_of_EA/reqFig.xml、论文 fig5）：
+# «requirement» + 名称 + tags 隔间（id = ORxxx / text = <memo> 两行）。
+# Tag=1 显示 tags 隔间；完整正文在 text 属性里（memo 类型，图上只显示 <memo>）。
+# 原生图块是 110 宽的窄栏，高随内容 160-223，RzO=1 让 EA 导入时自适应高度。
+DIAG_ELEM_STYLE = "HideIcon=0;UCRect=1;Tag=1;AttCustom=0;OpCustom=0;RzO=1;"
+BOX_W, BOX_H = 110, 170
+
+# EA 把 SysML requirement 的 id/text 属性导出为内容级 tagged value，其 xmi.id
+# 前三段是固定的属性类型 GUID（见 reqFig.xml 第 551-566 行）。只有用这两个
+# 前缀，EA 导入时才把它们识别为内置 id/text——text 是 memo 类型，图块上只
+# 显示 "text = <memo>"；用随机 GUID 会被当成普通 tagged value，Tag=1 时整段
+# 正文直接画在图块上（此前图块被撑大、内容杂乱的根因）。
+ID_TV_STEM = "EAID_00000DED_3AF1_773a_"
+TEXT_TV_STEM = "EAID_00415985_D789_37d7_"
+
+
+def _tv_guid(stem: str) -> str:
+    """属性 tagged value 的 xmi.id：固定前缀 + 随机 4 段 + 随机 12 段（仿 reqFig.xml）。"""
+    h = uuid.uuid4().hex.upper()
+    return f"{stem}{h[8:12]}_{h[20:32]}"
 
 
 def classifier_role(name, rid, guid, lid, notes, grade="_src") -> str:
@@ -178,11 +193,16 @@ def er_notes(shall, crit, grade, verif, cited, derivation, route, route_reason,
             f"Cited: {wrap_cn(cited, width)}")
 
 
+def req_id_value(ext_id: str, rid: str) -> str:
+    """EA 需求的 id 属性（外部编号）：用属性类型 GUID 前缀，导入后识别为内置 id。"""
+    return (f'<UML:TaggedValue tag="id" xmi.id="{_tv_guid(ID_TV_STEM)}" '
+            f'value="{esc(ext_id)}" modelElement="{rid}"/>')
+
+
 def req_text_value(text: str, rid: str) -> str:
-    """EA 需求的 text 属性（<memo>#NOTES# 前缀）：完整内容放这里，打开元素可见，
-    不在图块上显示（图块只显示名称，见 DIAG_ELEM_STYLE 的 Tag=0）。"""
-    tid, _ = new_guid()
-    return (f'<UML:TaggedValue tag="text" xmi.id="{tid}" '
+    """EA 需求的 text 属性（<memo>#NOTES# 前缀 + 属性类型 GUID）：完整内容放这里，
+    打开元素可见；图块 tags 隔间里只显示 text = <memo>（见 DIAG_ELEM_STYLE）。"""
+    return (f'<UML:TaggedValue tag="text" xmi.id="{_tv_guid(TEXT_TV_STEM)}" '
             f'value="&lt;memo&gt;#NOTES#{esc(text)}" modelElement="{rid}"/>')
 
 
@@ -307,7 +327,7 @@ def main():
     roles, assocs, diag_nodes, diag_edges, meta = [], [], [], [], []
     lid = 10
     y0 = 30
-    bw, bh, gapx, gapy = BOX_W, BOX_H, BOX_W + 40, BOX_H + 52
+    bw, bh, gapx, gapy = BOX_W, BOX_H, BOX_W + 60, BOX_H + 70
     y_cursor = y0
     WRAP = 34
     for si, sid in enumerate(sids, 1):
@@ -383,15 +403,10 @@ def main():
     ]
     pkg_tvs = "\n".join(f'\t\t\t\t\t\t<UML:TaggedValue tag="{k}" value="{v}"/>' for k, v in pkg_tv)
 
-    # 内容级 id/text taggedValue(EA 需求的外部编号与 Text 字段)
+    # 内容级 id/text taggedValue(EA 需求的外部编号与 Text 字段，用属性类型 GUID 前缀)
     reqtext = []
     for (rid, ext_id, text) in meta:
-        tid1, _ = new_guid()
-        reqtext.append(
-            f'\t\t<UML:TaggedValue tag="id" xmi.id="{tid1}" value="{esc(ext_id)}" '
-            f'modelElement="{rid}"/>\n'
-            f'\t\t{req_text_value(text, rid)}'
-        )
+        reqtext.append(f'\t\t{req_id_value(ext_id, rid)}\n\t\t{req_text_value(text, rid)}')
     reqtext_block = "\n".join(reqtext)
 
     coll_id, _ = new_guid()
