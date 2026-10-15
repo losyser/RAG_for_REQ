@@ -7,27 +7,30 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "主机冷却水系统应在所有运行条件下保持稳定，确保推进设备的正常运行不受温度、压力或流量波动的影响。",
-          "measurable_criterion": "温度变化范围不超过±2°C；压力波动不超过额定值的±5%；流量波动不超过额定值的±10%。（具体数值需根据实际工程要求调整）",
-          "applicable_condition": "在船舶航行、停泊及各种海况下均适用",
-          "verification_method": "通过模拟不同海况下的实船测试或使用专门设计的试验台架进行测试",
-          "acceptance_criteria": "evidence_citations",
+          "shall_statement": "主机冷却水系统在任何工况下，应保持温度波动不超过±2°C。",
+          "measurable_criterion": "温度波动范围：±2°C",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "通过安装于冷却水出口处的温度传感器进行连续监测，并记录数据。",
+          "acceptance_criteria": "1. 在整个测试周期内，冷却水系统温度波动不得超过设定的±2°C范围。\\",
+          "evidence_citations": "[ ]",
           "_grade": "X"
         },
         {
-          "shall_statement": "冷却水系统的温度控制机制应能自动调节，以适应环境条件的变化，保证系统稳定性。",
-          "measurable_criterion": "当外界环境温度变化时，冷却水系统内部温度能在30分钟内恢复至设定工作点±2°C范围内（具体时间与温差依据实际情况调整）",
-          "applicable_condition": "适用于所有季节和天气条件下的船舶操作",
-          "verification_method": "通过改变环境温度并监测冷却水系统响应来验证其自适应能力",
-          "acceptance_criteria": "evidence_citations",
+          "shall_statement": "主机冷却水系统的设计应当保证，在任意工作状态下压力波动不超过±0.1MPa。",
+          "measurable_criterion": "压力波动范围：±0.1MPa",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "利用压力变送器对冷却水系统的压力进行实时监控，并收集分析相关数据。",
+          "acceptance_criteria": "1. 测试期间，确保冷却水系统内的压力变化始终控制在±0.1MPa以内。\\",
+          "evidence_citations": "[ ]",
           "_grade": "X"
         },
         {
-          "shall_statement": "为防止因异常情况导致的冷却水系统故障，系统中必须配备有冗余组件或备用方案。",
-          "measurable_criterion": "至少存在一套独立于主系统的备用冷却循环路径，并且该路径能够承受至少80%的满负荷运行需求（具体百分比视具体情况而定）",
-          "applicable_condition": "在任何可能导致主要冷却路径失效的情况下",
-          "verification_method": "定期进行切换测试，确认备用系统可以在不中断服务的情况下接管工作",
-          "acceptance_criteria": "evidence_citations",
+          "shall_statement": "为保障推进设备正常运作，主机冷却水系统的流量需维持稳定，允许的最大波动幅度为±5%。",
+          "measurable_criterion": "流量波动范围：±5%",
+          "applicable_condition": "所有运行工况",
+          "verification_method": "采用流量计来测量冷却水系统中的实际流量，并与预设值比较。",
+          "acceptance_criteria": "1. 实测得到的冷却水流速与标称流速之间的偏差不得超过±5%。\\",
+          "evidence_citations": "[ ]",
           "_grade": "X"
         }
       ]
@@ -38,22 +41,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却系统应具备至少20%的备用冷却能力。",
-          "measurable_criterion": "系统在最大工作负载下，能够额外提供相当于设计额定容量20%的冷却量。",
-          "applicable_condition": "所有正常运行条件及紧急情况",
-          "verification_method": "通过性能测试，在模拟的最大负荷条件下测量系统的实际冷却能力。",
-          "acceptance_criteria": "1. 在标准工况下，系统提供的总冷却量不低于其额定值的120%。\\",
-          "evidence_citations": "",
+          "shall_statement": "冷却系统应具备至少50%的备用能力。",
+          "measurable_criterion": "系统在设计最大负载下，当主要泵或关键设备之一失效时，剩余组件仍能提供不低于原总冷量需求50%的能力。",
+          "applicable_condition": "所有运行状态下，特别是高负荷及紧急情况",
+          "verification_method": "通过模拟故障测试和性能评估来验证。使用软件仿真与实际操作相结合的方式进行。",
+          "acceptance_criteria": "1. 在单个主泵或指定的关键部件发生故障后，系统能够在不降低主机工作安全性的前提下继续运行。\\",
+          "evidence_citations": "[]",
           "_grade": "X"
         },
         {
-          "shall_statement": "当任一泵或关键设备失效时，冷却系统仍能维持主机的基本冷却需求。",
-          "measurable_criterion": "在单个泵或关键组件故障的情况下，系统剩余部分必须能够支持至少80%的设计冷却需求。",
-          "applicable_condition": "任何单一泵或关键部件发生故障的情况",
-          "verification_method": "通过故障注入实验验证。具体做法是在安全控制环境下，人为使一个泵或关键设备失效，并监测系统是否仍能满足基本冷却要求。",
-          "acceptance_criteria": "1. 系统能在失去任意一个泵/关键设备后继续运行。\\",
-          "evidence_citations": "",
+          "shall_statement": "冷却系统必须能够自动切换到备用模式，在检测到主要组件故障时无需人工干预。",
+          "measurable_criterion": "从发现故障到完成切换的时间不超过30秒。",
+          "applicable_condition": "任何需要启用备用模式的情况",
+          "verification_method": "利用模拟器创建不同的故障场景，并观察系统的响应时间。",
+          "acceptance_criteria": "1. 系统能够准确识别并报告故障点。\\",
+          "evidence_citations": "[]",
           "_grade": "X"
+        },
+        {
+          "shall_statement": "备用设备及其控制逻辑需定期检查以确保其处于良好状态。",
+          "measurable_criterion": "每季度至少执行一次全面检查；每次检查都需记录结果。",
+          "applicable_condition": "维护周期内",
+          "verification_method": "审查维护日志与实地抽查。",
+          "acceptance_criteria": "1. 所有检查项目均符合标准。\\",
+          "evidence_citations": "[]",
+          "_grade": "C"
         }
       ]
     },
@@ -61,7 +73,35 @@
       "source_requirement_id": "OR003",
       "stakeholder": "船东",
       "_arm": "norag-v4",
-      "engineering_requirements": []
+      "engineering_requirements": [
+        {
+          "shall_statement": "冷却器的设计容量应当超出系统最大热负荷需求的20%。",
+          "measurable_criterion": "设计容量 = 系统最大热负荷 * 1.2",
+          "applicable_condition": "适用于所有工况，特别是夏季高温海水条件下。",
+          "verification_method": "通过计算分析和性能测试验证。",
+          "acceptance_criteria": "1. 在最恶劣环境下（如最高海水温度）能够维持系统的正常运行。\\",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水泵的设计流量应比理论所需最大流量高至少30%。",
+          "measurable_criterion": "设计流量 = 理论最大流量 * 1.3",
+          "applicable_condition": "适用于所有工作条件，尤其是当冷却水过滤器部分堵塞时。",
+          "verification_method": "基于泵性能曲线图与实际操作数据对比分析。",
+          "acceptance_criteria": "1. 即使在部分堵塞的情况下也能提供足够的水流以保证散热效率。\\",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却系统需定期进行维护检查，并根据需要清理或更换部件。",
+          "measurable_criterion": "无法确定具体的数值标准，但建议每季度至少检查一次。",
+          "applicable_condition": "适用于长期运行后可能出现污染沉积物积累的情况。",
+          "verification_method": "通过记录维护活动并监测系统性能变化来评估。",
+          "acceptance_criteria": "1. 维护后的系统性能指标恢复至接近初始状态。\\",
+          "evidence_citations": "",
+          "_grade": "C"
+        }
+      ]
     },
     {
       "source_requirement_id": "OR004",
@@ -69,31 +109,13 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统应具备报警功能，当检测到水温超过设定安全阈值时能够及时发出警报。",
-          "measurable_criterion": "水温超过90°C（具体数值需根据实际设计和设备规格调整）",
-          "applicable_condition": "所有运行状态下",
-          "verification_method": "通过模拟测试或实际操作中将水温升高至预设警戒水平来触发报警机制，并检查是否能正确响应。",
-          "acceptance_criteria": "1. 报警应在温度达到预设值后的5秒内启动。\\",
+          "shall_statement": "液位传感器需要具备高灵敏度以快速识别冷却水箱内的液位下降情况，并及时向船员报告。",
+          "measurable_criterion": "液位检测分辨率不低于1mm；若液位降至安全阈值以下（例如：满载容积的80%），则应在2分钟内激活低液位警报。",
+          "applicable_condition": "任何时刻，特别是加油或排水操作后",
+          "verification_method": "执行一系列加减液体实验来验证传感器对液位变化的反应速度及其精确度。",
+          "acceptance_criteria": "传感器需达到指定的分辨率标准，在预定时间内对于液位过低的情况作出响应。",
           "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "冷却水系统的压力监测装置需要在压力低于正常工作范围时向操作员发出警告。",
-          "measurable_criterion": "压力低于0.5MPa（此值仅供参考，需依据实际情况确定）",
-          "applicable_condition": "任何时间点只要系统处于激活状态",
-          "verification_method": "通过减少系统内的压力直至低于指定的安全下限，观察并记录报警信号的生成情况。",
-          "acceptance_criteria": "1. 压力下降至临界点后，报警应在3秒内被激活。\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "当冷却水箱中的液位降至最低允许水平之下时，必须有相应的指示器提示船员注意。",
-          "measurable_criterion": "液位低于容器总容量的20%（具体比例依实际需求而定）",
-          "applicable_condition": "无论船舶是静止还是航行中",
-          "verification_method": "人为降低储水箱内液体量至预定警戒线以下，验证是否有明确的视觉或听觉警告出现。",
-          "acceptance_criteria": "1. 液位传感器准确反映当前水平；\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "X"
         }
       ]
     },
@@ -103,14 +125,40 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统中的滤器应当设计成易于拆卸与安装的形式，以简化维护过程。",
-          "measurable_criterion": "更换或清洗滤器所需时间不超过15分钟",
-          "applicable_condition": "所有正常运行及停机维护条件下",
-          "verification_method": "通过实际操作演示来验证滤器的拆装便利性",
-          "acceptance_criteria": -0.1,
-          "实际操作中完成滤器更换或清洗的时间不得超过规定时间": "evidence_citations",
-          ": []": "}",
+          "shall_statement": "冷却水系统的滤器应设计为易于拆卸和清洗。",
+          "measurable_criterion": "更换或清洗滤器所需时间不超过30分钟",
+          "applicable_condition": "在常规维护条件下，无需特殊工具或技能即可完成操作。",
+          "verification_method": "通过实际操作演示验证",
+          "acceptance_criteria": "1. 滤器能够被快速且无损地从系统中取出；2. 清洗后能顺利重新安装并恢复功能；3. 整个过程不超过指定时间。",
+          "evidence_citations": "",
           "_grade": "X"
+        },
+        {
+          "shall_statement": "冷却器的设计需便于检查与维修。",
+          "measurable_criterion": "冷却器的检查及小修（如清理表面污垢）耗时不应超过2小时",
+          "applicable_condition": "适用于日常巡检以及年度大检修期间",
+          "verification_method": "现场实操测试结合文档审核",
+          "acceptance_criteria": "1. 冷却器的所有可访问部件均能在规定时间内完成清洁；2. 维修过程中不会损坏冷却器主体结构；3. 维修后的冷却器性能符合出厂标准。",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "泵体应当易于接近以便于进行维护工作。",
+          "measurable_criterion": "从打开舱门到接触到泵体的时间不超过5分钟",
+          "applicable_condition": "当需要对泵进行定期保养或紧急修理时",
+          "verification_method": "模拟维护流程",
+          "acceptance_criteria": "1. 泵体周围有足够的空间供技术人员操作；2. 所有紧固件易于使用常用工具松开；3. 泵的位置允许其被轻松移出进行更深入的检查。",
+          "evidence_citations": "",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "阀门的位置和布局应该方便操作者进行开关控制及状态查看。",
+          "measurable_criterion": "所有关键阀门的手动操作力矩小于40Nm，并且指示器清晰可见",
+          "applicable_condition": "无论是在正常运行还是故障排查情况下",
+          "verification_method": "手动测试加目视检查",
+          "acceptance_criteria": "1. 阀门可以顺畅地开启关闭而不需要过度的力量；2. 开关位置明确标示，易于识别；3. 在任何光照条件下都能清楚看到阀门的状态指示。",
+          "evidence_citations": "",
+          "_grade": "C"
         }
       ]
     },
@@ -120,21 +168,39 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "主机进出口冷却水的温度应当符合厂家提供的技术资料中所规定的范围。",
-          "measurable_criterion": "根据厂家技术文件，具体数值见附件",
-          "applicable_condition": "适用于所有运行状态下的主机冷却系统",
-          "verification_method": "通过安装在进口和出口处的温度传感器进行实时监测，并与厂家给定值对比",
-          "acceptance_criteria": "主机启动前及运行过程中，进出口冷却水温度均需保持在厂家指定范围内；超出该范围时应立即采取措施调整或停机检查",
-          "evidence_citations": "[ ]",
+          "shall_statement": "主机进口冷却水的温度应按照厂家提供的技术资料进行设置。",
+          "measurable_criterion": "具体数值依据制造商的技术文件确定",
+          "applicable_condition": "所有运行状态下，特别是在启动前和连续运行期间",
+          "verification_method": "通过查阅制造商的技术文档，并在实际操作中使用温度计监测入口水温来验证是否符合要求",
+          "acceptance_criteria": "实际测量值与制造商指定值之间的偏差不超过±2°C",
+          "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "主机进出口冷却水的压力也必须遵循制造商的技术指导手册中的规定。",
-          "measurable_criterion": "依据制造商的具体要求，参见附录",
-          "applicable_condition": "涵盖从冷启动到满负荷的所有操作阶段",
-          "verification_method": "利用压力表或者数字式压力变送器对冷却水路的压力进行持续监控，并记录数据与标准对比",
-          "acceptance_criteria": "确保无论是在低负载还是高负载条件下，冷却系统的压力都维持在安全有效的区间内；任何偏离都需要及时报告并处理",
-          "evidence_citations": "[ ]",
+          "shall_statement": "主机出口冷却水的温度需根据制造商提供的技术数据设定。",
+          "measurable_criterion": "具体数值依据制造商的技术文件确定",
+          "applicable_condition": "所有工作模式下，特别关注高负荷运转时的表现",
+          "verification_method": "对比制造商给定的数据与现场测得的实际出口水温，确保一致性",
+          "acceptance_criteria": "实测出口温度与标准值差异控制在±3°C之内",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机进水口处的压力应当依照制造商的技术规范调整。",
+          "measurable_criterion": "具体的压力量级参照制造商提供的指导手册",
+          "applicable_condition": "系统初次安装调试阶段及定期维护检查时",
+          "verification_method": "利用压力表检测进水口的实际压力，并对照制造商推荐的压力范围",
+          "acceptance_criteria": "实际读数与规定值相比误差不超过±0.1bar",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "主机排水口的压力也必须遵循制造商的技术指南。",
+          "measurable_criterion": "确切的压力指标由制造商定义",
+          "applicable_condition": "适用于各种负载条件下，尤其是最大功率输出时",
+          "verification_method": "采用专业仪器对排水口的压力进行精确测量，并与制造商的标准比较",
+          "acceptance_criteria": "所测得的压力与制造商给出的理想值相差不得超过±0.2bar",
+          "evidence_citations": "",
           "_grade": "C"
         }
       ]
@@ -145,21 +211,39 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "船舶主机的高温冷却水回路与低温冷却水回路必须分开设计，确保各自独立运作。",
-          "measurable_criterion": "两套冷却系统之间无直接连接管道；每个回路有独立的泵、热交换器及控制阀门等组件。",
-          "applicable_condition": "适用于所有类型的船舶主机冷却水系统设计阶段。",
-          "verification_method": "通过审查设计方案图和实地检查来验证。",
-          "acceptance_criteria": "1. 设计图纸上明确标示出高低温冷却水分开的路径。\\",
-          "2. 实地检查时确认物理隔离措施有效实施，包括但不限于独立的管路布局、独立的工作泵组等。": "",
+          "shall_statement": "船舶主机冷却系统应明确区分高温冷却水回路与低温冷却水回路。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "所有运行工况下",
+          "verification_method": "设计审查、图纸检查",
+          "acceptance_criteria": "1. 高温和低温冷却水回路之间不存在物理连接；\\",
+          "evidence_citations": 2304900000000.0,
           "_grade": "C"
         },
         {
-          "shall_statement": "在安装过程中，不得将高温冷却水系统的任何部件错误地接入低温冷却水系统中，反之亦然。",
-          "measurable_criterion": "每种类型冷却水使用的管道、接头和其他配件都应具有明显的标识，并且这些标识应该在整个施工过程中保持清晰可见。",
-          "applicable_condition": "适用于船舶主机冷却水系统的安装阶段。",
-          "verification_method": "通过现场监督安装过程以及最终完成后的目视检查来进行验证。",
-          "acceptance_criteria": "1. 所有相关零件上都有正确且持久的标签或颜色编码以区分其所属系统。\\",
-          "2. 没有任何证据表明存在交叉连接的情况。": "",
+          "shall_statement": "高温冷却水回路只能服务于需要较高温度冷却介质的设备。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "当船舶主机或相关辅助设备处于工作状态时",
+          "verification_method": "操作手册核对、现场测试",
+          "acceptance_criteria": "1. 每个使用高温冷却水的服务对象都记录在案；\\",
+          "evidence_citations": 2304900000000.0,
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "低温冷却水回路必须专用于那些要求较低温度冷却介质以保证正常运作的设备。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "当船舶主机或相关辅助设备处于工作状态时",
+          "verification_method": "操作手册核对、现场测试",
+          "acceptance_criteria": "1. 所有采用低温冷却水的设备清单完整无缺；\\",
+          "evidence_citations": 2304900000000.0,
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "不得将同一服务对象同时接入高温和低温两个不同的冷却水回路中。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "任何时间点",
+          "verification_method": "设计文件审查、现场随机抽查",
+          "acceptance_criteria": "1. 设备连接图显示每个服务对象仅属于单一类型的冷却水回路。",
+          "evidence_citations": 2304900000000.0,
           "_grade": "C"
         }
       ]
@@ -170,21 +254,30 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "温度控制阀的设定值应与主机制造商提供的规格要求相匹配。",
-          "measurable_criterion": "设定值偏差不超过±2°C（具体数值需根据主机手册确定）",
-          "applicable_condition": "所有运行状态下，特别是在启动、满载和部分负载条件下",
-          "verification_method": "通过查阅主机技术文档并进行现场检查来验证温度控制阀的实际设定值是否符合主机的要求。",
-          "acceptance_criteria": "1. 温度控制阀设定值与主机制造商提供的官方文件中的推荐值一致。\\",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "温度控制阀的设定值应按照主机制造商提供的规格进行设置。",
+          "measurable_criterion": "无法确定，需依据具体主机型号及制造商建议",
+          "applicable_condition": "适用于所有使用温度控制阀调节冷却水温的船舶主机系统",
+          "verification_method": "通过查阅主机技术手册并比对实际安装参数来确认",
+          "acceptance_criteria": "1. 温度控制阀的实际设定值与主机制造商推荐值一致。\\",
+          "evidence_citations": "[]",
+          "_grade": "C"
         },
         {
-          "shall_statement": "温度控制阀应当安装在主机制造商指定的位置。",
-          "measurable_criterion": "无法直接量化，但需确保安装位置符合图纸或说明书指示",
-          "applicable_condition": "在船舶建造或改装过程中",
-          "verification_method": "通过对比施工图样和技术规范，以及实地考察安装位置来进行验证。",
-          "acceptance_criteria": "1. 实际安装位置与设计图纸上标注的位置完全一致。\\",
-          "evidence_citations": "[ ]",
+          "shall_statement": "温度控制阀的安装位置必须符合主机制造商的设计要求。",
+          "measurable_criterion": "无法确定，取决于主机设计图纸的具体指示",
+          "applicable_condition": "适用于所有新装或改装涉及温度控制阀的船舶主机系统",
+          "verification_method": "对比实际安装布局与主机制造商提供的设计图或指导文件",
+          "acceptance_criteria": "1. 实际安装位置与设计图纸或官方指南中指定的位置完全匹配。\\n",
+          "evidence_citations": "[]",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "在完成安装后，需要验证温度控制阀是否能够有效地将冷却水温保持在主机允许的工作范围内。",
+          "measurable_criterion": "主机工作时，冷却水入口温度应在X°C至Y°C之间（具体数值根据主机规格书）",
+          "applicable_condition": "当主机运行于标准负荷条件下时",
+          "verification_method": "通过监测运行过程中冷却水温的变化，并记录数据",
+          "acceptance_criteria": "1. 在连续测试周期内，冷却水温稳定在规定的安全操作范围内。\\n",
+          "evidence_citations": "[]",
           "_grade": "C"
         }
       ]
@@ -195,31 +288,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水泵的流量应当与主机技术数据中规定的流量相匹配。",
-          "measurable_criterion": "泵的实际流量误差不超过±5%相对于主机要求值",
-          "applicable_condition": "在额定工作条件下，即标准海水温度、密度及主机满负荷运行时",
-          "verification_method": "通过流量计测量并记录泵在指定条件下的实际流量；比较该流量与主机制造商提供的规格表中的需求流量。",
-          "acceptance_criteria": "1. 实际测量到的流量必须位于主机制造商规定范围之内。\\",
+          "shall_statement": "冷却水泵的流量应当与主机在额定工况下的需求相匹配。",
+          "measurable_criterion": "根据主机制造商提供的技术手册，确定具体数值。假设示例值：150 m³/h",
+          "applicable_condition": "适用于所有运行状态下，特别是满载工作条件下。",
+          "verification_method": "通过对比泵的实际性能测试报告与主机的技术规格书来验证。",
+          "acceptance_criteria": "实际测量到的冷却水流量误差不超过±5%。",
           "evidence_citations": "",
           "_grade": "X"
         },
         {
-          "shall_statement": "冷却水泵提供的压头应符合主机技术文档中所列的需求。",
-          "measurable_criterion": "泵产生的压头误差不应超过±3%相比主机所需压头",
-          "applicable_condition": "当泵处于最大设计流速且系统阻力达到预期水平时",
-          "verification_method": "利用压力传感器或水柱高度差来测定泵出口与入口之间的压力差异；确保测试结果满足主机对压头的要求。",
-          "acceptance_criteria": "1. 测得的压力差需落在主机制造商给出的允许范围内。\\",
+          "shall_statement": "冷却水泵的压头必须符合主机系统设计要求。",
+          "measurable_criterion": "依据主机系统的设计参数决定，例如：30米水柱。",
+          "applicable_condition": "该条件适用于整个操作范围内，包括但不限于最大负荷情况。",
+          "verification_method": "利用压力计对泵出口处的压力进行测量，并与预期值比较。",
+          "acceptance_criteria": "测得的压力偏差不应超过理论计算值的±10%。",
           "evidence_citations": "",
-          "_grade": "X"
+          "_grade": "C"
         },
         {
-          "shall_statement": "冷却水泵的工作点（即流量-压头曲线上的某一点）需根据主机的具体操作条件进行选择。",
-          "measurable_criterion": "无法确定具体的数值，但工作点的选择应保证泵效率不低于70%",
-          "applicable_condition": "适用于所有主机运行状态，特别是部分负载和全负载情况",
-          "verification_method": "绘制泵的性能曲线，并标出主机典型运行工况下的期望工作点；分析该点是否满足最低效率要求。",
-          "acceptance_criteria": "1. 工作点应在泵的最佳效率区间内。\\",
+          "shall_statement": "冷却水泵的工作点需确保在整个船舶运行过程中均能有效支持主机运行。",
+          "measurable_criterion": "无法直接量化，但可以通过效率曲线等方法间接评估。",
+          "applicable_condition": "覆盖从空载到满载的所有工作状态。",
+          "verification_method": "分析泵的性能曲线图，确认其工作范围是否包含主机所需的所有操作点。",
+          "acceptance_criteria": "泵的工作区域应至少覆盖主机典型工作点上下各20%的变化范围。",
           "evidence_citations": "",
-          "_grade": "X"
+          "_grade": "C"
         }
       ]
     },
@@ -229,27 +322,30 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却液的水质应当符合厂家的具体要求。",
-          "measurable_criterion": "依据厂家提供的标准文档中的具体指标，如pH值应在7.5至8.5之间。",
-          "applicable_condition": "适用于所有使用该冷却系统的船舶主机运行期间。",
-          "verification_method": "通过实验室检测方法对冷却液样本进行分析。",
-          "acceptance_criteria": "evidence_citations",
+          "shall_statement": "冷却液的水质应当符合厂家规定标准。",
+          "measurable_criterion": "电导率<10µS/cm, pH值7-8.5, 总硬度<300ppm",
+          "applicable_condition": "所有使用状态下",
+          "verification_method": "定期取样检测",
+          "acceptance_criteria": "电导率、pH值及总硬度均需满足上述范围",
+          "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "冷却液中添加的防腐剂类型及其浓度需满足制造商推荐值。",
-          "measurable_criterion": "例如，硅酸盐含量应不低于200ppm但不超过400ppm。",
-          "applicable_condition": "在每次更换冷却液时以及每季度定期检查时适用。",
-          "verification_method": "利用化学滴定法或专用测试盒来测定添加剂浓度。",
-          "acceptance_criteria": "evidence_citations",
+          "shall_statement": "冷却液中添加剂的种类与浓度须遵循制造商建议。",
+          "measurable_criterion": "具体类型和浓度依不同制造商而定，无法确定统一标准",
+          "applicable_condition": "系统首次填充以及每次更换冷却液时",
+          "verification_method": "查阅制造商提供的技术手册并进行实验室分析",
+          "acceptance_criteria": "所使用的添加剂种类及浓度必须与制造商推荐一致",
+          "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "防冻剂与水的比例应按照制造商指南设置，以确保系统在最低操作温度下不会冻结。",
-          "measurable_criterion": "防冻剂（如乙二醇）与水的比例通常建议为50:50，这可以提供-35°C的防冻保护。",
-          "applicable_condition": "当环境温度可能降至冰点以下时必须遵守。",
-          "verification_method": "采用折射仪测量混合物的冰点。",
-          "acceptance_criteria": "evidence_citations",
+          "shall_statement": "防冻剂的比例应按照制造商指导调整，以保证在最低操作温度下不结冰。",
+          "measurable_criterion": "通常情况下，防冻剂占比应在30%至60%之间，具体比例依据最低环境温度而定",
+          "applicable_condition": "环境温度低于0°C的所有工况",
+          "verification_method": "通过折射仪测量或直接查询制造商推荐比例",
+          "acceptance_criteria": "实际防冻剂比例与制造商推荐相符且能满足当前工作环境下的防冻要求",
+          "evidence_citations": "",
           "_grade": "X"
         }
       ]
@@ -260,43 +356,43 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统原理图应清晰地标识出淡水侧的所有组件及其连接方式。",
-          "measurable_criterion": "所有淡水侧组件（如泵、热交换器等）均需在图中标注，并且每个组件之间的连接管路也必须明确表示出来。",
-          "applicable_condition": "适用于所有涉及淡水循环的船舶主机冷却水系统设计阶段。",
-          "verification_method": "通过图纸审查来确认是否满足要求。",
-          "acceptance_criteria": -1.0,
-          "所有淡水侧组件都被正确标注于图中。": "-2.0",
-          "组件间连接关系清晰，无歧义。": "evidence_citations",
+          "shall_statement": "冷却水系统原理图应当清晰地展示淡水侧的布局。",
+          "measurable_criterion": "图纸上应至少包含5个关键部件标识，且每个标识旁附有简短文字说明其功能或名称。",
+          "applicable_condition": "所有类型的船舶主机冷却水系统设计阶段",
+          "verification_method": "通过设计审查会议中由非项目成员组成的评审小组检查图纸",
+          "acceptance_criteria": "图纸能够准确反映实际安装位置与连接关系；",
+          "图纸中的符号和标注符合国际标准（如ISO）或行业通用标准。": "evidence_citations",
+          "[]": "}",
           "_grade": "C"
         },
         {
-          "shall_statement": "冷却水系统原理图应清晰地展示海水侧的所有设备以及它们之间的连接。",
-          "measurable_criterion": "确保海水侧的所有关键部件（包括但不限于海水泵、过滤器等）被准确地标记在图表上，并且这些部件之间的流体路径是易于理解的。",
-          "applicable_condition": "此要求适用于所有需要使用海水作为冷却介质的船舶主机冷却水系统的设计。",
-          "verification_method": "通过专业工程师对提供的图纸进行评审以验证其符合性。",
-          "acceptance_criteria": -1.0,
-          "海水侧所有重要元件均被恰当标示。": "-2.0",
-          "海水流动路线直观易懂。": "evidence_citations",
+          "shall_statement": "冷却水系统原理图应当清晰地展示海水侧的布局。",
+          "measurable_criterion": "图纸上应至少包含4个关键部件标识，并明确标示出进水口和排水口的位置。",
+          "applicable_condition": "所有类型的船舶主机冷却水系统设计阶段",
+          "verification_method": "通过设计审查会议中由非项目成员组成的评审小组检查图纸",
+          "acceptance_criteria": "图纸能够准确反映实际安装位置与连接关系；",
+          "图纸中的符号和标注符合国际标准（如ISO）或行业通用标准。": "evidence_citations",
+          "[]": "}",
           "_grade": "C"
         },
         {
-          "shall_statement": "高温回路和低温回路应在冷却水系统原理图中分开显示，以便于区分不同温度区间的水流。",
-          "measurable_criterion": "高温回路与低温回路各自独立绘制，不允许存在混淆两者界限的情况。",
-          "applicable_condition": "当系统包含同时运行于不同温度水平下的多个回路时适用。",
-          "verification_method": "由指定的技术专家对照实际布局审核图纸。",
-          "acceptance_criteria": -1.0,
-          "高温回路和低温回路在图纸上有明显的区分。": "-2.0",
-          "两个回路之间没有错误交叉或重叠。": "evidence_citations",
+          "shall_statement": "冷却水系统原理图需详细描绘高温回路的具体结构。",
+          "measurable_criterion": "必须包含热交换器、泵等主要组件，并用不同颜色区分不同的温度区域。",
+          "applicable_condition": "所有类型的船舶主机冷却水系统设计阶段",
+          "verification_method": "通过设计审查会议中由非项目成员组成的评审小组检查图纸",
+          "acceptance_criteria": "图纸能够准确反映实际安装位置与连接关系；",
+          "图纸中的符号和标注符合国际标准（如ISO）或行业通用标准。": "evidence_citations",
+          "[]": "}",
           "_grade": "C"
         },
         {
-          "shall_statement": "冷却水系统原理图应该足够详细，使得任何具备基本工程背景的人都能理解整个系统的运作机制而不必依赖额外解释。",
-          "measurable_criterion": "图纸上应包含必要的文字说明、符号标记及箭头指示方向，以帮助读者理解各个部分的功能及相互作用。",
-          "applicable_condition": "适用于所有级别的船舶主机冷却水系统文档。",
-          "verification_method": "邀请非项目直接参与者根据图纸尝试复述系统工作流程。",
-          "acceptance_criteria": -1.0,
-          "基于图纸能够完整描述系统的工作过程。": "-2.0",
-          "无需额外资料即可理解图纸内容。": "evidence_citations",
+          "shall_statement": "冷却水系统原理图需要明确低温回路的设计细节。",
+          "measurable_criterion": "图纸中至少要包含冷凝器、膨胀阀等组件，并清楚地标明流体流动方向。",
+          "applicable_condition": "所有类型的船舶主机冷却水系统设计阶段",
+          "verification_method": "通过设计审查会议中由非项目成员组成的评审小组检查图纸",
+          "acceptance_criteria": "图纸能够准确反映实际安装位置与连接关系；",
+          "图纸中的符号和标注符合国际标准（如ISO）或行业通用标准。": "evidence_citations",
+          "[]": "}",
           "_grade": "C"
         }
       ]
@@ -307,12 +403,11 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "设计图中应详细标注泵、冷却器、温控阀以及膨胀水箱的具体接口位置。",
-          "measurable_criterion": "对于每个提到的设备，其接口（如进水口、出水口）的位置需要在图纸上以毫米级精度标示。",
-          "applicable_condition": "适用于对空间布局有严格要求的船舶内部环境。",
-          "verification_method": "使用测量工具对比实际安装位置与图纸上的标注差异。",
-          "acceptance_criteria": "所有指定设备的接口位置偏差不超过±5mm。",
-          "evidence_citations": "[]",
+          "shall_statement": "图纸上应当明确标示冷却水的流向。",
+          "measurable_criterion": "所有管路至少在每段起始和结束位置标注箭头指示方向",
+          "applicable_condition": "适用于所有包含冷却水管路的设计图纸",
+          "verification_method": "通过视觉检查确认图纸上的标记是否符合要求",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         }
       ]
@@ -323,29 +418,29 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "膨胀水箱应根据系统补水、排气及水位变化需求合理设置其位置。",
+          "shall_statement": "膨胀水箱的位置应便于系统补水、排气和监测水位变化。",
           "measurable_criterion": "无法确定",
-          "applicable_condition": "所有运行工况下",
-          "verification_method": "通过设计评审和实际安装检查确认",
-          "acceptance_criteria": "膨胀水箱的位置能够满足系统在各种工况下的补水需求；确保气体可以顺利排出系统；适应冷却水系统的水位波动。",
+          "applicable_condition": "所有操作工况下",
+          "verification_method": "通过现场检查确认",
+          "acceptance_criteria": "膨胀水箱能够方便地进行补水；膨胀水箱顶部设有足够的空间以利于气体排出；安装有可视化的水位指示器或传感器来监测水位变化。",
           "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "膨胀水箱的设计容量需考虑到最大可能的水量损失以及温度变化引起的体积膨胀。",
-          "measurable_criterion": "膨胀水箱容量≥(系统最大预期水量损失+由温度变化导致的最大体积增量)",
-          "applicable_condition": "所有运行工况，特别是极端温度条件下",
-          "verification_method": "基于理论计算与实验验证相结合的方法",
-          "acceptance_criteria": "膨胀水箱容量符合上述公式要求；经过测试，在最恶劣情况下也能保持足够的额外空间以应对突发情况。",
+          "shall_statement": "膨胀水箱的容量需满足冷却水系统在正常运行及紧急情况下的补水需求。",
+          "measurable_criterion": "膨胀水箱容量至少为冷却系统总容积的10%",
+          "applicable_condition": "船舶主机冷却水系统设计阶段",
+          "verification_method": "查阅设计方案并计算",
+          "acceptance_criteria": "膨胀水箱的设计容量不低于冷却系统总容积的10%；考虑到温度变化引起的体积膨胀，确保有足够的余量。",
           "evidence_citations": "",
-          "_grade": "C"
+          "_grade": "X"
         },
         {
-          "shall_statement": "连接到膨胀水箱的管道布置不得妨碍其正常工作，包括但不限于补给、排气等功能。",
-          "measurable_criterion": "无明显阻碍或干扰现象发生",
-          "applicable_condition": "任何时候",
-          "verification_method": "现场观察结合压力测试",
-          "acceptance_criteria": "管道布局允许自由流动，没有弯曲过紧或其他物理障碍阻止液体进出膨胀水箱；系统能够有效地进行补水并排出空气。",
+          "shall_statement": "膨胀水箱与冷却水回路之间必须设置有效的连接管道，而非单一简单管道。",
+          "measurable_criterion": "管道直径不小于DN50，且根据实际流量调整",
+          "applicable_condition": "冷却水循环系统布局时",
+          "verification_method": "图纸审查与现场测量",
+          "acceptance_criteria": "从膨胀水箱到主冷却回路的连接管道至少包含一条进水管和一条出水管；每条管道均配备适当的阀门控制水流方向；管道尺寸符合设计标准，保证了良好的流体流动特性。",
           "evidence_citations": "",
           "_grade": "C"
         }
@@ -357,21 +452,21 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统中所有管路的最高点应设置排气装置。",
-          "measurable_criterion": "每个管段最高点处安装至少一个排气阀或自动排气装置",
-          "applicable_condition": "适用于所有冷却水管路设计阶段",
-          "verification_method": "通过图纸审查和现场检查确认",
-          "acceptance_criteria": -1.0,
-          "排气装置正确安装于管路高点，且功能正常": "排气装置在系统运行时能够有效排出空气，无气阻现象",
+          "shall_statement": "管道系统在设计时，应在每个管路的最高点设置排气装置。",
+          "measurable_criterion": "每条独立管路至少安装一个排气阀或等效设备",
+          "applicable_condition": "所有冷却水管路",
+          "verification_method": "图纸审查与现场检查",
+          "acceptance_criteria": "确认每个管路高点都设置了适当的排气设施；排气设施能有效排出管内空气",
+          "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "冷却水系统中所有管路的最低点应设置排水装置。",
-          "measurable_criterion": "每个管段最低点处安装至少一个排水阀或类似设施",
-          "applicable_condition": "适用于所有冷却水管路设计与安装阶段",
-          "verification_method": "通过施工图纸审核及实地考察验证",
-          "acceptance_criteria": -1.0,
-          "排水装置正确安装于管路低点，且易于操作": "排水装置能够在维护期间顺利排空管内积水",
+          "shall_statement": "管道系统在设计时，应在每个管路的最低点设置排水装置。",
+          "measurable_criterion": "每条独立管路至少安装一个排水阀或等效设备",
+          "applicable_condition": "所有冷却水管路",
+          "verification_method": "图纸审查与现场检查",
+          "acceptance_criteria": "确认每个管路低点都设置了适当的排水设施；排水设施能够快速有效地排空管内积水",
+          "evidence_citations": "",
           "_grade": "C"
         }
       ]
@@ -382,14 +477,11 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "设计图纸上需明确标注海水侧与淡水侧之间的边界。",
-          "measurable_criterion": "图纸上标记清晰度达到国家标准要求，文字说明不低于8号字体大小。",
-          "applicable_condition": "适用于初步设计阶段及后续各阶段的设计图纸。",
-          "verification_method": "由审图人员依据国家相关标准审查。",
-          "acceptance_criteria": "所有图纸均包含海水侧与淡水侧边界的明确标识；",
-          "隔离结构无明显缺陷或损坏。": "evidence_citations",
-          "[]": "}",
-          "审图报告中无关于此问题的反馈。": "evidence_citations",
+          "shall_statement": "中央冷却器海水侧与淡水侧之间应设置明显的物理隔离。",
+          "measurable_criterion": "两部分间至少存在50mm厚的材料隔离层，且该材料需具有良好的耐腐蚀性和热传导性能。",
+          "applicable_condition": "适用于所有类型船舶的中央冷却系统设计阶段。",
+          "verification_method": "通过图纸审查结合现场检查的方式进行验证。",
+          "acceptance_criteria": "1. 隔离层厚度符合要求；\\",
           "_grade": "C"
         }
       ]
@@ -400,40 +492,12 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水管路的设计应确保在施工过程中易于焊接。",
+          "shall_statement": "冷却水管路的设计应当便于施工，确保焊接、安装、冲洗及压力试验的操作空间充足。",
           "measurable_criterion": "无法确定",
-          "applicable_condition": "所有涉及焊接的管路连接点",
-          "verification_method": "目视检查结合实际操作测试",
-          "acceptance_criteria": "管道布置允许焊工以标准姿势进行焊接，无阻碍；\\",
-          "evidence_citations": "[]",
+          "applicable_condition": "所有冷却水管路设计阶段",
+          "verification_method": "通过三维模型检查与现场模拟实验验证",
+          "acceptance_criteria": "1. 确保每个接头处至少有50厘米的自由空间用于焊接操作。\\",
           "_grade": "C"
-        },
-        {
-          "shall_statement": "冷却水管路安装时需考虑便于后期维护和拆卸。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "整个冷却系统中的所有组件",
-          "verification_method": "通过模拟维护活动来评估可达性",
-          "acceptance_criteria": "所有关键部件可以在不拆除其他非相关部件的情况下被访问；\\n每个阀门、接头等都预留了足够的空间以便于使用标准工具进行作业。",
-          "evidence_citations": "[]",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "冷却水管路设计应支持高效冲洗。",
-          "measurable_criterion": "冲洗流速不低于1.5m/s",
-          "applicable_condition": "冲洗阶段",
-          "verification_method": "通过流量计测量并记录冲洗过程中的水流量",
-          "acceptance_criteria": "达到指定流速后保持至少10分钟连续冲洗；\\n冲洗后的水质符合预定清洁度标准。",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "冷却水管路必须能够承受压力试验而无泄漏。",
-          "measurable_criterion": "试验压力为工作压力的1.5倍，持续时间不少于30分钟",
-          "applicable_condition": "完成初步安装后，但在正式投入使用前",
-          "verification_method": "加压至规定值并保持一段时间，观察是否有泄漏现象",
-          "acceptance_criteria": "在整个测试期间内未发现任何可见的液体或气体泄漏；\\n压力表显示的压力值稳定不变。",
-          "evidence_citations": "[]",
-          "_grade": "B"
         }
       ]
     },
@@ -443,10 +507,10 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "泵入口与冷却器之间的管道设计应尽量保持直线或平滑弯曲，避免过多的弯折。",
-          "measurable_criterion": "管道的最大弯曲半径不得小于管径的3倍；每米管道长度内的最大弯曲次数不得超过2次。",
-          "applicable_condition": "适用于所有类型的船舶主机冷却水系统，在安装阶段和运行状态下均需满足。",
-          "verification_method": "通过三维建模软件模拟管道布局，并进行流体动力学分析来预测水流状态。",
+          "shall_statement": "泵入口与冷却器之间的管路设计应当保证水流顺畅，避免出现不必要的弯曲。",
+          "measurable_criterion": "管路总弯折角度不超过90度；每米长度内直角弯头数量不超过1个。",
+          "applicable_condition": "适用于所有类型的船舶主机冷却水系统，在安装或改造过程中。",
+          "verification_method": "通过三维建模软件进行流体动力学模拟分析；实际安装后使用流量计监测水流速度变化。",
           "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         }
@@ -458,11 +522,13 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "所有阀门、滤器和仪表应当安装在易于到达的位置，以确保操作与维护的便利性。",
-          "measurable_criterion": "从地面到设备最高点的距离不超过1.8米；设备前至少留有60厘米宽的空间供人员站立或通行。",
-          "applicable_condition": "适用于所有船舶主机冷却水系统的安装设计阶段。",
-          "verification_method": "通过现场测量及目视检查确认。",
-          "acceptance_criteria": "证据引用列表为空。",
+          "shall_statement": "所有阀门、滤器和仪表应当安装在易于接近的位置，以方便操作与维护。",
+          "measurable_criterion": "从设备中心点到最近无障碍物边缘的距离应不小于50厘米；对于需要定期检查或调整的部件，该距离建议为75厘米以上。若空间限制导致无法满足此要求，则需提供额外的操作辅助措施（如延长杆等）。",
+          "applicable_condition": "适用于船舶主机冷却水系统内所有阀门、滤器及仪表的设计与安装阶段。",
+          "verification_method": "通过现场测量并记录相关数据来验证设计是否符合要求。",
+          "acceptance_criteria": "1. 所有指定组件周围必须留有足够的空间以便于人员站立进行常规操作；\\",
+          "2. 对于难以直接接触但又频繁需要操作/检查的部件，已经配备了适当的远程操作工具或者辅助装置；\\": "3. 设计文档中明确标示出每件设备的具体位置及其可访问性说明。",
+          "evidence_citations": "",
           "_grade": "C"
         }
       ]
@@ -473,11 +539,11 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "管路支架应当合理布置，确保泵、冷却器或阀门接口不承受额外的管路重量。",
-          "measurable_criterion": "每米管路重量不超过设计规范中规定的最大允许值；对于泵、冷却器或阀门接口处，由支架直接支撑的管段长度至少为接口直径的5倍。",
-          "applicable_condition": "适用于所有涉及泵、冷却器及阀门连接点的管路安装。",
-          "verification_method": "通过有限元分析软件模拟计算管路应力分布，并进行现场检查确认实际安装情况。",
-          "acceptance_criteria": "1. 管路在任何位置上的弯曲度均不超过制造商推荐的最大值。\\",
+          "shall_statement": "管路支架应布置合理，确保泵、冷却器或阀门接口不承受额外的管路重量。",
+          "measurable_criterion": "每个支撑点的最大允许载荷不超过10公斤（具体数值需根据设备规格调整）",
+          "applicable_condition": "所有安装有泵、冷却器或阀门的管道连接处",
+          "verification_method": "通过结构分析软件进行模拟验证；现场检查时使用力矩扳手检测实际受力情况",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         }
       ]
@@ -488,11 +554,21 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "系统冲洗接口和临时接管位置应在设计阶段明确规划。",
+          "shall_statement": "系统冲洗接口的位置应在设计阶段确定。",
           "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于所有船舶主机冷却水系统的初步设计阶段。",
-          "verification_method": "通过设计文档审查来确认是否已考虑并标注了冲洗接口与临时接管的具体位置。",
-          "acceptance_criteria": "evidence_citations",
+          "applicable_condition": "适用于所有船舶主机冷却水系统的初步设计阶段",
+          "verification_method": "通过设计文档审查来确认是否在设计方案中明确指出了冲洗接口的具体位置",
+          "acceptance_criteria": "设计方案中清晰标注了冲洗接口的位置；\\",
+          "evidence_citations": "[]",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "临时接管的位置需在设计初期就予以考虑并记录。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "适用于所有涉及可能需要使用到临时接管的场景，包括但不限于调试、维修等",
+          "verification_method": "检查设计文件和相关技术规范，确保有明确的指示或预留空间用于设置临时接管",
+          "acceptance_criteria": "设计文件中详细说明了临时接管的安装位置及其必要性；\\",
+          "evidence_citations": "[]",
           "_grade": "C"
         }
       ]
@@ -503,48 +579,43 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "在采购冷却水泵时，应依据系统设计需求核对泵的流量。",
-          "measurable_criterion": "泵的额定流量需达到[具体数值]m³/h",
-          "applicable_condition": "适用于所有新购或替换的冷却水泵",
-          "verification_method": "通过供应商提供的技术参数表进行审查；安装后通过实际运行测试验证性能",
-          "acceptance_criteria": "1. 泵的实际流量不低于标称值95%。2. 连续运行8小时无异常。",
-          "evidence_citations": "",
+          "shall_statement": "在采购冷却水泵时，应核对泵的额定流量以满足系统需求。",
+          "measurable_criterion": "泵的额定流量不小于设计要求值X立方米/小时（具体数值需根据船舶主机的实际需要确定）",
+          "applicable_condition": "适用于所有类型的船舶主机冷却水系统采购过程中",
+          "verification_method": "通过查阅制造商提供的技术文档或测试报告来验证泵的额定流量参数",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         },
         {
-          "shall_statement": "采购冷却水泵时，必须确保其工作压力满足船舶主机冷却水系统的最大和最小操作压力要求。",
-          "measurable_criterion": "泵的最大工作压力不小于[具体数值]bar, 最小工作压力不大于[具体数值]bar",
-          "applicable_condition": "适用于所有新购或替换的冷却水泵",
-          "verification_method": "检查供应商的技术规格书；使用压力计在安装现场测量",
-          "acceptance_criteria": "1. 实测最大工作压力符合规定范围。2. 在最低工作压力下仍能有效运转。",
-          "evidence_citations": "",
+          "shall_statement": "在选择冷却水泵时，必须确保其能够提供足够的扬程压力。",
+          "measurable_criterion": "泵的最大工作压力不低于Y巴（Bar），其中Y为系统设计所需最小压力加上适当的安全裕度",
+          "applicable_condition": "对于所有需要保持特定冷却水流速和克服管路阻力损失的情况",
+          "verification_method": "利用标准压力测试设备进行现场测试，并与供应商提供的规格说明书对比",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         },
         {
-          "shall_statement": "选购冷却水泵时，其材质需符合海洋环境下的耐腐蚀性标准。",
-          "measurable_criterion": "材料需通过ISO 9223:2012 C4或更高级别的耐腐蚀测试",
-          "applicable_condition": "适用于所有暴露于海水或潮湿空气中的部件",
-          "verification_method": "查阅制造商提供的材料认证报告；必要时进行第三方实验室检测",
-          "acceptance_criteria": "1. 材料证明文件齐全且真实有效。2. 检测结果表明材料符合指定标准。",
-          "evidence_citations": "",
+          "shall_statement": "冷却水泵使用的材料应该符合耐腐蚀性和强度要求。",
+          "measurable_criterion": "无法直接量化；但需保证材料至少达到ISO标准中的某个等级，比如AISI 316不锈钢",
+          "applicable_condition": "当冷却水中含有较高浓度的盐分或其他可能引起腐蚀性物质时",
+          "verification_method": "检查材料认证证书及第三方检测报告",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         },
         {
-          "shall_statement": "所选冷却水泵与现有管道接口尺寸及类型相匹配。",
-          "measurable_criterion": "接口直径为[具体数值]mm, 接口形式为法兰/螺纹等（根据实际情况填写）",
-          "applicable_condition": "适用于所有需要连接至现有管路网络的新购或替换设备",
-          "verification_method": "比对图纸与实物；安装前进行预装配检验",
-          "acceptance_criteria": "1. 接口尺寸准确无误。2. 安装过程中无需额外加工即可顺利对接。",
-          "evidence_citations": "",
+          "shall_statement": "冷却水泵接口尺寸应当与现有管道相匹配。",
+          "measurable_criterion": "接口外径误差不超过±Z毫米，内径允许偏差为±W毫米（Z和W的具体数值取决于行业标准）",
+          "applicable_condition": "任何时候都需要确保新购入的泵可以直接安装到现有的冷却水循环系统中而不需额外改造",
+          "verification_method": "使用游标卡尺等精密测量工具直接量测接口尺寸",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         },
         {
-          "shall_statement": "对于关键位置使用的冷却水泵，应考虑配置冗余以提高系统可靠性。",
-          "measurable_criterion": "至少配备一台备用泵",
-          "applicable_condition": "应用于主机或其他重要组件的冷却循环中",
-          "verification_method": "查看设计方案；确认备用泵的存在及其状态",
-          "acceptance_criteria": "1. 备用泵处于良好状态，可随时投入使用。2. 控制系统支持自动切换功能。",
-          "evidence_citations": "",
+          "shall_statement": "每艘船上至少配备一套完整的备用冷却水泵。",
+          "measurable_criterion": "备用泵的数量等于或大于1套",
+          "applicable_condition": "考虑到海上航行期间可能出现故障的情况下，保障系统的连续运行能力",
+          "verification_method": "清点实物库存并核对购买记录",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         }
       ]
@@ -555,31 +626,28 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却器在设计时应考虑海水温度变化范围，确保其能在不同水温条件下有效工作。",
-          "measurable_criterion": "冷却器性能至少应在海水温度介于-2°C至35°C之间保持稳定。",
-          "applicable_condition": "所有使用该冷却系统的海域",
-          "verification_method": "通过模拟不同海水温度条件下的热交换效率测试",
-          "acceptance_criteria": "1. 在指定温度范围内，冷却器的热交换效率下降不超过10%。\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "shall_statement": "冷却器的选型应当考虑到海水温度变化对换热效率的影响。",
+          "measurable_criterion": "在最冷月平均海水温度（例如5°C）和最热月平均海水温度（例如30°C）下，冷却器的换热效率至少达到设计值的90%。",
+          "applicable_condition": "所有涉及海洋环境操作的情况",
+          "verification_method": "通过实验室模拟不同海水温度条件下的换热测试来验证。",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
         },
         {
-          "shall_statement": "选型过程中需考虑到换热余量，以应对极端工况或设备老化导致的效率降低。",
-          "measurable_criterion": "所选冷却器的设计容量应比计算所需的最大热量高20%。",
-          "applicable_condition": "任何可能遇到极端环境条件或者长期运行后的情况",
-          "verification_method": "对比设计阶段理论值与实际运行数据；进行加速老化试验",
-          "acceptance_criteria": "1. 实际操作中，在最大负荷下，系统温度上升不超过设计限制。\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "shall_statement": "冷却器的设计应包括足够的换热余量以应对非理想工况。",
+          "measurable_criterion": "冷却器的实际换热能力应比计算所需的最大换热量高出至少20%。",
+          "applicable_condition": "当船舶运行于满载、高温等极端条件下时",
+          "verification_method": "基于实际运行数据与理论模型对比分析；进行全负荷试航。",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却系统的设计必须考虑因长期脏污积累对换热效果的影响，并采取相应措施减缓这种影响。",
-          "measurable_criterion": "清洁周期内（例如每6个月），换热效率降低不得超过5%。",
-          "applicable_condition": "整个生命周期内的常规维护期间",
-          "verification_method": "定期检查并记录清洗前后的换热效率变化",
-          "acceptance_criteria": "1. 清洗前后，通过测量得到的数据表明换热效率恢复良好。\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "shall_statement": "冷却系统需考虑长期使用过程中由于海生物附着等因素导致的脏污效应，并采取相应措施减少其影响。",
+          "measurable_criterion": "经过一年连续运营后，冷却系统的性能下降不超过10%。",
+          "applicable_condition": "适用于任何海域，特别是富含浮游生物或藻类丰富的水域",
+          "verification_method": "定期检查并记录冷却器性能参数；实施清洁维护计划前后对比效果。",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
         }
       ]
     },
@@ -589,40 +657,12 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "温控阀的量程应与自动化系统的要求相匹配。",
-          "measurable_criterion": "无法确定，具体值需根据自动化系统规格书确定",
-          "applicable_condition": "所有操作条件下",
-          "verification_method": "通过审查设计文档及测试报告验证",
-          "acceptance_criteria": "温控阀量程满足自动化系统需求说明书中的要求",
-          "evidence_citations": "[]",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "传感器的信号输出格式需与自动化系统的输入兼容。",
-          "measurable_criterion": "4-20mA, 0-10V等标准工业信号之一（具体类型依据自动化系统而定）",
-          "applicable_condition": "在船舶主机运行的所有阶段",
-          "verification_method": "利用模拟信号发生器进行接口测试",
-          "acceptance_criteria": "传感器能够正确地将物理量转换为自动化系统可识别的电信号",
-          "evidence_citations": "[]",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "报警元件的动作阈值及其响应时间须符合自动化系统的设定。",
-          "measurable_criterion": "动作阈值误差不超过±5%，响应时间≤1秒（具体数值取决于实际应用场景）",
-          "applicable_condition": "当监测参数超出预设安全范围时",
-          "verification_method": "通过故障注入实验来检查报警功能的有效性",
-          "acceptance_criteria": "报警元件能在规定的时间内准确触发警报，并且其阈值设置合理",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "温控阀、传感器以及报警元件之间的电气接口必须确保良好的电气连接性和防护等级。",
-          "measurable_criterion": "IP67或更高（基于安装环境的具体要求）",
-          "applicable_condition": "整个船舶生命周期内",
-          "verification_method": "执行现场安装后的防水防尘测试",
-          "acceptance_criteria": "所有组件间的接头均达到指定的防护标准，无漏水漏电现象",
-          "evidence_citations": "[]",
-          "_grade": "C"
+          "shall_statement": "温控阀的量程应当与自动化系统的需求相匹配。",
+          "measurable_criterion": "温控阀的可调节温度范围为-20°C至120°C（具体数值依据船舶设计要求调整）",
+          "applicable_condition": "所有操作条件下，包括但不限于启动、正常运行及紧急停机状态",
+          "verification_method": "通过查阅制造商提供的技术文档以及实际安装后的现场测试来验证",
+          "acceptance_criteria": -4,
+          "_grade": "X"
         }
       ]
     },
@@ -632,11 +672,39 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "膨胀水箱的容积应当满足系统最大热负荷下的冷却需求。",
-          "measurable_criterion": "根据具体船舶主机功率及运行环境，计算得出最小容积为X升（此处X需基于实际工程计算确定）",
-          "applicable_condition": "适用于所有工作状态下，特别是在极端温度条件下或满载运行时。",
-          "verification_method": "通过理论计算结合实验验证的方式进行。首先利用热力学模型预测所需容积，然后在实验室环境下模拟不同工况测试其性能。",
-          "acceptance_criteria": -0.15,
+          "shall_statement": "膨胀水箱的容积应满足系统最大工作需求。",
+          "measurable_criterion": "至少50升（具体数值需根据实际系统需求确定）",
+          "applicable_condition": "在所有正常运行及紧急情况下",
+          "verification_method": "通过设计审查和容量测试验证",
+          "acceptance_criteria": "膨胀水箱的实际测量容积不得低于规定值",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "膨胀水箱必须配备清晰可见的液位显示装置。",
+          "measurable_criterion": "显示范围从空到满，精度达到±1%FS",
+          "applicable_condition": "在任何光照条件下均能清晰读数",
+          "verification_method": "目视检查结合功能测试",
+          "acceptance_criteria": "液位显示准确无误且易于观察",
+          "evidence_citations": "",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "当膨胀水箱内液体水平降至预设安全阈值以下时，系统应当自动触发低液位报警。",
+          "measurable_criterion": "阈值设置为总容量的20%",
+          "applicable_condition": "无论船舶处于何种状态或环境条件下",
+          "verification_method": "模拟低液位条件下的系统响应测试",
+          "acceptance_criteria": "报警信号明确，在预定时间内被激活",
+          "evidence_citations": "",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "膨胀水箱需要具备一个方便操作的手动补水接口。",
+          "measurable_criterion": "接口直径不小于DN25",
+          "applicable_condition": "在日常维护和应急补给时使用",
+          "verification_method": "物理尺寸检验与手动加水实验",
+          "acceptance_criteria": "接口易于访问并保证快速可靠的补水过程",
+          "evidence_citations": "",
           "_grade": "C"
         }
       ]
@@ -647,22 +715,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "海水侧阀门所使用的材料必须具备良好的抗腐蚀特性，以保证其在海水环境中至少可以稳定工作10年。",
-          "measurable_criterion": "阀门材料应达到ISO 9227盐雾试验后表面无明显锈蚀点的标准。",
-          "applicable_condition": "应用于海水循环系统中所有与海水直接接触的控制阀门。",
-          "verification_method": "执行ISO 9227标准规定的中性盐雾测试。",
-          "acceptance_criteria": "测试周期结束后，样本上不允许出现直径大于1mm的腐蚀斑点。",
-          "evidence_citations": "shalls",
+          "shall_statement": "海水侧滤器的材料应当能够抵抗海水腐蚀。",
+          "measurable_criterion": "材料在海水中浸泡1年后，重量损失不超过5%。",
+          "applicable_condition": "所有使用环境为海水的情况",
+          "verification_method": "通过实验室加速腐蚀测试来模拟一年海水环境下的腐蚀情况。",
+          "acceptance_criteria": "['材料样本经过规定时间的腐蚀试验后，其质量变化率不超过5%；', '外观检查无明显腐蚀痕迹。']",
+          "evidence_citations": "[]",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "海水侧阀门所用材料应具备良好的抗腐蚀性能。",
+          "measurable_criterion": "材料在海水中连续工作2000小时后，表面腐蚀深度小于0.1毫米。",
+          "applicable_condition": "所有与海水直接接触的工作条件",
+          "verification_method": "采用盐雾试验机进行2000小时连续喷雾测试。",
+          "acceptance_criteria": "['完成测试后，阀门关键部件（如阀体、阀芯等）的表面腐蚀深度不大于0.1mm；', '功能测试显示阀门操作灵活无卡滞现象。']",
+          "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "海水侧滤器的设计应当考虑易于清洁的特点，以便于定期维护时快速清理堵塞物。",
-          "measurable_criterion": "滤器设计需支持单人操作下5分钟内完成拆卸清洗过程。",
-          "applicable_condition": "所有安装于船体外部、内部用于处理海水的过滤装置。",
-          "verification_method": "进行现场操作时间记录对比。",
-          "acceptance_criteria": "实际操作时间不超过规定时间限制。",
-          "evidence_citations": "shalls",
-          "_grade": "B"
+          "shall_statement": "海水侧滤器的设计需考虑易于清洁以防止堵塞。",
+          "measurable_criterion": "清洁周期不应少于每三个月一次。",
+          "applicable_condition": "正常运行条件下",
+          "verification_method": "根据制造商提供的维护手册及实际运行记录评估。",
+          "acceptance_criteria": "['滤器设计允许工具或手动轻松拆卸清洗；', '用户反馈表明，在推荐维护周期内未出现因堵塞导致的问题。']",
+          "evidence_citations": "[]",
+          "_grade": "C"
         }
       ]
     },
@@ -672,40 +749,40 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "系统应当能够远程监测主要冷却水的温度。",
-          "measurable_criterion": "温度测量精度达到±0.5°C",
-          "applicable_condition": "所有运行工况下",
-          "verification_method": "通过模拟不同温度条件下的测试，并与标准仪器对比结果",
-          "acceptance_criteria": "温度读数偏差在±0.5°C以内；连续稳定运行72小时无故障",
+          "shall_statement": "集控室应能够显示主要冷却水的温度。",
+          "measurable_criterion": "温度测量范围：0°C 至 120°C；精度 ±1°C",
+          "applicable_condition": "船舶主机运行期间",
+          "verification_method": "通过模拟信号发生器向系统输入特定温度值，并在集控室监测屏上验证显示结果是否符合预期。",
+          "acceptance_criteria": "显示误差不超过±1°C；响应时间不超过5秒。",
           "evidence_citations": "",
           "_grade": "X"
         },
         {
-          "shall_statement": "系统应当能够远程监测主要冷却水的压力。",
-          "measurable_criterion": "压力测量精度达到±0.1bar",
-          "applicable_condition": "所有运行工况下",
-          "verification_method": "使用已校准的压力源进行测试，并与标准压力表比较",
-          "acceptance_criteria": "压力读数偏差在±0.1bar以内；连续稳定运行72小时无故障",
+          "shall_statement": "集控室应能够显示主要冷却水的压力。",
+          "measurable_criterion": "压力测量范围：0 bar 至 10 bar；精度 ±0.1 bar",
+          "applicable_condition": "船舶主机运行期间",
+          "verification_method": "使用标准压力源校准仪表后，将该压力源连接至系统中并读取集控室显示屏上的数据。",
+          "acceptance_criteria": "显示误差不超过±0.1 bar；响应时间不超过5秒。",
           "evidence_citations": "",
           "_grade": "X"
         },
         {
-          "shall_statement": "系统应当能够远程监测主要冷却水的液位。",
-          "measurable_criterion": "液位测量精度达到±1cm",
-          "applicable_condition": "所有运行工况下，包括船舶静止和航行状态",
-          "verification_method": "利用可变液位的模拟器进行测试，同时采用物理标尺法验证准确性",
-          "acceptance_criteria": "液位读数偏差在±1cm以内；连续稳定运行72小时无故障",
+          "shall_statement": "集控室应能够显示主要冷却水的液位。",
+          "measurable_criterion": "液位测量范围：0% 至 100%；精度 ±2%",
+          "applicable_condition": "船舶主机运行期间",
+          "verification_method": "调整实际储罐中的液位并通过传感器反馈到控制系统，在集控室界面检查读数准确性。",
+          "acceptance_criteria": "显示误差不超过±2%；响应时间不超过5秒。",
+          "evidence_citations": "",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "集控室应能够显示泵的工作状态。",
+          "measurable_criterion": "泵状态指示准确无误（开/关）",
+          "applicable_condition": "任何时候当泵被激活或停用时",
+          "verification_method": "手动控制泵开启与关闭操作，同时观察集控室内对应的状态指示变化。",
+          "acceptance_criteria": "泵启动后3秒内状态更新；停止后3秒内状态更新。",
           "evidence_citations": "",
           "_grade": "C"
-        },
-        {
-          "shall_statement": "系统应当能够显示泵的运行状态（开/关）。",
-          "measurable_criterion": "状态更新延迟不超过5秒",
-          "applicable_condition": "无论泵处于手动还是自动控制模式下",
-          "verification_method": "改变泵的状态并记录从实际变化到系统显示的时间差",
-          "acceptance_criteria": "状态更新时间不超过5秒；连续操作测试中准确率100%",
-          "evidence_citations": "",
-          "_grade": "X"
         }
       ]
     },
@@ -715,17 +792,12 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "若冷却水泵出现故障，报警系统必须能够及时发现并向操作员发出警报。",
-          "measurable_criterion": "一旦检测到泵的工作状态异常（如电流变化、振动增加等），即刻触发报警。",
-          "applicable_condition": "无论是在常规操作还是紧急情况下都适用。",
-          "verification_method": "通过模拟泵的各种故障情况（如堵转、短路）来检验报警系统的有效性。",
-          "acceptance_criteria": "对于所有类型的泵故障，报警都能准确且迅速地作出反应；\\",
-          "报警信息清晰指出是由于高温引起的问题。": "evidence_citations",
-          ":[]": "}]",
-          "报警消息明确指示问题是因低压力造成的。": "evidence_citations",
-          "提供的报警信息清楚说明了是由低液位引起的故障。": "evidence_citations",
-          "报警内容包含足够的信息以帮助快速定位问题所在。": "evidence_citations",
-          "_grade": "C"
+          "shall_statement": "报警系统应当能够区分并报告冷却水系统的不同故障类型，包括但不限于高温、低压、低液位或泵故障。",
+          "measurable_criterion": "每种故障类型的检测准确率需达到95%以上；响应时间不超过3秒。",
+          "applicable_condition": "当船舶主机处于运行状态时",
+          "verification_method": "通过模拟各种故障情况来测试报警系统的反应。使用专门的测试设备模拟高温、低压、低液位及泵故障等状况，并观察记录报警信息。",
+          "acceptance_criteria": "1. 系统在所有测试条件下都能正确识别故障类型，并给出相应的警报。\\",
+          "_grade": "X"
         }
       ]
     },
@@ -735,11 +807,11 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却器、滤器和泵等设备应当布置在易于接近的位置，以便于船员进行日常巡检与维护。",
-          "measurable_criterion": "从最近的通道到达任一设备的最大直线距离不超过2米；或无法直接量化时，需确保任何设备周围至少有60厘米宽的空间供人员操作。",
-          "applicable_condition": "适用于所有类型的船舶主机冷却水系统，在设计阶段考虑布局时。",
-          "verification_method": "通过现场检查来验证设备是否符合易于接近的要求。",
-          "acceptance_criteria": -1.5,
+          "shall_statement": "冷却器、滤器和泵的安装位置应便于船员进行日常巡检。",
+          "measurable_criterion": "设备距离最近的人行通道不超过1.5米；从甲板到设备顶部的最大高度不超过2米，以保证人员无需使用梯子即可触及设备主要维护点。",
+          "applicable_condition": "适用于所有类型的船舶主机冷却水系统中包含的冷却器、滤器及泵。",
+          "verification_method": "通过现场测量与目视检查相结合的方式验证。具体包括：实际测量设备至最近人行通道的距离以及从甲板至设备顶部的高度。",
+          "acceptance_criteria": "evidence_citations",
           "_grade": "C"
         }
       ]
@@ -750,31 +822,36 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "系统应提供简洁明了的操作指南，确保补水、排气、放水和换液操作步骤易于理解。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于所有进行补水、排气、放水及换液操作的情况。",
-          "verification_method": "通过用户反馈调查或专家评审来验证文档的清晰度与易用性。",
-          "acceptance_criteria": "1. 操作手册中关于上述四项功能的描述必须使用简单直白的语言。\\",
-          "evidence_citations": "[]",
-          "_grade": "C"
+          "shall_statement": "船舶主机冷却水系统的补水操作应当设计得直观且易于执行。",
+          "measurable_criterion": "完成一次完整的补水过程所需时间不超过5分钟；操作步骤不超过3步。",
+          "applicable_condition": "在所有常规维护条件下",
+          "verification_method": "通过实际操作测试和用户反馈收集来验证",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
         },
         {
-          "shall_statement": "为补水、排气、放水和换液过程设计直观的操作界面或指示标签。",
-          "measurable_criterion": "每个关键操作点至少有一个明确标识；用户能在不超过3分钟内完成任意一项指定任务。",
-          "applicable_condition": "当人员需要执行上述任一动作时适用。",
-          "verification_method": "现场测试结合计时器记录用户从开始到成功完成操作所需时间。",
-          "acceptance_criteria": "1. 所有涉及的关键位置都设有清晰可见的指示牌或图标。\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "shall_statement": "排气过程应被简化，确保任何具有基础机械知识的人都能轻松完成。",
+          "measurable_criterion": "从开始到结束的整个排气过程耗时不超过10分钟；需要使用的工具种类不超过2种。",
+          "applicable_condition": "当系统内出现空气需要排出时",
+          "verification_method": "基于模拟环境下的实践操作评估",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
         },
         {
-          "shall_statement": "培训材料应当包含简化版的操作流程图，以便快速查阅。",
-          "measurable_criterion": "培训资料中需包含一页A4纸大小内的简化操作流程概览。",
-          "applicable_condition": "适用于新员工入职培训或现有员工复习学习。",
-          "verification_method": "审查提供的培训材料是否符合要求。",
-          "acceptance_criteria": "1. 简化版操作流程图存在且信息准确无误。\\",
-          "evidence_citations": "[]",
-          "_grade": "C"
+          "shall_statement": "放水程序必须简洁明了，以减少错误发生的可能性。",
+          "measurable_criterion": "排水流程应在15分钟内完成；步骤说明清晰度评分达到90%以上（基于用户调查）。",
+          "applicable_condition": "在进行季节性保养或维修前",
+          "verification_method": "利用问卷调查法与现场演示相结合的方式进行检查",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "换液指南需提供详细但简化的指导，使得非专业人员也能准确无误地更换冷却液。",
+          "measurable_criterion": "更换冷却液全过程控制在30分钟以内；所需专用设备不超过3件。",
+          "applicable_condition": "定期更换冷却介质时",
+          "verification_method": "实施标准化的操作演练并记录结果",
+          "acceptance_criteria": "evidence_citations",
+          "_grade": "X"
         }
       ]
     },
@@ -784,20 +861,20 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "海水侧滤器应当能够在不中断冷却水供应的情况下进行清洗。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "当船舶处于正常运行状态时，包括但不限于满载航行、停泊和低速航行。",
-          "verification_method": "通过设计审查确认系统方案满足要求，并通过实际操作测试验证功能实现情况。",
-          "acceptance_criteria": "1. 设计文档中应包含允许在不停机状态下对海水侧滤器进行清洁的具体方法或设备描述。\\",
+          "shall_statement": "海水侧滤器的设计应允许在不中断冷却水供应的情况下进行清洗。",
+          "measurable_criterion": "无法确定具体的量化指标，但可通过设计审查确认是否满足要求。",
+          "applicable_condition": "适用于所有需要使用海水作为冷却介质的情况。",
+          "verification_method": "通过设计评审及实地操作测试来验证。",
+          "acceptance_criteria": "设计文档中明确指出该功能实现的具体方法；\\",
           "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "海水侧滤器的设计与安装需保证，在其维护期间不会导致发动机过热或其他相关故障。",
-          "measurable_criterion": "发动机温度不得超过制造商推荐的最大安全工作温度；具体数值参见发动机技术手册。",
-          "applicable_condition": "任何需要对海水侧滤器执行维护操作的情况。",
-          "verification_method": "结合模拟负载下的连续运行测试以及监控发动机的关键参数（如温度）来验证。",
-          "acceptance_criteria": "1. 在整个维护过程中，发动机的温度保持在制造商规定的安全范围内。\\n2. 没有发生因过滤器维护而导致的非计划停机事件。",
+          "shall_statement": "在进行海水侧滤器的在线清洗时，不得导致船舶主机因过热或其他原因而停机。",
+          "measurable_criterion": "在执行清洗过程中，主机温度上升幅度不超过5摄氏度。",
+          "applicable_condition": "当船舶处于运行状态且正在进行滤器清洗作业时。",
+          "verification_method": "通过模拟实验和/或实际运行测试，在清洗过程中监控主机的工作参数。",
+          "acceptance_criteria": "在测试期间，确保主机能够持续正常工作；\\n",
           "evidence_citations": "[]",
           "_grade": "C"
         }
@@ -809,40 +886,40 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水温度数据应被实时采集并传输至监控系统。",
-          "measurable_criterion": "每分钟至少更新一次数据，精度±0.5°C",
-          "applicable_condition": "船舶运行期间",
-          "verification_method": "通过模拟测试环境中的传感器读数来验证数据传输的频率与准确性",
-          "acceptance_criteria": "1. 在指定时间内接收到的数据点数量符合预期；\\",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "冷却水温度数据应当能够被监控系统实时采集。",
+          "measurable_criterion": "每秒至少更新一次温度读数",
+          "applicable_condition": "在船舶运行期间，不论处于航行还是停泊状态",
+          "verification_method": "通过模拟不同工况下的冷却水温变化，并检查监控系统是否能准确及时地显示这些变化来进行验证。",
+          "acceptance_criteria": "监控系统能在1秒内反映冷却水温度的变化；",
+          "evidence_citations": "",
+          "_grade": "C"
         },
         {
-          "shall_statement": "冷却水压力信息需接入监控系统进行持续监测。",
-          "measurable_criterion": "每30秒更新一次数据，测量误差不超过±0.02MPa",
-          "applicable_condition": "从启动到停机全程",
-          "verification_method": "利用标准压力源校准后，检查实际接收的压力值是否在允许范围内",
-          "acceptance_criteria": "1. 压力读数准确无误；\\n",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "冷却水压力信息需要接入到监控系统中进行持续监测。",
+          "measurable_criterion": "每隔两秒钟刷新一次压力值",
+          "applicable_condition": "当船舶发动机运转时",
+          "verification_method": "利用压力调节设备调整冷却系统的压力水平，同时观察监控界面是否有相应变化来完成测试。",
+          "acceptance_criteria": "监控系统应在2秒内反映出任何的压力变动；",
+          "evidence_citations": "",
+          "_grade": "C"
         },
         {
-          "shall_statement": "液位传感器提供的冷却水容器内液位高度需要连接到监控系统。",
-          "measurable_criterion": "每隔10分钟报告一次，分辨率达到1毫米",
-          "applicable_condition": "任何时间，特别是加水或排水操作时",
-          "verification_method": "调整已知量的液体加入或排出，并观察监控系统的响应",
-          "acceptance_criteria": "1. 液位变化能够及时反映在监控界面上；\\n",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "冷却水箱内的液位情况需由监控系统自动跟踪记录。",
+          "measurable_criterion": "液位测量精度达到±5mm, 更新频率不低于30秒一次",
+          "applicable_condition": "无论船舶是在航行、停靠还是维修过程中",
+          "verification_method": "向冷却水箱添加或抽取一定量的水，随后确认监控平台上显示出正确的液位高度及变化趋势。",
+          "acceptance_criteria": "监控系统应精确至±5mm展示液位数值；\\",
+          "evidence_citations": "",
+          "_grade": "X"
         },
         {
-          "shall_statement": "泵的状态（开启/关闭）及其健康状况（如转速等）应当被监控系统记录下来。",
-          "measurable_criterion": "状态改变时立即更新，健康参数每5分钟更新一次",
-          "applicable_condition": "泵工作状态下",
-          "verification_method": "手动切换泵的工作状态及调节其工作参数，然后检查监控记录",
-          "acceptance_criteria": "1. 泵状态的变化能够即时显示；\\n",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "泵的工作状态（开启/关闭）也必须纳入监控范围之内。",
+          "measurable_criterion": "状态改变后立即反映到监控界面上，延迟不超过5秒",
+          "applicable_condition": "只要泵处于工作或者待命状态下",
+          "verification_method": "手动控制泵的启停操作，然后查看监控软件上显示的状态是否与实际一致。",
+          "acceptance_criteria": "从泵的实际动作发生到监控系统更新其状态之间的时间差不超过5秒；",
+          "evidence_citations": "",
+          "_grade": "X"
         }
       ]
     },
@@ -852,48 +929,39 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "当供水量低于设定值时，系统应能够发出明确报警。",
-          "measurable_criterion": "供水量<50L/min（具体数值根据实际工程需求确定）",
-          "applicable_condition": "所有运行状态下",
-          "verification_method": "通过模拟减少供水量至临界点，观察是否触发报警",
-          "acceptance_criteria": "报警信号清晰可见/可听；报警信息准确无误",
-          "evidence_citations": "",
+          "shall_statement": "当供水量低于设定阈值时，系统应能够发出报警信号。",
+          "measurable_criterion": "供水量低于设计值的90%时触发报警",
+          "applicable_condition": "任何运行状态下",
+          "verification_method": "通过模拟供水减少至阈值以下的情况进行测试",
+          "acceptance_criteria": "报警信号在预定时间内（如5秒内）正确显示；",
+          "evidence_citations": "[]",
           "_grade": "X"
         },
         {
-          "shall_statement": "当系统检测到冷却水压力低于预设阈值时，必须启动警报机制。",
-          "measurable_criterion": "冷却水压力<0.2MPa（依据具体情况调整）",
-          "applicable_condition": "船舶主机运行期间",
-          "verification_method": "人为降低系统内冷却水的压力水平并监测反应",
-          "acceptance_criteria": "警报及时响起；警报内容正确反映当前状况",
-          "evidence_citations": "",
+          "shall_statement": "当水压低于规定最低工作压力时，系统需要触发报警。",
+          "measurable_criterion": "水压降至额定工作压力的80%时触发",
+          "applicable_condition": "所有操作模式下",
+          "verification_method": "调整系统内的水压到低于安全限值并通过监控来验证响应",
+          "acceptance_criteria": "报警功能应在水压下降至临界点后立即启动；",
+          "evidence_citations": "[]",
           "_grade": "X"
         },
         {
-          "shall_statement": "一旦发现泵出现故障，控制系统需立即向操作员发送警告。",
-          "measurable_criterion": "无法直接测量，但可通过监控泵的工作状态来间接判断",
-          "applicable_condition": "泵处于工作状态时",
-          "verification_method": "模拟泵故障场景，检查是否有相应的警告生成",
-          "acceptance_criteria": "故障发生后立刻收到警告通知；警告信息详尽描述了问题所在",
-          "evidence_citations": "",
+          "shall_statement": "泵发生故障时，系统必须能够检测并发出警报。",
+          "measurable_criterion": "无法确定具体故障类型时需基于传感器数据综合判断",
+          "applicable_condition": "不论泵处于何种状态",
+          "verification_method": "模拟泵的各种可能故障情况以检查系统的反应",
+          "acceptance_criteria": "对于每种预设的故障情景，系统都应当准确地识别并及时报警；",
+          "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "在遇到低供水、低压力或泵故障的情况下，系统应当支持手动切换备用设备。",
-          "measurable_criterion": "切换过程应在1分钟内完成",
-          "applicable_condition": "存在备用泵或其他应急设施时",
-          "verification_method": "模拟上述任意一种情况，并尝试手动切换至备用方案",
-          "acceptance_criteria": "切换过程顺利进行；切换后系统恢复正常运行",
-          "evidence_citations": "",
-          "_grade": "X"
-        },
-        {
-          "shall_statement": "如果条件允许，系统也应具备自动切换功能以应对突发状况。",
-          "measurable_criterion": "自动切换时间不超过30秒",
-          "applicable_condition": "已配置自动切换逻辑且有可用的备用资源",
-          "verification_method": "触发自动切换条件，验证其执行情况",
-          "acceptance_criteria": "自动切换成功实施；之后系统保持稳定运作",
-          "evidence_citations": "",
+          "shall_statement": "在检测到上述任一异常条件时，系统应支持人工或自动切换至备用模式。",
+          "measurable_criterion": "从发现问题到完成切换的时间不超过30秒",
+          "applicable_condition": "存在有效备份机制的情况下",
+          "verification_method": "人为制造异常状况，并观察系统是否能在规定时间内完成切换",
+          "acceptance_criteria": "切换过程平稳无误；",
+          "evidence_citations": "[]",
           "_grade": "X"
         }
       ]
@@ -904,11 +972,30 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "传感器的量程设置应当基于制造商提供的技术规格书或行业标准。",
-          "measurable_criterion": "无法确定，具体值取决于不同类型的传感器及其应用场合",
-          "applicable_condition": "适用于所有新安装及现有船舶主机冷却水系统的传感器配置阶段",
-          "verification_method": "审查传感器的技术文档与实际设定值对比；检查是否有官方认证机构出具的符合性证明文件",
-          "acceptance_criteria": -200,
+          "shall_statement": "传感器量程的选择应当基于制造商提供的技术手册或行业标准。",
+          "measurable_criterion": "无法确定，依赖于具体传感器型号及应用场景",
+          "applicable_condition": "适用于所有新安装的冷却水系统传感器",
+          "verification_method": "审查制造商的技术文档和/或相关行业标准文件",
+          "acceptance_criteria": "1. 所选传感器量程与制造商推荐范围一致。\\",
+          "evidence_citations": "[]",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "报警设定值应根据设备安全运行的要求，并参考设备供应商建议来设置。",
+          "measurable_criterion": "温度过高报警：比正常工作温度高10°C；压力过低报警：低于最小工作压力5%；（示例）",
+          "applicable_condition": "适用于所有冷却水系统的温度、压力等关键参数监测点",
+          "verification_method": "对比设备操作手册中推荐的安全阈值与实际配置的报警值",
+          "acceptance_criteria": "1. 报警设定值符合制造商指导原则。\\",
+          "evidence_citations": "[]",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "在没有特定指导的情况下，报警设定不应随意设定，而需通过风险评估过程确定。",
+          "measurable_criterion": "无法直接量化，但可通过记录的风险评估报告进行验证",
+          "applicable_condition": "当制造商未提供明确指南时，应用于所有需要设置报警的关键参数",
+          "verification_method": "查阅并审核相关的风险评估报告",
+          "acceptance_criteria": "1. 存在正式的风险评估报告支持当前报警设定。\\",
+          "evidence_citations": "[]",
           "_grade": "C"
         }
       ]
@@ -919,22 +1006,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "控制系统中与温度控制阀相关的信号传输延迟不得超过100毫秒。",
-          "measurable_criterion": "信号传输延迟≤100ms",
-          "applicable_condition": "系统正常运行期间",
-          "verification_method": "利用专门的信号监测工具来测量信号从发送到接收的时间差",
-          "acceptance_criteria": "在连续操作1小时的情况下，至少95%的信号传输满足上述要求",
-          "evidence_citations": "shalls",
-          "_grade": "C"
+          "shall_statement": "温度控制阀的响应时间不得超过5秒，以确保能够及时反映实际水温变化。",
+          "measurable_criterion": "响应时间≤5秒",
+          "applicable_condition": "在船舶主机启动后且冷却水系统处于正常运行状态时",
+          "verification_method": "通过模拟不同水温条件下的系统反应，并使用计时器测量从水温变化开始到阀门完全响应所需的时间。",
+          "acceptance_criteria": "1. 在所有测试条件下，阀门的响应时间均不超过5秒。\\",
+          "evidence_citations": "",
+          "_grade": "X"
         },
         {
-          "shall_statement": "温度控制逻辑应当包含一个反馈机制，以确保输出与期望值之间的误差保持在可接受范围内。",
-          "measurable_criterion": "稳态误差小于±2°C",
-          "applicable_condition": "船舶主机稳定运行时",
-          "verification_method": "基于仿真软件建立模型并运行一系列场景测试",
-          "acceptance_criteria": "对于给定的一组预设工况，在每个工况下运行30分钟后，记录的最大稳态误差不超过规定值",
-          "evidence_citations": "shalls",
-          "_grade": "B"
+          "shall_statement": "温度控制逻辑需保证当检测到水温超出设定范围±2°C时立即调整控制阀开度。",
+          "measurable_criterion": "水温偏差≤±2°C时触发调节",
+          "applicable_condition": "当冷却水系统中任意监测点测得的水温与目标温度相差超过±2°C时",
+          "verification_method": "设置不同的水温偏差场景（比如+2°C, -2°C），观察并记录控制逻辑是否能准确识别这些偏差并作出相应调整。",
+          "acceptance_criteria": "1. 控制逻辑能够在水温偏离目标值±2°C内时正确地启动调节机制。\\",
+          "evidence_citations": "",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "系统设计应包括一个冗余传感器用于监测水温，以防止单一传感器故障导致的控制失效。",
+          "measurable_criterion": "至少配备两个独立工作的水温传感器",
+          "applicable_condition": "任何时候，无论是在航行过程中还是停泊期间",
+          "verification_method": "检查系统配置文件或图纸确认是否有双传感器配置，并进行现场验证以确保两套传感器确实可以独立工作。",
+          "acceptance_criteria": "1. 系统配置文档明确显示安装有两个或以上数量的水温传感器。\\",
+          "evidence_citations": "",
+          "_grade": "C"
         }
       ]
     },
@@ -944,40 +1040,40 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水泵的运行状态应能反馈到监控界面。",
-          "measurable_criterion": "监控界面上显示的冷却水泵状态与实际状态一致，响应时间不超过5秒。",
-          "applicable_condition": "冷却水泵处于工作状态时",
-          "verification_method": "通过模拟冷却水泵启动，并在监控界面上观察其状态更新情况。",
-          "acceptance_criteria": "1. 冷却水泵启动后，监控界面应在5秒内显示出运行状态；\\",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "冷却水泵的运行状态应能实时反馈到监控界面。",
+          "measurable_criterion": "响应时间不超过2秒",
+          "applicable_condition": "当冷却水泵处于启动并正常工作时",
+          "verification_method": "通过模拟泵的运行状态变化，观察监控界面上的状态更新情况",
+          "acceptance_criteria": "监控界面上显示的泵运行状态与实际一致；从泵状态变化至监控界面更新的时间不超过2秒。",
+          "evidence_citations": "[]",
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却水泵的停止状态应能反馈到监控界面。",
-          "measurable_criterion": "监控界面上显示的冷却水泵状态与实际状态一致，响应时间不超过5秒。",
-          "applicable_condition": "当操作员或系统命令冷却水泵停止时",
-          "verification_method": "通过模拟冷却水泵停止，并在监控界面上观察其状态更新情况。",
-          "acceptance_criteria": "1. 发出停止命令后，监控界面应在5秒内显示出停止状态；\\",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "冷却水泵的停止状态应能实时反馈到监控界面。",
+          "measurable_criterion": "响应时间不超过2秒",
+          "applicable_condition": "当冷却水泵被手动或自动停止后",
+          "verification_method": "通过执行停机指令，随后检查监控界面上的状态更新情况",
+          "acceptance_criteria": "监控界面上显示的泵停止状态与实际一致；从发出停机指令到监控界面更新的时间不超过2秒。",
+          "evidence_citations": "[]",
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却水泵的故障状态应能反馈到监控界面。",
-          "measurable_criterion": "监控界面上显示的冷却水泵故障信息与实际发生故障的情况一致，响应时间不超过5秒。",
-          "applicable_condition": "当冷却水泵出现机械或电气故障时",
-          "verification_method": "通过模拟故障（如断电、过载等），并在监控界面上检查是否正确显示故障警告。",
-          "acceptance_criteria": "1. 故障发生后，监控界面应在5秒内显示出故障警告；\\",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "冷却水泵发生故障时，其状态应立即反馈到监控界面。",
+          "measurable_criterion": "响应时间不超过1秒",
+          "applicable_condition": "一旦检测到冷却水泵出现任何故障（如过热、压力异常等）",
+          "verification_method": "人为设置故障条件（例如短路），然后监测监控系统的反应速度和准确性",
+          "acceptance_criteria": "监控界面上准确反映出故障信息；从故障发生到系统报警的时间间隔不超过1秒。",
+          "evidence_citations": "[]",
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却水泵的备用状态应能反馈到监控界面。",
-          "measurable_criterion": "监控界面上显示的冷却水泵为备用状态的信息准确无误，响应时间不超过5秒。",
-          "applicable_condition": "当冷却水泵被设定为备用设备时",
-          "verification_method": "将冷却水泵设置为备用模式，并在监控界面上验证其状态显示。",
-          "acceptance_criteria": "1. 设置为备用后，监控界面应在5秒内显示出备用状态；\\",
-          "evidence_citations": "[ ]",
-          "_grade": "B"
+          "shall_statement": "备用冷却水泵的状态也应当能够显示在监控界面上。",
+          "measurable_criterion": "响应时间不超过2秒",
+          "applicable_condition": "任何时候，特别是主泵切换到备用泵期间",
+          "verification_method": "切换主泵至备用泵，并验证监控界面是否正确显示了新的泵状态",
+          "acceptance_criteria": "监控界面上明确标识出当前工作的泵是备用泵；从泵切换完成到监控界面更新的时间不超过2秒。",
+          "evidence_citations": "[]",
+          "_grade": "X"
         }
       ]
     },
@@ -987,44 +1083,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "系统应在冷却水温度超过设定阈值时立即触发报警。",
-          "measurable_criterion": "冷却水温度达到或超过95°C",
-          "applicable_condition": "任何运行状态下",
-          "verification_method": "通过模拟不同温度条件下的系统响应来验证",
-          "acceptance_criteria": "报警功能在冷却水温度达到95°C±1°C时激活；\\",
-          "报警信号应清晰且易于识别；\\": "+ ",
+          "shall_statement": "冷却水系统应当能够监控并报告低于最低工作压力的情况。",
+          "measurable_criterion": "如果系统内任意一点的压力降至低于0.2MPa，则应在5秒内发出警告信号。",
+          "applicable_condition": "适用于任何船舶操作模式下，包括停泊状态",
+          "verification_method": "利用减压阀调整系统内的压力水平，观察当压力下降至规定值以下时，系统能否正确响应。",
+          "acceptance_criteria": "压力低于0.2MPa时准确报警；无误报情况发生。",
           "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "X"
         },
         {
-          "shall_statement": "系统应在检测到冷却水压力低于安全操作水平时触发报警。",
-          "measurable_criterion": "冷却水压力降至0.3MPa以下",
-          "applicable_condition": "所有工况下，特别是在启动和停止过程中",
-          "verification_method": "利用压力传感器模拟低压情况，并观察系统反应",
-          "acceptance_criteria": "当冷却水压力下降至0.3MPa±0.02MPa时，警报应被触发；\\",
-          "报警信息需明确指出问题所在；\\": "+ ",
+          "shall_statement": "对于冷却水液位过低的问题，系统需要具备即时通知功能。",
+          "measurable_criterion": "当储水箱中的冷却水液面低于其容量的20%时，需立即启动警报机制。",
+          "applicable_condition": "不论是在航行中还是靠港期间",
+          "verification_method": "人为降低储水箱内液体水平至指定百分比之下，验证报警系统的敏感度和准确性。",
+          "acceptance_criteria": "液位低于20%时快速且可靠地激活报警；不因轻微波动而误触。",
           "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "X"
         },
         {
-          "shall_statement": "当冷却水液位低于最低安全标准时，系统应当即刻发出警告。",
-          "measurable_criterion": "冷却水箱内液位低于设计最低液位线20厘米",
-          "applicable_condition": "所有运行状态，特别关注长时间连续运行后的情况",
-          "verification_method": "调整实际或模拟的冷却水液位以测试系统的敏感度",
-          "acceptance_criteria": "液位低于设计最低液位线20厘米±2厘米时，警报应该响起；\\",
-          "报警指示需要清楚标识当前的问题；\\": "+ ",
+          "shall_statement": "系统还需设计成能够在流量不足以维持正常运作时向操作人员示警。",
+          "measurable_criterion": "若冷却回路中的水流速连续30秒低于标准流速（例如：10L/min）则应产生警示。",
+          "applicable_condition": "特别关注于加速、减速或者长时间全速前进等高需求场景",
+          "verification_method": "采用流量计测量实际流速，同时改变阀门开度以模拟低流量状况，检查警报响应。",
+          "acceptance_criteria": "当流量持续低于10L/min达30秒后正确显示警告；系统稳定性良好，不会频繁出现假阳性结果。",
           "evidence_citations": "[]",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "若冷却水流速不足以维持主机正常工作，则系统必须发出警报。",
-          "measurable_criterion": "冷却水流速小于额定流速的80%",
-          "applicable_condition": "船舶航行期间及停泊时发动机运转状态下",
-          "verification_method": "通过改变水泵转速或者阀门开度来模拟流量变化，检查系统响应",
-          "acceptance_criteria": "当实际流速低于额定流速的80%±5%时，系统应自动报警；\\",
-          "报警信息中应包含具体的流速数值；\\": "+ ",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "X"
         }
       ]
     },
@@ -1034,31 +1117,12 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却器在运行过程中若存在泄漏风险，则系统应具备检测该泄漏的功能。",
-          "measurable_criterion": "泄漏检测响应时间不超过5秒",
-          "applicable_condition": "冷却器处于任何工作状态时",
-          "verification_method": "通过模拟泄漏情况测试系统的反应速度与准确性",
-          "acceptance_criteria": "1. 系统能在泄漏发生后5秒内准确识别并发出警报；\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "一旦检测到冷却器泄漏，系统应当能够自动触发报警机制。",
-          "measurable_criterion": "报警信号应在检测到泄漏后的3秒内被激活",
-          "applicable_condition": "冷却器出现实际或潜在的泄漏情况",
-          "verification_method": "使用模拟泄漏事件来检查报警功能的有效性",
-          "acceptance_criteria": "1. 报警信号（声音/视觉）需在泄漏检测后3秒内启动；\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "报警信息必须能够传达至有人值守的位置，确保操作人员可以及时接收到通知。",
-          "measurable_criterion": "从触发报警到有人值守位置接收信息的时间间隔不超过10秒",
-          "applicable_condition": "所有情况下，尤其是夜间或低光照条件下",
-          "verification_method": "实地测试报警信息从生成到送达的速度",
-          "acceptance_criteria": "1. 操作员能够在报警触发后10秒内在有人值守区域听到声音警报或看到视觉警告；\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "shall_statement": "冷却器应配备泄漏检测装置。",
+          "measurable_criterion": "每个冷却器至少安装一个泄漏传感器，其响应时间不超过30秒。",
+          "applicable_condition": "所有类型的船舶主机冷却系统，在正常运行及停机状态下均适用。",
+          "verification_method": "通过模拟泄漏条件测试传感器反应速度和准确性；检查设备清单确认是否已安装指定型号的泄漏检测装置。",
+          "acceptance_criteria": -2,
+          "_grade": "X"
         }
       ]
     },
@@ -1068,40 +1132,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "系统应区分关键报警与保护动作，并明确标识哪些是提醒信息，哪些会直接影响主机运行。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "所有工况下均需满足",
-          "verification_method": "通过查阅设计文档及系统界面确认",
-          "acceptance_criteria": "1. 设计文档中明确列出所有关键报警及其影响级别。\\",
+          "shall_statement": "系统应能够区分关键报警与非关键报警，并明确标识。",
+          "measurable_criterion": "所有报警信息需在人机界面(HMI)上按照紧急程度以不同颜色或图标展示，其中红色表示立即停机类报警，黄色表示需要关注但允许继续运行的报警。",
+          "applicable_condition": "当船舶主机冷却水系统检测到任何异常情况时",
+          "verification_method": "通过模拟故障注入测试HMI显示效果及响应时间",
+          "acceptance_criteria": "1. 所有报警信号应在5秒内出现在HMI上。\\",
           "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "对于仅作为提醒的关键报警，不应自动触发任何影响主机正常运行的操作。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "当检测到属于提醒级别的报警时",
-          "verification_method": "模拟触发不同级别的报警信号，观察系统响应行为",
-          "acceptance_criteria": "1. 模拟提醒级别的报警后，主机能够继续正常运行。\\",
+          "shall_statement": "对于影响主机正常运行的关键报警，系统应当自动执行相应的保护动作。",
+          "measurable_criterion": "一旦触发如高温警报（温度超过90°C）等严重故障，必须在2秒内切断燃料供应并停止发动机运转。",
+          "applicable_condition": "当监测到可能对主机造成永久性损害的情况时",
+          "verification_method": "采用实际操作测试或高级仿真软件进行模拟实验来验证反应时间和准确性",
+          "acceptance_criteria": "1. 从报警发生到采取行动的时间间隔不超过2秒。\\n",
           "evidence_citations": "[]",
-          "_grade": "C"
+          "_grade": "X"
         },
         {
-          "shall_statement": "针对那些会影响主机运行的保护动作，必须在执行前给出至少30秒的人工干预窗口期。",
-          "measurable_criterion": "30秒",
-          "applicable_condition": "即将执行可能导致主机停机或其他重大影响的保护措施时",
-          "verification_method": "通过模拟故障场景来验证保护动作启动前的时间间隔",
-          "acceptance_criteria": "1. 从保护动作被触发到实际执行之间存在不少于30秒的时间间隔；\\",
+          "shall_statement": "提醒性质的报警不应直接导致主机停机，而应该给予操作员足够的时间做出判断和响应。",
+          "measurable_criterion": "对于轻微警告（例如冷却水温达到85°C），系统仅发出视觉和听觉提示，同时记录事件，不立即执行任何自动控制措施。",
+          "applicable_condition": "遇到不会立即威胁设备安全但需要注意的问题时",
+          "verification_method": "通过设置特定参数观察系统的行为是否符合预期",
+          "acceptance_criteria": "1. 操作员至少拥有30分钟的时间窗口来处理问题，期间系统不会自动停机。\\n",
           "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "所有报警和保护动作的相关信息（包括但不限于发生时间、类型、处理建议等）都应记录并可查询。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "每当有新的报警或保护动作发生时",
-          "verification_method": "检查历史日志功能是否完整记录了所需信息",
-          "acceptance_criteria": "1. 系统能够准确记录每条报警/保护动作的所有相关信息；\\",
-          "evidence_citations": "[]",
-          "_grade": "C"
+          "_grade": "X"
         }
       ]
     },
@@ -1111,12 +1166,13 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "当检测到传感器输出值超出预设的正常范围时，系统应当能够发出警报提示用户。",
-          "measurable_criterion": "传感器输出值超过其标定的最大或最小值±10%时触发警报",
-          "applicable_condition": "所有运行状态下，包括但不限于启动、全速航行、停泊等",
-          "verification_method": "通过模拟不同异常信号输入至传感器，并观察系统响应来验证",
-          "acceptance_criteria": "evidence_citations",
-          "_grade": "X"
+          "shall_statement": "系统应能够识别传感器异常，并且在检测到异常时，不应将其状态视为正常。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "所有运行状态下，特别是当传感器输出值超出预设的工作范围或表现出不正常的波动模式时。",
+          "verification_method": "通过模拟不同类型的传感器故障（如信号丢失、固定输出错误值等）来测试系统的反应。检查系统是否能准确地报告这些故障情况而不误认为是正常操作。",
+          "acceptance_criteria": -0.1,
+          "上限": 102.5,
+          "_grade": "C"
         }
       ]
     },
@@ -1126,24 +1182,13 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "报警设定值应根据实际运行条件进行合理配置，以确保既不过早也不过晚触发。",
-          "measurable_criterion": "无法确定（具体数值需基于船舶主机型号及工作环境确定）",
-          "applicable_condition": "所有运行条件下",
-          "verification_method": "通过模拟不同工况下的系统响应时间来测试",
-          "acceptance_criteria": "在标准负载下，从异常情况发生到报警被触发的时间不超过X秒；\\",
-          "在低负载或空载情况下，同样时间内不出现误报；\\": "当冷却水温度超过安全阈值时，应在Y秒内发出警报。",
-          "evidence_citations": "[]",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "报警延时设置应当考虑到系统的稳定性和可靠性，避免因短暂波动而引起的误报警。",
-          "measurable_criterion": "报警延时期间不应少于Z秒且不多于W秒（具体数值需根据系统反应时间和稳定性要求确定）",
-          "applicable_condition": "任何可能引起冷却水参数波动的情况",
-          "verification_method": "利用历史数据和仿真软件模拟波动情况下的系统表现",
-          "acceptance_criteria": "在给定的延时期间内，即使存在瞬时超出正常范围的波动，系统也不会触发报警；\\",
-          "一旦真实故障发生，在延时结束后立即准确地触发报警；\\": "能够区分真正需要关注的持续性问题与临时性波动。",
-          "evidence_citations": "[]",
-          "_grade": "C"
+          "shall_statement": "报警延时功能需根据不同的故障类型配置，以减少不必要的干扰同时保证安全。",
+          "measurable_criterion": "轻微故障（如传感器读数波动）报警延时为1-3分钟；严重故障（如冷却液泄漏）无延时直接报警。",
+          "applicable_condition": "适用于所有类型的故障监测",
+          "verification_method": "基于历史故障案例数据库和专家建议设计实验，验证各种情况下延时设置的有效性。",
+          "acceptance_criteria": "轻微故障下，系统能在指定延时期限后准确发出警报；",
+          "面对严重故障，系统能即时响应并启动紧急程序。": "evidence_citations",
+          "_grade": "X"
         }
       ]
     },
@@ -1153,24 +1198,24 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "当海水冷却系统采用主循环泵配置时，系统应具备检测低供水情况的能力，并在检测到低供水时发出警报。",
-          "measurable_criterion": "警报应在水流量低于正常操作所需流量的80%时触发。具体阈值需根据实际系统设计参数确定。",
-          "applicable_condition": "此需求适用于所有安装有主循环泵配置的海水冷却系统，在任何运行状态下均有效。",
-          "verification_method": "通过模拟或实际测试来验证系统的响应时间及准确性。测试中，人为降低水流速度至设定阈值以下，观察是否能够正确触发报警机制。",
-          "acceptance_criteria": -5.0,
-          "单位为秒；警报信息需清晰、易于理解。": ")",
-          "evidence_citations": "",
+          "shall_statement": "海水冷却系统在检测到主循环泵供水量低于预设阈值时，应触发报警。",
+          "measurable_criterion": "当主循环泵的供水流量降至额定流量的80%以下时",
+          "applicable_condition": "任何时候主循环泵处于运行状态且船舶未停泊于安全港内",
+          "verification_method": "通过模拟低流量情况下的实际测试与软件仿真结合的方式进行验证",
+          "acceptance_criteria": "报警信号必须在供水流量降至设定阈值后10秒内发出；",
+          "报警信息需准确显示当前泵的具体位置及编号；": "系统能够在恢复正常流速后的30秒内自动解除报警状态。",
+          "evidence_citations": "[]",
           "_grade": "X"
         },
         {
-          "shall_statement": "报警功能应当支持远程监控与本地显示两种模式，确保无论是在船上还是岸上都能及时收到警报信息。",
-          "measurable_criterion": "无法确定具体的量化指标，但要求无论是哪种模式下接收到的信息都必须准确无误。",
-          "applicable_condition": "适用于所有配备了远程监控能力的船只及其配套使用的海水冷却系统。",
-          "verification_method": "进行实地测试，检查不同位置（如驾驶舱、轮机控制室等）和不同接收终端（如手机APP、船载显示器）能否同时接收到相同且正确的警报。",
-          "acceptance_criteria": -10.0,
-          "对于远程设备而言，则是自发生异常后至用户界面显示警报的时间。": ")",
-          "evidence_citations": "",
-          "_grade": "C"
+          "shall_statement": "一旦报警被触发，操作员应能够迅速启动备用泵或切换至备用泵以维持正常运行。",
+          "measurable_criterion": "从报警发生到完成切换的时间不得超过2分钟",
+          "applicable_condition": "任何情况下只要报警被激活并且存在可用的备用泵",
+          "verification_method": "通过现场演练和应急响应时间记录来验证",
+          "acceptance_criteria": "确保备用泵可以无故障地启动并接管工作负载；",
+          "整个过程中不应出现对主机的非计划性损害；": "报警解除后，原故障泵应能手动恢复服务或确认其需要维修。",
+          "evidence_citations": "[]",
+          "_grade": "X"
         }
       ]
     },
@@ -1180,40 +1225,40 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水泵的配置应当依据相关国家或行业标准进行设计，并且在图纸和资料中明确指出所参考的具体标准。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于所有类型的船舶主机冷却水系统的设计阶段。",
-          "verification_method": "通过审查设计文件中的引用标准来确认。",
-          "acceptance_criteria": "1. 设计文档中清晰地列出了使用的国家标准或行业标准。2. 标准版本是最新的或者符合项目要求。",
-          "evidence_citations": "",
+          "shall_statement": "冷却水泵的设计参数（包括但不限于流量、扬程）应当在图纸和相关文档中明确标注，并且这些参数的选择依据需符合国际或国家标准。",
+          "measurable_criterion": "泵的流量≥XX m³/h, 扬程≥XX 米水柱，具体数值根据船舶设计需求确定",
+          "applicable_condition": "适用于所有新造船舶及改造项目中的主机冷却系统",
+          "verification_method": "通过审查技术规格书与设计图纸来验证",
+          "acceptance_criteria": "1. 图纸和技术文件中清晰指明了泵的具体型号及其性能参数。\" +\\",
+          "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "冷却器的选择与安装必须遵循适用的技术规范，并且这些信息需要反映在施工图和技术说明书中。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于所有新装或改装冷却器的情况。",
-          "verification_method": "检查施工图和技术说明书是否包含所需的信息。",
-          "acceptance_criteria": "1. 施工图和技术说明书详细描述了冷却器型号及性能参数。2. 明确标注了选择该设备所依据的技术规范名称和编号。",
-          "evidence_citations": "",
+          "shall_statement": "冷却器的热交换效率必须达到指定要求，并且其选型基础需要在设计文件中详细说明。",
+          "measurable_criterion": "热交换效率不低于XX%，实际值取决于系统需求分析结果",
+          "applicable_condition": "针对采用直接或间接冷却方式的所有主机冷却系统",
+          "verification_method": "基于理论计算模型对比测试数据进行校核",
+          "acceptance_criteria": "1. 设计文档中提供了完整的热交换器选择依据。\\",
+          "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "管路布置需按照指定的工程实践指南执行，确保安全可靠的同时优化空间利用；同时，相关的指导原则应在技术文档中有所体现。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于整个船舶主机冷却水系统的管路设计。",
-          "verification_method": "对比实际布局与推荐的最佳实践指南。",
-          "acceptance_criteria": "1. 管道走向合理，避免不必要的弯曲以减少压力损失。2. 文档中指明了采用何种工程实践作为设计基础。",
-          "evidence_citations": "",
-          "_grade": "C"
+          "shall_statement": "管路布置图需完整体现整个冷却回路，并且对于材料选用、尺寸规格等关键信息应有明确标识。",
+          "measurable_criterion": "管道内径满足流速≤2m/s的要求；材质耐腐蚀性良好",
+          "applicable_condition": "应用于所有类型的船用发动机冷却水循环系统",
+          "verification_method": "通过现场检查安装情况以及查阅施工图纸",
+          "acceptance_criteria": "1. 管道布局合理，无死区。\\",
+          "evidence_citations": "[]",
+          "_grade": "X"
         },
         {
-          "shall_statement": "报警保护机制应根据最新的安全标准设置，其触发条件、响应措施等关键信息须在操作手册中详尽说明。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "针对具有潜在危险性的任何冷却水系统组件。",
-          "verification_method": "审核操作手册内容是否涵盖所有必要的安全信息。",
-          "acceptance_criteria": "1. 操作手册提供了完整的报警列表及其对应的动作建议。2. 所有报警功能都经过测试并证明有效。",
-          "evidence_citations": "",
-          "_grade": "C"
+          "shall_statement": "报警保护装置应能够准确监测到异常状态并及时发出警报，同时该功能的实现原理应在手册中给出。",
+          "measurable_criterion": "响应时间<5秒；误报率<0.1%",
+          "applicable_condition": "适用于具有自动监控系统的主机冷却装置",
+          "verification_method": "利用模拟故障条件下的实测数据检验",
+          "acceptance_criteria": "1. 在给定条件下，报警系统能有效工作。\\",
+          "evidence_citations": "[]",
+          "_grade": "X"
         }
       ]
     },
@@ -1223,13 +1268,22 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "海水侧直接冷却系统中的滤器应当设计成可以在运行过程中进行清洗，而不会中断对发动机的冷却水供应。",
-          "measurable_criterion": "无法确定具体的量化指标，但需确保在执行清洁操作期间，至少维持正常工作所需的最小流量。",
-          "applicable_condition": "适用于所有采用海水作为直接冷却介质的情况；当需要对滤器进行维护或清洗时。",
-          "verification_method": "通过模拟实际工况下的实验测试来验证，在清洗过程中监测冷却水系统的流量变化和发动机的工作状态。",
-          "acceptance_criteria": -500,
-          "description": "在清洗滤器的过程中，冷却水流速不得低于发动机制造商推荐的最低安全流速。",
-          "_grade": "C"
+          "shall_statement": "海水侧直接冷却系统中，过滤器的设计应允许在运行过程中进行清洗，同时不影响系统的冷却性能。",
+          "measurable_criterion": "无法确定具体值，但需保证清洗过程中的冷却效率不低于正常操作时的90%。",
+          "applicable_condition": "当船舶处于航行状态且需要对过滤器进行清洗时",
+          "verification_method": "通过模拟实际工作环境下的清洗测试，并监控冷却系统的温度变化来验证",
+          "acceptance_criteria": "1. 清洗期间，冷却水出口温度不超过设定的安全上限。\\",
+          "evidence_citations": "",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "过滤器应当设计有旁通功能，在主过滤单元被隔离进行维护或清洁时，能够自动切换至备用路径继续为冷却系统提供服务。",
+          "measurable_criterion": "切换时间不得超过5秒，确保连续供水不中断。",
+          "applicable_condition": "任何情况下，特别是当检测到过滤器堵塞或者计划内维护时",
+          "verification_method": "执行多次快速切换测试，记录从命令发出到完全切换完成的时间间隔",
+          "acceptance_criteria": "1. 切换过程中无明显压力波动。\\",
+          "evidence_citations": "",
+          "_grade": "X"
         }
       ]
     },
@@ -1239,27 +1293,39 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统中的泄漏检测装置应当能够在发生泄漏时准确识别并触发警报。",
-          "measurable_criterion": "在模拟泄漏测试中，泄漏检测装置应在5秒内响应；对于直径不小于2mm的孔洞或裂缝，能够可靠地检测到液体流失。",
-          "applicable_condition": "所有工作温度范围内（-10°C至80°C）以及船舶正常航行和停泊状态下",
-          "verification_method": "通过实验室条件下进行的压力降测试及实际安装后的功能测试来验证",
-          "acceptance_criteria": "证据引用列表为空",
+          "shall_statement": "冷却水系统中应当安装泄漏检测装置。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "所有运行状态及停机维护期间",
+          "verification_method": "通过检查泄漏检测器的安装位置和型号来确认其符合设计要求。",
+          "acceptance_criteria": "1. 泄漏检测装置已正确安装在指定位置。\\",
+          "evidence_citations": "[ ]",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "当检测到冷却水系统出现泄漏时，应立即触发声光报警。",
+          "measurable_criterion": "从检测到泄漏到报警激活的时间不超过5秒",
+          "applicable_condition": "任何时候，只要系统处于工作状态或待机状态",
+          "verification_method": "模拟泄漏情况并记录从泄漏发生至报警启动的时间间隔。",
+          "acceptance_criteria": "1. 报警响应时间不超过5秒。\\",
+          "evidence_citations": "[ ]",
           "_grade": "X"
         },
         {
-          "shall_statement": "一旦检测到冷却水系统的任何部分出现泄漏情况，系统应立即激活声光报警机制。",
-          "measurable_criterion": "报警信号需在泄漏被检测到后3秒内启动；声音警报音量不低于80分贝，在距离设备1米处测量；灯光警告需明显可见于白天环境。",
-          "applicable_condition": "不论是在船舶航行过程中还是静止状态时",
-          "verification_method": "利用模拟泄漏场景测试报警反应时间及效果，并通过现场试听确认声音强度是否达标",
-          "acceptance_criteria": "证据引用列表为空",
-          "_grade": "X"
+          "shall_statement": "声光报警设备应当满足船级社规定的最低可见度和听力范围要求。",
+          "measurable_criterion": "根据具体船级社标准（如CCS、DNV等），确保声音强度不低于85dB(A)且灯光亮度不低于2cd。",
+          "applicable_condition": "所有环境条件下，包括但不限于高噪声环境和低光照条件",
+          "verification_method": "使用专业仪器测试报警器的声音强度和光线亮度，并与规定标准进行对比。",
+          "acceptance_criteria": "1. 声音强度不小于85dB(A)；\\",
+          "evidence_citations": "[ ]",
+          "_grade": "C"
         },
         {
-          "shall_statement": "冷却水系统的设计应包括至少一种冗余措施以确保即使在主泄漏检测系统失效的情况下也能及时发现并报告泄漏。",
-          "measurable_criterion": "备用泄漏检测方案必须独立于主要系统运行，并且其性能标准不应低于主系统；具体参数如响应时间和准确性与主系统相同。",
-          "applicable_condition": "适用于所有情况下，特别是当主要泄漏检测系统处于维护期间或者故障时",
-          "verification_method": "审查设计方案并通过物理模型或仿真软件模拟不同故障模式下的表现",
-          "acceptance_criteria": "证据引用列表为空",
+          "shall_statement": "冷却水系统的泄漏检测及报警功能需定期进行检查与维护。",
+          "measurable_criterion": "每季度至少执行一次全面的功能性测试",
+          "applicable_condition": "按照制造商推荐的维护周期执行",
+          "verification_method": "查阅维护日志并观察实际操作过程以验证是否按规定进行了测试。",
+          "acceptance_criteria": "1. 维护记录显示每个季度至少有一次完整的功能性测试被执行。\\",
+          "evidence_citations": "[ ]",
           "_grade": "C"
         }
       ]
@@ -1270,11 +1336,30 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统的压力试验、冲洗和检查记录应当完整保存。",
-          "measurable_criterion": "每项活动至少有一份书面或电子形式的记录文件，且记录中应包含操作日期、执行人员签名、测试参数及结果等关键信息。",
-          "applicable_condition": "在完成冷却水系统安装后，以及任何对系统进行重大修改之后。",
-          "verification_method": "通过审查所有相关文档来确认记录的存在性和完整性。",
-          "acceptance_criteria": "1. 存在针对每次压力试验、冲洗和检查的独立记录。\\",
+          "shall_statement": "冷却水系统必须完成压力试验，并且记录完整。",
+          "measurable_criterion": "试验后，系统无泄漏，压力降不超过5%的测试初始值。",
+          "applicable_condition": "所有新安装或经过重大维修后的冷却水系统",
+          "verification_method": "通过现场观察和检查试验报告来验证",
+          "acceptance_criteria": "1. 压力试验期间没有发现任何泄漏。\\",
+          "evidence_citations": "[]",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "冷却水系统必须进行冲洗，并保留完整的冲洗记录。",
+          "measurable_criterion": "冲洗后水质达到清洁标准，浊度<5NTU。",
+          "applicable_condition": "所有新安装或经过维护的冷却水系统",
+          "verification_method": "通过分析冲洗前后水质样本及查阅冲洗报告验证",
+          "acceptance_criteria": "1. 冲洗后取样检测结果符合规定的清洁标准。\\",
+          "evidence_citations": "[]",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统的检查过程及其结果需要形成书面文件。",
+          "measurable_criterion": "每项检查项目都有明确的结果记录，无遗漏。",
+          "applicable_condition": "每次定期检查或特殊情况下对冷却水系统的检查",
+          "verification_method": "审核检查报告和相关文档",
+          "acceptance_criteria": "1. 检查报告中包含了所有的检查项目。\\n2. 对于每个检查点都提供了具体的状态描述。\\n3. 所有异常情况均有详细说明及处理建议。",
+          "evidence_citations": "[]",
           "_grade": "C"
         }
       ]
@@ -1285,12 +1370,31 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水泵在调试时应当能够达到设计规定的压力值。",
-          "measurable_criterion": "压力值不低于0.5MPa（具体数值依据设计文件调整）",
-          "applicable_condition": "系统处于满负荷运行状态；环境温度25°C ±5°C；海水温度15°C ±3°C。",
-          "verification_method": "通过安装于泵出口的压力传感器直接读取数据，并记录连续运行1小时的数据变化情况。",
-          "acceptance_criteria": "1. 泵启动后，压力应在10分钟内达到设定值。\\",
-          "_grade": "X"
+          "shall_statement": "冷却水泵在调试过程中应能够达到设计要求的压力值。",
+          "measurable_criterion": "压力值不低于X MPa（注：X需根据具体项目的设计参数确定）",
+          "applicable_condition": "泵处于正常工作状态，且系统已充满水并排尽空气",
+          "verification_method": "通过安装于泵出口处的压力表直接读取压力值；或使用便携式压力测试设备进行测量",
+          "acceptance_criteria": "实际测得的压力值与设计值之间的偏差不超过±Y%（Y需基于行业标准或合同约定来设定）",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水泵必须能够在调试期间提供满足系统需求的流量。",
+          "measurable_criterion": "流量不少于Z立方米/小时（Z依据系统设计文档确定）",
+          "applicable_condition": "泵满负荷运行，管路中无堵塞情况，所有阀门均打开至指定位置",
+          "verification_method": "采用流量计监测泵出口流量；或者利用超声波流量检测仪等非侵入式工具测量",
+          "acceptance_criteria": "连续运行T分钟内平均流量达到规定值，波动范围控制在±W%以内（T、W由相关规范定义）",
+          "evidence_citations": "",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "当主用冷却水泵发生故障时，备用泵应当自动切换投入使用，并确保系统持续稳定运行。",
+          "measurable_criterion": "切换时间小于S秒（S根据安全操作手册及紧急响应时间需求而定）",
+          "applicable_condition": "模拟主泵故障情景，例如切断电源或人为制造机械故障",
+          "verification_method": "观察控制系统反应速度及准确性；检查是否有报警提示；记录从故障到恢复正常供水的时间间隔",
+          "acceptance_criteria": "切换过程平滑无缝，不影响系统的正常功能；备用泵启动后立即恢复到故障前的工作水平",
+          "evidence_citations": "",
+          "_grade": "C"
         }
       ]
     },
@@ -1300,39 +1404,39 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却系统在首次安装或大修后，应当按照制造商提供的指导手册执行冲洗程序。",
+          "shall_statement": "冷却系统冲洗过程应当遵循明确的操作步骤。",
           "measurable_criterion": "无法确定",
-          "applicable_condition": "首次安装或完成重大维修后的冷却系统",
-          "verification_method": "审查冲洗过程记录及检查冲洗报告",
-          "acceptance_criteria": "冲洗过程符合制造商手册规定的所有步骤；",
-          "evidence_citations": 0,
+          "applicable_condition": "在进行冷却系统的首次安装、维护或修理后",
+          "verification_method": "检查操作手册和实际操作流程的一致性",
+          "acceptance_criteria": "操作手册中清晰地列出了每个步骤；现场观察到的冲洗程序与手册描述一致",
+          "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "冲洗过程中使用的水流量不应低于每分钟2立方米。",
-          "measurable_criterion": "≥2 m³/min",
-          "applicable_condition": "所有冲洗操作期间",
-          "verification_method": "使用流量计监测并记录实际水流速",
-          "acceptance_criteria": "整个冲洗过程中，实际测量到的水流量持续保持在至少2m³/min以上；",
-          "evidence_citations": 0,
+          "shall_statement": "冷却系统冲洗时，应控制冲洗流速不低于1.5立方米/小时且不高于3立方米/小时。",
+          "measurable_criterion": "1.5立方米/小时 ≤ 冲洗流速 ≤ 3立方米/小时",
+          "applicable_condition": "执行冷却系统内部清洁期间",
+          "verification_method": "使用流量计测量冲洗水的实际流速",
+          "acceptance_criteria": "实测冲洗流速符合指定范围",
+          "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "为确保清洁效果，每次冲洗时间不得少于30分钟。",
-          "measurable_criterion": "≥30分钟",
-          "applicable_condition": "每次冲洗操作",
-          "verification_method": "通过计时器监控冲洗时长，并由工作人员记录",
-          "acceptance_criteria": "每个冲洗阶段的实际持续时间不少于30分钟；",
-          "evidence_citations": 0,
-          "_grade": "X"
+          "shall_statement": "冷却系统冲洗时间不得少于2小时。",
+          "measurable_criterion": "冲洗持续时间 ≥ 2小时",
+          "applicable_condition": "执行冷却系统内部清洁期间",
+          "verification_method": "记录从开始到结束的时间",
+          "acceptance_criteria": "总冲洗时间达到或超过2小时",
+          "evidence_citations": "",
+          "_grade": "C"
         },
         {
-          "shall_statement": "冲洗完成后，需对排出的水质进行取样分析，以确认无明显杂质残留。",
-          "measurable_criterion": "无可见颗粒物；浊度<5 NTU",
-          "applicable_condition": "冲洗结束阶段",
-          "verification_method": "实验室测试排水样本的浊度和显微镜下观察是否存在固体颗粒",
-          "acceptance_criteria": "排放水样的浊度低于5 NTU且显微镜下未发现任何大于50μm的固体颗粒；",
-          "evidence_citations": 0,
+          "shall_statement": "完成冲洗后的水质需满足浊度低于10 NTU（Nephelometric Turbidity Units）的标准。",
+          "measurable_criterion": "冲洗后水质浊度 < 10 NTU",
+          "applicable_condition": "冲洗完成后对水质进行检测时",
+          "verification_method": "利用浊度仪测试冲洗后排出的水样",
+          "acceptance_criteria": "所测得的水样浊度值小于10 NTU",
+          "evidence_citations": "",
           "_grade": "C"
         }
       ]
@@ -1343,11 +1447,13 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "温控阀的实际动作情况应当在试车过程中被确认，而不仅仅依据采购文件上的设定。",
-          "measurable_criterion": "无法确定具体量化指标，但需确保试车过程全面覆盖温控阀工作范围内的所有关键点。",
-          "applicable_condition": "适用于船舶主机冷却水系统的调试阶段，在所有相关设备安装完毕且系统初步检查合格后进行。",
-          "verification_method": "通过实际运行测试来验证。测试时应模拟不同的温度条件（包括但不限于最低工作温度、额定工作温度和最高工作温度），并记录温控阀的动作响应时间及准确性。",
-          "acceptance_criteria": "1. 温控阀能够根据预设的温度阈值准确地开启或关闭；\\",
+          "shall_statement": "温控阀的实际动作情况应在试车过程中进行确认。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "船舶主机冷却水系统处于试车状态",
+          "verification_method": "通过观察和记录温控阀在不同温度条件下的实际响应来验证其性能是否符合设计要求",
+          "acceptance_criteria": "温控阀能够根据预设的温度范围自动调节开度；\\",
+          ",温控阀的动作无明显延迟或卡滞现象；\\": ",温控阀在达到设定温度时能稳定工作，误差不超过±2°C。",
+          "evidence_citations": "[]",
           "_grade": "C"
         }
       ]
@@ -1358,29 +1464,38 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "膨胀水箱在试车前后的液位必须被检查，以确保其处于正常工作范围内。",
-          "measurable_criterion": "膨胀水箱的液位应在制造商指定的工作范围内，例如：不低于最低标记线且不高于最高标记线。具体数值需参照设备手册。",
-          "applicable_condition": "适用于所有类型的船舶主机冷却系统，在每次试车前后执行。",
-          "verification_method": "通过目视检查膨胀水箱上的液位指示器来验证液位是否正确。",
-          "acceptance_criteria": "1. 液位指示器显示的水平位于制造商规定的安全操作区间内。\\",
+          "shall_statement": "膨胀水箱液位在试车前应被检查，确保其处于正常工作范围。",
+          "measurable_criterion": "膨胀水箱液位应在制造商推荐的工作范围内，具体数值参见设备手册。",
+          "applicable_condition": "适用于所有船舶主机启动前的准备阶段。",
+          "verification_method": "通过直接观察和使用标准量具测量膨胀水箱内液体高度来完成。",
+          "acceptance_criteria": "1. 液位读数必须符合制造商提供的安全操作区间。2. 所有相关仪表显示准确无误。",
           "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "如果膨胀水箱液位低于设定的安全阈值，则应触发低液位报警。",
-          "measurable_criterion": "当膨胀水箱内的液体量减少至预设的安全下限时（例如：低于最低标记线5%），系统自动激活报警机制。",
-          "applicable_condition": "此要求适用于任何时候，尤其是当系统正在运行或即将启动时。",
-          "verification_method": "模拟低液位条件，并确认报警功能是否按预期工作。",
-          "acceptance_criteria": "1. 当膨胀水箱中的液位降至预设的低点时，警报声或视觉信号立即响起。\\",
+          "shall_statement": "膨胀水箱液位在试车后也需再次确认，保证系统运行期间液位稳定。",
+          "measurable_criterion": "同上，膨胀水箱液位应保持在制造商建议的安全范围内。",
+          "applicable_condition": "试车结束后，且发动机已经停止运转但冷却系统仍在循环时适用。",
+          "verification_method": "与试车前相同，采用目视检查结合物理测量手段。",
+          "acceptance_criteria": "1. 试车后的液位不得低于最低警戒线。2. 若发现液位下降，则需要查找原因并修复后再进行测试。",
           "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "C"
         },
         {
-          "shall_statement": "在检测到膨胀水箱液位过低后，应及时补充冷却液直至恢复至正常水平。",
-          "measurable_criterion": "补给过程完成后，膨胀水箱的液位应回升至推荐的操作范围内。",
-          "applicable_condition": "仅当发现液位不足时适用；需要定期进行检查并根据需要补水。",
-          "verification_method": "观察补水过程，并使用液位计再次确认最终液位状态。",
-          "acceptance_criteria": "1. 补充完毕后，膨胀水箱的液位应该回到制造商建议的安全操作区间内。\\",
+          "shall_statement": "当膨胀水箱液位低于预设值时，应当触发低液位报警机制。",
+          "measurable_criterion": "预设值通常由制造商设定，一般为满容量的30%左右，具体数值依据实际设备规格而定。",
+          "applicable_condition": "整个船舶主机运行周期中均有效。",
+          "verification_method": "模拟低液位情况或通过调整传感器设置来测试报警功能是否正常。",
+          "acceptance_criteria": "1. 当液位降至预定水平以下时，报警灯亮起，并伴有声音警告。2. 报警信号能够清晰地传达给操作人员。",
+          "evidence_citations": "[]",
+          "_grade": "X"
+        },
+        {
+          "shall_statement": "定期对膨胀水箱执行补水操作以维持合适的液位。",
+          "measurable_criterion": "根据日常消耗情况确定补充水量，一般建议每周至少检查一次。",
+          "applicable_condition": "此要求适用于任何时间点，特别是在长时间航行或高负荷运行之后。",
+          "verification_method": "记录每次加水前后的确切液位变化，并对照历史数据进行分析。",
+          "acceptance_criteria": "1. 补充完毕后，水箱液位应回到安全范围内。2. 长期跟踪数据显示液位控制良好，没有异常波动。",
           "evidence_citations": "[]",
           "_grade": "C"
         }
@@ -1392,22 +1507,13 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却器的换热效率应当根据实际运行温度数据进行评估，而不仅仅是在低负荷条件下判断为正常。",
-          "measurable_criterion": "在不同工作负荷下（如：25%, 50%, 75%, 100%），冷却水出口温度与入口温度之差应保持在设计值±3°C范围内。",
-          "applicable_condition": "适用于船舶主机所有运行状态，特别是高负荷和变负荷工况。",
-          "verification_method": "通过安装于冷却系统进出口处的温度传感器收集的数据进行分析；使用模拟软件复现各种负载条件下的性能表现。",
-          "acceptance_criteria": "1. 在每个指定的工作点上，至少连续记录24小时的数据。\\",
+          "shall_statement": "冷却器的换热效果应当根据船舶主机在不同运行温度下的表现来评估，而不仅仅是在低负荷条件下。",
+          "measurable_criterion": "无法确定具体数值，但需保证在所有典型工况下（包括但不限于满载、半载、轻载）冷却后的出口水温不超过设定的安全阈值。",
+          "applicable_condition": "适用于船舶主机处于任何工作状态时，特别是当主机从低负荷向高负荷过渡期间。",
+          "verification_method": "通过模拟测试和实际航行测试相结合的方式进行验证。模拟测试可以使用计算机建模软件预测不同条件下的性能；实际航行测试则需要记录真实环境下不同工况下的冷却效率。",
+          "acceptance_criteria": "1. 在所有测试工况中，冷却器必须能够将介质温度降至规定范围内。\\",
           "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "必须定期校准用于监测冷却水温度的传感器以确保其准确性。",
-          "measurable_criterion": "每年至少执行一次精度检查，误差不得超过±0.5°C。",
-          "applicable_condition": "适用于整个船舶使用寿命期间。",
-          "verification_method": "由合格的技术人员或第三方机构按照国家计量标准执行校准程序。",
-          "acceptance_criteria": "1. 提供校准报告，显示所有测试点上的读数偏差均小于允许的最大误差。\\n",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "C"
         }
       ]
     },
@@ -1417,29 +1523,20 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却器的设计应当保证其端盖可以轻松打开。",
-          "measurable_criterion": "开启力不超过50N",
-          "applicable_condition": "在所有维护工况下",
-          "verification_method": "使用标准测力计测量开启力",
-          "acceptance_criteria": "开启力不超过50N，且操作者能够单手完成开启动作",
-          "evidence_citations": "",
-          "_grade": "X"
-        },
-        {
-          "shall_statement": "冷却器内部应易于清洗和检查。",
-          "measurable_criterion": "清洗过程中无死角；目视检查无障碍",
-          "applicable_condition": "定期维护期间",
-          "verification_method": "通过模拟清洗过程并记录难达区域；进行目视检查评估",
-          "acceptance_criteria": "清洗工具能触及所有表面；目视检查时视线不受阻碍",
+          "shall_statement": "冷却器的设计应当确保其能够被方便地打开、清洗和检查。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "在所有维护操作期间",
+          "verification_method": "通过实际操作演示与评审",
+          "acceptance_criteria": "1. 冷却器的端盖能在5分钟内无工具辅助下手动开启。\\",
           "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "周围管道布局不应妨碍冷却器端盖的开启或检修工作。",
-          "measurable_criterion": "至少保留15厘米的空间用于操作",
-          "applicable_condition": "任何时候",
-          "verification_method": "实地测量最小间距",
-          "acceptance_criteria": "任何方向上与障碍物之间保持至少15厘米距离",
+          "shall_statement": "冷却器周围的管路布置不得妨碍对冷却器端盖或检修空间的操作。",
+          "measurable_criterion": "最小无障碍空间距离为30厘米",
+          "applicable_condition": "在整个冷却系统布局设计中",
+          "verification_method": "使用三维模型审查结合现场测量",
+          "acceptance_criteria": "1. 所有关键部件周围至少保持30厘米无障碍空间。\\n",
           "evidence_citations": "",
           "_grade": "C"
         }
@@ -1451,20 +1548,20 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水泵周围应有足够的空间以便于密封、轴承和电机的维护。",
-          "measurable_criterion": "泵体周围至少留有50厘米的操作空间；对于大型设备，此距离需根据实际尺寸适当增加。",
-          "applicable_condition": "适用于所有型号的冷却水泵，在安装或改造阶段。",
-          "verification_method": "现场测量与检查",
-          "acceptance_criteria": "1. 冷却水泵四周均能无障碍地进行常规工具操作。2. 拆卸任一部件时，无需移动其他非直接相关的管路或组件。",
+          "shall_statement": "冷却水泵的密封、轴承和电机周围必须留有足够的维护空间。",
+          "measurable_criterion": "维护空间至少为设备最大尺寸方向上的150%。例如，如果泵的最大直径是30厘米，则围绕该泵的最小自由空间应为45厘米。",
+          "applicable_condition": "适用于所有型号的冷却水泵，在安装及日常维护期间。",
+          "verification_method": "通过现场测量或使用设计图纸进行评估。",
+          "acceptance_criteria": "1. 冷却水泵四周的实际可用空间不得小于规定的最小值。\\",
           "evidence_citations": "[]",
-          "_grade": "C"
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却水系统的布局设计应当保证在执行维修工作时最小化对周围管道的影响。",
-          "measurable_criterion": "无法确定具体的量化标准，但要求设计时充分考虑可维护性。",
-          "applicable_condition": "适用于整个冷却水系统的设计阶段。",
-          "verification_method": "通过三维建模软件模拟拆装过程",
-          "acceptance_criteria": "1. 在虚拟环境中能够顺利完成任何单个主要组件（如密封圈、轴承等）的更换而不干扰到相邻的管线布置。2. 实际施工后还需进行一次实地验证以确保符合设计意图。",
+          "shall_statement": "在执行维护操作时，不应需要移除超过两根管道以接近冷却水泵的关键部件（如密封、轴承和电机）。",
+          "measurable_criterion": "无法确定具体数值，但目标是尽量减少因维护而需移动的管道数量。",
+          "applicable_condition": "适用于任何需要对冷却水泵进行定期检查或维修的情况。",
+          "verification_method": "基于实际维护过程中的反馈以及模拟维护流程来验证。",
+          "acceptance_criteria": "1. 在模拟或真实维护过程中，为了接触到泵的关键部分，所移动的管道数量不超过两根。\\",
           "evidence_citations": "[]",
           "_grade": "C"
         }
@@ -1476,21 +1573,11 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "海水侧与淡水侧冷却系统中易于结垢、沉积或污染的部分，应当设计为可拆卸结构，以便于检查和清洗。",
-          "measurable_criterion": "所有需要定期维护的部件在15分钟内能够被完全拆卸并重新组装。",
-          "applicable_condition": "适用于所有类型的船舶主机冷却水系统，无论其是新安装还是现有系统升级。",
-          "verification_method": "通过实际操作测试来验证，包括但不限于：选择典型的工作环境条件下，记录从开始到完成整个拆卸及重装过程所需时间。",
-          "acceptance_criteria": "1. 每个指定组件均能在规定时间内顺利完成拆卸与装配。\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "对于海水侧与淡水侧冷却系统中的关键部位，应设置有足够数量且易于访问的检查口。",
-          "measurable_criterion": "每个关键区域至少配备一个直径不少于30厘米的检查孔。",
-          "applicable_condition": "适用于任何包含难以直接观察内部状态部分的设计。",
-          "verification_method": "现场测量与目视检查相结合的方法。检查所有标明的关键位置是否都按要求设置了相应大小的检查孔。",
-          "acceptance_criteria": "1. 所有指定的关键区域内均有符合尺寸要求的检查孔存在；\\",
-          "evidence_citations": "[]",
+          "shall_statement": "海水侧与淡水侧容易结垢、沉积或污染的位置应设计成易于检查。",
+          "measurable_criterion": "每个难以触及但易结垢/沉积/污染点的设计都必须允许使用标准内窥镜进行直接观察，且视野角度不少于120度。",
+          "applicable_condition": "适用于所有类型的船舶主机冷却水系统中可能形成结垢、沉积物或污染物的区域。",
+          "verification_method": "通过物理访问这些位置并利用标准工业内窥镜来执行视觉检查。",
+          "acceptance_criteria": -3,
           "_grade": "C"
         }
       ]
@@ -1501,31 +1588,19 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "船舶主机冷却水系统中使用的防腐剂类型和浓度应符合制造商推荐标准。",
-          "measurable_criterion": "防腐剂浓度应在制造商推荐值的±10%范围内。",
-          "applicable_condition": "所有使用防腐剂处理的冷却水循环系统。",
-          "verification_method": "通过化学分析方法检测冷却水中防腐剂的实际浓度。",
-          "acceptance_criteria": "防腐剂浓度测试结果必须在制造商推荐值的±10%以内；\\",
-          "evidence_citations": "[]",
-          "_grade": "B"
+          "shall_statement": "船舶主机冷却水系统中使用的防腐剂必须符合国际海事组织(IMO)关于船用材料的标准。",
+          "measurable_criterion": "防腐剂类型需按照IMO MEPC.102(49)决议指定的种类之一进行选择；其浓度应保持在制造商推荐值±5%范围内。",
+          "applicable_condition": "适用于所有需要添加防腐剂以防止海水腐蚀的场合。",
+          "verification_method": "通过检查防腐剂的产品合格证书及实际使用时测量其浓度来验证。",
+          "acceptance_criteria": -30,
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却液的选择及混合比例需依据制造商提供的技术指南进行。",
-          "measurable_criterion": "无法确定具体的混合比例，但需确保与制造商规格书一致。",
-          "applicable_condition": "适用于所有需要添加冷却液的操作。",
-          "verification_method": "检查冷却液产品说明书，并与实际使用的冷却液品牌型号对比。",
-          "acceptance_criteria": "所用冷却液的品牌、型号及混合比均需与制造商提供的指导文件相匹配；\\",
-          "evidence_citations": "[]",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "定期对冷却水系统的水质进行检测，以监控其清洁度、pH值等关键参数。",
-          "measurable_criterion": "水质清洁度应达到ISO 8573-1:2010标准中的Class 4或更高；pH值应在7.0至9.0之间。",
-          "applicable_condition": "每次维护保养周期内至少执行一次水质检测。",
-          "verification_method": "采用专业水质检测仪器按照规定程序操作。",
-          "acceptance_criteria": "检测结果显示水质清洁度不低于Class 4；\\",
-          "pH值位于7.0至9.0区间内；\",": "evidence_citations",
-          ":": "[ ]",
+          "shall_statement": "水质检测应在每次航行前进行，并且至少每月一次，确保冷却水系统的清洁度满足要求。",
+          "measurable_criterion": "电导率<500μS/cm; pH值介于7.5至8.5之间；总硬度不超过300mg/L(CaCO3计)。",
+          "applicable_condition": "适用于任何情况下，特别是当更换水源或者发现系统性能下降时。",
+          "verification_method": "利用专业水质分析仪定期检测上述参数。",
+          "acceptance_criteria": -31,
           "_grade": "C"
         }
       ]
@@ -1536,12 +1611,11 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "牺牲阳极或其他防腐部件如果配置在船舶主机冷却水系统中，应当设计成易于检查和更换的形式。",
-          "measurable_criterion": "无法确定（此要求更多依赖于设计的合理性而非具体数值）",
-          "applicable_condition": "适用于所有配置有牺牲阳极或其它防腐组件的船舶主机冷却水系统，在正常运行及维护状态下。",
-          "verification_method": "通过设计审查、现场模拟拆装测试来验证。",
-          "acceptance_criteria": "1. 设计方案需包含详细的牺牲阳极或防腐部件布局图，并标明检查与更换路径。\\",
-          "2. 模拟测试中，非专业人员能够在不使用特殊工具的情况下完成检查或更换操作，整个过程不超过30分钟。\\": ",3. 防腐件的位置应确保即使在设备满载运行时也能安全接近且不会对操作者构成直接威胁。",
+          "shall_statement": "如果配置了牺牲阳极或其他防腐部件，这些部件应当便于检查和更换。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "适用于所有安装有牺牲阳极或其它防腐蚀组件的船舶主机冷却水系统。",
+          "verification_method": "通过设计审查、现场访问及模拟更换操作来验证。",
+          "acceptance_criteria": "1. 设计文档中应明确标识出所有牺牲阳极和其他防腐部件的位置，并提供详细的拆装步骤说明。\\",
           "evidence_citations": "[]",
           "_grade": "C"
         }
@@ -1554,35 +1628,39 @@
       "engineering_requirements": [
         {
           "shall_statement": "安装完成后，必须检查所有阀门的方向是否正确。",
-          "measurable_criterion": "每个阀门的方向需与设计图纸上的指示一致",
-          "applicable_condition": "适用于所有冷却水系统中的阀门安装后",
-          "verification_method": "通过现场目视检查结合设计图纸对比",
-          "acceptance_criteria": "证据引用列表为空",
+          "measurable_criterion": "每个阀门方向与设计图纸一致",
+          "applicable_condition": "适用于所有新装或维修后的冷却水系统",
+          "verification_method": "通过目视检查结合设计图纸对比",
+          "acceptance_criteria": "所有阀门方向均需与设计图纸完全匹配",
+          "evidence_citations": 0,
           "_grade": "C"
         },
         {
-          "shall_statement": "安装完成后，必须检查管路连接的正确性和安全性。",
-          "measurable_criterion": "无泄漏现象，连接处紧固件扭矩符合制造商推荐值",
-          "applicable_condition": "适用于整个冷却水系统的管路网络",
-          "verification_method": "使用压力测试来检测泄露情况；使用扭矩扳手验证紧固件扭矩",
-          "acceptance_criteria": "证据引用列表为空",
+          "shall_statement": "安装完成后，必须验证管路连接的准确性。",
+          "measurable_criterion": "每条管道连接点无泄漏且符合设计规范",
+          "applicable_condition": "适用于所有新装或维修后的冷却水系统",
+          "verification_method": "采用压力测试来检测连接处是否有泄漏",
+          "acceptance_criteria": "在指定的压力测试条件下，各连接点不得有可见泄漏迹象",
+          "evidence_citations": 0,
           "_grade": "C"
         },
         {
-          "shall_statement": "安装完成后，需要确保所有支架的位置和安装方式符合规范。",
-          "measurable_criterion": "支架间距不超过1.5米（或根据具体项目要求调整），且固定牢固无松动",
-          "applicable_condition": "适用于支撑冷却水管路的所有支架",
-          "verification_method": "依据施工图纸进行实地测量，并用手摇晃支架以确认其稳定性",
-          "acceptance_criteria": "证据引用列表为空",
+          "shall_statement": "安装完成后，需要确认支架安装位置正确。",
+          "measurable_criterion": "支架安装位置及固定方式满足设计要求",
+          "applicable_condition": "适用于所有新装或维修后的冷却水系统",
+          "verification_method": "使用测量工具（如尺子）检查实际安装位置与设计值之间的偏差",
+          "acceptance_criteria": "实际安装位置与设计图纸上标注的位置误差不超过±5mm；支架固定牢固可靠",
+          "evidence_citations": 0,
           "_grade": "C"
         },
         {
-          "shall_statement": "安装完成后，必须核对仪表安装位置及准确性。",
-          "measurable_criterion": "仪表安装位置应与设计方案相符，读数偏差不超过±5%（对于温度计等）",
-          "applicable_condition": "针对冷却系统内所有监控用仪表",
-          "verification_method": "将实际安装位置与设计图对照，并利用校准工具检验仪表精度",
-          "acceptance_criteria": "证据引用列表为空",
-          "_grade": "X"
+          "shall_statement": "安装完成后，需确保所有仪表已按照规定位置准确安装。",
+          "measurable_criterion": "仪表安装位置、方向以及读数显示角度符合设计文档",
+          "applicable_condition": "适用于所有新装或维修后的冷却水系统",
+          "verification_method": "通过现场观察并对照设计文件进行核对",
+          "acceptance_criteria": "所有仪表均应按图示位置正确安装，并保证易于查看和维护",
+          "evidence_citations": 0,
+          "_grade": "C"
         }
       ]
     },
@@ -1592,38 +1670,29 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统应进行压力试验。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于所有新安装或大修后的冷却水系统，在正式投入使用前必须完成。",
-          "verification_method": "通过现场测试和记录检查来验证。",
-          "acceptance_criteria": "试验时的压力值需达到设计工作压力的1.5倍，但不超过材料屈服强度的80%；保持此压力至少30分钟；在保压期间及之后进行全面的泄漏检查，并确保无任何可见泄漏点。",
+          "shall_statement": "冷却水系统在进行压力试验时，应设置试验压力为1.5倍的设计工作压力。",
+          "measurable_criterion": "设计工作压力的1.5倍",
+          "applicable_condition": "适用于所有类型的新建或改造后的船舶主机冷却水系统，在首次投入使用前或重大维修后",
+          "verification_method": "通过专用的压力测试设备监测，并记录测试数据",
+          "acceptance_criteria": "试验过程中无明显泄漏；试验结束时，系统的任何部分都不应该出现永久性变形或其他损坏迹象；保持该压力值至少30分钟，期间压力下降不超过初始设定值的5%。",
           "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "冷却水系统压力试验过程中，需要记录试验压力。",
-          "measurable_criterion": "试验压力应为设计工作压力的1.5倍，且不得超过材料屈服强度的80%。",
-          "applicable_condition": "当进行冷却水系统的压力试验时。",
-          "verification_method": "检查压力表读数与记录是否一致。",
-          "acceptance_criteria": "试验压力准确无误地被记录下来；记录中明确标注了所使用的压力单位。",
+          "shall_statement": "在达到规定的试验压力后，冷却水系统必须能够保持此压力状态至少30分钟。",
+          "measurable_criterion": "30分钟",
+          "applicable_condition": "同上",
+          "verification_method": "利用计时器监控保压时间，并由第三方见证人确认",
+          "acceptance_criteria": "在整个保压期内，除了允许的小幅度自然压力降外（不大于总压力的5%），不应观察到显著的压力损失或系统异常。",
           "evidence_citations": "[]",
-          "_grade": "B"
+          "_grade": "X"
         },
         {
-          "shall_statement": "冷却水系统压力试验过程中，需维持一定时间的保压状态。",
-          "measurable_criterion": "保压时间不少于30分钟。",
-          "applicable_condition": "执行冷却水系统压力试验时。",
-          "verification_method": "使用计时器监控保压阶段的时间长度。",
-          "acceptance_criteria": "从开始加压至指定试验压力后，能够连续保持该压力水平至少30分钟；期间不允许任何形式的人为干预导致的压力变化。",
-          "evidence_citations": "[]",
-          "_grade": "B"
-        },
-        {
-          "shall_statement": "冷却水系统压力试验完成后，应对整个系统进行泄漏检查。",
-          "measurable_criterion": "不可见液体滴落、气泡冒出等迹象表明存在泄漏。",
-          "applicable_condition": "每次压力试验结束时。",
-          "verification_method": "目视检查结合肥皂水涂抹法或其他适用方法检测连接部位、焊缝等关键区域。",
-          "acceptance_criteria": "确认在整个保压过程及降压后，系统内没有任何形式的泄漏现象发生；对于发现的任何潜在泄漏源，均需采取适当措施修复并重新测试直至满足要求。",
+          "shall_statement": "完成保压阶段后，需对整个冷却水系统进行全面的泄漏检查。",
+          "measurable_criterion": "无法确定（取决于具体检查方法和标准）",
+          "applicable_condition": "同上",
+          "verification_method": "采用视觉检查、肥皂泡法等手段逐段排查可能存在的泄漏点",
+          "acceptance_criteria": "不允许存在任何形式的液体渗漏；对于微小气泡形式的潜在泄漏也需采取措施修复直至完全消除。",
           "evidence_citations": "[]",
           "_grade": "C"
         }
@@ -1635,22 +1704,20 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "报警和传感器系统在安装后，必须进行实际动作测试。",
-          "measurable_criterion": "每个报警点和传感器至少触发一次，并且记录其响应时间。",
-          "applicable_condition": "所有新装或改造后的船舶主机冷却水系统的报警与传感器设备。",
-          "verification_method": "现场操作测试，通过物理手段触发报警条件（如温度升高至预设值）并观察反应。",
-          "acceptance_criteria": "报警信号能够正确无误地传输到监控中心；\\",
-          "传感器的响应时间不超过2秒；\\": ",报警激活后，相关人员能在1分钟内作出响应。",
+          "shall_statement": "报警系统和传感器在实际操作条件下应当能够触发并执行预期的动作。",
+          "measurable_criterion": "无法确定（具体量化指标需根据项目具体要求定义，如响应时间不超过X秒）",
+          "applicable_condition": "当船舶主机冷却水系统处于正常运行状态或模拟故障状态时",
+          "verification_method": "通过物理测试方法，包括但不限于模拟真实工作环境下的故障条件来检验报警系统及传感器的功能性与可靠性。",
+          "acceptance_criteria": "1. 报警信号应在规定时间内准确发出。\\",
           "evidence_citations": "[]",
           "_grade": "C"
         },
         {
-          "shall_statement": "除了检查监控画面上的信号外，还需验证报警和传感器的实际功能表现。",
-          "measurable_criterion": "无法确定",
-          "applicable_condition": "适用于所有阶段的维护、调试及最终验收过程中。",
-          "verification_method": "结合手动测试与自动化测试工具来模拟真实场景下的异常情况。",
-          "acceptance_criteria": "报警信息准确无误地显示在指定的人机界面上；\\",
-          ",传感器检测到的数据与实际环境参数一致；\\": ",系统能够在非正常工作状态下自动采取预定措施。",
+          "shall_statement": "对于每一个关键的传感器和报警装置，都必须进行至少一次独立的实际动作测试，以确保其功能正确无误。",
+          "measurable_criterion": "每个设备至少完成1次实测（具体的测试次数可根据实际情况调整）",
+          "applicable_condition": "适用于所有新安装或经过重大维修后的报警系统和传感器组件",
+          "verification_method": "实地测试，记录每次测试的结果，并由专业人员审核确认。",
+          "acceptance_criteria": "1. 测试结果符合预设的技术规格。\\",
           "evidence_citations": "[]",
           "_grade": "C"
         }
@@ -1662,38 +1729,29 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "系统应具备定期检查冷却液水质的能力。",
-          "measurable_criterion": "每3个月或每运行500小时进行一次检查，取先到达者",
-          "applicable_condition": "适用于所有操作条件下，特别是长期停机后的重启前",
-          "verification_method": "通过取样分析冷却液成分来完成",
-          "acceptance_criteria": "冷却液的pH值应在7.0至9.0之间；电导率不超过20 μS/cm；无可见悬浮物",
+          "shall_statement": "系统应具备对冷却液水质进行定期检查的能力。",
+          "measurable_criterion": "每3个月至少进行一次全面水质检测",
+          "applicable_condition": "在船舶主机正常运行期间以及停泊维护时",
+          "verification_method": "通过第三方认证的实验室测试报告",
+          "acceptance_criteria": "检测结果需符合ISO 8217:2017标准中关于冷却水的要求；所有关键指标（如pH值、硬度等）均处于规定范围内。",
           "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "系统必须能够监测并记录污染物水平。",
-          "measurable_criterion": "连续监控，数据存储至少1年",
-          "applicable_condition": "在整个运行周期内均需执行",
-          "verification_method": "安装在线监测设备，并通过日志审查验证其功能",
-          "acceptance_criteria": "污染物浓度不得超过制造商规定的最大允许值；监测设备精度不低于±5%",
+          "shall_statement": "系统应能够监测并记录冷却液中的污染物水平。",
+          "measurable_criterion": "污染物含量不得超过5ppm（以总悬浮固体计）",
+          "applicable_condition": "在整个航行周期内，特别是在经过污染较重海域后",
+          "verification_method": "采用在线监测设备自动记录数据，并与离线样本分析结果对比验证",
+          "acceptance_criteria": "在线监测数据显示污染物浓度持续低于限值；离线样品分析结果与在线数据偏差不超过10%",
           "evidence_citations": "",
           "_grade": "C"
         },
         {
-          "shall_statement": "对于潜在沉积风险区域，需要实施预防性维护措施。",
-          "measurable_criterion": "每年至少清理一次，或根据实际情况调整频率",
-          "applicable_condition": "当检测到沉积物积累达到一定阈值时启动",
-          "verification_method": "使用内窥镜或其他可视化工具检查关键部位",
-          "acceptance_criteria": "确保沉积厚度不超过0.5毫米；清理后恢复原状，不影响流体流动",
-          "evidence_citations": "",
-          "_grade": "C"
-        },
-        {
-          "shall_statement": "系统设计上应当考虑易于拆卸清洗的关键组件。",
-          "measurable_criterion": "单人能在1小时内完成拆装过程",
-          "applicable_condition": "针对易积垢部件",
-          "verification_method": "现场演示快速拆卸与组装流程",
-          "acceptance_criteria": "拆装过程中不损坏任何零件；清洁度达到视觉干净标准",
+          "shall_statement": "对于可能导致沉积的风险因素，系统需有预防性措施。",
+          "measurable_criterion": "无法确定具体数值，但要求采取有效手段防止沉积物形成",
+          "applicable_condition": "当环境温度变化超过10°C或冷却水流速低于设计值80%时",
+          "verification_method": "审查系统设计文件及实际操作手册中针对防沉积的具体措施",
+          "acceptance_criteria": "设计文档明确列出预防沉积的具体方法；现场观察确认这些措施已被实施且有效",
           "evidence_citations": "",
           "_grade": "C"
         }
@@ -1705,13 +1763,29 @@
       "_arm": "norag-v4",
       "engineering_requirements": [
         {
-          "shall_statement": "冷却水系统的设计资料、规范要求、采购清单和施工图纸之间必须保持一致。",
-          "measurable_criterion": "所有文档间的一致性错误不超过5处",
-          "applicable_condition": "适用于整个项目周期，包括设计、采购及施工阶段",
-          "verification_method": "通过文档审查与比对的方式进行验证",
-          "acceptance_criteria": "1. 设计资料中提及的所有组件在采购清单中均有对应条目。\\",
-          "2. 采购清单中的每个项目都能在施工图上找到位置标识。\\": "3. 施工图上的所有组件参数符合设计资料和规范要求。",
-          "evidence_citations": "[]",
+          "shall_statement": "冷却水系统的厂家资料、规范要求、采购清单和施工图应当保持一致。",
+          "measurable_criterion": "无法确定",
+          "applicable_condition": "所有项目阶段，包括设计、采购、制造与安装",
+          "verification_method": "文档审查",
+          "acceptance_criteria": "证据引用列表为空",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "在任何设计变更之前，必须确保冷却水系统的设计文件（包括厂家资料、规范要求、采购清单和施工图）之间的一致性得到确认。",
+          "measurable_criterion": "每次变更前完成一致性检查报告1份",
+          "applicable_condition": "发生设计变更时",
+          "verification_method": "提交变更前的一致性检查报告",
+          "acceptance_criteria": "检查报告中不得出现未解决的不一致项",
+          "evidence_citations": "证据引用列表为空",
+          "_grade": "C"
+        },
+        {
+          "shall_statement": "冷却水系统的所有相关方需定期参与会议以审查文档间的一致性，并记录讨论结果。",
+          "measurable_criterion": "每月至少举行一次审查会议并形成会议纪要",
+          "applicable_condition": "整个项目周期内",
+          "verification_method": "查阅会议纪要及参与者签名",
+          "acceptance_criteria": "会议纪要完整，且有明确的一致性审查结论；所有关键相关方签字确认",
+          "evidence_citations": "证据引用列表为空",
           "_grade": "C"
         }
       ]

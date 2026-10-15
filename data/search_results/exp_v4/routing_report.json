@@ -1,0 +1,49 @@
+{
+ "rag": {
+  "derivation": {
+   "Deferred": 317,
+   "Direct": 76,
+   "Unsupported": 7,
+   "Synthesized": 4,
+   "Derived": 5
+  },
+  "routes": {
+   "OPEN_ITEM": 317,
+   "ENGINEER_CONFIRM": 91,
+   "SPOT_CHECK": 1
+  },
+  "route_reasons": {
+   "OPEN_ITEM: value deferred to named source document": 317,
+   "ENGINEER_CONFIRM: derivation type Direct": 3,
+   "ENGINEER_CONFIRM: cites manufacturer/operational guidance only (tier-b)": 73,
+   "ENGINEER_CONFIRM: derivation type Unsupported": 7,
+   "ENGINEER_CONFIRM: derivation type Synthesized": 4,
+   "ENGINEER_CONFIRM: derivation type Derived": 4,
+   "SPOT_CHECK: value quoted verbatim from an L1 clause-referenced unit": 1
+  }
+ },
+ "norag": {
+  "derivation": {
+   "Unsupported": 295
+  },
+  "routes": {
+   "VERIFY_OR_REJECT": 204,
+   "ENGINEER_CONFIRM": 91
+  },
+  "route_reasons": {
+   "VERIFY_OR_REJECT: numeric value without a valid KB citation": 204,
+   "ENGINEER_CONFIRM: derivation type Unsupported": 91
+  }
+ },
+ "conflicts": [],
+ "n_conflicts": 0,
+ "rule_validation": {
+  "n": 30,
+  "agree": 30,
+  "by_type": {
+   "Deferred": 25,
+   "Direct": 5
+  },
+  "checked_by": "Claude (pending author confirmation)"
+ }
+}

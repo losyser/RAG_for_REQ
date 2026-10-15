@@ -30,9 +30,10 @@ def main() -> None:
                     continue
                 ub, nb = _unit_of(str(b.get("measurable_criterion"))), extract_numbers(str(b.get("measurable_criterion")))
                 if derivation_type(a, KB) == "Direct" and ua and ua == ub and na and nb \
-                        and any(KB[i]["kb_tier"] == "L1" for i in ids) \
+                        and ids \
                         and abs(float(na[0]) - float(nb[0])) <= 0.2 * max(abs(float(na[0])), 1e-9):
-                    case1.append({"or": sid, "rag": a, "norag": b, "cited": ids})
+                    case1.append({"or": sid, "rag": a, "norag": b, "cited": ids,
+                                  "cited_tiers": [KB[i]["kb_tier"] for i in ids]})
                 if a.get("_grade") == "C" and "{{TBD" in str(a.get("measurable_criterion")) and ua and ua == ub:
                     case2.append({"or": sid, "rag": a, "norag": b, "cited": ids})
     pc = json.loads((E4 / "paired_conflict_analysis.json").read_text(encoding="utf-8"))
