@@ -220,7 +220,7 @@ def table_grade(N: dict) -> str:
         " \\textbf{B}~--~value traceable to any cited KB evidence tier;"
         " \\textbf{C}~--~explicit \\texttt{\\{\\{TBD\\}\\}} deferral placeholder;"
         " \\textbf{X}~--~a concrete numeric value with \\emph{no} verifiable citation."
-        "  Grade~X is the failure mode the pipeline is designed to eliminate.\\label{tab:grade}}\n"
+        "  Grade~X is the failure mode the cite-or-defer constraint is designed to prevent.\\label{tab:grade}}\n"
         "\\begin{tabularx}{\\textwidth}{X >{\\centering\\arraybackslash}p{2.6cm} >{\\centering\\arraybackslash}p{2.6cm}}\n"
         "\\toprule\n"
         "\\textbf{Grade} & \\textbf{RAG} & \\textbf{no-RAG} \\\\\n"

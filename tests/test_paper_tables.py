@@ -23,3 +23,16 @@ def test_macro_names_are_unique_and_latex_safe():
 def test_grade_table_contains_formatted_counts():
     tex = pt.table_grade({"rag": ARM, "norag": ARM})
     assert r"10.0\% (1)" in tex and r"\label{tab:grade}" in tex
+
+
+BANNED = ("eliminate", "guarantee", "more correct", "proves that")
+
+
+def test_tables_avoid_banned_wording():
+    """The manuscript must not claim the constraint removes errors entirely."""
+    N = {"rag": ARM, "norag": ARM, "random": ARM}
+    for name in sorted(dir(pt)):
+        if name.startswith("table_"):
+            tex = getattr(pt, name)(N).lower()
+            for word in BANNED:
+                assert word not in tex, f"{name} contains banned wording: {word}"
