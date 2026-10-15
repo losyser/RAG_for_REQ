@@ -82,6 +82,12 @@ def _pct(k, n):
     return None if n == 0 else round(k / n * 100, 1)
 
 
+def _mean_timing(timings: list[dict], key: str):
+    """Mean of one stage over the result sets that recorded it; None if none did."""
+    vals = [t[key] for t in timings if key in t]
+    return round(sum(vals) / len(vals), 2) if vals else None
+
+
 def grade_summary(d: dict, kb: dict) -> dict:
     ers = [e for rs in d.get("result_sets", []) for e in rs.get("engineering_requirements", [])]
     n = len(ers)
@@ -120,8 +126,11 @@ def main() -> None:
         N[key] = grade_summary(d, kb) if d else None
     rag = _load(E4 / "rag_v4_results.json") or {"result_sets": []}
     tim = [rs.get("_timing", {}) for rs in rag["result_sets"]]
-    N["timing_s_mean"] = {k: (round(sum(t.get(k, 0) for t in tim) / len(tim), 2) if tim else None)
-                          for k in ("stage1_s", "retrieval_s", "selection_s", "extraction_s", "generation_s")}
+    # average each stage over the sets that recorded it: a set missing a stage must not be
+    # counted as 0 s, which would silently understate the reported per-stage cost.
+    N["timing_s_mean"] = {
+        k: _mean_timing(tim, k)
+        for k in ("stage1_s", "retrieval_s", "selection_s", "extraction_s", "generation_s")}
     for key, fn in [("grade_c", "grade_c_analysis.json"), ("posthoc", "norag_kb_verification.json"),
                     ("paired_conflict", "paired_conflict_analysis.json"),
                     ("credibility", "credibility_v4/eval_v3.json"),
@@ -147,6 +156,12 @@ def main() -> None:
     N["selected_mean"] = (round(sum(rs.get("_n_evidence", 0) for rs in v4["result_sets"]) / len(v4["result_sets"]), 2)
                           if v4 and v4.get("result_sets") else None)
     N["e3_boundary"] = _load(E4 / "sensitivity/boundary.json")
+    pool_csv = E4 / "e1_pool.csv"
+    if pool_csv.exists():
+        with pool_csv.open(encoding="utf-8-sig") as f:
+            N["e1_pool_n"] = max(0, sum(1 for _ in f) - 1)
+    else:
+        N["e1_pool_n"] = None
 
     audit = N["kb"]["audit"] or {}
     dec = audit.get("by_decision", {})

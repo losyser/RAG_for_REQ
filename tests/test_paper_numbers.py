@@ -39,3 +39,11 @@ def test_grade_summary_regrades_with_kb_not_stored_grade():
         {"measurable_criterion": "90°C", "evidence_citations": [{"kb_id": "E1"}], "_grade": "B"}]}]}
     s = pn.grade_summary(d, kb)
     assert s["grade_X"] == 1 and s["grade_B"] == 1
+
+
+def test_timing_mean_ignores_sets_missing_a_stage():
+    """A set that did not record a stage must not be counted as 0 s."""
+    tim = [{"stage1_s": 1.0, "generation_s": 10.0}, {"stage1_s": 3.0}]
+    assert pn._mean_timing(tim, "stage1_s") == 2.0
+    assert pn._mean_timing(tim, "generation_s") == 10.0
+    assert pn._mean_timing(tim, "retrieval_s") is None

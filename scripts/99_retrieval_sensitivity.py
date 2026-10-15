@@ -50,11 +50,18 @@ def _pairs():
             for rs in v3["result_sets"]}
 
 
+def index_ready(d: Path) -> bool:
+    """索引目录是否已建成。build_index 现在写 vectors.npy（NumpyFlatIP），
+    不再写 faiss.index，因此以此为准。"""
+    d = Path(d)
+    return (d / "vectors.npy").exists() and (d / "records.pkl").exists()
+
+
 def _searcher(name: str, cfg):
     if name == "mpnet":
-        if not (ALT_IDX / "faiss.index").exists():
+        if not index_ready(ALT_IDX):
             build_index(jsonl_path=KBP, output_dir=ALT_IDX, text_field="search_text",
-                        model_path="D:/models/mpnet-multilingual", device=cfg.model.device, normalize=True)
+                        model_path="D:/models/mpnet-multilingual", device="cpu", normalize=True)
         return HybridIndexSearcher(load_index(ALT_IDX), device="cpu")
     return HybridIndexSearcher(load_index(ROOT / "data/indexes/evidence_units"), device="cpu")
 

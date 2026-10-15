@@ -22,8 +22,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from cooling_rag_mg.review_routing import derivation_type, review_route  # noqa: E402
+
 EXP = ROOT / "data" / "search_results" / "exp_v4"
 RAG = EXP / "rag_v4_results.json"
+KB_AUDITED = ROOT / "data" / "processed" / "evidence_units_v3_audited.jsonl"
 ORIG = ROOT / "data" / "processed" / "original_requirements_v2.jsonl"
 ROOTCLS = "EAID_11111111_5487_4080_A7F4_41526CB0AA00"
 PKG = "EAPK_3CC4E5A4_E927_4a10_A9FD_CAEAF8808A43"
@@ -153,6 +156,22 @@ def association(aid, alid, pid, plid, pname, cid, clid, cname) -> str:
     )
 
 
+def er_notes(shall, crit, grade, verif, cited, derivation, route, route_reason,
+             width=34) -> str:
+    """需求元素的 notes：正文、判据、等级、派生类型、复核路由、引用单元。
+
+    派生类型与路由是确定性规则（见 cooling_rag_mg.review_routing），随元素导出，
+    使 EA 图中不只有等级，还能看出该需求为何被送到某一复核层级。
+    """
+    return (f"{wrap_cn(shall, width)}\n"
+            f"Criterion: {wrap_cn(str(crit), width)}\n"
+            f"Grade: {grade}\n"
+            f"Derivation: {derivation}\n"
+            f"Route: {route} --- {wrap_cn(route_reason, width)}\n"
+            f"Verification: {wrap_cn(verif, width)}\n"
+            f"Cited: {wrap_cn(cited, width)}")
+
+
 def short_fallback(text: str) -> str:
     """无 LLM 时的兜底：去常见前缀 + 截断(首个分句)。"""
     t = re.sub(r"^\[Source requirement\]\s*", "", text or "")
@@ -229,6 +248,7 @@ def main():
     args = ap.parse_args()
 
     orig = {json.loads(l)["requirement_id"]: json.loads(l) for l in ORIG.open(encoding="utf-8")}
+    kb = {json.loads(l)["id"]: json.loads(l) for l in KB_AUDITED.open(encoding="utf-8")}
     data = json.loads(RAG.read_text(encoding="utf-8"))
     by_sid = {rs["source_requirement_id"]: rs for rs in data["result_sets"]}
     sids = list(by_sid) if args.all else [s for s in args.sets if s in by_sid]
@@ -258,6 +278,7 @@ def main():
     WRAP = 34
     for si, sid in enumerate(sids, 1):
         rs = by_sid[sid]
+        ev_values = rs.get("_evidence_values") or {}
         sid_norm = sid if sid.startswith("OR") else "OR" + sid
         src_text = tr.get(f"T_{sid}", orig.get(sid, {}).get("requirement_text", ""))
         pid, pguid = new_guid(); plid = lid; lid += 1
@@ -280,14 +301,15 @@ def main():
             shall = tr.get(f"H_{sid}_{k}", er.get("shall_statement", ""))
             verif = tr.get(f"V_{sid}_{k}", er.get("verification_method", ""))
             cname = f"{sid_norm}.{k}  {titles.get(f'E_{sid}_{k}', '')}"
-            notes = (f"{wrap_cn(shall, WRAP)}\n"
-                     f"Criterion: {wrap_cn(str(crit), WRAP)}\n"
-                     f"Grade: {grade}\n"
-                     f"Verification: {wrap_cn(verif, WRAP)}\n"
-                     f"Cited: {wrap_cn(cite_ids(er.get('evidence_citations')), WRAP)}")
+            deriv = derivation_type(er, kb)
+            route, route_reason = review_route(er, kb, ev_values)
+            notes = er_notes(shall, crit, grade, verif,
+                             cite_ids(er.get("evidence_citations")),
+                             deriv, route, route_reason, WRAP)
             roles.append(classifier_role(cname, cid, cguid, clid, notes, grade=grade))
             meta.append((cid, f"{sid_norm}.{k}",
-                         wrap_cn(f"{shall} (criterion: {crit}; grade: {grade})", WRAP)))
+                         wrap_cn(f"{shall} (criterion: {crit}; grade: {grade}; "
+                                 f"derivation: {deriv}; route: {route})", WRAP)))
             aid, _ = new_guid(); alid = lid; lid += 1
             assocs.append(association(aid, alid, pid, plid, pname, cid, clid, cname))
             cx = 40 + (k - 1) * gapx

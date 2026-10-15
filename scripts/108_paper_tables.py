@@ -112,6 +112,7 @@ def build_macros(N: dict) -> dict:
     m["SelSelectedMean"] = N.get("selected_mean")
 
     m["EncCPUms"] = _g(N.get("encode_latency") or {}, "cpu_ms_per_query")
+    m["StageOnePool"] = N.get("e1_pool_n")
 
     r = N.get("routing") or {}
     rag_routes = _g(r, "rag", "routes") or {}
@@ -211,15 +212,16 @@ def table_descriptive(N: dict) -> str:
     num_r = _n((_g(desc, "rag_v3", "numeric_fraction") or 0) * 100, 1) if _g(desc, "rag_v3", "numeric_fraction") is not None else None
     num_n = _n((_g(desc, "no_rag", "numeric_fraction") or 0) * 100, 1) if _g(desc, "no_rag", "numeric_fraction") is not None else None
     na = "n/a"
+    n_src = rag.get("n_sets", na)
     return (
         "\\begin{table*}[htbp]\n"
-        "\\caption{Descriptive statistics for the RAG and no-RAG arms across 60 source requirements."
+        f"\\caption{{Descriptive statistics for the RAG and no-RAG arms across {n_src} source requirements."
         "\\label{tab:descriptive}}\n"
         "\\begin{tabularx}{\\textwidth}{X >{\\centering\\arraybackslash}p{3.2cm} >{\\centering\\arraybackslash}p{3.2cm}}\n"
         "\\toprule\n"
         "\\textbf{Metric} & \\textbf{RAG} & \\textbf{no-RAG} \\\\\n"
         "\\midrule\n"
-        f"Total source requirements & 60 & 60 \\\\\n"
+        f"Total source requirements & {n_src} & {norag.get('n_sets', na)} \\\\\n"
         f"Total engineering requirements & {rag.get('n_shalls', na)} & {norag.get('n_shalls', na)} \\\\\n"
         f"Shall statements containing a number & {num_r if num_r is not None else na}\\% & {num_n if num_n is not None else na}\\% \\\\\n"
         f"Per-shall KB attribution & {_pc(rag.get('citation_rate_pct')) or na} & {_pc(norag.get('citation_rate_pct')) or na} \\\\\n"

@@ -74,6 +74,20 @@ def test_correctness_macros():
     assert round(m["HhRagPct"], 1) == 1.5 and round(m["HhNoRagPct"], 1) == 0.1
 
 
+def test_stage1_pool_macro():
+    m = pt.build_macros({"e1_pool_n": 570})
+    assert m["StageOnePool"] == 570
+    assert pt.build_macros({})["StageOnePool"] is None
+
+
+def test_descriptive_table_counts_come_from_registry():
+    """The source-requirement count must be read from the registry, not hardcoded."""
+    N = {"rag": dict(ARM, n_sets=57), "norag": dict(ARM, n_sets=57)}
+    tex = pt.table_descriptive(N)
+    assert "57" in tex
+    assert "60 source requirements" not in tex
+
+
 BANNED = ("eliminate", "guarantee", "more correct", "proves that")
 
 
