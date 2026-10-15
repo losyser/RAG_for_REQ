@@ -118,7 +118,9 @@ def test_descriptive_table_counts_come_from_registry():
 
 
 def test_appendix_sensitivity_labels_have_no_stray_brace():
-    """\\label sits outside \\caption here, so it must close with a single brace."""
+    """\\label sits outside \\caption here, so it must close with a single brace.
+    Populated appendix spans the full page width (onecolumn) because the article
+    class is two-column; the column mode is restored afterwards."""
     N = {"e3_sensitivity": {
         "retrieval": {"default": {"units_per_req_mean": 1, "l1_share_pct": 2,
                                   "numeric_unit_share_pct": 3, "jaccard_vs_default_mean": 1}},
@@ -129,6 +131,10 @@ def test_appendix_sensitivity_labels_have_no_stray_brace():
     assert r"\label{tab:app_e2e}}" not in tex
     assert r"\label{tab:app_retrieval}" in tex
     assert r"\label{tab:app_e2e}" in tex
+    assert tex.lstrip().startswith(r"\onecolumn")
+    assert r"\twocolumn" in tex
+    pending = pt.appendix_sensitivity({})
+    assert r"\onecolumn" not in pending
 
 
 BANNED = ("eliminate", "guarantee", "more correct", "proves that")
