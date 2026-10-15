@@ -174,7 +174,7 @@
 - 验收：运行 `PY scripts/100_paper_numbers.py`，`paper_numbers.json` 里 `rag_qwen.n_sets == 60`，并在 ledger 中记录 Grade X 和 A+B。
 
 ### H2 E3 敏感性的剩余部分（原计划 Task 10 Step 6–8）
-1. **模型下载未完成**：`D:/models/mpnet-multilingual/model.safetensors` 当前约 439 MB，完整大小为 1,112,201,288 字节，sha256 为 `b5722100700c48b74c9c199c5f39ff9493c94d1497f719e791d4bc3861d7714a`。交接时 WSL 里还有一个 curl 续传循环在后台运行。在 WSL 中续传：
+1. **模型下载未完成**：`D:/models/mpnet-multilingual/model.safetensors` 截至 2026-10-15 11:40 为 771,738,096 字节（后台续传循环已结束，**文件仍不完整**），完整大小为 1,112,201,288 字节，sha256 为 `b5722100700c48b74c9c199c5f39ff9493c94d1497f719e791d4bc3861d7714a`。这个文件仍不完整，需要继续续传。在 WSL 中续传：
    ```bash
    cd /mnt/d/models/mpnet-multilingual; B=https://huggingface.co/sentence-transformers/paraphrase-multilingual-mpnet-base-v2/resolve/main
    until [ "$(stat -c %s model.safetensors)" -ge 1112201288 ]; do curl -sSL -C - -m 900 -o model.safetensors "$B/model.safetensors"; done; sha256sum model.safetensors
