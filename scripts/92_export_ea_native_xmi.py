@@ -241,10 +241,29 @@ def translate_en(items: list[tuple[str, str]]) -> dict[str, str]:
     return {k: (str(tr.get(k, "")).strip() or t) for k, t in items}
 
 
+def group_layout(n_children: int, *, per_row: int, y_top: int, bw: int, gapx: int, gapy: int,
+                 x0: int = 40):
+    """Diagram coordinates for one source requirement and its children.
+
+    per_row <= 0 keeps every child on one row (the original layout); otherwise children wrap
+    into rows of ``per_row``.  Returns ((parent_x, parent_y), [(child_x, child_y)], height).
+    """
+    cols = n_children if per_row <= 0 else min(n_children, per_row)
+    rows = 0 if n_children == 0 else (1 if per_row <= 0 else -(-n_children // per_row))
+    px = x0 + max(1, cols) * gapx // 2 - bw // 2
+    kids = []
+    for k in range(n_children):
+        r, c = (0, k) if per_row <= 0 else divmod(k, per_row)
+        kids.append((x0 + c * gapx, y_top + gapy * (1 + r)))
+    return (px, y_top), kids, gapy * (1 + rows)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sets", nargs="*", default=["OR041", "OR052", "OR008"])
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--per-row", type=int, default=4,
+                    help="子需求每行最多几个（0 = 全部排成一行，即旧版布局）")
     args = ap.parse_args()
 
     orig = {json.loads(l)["requirement_id"]: json.loads(l) for l in ORIG.open(encoding="utf-8")}
@@ -275,6 +294,7 @@ def main():
     lid = 10
     y0 = 30
     bw, bh, gapx, gapy = 300, 200, 350, 320
+    y_cursor = y0
     WRAP = 34
     for si, sid in enumerate(sids, 1):
         rs = by_sid[sid]
@@ -288,10 +308,10 @@ def main():
                                      wrap_cn(f"[Source requirement] {src_text}", WRAP)))
         meta.append((pid, sid_norm, wrap_cn("[Source requirement] " + src_text, WRAP)))
         ers = rs.get("engineering_requirements", [])
-        # 父框居中
-        total_w = max(1, len(ers)) * gapx
-        px = 40 + total_w // 2 - bw // 2
-        py = y0 + (si - 1) * (gapy + gapy)
+        # 父框居中；子需求按 --per-row 换行，组与组之间留一个 gapy
+        (px, py), kid_xy, group_h = group_layout(len(ers), per_row=args.per_row, y_top=y_cursor,
+                                                bw=bw, gapx=gapx, gapy=gapy)
+        y_cursor += group_h + gapy
         diag_nodes.append((pid, pdu, px, py, px + bw, py + bh))
         for k, er in enumerate(ers, 1):
             cid, cguid = new_guid(); clid = lid; lid += 1
@@ -312,8 +332,7 @@ def main():
                                  f"derivation: {deriv}; route: {route})", WRAP)))
             aid, _ = new_guid(); alid = lid; lid += 1
             assocs.append(association(aid, alid, pid, plid, pname, cid, clid, cname))
-            cx = 40 + (k - 1) * gapx
-            cy = py + gapy
+            cx, cy = kid_xy[k - 1]
             diag_nodes.append((cid, cdu, cx, cy, cx + bw, cy + bh))
             diag_edges.append((aid, pdu, cdu))
 
