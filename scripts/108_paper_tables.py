@@ -206,7 +206,6 @@ def build_macros(N: dict) -> dict:
     m["SensABLowPct"] = min(ab) if ab else None
     m["SensABHighPct"] = max(ab) if ab else None
     m["SensGradeXMaxPct"] = max(gx) if gx else None
-    m["SensTruncShalls"] = _g(e2e, "trunc_1200", "n_shalls")
 
     ex = N.get("expert") or {}
     m["ExpertNtag"] = ex.get("n_tagged")

@@ -96,17 +96,15 @@ def test_sensitivity_macros():
             "default": {"grade_X_pct": 0.0, "grade_AB_pct": 14.4, "n_shalls": 513},
             "vector_only": {"grade_X_pct": 0.0, "grade_AB_pct": 12.3, "n_shalls": 487},
             "bm25_only": {"grade_X_pct": 0.0, "grade_AB_pct": 10.9, "n_shalls": 477},
-            "embed_mpnet": {"grade_X_pct": 0.0, "grade_AB_pct": 12.9, "n_shalls": 497},
-            "trunc_1200": {"grade_X_pct": 0.0, "grade_AB_pct": 15.7, "n_shalls": 108}}}}
+            "embed_mpnet": {"grade_X_pct": 0.0, "grade_AB_pct": 12.9, "n_shalls": 497}}}}
     m = pt.build_macros(N)
     assert (m["SensJWeightLow"], m["SensJWeightHigh"]) == (0.947, 0.971)
     assert m["SensJKzero"] == 1.0
     assert m["SensJKfour"] == 0.64
     assert m["SensJMpnet"] == 0.788
-    assert (m["SensABLowPct"], m["SensABHighPct"]) == (10.9, 15.7)
+    assert (m["SensABLowPct"], m["SensABHighPct"]) == (10.9, 14.4)
     assert m["SensGradeXMaxPct"] == 0.0
-    assert m["SensTruncShalls"] == 108
-    assert pt.build_macros({})["SensTruncShalls"] is None
+    assert "SensTruncShalls" not in m
 
 
 def test_descriptive_table_counts_come_from_registry():
