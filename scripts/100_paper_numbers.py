@@ -4,6 +4,7 @@
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 import math
 import re
@@ -130,6 +131,23 @@ def main() -> None:
                     ("routing", "routing_report.json"), ("stage3_subset", "stage3_accuracy_subset.json")]:
         d = _load(E4 / fn)
         N[key] = (d.get("summary", d) if isinstance(d, dict) else d) if d is not None else None
+    # extra registry inputs consumed by scripts/108_paper_tables.py
+    N["encode_latency"] = _load(E4 / "encode_latency.json")
+    hh = _load(E4 / "hhard_contradiction_analysis.json")
+    N["hhard"] = hh.get("summary", hh) if isinstance(hh, dict) else hh
+    v3 = _load(ROOT / "data/search_results/exp_v3/rag_v3_results.json")
+    if v3 and v3.get("result_sets"):
+        p = [rs.get("_n_pairs", 0) for rs in v3["result_sets"]]
+        r = [len(rs.get("_retrieved_ids", [])) for rs in v3["result_sets"]]
+        N["stage1_sets"] = {"pairs_mean": round(sum(p) / len(p), 2), "pairs_min": min(p), "pairs_max": max(p),
+                            "pairs_fallback": sum(1 for x in p if x == 0), "retrieved_mean": round(sum(r) / len(r), 2)}
+    else:
+        N["stage1_sets"] = None
+    v4 = _load(E4 / "rag_v4_results.json")
+    N["selected_mean"] = (round(sum(rs.get("_n_evidence", 0) for rs in v4["result_sets"]) / len(v4["result_sets"]), 2)
+                          if v4 and v4.get("result_sets") else None)
+    N["e3_boundary"] = _load(E4 / "sensitivity/boundary.json")
+
     audit = N["kb"]["audit"] or {}
     dec = audit.get("by_decision", {})
     M = {"NKBUnits": N["kb"]["n_units"], "NKBLone": N["kb"]["tiers"].get("L1", 0),
@@ -137,10 +155,15 @@ def main() -> None:
          "NKBSources": N["kb"]["n_sources"], "NPairsCovered": N["kb"]["n_pairs_covered"],
          "NAuditBefore": audit.get("n_before"), "NAuditDropped": dec.get("DROP"),
          "NAuditRetiered": (dec.get("RETIER_L2", 0) + dec.get("RETIER_L3", 0)) if dec else None}
+    spec = importlib.util.spec_from_file_location("paper_tables", Path(__file__).with_name("108_paper_tables.py"))
+    pt = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(pt)
+    M.update(pt.build_macros(N))
     N["macros"] = M
     if PAPER.exists():
         (PAPER / "revision_numbers.tex").write_text(to_macros(M), encoding="utf-8")
         (PAPER / "table_kb_composition.tex").write_text(kb_composition_table(kb), encoding="utf-8")
+        pt.write_tables(N, PAPER)
     (E4 / "paper_numbers.json").write_text(json.dumps(N, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({k: N[k] for k in ("kb", "rag", "norag", "random")}, ensure_ascii=False, indent=1))
 
