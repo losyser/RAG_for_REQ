@@ -30,7 +30,11 @@ def kb_has_clause(u: dict) -> bool:
 def valid_citation_ids(evidence_citations, kb_index: dict) -> list[str]:
     """返回在 KB 中真实存在的被引 ID。兼容 dict 和字符串两种引用格式；去重并保持顺序。"""
     out: list[str] = []
-    for c in evidence_citations or []:
+    if isinstance(evidence_citations, (str, dict)):
+        evidence_citations = [evidence_citations]
+    elif not isinstance(evidence_citations, (list, tuple)):
+        evidence_citations = []  # malformed model output (e.g. a number): no citation
+    for c in evidence_citations:
         if isinstance(c, dict):
             cands = [str(c.get("kb_id") or "")]
         else:

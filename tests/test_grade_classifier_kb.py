@@ -42,3 +42,11 @@ def test_string_citation_with_valid_id_is_accepted():
 def test_tbd_and_qualitative_still_c():
     assert classify_grade("{{TBD|unit:°C|ref:MAN}}", [], kb_index=KB) == "C"
     assert classify_grade("满足制造商要求", [], kb_index=KB) == "C"
+
+
+def test_non_list_citations_do_not_crash():
+    assert valid_citation_ids(1.0, KB) == []
+    assert valid_citation_ids(None, KB) == []
+    assert valid_citation_ids("E-L2", KB) == ["E-L2"]
+    assert valid_citation_ids({"kb_id": "E-L2"}, KB) == ["E-L2"]
+    assert classify_grade("90°C", float("nan"), kb_index=KB) == "X"
