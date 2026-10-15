@@ -89,6 +89,12 @@ GRADE_STYLE = {
     "_src": (_cr(232, 232, 232), _cr(110, 110, 110)),  # 灰(源需求)
 }
 
+# 图块样式与尺寸：完整内容放在元素的 text 属性（打开元素可见），
+# 图上只显示 «requirement» + 名称——Tag=0 隐藏 tagged-value 隔间，
+# 否则 EA 会把整段 text 画在块上，框被撑大、信息密度低。
+DIAG_ELEM_STYLE = "HideIcon=0;UCRect=1;Tag=0;AttCustom=0;OpCustom=0;"
+BOX_W, BOX_H = 300, 88
+
 
 def classifier_role(name, rid, guid, lid, notes, grade="_src") -> str:
     back, border = GRADE_STYLE.get(grade, GRADE_STYLE["_src"])
@@ -170,6 +176,14 @@ def er_notes(shall, crit, grade, verif, cited, derivation, route, route_reason,
             f"Route: {route} --- {wrap_cn(route_reason, width)}\n"
             f"Verification: {wrap_cn(verif, width)}\n"
             f"Cited: {wrap_cn(cited, width)}")
+
+
+def req_text_value(text: str, rid: str) -> str:
+    """EA 需求的 text 属性（<memo>#NOTES# 前缀）：完整内容放这里，打开元素可见，
+    不在图块上显示（图块只显示名称，见 DIAG_ELEM_STYLE 的 Tag=0）。"""
+    tid, _ = new_guid()
+    return (f'<UML:TaggedValue tag="text" xmi.id="{tid}" '
+            f'value="&lt;memo&gt;#NOTES#{esc(text)}" modelElement="{rid}"/>')
 
 
 def short_fallback(text: str) -> str:
@@ -293,7 +307,7 @@ def main():
     roles, assocs, diag_nodes, diag_edges, meta = [], [], [], [], []
     lid = 10
     y0 = 30
-    bw, bh, gapx, gapy = 300, 200, 350, 320
+    bw, bh, gapx, gapy = BOX_W, BOX_H, BOX_W + 40, BOX_H + 52
     y_cursor = y0
     WRAP = 34
     for si, sid in enumerate(sids, 1):
@@ -343,8 +357,7 @@ def main():
     seq = 1
     for (eid, du, l, t, r, b) in diag_nodes:
         de.append(f'\t\t\t\t<UML:DiagramElement geometry="Left={l};Top={t};Right={r};Bottom={b};" '
-                  f'subject="{eid}" seqno="{seq}" style="DUID={du};HideIcon=0;UCRect=1;Tag=1;'
-                  f'AttCustom=0;OpCustom=0;RzO=1;"/>')
+                  f'subject="{eid}" seqno="{seq}" style="DUID={du};{DIAG_ELEM_STYLE}"/>')
         seq += 1
     de.append(f'\t\t\t\t<UML:DiagramElement geometry="Left=10;Top=10;Right={allx2+30};'
               f'Bottom={ally2+30};" subject="{PKG}" seqno="{seq}" style="DUID={pkg_du};NSL=1;"/>')
@@ -373,12 +386,11 @@ def main():
     # 内容级 id/text taggedValue(EA 需求的外部编号与 Text 字段)
     reqtext = []
     for (rid, ext_id, text) in meta:
-        tid1, _ = new_guid(); tid2, _ = new_guid()
+        tid1, _ = new_guid()
         reqtext.append(
             f'\t\t<UML:TaggedValue tag="id" xmi.id="{tid1}" value="{esc(ext_id)}" '
             f'modelElement="{rid}"/>\n'
-            f'\t\t<UML:TaggedValue tag="text" xmi.id="{tid2}" '
-            f'value="&lt;memo&gt;#NOTES#{esc(text)}" modelElement="{rid}"/>'
+            f'\t\t{req_text_value(text, rid)}'
         )
     reqtext_block = "\n".join(reqtext)
 
