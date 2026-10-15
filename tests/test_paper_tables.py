@@ -46,6 +46,7 @@ def test_boundary_and_preaudit_macros():
     assert m["BoundaryEUSplit"] == 0.0
     assert m["BoundaryWSmall"] == 76.0 and m["BoundaryWMid"] == 28.0 and m["BoundaryWLarge"] == 16.0
     assert m["BoundaryUnitsOverPrompt"] == 65.4 and m["BoundaryValuesBeyondPrompt"] == 24.1
+    assert m["BoundaryWSmallOvPct"] == 72.0
     assert m["PreAuditRagAOld"] == 29 and m["PreAuditRagCOld"] == 176
     bd_used = {"e3_boundary": {"n_used_units": 356,
                                "eu_atomic": {"split_pct": 0.0},
@@ -80,12 +81,54 @@ def test_stage1_pool_macro():
     assert pt.build_macros({})["StageOnePool"] is None
 
 
+def test_sensitivity_macros():
+    """E3 retrieval/e2e robustness numbers exposed as macros for the main text."""
+    N = {"e3_sensitivity": {
+        "retrieval": {
+            "default": {"jaccard_vs_default_mean": 1.0},
+            "w_bm25_0.25": {"jaccard_vs_default_mean": 0.971},
+            "w_bm25_0.75": {"jaccard_vs_default_mean": 0.947},
+            "k0_10": {"jaccard_vs_default_mean": 1.0},
+            "k0_100": {"jaccard_vs_default_mean": 1.0},
+            "k_4": {"jaccard_vs_default_mean": 0.64},
+            "embed_mpnet": {"jaccard_vs_default_mean": 0.788}},
+        "e2e": {
+            "default": {"grade_X_pct": 0.0, "grade_AB_pct": 14.4, "n_shalls": 513},
+            "vector_only": {"grade_X_pct": 0.0, "grade_AB_pct": 12.3, "n_shalls": 487},
+            "bm25_only": {"grade_X_pct": 0.0, "grade_AB_pct": 10.9, "n_shalls": 477},
+            "embed_mpnet": {"grade_X_pct": 0.0, "grade_AB_pct": 12.9, "n_shalls": 497},
+            "trunc_1200": {"grade_X_pct": 0.0, "grade_AB_pct": 15.7, "n_shalls": 108}}}}
+    m = pt.build_macros(N)
+    assert (m["SensJWeightLow"], m["SensJWeightHigh"]) == (0.947, 0.971)
+    assert m["SensJKzero"] == 1.0
+    assert m["SensJKfour"] == 0.64
+    assert m["SensJMpnet"] == 0.788
+    assert (m["SensABLowPct"], m["SensABHighPct"]) == (10.9, 15.7)
+    assert m["SensGradeXMaxPct"] == 0.0
+    assert m["SensTruncShalls"] == 108
+    assert pt.build_macros({})["SensTruncShalls"] is None
+
+
 def test_descriptive_table_counts_come_from_registry():
     """The source-requirement count must be read from the registry, not hardcoded."""
     N = {"rag": dict(ARM, n_sets=57), "norag": dict(ARM, n_sets=57)}
     tex = pt.table_descriptive(N)
     assert "57" in tex
     assert "60 source requirements" not in tex
+
+
+def test_appendix_sensitivity_labels_have_no_stray_brace():
+    """\\label sits outside \\caption here, so it must close with a single brace."""
+    N = {"e3_sensitivity": {
+        "retrieval": {"default": {"units_per_req_mean": 1, "l1_share_pct": 2,
+                                  "numeric_unit_share_pct": 3, "jaccard_vs_default_mean": 1}},
+        "e2e": {"default": {"n_shalls": 10, "grade_X_pct": 0,
+                            "grade_AB_pct": 1, "citation_rate_pct": 99}}}}
+    tex = pt.appendix_sensitivity(N)
+    assert r"\label{tab:app_retrieval}}" not in tex
+    assert r"\label{tab:app_e2e}}" not in tex
+    assert r"\label{tab:app_retrieval}" in tex
+    assert r"\label{tab:app_e2e}" in tex
 
 
 BANNED = ("eliminate", "guarantee", "more correct", "proves that")

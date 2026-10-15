@@ -183,8 +183,30 @@ def build_macros(N: dict) -> dict:
                  for w in (bd.get("fixed_windows") or []) if not w.get("overlap")}
     for window, name in ((128, "BoundaryWSmall"), (256, "BoundaryWMid"), (512, "BoundaryWLarge")):
         m[name] = by_window.get(window)
+    by_window_ov = {w.get("window"): w.get("split_pct")
+                    for w in (bd.get("fixed_windows") or []) if w.get("overlap")}
+    m["BoundaryWSmallOvPct"] = by_window_ov.get(128)
     m["BoundaryUnitsOverPrompt"] = bd.get("pct_used_units_longer_than_prompt_limit")
     m["BoundaryValuesBeyondPrompt"] = bd.get("pct_values_beyond_prompt_limit")
+
+    sens = N.get("e3_sensitivity") or {}
+    ret = sens.get("retrieval") or {}
+    wj = [d.get("jaccard_vs_default_mean") for k, d in ret.items() if k.startswith("w_bm25")]
+    wj = [v for v in wj if v is not None]
+    m["SensJWeightLow"] = min(wj) if wj else None
+    m["SensJWeightHigh"] = max(wj) if wj else None
+    k0 = [d.get("jaccard_vs_default_mean") for k, d in ret.items() if k.startswith("k0")]
+    k0 = [v for v in k0 if v is not None]
+    m["SensJKzero"] = k0[0] if k0 and all(v == k0[0] for v in k0) else None
+    m["SensJKfour"] = _g(ret, "k_4", "jaccard_vs_default_mean")
+    m["SensJMpnet"] = _g(ret, "embed_mpnet", "jaccard_vs_default_mean")
+    e2e = sens.get("e2e") or {}
+    ab = [d.get("grade_AB_pct") for d in e2e.values() if d.get("grade_AB_pct") is not None]
+    gx = [d.get("grade_X_pct") for d in e2e.values() if d.get("grade_X_pct") is not None]
+    m["SensABLowPct"] = min(ab) if ab else None
+    m["SensABHighPct"] = max(ab) if ab else None
+    m["SensGradeXMaxPct"] = max(gx) if gx else None
+    m["SensTruncShalls"] = _g(e2e, "trunc_1200", "n_shalls")
 
     ex = N.get("expert") or {}
     m["ExpertNtag"] = ex.get("n_tagged")
@@ -477,7 +499,7 @@ def appendix_sensitivity(N: dict) -> str:
         return "\n".join(out)
     if ret:
         out.append("\\begin{table}[htbp]\n\\caption{Retrieval-layer metrics across retrieval variants.}"
-                   "\\label{tab:app_retrieval}}\n\\begin{tabularx}{\\textwidth}{X r r r r}\n\\toprule\n"
+                   "\\label{tab:app_retrieval}\n\\begin{tabularx}{\\textwidth}{X r r r r}\n\\toprule\n"
                    "\\textbf{Variant} & \\textbf{Units/req} & \\textbf{L1 share} & \\textbf{Numeric share} & \\textbf{Jaccard} \\\\\n\\midrule\n")
         for name, d in ret.items():
             out.append(f"{name.replace('_', chr(92) + '_')} & {d.get('units_per_req_mean','n/a')} & "
@@ -486,7 +508,7 @@ def appendix_sensitivity(N: dict) -> str:
         out.append("\\bottomrule\n\\end{tabularx}\n\\end{table}\n")
     if e2e:
         out.append("\\begin{table}[htbp]\n\\caption{End-to-end grade distribution across retrieval variants.}"
-                   "\\label{tab:app_e2e}}\n\\begin{tabularx}{\\textwidth}{X r r r r}\n\\toprule\n"
+                   "\\label{tab:app_e2e}\n\\begin{tabularx}{\\textwidth}{X r r r r}\n\\toprule\n"
                    "\\textbf{Variant} & \\textbf{Shalls} & \\textbf{Grade X} & \\textbf{Grade A+B} & \\textbf{Citation} \\\\\n\\midrule\n")
         for name, d in e2e.items():
             out.append(f"{name.replace('_', chr(92) + '_')} & {d.get('n_shalls','n/a')} & "
