@@ -129,18 +129,24 @@ def build_macros(N: dict) -> dict:
     m["HhP"] = _n(wx.get("p_value"), 3)
     m["HhRagMean"] = _n(wx.get("rag_mean"), 4)
     m["HhNoRagMean"] = _n(wx.get("norag_mean"), 4)
+    m["HhRagPct"] = wx.get("rag_mean") * 100 if wx.get("rag_mean") is not None else None
+    m["HhNoRagPct"] = wx.get("norag_mean") * 100 if wx.get("norag_mean") is not None else None
     m["HhPairs"] = wx.get("n_pairs")
     m["HhRagClaims"] = hh.get("rag_claims_checkable")
     m["HhNoRagClaims"] = hh.get("norag_claims_checkable")
     m["HhRagContradictions"] = hh.get("rag_contradictions")
     m["HhNoRagContradictions"] = hh.get("norag_contradictions")
+    m["HhRagVerbatim"] = hh.get("rag_numeric_verbatim_from_cited_unit")
+    m["HhRagQualitative"] = hh.get("rag_qualitative_contradictions")
 
     pc = N.get("posthoc") or {}
     m["PosthocRagSupportedPct"] = _g(pc, "rag_v3", "pct_supported")
-    m["PosthocRagConflictPct"] = _g(pc, "rag_v3", "pct_conflict")
+    m["PosthocRagConflictPct"] = _n(_g(pc, "rag_v3", "pct_conflict"), 1)
     m["PosthocNoRagSupportedPct"] = _g(pc, "no_rag", "pct_supported")
-    m["PosthocNoRagConflictPct"] = _g(pc, "no_rag", "pct_conflict")
+    m["PosthocNoRagConflictPct"] = _n(_g(pc, "no_rag", "pct_conflict"), 1)
     m["PosthocNoRagUnverifiablePct"] = _g(pc, "no_rag", "pct_unverifiable")
+    m["RagNumericShalls"] = _g(pc, "rag_v3", "total_shalls")
+    m["NoRagNumericShalls"] = _g(pc, "no_rag", "total_shalls")
 
     cf = N.get("paired_conflict") or {}
     m["ConflictN"] = cf.get("n_paired")
@@ -166,6 +172,18 @@ def build_macros(N: dict) -> dict:
     m["PreAuditRagX"] = rp.get("X")
     m["PreAuditRagXOld"] = ro.get("X") if ro else None
     m["PreAuditRagBOld"] = ro.get("B") if ro else None
+    m["PreAuditRagAOld"] = ro.get("A") if ro else None
+    m["PreAuditRagCOld"] = ro.get("C") if ro else None
+
+    bd = N.get("e3_boundary") or {}
+    m["SensUsedUnits"] = bd.get("n_used_units")
+    m["BoundaryEUSplit"] = _g(bd, "eu_atomic", "split_pct")
+    by_window = {w.get("window"): w.get("split_pct")
+                 for w in (bd.get("fixed_windows") or []) if not w.get("overlap")}
+    for window, name in ((128, "BoundaryWSmall"), (256, "BoundaryWMid"), (512, "BoundaryWLarge")):
+        m[name] = by_window.get(window)
+    m["BoundaryUnitsOverPrompt"] = bd.get("pct_used_units_longer_than_prompt_limit")
+    m["BoundaryValuesBeyondPrompt"] = bd.get("pct_values_beyond_prompt_limit")
 
     ex = N.get("expert") or {}
     m["ExpertNtag"] = ex.get("n_tagged")
@@ -179,6 +197,9 @@ def build_macros(N: dict) -> dict:
         m["Blind" + dim.capitalize() + "R"] = d.get("R")
         m["Blind" + dim.capitalize() + "B"] = d.get("B0")
         m["Blind" + dim.capitalize() + "Tie"] = d.get("tie")
+    ov = ev.get("overall") or {}
+    parts = [ov.get("R"), ov.get("B0"), ov.get("tie")]
+    m["BlindOverallN"] = sum(parts) if all(p is not None for p in parts) else None
     return m
 
 
@@ -200,7 +221,7 @@ def table_descriptive(N: dict) -> str:
         "\\midrule\n"
         f"Total source requirements & 60 & 60 \\\\\n"
         f"Total engineering requirements & {rag.get('n_shalls', na)} & {norag.get('n_shalls', na)} \\\\\n"
-        f"Shalls with a concrete numeric criterion & {num_r if num_r is not None else na}\\% & {num_n if num_n is not None else na}\\% \\\\\n"
+        f"Shall statements containing a number & {num_r if num_r is not None else na}\\% & {num_n if num_n is not None else na}\\% \\\\\n"
         f"Per-shall KB attribution & {_pc(rag.get('citation_rate_pct')) or na} & {_pc(norag.get('citation_rate_pct')) or na} \\\\\n"
         "\\bottomrule\n"
         "\\end{tabularx}\n\\end{table*}\n"
