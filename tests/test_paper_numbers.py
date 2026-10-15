@@ -30,3 +30,12 @@ def test_to_macros_formats_and_handles_none():
     assert r"\newcommand{\NKBUnits}{1,208}" in tex
     assert r"\newcommand{\RagGradeXPct}{0.0\%}" in tex
     assert r"\newcommand{\Missing}{n/a}" in tex
+
+
+def test_grade_summary_regrades_with_kb_not_stored_grade():
+    kb = {"E1": {"id": "E1", "kb_tier": "L2", "text": "90 °C", "metadata": {}}}
+    d = {"result_sets": [{"engineering_requirements": [
+        {"measurable_criterion": "90°C", "evidence_citations": [{"kb_id": "E-FAKE"}], "_grade": "B"},
+        {"measurable_criterion": "90°C", "evidence_citations": [{"kb_id": "E1"}], "_grade": "B"}]}]}
+    s = pn.grade_summary(d, kb)
+    assert s["grade_X"] == 1 and s["grade_B"] == 1

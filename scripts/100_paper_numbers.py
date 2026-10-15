@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from cooling_rag_mg.grade_classifier import valid_citation_ids
+from cooling_rag_mg.grade_classifier import classify_grade, valid_citation_ids
 
 E4 = ROOT / "data/search_results/exp_v4"
 KBP = ROOT / "data/processed/evidence_units_v3_audited.jsonl"
@@ -84,7 +84,9 @@ def _pct(k, n):
 def grade_summary(d: dict, kb: dict) -> dict:
     ers = [e for rs in d.get("result_sets", []) for e in rs.get("engineering_requirements", [])]
     n = len(ers)
-    g = Counter(e.get("_grade") for e in ers)
+    # always re-grade with the KB-validated classifier: stored _grade values were written by
+    # different script versions
+    g = Counter(classify_grade(e.get("measurable_criterion", ""), e.get("evidence_citations", []), kb) for e in ers)
     vids = [valid_citation_ids(e.get("evidence_citations", []), kb) for e in ers]
     out = {"n_shalls": n, "n_sets": len(d.get("result_sets", []))}
     for k in "ABCX":
