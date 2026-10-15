@@ -134,7 +134,7 @@
 | **H_hard** | RAG 1.46% 对 no-RAG 0.10%，**p = 0.026，RAG 显著更高** | 不显著 | 必须如实报告，用 `hhard_contradiction_analysis.json` 解释：RAG 可核查的声明是 no-RAG 的 3.3 倍（915 对 273）；16 条 RAG 矛盾中有 9 条数值是原样摘自所引厂家文件，矛盾来自不同机型、不同来源之间的差异；1 条来自 KB 自身的数据错误（`E-HT-COMP-036` 中的"−100°C"）；其余 7 条是定性声明 |
 | **盲评成对比较（Qwen）** | RAG 胜 64、no-RAG 胜 51、平局 125 | no-RAG 胜 107 对 26 | **"表面质量指标偏向基线"的论点作废**，改为"两臂相当或 RAG 略优" |
 | no-RAG（Qwen） | 154；X 57（37.0%） | 41.7% | |
-| RAG（Qwen） | **尚未重跑完**，见 H1 | 21.3% | |
+| RAG（Qwen） | 229 条；A 2 / B 90 / C 137 / **X 0**（CI 0–1.6%）；引用率 91.7%；L1 18.3%；A+B 40.2% | X 21.3% | **跨模型结论变强**：两种生成模型的 Grade X 都是 0%。Limitations 中的"生成模型依赖"改为"两种模型均为 0%，但更多模型家族尚待验证"；`\QwenRagGradeXPct` 的取值为 0.0 |
 | 路由（RAG） | OPEN_ITEM 317、ENGINEER_CONFIRM 91（其中 tier-b 73）、SPOT_CHECK 1；冲突检出 0 | — | |
 | 派生类型（RAG） | Deferred 317、Direct 76、Unsupported 7（均为定性）、Synthesized 4、Derived 5；规则核验 30/30（25 条为 Deferred） | — | **人工核验是 Claude 代做的，需作者确认** |
 | E5 泄漏 | 最大余弦 0.816，KB 最近邻中位数 0.903；最长公共子串 11 字；60 条需求均不含数字 | — | 没有泄漏迹象 |
@@ -158,6 +158,7 @@
 | RAG 的数值忠实于来源 | 数值级支持 95.1%；唯一的冲突来自 KB 数据错误 | 保持 |
 | 基线数值无法核查 | no-RAG 92.2% 无法核验 | 保持，并作为主要论据（替代原来的"冲突"论据） |
 | 常规指标测不出可溯源性 | 盲评两臂相当（64/51/125）；H_hard 上 RAG 更高，因为可核查的声明多 3.3 倍，矛盾多数是来源之间的差异 | 论点保持；把"基线更受偏好"改为"两臂相当，指标区分不了有出处和没出处" |
+| 跨模型：qwen-max 只降到 21.3% | qwen-max RAG 的 Grade X 为 0%，no-RAG 为 37.0% | 结论变强：cite-or-defer 在两种生成模型上都使 Grade X 为 0 |
 | 冲突率显著差异（p = 0.0028） | p = 0.56 | 删除显著性的说法，只保留描述性数据 |
 | spot-check 44.8% 有误 | 不再适用（旧模型的输出） | 用 S3 盲评结果替代；结果不利也要如实写 |
 
@@ -167,7 +168,7 @@
 
 ## 4. 待办任务（按依赖顺序；H 表示交接任务）
 
-### H1 完成 Qwen RAG 臂（进行中）
+### H1 完成 Qwen RAG 臂 —— ✅ 2026-10-15 11:45 已完成（空结果集 0 个，已提交）
 - 交接时 77q 正在后台运行（`logs/rerun_postaudit_20261015_1057.log`，第 11/60 条；后台命令跑完后会自动执行 `107 rag_qwen`）。
 - 检查是否完成：`rag_v4_qwen_results.json` 的修改时间是 10-15 并且有 `_evidence_values`；日志里出现 `all steps done`；再运行 `PY scripts/107_fill_truncated_sets.py rag_qwen`，确认输出 `still empty: []`。
 - 如果没跑完或进程已不在，重新执行：`PY scripts/96_rerun_postaudit.py 10`，然后 `PY scripts/107_fill_truncated_sets.py rag_qwen`。
