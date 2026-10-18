@@ -20,15 +20,24 @@
     }
   ],
   "MTU": {
-    "source_id": "MTU-A001065-02E-P16-PENDING",
-    "requested_version": "A001065/02E",
+    "source_id": "MTU-A001065-02E-202004-P16",
+    "requested_version": "A001065/02E 2020-04",
     "printed_page": 16,
     "url": "https://www.mtu-solutions.com/content/dam/mtu/download/technical-info/betriebsstoffvorschrift_en/A001065_02E.pdf/_jcr_content/renditions/original./A001065_02E.pdf",
-    "sha256": null,
-    "parameters": [],
-    "model_scope": null,
-    "project_applicability": "unknown",
-    "verification": "Exact official URL returned HTTP406; PDF/hash and page layout not locally verified. Parent-transferred text separately retained in MTU_TRANSFERRED_PAGE_TEXT.json; not active parameters.",
+    "sha256": "4fd8866479ffbdb9a51b8f2b61f9d48d7906c72a1930763833a2e1b74cfe3d01",
+    "parameters": [
+      "MTU02E-P16-initial_fill",
+      "MTU02E-P16-restore_after_loss_or_dilution",
+      "MTU02E-P16-minimum_antifreeze",
+      "MTU02E-P16-maximum_antifreeze",
+      "MTU02E-P16-contaminant_exclusion",
+      "MTU02E-P16-full_circuit_and_preservation",
+      "MTU02E-P16-residual_dilution_check",
+      "MTU02E-P16-pure_water"
+    ],
+    "model_scope": "Series 1600 PowerPack",
+    "project_applicability": "unknown; not a general marine-engine limit",
+    "verification": "Library backing-file text read for P1/P16; parent visually verified P16. P16 image not returned by Library in this execution.",
     "enabled": false,
     "related_historical_ids_by_document": [
       "E-SW-CORR-004",
@@ -63,7 +72,39 @@
       "E-COOLANT-WATER-157"
     ],
     "primary_candidate_id": "E-SYS-WATER-006",
-    "document_level_match_is_not_page_verification": true
+    "document_level_match_is_not_page_verification": true,
+    "library_file_id": "libfile_ca54aced6c18819192f79181f9ad4b22",
+    "library_file_id_version": "file_0000000077dc81f49223f3e3b5b8a6be",
+    "size_bytes": 802692,
+    "page_count": 57,
+    "sha256_verification": "parent-reported original-byte hash; not recomputed locally",
+    "local_archive_complete": false,
+    "materialization_limitation": "Official helper downloaded but failed Windows os.setxattr; did not install file. Direct requests returned406; Windows curl failed schannel credentials. No access/security changes.",
+    "old_KB_edition_match": false,
+    "old_KB_comparison": "E-SYS-WATER-006 P16 starts with matching text but ends mid-word before preservation/dilution/pure-water conditions; overlap is not proof of original file identity.",
+    "section": "Coolants / Avoiding damage in the coolant system / Important",
+    "source_text": "<PARSED TEXT FOR PAGE: 16 / 57>\n             Avoiding damage in the coolant system\n             • For initial filling, an antifreeze concentration of 50% by volume must be ensured.\n             • For topping up coolant (after a coolant loss) or when the antifreeze concentration falls below 40% by vol-\n               ume, a concentration of 50% by volume must be established in the cooling system.\n             • An antifreeze concentration lower than 40% by volume is inadmissible to avoid compromising corrosion\n               protection.\n             • Never exceed an antifreeze concentration of 55% by volume. Concentrations in excess of this reduce anti-\n               freeze protection and heat dissipation.\n             • The coolant must not contain any oil or copper residue (in solid or dissolved form).\n             • The corrosion-inhibiting effect of coolant is only ensured with the coolant circuit fully filled. Otherwise, on-\n               ly the antifreeze approved for internal preservation of the coolant circuit provides proper corrosion protec-\n               tion when the medium was drained. This means that after draining the coolant the cooling circuit must be\n               preserved if no more coolant is to be filled. For the preservation procedure, refer to the MTU Preservation\n               and Represervation Specifications A001070/.. of the engine.\n             • A coolant circuit can not usually be drained completely, i.e. residual quantities of used coolant or freshwa-\n               ter from a flushing procedure remain in the engine. These residual quantities can result in the dilution of a\n               coolant to be filled (mixed from a concentrate or use of a ready mixture). This dilution effect is higher the\n               more add-on components there are on the engine. Check the coolant concentration in the coolant circuit\n               and adapt it if necessary.\n              Important\n              For corrosion-related reasons, it is not permissible to operate an engine with pure water without the addi-\n              tion of an approved corrosion inhibitor!\n\n\n\n\n                                                                                                                                  TIM-ID: 0000044686 - 005\n\n\n\n\n16 | Coolants | A001065/02E 2020-04"
   },
-  "original_record_file": "affected_original_records.json"
+  "original_record_file": "affected_original_records.json",
+  "MTU_field_changes": {
+    "affected_id": "E-SYS-WATER-006",
+    "retained_numeric_values": [
+      40,
+      50,
+      55
+    ],
+    "new_bindings": [
+      "% by volume, not unspecified percent",
+      "Initial fill50% versus restore50% conditional on loss OR below40%",
+      "Minimum40% and maximum55% are separate constraints",
+      "Series1600PowerPack scope, not universal marine",
+      "Continuation of truncated source: preservation, residual dilution, pure-water exception"
+    ],
+    "not_claimed": [
+      "Historical PDF identity",
+      "Project applicability",
+      "Local complete PDF archive",
+      "Comparison of02E with03E/04E"
+    ]
+  }
 }

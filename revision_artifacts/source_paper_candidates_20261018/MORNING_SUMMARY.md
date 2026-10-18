@@ -61,3 +61,9 @@ MTU原页补齐是材料缺口，不另加科学决策。保护校验见 `BUILD_
 父线程提供的MTU准确官方PDF链接也返回HTTP406，见 MTU_EXACT_URL_ATTEMPT.json；未绕过限制。MTU_TRANSFERRED_PAGE_TEXT.json 单独记录父线程核验的02E/2020-04 P16初配50%、低于40%或流失恢复50%、不超过55%的文字，并明确单位比例基准、原页版面及PDF hash未本地核验。02E比例表P14与03E/2021-08比例表P16不得混页。该转交文字不激活为KB参数。精确URL现已补入候选，hash仍null。
 
 候选主数值仍为历史RAG A1/B73/C439/X0（14.4% A+B），不是本轮v4的70或可选v5的72。两张退出展示的源表仅有Pending句，无已完成数值；原稿77.5%/86.1%继续保存在原ZIP及回复历史比较表，不伪装当前抽取准确率。回复中两处残留正文图引用及内部wording-audit措辞已同步修正。
+
+## MTU Library补齐结果（覆盖前述仅unknown的阶段状态）
+
+Library已解析同一持久文件的P1/P16：P1明确Series1600PowerPack，P16明确% by volume。新增8条不激活候选：初配50%、流失补充或低于40%时恢复50%、下界40%、上界55%、油/铜残留禁止、满液/排空保存条件、残液稀释检查、无批准缓蚀剂不得纯水运行。原E-SYS-WATER-006文字在防腐说明中途截断；候选保留后续保存/稀释/纯水例外，不将antifreeze擅自改名为乙二醇。来源新核验范围不外推通用marine，也不证明历史原文件同版。
+
+父侧PDF SHA256为4fd8866479ffbdb9a51b8f2b61f9d48d7906c72a1930763833a2e1b74cfe3d01，802692bytes、57页。该hash在候选中标注parent-reported，不声称本地重算。Library官方materialize助手下载后在Windows的os.setxattr步骤失败，未完整安装；直接普通curl也因schannel凭证不可用而失败，没有修改安全设置或绕过406。已用Library backing-file只读文本完成字段绑定；本地完整PDF归档仍是技术阻塞。父侧原页视觉核验与本侧文本核验分开记录，原文见MTU_LIBRARY_PAGE_READ.json。生产KB、论文主数值、评分及模型输出均未改变。
