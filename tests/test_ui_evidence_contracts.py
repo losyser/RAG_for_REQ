@@ -38,7 +38,8 @@ def test_paragraph_and_metadata_omissions_are_explicit():
     ev = evidence(text="x" * 2000)
     ev["metadata"]["applicable_condition"] = ["long" * 300]
     result = compact_requirement_context(context(ev))["supported_evidence"][0]
-    assert result["text"] == "" and result["_context_status"] == "partial_unknown"
+    assert 0 < len(result["text"]) <= 600 and result["_context_status"] == "partial_unknown"
+    assert result["_fragment_fallback"] is True
     assert "applicable_condition" in result["_omitted_metadata_fields"]
     assert result["_applicability"] == "unknown"
 
@@ -178,3 +179,65 @@ def test_unfiltered_fallback_respects_explicit_max_total(monkeypatch):
     assert diagnostic["unfiltered_fallback_used"] and diagnostic["result_count"] == 3
     with pytest.raises(ValueError, match="positive"):
         aligned_retrieve("r", search, None, "offline", max_total=0)
+
+
+@pytest.mark.parametrize("limit", [1, 10, 300, 580, 600])
+def test_excerpt_rescues_long_body_with_exact_source_spans(limit):
+    from cooling_rag_mg.ui_evidence_contracts import bounded_ui_excerpt
+    import hashlib
+    raw = "  Temperature 80°C; " + "condition " * 300 + "\nOnly startup."
+    item = bounded_ui_excerpt(raw, limit)
+    assert 0 < len(item["text"]) <= limit
+    assert item["text"] == "\n\n".join(raw[a:b] for a, b in item["_source_text_spans"])
+    assert item["_source_text_sha256"] == hashlib.sha256(raw.encode('utf-8')).hexdigest()
+    assert item["_text_truncated"] and item["_context_status"] == "partial_unknown"
+
+
+def test_excerpt_preserves_previously_fitting_paragraphs():
+    from cooling_rag_mg.ui_evidence_contracts import bounded_ui_excerpt
+    from cooling_rag_mg.evidence_contracts import bounded_context
+    raw = "x" * 900 + "\n\nTemperature 80°C\nCondition startup."
+    item = bounded_ui_excerpt(raw, 300)
+    assert item["text"] == bounded_context(raw, 300)[0]
+    assert item["_fragment_fallback"] is False
+    assert item["_context_status"] == "partial_unknown"
+
+
+@pytest.mark.parametrize("text", ["", "...", "x" * 2000])
+def test_direct_claim_downgraded_for_empty_or_partial_body(text):
+    ev = compact_evidence(evidence(text=text), text_limit=300)
+    result = normalize_agent_output({"engineering_requirements": [row()]}, "R1", evidence_scope=[ev])
+    assert result["engineering_requirements"][0]["support_status"] == "need_confirmation"
+    assert result["_validation_report"]["semantic_support"] == "unknown"
+
+
+@pytest.mark.parametrize("repaired", [False, True])
+def test_actual_graph_direct_guard_in_normal_and_repaired_path(monkeypatch, repaired):
+    import cooling_rag_mg.engineering_requirement_agent as agent
+    obj = {"engineering_requirements": [row(evidence_ids=["E1", "UNKNOWN"])]}
+    monkeypatch.setattr(agent, "cached_completion", lambda *a, **kw: SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content="invalid json" if repaired else json.dumps(obj)))]))
+    monkeypatch.setattr(agent, "repair_json_with_deepseek", lambda *a: copy.deepcopy(obj))
+    monkeypatch.setattr(agent, "get_config", lambda: SimpleNamespace(deepseek=SimpleNamespace(enabled=True, make_client=lambda: object(), model="offline", temperature=0, max_tokens_requirement_agent=1000)))
+    result = agent.build_graph().invoke({"requirement": {"requirement_id": "R1"}, "retrieval_context": context(evidence(text="x" * 2000)), "errors": []})
+    assert result["output"]["engineering_requirements"][0]["support_status"] == "need_confirmation"
+    assert result["output"]["engineering_requirements"][0]["evidence_ids"] == ["E1"]
+    assert any(i["code"] == "reference_not_in_supplied_support_context" for i in result["output"]["_validation_report"]["issues"])
+
+
+def test_total_prompt_budget_blocks_before_client_creation(monkeypatch):
+    import cooling_rag_mg.engineering_requirement_agent as agent
+    monkeypatch.setattr(agent, "UI_MAX_PROMPT_CHARS", 10)
+    monkeypatch.setattr(agent, "get_config", lambda: SimpleNamespace(deepseek=SimpleNamespace(enabled=True, make_client=lambda: pytest.fail("must block before creating client"))))
+    result = agent.build_graph().invoke({"requirement": {"requirement_id": "R1"}, "retrieval_context": context(), "errors": []})
+    assert result["output"]["generation_mode"] == "fallback"
+    assert any("prompt_budget_exceeded" in x for x in result["output"]["assumptions"])
+    assert all(r["support_status"] != "verified_by_direct_evidence" for r in result["output"]["engineering_requirements"])
+
+
+def test_reference_cap_does_not_leave_a_direct_claim_after_reference_loss():
+    scope = [compact_evidence(evidence(f"E{i}")) for i in range(6)]
+    result = normalize_agent_output({"engineering_requirements": [row(evidence_ids=[f"E{i}" for i in range(6)])]}, "R1", evidence_scope=scope)
+    req = result["engineering_requirements"][0]
+    assert req["evidence_ids"] == [f"E{i}" for i in range(5)]
+    assert req["support_status"] == "need_confirmation"
+    assert len(req["_reported_evidence_ids"]) == 6

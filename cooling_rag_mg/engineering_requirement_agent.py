@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import copy
+import os
 import re
 from datetime import datetime
 from pathlib import Path
@@ -14,8 +15,7 @@ from cooling_rag_mg.config import get_config
 from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.schema import normalize_v2_metadata
 from cooling_rag_mg.text_utils import safe_text, truncate
-from cooling_rag_mg.evidence_contracts import bounded_context
-from cooling_rag_mg.ui_evidence_contracts import retain_ui_evidence, prepare_ui_output, finish_ui_audit
+from cooling_rag_mg.ui_evidence_contracts import retain_ui_evidence, prepare_ui_output, finish_ui_audit, bounded_ui_excerpt
 
 try:
     from langgraph.graph import END, StateGraph
@@ -273,7 +273,11 @@ JSON_REPAIR_PROMPT = """
 """
 
 
+UI_MAX_PROMPT_CHARS = int(os.getenv("UI_MAX_PROMPT_CHARS", "96000"))
+
+
 class RequirementAgentState(TypedDict, total=False):
+    generation_blocked: str
     requirement: dict[str, Any]
     retrieval_context: dict[str, Any]
     compact_context: dict[str, Any]
@@ -452,9 +456,7 @@ def compact_requirement_context(
     text_limit = max(300, 600 - sub_count * 20 - len(gaps) * 30)
     for item in supported + background:
         raw_text = item.get("text", "")
-        item["text"], omitted = bounded_context(raw_text, text_limit)
-        item["_omitted_context_paragraphs"] = omitted
-        item["_context_status"] = "partial_unknown" if omitted else "all_paragraphs_retained_not_semantic_verification"
+        item.update(bounded_ui_excerpt(raw_text, text_limit))
 
     # 按 requirement_intents 分组（帮助 agent 归并）
     grouped_evidence = _group_evidence_by_type(supported)
@@ -663,6 +665,8 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence
         # ── 后处理②：evidence_ids 裁剪上限为 5 ──
         if len(req["evidence_ids"]) > 5:
             req["evidence_ids"] = req["evidence_ids"][:5]
+            if req.get("support_status") == "verified_by_direct_evidence":
+                req["support_status"] = "need_confirmation"
             req.setdefault("applicability_constraints", [])
             req["applicability_constraints"].append(
                 "证据 ID 已裁剪至前 5 条（primary 优先），完整证据列表见检索结果文件。"
@@ -747,18 +751,22 @@ def build_graph():
         cfg = get_config()
         if not cfg.deepseek.enabled:
             raise RuntimeError("DeepSeek 未配置 api_key，无法生成工程化需求。")
-        client = cfg.deepseek.make_client()
         payload = {
             "original_requirement": state.get("requirement", {}),
             "retrieval_context": state.get("compact_context", {}),
         }
+        messages = [
+            {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT + "\n上下文状态partial_unknown、缺失条件、缺失型号均表示待确认，不能推断补齐。参数value_text/operator/unit须一起解释，省略内容不能当作不存在。原文片段及偏移仅供定位，不保证条件完整。原文偏移和字符预算不是工程参数，不得用于数值判据。support_status只是模型报告，不代表独立语义验证。"},
+            {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
+        ]
+        prompt_chars = sum(len(m["content"]) for m in messages)
+        if UI_MAX_PROMPT_CHARS < 1 or prompt_chars > UI_MAX_PROMPT_CHARS:
+            return {**state, "generation_blocked": f"prompt_budget_exceeded: {prompt_chars}/{UI_MAX_PROMPT_CHARS} characters"}
+        client = cfg.deepseek.make_client()
         resp = cached_completion(
             client,
             model=cfg.deepseek.model,
-            messages=[
-                {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT + "\n上下文状态partial_unknown、缺失条件、缺失型号均表示待确认，不能推断补齐。参数value_text/operator/unit须一起解释，省略内容不能当作不存在。support_status只是模型报告，不代表独立语义验证。"},
-                {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
-            ],
+            messages=messages,
             temperature=cfg.deepseek.temperature,
             max_tokens=cfg.deepseek.max_tokens_requirement_agent,
             response_format={"type": "json_object"},
@@ -770,6 +778,9 @@ def build_graph():
         requirement = state.get("requirement", {}) or {}
         requirement_id = safe_text(requirement.get("requirement_id"))
         errors = list(state.get("errors", []) or [])
+        if state.get("generation_blocked"):
+            errors.append(state["generation_blocked"])
+            return {**state, "output": build_fallback_output(state, errors), "errors": errors}
 
         try:
             obj = extract_json(state.get("llm_raw", "{}"))

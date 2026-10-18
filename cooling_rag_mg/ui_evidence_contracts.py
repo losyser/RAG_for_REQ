@@ -2,9 +2,59 @@
 from __future__ import annotations
 import copy
 import json
+import re
+import hashlib
 from collections import Counter
 
-from .evidence_contracts import bounded_context, bounded_value_records, select_evidence
+from .evidence_contracts import bounded_value_records, select_evidence
+
+
+def bounded_ui_excerpt(raw: str, limit: int) -> dict:
+    """Keep the existing fitting paragraphs; only rescue an otherwise empty body.
+
+    Spans are Unicode character offsets, end-exclusive, in the exact original text.
+    A rescued fragment is never described as condition-complete.
+    """
+    if not isinstance(raw, str) or limit < 1:
+        raise ValueError("excerpt requires text and a positive character budget")
+    blocks = []
+    cursor = 0
+    for match in list(re.finditer(r"\n\s*\n", raw)) + [None]:
+        end = match.start() if match else len(raw)
+        piece = raw[cursor:end]
+        start = cursor + len(piece) - len(piece.lstrip())
+        stop = end - (len(piece) - len(piece.rstrip()))
+        if start < stop:
+            blocks.append((start, stop))
+        if match:
+            cursor = match.end()
+    chosen, used = [], 0
+    for start, end in blocks:
+        cost = end - start + (2 if chosen else 0)
+        if used + cost <= limit:
+            chosen.append((start, end))
+            used += cost
+    rescued = bool(blocks) and not chosen
+    boundary = "whole_paragraphs"
+    if rescued:
+        start, end = blocks[0]
+        stop = min(end, start + limit)
+        candidates = [start + m.end() for m in re.finditer(r"[。！？!?；;\n]|\.(?=\s|$)", raw[start:stop])]
+        preferred = [p for p in candidates if p - start >= max(1, limit // 2)]
+        if preferred:
+            stop = preferred[-1]
+            boundary = "sentence_or_line_boundary_not_semantic_completeness"
+        else:
+            boundary = "hard_character_boundary"
+        chosen = [(start, stop)]
+    text = "\n\n".join(raw[start:end] for start, end in chosen)
+    partial = rescued or len(chosen) < len(blocks)
+    return {"text": text, "_context_status": "empty_source_unknown" if not blocks else "partial_unknown" if partial else "all_paragraphs_retained_not_semantic_verification",
+            "_text_truncated": partial, "_fragment_fallback": rescued, "_fragment_boundary": boundary,
+            "_source_text_spans": [list(span) for span in chosen], "_source_span_unit": "unicode_character_end_exclusive",
+            "_source_text_sha256": hashlib.sha256(raw.encode("utf-8")).hexdigest(),
+            "_source_text_chars": len(raw), "_retained_text_chars": len(text), "_text_budget_chars": limit,
+            "_omitted_context_paragraphs": len(blocks) - (0 if rescued else len(chosen))}
 
 
 def retain_ui_evidence(out: dict, evidence: dict, text_limit: int) -> dict:
@@ -15,9 +65,7 @@ def retain_ui_evidence(out: dict, evidence: dict, text_limit: int) -> dict:
         out["text"] = raw
         out["_context_status"] = "pending_budget"
     else:
-        out["text"], omitted = bounded_context(raw, text_limit)
-        out["_context_status"] = "partial_unknown" if omitted else "all_paragraphs_retained_not_semantic_verification"
-        out["_omitted_context_paragraphs"] = omitted
+        out.update(bounded_ui_excerpt(raw, text_limit))
     meta = evidence.get("metadata") or {}
     omitted_fields = []
     for key in ("unsupported_requirements", "normalized_summary", "limitation", "applicable_condition", "engine_model", "manufacturer"):
@@ -89,6 +137,12 @@ def prepare_ui_output(obj: dict, requirement_id: str, evidence_scope: list[dict]
                 ev = scope[eid]
                 if ev.get("_context_status") == "partial_unknown" or ev.get("_omitted_metadata_fields") or ev.get("_omitted_parameter_records") or ev.get("_constraint_status") == "omitted_over_budget":
                     issue(path, "cited_context_incomplete", eid)
+                    if row.get("support_status") == "verified_by_direct_evidence":
+                        row["support_status"] = "need_confirmation"
+                if not ev.get("text", "").strip() or ev.get("text", "").strip() == "...":
+                    issue(path, "cited_body_empty_or_placeholder", eid)
+                    if row.get("support_status") == "verified_by_direct_evidence":
+                        row["support_status"] = "need_confirmation"
                 if ev.get("_missing_applicability_fields"):
                     issue(path, "cited_applicability_unknown", eid)
         row["evidence_ids"] = ids
