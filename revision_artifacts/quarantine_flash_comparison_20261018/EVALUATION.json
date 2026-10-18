@@ -1,0 +1,2259 @@
+{
+  "new_attempts": 4,
+  "completed_responses": 4,
+  "new_known_usage_peak_estimate_CNY": "0.133186",
+  "combined_known_usage_peak_estimate_CNY": "0.563162",
+  "total_reservation_CNY": "34.603008",
+  "prior_failed_uncertain_reserves_CNY": "4.325376",
+  "actual_account_bill": null,
+  "protection": {
+    "historical": {
+      "count": 366,
+      "changed": []
+    },
+    "additional": {
+      "count": 256,
+      "changed": []
+    }
+  },
+  "cases": [
+    {
+      "case": "OR010",
+      "arm": "off",
+      "status": "completed",
+      "request_sha256": "4754a43243c8ac950b5125e39bccc20224fad1586411977e5b1be2ccdcc6cf1b",
+      "response_file_sha256": "4573c625cf115cfdd7039f51a1986afa4e4b893420313cc5bcbfeffc5d01c05d",
+      "returned_model": "deepseek-flash",
+      "response_id": "344cf248-a11f-45e0-8a22-2e34b134db36",
+      "usage": {
+        "completion_tokens": 2183,
+        "prompt_tokens": 7177,
+        "total_tokens": 9360,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 7040
+        },
+        "prompt_cache_hit_tokens": 7040,
+        "prompt_cache_miss_tokens": 137
+      },
+      "finish_reason": "stop",
+      "raw_rows": 5,
+      "delivery_rows": 5,
+      "withheld_rows": 0,
+      "raw_minus100": [],
+      "delivery_minus100": [],
+      "schema_errors": [],
+      "raw_rows_data": [
+        {
+          "shall_statement": "冷却水系统冷却液的水质（总硬度、pH值、氯离子含量）应满足所选用发动机制造商规定的水质限值，并在超出限值时进行更换或处理。",
+          "measurable_criterion": "{{TBD|unit:dGH|ref:MAN L23/30DF Project Guide / MAN 49/60DF Project Guide / MAN L21/31 Project Guide / MAN L16/24 GenSet Project Guide|component:冷却液|intent:总硬度|hint:证据给出总硬度≤10 dGH（无添加剂与含添加剂两类水质），但适用机型与工况需按项目选定机型确认，不得跨机型泛化}}；{{TBD|unit:pH|ref:MAN L23/30DF Project Guide / MAN 49/60DF Project Guide / MAN L21/31 Project Guide / MAN L16/24 GenSet Project Guide|component:冷却液|intent:pH值|hint:证据给出无添加剂水pH 6.5–8（20°C）、含添加剂循环水pH≥7.5（20°C），需按水质类型与机型确认}}；{{TBD|unit:mg/l|ref:MAN L23/30DF Project Guide / MAN 49/60DF Project Guide / MAN L21/31 Project Guide / MAN L16/24 GenSet Project Guide|component:冷却液|intent:氯离子含量|hint:证据给出氯离子≤50 mg/l；MTU来源另给出≤25 mg/l，两者限值不一致，须按选定厂家规范核实后确定}}",
+          "applicable_condition": "正常运况；适用于来源文件对应厂家、机型、配置或安装条件（MAN L23/30DF、49/60DF、L21/31、L16/24等），具体机型与水质类型（无添加剂填充/补充水或含添加剂循环水）需按项目确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "按供应商建议的测试设备或测试套件对冷却液取样检测总硬度、pH值与氯离子含量",
+            "检测结果满足所选厂家规范对应水质类型的限值要求",
+            "限值不满足时按厂家要求更换或处理冷却液"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却液应使用符合厂家要求的添加剂（防腐蚀剂/补充冷却液添加剂），并按供应商建议的方法检测添加剂浓度，以维持防腐蚀与换热性能。",
+          "measurable_criterion": "{{TBD|unit:浓度|ref:MAN 49/60DF Project Guide / MAN L23/30DF Project Guide|component:冷却液添加剂|intent:添加剂浓度|hint:证据仅要求按供应商建议检测添加剂浓度，未给出具体限值，须依据选定厂家技术数据确定}}",
+          "applicable_condition": "使用化学添加剂的循环冷却水；正常运况；限于来源文件对应厂家、机型与配置",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "使用供应商建议的检测设备或测试套件测定添加剂浓度",
+            "添加剂浓度满足所选厂家技术数据规定的要求",
+            "检测记录可追溯并纳入冷却液维护记录"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却液的防冻比例（乙二醇/防冻剂浓度）应满足厂家规定的冰点保护要求，并按厂家规范进行配制与补充。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065 / S29 Caterpillar Know Your Cooling System|component:冷却液|intent:冰点|hint:证据给出预混合ELC防冻保护至-37°C、ELC浓缩液可降至-52°C（Caterpillar EC-1），MTU给出浓缩液/预混液产品比例（100、50/50、40/60），但项目冰点目标与配比须按选定厂家与使用环境确定，不得跨厂家泛化}}；{{TBD|unit:体积百分比|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液|intent:乙二醇/防冻剂比例|hint:证据给出按总容量A、实测浓度B计算补充量的方法及产品比例示例，具体配比须按厂家规范与实测浓度确定}}",
+          "applicable_condition": "正常运况；适用于来源文件对应厂家产品（MTU Coolant AH系列、Caterpillar ELC）及相应环境温度条件；寒冷季节需确保适当防冻保护",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "按厂家规范测定冷却液浓度/防冻比例",
+            "实测冰点满足项目环境温度与厂家规定的最低防冻保护要求",
+            "补充或调整防冻液时按厂家给出的容量-浓度计算方法执行，且不超出冷却液液位规格范围"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-157",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却液（浓缩液及预混液）应按厂家规范储存与处理，不得储存于镀锌容器中，容器应密封并储存于阴凉干燥处。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液储存|intent:储存温度上限|hint:证据给出储存温度最高30°C（原装密封包装条件），须按选定厂家规范确认}}；{{TBD|unit:年|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液浓缩液|intent:储存期限|hint:证据给出约3年储存能力（原装密封包装、≤30°C条件），须按厂家规范确认}}",
+          "applicable_condition": "冷却液储存与转移处理；原装密封包装、储存温度不超过厂家规定上限；限于来源文件对应厂家规范",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "储存容器材质不含镀锌，转移过程同样满足该要求",
+            "容器密封并置于阴凉干燥处",
+            "储存温度与储存期限符合厂家规范",
+            "储存与转移记录可追溯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却液应按厂家规定的更换周期或在使用寿命节点进行更换与维护（含延长剂添加），以维持防腐蚀与换热功能。",
+          "measurable_criterion": "{{TBD|unit:小时|ref:S29 Caterpillar Know Your Cooling System|component:冷却液|intent:服务寿命|hint:证据给出Cat ELC服务时间12000小时或6年、6000服务小时或寿命一半时添加Extender，须按选定厂家产品与项目运行工况确认}}",
+          "applicable_condition": "正常运况；适用于来源文件对应厂家产品（如Caterpillar ELC，基于EC-1规范）；其他厂家产品须按其规范确定",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "按厂家规定的服务小时或年限节点执行冷却液更换或延长剂添加",
+            "维护记录包含运行小时数与维护动作",
+            "更换后冷却液水质与添加剂浓度重新满足厂家限值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        }
+      ],
+      "delivery": [
+        {
+          "shall_statement": "冷却水系统冷却液的水质（总硬度、pH值、氯离子含量）应满足所选用发动机制造商规定的水质限值，并在超出限值时进行更换或处理。",
+          "measurable_criterion": "{{TBD|unit:dGH|ref:MAN L23/30DF Project Guide / MAN 49/60DF Project Guide / MAN L21/31 Project Guide / MAN L16/24 GenSet Project Guide|component:冷却液|intent:总硬度|hint:证据给出总硬度≤10 dGH（无添加剂与含添加剂两类水质），但适用机型与工况需按项目选定机型确认，不得跨机型泛化}}；{{TBD|unit:pH|ref:MAN L23/30DF Project Guide / MAN 49/60DF Project Guide / MAN L21/31 Project Guide / MAN L16/24 GenSet Project Guide|component:冷却液|intent:pH值|hint:证据给出无添加剂水pH 6.5–8（20°C）、含添加剂循环水pH≥7.5（20°C），需按水质类型与机型确认}}；{{TBD|unit:mg/l|ref:MAN L23/30DF Project Guide / MAN 49/60DF Project Guide / MAN L21/31 Project Guide / MAN L16/24 GenSet Project Guide|component:冷却液|intent:氯离子含量|hint:证据给出氯离子≤50 mg/l；MTU来源另给出≤25 mg/l，两者限值不一致，须按选定厂家规范核实后确定}}",
+          "applicable_condition": "正常运况；适用于来源文件对应厂家、机型、配置或安装条件（MAN L23/30DF、49/60DF、L21/31、L16/24等），具体机型与水质类型（无添加剂填充/补充水或含添加剂循环水）需按项目确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "按供应商建议的测试设备或测试套件对冷却液取样检测总硬度、pH值与氯离子含量",
+            "检测结果满足所选厂家规范对应水质类型的限值要求",
+            "限值不满足时按厂家要求更换或处理冷却液"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-MAINT-003": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却液应使用符合厂家要求的添加剂（防腐蚀剂/补充冷却液添加剂），并按供应商建议的方法检测添加剂浓度，以维持防腐蚀与换热性能。",
+          "measurable_criterion": "{{TBD|unit:浓度|ref:MAN 49/60DF Project Guide / MAN L23/30DF Project Guide|component:冷却液添加剂|intent:添加剂浓度|hint:证据仅要求按供应商建议检测添加剂浓度，未给出具体限值，须依据选定厂家技术数据确定}}",
+          "applicable_condition": "使用化学添加剂的循环冷却水；正常运况；限于来源文件对应厂家、机型与配置",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "使用供应商建议的检测设备或测试套件测定添加剂浓度",
+            "添加剂浓度满足所选厂家技术数据规定的要求",
+            "检测记录可追溯并纳入冷却液维护记录"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却液的防冻比例（乙二醇/防冻剂浓度）应满足厂家规定的冰点保护要求，并按厂家规范进行配制与补充。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065 / S29 Caterpillar Know Your Cooling System|component:冷却液|intent:冰点|hint:证据给出预混合ELC防冻保护至-37°C、ELC浓缩液可降至-52°C（Caterpillar EC-1），MTU给出浓缩液/预混液产品比例（100、50/50、40/60），但项目冰点目标与配比须按选定厂家与使用环境确定，不得跨厂家泛化}}；{{TBD|unit:体积百分比|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液|intent:乙二醇/防冻剂比例|hint:证据给出按总容量A、实测浓度B计算补充量的方法及产品比例示例，具体配比须按厂家规范与实测浓度确定}}",
+          "applicable_condition": "正常运况；适用于来源文件对应厂家产品（MTU Coolant AH系列、Caterpillar ELC）及相应环境温度条件；寒冷季节需确保适当防冻保护",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "按厂家规范测定冷却液浓度/防冻比例",
+            "实测冰点满足项目环境温度与厂家规定的最低防冻保护要求",
+            "补充或调整防冻液时按厂家给出的容量-浓度计算方法执行，且不超出冷却液液位规格范围"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-157",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-040": [
+                "engine_model"
+              ],
+              "E-COOLANT-WATER-065": [
+                "engine_model"
+              ],
+              "E-COOLANT-WATER-157": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却液（浓缩液及预混液）应按厂家规范储存与处理，不得储存于镀锌容器中，容器应密封并储存于阴凉干燥处。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液储存|intent:储存温度上限|hint:证据给出储存温度最高30°C（原装密封包装条件），须按选定厂家规范确认}}；{{TBD|unit:年|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液浓缩液|intent:储存期限|hint:证据给出约3年储存能力（原装密封包装、≤30°C条件），须按厂家规范确认}}",
+          "applicable_condition": "冷却液储存与转移处理；原装密封包装、储存温度不超过厂家规定上限；限于来源文件对应厂家规范",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "储存容器材质不含镀锌，转移过程同样满足该要求",
+            "容器密封并置于阴凉干燥处",
+            "储存温度与储存期限符合厂家规范",
+            "储存与转移记录可追溯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-040": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却液应按厂家规定的更换周期或在使用寿命节点进行更换与维护（含延长剂添加），以维持防腐蚀与换热功能。",
+          "measurable_criterion": "{{TBD|unit:小时|ref:S29 Caterpillar Know Your Cooling System|component:冷却液|intent:服务寿命|hint:证据给出Cat ELC服务时间12000小时或6年、6000服务小时或寿命一半时添加Extender，须按选定厂家产品与项目运行工况确认}}",
+          "applicable_condition": "正常运况；适用于来源文件对应厂家产品（如Caterpillar ELC，基于EC-1规范）；其他厂家产品须按其规范确定",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "按厂家规定的服务小时或年限节点执行冷却液更换或延长剂添加",
+            "维护记录包含运行小时数与维护动作",
+            "更换后冷却液水质与添加剂浓度重新满足厂家限值"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-065": [
+                "engine_model"
+              ],
+              "E-COOLANT-MAINT-003": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        }
+      ],
+      "quarantine_review": {},
+      "raw_out_of_scope_ids": []
+    },
+    {
+      "case": "OR010",
+      "arm": "on",
+      "status": "completed",
+      "request_sha256": "bd240ad27e774d0714b4d9b8d6687e43cfc828fdadfec7b5c91c3f5fb5d37e82",
+      "response_file_sha256": "6e8c184cdd85c50409fb2e58e16a6425c74a1783cd8f9eae17470141fa3c0878",
+      "returned_model": "deepseek-flash",
+      "response_id": "1233e1bb-cb72-42ff-a8f9-522e55910dd5",
+      "usage": {
+        "completion_tokens": 3372,
+        "prompt_tokens": 7247,
+        "total_tokens": 10619,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 7040
+        },
+        "prompt_cache_hit_tokens": 7040,
+        "prompt_cache_miss_tokens": 207
+      },
+      "finish_reason": "stop",
+      "raw_rows": 10,
+      "delivery_rows": 10,
+      "withheld_rows": 0,
+      "raw_minus100": [],
+      "delivery_minus100": [],
+      "schema_errors": [],
+      "raw_rows_data": [
+        {
+          "shall_statement": "冷却水系统冷却液的水质应满足厂家规定的总硬度限值，以防止结垢、沉积及换热性能下降。",
+          "measurable_criterion": "总硬度 ≤ 10 dGH",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液取样检测总硬度不超过10 dGH",
+            "检测设备依据添加剂供应商建议或采用供应商提供的测试套件",
+            "检测结果记录并归档，超限时按厂家要求处理"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统无添加剂填充及补充用水的pH值应控制在厂家规定范围内，以避免腐蚀与沉积。",
+          "measurable_criterion": "pH值 6.5 – 8（在20 °C条件下）",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况下的无添加剂清水（填充与再填充）；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "20 °C条件下实测pH值不低于6.5且不高于8",
+            "检测方法依据供应商建议或供应商测试套件",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统含添加剂循环水的pH值应不低于厂家规定下限，以保证添加剂防腐蚀功能有效。",
+          "measurable_criterion": "pH值 ≥ 7.5（在20 °C条件下）",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24机型冷却水系统正常运行工况下的含添加剂循环水；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "20 °C条件下实测pH值不低于7.5",
+            "检测方法依据添加剂供应商建议或供应商测试套件",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的氯离子含量应不超过厂家规定限值，以防止氯离子引起的腐蚀。",
+          "measurable_criterion": "氯离子含量 ≤ 50 mg/l",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液取样检测氯离子含量不超过50 mg/l",
+            "检测设备依据供应商建议或供应商测试套件",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的氯离子含量应满足MTU规定的更严格限值，当不满足该规格时应更换冷却液。",
+          "measurable_criterion": "氯离子含量 ≤ 25 mg/l",
+          "applicable_condition": "适用于MTU冷却液（依据MTU Fluids and Lubricants Specifications A001065 Table 11冷却液要求）正常运行工况；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液取样检测氯离子含量不超过25 mg/l",
+            "不满足该规格时按厂家要求更换冷却液",
+            "评估时同时考虑各自冷却液特有特性数据及所用淡水水质",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的防冻比例（乙二醇/防冻剂浓度）应满足厂家规定的冰点保护要求，以防止寒冷季节冻损及换热性能变差。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065 / S29 Caterpillar Know Your Cooling System|component:冷却液|intent:冰点与乙二醇比例|hint:证据给出预混合ELC防冻保护至-37°C、浓缩液可降至-52°C等数值，但适用厂家与机型不同且部分条件缺失，需按选定厂家技术数据确认项目冰点限值与对应乙二醇体积比例}}",
+          "applicable_condition": "适用于按选定厂家（MTU或Caterpillar等）冷却液规范配置的冷却水系统正常运行工况；具体冰点目标与乙二醇比例需依据项目选定厂家技术数据确定",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "冷却液冰点满足项目所在环境最低温度加安全裕度要求（数值待厂家技术数据确认）",
+            "乙二醇/防冻剂体积比例与厂家规定一致",
+            "浓度测量与补充量计算按厂家方法执行并记录"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-157",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的水质、添加剂类型与浓度应符合所选发动机厂家冷却液规范要求，不得使用超出厂家限定范围的冷却液或添加剂。",
+          "measurable_criterion": "{{TBD|unit:—|ref:S26 MTU A001065 / S10 MAN L23/30DF Project Guide / S29 Caterpillar EC-1|component:冷却液与添加剂|intent:水质与添加剂合规性|hint:证据仅给出各厂家产品名称与规范框架（如MTU Coolant AH系列、Cat ELC EC-1），未给出统一可量化判据，需按选定厂家规范文件确认添加剂浓度与水质合格判据}}",
+          "applicable_condition": "适用于选定厂家（MTU/MAN/Caterpillar/Wärtsilä等）对应机型与配置的冷却水系统正常运行工况；不得跨厂家、机型或系统型式泛化",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液及添加剂品牌、型号在厂家认可清单内",
+            "添加剂浓度检测结果符合厂家规范",
+            "水质检测项目（硬度、pH、氯离子）均满足对应厂家限值",
+            "合规性记录归档并可追溯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-157",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统应建立冷却液水质与添加剂浓度的定期检测机制，检测设备与方法应依据冷却液/添加剂供应商建议。",
+          "measurable_criterion": "{{TBD|unit:—|ref:S10 MAN L23/30DF Project Guide / S42 MAN 49/60DF Project Guide / S39 MAN L21/31 Project Guide|component:冷却液检测|intent:检测周期与检测方法|hint:证据明确检测设备应依据供应商建议并可采用供应商测试套件，但未给出检测周期数值，需按厂家维护说明或项目维护计划确认}}",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L21/31等机型冷却水系统正常运行工况；其他厂家/机型需另行确认",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "检测设备与方法符合供应商建议",
+            "检测项目覆盖总硬度、pH值、氯离子含量及添加剂浓度",
+            "检测记录完整、可追溯，超限时按厂家要求处置"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的储存与转移应遵守厂家要求，不得储存于镀锌容器中，容器应密封并储存于阴凉干燥处。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液浓缩液储存|intent:储存温度与容器要求|hint:证据给出储存温度最高30°C及约3年储存期限，但适用条件限于原装密封包装且部分参数条件缺失，需按选定厂家规范确认项目储存限值}}",
+          "applicable_condition": "适用于MTU冷却液浓缩液在原装密封包装条件下的储存与转移；其他厂家/机型需另行确认",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液未储存于镀锌容器中",
+            "容器密封并置于阴凉干燥处",
+            "储存温度与储存期限符合厂家规范（数值待确认）",
+            "寒冷季节防冻保护措施到位"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的更换与添加剂补充应按厂家规定的服务时间或寿命周期执行。",
+          "measurable_criterion": "{{TBD|unit:小时|ref:S29 Caterpillar Know Your Cooling System|component:冷却液与添加剂|intent:更换与补充周期|hint:证据给出Cat ELC服务时间12000小时或6年、6000服务小时添加Extender等数值，但仅适用于Caterpillar EC-1规范冷却液，需按选定厂家规范确认项目更换周期}}",
+          "applicable_condition": "适用于按Caterpillar EC-1规范配置Cat ELC冷却液的冷却水系统正常运行工况；其他厂家/机型需另行确认",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液更换周期符合厂家规定",
+            "添加剂补充时机与用量符合厂家规定",
+            "更换与补充记录归档可追溯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ]
+        }
+      ],
+      "delivery": [
+        {
+          "shall_statement": "冷却水系统冷却液的水质应满足厂家规定的总硬度限值，以防止结垢、沉积及换热性能下降。",
+          "measurable_criterion": "总硬度 ≤ 10 dGH",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液取样检测总硬度不超过10 dGH",
+            "检测设备依据添加剂供应商建议或采用供应商提供的测试套件",
+            "检测结果记录并归档，超限时按厂家要求处理"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unmatched_requires_review",
+            "unmatched_quantities": [
+              [
+                "10",
+                "dGH",
+                ""
+              ]
+            ],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "quantity_tuple_not_found_in_cited_material"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-INSP-014",
+              "E-COOLANT-INSP-096",
+              "E-SYS-INSP-009",
+              "E-COOLANT-INSP-077"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": true,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统无添加剂填充及补充用水的pH值应控制在厂家规定范围内，以避免腐蚀与沉积。",
+          "measurable_criterion": "pH值 6.5 – 8（在20 °C条件下）",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况下的无添加剂清水（填充与再填充）；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "20 °C条件下实测pH值不低于6.5且不高于8",
+            "检测方法依据供应商建议或供应商测试套件",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-INSP-014",
+              "E-COOLANT-INSP-096",
+              "E-SYS-INSP-009",
+              "E-COOLANT-INSP-077"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": true,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统含添加剂循环水的pH值应不低于厂家规定下限，以保证添加剂防腐蚀功能有效。",
+          "measurable_criterion": "pH值 ≥ 7.5（在20 °C条件下）",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24机型冷却水系统正常运行工况下的含添加剂循环水；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "20 °C条件下实测pH值不低于7.5",
+            "检测方法依据添加剂供应商建议或供应商测试套件",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-INSP-014",
+              "E-COOLANT-INSP-096",
+              "E-SYS-INSP-009"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": true,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的氯离子含量应不超过厂家规定限值，以防止氯离子引起的腐蚀。",
+          "measurable_criterion": "氯离子含量 ≤ 50 mg/l",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液取样检测氯离子含量不超过50 mg/l",
+            "检测设备依据供应商建议或供应商测试套件",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-SYS-INSP-009",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-INSP-014",
+              "E-COOLANT-INSP-096",
+              "E-SYS-INSP-009",
+              "E-COOLANT-INSP-077"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": true,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的氯离子含量应满足MTU规定的更严格限值，当不满足该规格时应更换冷却液。",
+          "measurable_criterion": "氯离子含量 ≤ 25 mg/l",
+          "applicable_condition": "适用于MTU冷却液（依据MTU Fluids and Lubricants Specifications A001065 Table 11冷却液要求）正常运行工况；其他厂家/机型需另行确认",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "冷却液取样检测氯离子含量不超过25 mg/l",
+            "不满足该规格时按厂家要求更换冷却液",
+            "评估时同时考虑各自冷却液特有特性数据及所用淡水水质",
+            "检测结果记录并归档"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-MAINT-003": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-MAINT-003"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": true,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的防冻比例（乙二醇/防冻剂浓度）应满足厂家规定的冰点保护要求，以防止寒冷季节冻损及换热性能变差。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065 / S29 Caterpillar Know Your Cooling System|component:冷却液|intent:冰点与乙二醇比例|hint:证据给出预混合ELC防冻保护至-37°C、浓缩液可降至-52°C等数值，但适用厂家与机型不同且部分条件缺失，需按选定厂家技术数据确认项目冰点限值与对应乙二醇体积比例}}",
+          "applicable_condition": "适用于按选定厂家（MTU或Caterpillar等）冷却液规范配置的冷却水系统正常运行工况；具体冰点目标与乙二醇比例需依据项目选定厂家技术数据确定",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "冷却液冰点满足项目所在环境最低温度加安全裕度要求（数值待厂家技术数据确认）",
+            "乙二醇/防冻剂体积比例与厂家规定一致",
+            "浓度测量与补充量计算按厂家方法执行并记录"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-157",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-040": [
+                "engine_model"
+              ],
+              "E-COOLANT-WATER-065": [
+                "engine_model"
+              ],
+              "E-COOLANT-WATER-157": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-WATER-040",
+              "E-COOLANT-WATER-065",
+              "E-COOLANT-WATER-157"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": false,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的水质、添加剂类型与浓度应符合所选发动机厂家冷却液规范要求，不得使用超出厂家限定范围的冷却液或添加剂。",
+          "measurable_criterion": "{{TBD|unit:—|ref:S26 MTU A001065 / S10 MAN L23/30DF Project Guide / S29 Caterpillar EC-1|component:冷却液与添加剂|intent:水质与添加剂合规性|hint:证据仅给出各厂家产品名称与规范框架（如MTU Coolant AH系列、Cat ELC EC-1），未给出统一可量化判据，需按选定厂家规范文件确认添加剂浓度与水质合格判据}}",
+          "applicable_condition": "适用于选定厂家（MTU/MAN/Caterpillar/Wärtsilä等）对应机型与配置的冷却水系统正常运行工况；不得跨厂家、机型或系统型式泛化",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液及添加剂品牌、型号在厂家认可清单内",
+            "添加剂浓度检测结果符合厂家规范",
+            "水质检测项目（硬度、pH、氯离子）均满足对应厂家限值",
+            "合规性记录归档并可追溯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-157",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-040": [
+                "engine_model"
+              ],
+              "E-COOLANT-WATER-157": [
+                "engine_model"
+              ],
+              "E-COOLANT-WATER-065": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-WATER-040",
+              "E-COOLANT-WATER-157",
+              "E-COOLANT-WATER-065",
+              "E-COOLANT-INSP-014"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": false,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统应建立冷却液水质与添加剂浓度的定期检测机制，检测设备与方法应依据冷却液/添加剂供应商建议。",
+          "measurable_criterion": "{{TBD|unit:—|ref:S10 MAN L23/30DF Project Guide / S42 MAN 49/60DF Project Guide / S39 MAN L21/31 Project Guide|component:冷却液检测|intent:检测周期与检测方法|hint:证据明确检测设备应依据供应商建议并可采用供应商测试套件，但未给出检测周期数值，需按厂家维护说明或项目维护计划确认}}",
+          "applicable_condition": "适用于MAN L23/30DF、49/60DF、L21/31等机型冷却水系统正常运行工况；其他厂家/机型需另行确认",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "检测设备与方法符合供应商建议",
+            "检测项目覆盖总硬度、pH值、氯离子含量及添加剂浓度",
+            "检测记录完整、可追溯，超限时按厂家要求处置"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-INSP-014",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-096",
+              "tier": "L3",
+              "source": "S42 MAN 49/60DF Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-INSP-077",
+              "tier": "L2",
+              "source": "S39 MAN L21/31 Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-INSP-014",
+              "E-COOLANT-INSP-096",
+              "E-COOLANT-INSP-077"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": false,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的储存与转移应遵守厂家要求，不得储存于镀锌容器中，容器应密封并储存于阴凉干燥处。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液浓缩液储存|intent:储存温度与容器要求|hint:证据给出储存温度最高30°C及约3年储存期限，但适用条件限于原装密封包装且部分参数条件缺失，需按选定厂家规范确认项目储存限值}}",
+          "applicable_condition": "适用于MTU冷却液浓缩液在原装密封包装条件下的储存与转移；其他厂家/机型需另行确认",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液未储存于镀锌容器中",
+            "容器密封并置于阴凉干燥处",
+            "储存温度与储存期限符合厂家规范（数值待确认）",
+            "寒冷季节防冻保护措施到位"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-040",
+              "tier": "L3",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-040": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-WATER-040"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": false,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        },
+        {
+          "shall_statement": "冷却水系统冷却液的更换与添加剂补充应按厂家规定的服务时间或寿命周期执行。",
+          "measurable_criterion": "{{TBD|unit:小时|ref:S29 Caterpillar Know Your Cooling System|component:冷却液与添加剂|intent:更换与补充周期|hint:证据给出Cat ELC服务时间12000小时或6年、6000服务小时添加Extender等数值，但仅适用于Caterpillar EC-1规范冷却液，需按选定厂家规范确认项目更换周期}}",
+          "applicable_condition": "适用于按Caterpillar EC-1规范配置Cat ELC冷却液的冷却水系统正常运行工况；其他厂家/机型需另行确认",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "冷却液更换周期符合厂家规定",
+            "添加剂补充时机与用量符合厂家规定",
+            "更换与补充记录归档可追溯"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-COOLANT-WATER-065",
+              "tier": "L3",
+              "source": "S29 Caterpillar, Know Your Cooling System",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-COOLANT-MAINT-003",
+              "tier": "L2",
+              "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-COOLANT-WATER-065": [
+                "engine_model"
+              ],
+              "E-COOLANT-MAINT-003": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v2",
+            "flagged_ids": [],
+            "reported_citation_ids": [
+              "E-COOLANT-WATER-065",
+              "E-COOLANT-MAINT-003"
+            ],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": false,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        }
+      ],
+      "quarantine_review": {
+        "raw_model_text": "{\"shalls\": [{\"shall_statement\": \"冷却水系统冷却液的水质应满足厂家规定的总硬度限值，以防止结垢、沉积及换热性能下降。\", \"measurable_criterion\": \"总硬度 ≤ 10 dGH\", \"applicable_condition\": \"适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家/机型需另行确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"冷却液取样检测总硬度不超过10 dGH\", \"检测设备依据添加剂供应商建议或采用供应商提供的测试套件\", \"检测结果记录并归档，超限时按厂家要求处理\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-INSP-014\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-096\", \"tier\": \"L3\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-SYS-INSP-009\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-077\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统无添加剂填充及补充用水的pH值应控制在厂家规定范围内，以避免腐蚀与沉积。\", \"measurable_criterion\": \"pH值 6.5 – 8（在20 °C条件下）\", \"applicable_condition\": \"适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况下的无添加剂清水（填充与再填充）；其他厂家/机型需另行确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"20 °C条件下实测pH值不低于6.5且不高于8\", \"检测方法依据供应商建议或供应商测试套件\", \"检测结果记录并归档\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-INSP-014\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-096\", \"tier\": \"L3\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-SYS-INSP-009\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-077\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统含添加剂循环水的pH值应不低于厂家规定下限，以保证添加剂防腐蚀功能有效。\", \"measurable_criterion\": \"pH值 ≥ 7.5（在20 °C条件下）\", \"applicable_condition\": \"适用于MAN L23/30DF、49/60DF、L16/24机型冷却水系统正常运行工况下的含添加剂循环水；其他厂家/机型需另行确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"20 °C条件下实测pH值不低于7.5\", \"检测方法依据添加剂供应商建议或供应商测试套件\", \"检测结果记录并归档\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-INSP-014\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-096\", \"tier\": \"L3\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-SYS-INSP-009\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统冷却液的氯离子含量应不超过厂家规定限值，以防止氯离子引起的腐蚀。\", \"measurable_criterion\": \"氯离子含量 ≤ 50 mg/l\", \"applicable_condition\": \"适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家/机型需另行确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"冷却液取样检测氯离子含量不超过50 mg/l\", \"检测设备依据供应商建议或供应商测试套件\", \"检测结果记录并归档\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-INSP-014\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-096\", \"tier\": \"L3\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-SYS-INSP-009\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-077\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统冷却液的氯离子含量应满足MTU规定的更严格限值，当不满足该规格时应更换冷却液。\", \"measurable_criterion\": \"氯离子含量 ≤ 25 mg/l\", \"applicable_condition\": \"适用于MTU冷却液（依据MTU Fluids and Lubricants Specifications A001065 Table 11冷却液要求）正常运行工况；其他厂家/机型需另行确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"冷却液取样检测氯离子含量不超过25 mg/l\", \"不满足该规格时按厂家要求更换冷却液\", \"评估时同时考虑各自冷却液特有特性数据及所用淡水水质\", \"检测结果记录并归档\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-MAINT-003\", \"tier\": \"L2\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统冷却液的防冻比例（乙二醇/防冻剂浓度）应满足厂家规定的冰点保护要求，以防止寒冷季节冻损及换热性能变差。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065 / S29 Caterpillar Know Your Cooling System|component:冷却液|intent:冰点与乙二醇比例|hint:证据给出预混合ELC防冻保护至-37°C、浓缩液可降至-52°C等数值，但适用厂家与机型不同且部分条件缺失，需按选定厂家技术数据确认项目冰点限值与对应乙二醇体积比例}}\", \"applicable_condition\": \"适用于按选定厂家（MTU或Caterpillar等）冷却液规范配置的冷却水系统正常运行工况；具体冰点目标与乙二醇比例需依据项目选定厂家技术数据确定\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"冷却液冰点满足项目所在环境最低温度加安全裕度要求（数值待厂家技术数据确认）\", \"乙二醇/防冻剂体积比例与厂家规定一致\", \"浓度测量与补充量计算按厂家方法执行并记录\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-WATER-040\", \"tier\": \"L3\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-WATER-065\", \"tier\": \"L3\", \"source\": \"S29 Caterpillar, Know Your Cooling System\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-WATER-157\", \"tier\": \"L2\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统冷却液的水质、添加剂类型与浓度应符合所选发动机厂家冷却液规范要求，不得使用超出厂家限定范围的冷却液或添加剂。\", \"measurable_criterion\": \"{{TBD|unit:—|ref:S26 MTU A001065 / S10 MAN L23/30DF Project Guide / S29 Caterpillar EC-1|component:冷却液与添加剂|intent:水质与添加剂合规性|hint:证据仅给出各厂家产品名称与规范框架（如MTU Coolant AH系列、Cat ELC EC-1），未给出统一可量化判据，需按选定厂家规范文件确认添加剂浓度与水质合格判据}}\", \"applicable_condition\": \"适用于选定厂家（MTU/MAN/Caterpillar/Wärtsilä等）对应机型与配置的冷却水系统正常运行工况；不得跨厂家、机型或系统型式泛化\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"冷却液及添加剂品牌、型号在厂家认可清单内\", \"添加剂浓度检测结果符合厂家规范\", \"水质检测项目（硬度、pH、氯离子）均满足对应厂家限值\", \"合规性记录归档并可追溯\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-WATER-040\", \"tier\": \"L3\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-WATER-157\", \"tier\": \"L2\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-WATER-065\", \"tier\": \"L3\", \"source\": \"S29 Caterpillar, Know Your Cooling System\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-014\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应建立冷却液水质与添加剂浓度的定期检测机制，检测设备与方法应依据冷却液/添加剂供应商建议。\", \"measurable_criterion\": \"{{TBD|unit:—|ref:S10 MAN L23/30DF Project Guide / S42 MAN 49/60DF Project Guide / S39 MAN L21/31 Project Guide|component:冷却液检测|intent:检测周期与检测方法|hint:证据明确检测设备应依据供应商建议并可采用供应商测试套件，但未给出检测周期数值，需按厂家维护说明或项目维护计划确认}}\", \"applicable_condition\": \"适用于MAN L23/30DF、49/60DF、L21/31等机型冷却水系统正常运行工况；其他厂家/机型需另行确认\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"检测设备与方法符合供应商建议\", \"检测项目覆盖总硬度、pH值、氯离子含量及添加剂浓度\", \"检测记录完整、可追溯，超限时按厂家要求处置\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-INSP-014\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-096\", \"tier\": \"L3\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-INSP-077\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统冷却液的储存与转移应遵守厂家要求，不得储存于镀锌容器中，容器应密封并储存于阴凉干燥处。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液浓缩液储存|intent:储存温度与容器要求|hint:证据给出储存温度最高30°C及约3年储存期限，但适用条件限于原装密封包装且部分参数条件缺失，需按选定厂家规范确认项目储存限值}}\", \"applicable_condition\": \"适用于MTU冷却液浓缩液在原装密封包装条件下的储存与转移；其他厂家/机型需另行确认\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"冷却液未储存于镀锌容器中\", \"容器密封并置于阴凉干燥处\", \"储存温度与储存期限符合厂家规范（数值待确认）\", \"寒冷季节防冻保护措施到位\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-WATER-040\", \"tier\": \"L3\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统冷却液的更换与添加剂补充应按厂家规定的服务时间或寿命周期执行。\", \"measurable_criterion\": \"{{TBD|unit:小时|ref:S29 Caterpillar Know Your Cooling System|component:冷却液与添加剂|intent:更换与补充周期|hint:证据给出Cat ELC服务时间12000小时或6年、6000服务小时添加Extender等数值，但仅适用于Caterpillar EC-1规范冷却液，需按选定厂家规范确认项目更换周期}}\", \"applicable_condition\": \"适用于按Caterpillar EC-1规范配置Cat ELC冷却液的冷却水系统正常运行工况；其他厂家/机型需另行确认\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"冷却液更换周期符合厂家规定\", \"添加剂补充时机与用量符合厂家规定\", \"更换与补充记录归档可追溯\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-WATER-065\", \"tier\": \"L3\", \"source\": \"S29 Caterpillar, Know Your Cooling System\", \"has_clause\": true}, {\"kb_id\": \"E-COOLANT-MAINT-003\", \"tier\": \"L2\", \"source\": \"S26 MTU, Fluids and Lubricants Specifications, A001065\", \"has_clause\": true}]}]}",
+        "version": "evidence-quarantine-v2",
+        "enabled": true,
+        "active_review_ids": [
+          "MAN4960-P134-edition-mismatch-20261018"
+        ],
+        "input_rows": 10,
+        "delivery_rows": 10,
+        "withheld": [],
+        "background_warnings": [
+          {
+            "evidence_id": "E-HT-COMP-036",
+            "review_id": "MAN4960-P134-edition-mismatch-20261018",
+            "status": "quarantined",
+            "instruction": "Use TBD; not a numeric basis. See external review provenance."
+          }
+        ]
+      },
+      "raw_out_of_scope_ids": []
+    },
+    {
+      "case": "OR023",
+      "arm": "off",
+      "status": "completed",
+      "request_sha256": "82a3d7ddf76c45446fd073ac0ba396edf95934fca7a12cfd21b162d36b6f9944",
+      "response_file_sha256": "54b1f54d400297a32abc28ff852143fcc113226b79701b866863d39972b4f1ae",
+      "returned_model": "deepseek-flash",
+      "response_id": "7efcc6fa-2467-4d30-a8a1-d3f9fee4791d",
+      "usage": {
+        "completion_tokens": 2302,
+        "prompt_tokens": 6525,
+        "total_tokens": 8827,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 6272
+        },
+        "prompt_cache_hit_tokens": 6272,
+        "prompt_cache_miss_tokens": 253
+      },
+      "finish_reason": "stop",
+      "raw_rows": 8,
+      "delivery_rows": 8,
+      "withheld_rows": 0,
+      "raw_minus100": [],
+      "delivery_minus100": [],
+      "schema_errors": [],
+      "raw_rows_data": [
+        {
+          "shall_statement": "温度控制阀的通流能力应满足外部管路连接工况下的最大水流速限制：淡水侧最大流速不得超过3.0 m/s，海水侧最大流速不得超过3.0 m/s。",
+          "measurable_criterion": "淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s（外部管路连接工况）",
+          "applicable_condition": "外部管路连接；正常运行为适用条件；限MAN L23/30H/L23/30DF机型配置",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "淡水侧外部管路流速计算值不超过3.0 m/s",
+            "海水侧外部管路流速计算值不超过3.0 m/s",
+            "流速计算书需注明适用机型与外部管路连接条件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-021",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TCV-TEMP-059",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "温度控制阀的压降参数应依据厂家技术数据或项目计算文件确定，并在内置式恒温阀配置下按约0.5 bar的压降进行系统匹配设计。",
+          "measurable_criterion": "恒温阀压降 ≈ 0.5 bar（内置式恒温阀，不含泵）",
+          "applicable_condition": "内置式恒温阀配置；正常运行为适用条件；限MAN L23/30DF机型",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "温控阀压降取值与厂家技术数据或项目计算文件一致",
+            "系统压降计算中计入恒温阀约0.5 bar压降",
+            "压降取值注明适用机型与配置条件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-059",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TCV-TEMP-051",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": false
+            }
+          ]
+        },
+        {
+          "shall_statement": "温度控制阀的量程、信号类型与接口规格应与自动化系统的输入通道相匹配，其量程与信号参数应依据厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:量程|hint:证据未给出温控阀量程数值，需依据厂家技术数据或项目计算文件确认}}；{{TBD|unit:mA/V|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:信号类型|hint:证据未给出信号制式，需与自动化系统输入通道核对}}",
+          "applicable_condition": "正常运行为适用条件；限MAN L23/30H机型配置",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温控阀量程覆盖被控温度区间并与自动化系统量程一致",
+            "信号类型与自动化系统输入通道匹配",
+            "接口规格（接口型式、口径、连接标准）与自动化系统及管路接口一致",
+            "上述参数均有厂家技术数据或项目计算文件支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-051",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-TCV-TEMP-021",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "高温冷却水系统温度传感器的量程应覆盖各测量点的温度范围：HP增压空气冷却器出口60°C至80°C、缸套冷却出口60°C至92°C、LP增压空气冷却器出口标称90°C、发动机进口启动前预热工况。",
+          "measurable_criterion": "HP TC增压空气冷却器出口（TE3145/3102）60°C～80°C；缸套冷却出口（TE3170）60°C～92°C；LP TC增压空气冷却器出口（TE3180）标称90°C；发动机进口（3111/TE3190）启动前预热工况",
+          "applicable_condition": "启动与正常运行为适用条件；限MAN 49/60机型及对应测量点",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "各测量点传感器量程覆盖对应温度区间",
+            "传感器量程上限不低于92°C（缸套冷却出口）",
+            "传感器测点编号与系统图一致（TE3145/3102、TE3170、TE3180、3111/TE3190）",
+            "启动前预热工况量程另行确认"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水温度报警元件的报警阈值与动作逻辑应与自动化系统匹配：较低级别报警基本温度值为95°C，较高级别报警基本温度值为105°C，且温度持续高于95°C达1秒时触发报警消息。",
+          "measurable_criterion": "较低级别报警阈值 95°C；较高级别报警阈值 105°C；触发延时 1 秒（温度 > 95°C 持续 1 秒）",
+          "applicable_condition": "故障工况与正常运行为适用条件；限Scania DI16机型及EMS/S6控制系统配置",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "模拟温度高于95°C持续1秒时，S6发出CAN报警消息并接通警告灯与诊断指示灯",
+            "较高级别报警在105°C阈值下正确触发",
+            "报警阈值与延时参数在自动化系统中可配置且与厂家手册一致",
+            "报警信号接口与自动化系统通信协议匹配"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-ALARM-ALARM-003",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统压力与温度传感器的量程和信号应满足预热及运行工况要求：预热时顶盖温度不低于60°C，缸套出口温度约25至45°C。",
+          "measurable_criterion": "顶盖温度 ≥ 60°C；缸套出口温度 25～45°C（预热自动投入、运行断开、待机接通工况）",
+          "applicable_condition": "启动（预热）与正常运行为适用条件；限MAN L16/24机型",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "传感器量程覆盖25～45°C及不低于60°C的区间",
+            "预热自动投入/断开逻辑与传感器信号联动正确",
+            "量程与信号参数有厂家技术数据支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TSENS-PRESS-005",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TSENS-PRESS-008",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": false
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统报警与保护功能应按船级社规则及厂家要求设置，报警阈值与保护动作应受具体厂家、机型和控制系统配置约束。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水报警元件|intent:报警阈值|hint:证据仅记录45°C单一数值且段落不完整，需按规则条文与项目入级要求确认}}",
+          "applicable_condition": "故障工况与正常运行为适用条件；适用范围以ABS规则条文及项目入级要求为准",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "报警与保护设置符合ABS规则条文及项目入级要求",
+            "报警阈值与保护动作限定在对应厂家、机型与控制系统配置范围内",
+            "阈值取值有规则条文或厂家文件支撑，不跨机型泛化"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-009",
+              "tier": "L1",
+              "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+              "has_clause": false
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统组成元件的接口与信号配置应与自动化系统整体匹配，其参数应依据厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:-|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统组成元件|intent:接口与信号匹配|hint:证据段落不完整且无量化参数，需依据厂家技术数据或项目计算文件确认接口与信号规格}}",
+          "applicable_condition": "正常运行为适用条件；限MAN L16/24机型配置",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "各元件接口型式、口径与自动化系统及管路接口一致",
+            "信号类型与自动化系统输入通道匹配",
+            "接口与信号参数有厂家技术数据或项目计算文件支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-COMP-012",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": false
+            }
+          ]
+        }
+      ],
+      "delivery": [
+        {
+          "shall_statement": "温度控制阀的通流能力应满足外部管路连接工况下的最大水流速限制：淡水侧最大流速不得超过3.0 m/s，海水侧最大流速不得超过3.0 m/s。",
+          "measurable_criterion": "淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s（外部管路连接工况）",
+          "applicable_condition": "外部管路连接；正常运行为适用条件；限MAN L23/30H/L23/30DF机型配置",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "淡水侧外部管路流速计算值不超过3.0 m/s",
+            "海水侧外部管路流速计算值不超过3.0 m/s",
+            "流速计算书需注明适用机型与外部管路连接条件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-021",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TCV-TEMP-059",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unmatched_requires_review",
+            "unmatched_quantities": [
+              [
+                "3.0",
+                "m/s",
+                "<="
+              ],
+              [
+                "3.0",
+                "m/s",
+                "<="
+              ]
+            ],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "quantity_tuple_not_found_in_cited_material"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "温度控制阀的压降参数应依据厂家技术数据或项目计算文件确定，并在内置式恒温阀配置下按约0.5 bar的压降进行系统匹配设计。",
+          "measurable_criterion": "恒温阀压降 ≈ 0.5 bar（内置式恒温阀，不含泵）",
+          "applicable_condition": "内置式恒温阀配置；正常运行为适用条件；限MAN L23/30DF机型",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "温控阀压降取值与厂家技术数据或项目计算文件一致",
+            "系统压降计算中计入恒温阀约0.5 bar压降",
+            "压降取值注明适用机型与配置条件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-059",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TCV-TEMP-051",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": false
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "温度控制阀的量程、信号类型与接口规格应与自动化系统的输入通道相匹配，其量程与信号参数应依据厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:量程|hint:证据未给出温控阀量程数值，需依据厂家技术数据或项目计算文件确认}}；{{TBD|unit:mA/V|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:信号类型|hint:证据未给出信号制式，需与自动化系统输入通道核对}}",
+          "applicable_condition": "正常运行为适用条件；限MAN L23/30H机型配置",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温控阀量程覆盖被控温度区间并与自动化系统量程一致",
+            "信号类型与自动化系统输入通道匹配",
+            "接口规格（接口型式、口径、连接标准）与自动化系统及管路接口一致",
+            "上述参数均有厂家技术数据或项目计算文件支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-051",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": false
+            },
+            {
+              "kb_id": "E-TCV-TEMP-021",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "高温冷却水系统温度传感器的量程应覆盖各测量点的温度范围：HP增压空气冷却器出口60°C至80°C、缸套冷却出口60°C至92°C、LP增压空气冷却器出口标称90°C、发动机进口启动前预热工况。",
+          "measurable_criterion": "HP TC增压空气冷却器出口（TE3145/3102）60°C～80°C；缸套冷却出口（TE3170）60°C～92°C；LP TC增压空气冷却器出口（TE3180）标称90°C；发动机进口（3111/TE3190）启动前预热工况",
+          "applicable_condition": "启动与正常运行为适用条件；限MAN 49/60机型及对应测量点",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "各测量点传感器量程覆盖对应温度区间",
+            "传感器量程上限不低于92°C（缸套冷却出口）",
+            "传感器测点编号与系统图一致（TE3145/3102、TE3170、TE3180、3111/TE3190）",
+            "启动前预热工况量程另行确认"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "L2",
+              "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-HT-COMP-036": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却水温度报警元件的报警阈值与动作逻辑应与自动化系统匹配：较低级别报警基本温度值为95°C，较高级别报警基本温度值为105°C，且温度持续高于95°C达1秒时触发报警消息。",
+          "measurable_criterion": "较低级别报警阈值 95°C；较高级别报警阈值 105°C；触发延时 1 秒（温度 > 95°C 持续 1 秒）",
+          "applicable_condition": "故障工况与正常运行为适用条件；限Scania DI16机型及EMS/S6控制系统配置",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "模拟温度高于95°C持续1秒时，S6发出CAN报警消息并接通警告灯与诊断指示灯",
+            "较高级别报警在105°C阈值下正确触发",
+            "报警阈值与延时参数在自动化系统中可配置且与厂家手册一致",
+            "报警信号接口与自动化系统通信协议匹配"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-ALARM-ALARM-003",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却水系统压力与温度传感器的量程和信号应满足预热及运行工况要求：预热时顶盖温度不低于60°C，缸套出口温度约25至45°C。",
+          "measurable_criterion": "顶盖温度 ≥ 60°C；缸套出口温度 25～45°C（预热自动投入、运行断开、待机接通工况）",
+          "applicable_condition": "启动（预热）与正常运行为适用条件；限MAN L16/24机型",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "传感器量程覆盖25～45°C及不低于60°C的区间",
+            "预热自动投入/断开逻辑与传感器信号联动正确",
+            "量程与信号参数有厂家技术数据支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TSENS-PRESS-005",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TSENS-PRESS-008",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": false
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unmatched_requires_review",
+            "unmatched_quantities": [
+              [
+                "60",
+                "°C",
+                ""
+              ],
+              [
+                "60",
+                "°C",
+                ""
+              ]
+            ],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "quantity_tuple_not_found_in_cited_material"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却水系统报警与保护功能应按船级社规则及厂家要求设置，报警阈值与保护动作应受具体厂家、机型和控制系统配置约束。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水报警元件|intent:报警阈值|hint:证据仅记录45°C单一数值且段落不完整，需按规则条文与项目入级要求确认}}",
+          "applicable_condition": "故障工况与正常运行为适用条件；适用范围以ABS规则条文及项目入级要求为准",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "报警与保护设置符合ABS规则条文及项目入级要求",
+            "报警阈值与保护动作限定在对应厂家、机型与控制系统配置范围内",
+            "阈值取值有规则条文或厂家文件支撑，不跨机型泛化"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-009",
+              "tier": "L1",
+              "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+              "has_clause": false
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {
+              "E-ALARM-ALARM-009": [
+                "engine_model"
+              ]
+            },
+            "numeric_consistency": "lexical_tuple_match_only",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [
+              "model_or_condition_unknown"
+            ],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        },
+        {
+          "shall_statement": "冷却水系统组成元件的接口与信号配置应与自动化系统整体匹配，其参数应依据厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:-|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统组成元件|intent:接口与信号匹配|hint:证据段落不完整且无量化参数，需依据厂家技术数据或项目计算文件确认接口与信号规格}}",
+          "applicable_condition": "正常运行为适用条件；限MAN L16/24机型配置",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "各元件接口型式、口径与自动化系统及管路接口一致",
+            "信号类型与自动化系统输入通道匹配",
+            "接口与信号参数有厂家技术数据或项目计算文件支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-SYS-COMP-012",
+              "tier": "L3",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": false
+            }
+          ],
+          "_independent_risks": {
+            "version": "independent-reference-quantity-applicability-v1",
+            "reference_scope": "supplied_context",
+            "citation_existence": "present",
+            "missing_ids": [],
+            "unknown_applicability_fields": {},
+            "numeric_consistency": "unknown_no_recognized_quantity",
+            "unmatched_quantities": [],
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "issues": [],
+            "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+          },
+          "_selection_policy": "numeric-first-reserve-one-nonnumeric-v1"
+        }
+      ],
+      "quarantine_review": {},
+      "raw_out_of_scope_ids": []
+    },
+    {
+      "case": "OR023",
+      "arm": "on",
+      "status": "completed",
+      "request_sha256": "be2aa81c8ea65ecdb4c1fda642112cc8fce796292d9f5f136f711b37b57b2f01",
+      "response_file_sha256": "2abc3b21bc0d8487b1da6cd47f015024374cfcb2306bee328dd5c812eb57f31a",
+      "returned_model": "deepseek-flash",
+      "response_id": "2da09a8c-02be-497d-89ca-9bca56962934",
+      "usage": {
+        "completion_tokens": 2041,
+        "prompt_tokens": 6052,
+        "total_tokens": 8093,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cached_tokens": 1536
+        },
+        "prompt_cache_hit_tokens": 1536,
+        "prompt_cache_miss_tokens": 4516
+      },
+      "finish_reason": "stop",
+      "raw_rows": 9,
+      "delivery_rows": 0,
+      "withheld_rows": 0,
+      "raw_minus100": [],
+      "delivery_minus100": [],
+      "schema_errors": [
+        {
+          "position": 9,
+          "errors": [
+            "citation[0].tier is invalid"
+          ]
+        }
+      ],
+      "raw_rows_data": [
+        {
+          "shall_statement": "温度控制阀的接口量程与信号类型应与自动化系统的输入/输出规格相匹配，并在厂家技术数据或项目计算文件中确认。",
+          "measurable_criterion": "{{TBD|unit:无量纲|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:接口量程与信号匹配|hint:原文未给出温控阀接口量程与信号类型的具体数值，需依据厂家技术数据或项目计算文件确定}}",
+          "applicable_condition": "L23/30H 机型，外部管道连接，正常工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "温控阀接口量程与信号类型与自动化系统I/O规格一致",
+            "匹配关系有厂家技术数据或项目计算文件支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-021",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-TCV-TEMP-051",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "温度控制阀外部管道的水流速应不超过厂家规定的最大流速限值。",
+          "measurable_criterion": "淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s",
+          "applicable_condition": "L23/30H 机型，外部管道连接，正常工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "淡水外部管道流速不超过 3.0 m/s",
+            "海水外部管道流速不超过 3.0 m/s"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-021",
+              "tier": "L2",
+              "source": "S36 MAN L23/30H GenSet Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "温度控制阀外部管路的水流速应不超过厂家规定的最大流速限值，并应核算恒温阀压降。",
+          "measurable_criterion": "淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s；内置式恒温阀压降约 0.5 bar",
+          "applicable_condition": "L23/30DF 机型，外部管路连接，内置式恒温阀，正常工况",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "淡水外部管路流速不超过 3.0 m/s",
+            "海水外部管路流速不超过 3.0 m/s",
+            "内置式恒温阀压降约 0.5 bar"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-059",
+              "tier": "L2",
+              "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水温度传感器应设置分级报警，报警阈值与延时逻辑应与厂家控制系统配置一致。",
+          "measurable_criterion": "较低级别报警基本温度值 95 °C；较高级别报警基本温度值 105 °C；温度高于 95 °C 持续 1 秒触发 CAN 报警消息",
+          "applicable_condition": "Scania DI16 机型，EMS/S6 控制系统，正常工况与故障工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "温度高于 95 °C 持续 1 秒时发出 CAN 报警消息并接通警告灯与诊断指示灯",
+            "较高级别报警在 105 °C 基本温度值触发"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-001",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            },
+            {
+              "kb_id": "E-ALARM-ALARM-003",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水温度报警元件的量程与信号接口应与自动化系统匹配，报警阈值与保护动作应受具体厂家、机型和控制系统配置约束。",
+          "measurable_criterion": "{{TBD|unit:无量纲|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度报警元件|intent:量程与信号接口匹配|hint:原文仅给出报警阈值，未给出报警元件量程与信号接口规格，需依据厂家数据确认}}",
+          "applicable_condition": "Scania DI16 机型，EMS/S6 控制系统，正常工况与故障工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "报警元件量程覆盖 95 °C 与 105 °C 报警阈值",
+            "信号接口与 EMS/S6 控制系统输入规格一致"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-003",
+              "tier": "L3",
+              "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统压力传感器应设置报警，其量程与信号接口应与自动化系统匹配。",
+          "measurable_criterion": "{{TBD|unit:无量纲|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水压力传感器|intent:量程与信号接口匹配|hint:证据未给出压力传感器量程与信号接口的具体数值，需依据厂家技术数据确认}}",
+          "applicable_condition": "L16/24 机型，启动与正常工况",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "压力传感器量程与信号接口与自动化系统I/O规格一致",
+            "匹配关系有厂家技术数据支撑"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TSENS-PRESS-008",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": false
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水温度传感器应能覆盖预热与运行工况的温度范围，其量程与信号接口应与自动化系统匹配。",
+          "measurable_criterion": "顶部盖板温度 ≥ 60 °C；气缸出口温度约 25 至 45 °C",
+          "applicable_condition": "L16/24 机型，预热自动运行、发动机停机待机与运行工况",
+          "verification_method": "测试",
+          "acceptance_criteria": [
+            "传感器量程覆盖 25 至 45 °C 与 ≥ 60 °C 区间",
+            "预热自动运行时顶部盖板温度不低于 60 °C",
+            "气缸出口温度处于约 25 至 45 °C"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-TSENS-PRESS-005",
+              "tier": "L2",
+              "source": "S38 MAN L16/24 GenSet Project Guide",
+              "has_clause": true
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统报警与保护逻辑应符合船级社规则要求，报警阈值与动作应受项目入级要求约束。",
+          "measurable_criterion": "{{TBD|unit:°C|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水报警元件|intent:报警阈值与保护动作|hint:证据段落不完整且量化参数条件缺失，45°C 数值的适用对象与工况未记录，需核实规则条文后确定}}",
+          "applicable_condition": "按 ABS 入级规则，正常工况与故障工况（具体条件待核实）",
+          "verification_method": "分析",
+          "acceptance_criteria": [
+            "报警阈值与保护动作满足 ABS 规则条文及项目入级要求",
+            "阈值适用对象与工况经核实确认"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-ALARM-ALARM-009",
+              "tier": "L1",
+              "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+              "has_clause": false
+            }
+          ]
+        },
+        {
+          "shall_statement": "冷却水系统元件的量程、信号与接口应与自动化系统匹配，相关参数应依据厂家技术数据或项目计算文件确定。",
+          "measurable_criterion": "{{TBD|unit:无量纲|ref:quarantined source; consult the external review registry|component:冷却水系统元件|intent:量程信号接口匹配|hint:该证据被隔离，数值不可用，仅作背景提示，需外部评审登记后确认}}",
+          "applicable_condition": "待确认（证据被隔离，适用性未知）",
+          "verification_method": "检查",
+          "acceptance_criteria": [
+            "量程、信号与接口匹配关系经外部评审登记确认",
+            "参数来源可追溯至有效厂家技术数据或项目计算文件"
+          ],
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-COMP-036",
+              "tier": "?",
+              "source": "quarantined source; consult the external review registry",
+              "has_clause": false
+            }
+          ]
+        }
+      ],
+      "delivery": [],
+      "quarantine_review": {
+        "raw_model_text": "{\"shalls\": [{\"shall_statement\": \"温度控制阀的接口量程与信号类型应与自动化系统的输入/输出规格相匹配，并在厂家技术数据或项目计算文件中确认。\", \"measurable_criterion\": \"{{TBD|unit:无量纲|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:接口量程与信号匹配|hint:原文未给出温控阀接口量程与信号类型的具体数值，需依据厂家技术数据或项目计算文件确定}}\", \"applicable_condition\": \"L23/30H 机型，外部管道连接，正常工况\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"温控阀接口量程与信号类型与自动化系统I/O规格一致\", \"匹配关系有厂家技术数据或项目计算文件支撑\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-021\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-TCV-TEMP-051\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"温度控制阀外部管道的水流速应不超过厂家规定的最大流速限值。\", \"measurable_criterion\": \"淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s\", \"applicable_condition\": \"L23/30H 机型，外部管道连接，正常工况\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"淡水外部管道流速不超过 3.0 m/s\", \"海水外部管道流速不超过 3.0 m/s\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-021\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"温度控制阀外部管路的水流速应不超过厂家规定的最大流速限值，并应核算恒温阀压降。\", \"measurable_criterion\": \"淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s；内置式恒温阀压降约 0.5 bar\", \"applicable_condition\": \"L23/30DF 机型，外部管路连接，内置式恒温阀，正常工况\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"淡水外部管路流速不超过 3.0 m/s\", \"海水外部管路流速不超过 3.0 m/s\", \"内置式恒温阀压降约 0.5 bar\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-059\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水温度传感器应设置分级报警，报警阈值与延时逻辑应与厂家控制系统配置一致。\", \"measurable_criterion\": \"较低级别报警基本温度值 95 °C；较高级别报警基本温度值 105 °C；温度高于 95 °C 持续 1 秒触发 CAN 报警消息\", \"applicable_condition\": \"Scania DI16 机型，EMS/S6 控制系统，正常工况与故障工况\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"温度高于 95 °C 持续 1 秒时发出 CAN 报警消息并接通警告灯与诊断指示灯\", \"较高级别报警在 105 °C 基本温度值触发\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}, {\"kb_id\": \"E-ALARM-ALARM-003\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水温度报警元件的量程与信号接口应与自动化系统匹配，报警阈值与保护动作应受具体厂家、机型和控制系统配置约束。\", \"measurable_criterion\": \"{{TBD|unit:无量纲|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度报警元件|intent:量程与信号接口匹配|hint:原文仅给出报警阈值，未给出报警元件量程与信号接口规格，需依据厂家数据确认}}\", \"applicable_condition\": \"Scania DI16 机型，EMS/S6 控制系统，正常工况与故障工况\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警元件量程覆盖 95 °C 与 105 °C 报警阈值\", \"信号接口与 EMS/S6 控制系统输入规格一致\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-003\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统压力传感器应设置报警，其量程与信号接口应与自动化系统匹配。\", \"measurable_criterion\": \"{{TBD|unit:无量纲|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水压力传感器|intent:量程与信号接口匹配|hint:证据未给出压力传感器量程与信号接口的具体数值，需依据厂家技术数据确认}}\", \"applicable_condition\": \"L16/24 机型，启动与正常工况\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"压力传感器量程与信号接口与自动化系统I/O规格一致\", \"匹配关系有厂家技术数据支撑\"], \"evidence_citations\": [{\"kb_id\": \"E-TSENS-PRESS-008\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水温度传感器应能覆盖预热与运行工况的温度范围，其量程与信号接口应与自动化系统匹配。\", \"measurable_criterion\": \"顶部盖板温度 ≥ 60 °C；气缸出口温度约 25 至 45 °C\", \"applicable_condition\": \"L16/24 机型，预热自动运行、发动机停机待机与运行工况\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"传感器量程覆盖 25 至 45 °C 与 ≥ 60 °C 区间\", \"预热自动运行时顶部盖板温度不低于 60 °C\", \"气缸出口温度处于约 25 至 45 °C\"], \"evidence_citations\": [{\"kb_id\": \"E-TSENS-PRESS-005\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统报警与保护逻辑应符合船级社规则要求，报警阈值与动作应受项目入级要求约束。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水报警元件|intent:报警阈值与保护动作|hint:证据段落不完整且量化参数条件缺失，45°C 数值的适用对象与工况未记录，需核实规则条文后确定}}\", \"applicable_condition\": \"按 ABS 入级规则，正常工况与故障工况（具体条件待核实）\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"报警阈值与保护动作满足 ABS 规则条文及项目入级要求\", \"阈值适用对象与工况经核实确认\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-009\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统元件的量程、信号与接口应与自动化系统匹配，相关参数应依据厂家技术数据或项目计算文件确定。\", \"measurable_criterion\": \"{{TBD|unit:无量纲|ref:quarantined source; consult the external review registry|component:冷却水系统元件|intent:量程信号接口匹配|hint:该证据被隔离，数值不可用，仅作背景提示，需外部评审登记后确认}}\", \"applicable_condition\": \"待确认（证据被隔离，适用性未知）\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"量程、信号与接口匹配关系经外部评审登记确认\", \"参数来源可追溯至有效厂家技术数据或项目计算文件\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-036\", \"tier\": \"?\", \"source\": \"quarantined source; consult the external review registry\", \"has_clause\": false}]}]}",
+        "enabled": true,
+        "status": "needs_review",
+        "error_type": "ValueError"
+      },
+      "raw_out_of_scope_ids": []
+    }
+  ]
+}

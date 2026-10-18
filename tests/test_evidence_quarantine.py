@@ -204,3 +204,26 @@ def test_cached_ui_response_is_gated_and_quarantine_key_differs(monkeypatch):
         assert out['engineering_requirements']==[]
         assert out['_quarantine_delivery']['raw_model_text']==raw
     assert client.chat.completions.create.call_count==2  # legacy + quarantine; second quarantine is cache hit
+
+
+def test_optional_schema_isolation_preserves_good_rows_without_fixing_bad_tier():
+    from cooling_rag_mg.structured_req_generator import generate_structured_shalls
+    good=row(('HEALTHY',),'-40°C');bad=row();bad['evidence_citations'][0]['tier']='?'
+    raw=json.dumps({'shalls':[good,bad]});client=MagicMock()
+    client.chat.completions.create.return_value=SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=raw))])
+    report={}
+    assert generate_structured_shalls('req',[ev(),ev('HEALTHY')],client,'mock',quarantine_flags=FLAGS,delivery_report=report)==[]
+    report={}
+    out=generate_structured_shalls('req',[ev(),ev('HEALTHY')],client,'mock',quarantine_flags=FLAGS,delivery_report=report,schema_policy='isolate-invalid-rows-v1')
+    assert len(out)==1 and out[0]['measurable_criterion']=='-40°C'
+    assert report['raw_model_text']==raw and report['schema_withheld'][0]['original_row']==bad
+    assert report['schema_withheld'][0]['original_row']['evidence_citations'][0]['tier']=='?'
+    assert report['status']=='needs_review'
+
+
+def test_schema_isolation_requires_explicit_policy_and_review_flags():
+    from cooling_rag_mg.structured_req_generator import generate_structured_shalls
+    client=MagicMock()
+    with pytest.raises(ValueError):generate_structured_shalls('req',[],client,'mock',schema_policy='isolate-invalid-rows-v1')
+    with pytest.raises(ValueError):generate_structured_shalls('req',[],client,'mock',schema_policy='guess-tier')
+    client.chat.completions.create.assert_not_called()

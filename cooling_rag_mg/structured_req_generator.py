@@ -92,7 +92,7 @@ def _build_evidence_block(annotated_evidence: list[dict], *, selection_policy: s
     return "\n".join(lines)
 
 
-def _parse_shalls(raw: str) -> list[dict]:
+def _parse_shalls(raw: str, *, invalid_rows: list | None = None) -> list[dict]:
     """从 LLM 响应中解析 shalls 列表。"""
     import json, re
     if not raw:
@@ -132,7 +132,12 @@ def _parse_shalls(raw: str) -> list[dict]:
     errors = [(i, validate_shall(item)) for i, item in enumerate(shalls)]
     errors = [(i, issues) for i, issues in errors if issues]
     if errors:
-        raise ValueError(f"invalid shall schema: {errors}")
+        if invalid_rows is None:
+            raise ValueError(f"invalid shall schema: {errors}")
+        bad = {i for i, _ in errors}
+        invalid_rows.extend({'position':i+1,'status':'needs_review','reason':'invalid_schema',
+            'schema_errors':issues,'original_row':shalls[i]} for i,issues in errors)
+        return [row for i,row in enumerate(shalls) if i not in bad]
     return shalls
 
 
@@ -147,11 +152,16 @@ def generate_structured_shalls(
     risk_policy: str = "legacy",
     quarantine_flags: list[dict] | None = None,
     delivery_report: dict | None = None,
+    schema_policy: str = "legacy",
 ) -> list[dict]:
     """Stage 3 RAG：根据证据值提取结果生成结构化 shall 列表。出错返回空列表。"""
     if risk_policy not in ("legacy", RISK_POLICY):
         raise ValueError("unknown generation risk policy")
     quarantined = active_flags(quarantine_flags)
+    if schema_policy not in ("legacy", "isolate-invalid-rows-v1"):
+        raise ValueError("unknown schema policy")
+    if schema_policy != "legacy" and not quarantined:
+        raise ValueError("row isolation requires explicit quarantine flags and a review destination")
     if quarantined and not isinstance(delivery_report, dict):
         raise ValueError("quarantine requires a delivery_report to retain withheld output for review")
     evidence_block = _build_evidence_block(annotated_evidence, selection_policy=selection_policy, quarantine_flags=quarantine_flags)
@@ -174,7 +184,12 @@ def generate_structured_shalls(
         raw_text = resp.choices[0].message.content
         if quarantined:
             delivery_report['raw_model_text'] = raw_text
-        rows = annotate_generation_risks(_parse_shalls(raw_text),
+        invalid_rows = [] if schema_policy != "legacy" else None
+        parsed = _parse_shalls(raw_text, invalid_rows=invalid_rows)
+        if invalid_rows is not None:
+            delivery_report.update({'schema_policy':schema_policy,'schema_withheld':invalid_rows,
+                'status':'needs_review' if invalid_rows else 'no_schema_findings_not_verified'})
+        rows = annotate_generation_risks(parsed,
             select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy), policy=risk_policy)
         if selection_policy != SELECTION_POLICY:
             for row in rows:
