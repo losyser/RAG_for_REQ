@@ -1,0 +1,140 @@
+--- current/paper_wiley.tex
++++ candidate/paper_wiley.tex
+@@ -671,9 +671,8 @@
+ five requirements, with a single cross-cutting project-manager requirement, so no single
+ perspective dominates the set.  Project documentation attributes their generation to GPT-5.5 (OpenAI), separately from
+ the generation pipeline, using a prompt specifying the stakeholder roles and lifecycle
+-phases of Table~\ref{tab:stakeholders}. The original interface/session record was not
+-available in the inspected artifacts; the web-versus-API interface, account memory state and prior context therefore
+-cannot be verified from the available artifacts. We do not claim independence on this basis and instead measured overlap between the inputs and the KB
++phases of Table~\ref{tab:stakeholders}. The original interface, session context and account-memory state are unknown
++because their records are unavailable. We do not claim independence on this basis and instead measured overlap between the inputs and the KB
+ directly: the largest cosine similarity between any source
+ requirement and any evidence unit is \LeakMaxCos{} (median \LeakMedCos{}), below the median
+ nearest-neighbour similarity between two different evidence units (\LeakKBNNCos{}); the
+@@ -826,7 +825,7 @@
+ $TP=|P\cap G\cap M|$, $FP=|(P\cap M)\setminus G|$ and
+ $FN=|(G\cap M)\setminus P|$. Micro precision, recall and $F_1$ are conditional on
+ $M$; mask coverage and excluded predictions are reported alongside them.
+-Supplementary Material~S1 provides individual-reviewer results, the fixed masks and
++Supplementary Material S2 (mapping review) provides individual-reviewer results, the fixed masks and
+ uncertainty sensitivity, not a complete gold standard.
+ 
+ \subsubsection{Measurement Bias Analysis}
+@@ -955,7 +954,7 @@
+ properties and Nesting links can be retained in a commercial MBSE tool. Two complementary
+ views distinguish hierarchy from requirement content. Figure~\ref{fig:ea_hierarchy}
+ shows the three-level R002 design-parameter hierarchy, including nested children below
+-ER-R002-01. Figure~\ref{fig:ea_notes} shows the complete English Notes of all four R001
++ER-R002-01. Supplementary Figure N1 (EA Notes) shows the complete English Notes of all four R001
+ children. Its two panels repeat the same folded R001 root for readability; they do not
+ represent different source requirements or additional links. The exported node text and
+ colours are retained, with nodes translated and the same Nesting connections rerouted
+@@ -983,21 +982,7 @@
+ \label{fig:ea_hierarchy}
+ \end{figure*}
+ 
+-\begin{figure*}[p]
+-\centering
+-{\small\textbf{(a)} R001 with children ER-R001-01 and ER-R001-02\par}
+-\includegraphics[width=0.90\textwidth]{ea_R001_notes_panel_a.pdf}\par
+-\vspace{3pt}
+-{\small\textbf{(b)} The same R001 with children ER-R001-03 and ER-R001-04\par}
+-\includegraphics[width=0.90\textwidth]{ea_R001_notes_panel_b.pdf}
+-\caption{Complete child Notes for the R001 reliability requirement. Panels (a) and (b)
+-repeat the same folded root and partition its four actual Nesting links for readability.
+-All child text and original colours are retained; only layout and link routing are adjusted.
+-The view demonstrates retained requirement content in the separate UI batch, not
+-validated engineering correctness or performance on the 513-output experiment.}
+-\label{fig:ea_notes}
+-\end{figure*}
+-\clearpage
++
+ 
+ \subsection{Retrieval Contribution}
+ \label{sec:ablation_results}
+@@ -1139,7 +1124,7 @@
+ attribution without further provenance evidence. These pending instruments are not
+ evidence for the present claims.
+ 
+-\input{table_blind_correct.tex}
++
+ 
+ \subsection{Side-by-Side Comparison on Two Source Requirements}
+ \label{sec:side}
+@@ -1154,7 +1139,7 @@
+ engine. The RAG arm did not retrieve that unit: it cites a Caterpillar freeze-point
+ record and defers the concentration. The different manufacturer contexts must be checked
+ before either output is used as a specification. The original manufacturer pages were
+-not independently re-verified in this wording audit; the comparison demonstrates source
++not independently verified for the reported comparison; it demonstrates source
+ attribution rather than validated technical suitability.
+ 
+ \input{table_side_by_side.tex}
+@@ -1163,17 +1148,18 @@
+ \label{sec:stage25}
+ 
+ Stage~3 extracts the quantitative values explicitly stated in retrieved evidence units;
+-these values bound what the generator can cite without fabrication.  The requirement
++the prompt instructs the generator to use these values or defer. This instruction
++does not establish that an extracted value is accurate or applicable.  The requirement
+ phrasing of the extraction prompt is reproduced in Appendix~\ref{app:prompts}.  The extractor
+ was regenerated with the current generator and the current KB used here; earlier pipeline
+ accuracy figures (precision 77.5\%, recall 86.1\%) no longer describe the reported run and are
+ not quoted here.  A re-measurement instrument has been prepared for a stratified
+ sample of 50 evidence units drawn from the units the reported run actually
+ used (across all three tiers), but independent expert values have not yet been supplied. Precision, recall and the
+-per-tier breakdown therefore remain unavailable, as recorded in
+-Table~\ref{tab:stage3}.
+-
+-\input{table_stage3.tex}
++per-tier breakdown therefore remain unavailable. No extraction-accuracy estimate is
++claimed for this run.
++
++
+ 
+ Two structural points hold independently of the pending measurement, and they are what
+ matters for interpreting the grade distribution.  First, the extraction step limits the
+@@ -1185,9 +1171,9 @@
+ relationships, so numeric values can be recovered without their parameter context (the
+ flagged \texttt{E-HT-COMP-036} case at $-100$\,\textdegree{}C illustrates why
+ source context needs inspection; its precise failure mechanism has not been independently established).  This
+-lowers the achievable Grade~A/B share for requirements that draw on tabular regulatory
+-sources, and it is the reason the pipeline defers rather than guesses when a value's context
+-is ambiguous.
++can lower the achievable Grade~A/B share for requirements that draw on tabular regulatory
++sources. Deferral is prescribed when context is ambiguous; compliance with that instruction
++still requires checking.
+ 
+ \subsection{Cross-Generator Robustness}
+ \label{sec:crossllm}
+@@ -1249,9 +1235,9 @@
+ \BoundaryUnitsOverPrompt{}\% of the used units exceed that limit and
+ \BoundaryValuesBeyondPrompt{}\% of their numeric values lie past the truncation point.  Those
+ values remain available only through the separately extracted parameter list of
+-Section~\ref{sec:stage25}, which is precisely why Stage~3 extraction accuracy bounds the
+-achievable Grade~A/B share, and why the pipeline defers rather than reads a value out of
+-truncated context.  The retrieval-variant and end-to-end runs (Appendix~\ref{app:sensitivity})
++Section~\ref{sec:stage25}, so extraction completeness can affect the
++Grade~A/B share. Deferral is the prescribed response to unsupported values; truncated
++context does not establish that the remaining conditions are sufficient.  The retrieval-variant and end-to-end runs (Appendix~\ref{app:sensitivity})
+ show where the outcome is and is not sensitive to these settings: the retrieved set barely
+ moved with the BM25 fusion weight (Jaccard \SensJWeightLow{}--\SensJWeightHigh{} against the
+ default) or with the RRF smoothing constant $k_0$ changed from 10 to 100 (\SensJKzero{}), while reducing
+@@ -1491,11 +1477,11 @@
+ \bmsubsection*{Data Availability}
+ The project source repository is available at \url{https://github.com/losyser/RAG_for_REQ}.
+ The existing archive identifier for the knowledge base, indexes and response caches is
+-\url{https://doi.org/10.5281/zenodo.20501537}. A read-only check on 17 October 2026 resolved this concept DOI to version
+-\url{https://doi.org/10.5281/zenodo.20719799}, dated 16 June 2026; the public GitHub main
+-commit was \texttt{aab04d8}, also dated 16 June. These public releases predate the October
+-revision and do not provide a verified release of its frozen experiment or human-review
+-supplement. Public-release alignment remains outstanding before submission.
++\url{https://doi.org/10.5281/zenodo.20501537}. The public archive version
++\url{https://doi.org/10.5281/zenodo.20719799} and GitHub commit \texttt{aab04d8}
++are dated 16 June 2026 and predate this revision. The revised frozen experiment and
++human-review supplement have not been published as a verified release; public-release
++alignment remains outstanding before submission.
+ 
+ \bmsubsection*{Acknowledgments}
+ This research is supported by a project from the Ministry of Industry and Information
