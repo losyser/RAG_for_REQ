@@ -1,0 +1,577 @@
+{
+  "schema_version": "source-corrections-candidate-v1",
+  "active": false,
+  "main_KB_mutation": false,
+  "sources": [
+    {
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "url": "https://man-es.com/applications/projectguides/4stroke/Propulsion/PG_P-II_4960.pdf",
+      "sha256": "29da4ba210bc2bba9b3f00d6f4f0aee15c6c7847568d5dd69355b3028692ffc1",
+      "version": "Revision 12.2025/3.0",
+      "date": "2025-12-03",
+      "pdf_page_1based": 134,
+      "printed_page": 134,
+      "section": "2.17 Operating/service temperatures and pressures",
+      "table": "74 HT cooling water – Engine",
+      "page_count": 508,
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "disclaimer": "Guide data are non-binding and require project-specific assessment.",
+      "old_KB_edition_match": false,
+      "verification": "PDF header, table cells and footnotes visually inspected; newly verified edition, not proof of historical source"
+    },
+    {
+      "source_id": "MTU-A001065-02E-P16-PENDING",
+      "requested_version": "A001065/02E",
+      "printed_page": 16,
+      "url": null,
+      "sha256": null,
+      "parameters": [],
+      "model_scope": null,
+      "project_applicability": "unknown",
+      "verification": "not verified in this execution environment: prior coordinator page/PDF not locally available; official landing endpoint returned HTTP406 and searches did not resolve exact PDF. No values inferred from KB.",
+      "enabled": false,
+      "related_historical_ids_by_document": [
+        "E-SW-CORR-004",
+        "E-SYS-WATER-005",
+        "E-SYS-WATER-006",
+        "E-SYS-WATER-008",
+        "E-SYS-WATER-009",
+        "E-COOLER-MAINT-007",
+        "E-COOLER-MAINT-008",
+        "E-COOLER-MAINT-025",
+        "E-COOLANT-CTRL-002",
+        "E-COOLANT-CTRL-003",
+        "E-COOLANT-INSP-026",
+        "E-COOLANT-MAINT-003",
+        "E-COOLANT-MAINT-004",
+        "E-COOLANT-MAINT-006",
+        "E-COOLANT-WATER-039",
+        "E-COOLANT-WATER-040",
+        "E-COOLANT-WATER-041",
+        "E-COOLANT-WATER-042",
+        "E-COOLANT-WATER-043",
+        "E-COOLANT-WATER-044",
+        "E-COOLANT-WATER-045",
+        "E-COOLANT-WATER-046",
+        "E-COOLANT-WATER-047",
+        "E-SYS-WATER-007",
+        "E-SYS-CLEAN-007",
+        "E-SYS-CLEAN-008",
+        "E-SYS-CLEAN-009",
+        "E-SYS-CLEAN-010",
+        "E-SYS-CTRL-001",
+        "E-COOLANT-WATER-157"
+      ],
+      "primary_candidate_id": "E-SYS-WATER-006",
+      "document_level_match_is_not_page_verification": true
+    }
+  ],
+  "parameters": [
+    {
+      "candidate_id": "MAN4960-202512-T74-R1",
+      "historical_related_ids": [
+        "E-HT-COMP-036"
+      ],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 1,
+      "raw_cells": [
+        "HT cooling water temperature at attached HT cooling water\npump inlet (optional) and at HP TC charge air cooler inlet",
+        "3121 (3102), TE3145",
+        "60°C",
+        "80°C"
+      ],
+      "parameter": "HT cooling water temperature at attached HT cooling water pump inlet (optional) and at HP TC charge air cooler inlet",
+      "interface": "3121 (3102), TE3145",
+      "unit": "°C",
+      "min": 60.0,
+      "max": 80.0,
+      "nominal": null,
+      "operators": {
+        "min": ">=",
+        "max": "<=",
+        "nominal": null
+      },
+      "min_cell": {
+        "raw": "60°C",
+        "value": 60.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "max_cell": {
+        "raw": "80°C",
+        "value": 80.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "variants": [],
+      "conditions": [
+        "Attached HT pump optional; HP TC charge-air-cooler inlet"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R2",
+      "historical_related_ids": [
+        "E-HT-COMP-036"
+      ],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 2,
+      "raw_cells": [
+        "HT cooling water temperature at HP TC charge air cooler out-\nlet",
+        "TE3170",
+        "60°C",
+        "92°C"
+      ],
+      "parameter": "HT cooling water temperature at HP TC charge air cooler out- let",
+      "interface": "TE3170",
+      "unit": "°C",
+      "min": 60.0,
+      "max": 92.0,
+      "nominal": null,
+      "operators": {
+        "min": ">=",
+        "max": "<=",
+        "nominal": null
+      },
+      "min_cell": {
+        "raw": "60°C",
+        "value": 60.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "max_cell": {
+        "raw": "92°C",
+        "value": 92.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "variants": [],
+      "conditions": [
+        "HP TC charge-air-cooler outlet"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R3",
+      "historical_related_ids": [
+        "E-HT-COMP-036"
+      ],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 3,
+      "raw_cells": [
+        "HT cooling water temperature at jacket cooling outlet1)",
+        "TE3180",
+        "90°C\nnominal2)",
+        "-"
+      ],
+      "parameter": "HT cooling water temperature at jacket cooling outlet1)",
+      "interface": "TE3180",
+      "unit": "°C",
+      "min": null,
+      "max": null,
+      "nominal": 90.0,
+      "operators": {
+        "min": null,
+        "max": null,
+        "nominal": "nominal"
+      },
+      "min_cell": {
+        "raw": "90°C\nnominal2)",
+        "value": 90.0,
+        "unit": "°C",
+        "meaning": "nominal",
+        "footnote": "2"
+      },
+      "max_cell": {
+        "raw": "-",
+        "value": null,
+        "unit": null,
+        "meaning": "not_stated"
+      },
+      "variants": [],
+      "conditions": [
+        "Regulated jacket-outlet temperature; SaCoS may lower set point to avoid maximum engine-outlet temperature",
+        "Flow order: HP HT charge-air cooler, jacket cooling, LP HT charge-air cooler"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R4",
+      "historical_related_ids": [
+        "E-HT-COMP-036"
+      ],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 4,
+      "raw_cells": [
+        "HT cooling water temperature at LP TC charge air cooler out-\nlet\n(= last charge air cooler)",
+        "3111, TE3190",
+        "-",
+        "100°C3)"
+      ],
+      "parameter": "HT cooling water temperature at LP TC charge air cooler out- let (= last charge air cooler)",
+      "interface": "3111, TE3190",
+      "unit": "°C",
+      "min": null,
+      "max": 100.0,
+      "nominal": null,
+      "operators": {
+        "min": null,
+        "max": "<=",
+        "nominal": null
+      },
+      "min_cell": {
+        "raw": "-",
+        "value": null,
+        "unit": null,
+        "meaning": "not_stated"
+      },
+      "max_cell": {
+        "raw": "100°C3)",
+        "value": 100.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": "3"
+      },
+      "variants": [],
+      "conditions": [
+        "Operation at alarm level; last charge-air-cooler outlet"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R5",
+      "historical_related_ids": [
+        "E-HT-COMP-036"
+      ],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 5,
+      "raw_cells": [
+        "HT cooling water temperature engine inlet – Preheated before\nstart",
+        "3121 (3102), TE3145",
+        "60°C",
+        "80°C"
+      ],
+      "parameter": "HT cooling water temperature engine inlet – Preheated before start",
+      "interface": "3121 (3102), TE3145",
+      "unit": "°C",
+      "min": 60.0,
+      "max": 80.0,
+      "nominal": null,
+      "operators": {
+        "min": ">=",
+        "max": "<=",
+        "nominal": null
+      },
+      "min_cell": {
+        "raw": "60°C",
+        "value": 60.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "max_cell": {
+        "raw": "80°C",
+        "value": 80.0,
+        "unit": "°C",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "variants": [],
+      "conditions": [
+        "Engine inlet preheated before start"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R6",
+      "historical_related_ids": [],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 6,
+      "raw_cells": [
+        "HT cooling water pressure engine inlet at nominal speed;\nnominal value 4 bar",
+        "PT3145",
+        "3 bar",
+        "8 bar"
+      ],
+      "parameter": "HT cooling water pressure engine inlet at nominal speed; nominal value 4 bar",
+      "interface": "PT3145",
+      "unit": "bar",
+      "min": 3.0,
+      "max": 8.0,
+      "nominal": 4.0,
+      "operators": {
+        "min": ">=",
+        "max": "<=",
+        "nominal": "nominal"
+      },
+      "min_cell": {
+        "raw": "3 bar",
+        "value": 3.0,
+        "unit": "bar",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "max_cell": {
+        "raw": "8 bar",
+        "value": 8.0,
+        "unit": "bar",
+        "meaning": "column_bound",
+        "footnote": null
+      },
+      "variants": [],
+      "conditions": [
+        "Engine inlet at nominal speed; nominal pressure 4 bar"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R7",
+      "historical_related_ids": [],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 7,
+      "raw_cells": [
+        "Pressure loss engine (total, for nominal flow rate)",
+        "-",
+        "6L, 8L: 1.1 bar\n7L, 9L: 1.2 bar\n10L: 1.4 bar\n12V: 1.5 bar\n14V: 1.7 bar",
+        "-"
+      ],
+      "parameter": "Pressure loss engine (total, for nominal flow rate)",
+      "interface": null,
+      "unit": "bar",
+      "min": null,
+      "max": null,
+      "nominal": null,
+      "operators": {
+        "min": null,
+        "max": null,
+        "nominal": null
+      },
+      "min_cell": {
+        "raw": "6L, 8L: 1.1 bar\n7L, 9L: 1.2 bar\n10L: 1.4 bar\n12V: 1.5 bar\n14V: 1.7 bar",
+        "value": null,
+        "unit": null,
+        "meaning": "structured_by_variant_required"
+      },
+      "max_cell": {
+        "raw": "-",
+        "value": null,
+        "unit": null,
+        "meaning": "not_stated"
+      },
+      "variants": [
+        {
+          "models": [
+            "6L",
+            "8L"
+          ],
+          "value": 1.1,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "7L",
+            "9L"
+          ],
+          "value": 1.2,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "10L"
+          ],
+          "value": 1.4,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "12V"
+          ],
+          "value": 1.5,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "14V"
+          ],
+          "value": 1.7,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        }
+      ],
+      "conditions": [
+        "Total engine pressure loss at nominal flow rate"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    },
+    {
+      "candidate_id": "MAN4960-202512-T74-R8",
+      "historical_related_ids": [],
+      "source_id": "MAN4960-IMOII-202512-v3-P134",
+      "table_row": 8,
+      "raw_cells": [
+        "Pressure rise attached HT cooling water pump (at nominal\nspeed)",
+        "-",
+        "6L: 3.6 bar\n7L, 8L: 3.5 bar\n9L: 3.4 bar\n10L: 3.3 bar\n12V: 3.9 bar\n14V: 4.4 bar",
+        "-"
+      ],
+      "parameter": "Pressure rise attached HT cooling water pump (at nominal speed)",
+      "interface": null,
+      "unit": "bar",
+      "min": null,
+      "max": null,
+      "nominal": null,
+      "operators": {
+        "min": null,
+        "max": null,
+        "nominal": null
+      },
+      "min_cell": {
+        "raw": "6L: 3.6 bar\n7L, 8L: 3.5 bar\n9L: 3.4 bar\n10L: 3.3 bar\n12V: 3.9 bar\n14V: 4.4 bar",
+        "value": null,
+        "unit": null,
+        "meaning": "structured_by_variant_required"
+      },
+      "max_cell": {
+        "raw": "-",
+        "value": null,
+        "unit": null,
+        "meaning": "not_stated"
+      },
+      "variants": [
+        {
+          "models": [
+            "6L"
+          ],
+          "value": 3.6,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "7L",
+            "8L"
+          ],
+          "value": 3.5,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "9L"
+          ],
+          "value": 3.4,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "10L"
+          ],
+          "value": 3.3,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "12V"
+          ],
+          "value": 3.9,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        },
+        {
+          "models": [
+            "14V"
+          ],
+          "value": 4.4,
+          "unit": "bar",
+          "source_column": "Min.",
+          "bound_semantics": "not inferred for variant design values"
+        }
+      ],
+      "conditions": [
+        "Attached HT cooling-water pump pressure rise at nominal speed"
+      ],
+      "all_table_footnotes": "1) HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air\ncooler.\n2) Regulated temperature, set point will be lowered by SaCoS funtion if needed, to avoid exceeding of the maximum\ntemperature at engine outlet.\n3) Operation at alarm level.",
+      "model_scope": "49/60 IMO Tier II marine four-stroke diesel engine",
+      "project_applicability": "unknown",
+      "enabled": false
+    }
+  ],
+  "quarantine_retained": [
+    "E-HT-COMP-036"
+  ],
+  "unknown_retained": [
+    "E-SW-CORR-004",
+    "E-SYS-WATER-005",
+    "E-SYS-WATER-006",
+    "E-SYS-WATER-008",
+    "E-SYS-WATER-009",
+    "E-COOLER-MAINT-007",
+    "E-COOLER-MAINT-008",
+    "E-COOLER-MAINT-025",
+    "E-COOLANT-CTRL-002",
+    "E-COOLANT-CTRL-003",
+    "E-COOLANT-INSP-026",
+    "E-COOLANT-MAINT-003",
+    "E-COOLANT-MAINT-004",
+    "E-COOLANT-MAINT-006",
+    "E-COOLANT-WATER-039",
+    "E-COOLANT-WATER-040",
+    "E-COOLANT-WATER-041",
+    "E-COOLANT-WATER-042",
+    "E-COOLANT-WATER-043",
+    "E-COOLANT-WATER-044",
+    "E-COOLANT-WATER-045",
+    "E-COOLANT-WATER-046",
+    "E-COOLANT-WATER-047",
+    "E-SYS-WATER-007",
+    "E-SYS-CLEAN-007",
+    "E-SYS-CLEAN-008",
+    "E-SYS-CLEAN-009",
+    "E-SYS-CLEAN-010",
+    "E-SYS-CTRL-001",
+    "E-COOLANT-WATER-157"
+  ],
+  "activation_requirement": "Separate author decision, trusted edition mapping and project applicability review; never auto-merge historical evidence."
+}
