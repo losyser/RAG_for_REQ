@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import copy
 import re
 from datetime import datetime
 from pathlib import Path
@@ -13,6 +14,8 @@ from cooling_rag_mg.config import get_config
 from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.schema import normalize_v2_metadata
 from cooling_rag_mg.text_utils import safe_text, truncate
+from cooling_rag_mg.evidence_contracts import bounded_context
+from cooling_rag_mg.ui_evidence_contracts import retain_ui_evidence, prepare_ui_output, finish_ui_audit
 
 try:
     from langgraph.graph import END, StateGraph
@@ -375,7 +378,10 @@ def compact_evidence(ev: dict[str, Any], text_limit: int = 600) -> dict[str, Any
         out["constraint"] = {k: v for k, v in constraint.items()
                              if k != "_extraction_meta" and v is not None}
 
-    return out
+    if "constraint" in out and len(json.dumps(out["constraint"], ensure_ascii=False)) > 1600:
+        out["constraint"] = None
+        out["_constraint_status"] = "omitted_over_budget"
+    return retain_ui_evidence(out, ev, text_limit)
 
 
 def _group_evidence_by_type(evidence_list: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
@@ -434,6 +440,10 @@ def compact_requirement_context(
             gap["sub_text"] = sub.get("text", "")
             gaps.append(gap)
 
+    if max_evidence < 1:
+        raise ValueError("max_evidence must be positive")
+    omitted_supported_ids = [e["id"] for e in supported[max_evidence:]]
+    all_background_ids = list(dict.fromkeys(e["id"] for e in background if e.get("id")))
     supported = supported[:max_evidence]
     background = background[:6]
 
@@ -442,7 +452,9 @@ def compact_requirement_context(
     text_limit = max(300, 600 - sub_count * 20 - len(gaps) * 30)
     for item in supported + background:
         raw_text = item.get("text", "")
-        item["text"] = truncate(raw_text, text_limit) if len(raw_text) > text_limit else raw_text
+        item["text"], omitted = bounded_context(raw_text, text_limit)
+        item["_omitted_context_paragraphs"] = omitted
+        item["_context_status"] = "partial_unknown" if omitted else "all_paragraphs_retained_not_semantic_verification"
 
     # 按 requirement_intents 分组（帮助 agent 归并）
     grouped_evidence = _group_evidence_by_type(supported)
@@ -466,7 +478,9 @@ def compact_requirement_context(
         "supported_evidence": supported,
         "background_evidence_for_reference_only": background,
         # 用于 normalize_agent_output 的代码级 background 排除（CR-5 hard guard）
-        "_background_evidence_ids": [b.get("id") for b in background if b.get("id")],
+        "_background_evidence_ids": all_background_ids,
+        "_omitted_supported_evidence_ids": omitted_supported_ids,
+        "_evidence_order_policy": "first_selected_reference_not_recovered_rank",
         "evidence_gap_summary": gaps,
         "sub_requirement_type_distribution": sub_type_dist,
         "allowed_engineering_aspects": allowed_aspects,
@@ -568,7 +582,9 @@ def _collapse_orphan_intermediates(reqs: list[dict[str, Any]]) -> list[dict[str,
     return reqs
 
 
-def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str, Any]:
+def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None) -> dict[str, Any]:
+    obj = prepare_ui_output(obj, requirement_id, evidence_scope)
+    before_normalization = copy.deepcopy(obj)
     set_id = safe_text(obj.get("requirement_set_id")) or f"ER-{requirement_id}"
     obj["requirement_set_id"] = set_id
     obj["source_requirement_id"] = safe_text(obj.get("source_requirement_id")) or requirement_id
@@ -713,7 +729,7 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str
     obj["agent"] = "langgraph_deepseek_engineering_requirement_agent"
     # 清理只用于内部 guard 的临时字段
     obj.pop("_background_evidence_ids", None)
-    return obj
+    return finish_ui_audit(obj, before_normalization)
 
 
 def build_graph():
@@ -740,7 +756,7 @@ def build_graph():
             client,
             model=cfg.deepseek.model,
             messages=[
-                {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT},
+                {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT + "\n上下文状态partial_unknown、缺失条件、缺失型号均表示待确认，不能推断补齐。参数value_text/operator/unit须一起解释，省略内容不能当作不存在。support_status只是模型报告，不代表独立语义验证。"},
                 {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
             ],
             temperature=cfg.deepseek.temperature,
@@ -774,7 +790,7 @@ def build_graph():
             # inject background evidence ids so normalize_agent_output can strip them (CR-5 code guard)
             obj["_background_evidence_ids"] = list(compact.get("_background_evidence_ids", []) or [])
 
-            obj = normalize_agent_output(obj, requirement_id)
+            obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []))
             if errors:
                 obj.setdefault("assumptions", [])
                 obj["assumptions"].extend(errors)
@@ -877,6 +893,9 @@ def build_fallback_output(
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "agent": "fallback_engineering_requirement_agent",
         "generation_mode": "fallback",
+        "_validation_report": {"version": "ui-structure-reference-v1", "mode": "fallback",
+            "semantic_support": "unknown", "applicability": "unknown",
+            "reference_scope": "supplied_support_context", "issues": list(errors or [])},
     }
 
 

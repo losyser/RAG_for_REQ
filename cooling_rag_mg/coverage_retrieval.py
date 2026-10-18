@@ -45,6 +45,7 @@ def aligned_retrieve(
     max_total: int = 30,
     fallback_k: int = 15,
     timing: dict | None = None,
+    diagnostics: dict | None = None,
 ) -> tuple[list[dict], list[tuple[str, str]]]:
     """元数据对齐的精准检索。
 
@@ -64,6 +65,8 @@ def aligned_retrieve(
       evidence_list: 去重后的证据字典列表，按 RRF 顺序
       pairs_used:    实际用到的 (component, intent) 对列表（空=fallback）
     """
+    if min(per_pair_k, max_total, fallback_k) < 1:
+        raise ValueError("retrieval limits must be positive")
     from cooling_rag_mg.requirement_analyzer import analyze_requirement
 
     import time as _t
@@ -73,7 +76,14 @@ def aligned_retrieve(
     if timing is not None:
         timing["stage1_s"] = round(_t1 - _t0, 3)
 
+    processed_pairs = []
     def _done(result):
+        if diagnostics is not None:
+            diagnostics.update({"policy": "existing_hard_pair_filter", "mapping_correctness": "unknown",
+                "pairs_used": [list(p) for p in pairs], "processed_pairs": processed_pairs,
+                "unfiltered_fallback_used": not bool(pairs), "result_count": len(result[0]),
+                "nonempty_mapping_zero_results": bool(pairs) and not bool(result[0]),
+                "unfiltered_rescue_attempted": False, "recall": "unknown"})
         if timing is not None:
             timing["retrieval_s"] = round(_t.perf_counter() - _t1, 3)
         return result
@@ -87,7 +97,7 @@ def aligned_retrieve(
             for r in rrf_fuse([vec, bm])
             if r.get("id") or r.get("chunk_id")
         }
-        return _done((list(candidates.values()), []))
+        return _done((list(candidates.values())[:max_total], []))
 
     seen: dict[str, dict] = {}
     for comp, intent in pairs:
@@ -99,6 +109,8 @@ def aligned_retrieve(
             requirement_text, per_pair_k,
             components=[comp], intents=[intent],
         )
+        if diagnostics is not None:
+            processed_pairs.append({"component": comp, "intent": intent, "vector_count": len(vec), "bm25_count": len(bm)})
         for cand in rrf_fuse([vec, bm]):
             cid = cand.get("id") or cand.get("chunk_id")
             if cid and cid not in seen:
