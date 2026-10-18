@@ -6,6 +6,7 @@ import re
 
 CONTRACT_VERSION = "evidence-v1-complete-records"
 SELECTION_POLICY = "numeric-first-stable-first-reference-v1"
+MIXED_SELECTION_POLICY = "numeric-first-reserve-one-nonnumeric-v1"
 OPTIONAL_VALUE_FIELDS = ("parameter", "conditions", "model", "source_span")
 
 
@@ -42,7 +43,9 @@ def ordered_evidence_ids(requirements: list[dict]) -> list[str]:
     return list(seen)
 
 
-def select_evidence(evidence: list[dict], limit: int = 12) -> list[dict]:
+def select_evidence(evidence: list[dict], limit: int = 12, *, policy: str = SELECTION_POLICY) -> list[dict]:
+    if policy not in (SELECTION_POLICY, MIXED_SELECTION_POLICY):
+        raise ValueError("unknown evidence selection policy")
     if limit < 1:
         raise ValueError("evidence limit must be positive")
     unique = {}
@@ -55,7 +58,15 @@ def select_evidence(evidence: list[dict], limit: int = 12) -> list[dict]:
             raise ValueError(f"conflicting duplicate evidence: {eid}")
         unique.setdefault(eid, eu)
     # Python sort is stable; the input sequence must itself be ordered.
-    return sorted(unique.values(), key=lambda eu: not bool(eu.get("_extracted_values")))[:limit]
+    ordered = sorted(unique.values(), key=lambda eu: not bool(eu.get("_extracted_values")))
+    selected = ordered[:limit]
+    # Explicit coverage hypothesis, not a relevance/authority score. At limit=1
+    # retain legacy numeric priority; reserving both classes is impossible.
+    if policy == MIXED_SELECTION_POLICY and limit > 1 and selected and all(e.get("_extracted_values") for e in selected):
+        nonnumeric = next((e for e in ordered if not e.get("_extracted_values")), None)
+        if nonnumeric is not None:
+            selected[-1] = nonnumeric
+    return selected
 
 
 def bounded_context(text: str, limit: int) -> tuple[str, int]:

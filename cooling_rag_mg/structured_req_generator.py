@@ -4,6 +4,8 @@ import logging
 import os
 
 from cooling_rag_mg.json_utils import loads_lenient
+from cooling_rag_mg.generation_risks import annotate_generation_risks, RISK_POLICY
+from cooling_rag_mg.evidence_contracts import SELECTION_POLICY
 from cooling_rag_mg.evidence_contracts import (select_evidence, bounded_context, bounded_value_records, applicability_record, validate_shall)
 
 _log = logging.getLogger(__name__)
@@ -62,12 +64,12 @@ _MAX_EVIDENCE_ITEMS = int(os.getenv("RAG_MAX_EVIDENCE_ITEMS", "12"))
 _EU_TEXT_LIMIT = int(os.getenv("RAG_EU_TEXT_LIMIT", "500"))
 
 
-def _build_evidence_block(annotated_evidence: list[dict]) -> str:
+def _build_evidence_block(annotated_evidence: list[dict], *, selection_policy: str = SELECTION_POLICY) -> str:
     """将标注后的证据单元格式化为 prompt 中的证据块文本。
 
     优先保留有量化参数的 EU；总数上限 _MAX_EVIDENCE_ITEMS，避免 prompt 过长。
     """
-    ordered = select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS)
+    ordered = select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy)
     lines = []
     for eu in ordered:
         context, omitted = bounded_context(eu.get("text", ""), _EU_TEXT_LIMIT)
@@ -138,9 +140,14 @@ def generate_structured_shalls(
     client,
     model: str,
     max_tokens: int = 8192,
+    *,
+    selection_policy: str = SELECTION_POLICY,
+    risk_policy: str = "legacy",
 ) -> list[dict]:
     """Stage 3 RAG：根据证据值提取结果生成结构化 shall 列表。出错返回空列表。"""
-    evidence_block = _build_evidence_block(annotated_evidence)
+    if risk_policy not in ("legacy", RISK_POLICY):
+        raise ValueError("unknown generation risk policy")
+    evidence_block = _build_evidence_block(annotated_evidence, selection_policy=selection_policy)
     if not annotated_evidence:
         _log.warning("generate_structured_shalls called with empty annotated_evidence — consider generate_norag_shalls")
     prompt = _STRUCTURED_GEN_PROMPT.format(
@@ -155,7 +162,12 @@ def generate_structured_shalls(
             max_tokens=max_tokens,
             response_format={"type": "json_object"},
         )
-        return _parse_shalls(resp.choices[0].message.content)
+        rows = annotate_generation_risks(_parse_shalls(resp.choices[0].message.content),
+            select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy), policy=risk_policy)
+        if selection_policy != SELECTION_POLICY:
+            for row in rows:
+                row["_selection_policy"] = selection_policy
+        return rows
     except Exception as exc:
         _log.warning("generate_structured_shalls failed for %r: %s", source_requirement[:60], exc)
         return []

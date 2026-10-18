@@ -584,7 +584,7 @@ def _collapse_orphan_intermediates(reqs: list[dict[str, Any]]) -> list[dict[str,
     return reqs
 
 
-def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None) -> dict[str, Any]:
+def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None, risk_policy: str = "legacy") -> dict[str, Any]:
     obj = prepare_ui_output(obj, requirement_id, evidence_scope)
     before_normalization = copy.deepcopy(obj)
     set_id = safe_text(obj.get("requirement_set_id")) or f"ER-{requirement_id}"
@@ -733,10 +733,23 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence
     obj["agent"] = "langgraph_deepseek_engineering_requirement_agent"
     # 清理只用于内部 guard 的临时字段
     obj.pop("_background_evidence_ids", None)
-    return finish_ui_audit(obj, before_normalization)
+    from cooling_rag_mg.generation_risks import annotate_generation_risks
+    obj = finish_ui_audit(obj, before_normalization)
+    obj["engineering_requirements"] = annotate_generation_risks(
+        obj["engineering_requirements"], evidence_scope, policy=risk_policy)
+    return obj
 
 
-def build_graph():
+def build_graph(*, risk_policy: str = "legacy"):
+    from cooling_rag_mg.generation_risks import annotate_generation_risks
+    annotate_generation_risks([], None, policy=risk_policy)  # Validate before any client.
+
+    def fallback_with_risks(state, errors):
+        obj = build_fallback_output(state, errors)
+        obj["engineering_requirements"] = annotate_generation_risks(
+            obj["engineering_requirements"], (state.get("compact_context") or {}).get("supported_evidence"),
+            policy=risk_policy)
+        return obj
     if StateGraph is None or END is None:
         raise RuntimeError(
             "未安装 langgraph，无法运行需求工程智能体。请执行：pip install langgraph"
@@ -780,7 +793,7 @@ def build_graph():
         errors = list(state.get("errors", []) or [])
         if state.get("generation_blocked"):
             errors.append(state["generation_blocked"])
-            return {**state, "output": build_fallback_output(state, errors), "errors": errors}
+            return {**state, "output": fallback_with_risks(state, errors), "errors": errors}
 
         try:
             obj = extract_json(state.get("llm_raw", "{}"))
@@ -791,7 +804,7 @@ def build_graph():
                 errors.append("JSON 已通过 DeepSeek 修复。")
             except Exception as exc2:
                 errors.append(f"JSON 修复失败：{exc2}")
-                fallback = build_fallback_output(state, errors)
+                fallback = fallback_with_risks(state, errors)
                 return {**state, "output": fallback, "errors": errors}
 
         try:
@@ -801,14 +814,14 @@ def build_graph():
             # inject background evidence ids so normalize_agent_output can strip them (CR-5 code guard)
             obj["_background_evidence_ids"] = list(compact.get("_background_evidence_ids", []) or [])
 
-            obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []))
+            obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []), risk_policy=risk_policy)
             if errors:
                 obj.setdefault("assumptions", [])
                 obj["assumptions"].extend(errors)
             return {**state, "output": obj, "errors": errors}
         except Exception as exc:
             errors.append(f"工程化需求结构校验失败：{exc}")
-            fallback = build_fallback_output(state, errors)
+            fallback = fallback_with_risks(state, errors)
             return {**state, "output": fallback, "errors": errors}
 
     graph = StateGraph(RequirementAgentState)
@@ -913,6 +926,7 @@ def build_fallback_output(
 def generate_engineering_requirements_for_requirement(
     requirement: dict[str, Any],
     retrieval_payload: dict[str, Any],
+    *, risk_policy: str = "legacy",
 ) -> dict[str, Any]:
     requirement_id = safe_text(requirement.get("requirement_id"))
     context = collect_requirement_context(retrieval_payload, requirement_id)
@@ -923,7 +937,7 @@ def generate_engineering_requirements_for_requirement(
             "raw_requirement_text": requirement.get("requirement_text", ""),
             "sub_requirements": [],
         }
-    graph = build_graph()
+    graph = build_graph() if risk_policy == "legacy" else build_graph(risk_policy=risk_policy)
     result = graph.invoke({
         "requirement": requirement,
         "retrieval_context": context,
@@ -935,9 +949,11 @@ def generate_engineering_requirements_for_requirement(
 def generate_engineering_requirements(
     requirements: list[dict[str, Any]],
     retrieval_payload: dict[str, Any],
+    *, risk_policy: str = "legacy",
 ) -> dict[str, Any]:
     outputs = [
-        generate_engineering_requirements_for_requirement(req, retrieval_payload)
+        (generate_engineering_requirements_for_requirement(req, retrieval_payload) if risk_policy == "legacy"
+         else generate_engineering_requirements_for_requirement(req, retrieval_payload, risk_policy=risk_policy))
         for req in requirements
     ]
     return {

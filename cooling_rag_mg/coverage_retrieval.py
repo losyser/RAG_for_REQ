@@ -46,6 +46,7 @@ def aligned_retrieve(
     fallback_k: int = 15,
     timing: dict | None = None,
     diagnostics: dict | None = None,
+    policy: str = "existing_hard_pair_filter",
 ) -> tuple[list[dict], list[tuple[str, str]]]:
     """元数据对齐的精准检索。
 
@@ -65,6 +66,8 @@ def aligned_retrieve(
       evidence_list: 去重后的证据字典列表，按 RRF 顺序
       pairs_used:    实际用到的 (component, intent) 对列表（空=fallback）
     """
+    if policy not in ("existing_hard_pair_filter", "zero-hit-unfiltered-rescue-v1"):
+        raise ValueError("unknown retrieval policy")
     if min(per_pair_k, max_total, fallback_k) < 1:
         raise ValueError("retrieval limits must be positive")
     from cooling_rag_mg.requirement_analyzer import analyze_requirement
@@ -77,13 +80,14 @@ def aligned_retrieve(
         timing["stage1_s"] = round(_t1 - _t0, 3)
 
     processed_pairs = []
+    rescue_attempted = False
     def _done(result):
         if diagnostics is not None:
-            diagnostics.update({"policy": "existing_hard_pair_filter", "mapping_correctness": "unknown",
+            diagnostics.update({"policy": policy, "mapping_correctness": "unknown",
                 "pairs_used": [list(p) for p in pairs], "processed_pairs": processed_pairs,
                 "unfiltered_fallback_used": not bool(pairs), "result_count": len(result[0]),
-                "nonempty_mapping_zero_results": bool(pairs) and not bool(result[0]),
-                "unfiltered_rescue_attempted": False, "recall": "unknown"})
+                "nonempty_mapping_zero_results": bool(pairs) and (rescue_attempted or not bool(result[0])),
+                "unfiltered_rescue_attempted": rescue_attempted, "recall": "unknown"})
         if timing is not None:
             timing["retrieval_s"] = round(_t.perf_counter() - _t1, 3)
         return result
@@ -118,4 +122,15 @@ def aligned_retrieve(
             if len(seen) >= max_total:
                 return _done((list(seen.values()), pairs))
 
+    if not seen and policy == "zero-hit-unfiltered-rescue-v1":
+        rescue_attempted = True
+        vec = searcher.vector_search(requirement_text, fallback_k)
+        bm = searcher.bm25_search(requirement_text, fallback_k)
+        for cand in rrf_fuse([vec, bm]):
+            cid = cand.get("id") or cand.get("chunk_id")
+            if cid and cid not in seen:
+                seen[cid] = {**cand, "_retrieval_origin": "unfiltered_zero_hit_rescue",
+                             "_mapping_applicability": "unknown"}
+            if len(seen) >= max_total:
+                break
     return _done((list(seen.values()), pairs))
