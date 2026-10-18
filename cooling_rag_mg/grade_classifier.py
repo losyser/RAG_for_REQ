@@ -2,11 +2,15 @@
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 from typing import Literal
 
+CLASSIFIER_VERSION = "grade-v2-placeholder-unicode-id"
+# Grade measures criterion formatting and KB citation metadata, not semantic correctness.
+# Only measurable_criterion is inspected, using the finite unit regex below.
 Grade = Literal["A", "B", "C", "X"]
 
-_TBD_PATTERN = re.compile(r"\{\{TBD\|")
+_TBD_PATTERN = re.compile(r"\{\{?TBD\|")
 _NUM_PATTERN = re.compile(
     r"\d+\.?\d*\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
 )
@@ -27,6 +31,11 @@ def kb_has_clause(u: dict) -> bool:
     return bool(_CLAUSE.search(blob))
 
 
+@lru_cache(maxsize=4)
+def _citation_pattern(ids: tuple):
+    return re.compile(r"(?<![\w.\-])(?:" + "|".join(re.escape(i) for i in sorted(ids, key=len, reverse=True)) + r")(?![\w.\-])")
+
+
 def valid_citation_ids(evidence_citations, kb_index: dict) -> list[str]:
     """返回在 KB 中真实存在的被引 ID。兼容 dict 和字符串两种引用格式；去重并保持顺序。"""
     out: list[str] = []
@@ -38,7 +47,9 @@ def valid_citation_ids(evidence_citations, kb_index: dict) -> list[str]:
         if isinstance(c, dict):
             cands = [str(c.get("kb_id") or "")]
         else:
-            cands = _KBID.findall(str(c))
+            text = str(c)
+            # Prefer full KB IDs, including Chinese clause suffixes; avoid partial-ID matches.
+            cands = _citation_pattern(tuple(kb_index)).findall(text) if kb_index else []
         for cid in cands:
             cid = cid.strip()
             if cid and cid in kb_index and cid not in out:
