@@ -36,7 +36,10 @@ def test_extractor_char_limit_env(monkeypatch):
     from cooling_rag_mg.kb_value_extractor import extract_values_from_evidence
     c = _Client()
     monkeypatch.delenv("RAG_EXTRACT_CHAR_LIMIT", raising=False)
-    extract_values_from_evidence("a" * 3000, c, "m")
+    extract_values_from_evidence("a" * 1000 + "\n\n" + "b" * 1000 + "\n\n" + "c" * 1000, c, "m")
     monkeypatch.setenv("RAG_EXTRACT_CHAR_LIMIT", "2400")
-    extract_values_from_evidence("a" * 3000, c, "m")
-    assert c.prompts[0].count("a") - c.prompts[1].count("a") == 1200 - 2400
+    extract_values_from_evidence("a" * 1000 + "\n\n" + "b" * 1000 + "\n\n" + "c" * 1000, c, "m")
+    assert "a" * 1000 in c.prompts[0]
+    assert "b" * 1000 not in c.prompts[0]
+    assert "b" * 1000 in c.prompts[1]
+    assert "c" * 1000 not in c.prompts[1]

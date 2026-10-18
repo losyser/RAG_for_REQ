@@ -2,17 +2,18 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from functools import lru_cache
 from typing import Literal
 
-CLASSIFIER_VERSION = "grade-v2-placeholder-unicode-id"
+CLASSIFIER_VERSION = "grade-v3-dgh-normalized-explained"
 # Grade measures criterion formatting and KB citation metadata, not semantic correctness.
 # Only measurable_criterion is inspected, using the finite unit regex below.
 Grade = Literal["A", "B", "C", "X"]
 
-_TBD_PATTERN = re.compile(r"\{\{?TBD\|")
+_TBD_PATTERN = re.compile(r"\{\{?\s*TBD\s*\|", re.IGNORECASE)
 _NUM_PATTERN = re.compile(
-    r"\d+\.?\d*\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
+    r"\d+\.?\d*\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|m3/h|dGH\b|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
 )
 
 
@@ -58,7 +59,7 @@ def valid_citation_ids(evidence_citations, kb_index: dict) -> list[str]:
 
 
 def classify_grade(measurable_criterion: str, evidence_citations: list, kb_index: dict | None = None) -> Grade:
-    mc = "" if measurable_criterion is None else str(measurable_criterion)
+    mc = unicodedata.normalize("NFKC", "" if measurable_criterion is None else str(measurable_criterion))
     if _TBD_PATTERN.search(mc):
         return "C"
     if not _NUM_PATTERN.search(mc):
@@ -71,6 +72,8 @@ def classify_grade(measurable_criterion: str, evidence_citations: list, kb_index
             return "A"
         return "B"
     # ---- 旧行为（kb_index=None），保留以兼容旧测试和旧结果 ----
+    if not isinstance(evidence_citations, (list, tuple)):
+        evidence_citations = [evidence_citations] if isinstance(evidence_citations, dict) else []
     if not evidence_citations:
         return "X"
     if any(isinstance(c, dict) and c.get("tier") == "L1" and c.get("has_clause", False)
@@ -90,6 +93,12 @@ def classify_result_set(result_set: dict, kb_index: dict | None = None) -> dict:
                                      er.get("evidence_citations", []), kb_index)
         if kb_index is not None:
             e["_valid_citation_ids"] = valid_citation_ids(er.get("evidence_citations", []), kb_index)
+        e["_grade_version"] = CLASSIFIER_VERSION
+        mc = unicodedata.normalize("NFKC", str(er.get("measurable_criterion") or ""))
+        e["_grade_reason"] = ("placeholder" if _TBD_PATTERN.search(mc) else
+            "no_recognized_numeric_unit" if not _NUM_PATTERN.search(mc) else
+            {"A": "numeric_and_l1_locator", "B": "numeric_and_citation", "X": "numeric_without_valid_citation"}[e["_grade"]])
+        e["_grade_scope"] = "criterion_format_and_citation_metadata_not_correctness"
         ers.append(e)
     rs["engineering_requirements"] = ers
     return rs

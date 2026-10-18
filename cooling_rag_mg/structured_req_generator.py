@@ -4,6 +4,7 @@ import logging
 import os
 
 from cooling_rag_mg.json_utils import loads_lenient
+from cooling_rag_mg.evidence_contracts import (select_evidence, bounded_context, bounded_value_records, applicability_record, validate_shall)
 
 _log = logging.getLogger(__name__)
 
@@ -32,6 +33,9 @@ measurable_criterion 只有两种合法内容：
 2. {{{{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}}}} 占位符
 
 严禁写入证据清单中未出现的任何数字。所有字段使用中文。
+参数的数值、运算符、单位、条件、型号和来源片段必须一起解释。null表示未记录，不能推断补齐。
+适用性未知、条件缺失或记录因预算被省略时，不得将该参数泛化为项目限值；使用TBD并说明待确认内容。
+证据中的异常数值、型号冲突或量纲冲突不能仅凭引用存在判为正确，应保留待核验说明。
 """
 
 _NORAG_PROMPT = """你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。
@@ -63,23 +67,21 @@ def _build_evidence_block(annotated_evidence: list[dict]) -> str:
 
     优先保留有量化参数的 EU；总数上限 _MAX_EVIDENCE_ITEMS，避免 prompt 过长。
     """
-    # 有量化参数的排前面
-    with_vals  = [eu for eu in annotated_evidence if eu.get("_extracted_values")]
-    without_vals = [eu for eu in annotated_evidence if not eu.get("_extracted_values")]
-    ordered = (with_vals + without_vals)[:_MAX_EVIDENCE_ITEMS]
-
+    ordered = select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS)
     lines = []
     for eu in ordered:
-        eu_id  = eu.get("id", "?")
-        tier   = eu.get("kb_tier", "?")
-        source = eu.get("source_document", "?")
-        text   = eu.get("text", "")[:_EU_TEXT_LIMIT]
-        lines.append(f"[{eu_id}] 层级:{tier} 来源:{source}")
-        lines.append(f"  内容: {text}")
-        values = eu.get("_extracted_values", [])
-        if values:
-            vstr = "、".join(v["value_text"] for v in values if v.get("value_text"))
-            lines.append(f"  [量化参数] {vstr}")
+        context, omitted = bounded_context(eu.get("text", ""), _EU_TEXT_LIMIT)
+        values, omitted_values = bounded_value_records(eu.get("_extracted_values", []))
+        source = str(eu.get("source_document") or "unknown")
+        if len(source) > 300:
+            source = "unknown (source label omitted_over_budget)"
+        lines.append(f"[{eu['id']}] 层级:{eu.get('kb_tier', '?')} 来源:{source}")
+        lines.append(f"  内容: {context or 'unknown (no complete paragraph fits)'}")
+        lines.append(f"  [上下文省略段数] {omitted}")
+        lines.append(f"  [适用性记录] {applicability_record(eu)}")
+        lines.append(f"  [量化参数] {values or 'none recorded'}")
+        lines.append(f"  [完整参数省略条数] {omitted_values}")
+        lines.append("  null=未记录；适用性仍需核实；引用等级不代表正确性。")
         lines.append("")
     return "\n".join(lines)
 
@@ -120,11 +122,12 @@ def _parse_shalls(raw: str) -> list[dict]:
             data = loads_lenient(raw)
             shalls = data.get("shalls", [])
     if not isinstance(shalls, list):
-        return []
-    filtered = [s for s in shalls if isinstance(s, dict) and "shall_statement" in s]
-    if len(filtered) < len(shalls):
-        _log.warning("_parse_shalls: dropped %d malformed items", len(shalls) - len(filtered))
-    return filtered
+        raise ValueError("invalid shall schema: shalls must be a list")
+    errors = [(i, validate_shall(item)) for i, item in enumerate(shalls)]
+    errors = [(i, issues) for i, issues in errors if issues]
+    if errors:
+        raise ValueError(f"invalid shall schema: {errors}")
+    return shalls
 
 
 def generate_structured_shalls(

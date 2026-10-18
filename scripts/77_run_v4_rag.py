@@ -21,7 +21,9 @@ sys.path.insert(0, str(ROOT))
 from cooling_rag_mg.config import DeepSeekConfig
 from cooling_rag_mg.grade_classifier import classify_result_set
 from cooling_rag_mg.kb_value_extractor import annotate_evidence_units
-from cooling_rag_mg.structured_req_generator import generate_structured_shalls
+from cooling_rag_mg.structured_req_generator import generate_structured_shalls, _build_evidence_block, _MAX_EVIDENCE_ITEMS
+from cooling_rag_mg.evidence_contracts import ordered_evidence_ids, select_evidence, SELECTION_POLICY, CONTRACT_VERSION
+import hashlib
 
 V3_RAG   = ROOT / "data/search_results/exp_v3/rag_v3_results.json"
 EU_JSONL = ROOT / "data/processed/evidence_units_v3_audited.jsonl"
@@ -74,9 +76,8 @@ def main():
         print(f"[{i+1:02d}/{n_total}] {or_id}", end=" ", flush=True)
 
         # 收集 v3 agent 归因的证据单元（每条 shall 引用的 KB evidence_ids 并集）
-        all_eids: set[str] = set()
-        for er in rs.get("engineering_requirements", []):
-            all_eids.update(er.get("evidence_ids", []))
+        all_eids = ordered_evidence_ids(rs.get("engineering_requirements", []))
+        # First saved reference order, not reconstruction of historical retrieval rank.
         evidence_units = [eu_idx[eid] for eid in all_eids if eid in eu_idx]
 
         # Stage 2.5：值提取标注
@@ -106,6 +107,11 @@ def main():
             "engineering_requirements": new_shalls,
             "_timing": {**rs.get("_timing", {}), "extraction_s": round(_t1 - _t0, 3),
                         "generation_s": round(_t2 - _t1, 3)},
+            "_evidence_selection": {"policy": SELECTION_POLICY, "contract_version": CONTRACT_VERSION,
+                "input_ids": all_eids, "missing_ids": [eid for eid in all_eids if eid not in eu_idx],
+                "selected_ids": [eu["id"] for eu in select_evidence(annotated, _MAX_EVIDENCE_ITEMS)],
+                "evidence_block_sha256": hashlib.sha256(_build_evidence_block(annotated).encode("utf-8")).hexdigest()},
+            "_extraction_status": {eu["id"]: eu["_extraction_status"] for eu in annotated},
             "_evidence_values": {eu["id"]: eu["_extracted_values"] for eu in annotated},
         }
         classified_rs = classify_result_set(new_rs, eu_idx)
