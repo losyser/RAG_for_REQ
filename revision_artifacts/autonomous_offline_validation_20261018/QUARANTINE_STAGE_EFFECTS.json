@@ -1,0 +1,98 @@
+[
+  {
+    "case": "OR010",
+    "preprompt_passages_removed_on_vs_off": [],
+    "preprompt_passages_added_on_vs_off": [],
+    "strict_results": [
+      {
+        "arm": "off",
+        "raw_rows": 5,
+        "delivery_rows": 5,
+        "withheld_rows": 0,
+        "schema_errors": []
+      },
+      {
+        "arm": "on",
+        "raw_rows": 10,
+        "delivery_rows": 10,
+        "withheld_rows": 0,
+        "schema_errors": []
+      }
+    ],
+    "optional_isolation_results": [
+      {
+        "arm": "off",
+        "raw_rows": 5,
+        "delivery_rows": 5,
+        "withheld_rows": 0,
+        "schema_errors": []
+      },
+      {
+        "arm": "on",
+        "raw_rows": 10,
+        "delivery_rows": 10,
+        "withheld_rows": 0,
+        "schema_errors": []
+      }
+    ],
+    "semantic_usefulness_loss": "unmeasured without trusted source/independent labels; omitted passage includes other potentially useful values, not just suspect minus100",
+    "preprompt_numeric_passages_replaced_by_warning": [],
+    "preprompt_numeric_passages_replaced_count": 0
+  },
+  {
+    "case": "OR023",
+    "preprompt_passages_removed_on_vs_off": [],
+    "preprompt_passages_added_on_vs_off": [],
+    "strict_results": [
+      {
+        "arm": "off",
+        "raw_rows": 8,
+        "delivery_rows": 8,
+        "withheld_rows": 0,
+        "schema_errors": []
+      },
+      {
+        "arm": "on",
+        "raw_rows": 9,
+        "delivery_rows": 0,
+        "withheld_rows": 0,
+        "schema_errors": [
+          {
+            "position": 9,
+            "errors": [
+              "citation[0].tier is invalid"
+            ]
+          }
+        ]
+      }
+    ],
+    "optional_isolation_results": [
+      {
+        "arm": "off",
+        "raw_rows": 8,
+        "delivery_rows": 8,
+        "withheld_rows": 0,
+        "schema_errors": []
+      },
+      {
+        "arm": "on",
+        "raw_rows": 9,
+        "delivery_rows": 8,
+        "withheld_rows": 0,
+        "schema_errors": [
+          {
+            "position": 9,
+            "errors": [
+              "citation[0].tier is invalid"
+            ]
+          }
+        ]
+      }
+    ],
+    "semantic_usefulness_loss": "unmeasured without trusted source/independent labels; omitted passage includes other potentially useful values, not just suspect minus100",
+    "preprompt_numeric_passages_replaced_by_warning": [
+      "E-HT-COMP-036"
+    ],
+    "preprompt_numeric_passages_replaced_count": 1
+  }
+]

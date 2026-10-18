@@ -7,6 +7,7 @@ from functools import lru_cache
 from typing import Literal
 
 CLASSIFIER_VERSION = "grade-v4-unit-token-boundaries"
+RANGE_CLASSIFIER_VERSION = "grade-v5-numeric-range-boundaries"
 # Grade measures criterion formatting and KB citation metadata, not semantic correctness.
 # Only measurable_criterion is inspected, using the finite unit regex below.
 Grade = Literal["A", "B", "C", "X"]
@@ -14,6 +15,9 @@ Grade = Literal["A", "B", "C", "X"]
 _TBD_PATTERN = re.compile(r"\{\{?\s*TBD\s*\|", re.IGNORECASE)
 _NUM_PATTERN = re.compile(
     r"(?<![A-Za-z0-9_.-])[+-]?\d+(?:\.\d+)?\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|m3/h|dGH\b|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
+)
+_RANGE_NUM_PATTERN = re.compile(
+    r"(?<![A-Za-z0-9_.-])[+-]?\d+(?:\.\d+)?(?:\s*(?:-|–|—|~|至|到|to)\s*[+-]?\d+(?:\.\d+)?)?\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|m3/h|dGH\b|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
 )
 
 
@@ -58,11 +62,20 @@ def valid_citation_ids(evidence_citations, kb_index: dict) -> list[str]:
     return out
 
 
-def classify_grade(measurable_criterion: str, evidence_citations: list, kb_index: dict | None = None) -> Grade:
+def _numeric_pattern(numeric_policy: str):
+    if numeric_policy == "legacy":
+        return _NUM_PATTERN
+    if numeric_policy == "numeric-ranges-v1":
+        return _RANGE_NUM_PATTERN
+    raise ValueError(f"Unknown numeric policy: {numeric_policy}")
+
+
+def classify_grade(measurable_criterion: str, evidence_citations: list, kb_index: dict | None = None, *, numeric_policy: str = "legacy") -> Grade:
+    pattern = _numeric_pattern(numeric_policy)
     mc = unicodedata.normalize("NFKC", "" if measurable_criterion is None else str(measurable_criterion))
     if _TBD_PATTERN.search(mc):
         return "C"
-    if not _NUM_PATTERN.search(mc):
+    if not pattern.search(mc):
         return "C"
     if kb_index is not None:
         ids = valid_citation_ids(evidence_citations, kb_index)
@@ -84,19 +97,21 @@ def classify_grade(measurable_criterion: str, evidence_citations: list, kb_index
     return "X"
 
 
-def classify_result_set(result_set: dict, kb_index: dict | None = None) -> dict:
+def classify_result_set(result_set: dict, kb_index: dict | None = None, *, numeric_policy: str = "legacy") -> dict:
+    pattern = _numeric_pattern(numeric_policy)
     rs = dict(result_set)
     ers = []
     for er in rs.get("engineering_requirements", []):
         e = dict(er)
         e["_grade"] = classify_grade(er.get("measurable_criterion", ""),
-                                     er.get("evidence_citations", []), kb_index)
+                                     er.get("evidence_citations", []), kb_index, numeric_policy=numeric_policy)
         if kb_index is not None:
             e["_valid_citation_ids"] = valid_citation_ids(er.get("evidence_citations", []), kb_index)
-        e["_grade_version"] = CLASSIFIER_VERSION
+        e["_grade_version"] = CLASSIFIER_VERSION if numeric_policy == "legacy" else RANGE_CLASSIFIER_VERSION
+        e["_grade_numeric_policy"] = numeric_policy
         mc = unicodedata.normalize("NFKC", str(er.get("measurable_criterion") or ""))
         e["_grade_reason"] = ("placeholder" if _TBD_PATTERN.search(mc) else
-            "no_recognized_numeric_unit" if not _NUM_PATTERN.search(mc) else
+            "no_recognized_numeric_unit" if not pattern.search(mc) else
             {"A": "numeric_and_l1_locator", "B": "numeric_and_citation", "X": "numeric_without_valid_citation"}[e["_grade"]])
         e["_grade_scope"] = "criterion_format_and_citation_metadata_not_correctness"
         ers.append(e)
