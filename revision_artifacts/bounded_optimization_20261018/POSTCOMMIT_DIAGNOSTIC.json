@@ -1,0 +1,68 @@
+{
+  "reviewed_range": "3659d37..9f2ee05",
+  "review_fix_commit": "4b19b0531bd35895c6061b7f7c9e9bd37924bb3c",
+  "classifier_version": "grade-v4-unit-token-boundaries",
+  "protected_files": 366,
+  "protected_changed": [],
+  "unrelated_tracked_changed": [],
+  "manifest_categories": {
+    "workbooks": 38,
+    "processed": 25,
+    "results": 193,
+    "paper": 110
+  },
+  "schema_audit": {
+    "rag_v4_results.json": {
+      "outputs": 513,
+      "invalid_new_generation_schema": 0,
+      "errors": {}
+    },
+    "norag_v4_results.json": {
+      "outputs": 295,
+      "invalid_new_generation_schema": 2,
+      "errors": {
+        "evidence_citations must be a list": 2
+      }
+    },
+    "rag_v4_qwen_results.json": {
+      "outputs": 229,
+      "invalid_new_generation_schema": 229,
+      "errors": {
+        "acceptance_criteria must be a nonempty list of nonempty strings": 229,
+        "evidence_citations must be a list": 229,
+        "measurable_criterion must be a nonempty string (use explicit unknown where appropriate)": 6
+      }
+    },
+    "ablation_random_retrieval_results.json": {
+      "outputs": 485,
+      "invalid_new_generation_schema": 0,
+      "errors": {}
+    }
+  },
+  "current_full_template_hashes_source_ids_as_fixture": {
+    "1": "6449ff4c10ecbe2a3912c586e35ff1c52daa0ebddb8e6c9808628432601a6c31",
+    "17": "6449ff4c10ecbe2a3912c586e35ff1c52daa0ebddb8e6c9808628432601a6c31",
+    "123": "6449ff4c10ecbe2a3912c586e35ff1c52daa0ebddb8e6c9808628432601a6c31"
+  },
+  "previous_tests": {
+    "new": 23,
+    "pre_existing": 116,
+    "passed": 139
+  },
+  "final_tests": {
+    "new": 39,
+    "pre_existing": 116,
+    "passed": 155,
+    "skipped": 0
+  },
+  "source_and_test_files": [
+    "cooling_rag_mg/grade_classifier.py",
+    "cooling_rag_mg/kb_value_extractor.py",
+    "cooling_rag_mg/structured_req_generator.py",
+    "cooling_rag_mg/evidence_contracts.py",
+    "scripts/77_run_v4_rag.py",
+    "tests/test_bounded_evidence_contracts.py",
+    "tests/test_truncation_config.py",
+    "scripts/77q_run_v4_rag_qwen.py"
+  ]
+}
