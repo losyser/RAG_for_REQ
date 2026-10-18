@@ -120,5 +120,101 @@
     "original": "re-verified in this wording audit,",
     "candidate": "verified for the reported comparison,",
     "basis": "Follow-up consistency check; no experimental result changed."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "Grade~C (an explicit deferral placeholder or a purely qualitative criterion)",
+    "candidate": "Grade~C (a matched TBD placeholder or no numeric-unit pattern recognized by the classifier)",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "\\textbf{C}~(explicit deferral placeholder)",
+    "candidate": "\\textbf{C}~(matched TBD or no recognized numeric-unit pattern)",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "decompose Grade~C into deferrals where relevant evidence was retrieved but stated no\nprecise value (an evidence-limited deferral) versus deferrals where the criterion is\ninherently qualitative.",
+    "candidate": "decompose stored Grade~C rows by whether the criterion matches the TBD pattern and\nwhether the citation field is non-empty. These labels do not validate evidence relevance,\nmissing source values, applicability or the correctness of a deferral.",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "defers the remainder with an explicit placeholder rather than committing to an unsupported\nnumber.",
+    "candidate": "assigns the remainder to Grade~C, which includes both matched TBD placeholders and\ncriteria without a recognized numeric-unit pattern.",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "Within the cited-or-deferred output,",
+    "candidate": "Within the generated output,",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "[0,~\\RagGradeXCiHigh{}]): every numeric criterion it emits is either cited (Grade~A/B,\n\\RagGradeABPct{} of RAG shalls combined) or an explicit deferral (Grade~C).",
+    "candidate": "[0,~\\RagGradeXCiHigh{}]) under the archived detector. Grade~A/B accounts for\n\\RagGradeABPct{} of RAG shalls; Grade~C is not equivalent to explicit deferral.",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "detector (Section~\\ref{subsec:gen}) registers every numeric criterion that lacks a citation,",
+    "candidate": "detector (Section~\\ref{subsec:gen}) checks numeric criteria within its finite pattern coverage,",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "\\textbf{Grade~C is dominated by evidence-limited deferral, not evasion.}  Grade~C accounts\nfor \\RagGradeCPct{} of RAG shalls; decomposing these \\GradeCTotal{} placeholders shows that\n\\GradeCBreakTBDWithEvidencePct{} (\\GradeCBreakTBDWithEvidence{}) are cases where relevant\nevidence was retrieved but stated no precise numeric value, so the pipeline correctly defers\nwith a structured deferral marker recording the parameter and expected source;\n\\GradeCBreakQualitativePct{} (\\GradeCBreakQualitative{}) are inherently qualitative criteria\nwith no numeric target; and only \\GradeCBreakTBDNoEvidence{} are deferrals where no\nsupporting evidence was retrieved at all.  The high Grade~C share is therefore largely a\nfaithful signal of current KB coverage limits, not a failure to produce usable output: each\ndeferral is an auditable instruction to the engineer rather than a fabricated value\npresented as a specification.  The no-RAG baseline's \\NoRagGradeCPct{} Grade~C arises\ndifferently---these are qualitative shalls it phrased without a number---and it provides no\nmechanism to defer when it lacks a grounded value, which is precisely why its remaining\nnumeric output falls into Grade~X.\n\n",
+    "candidate": "\\textbf{Grade~C comprises observed field-pattern categories.} Among the\n\\GradeCTotal{} stored Grade~C rows, \\GradeCBreakTBDWithEvidence{}\n(\\GradeCBreakTBDWithEvidencePct{}) match the TBD pattern and have a non-empty citation\nfield (TBD with citations); \\GradeCBreakTBDNoEvidence{} match TBD without citations;\nand \\GradeCBreakQualitative{} (\\GradeCBreakQualitativePct{}) do not match TBD\n(Grade C without matched TBD). The decomposition checks the criterion pattern and\ncitation-field presence only. It does not independently establish evidence relevance,\nthe absence of precise source values, applicability, inherent qualitative meaning or\ncorrect deferral. These counts describe output form, not the cause or engineering\nadequacy of the output. The no-RAG Grade~C share (\\NoRagGradeCPct{}) is subject to the\nsame classifier-coverage limitation.\n\n",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "defers more (Grade~C \\RandomGradeCPct{} versus \\RagGradeCPct{}): when the retrieved evidence\ncontains few grounded values, the generator defers rather than supplying cited numbers.",
+    "candidate": "has a larger Grade~C share (\\RandomGradeCPct{} versus \\RagGradeCPct{}). This\naggregate difference does not establish how often deferral was appropriate or whether\nthe retrieved evidence lacked usable values.",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "random-retrieval arm defers more often when grounded evidence is scarce\n(Grade~C \\RandomGradeCPct{} versus \\RagGradeCPct{}).",
+    "candidate": "random-retrieval arm has a larger Grade~C share\n(\\RandomGradeCPct{} versus \\RagGradeCPct{}), without an independent assessment of why.",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "Most of the pipeline's Grade~C output (\\GradeCBreakTBDWithEvidencePct{}) is\nevidence-limited deferral backed by retrieved-but-imprecise evidence, turning KB coverage\nlimits into an\nexplicit engineering worklist rather than fabrication.  This property is invisible to\nconventional evaluation:",
+    "candidate": "Most stored Grade~C rows (\\GradeCBreakTBDWithEvidencePct{}) match a TBD pattern\nand have citations. This makes the fields inspectable, but does not establish missing\nsource values or correct deferral. Independent engineering validation remains unavailable:",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "\\input{table_grade.tex}",
+    "candidate": "\\input{table_grade_labels_candidate.tex}",
+    "basis": "P1 review: observed regex/citation labels do not establish semantic correctness or cause. All counts unchanged."
+  },
+  {
+    "file": "table_grade_labels_candidate.tex",
+    "original": "\\begin{table*}[htbp]\n\\caption{Numeric provenance-grade distribution of generated ``shall'' statements (RAG $n{=}\\RagNShalls$; no-RAG $n{=}\\NoRagNShalls$).  Each shall is graded by the traceability of its \\texttt{measurable\\_criterion}: \\textbf{A}~--~precise value with an L1 (regulatory) citation and a clause reference; \\textbf{B}~--~value traceable to any cited KB evidence tier; \\textbf{C}~--~explicit \\texttt{\\{\\{TBD\\}\\}} deferral placeholder; \\textbf{X}~--~a concrete numeric value with \\emph{no} verifiable citation.  Grade~X is the failure mode the cite-or-defer constraint is designed to prevent.\\label{tab:grade}}\n\\begin{tabularx}{\\textwidth}{X >{\\centering\\arraybackslash}p{2.6cm} >{\\centering\\arraybackslash}p{2.6cm}}\n\\toprule\n\\textbf{Grade} & \\textbf{RAG} & \\textbf{no-RAG} \\\\\n\\midrule\nA~(precise value $+$ L1 clause) $\\uparrow$ & 0.2\\% (1) & 0.0\\% (0) \\\\\nB~(value $+$ any citation) $\\uparrow$ & 14.2\\% (73) & 0.0\\% (0) \\\\\nC~(explicit TBD placeholder) & 85.6\\% (439) & 30.8\\% (91) \\\\\n\\textbf{X~(untraceable value)} $\\downarrow$ & \\textbf{0.0\\% (0)} & \\textbf{69.2\\% (204)} \\\\\n\\midrule\nKB citation rate $\\uparrow$ & 98.6\\% & 0.0\\% \\\\\nL1 (regulatory) citation rate $\\uparrow$ & 21.6\\% & 0.0\\% \\\\\n\\bottomrule\n\\end{tabularx}\n\\end{table*}\n",
+    "candidate": "\\begin{table*}[htbp]\n\\caption{Numeric provenance-grade distribution of generated ``shall'' statements (RAG $n{=}\\RagNShalls$; no-RAG $n{=}\\NoRagNShalls$).  Each shall is graded by numeric-pattern and citation-metadata checks on its \\texttt{measurable\\_criterion}: \\textbf{A}~--~precise value with an L1 (regulatory) citation and a clause reference; \\textbf{B}~--~value with a valid KB citation; \\textbf{C}~--~matched TBD placeholder or no recognized numeric-unit pattern; \\textbf{X}~--~a concrete numeric value with \\emph{no} verifiable citation.  These labels do not establish semantic support or correct deferral.\\label{tab:grade}}\n\\begin{tabularx}{\\textwidth}{X >{\\centering\\arraybackslash}p{2.6cm} >{\\centering\\arraybackslash}p{2.6cm}}\n\\toprule\n\\textbf{Grade} & \\textbf{RAG} & \\textbf{no-RAG} \\\\\n\\midrule\nA~(precise value $+$ L1 clause) $\\uparrow$ & 0.2\\% (1) & 0.0\\% (0) \\\\\nB~(value $+$ any citation) $\\uparrow$ & 14.2\\% (73) & 0.0\\% (0) \\\\\nC~(TBD or no recognized numeric pattern) & 85.6\\% (439) & 30.8\\% (91) \\\\\n\\textbf{X~(untraceable value)} $\\downarrow$ & \\textbf{0.0\\% (0)} & \\textbf{69.2\\% (204)} \\\\\n\\midrule\nKB citation rate $\\uparrow$ & 98.6\\% & 0.0\\% \\\\\nL1 (regulatory) citation rate $\\uparrow$ & 21.6\\% & 0.0\\% \\\\\n\\bottomrule\n\\end{tabularx}\n\\end{table*}\n",
+    "basis": "Presentation-only copy of table6. Original scientific table file and every number retained."
+  },
+  {
+    "file": "response_to_reviewers.tex",
+    "original": "None of these issues was raised by the reviewers, and none of them changes the\npaper's central conclusion, but two secondary claims had to be corrected downward and one\nhad to be reported in the direction opposite to the original text.",
+    "candidate": "These corrections narrow the paper's claims. We retain the observed ability to inspect\ncitations, but withdraw guarantees of overall grounding, specification readiness and\ncorrect deferral. Two quantitative claims were revised downward and one comparison\nchanged direction; citation presence alone does not establish engineering validity.",
+    "basis": "P1: opening cover letter acknowledges substantive narrowing relative to original submission."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "a list of grounded numeric parameters that",
+    "candidate": "a list of extracted numeric candidates that",
+    "basis": "Extraction alone does not independently establish grounding."
+  },
+  {
+    "file": "paper_wiley.tex",
+    "original": "\\input{appendix_prompts.tex}",
+    "candidate": "\\begingroup\n\\lstset{aboveskip=2pt,belowskip=2pt,lineskip=-0.2pt}\n\\input{appendix_prompts.tex}\n\\endgroup",
+    "basis": "Presentation only: reduce listing spacing to prevent near-empty overflow page; prompt input file untouched."
   }
 ]

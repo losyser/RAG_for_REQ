@@ -43,7 +43,7 @@
 
 ## B：独立小修候选
 
-`minor_revision_candidate.zip` 为完整作者审阅包；独立展开目录为 `minor_revision_candidate/`。clean 23页、原始投稿累计diff 26页、Notes补充图1页、S2映射补充4页、同步回复8页。原始投稿ZIP及38项图资产完整保留。`PAPER_CHANGE_LEDGER.json`逐项记录原句→候选句→依据；`candidate_vs_current.diff`仅展示本阶段相对当前稿差异。
+`minor_revision_candidate.zip` 为完整作者审阅包；独立展开目录为 `minor_revision_candidate/`。clean 22页、原始投稿累计diff 26页、Notes补充图1页、S2映射补充4页、同步回复8页。原始投稿ZIP及38项图资产完整保留。`PAPER_CHANGE_LEDGER.json`逐项记录原句→候选句→依据；`candidate_vs_current.diff`仅展示本阶段相对当前稿差异。
 
 落地内容：两张Pending表不再输入结果展示，源文件保留，S1/S3/S4未完成限制保留；S2统一命名，57项共同明确标签/条件指标、反馈暴露及非gold边界不变；正文保留层级图，将Notes移至Supplementary Figure N1；内部“wording audit”等表述收敛；历史接口/记忆/会话未知保持未知；把“必然defers”等保证性句子改成指令及待检查行为；Data Availability明确修订冻结实验和人评补充尚未形成已发布核验版本。
 
@@ -67,3 +67,11 @@ MTU原页补齐是材料缺口，不另加科学决策。保护校验见 `BUILD_
 Library已解析同一持久文件的P1/P16：P1明确Series1600PowerPack，P16明确% by volume。新增8条不激活候选：初配50%、流失补充或低于40%时恢复50%、下界40%、上界55%、油/铜残留禁止、满液/排空保存条件、残液稀释检查、无批准缓蚀剂不得纯水运行。原E-SYS-WATER-006文字在防腐说明中途截断；候选保留后续保存/稀释/纯水例外，不将antifreeze擅自改名为乙二醇。来源新核验范围不外推通用marine，也不证明历史原文件同版。
 
 父侧PDF SHA256为4fd8866479ffbdb9a51b8f2b61f9d48d7906c72a1930763833a2e1b74cfe3d01，802692bytes、57页。该hash在候选中标注parent-reported，不声称本地重算。Library官方materialize助手下载后在Windows的os.setxattr步骤失败，未完整安装；直接普通curl也因schannel凭证不可用而失败，没有修改安全设置或绕过406。已用Library backing-file只读文本完成字段绑定；本地完整PDF归档仍是技术阻塞。父侧原页视觉核验与本侧文本核验分开记录，原文见MTU_LIBRARY_PAGE_READ.json。生产KB、论文主数值、评分及模型输出均未改变。
+
+## 最终P1解释修订
+
+保留351/7/81及全部科学数字，将GradeC构成准确命名为TBD with citations、TBD without citations、Grade C without matched TBD。脚本仅检查TBD模式及引用字段非空，不能证明相关证据无精确值、内容固有定性或正确延期。正文方法、结果、讨论和结论同步删去此因果推断；表6通过新增table_grade_labels_candidate.tex只修展示标签，原25科学输入文件继续hash一致。
+
+回复开头（兼cover letter）撤回“中心结论不变”，明确保留引用可检查的观察，并收窄整体grounding、specification readiness、correct deferral保证。不改S2方法及任何显著性或评分版本。P1修订前checkpoint：checkpoint/candidate-p1-wording-20261019（79cf3be）。
+
+最终全页视觉检查覆盖clean22页、累计diff26页、回复8页、S2补充4页、Notes1页；提示附录短页经局部间距调整消除，未改提示文件。25科学输入与保护清单hash一致。完整字体/引用/警告记录见BUILD_VALIDATION.json。

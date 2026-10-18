@@ -1,5 +1,23 @@
 --- current/paper_wiley.tex
 +++ candidate/paper_wiley.tex
+@@ -584,7 +584,7 @@
+ DeepSeek ($T=0$) with a prompt that extracts only the quantitative values \emph{explicitly
+ stated} in the unit text (value, comparison operator, and unit), with an instruction never
+ to infer or supplement a value.  The extractor reads the first 1,200 characters of each
+-unit.  This produces, for every evidence unit, a list of grounded numeric parameters that
++unit.  This produces, for every evidence unit, a list of extracted numeric candidates that
+ the generator is permitted to use.
+ 
+ \textbf{Stage~4 --- constrained structured generation.}  The annotated evidence units are
+@@ -614,7 +614,7 @@
+ read from the KB record rather than from the model's output.  The classifier assigns
+ Grade~A (a numeric value citing at least one L1 unit whose KB record carries a clause,
+ regulation, table or part locator), Grade~B (a numeric value citing any valid unit),
+-Grade~C (an explicit deferral placeholder or a purely qualitative criterion), or Grade~X (a
++Grade~C (a matched TBD placeholder or no numeric-unit pattern recognized by the classifier), or Grade~X (a
+ numeric value with no valid citation).  Because Grade~X is decided solely by this
+ regex-and-lookup rule, the Grade~X rate is a fully reproducible measurement that invokes no
+ KB-truth judgement and no LLM evaluation; it detects an uncited numeric criterion within its regex coverage, but cannot establish
 @@ -671,9 +671,8 @@
  five requirements, with a single cross-cutting project-manager requirement, so no single
  perspective dominates the set.  Project documentation attributes their generation to GPT-5.5 (OpenAI), separately from
@@ -12,6 +30,26 @@
  directly: the largest cosine similarity between any source
  requirement and any evidence unit is \LeakMaxCos{} (median \LeakMedCos{}), below the median
  nearest-neighbour similarity between two different evidence units (\LeakKBNNCos{}); the
+@@ -780,15 +779,15 @@
+ \textbf{(i)~Provenance-grade distribution} (primary metric).  Each generated shall is
+ assigned a grade from the scheme of Section~\ref{subsec:gen}: \textbf{A}~(precise value
+ with an L1 regulatory citation and a clause reference), \textbf{B}~(value backed by any
+-cited evidence tier), \textbf{C}~(explicit deferral placeholder), or \textbf{X}~(concrete
++cited evidence tier), \textbf{C}~(matched TBD or no recognized numeric-unit pattern), or \textbf{X}~(concrete
+ numeric value with no verifiable citation).  The primary quantity is the Grade~X rate, the
+ fraction of shalls carrying an untraceable numeric value.  Grade assignment is
+ deterministic and does not invoke a KB-truth judgement: a shall is Grade~X when its criterion matches the numeric detector and has no valid
+ KB citation under the archived classifier.
+ We additionally report the KB citation rate and the L1 (regulatory) citation rate, and
+-decompose Grade~C into deferrals where relevant evidence was retrieved but stated no
+-precise value (an evidence-limited deferral) versus deferrals where the criterion is
+-inherently qualitative.
++decompose stored Grade~C rows by whether the criterion matches the TBD pattern and
++whether the citation field is non-empty. These labels do not validate evidence relevance,
++missing source values, applicability or the correctness of a deferral.
+ 
+ \textbf{(ii)~Numeric correctness checks} (whether emitted/uncited values are actually
+ right).  The grade scheme certifies citation, not correctness.  A post-hoc knowledge-base
 @@ -826,7 +825,7 @@
  $TP=|P\cap G\cap M|$, $FP=|(P\cap M)\setminus G|$ and
  $FN=|(G\cap M)\setminus P|$. Micro precision, recall and $F_1$ are conditional on
@@ -21,7 +59,72 @@
  uncertainty sensitivity, not a complete gold standard.
  
  \subsubsection{Measurement Bias Analysis}
-@@ -955,7 +954,7 @@
+@@ -890,21 +889,21 @@
+ is semantically supported or applicable to the intended installation. The two arms also differ in how numeric criteria are expressed:
+ \NoRagGradeXPct{} of no-RAG shalls state a concrete numeric value---all of them
+ uncited---whereas RAG states a concrete, cited value in \RagGradeABPct{} of shalls and
+-defers the remainder with an explicit placeholder rather than committing to an unsupported
+-number.  Numeric provenance is analysed in detail next.
++assigns the remainder to Grade~C, which includes both matched TBD placeholders and
++criteria without a recognized numeric-unit pattern.  Numeric provenance is analysed in detail next.
+ 
+ \subsection{Numeric Provenance Grades}
+ \label{sec:grade}
+ 
+-Within the cited-or-deferred output, Table~\ref{tab:grade} reports the provenance-grade
++Within the generated output, Table~\ref{tab:grade} reports the provenance-grade
+ distribution of numeric criteria.
+ 
+-\input{table_grade.tex}
++\input{table_grade_labels_candidate.tex}
+ 
+ The sharpest contrast is Grade~X, the untraceable-value rate.  The RAG pipeline produces
+ \textbf{zero} Grade~X shalls (0/\RagNShalls; Wilson 95\%~CI
+-[0,~\RagGradeXCiHigh{}]): every numeric criterion it emits is either cited (Grade~A/B,
+-\RagGradeABPct{} of RAG shalls combined) or an explicit deferral (Grade~C).  The
++[0,~\RagGradeXCiHigh{}]) under the archived detector. Grade~A/B accounts for
++\RagGradeABPct{} of RAG shalls; Grade~C is not equivalent to explicit deferral.  The
+ unconstrained baseline produces \textbf{\NoRagGradeXPct{}} Grade~X (\NoRagGradeXPct{} of
+ \NoRagNShalls{} shalls; 95\%~CI [\NoRagGradeXCiLow{},~\NoRagGradeXCiHigh{}])---that share of
+ the baseline's shalls asserts a concrete numeric value (an alarm threshold, a flow rate, a
+@@ -914,24 +913,21 @@
+ base were extracted from multi-column rule tables without usable clause references; the
+ broader measure of regulatory backing is the L1 citation rate, \RagLoneCitationPct{} for
+ RAG versus \NoRagLoneCitationPct{} for the baseline.  Because the deterministic Grade~X
+-detector (Section~\ref{subsec:gen}) registers every numeric criterion that lacks a citation,
++detector (Section~\ref{subsec:gen}) checks numeric criteria within its finite pattern coverage,
+ the zero-Grade-X result for RAG is a reproducible measurement rather than a KB-truth
+ comparison; across all reported RAG runs the detector found no Grade~X output.
+ 
+-\textbf{Grade~C is dominated by evidence-limited deferral, not evasion.}  Grade~C accounts
+-for \RagGradeCPct{} of RAG shalls; decomposing these \GradeCTotal{} placeholders shows that
+-\GradeCBreakTBDWithEvidencePct{} (\GradeCBreakTBDWithEvidence{}) are cases where relevant
+-evidence was retrieved but stated no precise numeric value, so the pipeline correctly defers
+-with a structured deferral marker recording the parameter and expected source;
+-\GradeCBreakQualitativePct{} (\GradeCBreakQualitative{}) are inherently qualitative criteria
+-with no numeric target; and only \GradeCBreakTBDNoEvidence{} are deferrals where no
+-supporting evidence was retrieved at all.  The high Grade~C share is therefore largely a
+-faithful signal of current KB coverage limits, not a failure to produce usable output: each
+-deferral is an auditable instruction to the engineer rather than a fabricated value
+-presented as a specification.  The no-RAG baseline's \NoRagGradeCPct{} Grade~C arises
+-differently---these are qualitative shalls it phrased without a number---and it provides no
+-mechanism to defer when it lacks a grounded value, which is precisely why its remaining
+-numeric output falls into Grade~X.
++\textbf{Grade~C comprises observed field-pattern categories.} Among the
++\GradeCTotal{} stored Grade~C rows, \GradeCBreakTBDWithEvidence{}
++(\GradeCBreakTBDWithEvidencePct{}) match the TBD pattern and have a non-empty citation
++field (TBD with citations); \GradeCBreakTBDNoEvidence{} match TBD without citations;
++and \GradeCBreakQualitative{} (\GradeCBreakQualitativePct{}) do not match TBD
++(Grade C without matched TBD). The decomposition checks the criterion pattern and
++citation-field presence only. It does not independently establish evidence relevance,
++the absence of precise source values, applicability, inherent qualitative meaning or
++correct deferral. These counts describe output form, not the cause or engineering
++adequacy of the output. The no-RAG Grade~C share (\NoRagGradeCPct{}) is subject to the
++same classifier-coverage limitation.
+ 
+ \begin{figure*}[htb]
+ \centerline{\includegraphics[width=0.97\linewidth]{fig3_sysml_arch}}
+@@ -955,7 +951,7 @@
  properties and Nesting links can be retained in a commercial MBSE tool. Two complementary
  views distinguish hierarchy from requirement content. Figure~\ref{fig:ea_hierarchy}
  shows the three-level R002 design-parameter hierarchy, including nested children below
@@ -30,7 +133,7 @@
  children. Its two panels repeat the same folded R001 root for readability; they do not
  represent different source requirements or additional links. The exported node text and
  colours are retained, with nodes translated and the same Nesting connections rerouted
-@@ -983,21 +982,7 @@
+@@ -983,21 +979,7 @@
  \label{fig:ea_hierarchy}
  \end{figure*}
  
@@ -53,7 +156,19 @@
  
  \subsection{Retrieval Contribution}
  \label{sec:ablation_results}
-@@ -1139,7 +1124,7 @@
+@@ -1018,8 +1000,9 @@
+ share is \RagGradeABPct{} for semantic RAG versus \RandomGradeABPct{} for random retrieval
+ (about 1.6 times), and the L1 regulatory citation rate more than doubles
+ (\RagLoneCitationPct{} versus \RandomLoneCitationPct{}).  The random-retrieval arm also
+-defers more (Grade~C \RandomGradeCPct{} versus \RagGradeCPct{}): when the retrieved evidence
+-contains few grounded values, the generator defers rather than supplying cited numbers.
++has a larger Grade~C share (\RandomGradeCPct{} versus \RagGradeCPct{}). This
++aggregate difference does not establish how often deferral was appropriate or whether
++the retrieved evidence lacked usable values.
+ The effect on the cited-value share is therefore smaller than the effect on regulatory
+ backing, and the revised figures do not support a claim that semantic retrieval doubles the
+ share of cited values; what it reliably improves is the proportion of requirements backed by
+@@ -1139,7 +1122,7 @@
  attribution without further provenance evidence. These pending instruments are not
  evidence for the present claims.
  
@@ -62,7 +177,7 @@
  
  \subsection{Side-by-Side Comparison on Two Source Requirements}
  \label{sec:side}
-@@ -1154,7 +1139,7 @@
+@@ -1154,7 +1137,7 @@
  engine. The RAG arm did not retrieve that unit: it cites a Caterpillar freeze-point
  record and defers the concentration. The different manufacturer contexts must be checked
  before either output is used as a specification. The original manufacturer pages were
@@ -71,7 +186,7 @@
  attribution rather than validated technical suitability.
  
  \input{table_side_by_side.tex}
-@@ -1163,17 +1148,18 @@
+@@ -1163,17 +1146,18 @@
  \label{sec:stage25}
  
  Stage~3 extracts the quantitative values explicitly stated in retrieved evidence units;
@@ -95,7 +210,7 @@
  
  Two structural points hold independently of the pending measurement, and they are what
  matters for interpreting the grade distribution.  First, the extraction step limits the
-@@ -1185,9 +1171,9 @@
+@@ -1185,9 +1169,9 @@
  relationships, so numeric values can be recovered without their parameter context (the
  flagged \texttt{E-HT-COMP-036} case at $-100$\,\textdegree{}C illustrates why
  source context needs inspection; its precise failure mechanism has not been independently established).  This
@@ -108,7 +223,7 @@
  
  \subsection{Cross-Generator Robustness}
  \label{sec:crossllm}
-@@ -1249,9 +1235,9 @@
+@@ -1249,9 +1233,9 @@
  \BoundaryUnitsOverPrompt{}\% of the used units exceed that limit and
  \BoundaryValuesBeyondPrompt{}\% of their numeric values lie past the truncation point.  Those
  values remain available only through the separately extracted parameter list of
@@ -121,7 +236,33 @@
  show where the outcome is and is not sensitive to these settings: the retrieved set barely
  moved with the BM25 fusion weight (Jaccard \SensJWeightLow{}--\SensJWeightHigh{} against the
  default) or with the RRF smoothing constant $k_0$ changed from 10 to 100 (\SensJKzero{}), while reducing
-@@ -1491,11 +1477,11 @@
+@@ -1296,8 +1280,8 @@
+ \RagGradeABPct{} and more than doubles the L1-citation share (\RandomLoneCitationPct{} to
+ \RagLoneCitationPct{})---because taxonomy-aligned retrieval preferentially surfaces
+ classification-society rules whose structure mirrors the component-intent taxonomy, and the
+-random-retrieval arm defers more often when grounded evidence is scarce
+-(Grade~C \RandomGradeCPct{} versus \RagGradeCPct{}).  The two effects are therefore separable,
++random-retrieval arm has a larger Grade~C share
++(\RandomGradeCPct{} versus \RagGradeCPct{}), without an independent assessment of why.  The two effects are therefore separable,
+ although the magnitude of the second is smaller than the constraint-and-retrieval pilot that
+ motivated the design suggested: the constraint governs whether a numeric commitment is traceable
+ at all, while retrieval quality
+@@ -1455,11 +1439,9 @@
+ 
+ The random-retrieval arm also has zero detected Grade~X, supporting the role of the
+ citation-and-deferral prompt for this sample. This observation does not prove a hard
+-guarantee or establish that every cited statement is supported by its evidence.  Most of the pipeline's Grade~C output (\GradeCBreakTBDWithEvidencePct{}) is
+-evidence-limited deferral backed by retrieved-but-imprecise evidence, turning KB coverage
+-limits into an
+-explicit engineering worklist rather than fabrication.  This property is invisible to
+-conventional evaluation: the blinded LLM evaluation gave mixed preferences, and the
++guarantee or establish that every cited statement is supported by its evidence.  Most stored Grade~C rows (\GradeCBreakTBDWithEvidencePct{}) match a TBD pattern
++and have citations. This makes the fields inspectable, but does not establish missing
++source values or correct deferral. Independent engineering validation remains unavailable: the blinded LLM evaluation gave mixed preferences, and the
+ KB-anchored contradiction rate is significant in the \emph{opposite} direction, under a historical denominator that includes not-found and failed judgements
+ (Section~\ref{sec:correctness}).  The random-retrieval ablation attributes usefulness
+ to semantic retrieval and the absence of untraceable values to the citation-and-deferral
+@@ -1491,11 +1473,11 @@
  \bmsubsection*{Data Availability}
  The project source repository is available at \url{https://github.com/losyser/RAG_for_REQ}.
  The existing archive identifier for the knowledge base, indexes and response caches is
@@ -138,3 +279,14 @@
  
  \bmsubsection*{Acknowledgments}
  This research is supported by a project from the Ministry of Industry and Information
+@@ -1515,7 +1497,10 @@
+ %%====================================================================
+ \bibliographystyle{unsrtnat}
+ \appendix
++\begingroup
++\lstset{aboveskip=2pt,belowskip=2pt,lineskip=-0.2pt}
+ \input{appendix_prompts.tex}
++\endgroup
+ \input{appendix_sensitivity.tex}
+ 
+ \bibliography{paper_bibliography}
