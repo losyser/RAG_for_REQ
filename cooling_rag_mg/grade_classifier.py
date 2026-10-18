@@ -6,14 +6,14 @@ import unicodedata
 from functools import lru_cache
 from typing import Literal
 
-CLASSIFIER_VERSION = "grade-v3-dgh-normalized-explained"
+CLASSIFIER_VERSION = "grade-v4-unit-token-boundaries"
 # Grade measures criterion formatting and KB citation metadata, not semantic correctness.
 # Only measurable_criterion is inspected, using the finite unit regex below.
 Grade = Literal["A", "B", "C", "X"]
 
 _TBD_PATTERN = re.compile(r"\{\{?\s*TBD\s*\|", re.IGNORECASE)
 _NUM_PATTERN = re.compile(
-    r"\d+\.?\d*\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|m3/h|dGH\b|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
+    r"(?<![A-Za-z0-9_.-])[+-]?\d+(?:\.\d+)?\s*(?:°C|℃|MPa|bar\b|kPa|L/min|m³/h|m3/h|dGH\b|mm\b|%|秒|分钟|s\b|min\b|rpm\b|kW\b|m/s|N\b)"
 )
 
 

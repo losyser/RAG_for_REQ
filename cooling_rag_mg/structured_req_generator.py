@@ -78,6 +78,8 @@ def _build_evidence_block(annotated_evidence: list[dict]) -> str:
         lines.append(f"[{eu['id']}] 层级:{eu.get('kb_tier', '?')} 来源:{source}")
         lines.append(f"  内容: {context or 'unknown (no complete paragraph fits)'}")
         lines.append(f"  [上下文省略段数] {omitted}")
+        lines.append("  [上下文状态] " + ("partial_unknown: 存在省略，不能假定参数条件完整" if omitted else "all_paragraphs_retained: 仅表示文本未省略，不代表语义完整"))
+        lines.append(f"  [抽取状态] {eu.get('_extraction_status', 'unknown_historical')}")
         lines.append(f"  [适用性记录] {applicability_record(eu)}")
         lines.append(f"  [量化参数] {values or 'none recorded'}")
         lines.append(f"  [完整参数省略条数] {omitted_values}")

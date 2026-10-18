@@ -164,10 +164,11 @@ def test_invalid_shalls_container_rejected():
         _parse_shalls('{"shalls": {"shall_statement": "bad container"}}')
 
 
-def test_v4_entrypoint_offline_integration(tmp_path, monkeypatch):
+@pytest.mark.parametrize("entrypoint,config_name", [("77_run_v4_rag.py", "DeepSeekConfig"), ("77q_run_v4_rag_qwen.py", "QwenConfig")])
+def test_v4_entrypoint_offline_integration(tmp_path, monkeypatch, entrypoint, config_name):
     import runpy
     from types import SimpleNamespace
-    module = runpy.run_path(str(ROOT / "scripts/77_run_v4_rag.py"), run_name="offline_test")
+    module = runpy.run_path(str(ROOT / "scripts" / entrypoint), run_name="offline_test")
     main = module["main"]
     ns = main.__globals__
     v3 = tmp_path / "v3.json"
@@ -180,7 +181,7 @@ def test_v4_entrypoint_offline_integration(tmp_path, monkeypatch):
     payloads = [json.dumps({"values": [{"value_text": "10", "operator": "<=", "unit": "dGH", "conditions": "fresh water", "source_span": "Hardness <= 10 dGH for fresh water."}]}), json.dumps({"shalls": [shall]})]
     client = MagicMock()
     client.chat.completions.create.side_effect = [SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=p), finish_reason="stop")]) for p in payloads]
-    for key, value in {"DeepSeekConfig": lambda: SimpleNamespace(make_client=lambda: client, model="offline"), "V3_RAG": v3, "EU_JSONL": kb, "OR_JSONL": sources, "OUT_DIR": tmp_path, "OUT_FILE": tmp_path / "new_diagnostic.json"}.items():
+    for key, value in {config_name: lambda: SimpleNamespace(make_client=lambda: client, model="offline"), "V3_RAG": v3, "EU_JSONL": kb, "OR_JSONL": sources, "OUT_DIR": tmp_path, "OUT_FILE": tmp_path / "new_diagnostic.json"}.items():
         monkeypatch.setitem(ns, key, value)
     main()
     out = json.loads((tmp_path / "new_diagnostic.json").read_text(encoding="utf-8"))["result_sets"][0]
@@ -192,3 +193,48 @@ def test_v4_entrypoint_offline_integration(tmp_path, monkeypatch):
     prompt = client.chat.completions.create.call_args.kwargs["messages"][0]["content"]
     assert '\"unit\": \"dGH\"' in prompt
     assert "fresh water" in prompt
+
+
+@pytest.mark.parametrize("text", ["ID10dGH", "OR010dGH", "ID-10dGH", "E10.10dGH"])
+def test_numeric_identifier_not_recognized_as_measurement(text):
+    assert classify_grade(text, []) == "C"
+
+
+@pytest.mark.parametrize("text", ["硬度不超过10dGH", "≤10dGH", "-10°C", "+10°C"])
+def test_numeric_boundary_preserves_adjacent_chinese_and_signed_values(text):
+    assert classify_grade(text, []) == "X"
+
+
+@pytest.mark.parametrize("key", ["parameter", "conditions", "model", "source_span"])
+def test_optional_context_cannot_be_invented(key):
+    client = MagicMock()
+    client.chat.completions.create.return_value.choices[0].message.content = json.dumps({"values": [{"value_text": "10", "unit": "bar", "operator": "=", key: "not in source"}]})
+    client.chat.completions.create.return_value.choices[0].finish_reason = "stop"
+    row = annotate_evidence_units([{"id": "E", "text": "10 bar"}], client, "offline")[0]
+    assert row["_extraction_status"] == "schema_error"
+    assert row["_extracted_values"] == []
+
+
+def test_partial_context_not_claimed_complete():
+    unit = {"id": "E", "text": "Temperature 80°C\n\nCondition: " + "long " * 150, "_extracted_values": [{"value_text": "80°C", "operator": "<=", "unit": "°C"}]}
+    block = _build_evidence_block([unit])
+    assert "partial_unknown" in block
+    assert "unknown_historical" in block
+    assert '"conditions": null' in block
+
+
+def test_unit_in_value_text_kept_as_record_not_concatenated():
+    value = {"value_text": "<= 10 dGH", "operator": "<=", "unit": "dGH"}
+    record = json.loads(bounded_value_records([value])[0])
+    assert record["value_text"] == "<= 10 dGH"
+    assert record["operator"] == "<=" and record["unit"] == "dGH"
+    assert "dGH dGH" not in _build_evidence_block([{"id": "E", "text": "<= 10 dGH", "_extracted_values": [value]}])
+
+
+def test_or023_display_grade_is_not_verified(saved):
+    from cooling_rag_mg.requirement_status import normalize_status
+    kb, rs = saved
+    state = normalize_status(rs["OR023"]["engineering_requirements"][4], kb)
+    assert state["rule_grade"] == "B"
+    assert state["semantic_verification_state"] == "not_assessed"
+    assert "not verification" in state["verification_note"]

@@ -16,7 +16,7 @@ _EXTRACT_PROMPT = (
     "要求：\n"
     "1. 只提取文本中明确出现的数值，不得推断或补充\n"
     "2. 每个参数包含：value_text（原文表述）、operator（<=/>=/</>/=，无比较符时用空字符串\"\"）、unit（单位）\n"
-    "3. 可选字段parameter、conditions、model、source_span均为字符串或null；source_span必须是证据原文的连续片段。缺失信息用null，不得推断\n"
+    "3. 可选字段parameter、conditions、model、source_span均为字符串或null；所有非空可选字段必须逐字摘自证据；source_span必须是证据原文的连续片段。缺失信息用null，不得推断\n"
     "4. 参数与适用条件须一起提取，不把文档编号、测点编号当作工程参数；若无参数返回空列表\n\n"
     '以 JSON 格式返回，格式：{{"values": [{{"value_text": "...", "operator": "...", "unit": "..."}}]}}'
 )
@@ -71,7 +71,7 @@ def _extract_with_status(text: str, client, model: str) -> tuple[list[dict], str
     try:
         resp = client.chat.completions.create(
             model=model,
-            messages=[{"role": "user", "content": _EXTRACT_PROMPT.format(text=context)}],
+            messages=[{"role": "user", "content": _EXTRACT_PROMPT.format(text=context) + ("\n注意：部分完整段落因预算被省略；适用条件可能不完整，不能推断缺失条件。" if omitted else "")}],
             temperature=0,
             max_tokens=600,
             response_format={"type": "json_object"},
@@ -84,9 +84,10 @@ def _extract_with_status(text: str, client, model: str) -> tuple[list[dict], str
         try:
             values = validate_values(values)
             for value in values:
-                span = value.get("source_span")
-                if span and span not in context:
-                    raise ValueError("source_span is not verbatim in supplied context")
+                for key in ("parameter", "conditions", "model", "source_span"):
+                    field = value.get(key)
+                    if field and field not in context:
+                        raise ValueError(f"{key} is not verbatim in supplied context")
         except ValueError as exc:
             _log.warning("extract_values_from_evidence schema error: %s", exc)
             return [], "schema_error"
