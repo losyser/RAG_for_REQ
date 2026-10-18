@@ -96,7 +96,7 @@ class GuardedTransport(httpx.BaseTransport):
         self.delegate.close()
 
 
-def main(execute=False):
+def main(execute=False, continue_remaining=False):
     plan=preflight()
     protection=hashes_unchanged()
     if not execute:
@@ -110,7 +110,15 @@ def main(execute=False):
     # Do not expose the key, headers, environment, or SDK client representation.
     def clean(value):
         return json.loads(json.dumps(value,ensure_ascii=False,default=str).replace(cfg.api_key,'[REDACTED]'))
-    ledger_path=WORK/'ledger.json'
+    ledger_path=WORK/('continuation_ledger.json' if continue_remaining else 'ledger.json')
+    prior = None
+    if continue_remaining:
+        prior = json.loads((WORK/'ledger.json').read_text('utf-8'))
+        assert prior['status']=='stopped_after_failure' and len(prior['attempts'])==1
+        assert prior['attempts'][0]['case']=='OR001' and prior['attempts'][0]['arm']=='old'
+        assert prior['attempts'][0]['status']=='failed_stop'
+        assert prior['reserved_CNY']==str(RESERVE)
+        assert prior['plan_sha256']==hashlib.sha256(PLAN_PATH.read_bytes()).hexdigest()
     # Exclusive create prevents restarting/reusing this run after partial execution.
     with ledger_path.open('x',encoding='utf-8') as f:
         ledger={'status':'running','started_at':now(),'base_url':'https://api.deepseek.com','model':'deepseek-flash',
@@ -119,13 +127,20 @@ def main(execute=False):
             'rates_CNY_per_million':{'input_cache_miss_peak':'2','input_cache_hit_peak':'0.04','output_peak':'8'},
             'max_retries':0,'max_attempts':12,'max_output_tokens':8192,'attempts':[],'reserved_CNY':'0',
             'initial_reservation_ceiling_CNY':'40','total_ceiling_CNY':'50','protection_before':protection}
+        if prior is not None:
+            ledger['attempts']=prior['attempts']
+            ledger['reserved_CNY']=prior['reserved_CNY']
+            ledger['prior_ledger_sha256']=hashlib.sha256((WORK/'ledger.json').read_bytes()).hexdigest()
+            ledger['continuation_authorization']='Parent authorized original frozen slots 2-12; no replacement of failed OR001 old; cumulative cap 12 and RMB 50.'
+            ledger['run_script_sha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
         json.dump(ledger,f,ensure_ascii=False,indent=2)
     timeout=httpx.Timeout(connect=10,read=120,write=30,pool=10)
     transport=GuardedTransport(EnvironmentRoutingTransport(timeout),ledger,ledger_path)
     http_client=httpx.Client(transport=transport,timeout=timeout,follow_redirects=False)
     client=OpenAI(api_key=cfg.api_key,base_url='https://api.deepseek.com',max_retries=0,timeout=timeout,http_client=http_client)
     try:
-        for index,item in enumerate(plan['requests'],1):
+        offset=len(ledger['attempts'])
+        for index,item in enumerate(plan['requests'][offset:],offset+1):
             filename=f"{index:02d}_{item['case']}_{item['arm']}"
             save(WORK/(filename+'_request.json'),item)
             transport.expected=item
@@ -175,7 +190,7 @@ def main(execute=False):
                 ledger['stop_reason']=record.get('error','unknown')
                 break
         else:
-            ledger['status']='completed_12_attempts'
+            ledger['status']='completed_remaining_11_with_prior_failure' if continue_remaining else 'completed_12_attempts'
     finally:
         client.close()
         ledger['finished_at']=now()
@@ -187,5 +202,8 @@ def main(execute=False):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--execute-authorized',action='store_true')
+    parser.add_argument('--continue-authorized',action='store_true')
     args=parser.parse_args()
-    main(args.execute_authorized)
+    if args.execute_authorized and args.continue_authorized:
+        parser.error('choose one execution mode')
+    main(args.execute_authorized or args.continue_authorized,args.continue_authorized)
