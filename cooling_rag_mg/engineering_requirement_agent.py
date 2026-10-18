@@ -584,7 +584,7 @@ def _collapse_orphan_intermediates(reqs: list[dict[str, Any]]) -> list[dict[str,
     return reqs
 
 
-def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None, risk_policy: str = "legacy") -> dict[str, Any]:
+def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None) -> dict[str, Any]:
     obj = prepare_ui_output(obj, requirement_id, evidence_scope)
     before_normalization = copy.deepcopy(obj)
     set_id = safe_text(obj.get("requirement_set_id")) or f"ER-{requirement_id}"
@@ -737,10 +737,13 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence
     obj = finish_ui_audit(obj, before_normalization)
     obj["engineering_requirements"] = annotate_generation_risks(
         obj["engineering_requirements"], evidence_scope, policy=risk_policy)
-    return obj
+    from cooling_rag_mg.evidence_quarantine import gate_ui_output
+    return gate_ui_output(obj, quarantine_flags, evidence_scope=evidence_scope)
 
 
-def build_graph(*, risk_policy: str = "legacy"):
+def build_graph(*, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None):
+    from cooling_rag_mg.evidence_quarantine import active_flags, mask_prompt_evidence, gate_ui_output, PROMPT_RULE
+    quarantined = active_flags(quarantine_flags)
     from cooling_rag_mg.generation_risks import annotate_generation_risks
     annotate_generation_risks([], None, policy=risk_policy)  # Validate before any client.
 
@@ -749,7 +752,7 @@ def build_graph(*, risk_policy: str = "legacy"):
         obj["engineering_requirements"] = annotate_generation_risks(
             obj["engineering_requirements"], (state.get("compact_context") or {}).get("supported_evidence"),
             policy=risk_policy)
-        return obj
+        return gate_ui_output(obj, quarantine_flags, evidence_scope=(state.get('compact_context') or {}).get('supported_evidence'))
     if StateGraph is None or END is None:
         raise RuntimeError(
             "未安装 langgraph，无法运行需求工程智能体。请执行：pip install langgraph"
@@ -758,6 +761,7 @@ def build_graph(*, risk_policy: str = "legacy"):
     def prepare_context(state: RequirementAgentState) -> RequirementAgentState:
         context = state.get("retrieval_context", {}) or {}
         compact = compact_requirement_context(context)
+        compact = mask_prompt_evidence(compact, quarantine_flags)
         return {**state, "compact_context": compact, "errors": list(state.get("errors", []) or [])}
 
     def call_deepseek(state: RequirementAgentState) -> RequirementAgentState:
@@ -772,6 +776,8 @@ def build_graph(*, risk_policy: str = "legacy"):
             {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT + "\n上下文状态partial_unknown、缺失条件、缺失型号均表示待确认，不能推断补齐。参数value_text/operator/unit须一起解释，省略内容不能当作不存在。原文片段及偏移仅供定位，不保证条件完整。原文偏移和字符预算不是工程参数，不得用于数值判据。support_status只是模型报告，不代表独立语义验证。"},
             {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
         ]
+        if quarantined:
+            messages[0]["content"] += PROMPT_RULE
         prompt_chars = sum(len(m["content"]) for m in messages)
         if UI_MAX_PROMPT_CHARS < 1 or prompt_chars > UI_MAX_PROMPT_CHARS:
             return {**state, "generation_blocked": f"prompt_budget_exceeded: {prompt_chars}/{UI_MAX_PROMPT_CHARS} characters"}
@@ -814,7 +820,7 @@ def build_graph(*, risk_policy: str = "legacy"):
             # inject background evidence ids so normalize_agent_output can strip them (CR-5 code guard)
             obj["_background_evidence_ids"] = list(compact.get("_background_evidence_ids", []) or [])
 
-            obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []), risk_policy=risk_policy)
+            obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []), risk_policy=risk_policy, quarantine_flags=quarantine_flags)
             if errors:
                 obj.setdefault("assumptions", [])
                 obj["assumptions"].extend(errors)
@@ -926,7 +932,7 @@ def build_fallback_output(
 def generate_engineering_requirements_for_requirement(
     requirement: dict[str, Any],
     retrieval_payload: dict[str, Any],
-    *, risk_policy: str = "legacy",
+    *, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None,
 ) -> dict[str, Any]:
     requirement_id = safe_text(requirement.get("requirement_id"))
     context = collect_requirement_context(retrieval_payload, requirement_id)
@@ -937,23 +943,26 @@ def generate_engineering_requirements_for_requirement(
             "raw_requirement_text": requirement.get("requirement_text", ""),
             "sub_requirements": [],
         }
-    graph = build_graph() if risk_policy == "legacy" else build_graph(risk_policy=risk_policy)
+    graph = build_graph() if risk_policy == "legacy" and not quarantine_flags else build_graph(risk_policy=risk_policy, quarantine_flags=quarantine_flags)
     result = graph.invoke({
         "requirement": requirement,
         "retrieval_context": context,
         "errors": [],
     })
-    return result.get("output") or build_fallback_output(result)
+    if result.get("output"):
+        return result["output"]
+    from cooling_rag_mg.evidence_quarantine import gate_ui_output
+    return gate_ui_output(build_fallback_output(result), quarantine_flags, evidence_scope=(result.get('compact_context') or {}).get('supported_evidence'))
 
 
 def generate_engineering_requirements(
     requirements: list[dict[str, Any]],
     retrieval_payload: dict[str, Any],
-    *, risk_policy: str = "legacy",
+    *, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None,
 ) -> dict[str, Any]:
     outputs = [
-        (generate_engineering_requirements_for_requirement(req, retrieval_payload) if risk_policy == "legacy"
-         else generate_engineering_requirements_for_requirement(req, retrieval_payload, risk_policy=risk_policy))
+        (generate_engineering_requirements_for_requirement(req, retrieval_payload) if risk_policy == "legacy" and not quarantine_flags
+         else generate_engineering_requirements_for_requirement(req, retrieval_payload, risk_policy=risk_policy, quarantine_flags=quarantine_flags))
         for req in requirements
     ]
     return {

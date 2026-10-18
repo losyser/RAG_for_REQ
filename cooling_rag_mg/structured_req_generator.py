@@ -4,6 +4,7 @@ import logging
 import os
 
 from cooling_rag_mg.json_utils import loads_lenient
+from cooling_rag_mg.evidence_quarantine import active_flags, mask_prompt_evidence, gate_delivery, PROMPT_RULE
 from cooling_rag_mg.generation_risks import annotate_generation_risks, RISK_POLICY
 from cooling_rag_mg.evidence_contracts import SELECTION_POLICY
 from cooling_rag_mg.evidence_contracts import (select_evidence, bounded_context, bounded_value_records, applicability_record, validate_shall)
@@ -64,12 +65,13 @@ _MAX_EVIDENCE_ITEMS = int(os.getenv("RAG_MAX_EVIDENCE_ITEMS", "12"))
 _EU_TEXT_LIMIT = int(os.getenv("RAG_EU_TEXT_LIMIT", "500"))
 
 
-def _build_evidence_block(annotated_evidence: list[dict], *, selection_policy: str = SELECTION_POLICY) -> str:
+def _build_evidence_block(annotated_evidence: list[dict], *, selection_policy: str = SELECTION_POLICY, quarantine_flags: list[dict] | None = None) -> str:
     """将标注后的证据单元格式化为 prompt 中的证据块文本。
 
     优先保留有量化参数的 EU；总数上限 _MAX_EVIDENCE_ITEMS，避免 prompt 过长。
     """
     ordered = select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy)
+    ordered = mask_prompt_evidence(ordered, quarantine_flags)
     lines = []
     for eu in ordered:
         context, omitted = bounded_context(eu.get("text", ""), _EU_TEXT_LIMIT)
@@ -143,17 +145,24 @@ def generate_structured_shalls(
     *,
     selection_policy: str = SELECTION_POLICY,
     risk_policy: str = "legacy",
+    quarantine_flags: list[dict] | None = None,
+    delivery_report: dict | None = None,
 ) -> list[dict]:
     """Stage 3 RAG：根据证据值提取结果生成结构化 shall 列表。出错返回空列表。"""
     if risk_policy not in ("legacy", RISK_POLICY):
         raise ValueError("unknown generation risk policy")
-    evidence_block = _build_evidence_block(annotated_evidence, selection_policy=selection_policy)
+    quarantined = active_flags(quarantine_flags)
+    if quarantined and not isinstance(delivery_report, dict):
+        raise ValueError("quarantine requires a delivery_report to retain withheld output for review")
+    evidence_block = _build_evidence_block(annotated_evidence, selection_policy=selection_policy, quarantine_flags=quarantine_flags)
     if not annotated_evidence:
         _log.warning("generate_structured_shalls called with empty annotated_evidence — consider generate_norag_shalls")
     prompt = _STRUCTURED_GEN_PROMPT.format(
         source_requirement=source_requirement,
         evidence_block=evidence_block or "（无检索证据）",
     )
+    if quarantined:
+        prompt += PROMPT_RULE
     try:
         resp = client.chat.completions.create(
             model=model,
@@ -167,7 +176,8 @@ def generate_structured_shalls(
         if selection_policy != SELECTION_POLICY:
             for row in rows:
                 row["_selection_policy"] = selection_policy
-        return rows
+        return gate_delivery(rows, quarantine_flags, report=delivery_report,
+            evidence_scope=select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy))
     except Exception as exc:
         _log.warning("generate_structured_shalls failed for %r: %s", source_requirement[:60], exc)
         return []
