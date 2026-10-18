@@ -104,7 +104,7 @@ def test_v4_actual_generator_masks_prompt_and_blocks_mock_response():
     assert client.chat.completions.create.call_count==1
 
 
-@pytest.mark.parametrize('mode',['normal','repaired','fallback','budget'])
+@pytest.mark.parametrize('mode',['normal','repaired','fallback','budget','normalization_failure'])
 def test_ui_real_graph_routes_quarantine_through_all_paths(monkeypatch,mode):
     from cooling_rag_mg import engineering_requirement_agent as agent
     record={'requirement_id':'R1','sub_requirements':[{'selected_results':[ev()]}]}
@@ -113,15 +113,16 @@ def test_ui_real_graph_routes_quarantine_through_all_paths(monkeypatch,mode):
     captured=[]
     def completion(*a,**kw):
         captured.append(kw['messages'])
-        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(raw) if mode=='normal' else 'broken'))])
+        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(raw) if mode in ('normal','normalization_failure') else 'broken'))])
     def repair(*a,**kw):
         if mode=='fallback':raise ValueError('mock repair failure')
         return raw
     monkeypatch.setattr(agent,'get_config',lambda:SimpleNamespace(deepseek=SimpleNamespace(enabled=True,make_client=lambda:object(),model='mock',temperature=0,max_tokens_requirement_agent=1000)))
     monkeypatch.setattr(agent,'cached_completion',completion);monkeypatch.setattr(agent,'repair_json_with_deepseek',repair)
     if mode=='budget':monkeypatch.setattr(agent,'UI_MAX_PROMPT_CHARS',1)
+    if mode=='normalization_failure':monkeypatch.setattr(agent,'normalize_agent_output',MagicMock(side_effect=ValueError('mock normalization failure')))
     out=agent.generate_engineering_requirements_for_requirement({'requirement_id':'R1'}, {'requirements':[record]},quarantine_flags=FLAGS)
-    if mode in ('normal','repaired'):
+    if mode == 'normal':
         assert out['engineering_requirements']==[]
         assert out['_quarantine_delivery']['withheld']
     else:
@@ -132,8 +133,74 @@ def test_ui_real_graph_routes_quarantine_through_all_paths(monkeypatch,mode):
     if captured:
         text=json.dumps(captured,ensure_ascii=False)
         assert '-100' not in text and 'QUARANTINED' in text
+        assert 'raw_model_text' in out['_quarantine_delivery']
 
 
 def test_invalid_registry_fails_before_client():
     with pytest.raises(ValueError):active_flags([FLAGS[0],FLAGS[0]])
     with pytest.raises(ValueError):active_flags([{**FLAGS[0],'status':'silently_ok'}])
+
+
+def test_normalization_cannot_hide_numeric_only_in_removed_criteria():
+    from cooling_rag_mg.engineering_requirement_agent import normalize_agent_output
+    raw={'engineering_requirements':[{'id':'A','shall_statement':'Provide coolant',
+        'acceptance_criteria':['Temperature shall be -40°C'], 'evidence_ids':[], 'support_status':'evidence_gap'}]}
+    out=normalize_agent_output(raw,'R',evidence_scope=[],quarantine_flags=FLAGS)
+    assert out['engineering_requirements']==[]
+    assert out['_quarantine_delivery']['withheld'][0]['status']=='needs_review'
+    assert '-40' in json.dumps(out['_quarantine_delivery'],ensure_ascii=False)
+
+
+def test_flagged_background_reference_survives_normalization_for_gate():
+    from cooling_rag_mg.engineering_requirement_agent import normalize_agent_output
+    raw={'_background_evidence_ids':['RISK'],'engineering_requirements':[{
+        'id':'A','shall_statement':'Temperature -100°C','acceptance_criteria':['-100°C'],
+        'evidence_ids':['RISK','HEALTHY'],'support_status':'verified_by_direct_evidence'}]}
+    out=normalize_agent_output(raw,'R',evidence_scope=[ev('HEALTHY')],quarantine_flags=FLAGS)
+    assert out['engineering_requirements']==[]
+    assert out['_quarantine_delivery']['withheld'][0]['diagnostic']['flagged_ids']==['RISK']
+
+
+def test_invalid_json_quarantine_no_remote_repair_and_raw_preserved(monkeypatch):
+    from cooling_rag_mg import engineering_requirement_agent as agent
+    raw='broken -100°C RISK'
+    repair=MagicMock(side_effect=AssertionError('must not send raw to repair model'))
+    monkeypatch.setattr(agent,'get_config',lambda:SimpleNamespace(deepseek=SimpleNamespace(enabled=True,make_client=lambda:object(),model='mock',temperature=0,max_tokens_requirement_agent=1000)))
+    monkeypatch.setattr(agent,'cached_completion',lambda *a,**k:SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=raw))]))
+    monkeypatch.setattr(agent,'repair_json_with_deepseek',repair)
+    out=agent.generate_engineering_requirements_for_requirement({'requirement_id':'R1'},
+        {'requirements':[{'requirement_id':'R1','sub_requirements':[{'selected_results':[ev()]}]}]},quarantine_flags=FLAGS)
+    repair.assert_not_called()
+    assert out['_quarantine_delivery']['raw_model_text']==raw
+    assert '-100' not in json.dumps(out['engineering_requirements'],ensure_ascii=False)
+
+
+def test_v4_malformed_response_retained_in_report():
+    from cooling_rag_mg.structured_req_generator import generate_structured_shalls
+    client=MagicMock();raw='invalid -100°C RISK'
+    client.chat.completions.create.return_value=SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=raw))])
+    report={}
+    assert generate_structured_shalls('req',[ev()],client,'mock',quarantine_flags=FLAGS,delivery_report=report)==[]
+    assert report['raw_model_text']==raw
+
+
+def test_cached_ui_response_is_gated_and_quarantine_key_differs(monkeypatch):
+    from cooling_rag_mg import engineering_requirement_agent as agent
+    from cooling_rag_mg import llm_cache
+    cache={};monkeypatch.setattr(llm_cache,'_get_cache',lambda:cache)
+    client=MagicMock()
+    raw=json.dumps({'engineering_requirements':[{'id':'A','shall_statement':'-100°C',
+        'acceptance_criteria':['-100°C'],'evidence_ids':['RISK'],'support_status':'verified_by_direct_evidence'}]})
+    client.chat.completions.create.return_value=SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=raw))],model='mock')
+    monkeypatch.setattr(agent,'get_config',lambda:SimpleNamespace(deepseek=SimpleNamespace(enabled=True,make_client=lambda:client,model='mock',temperature=0,max_tokens_requirement_agent=1000)))
+    class MemoryCache(dict):
+        def set(self,key,value,**kwargs):self[key]=value
+    cache=MemoryCache()
+    data={'requirements':[{'requirement_id':'R1','sub_requirements':[{'selected_results':[ev()]}]}]}
+    req={'requirement_id':'R1'}
+    agent.generate_engineering_requirements_for_requirement(req,data)
+    for _ in range(2):
+        out=agent.generate_engineering_requirements_for_requirement(req,data,quarantine_flags=FLAGS)
+        assert out['engineering_requirements']==[]
+        assert out['_quarantine_delivery']['raw_model_text']==raw
+    assert client.chat.completions.create.call_count==2  # legacy + quarantine; second quarantine is cache hit

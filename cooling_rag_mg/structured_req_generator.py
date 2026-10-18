@@ -171,7 +171,10 @@ def generate_structured_shalls(
             max_tokens=max_tokens,
             response_format={"type": "json_object"},
         )
-        rows = annotate_generation_risks(_parse_shalls(resp.choices[0].message.content),
+        raw_text = resp.choices[0].message.content
+        if quarantined:
+            delivery_report['raw_model_text'] = raw_text
+        rows = annotate_generation_risks(_parse_shalls(raw_text),
             select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy), policy=risk_policy)
         if selection_policy != SELECTION_POLICY:
             for row in rows:
@@ -179,6 +182,8 @@ def generate_structured_shalls(
         return gate_delivery(rows, quarantine_flags, report=delivery_report,
             evidence_scope=select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy))
     except Exception as exc:
+        if quarantined:
+            delivery_report.update({'enabled': True, 'status': 'needs_review', 'error_type': type(exc).__name__})
         _log.warning("generate_structured_shalls failed for %r: %s", source_requirement[:60], exc)
         return []
 

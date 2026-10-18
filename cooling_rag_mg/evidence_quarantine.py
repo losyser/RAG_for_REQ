@@ -8,8 +8,8 @@ import json
 from pathlib import Path
 import re
 
-VERSION = 'evidence-quarantine-v1'
-PROMPT_RULE = ('\nEvidence marked QUARANTINED is background-only, never a numeric basis. '
+VERSION = 'evidence-quarantine-v2'
+PROMPT_RULE = ('\nPolicy evidence-quarantine-v2: Evidence marked QUARANTINED is background-only, never a numeric basis. '
                'Do not recover its withheld values from memory or other fields. Use TBD for unsupported '
                'criteria. A matching number is not source attribution. Missing parameter bindings and '
                'applicability remain unknown. Review flags do not verify any unflagged evidence.\n')
@@ -38,7 +38,7 @@ def active_flags(flags: list[dict] | None) -> dict[str, dict]:
 
 def load_review_flags(path: str | Path) -> list[dict]:
     data = json.loads(Path(path).read_text(encoding='utf-8'))
-    if not isinstance(data, dict) or data.get('version') != VERSION:
+    if not isinstance(data, dict) or data.get('version') not in ('evidence-quarantine-v1', VERSION):
         raise ValueError('unsupported review registry version')
     flags = data.get('flags')
     active_flags(flags)
@@ -112,10 +112,17 @@ def gate_delivery(rows: list[dict], flags: list[dict] | None, *, report: dict | 
     allowed = {e.get('id') for e in evidence_scope or []}
     for position,row in enumerate(rows,1):
         ids,bound_ids,binding_shape = _reported_ids(row)
+        original = row.get('_quarantine_original_row')
+        if isinstance(original, dict):
+            original_ids, original_bound, _ = _reported_ids(original)
+            ids = list(dict.fromkeys(ids + original_ids))
+            bound_ids = list(dict.fromkeys(bound_ids + original_bound))
         current_ids,_,_ = _reported_ids({k:v for k,v in row.items() if k!='_reported_evidence_ids'})
         usable_ids = current_ids if evidence_scope is None else [i for i in current_ids if i in allowed]
         implicated = [eid for eid in dict.fromkeys(ids+bound_ids) if eid in indexed]
         text = '\n'.join(str(row.get(k,'')) for k in ('shall_statement','measurable_criterion','acceptance_criteria'))
+        if isinstance(original, dict):
+            text += '\n' + '\n'.join(str(original.get(k,'')) for k in ('shall_statement','measurable_criterion','acceptance_criteria'))
         # Remove placeholders before the conservative digit detector. Digits only
         # identify possible numeric content, never which source supplied it.
         text = re.sub(r'\{\{?TBD[^}]*\}\}?', '', text, flags=re.I)
@@ -135,6 +142,7 @@ def gate_delivery(rows: list[dict], flags: list[dict] | None, *, report: dict | 
                 'diagnostic':diagnostic,'original_row':copy.deepcopy(row)})
         else:
             kept = copy.deepcopy(row)
+            kept.pop('_quarantine_original_row', None)
             kept['_quarantine_check'] = {**diagnostic,'status':'no_known_flag_not_verified'}
             if kept.get('support_status')=='verified_by_direct_evidence':
                 kept.setdefault('_reported_support_status',kept['support_status'])

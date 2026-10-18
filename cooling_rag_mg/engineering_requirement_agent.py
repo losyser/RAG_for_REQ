@@ -585,6 +585,13 @@ def _collapse_orphan_intermediates(reqs: list[dict[str, Any]]) -> list[dict[str,
 
 
 def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None) -> dict[str, Any]:
+    from cooling_rag_mg.evidence_quarantine import active_flags
+    if active_flags(quarantine_flags):
+        obj = copy.deepcopy(obj)
+        for row in obj.get("engineering_requirements", []) or []:
+            if isinstance(row, dict):
+                original = {k: v for k, v in row.items() if k != "_quarantine_original_row"}
+                row["_quarantine_original_row"] = copy.deepcopy(original)
     obj = prepare_ui_output(obj, requirement_id, evidence_scope)
     before_normalization = copy.deepcopy(obj)
     set_id = safe_text(obj.get("requirement_set_id")) or f"ER-{requirement_id}"
@@ -752,7 +759,10 @@ def build_graph(*, risk_policy: str = "legacy", quarantine_flags: list[dict] | N
         obj["engineering_requirements"] = annotate_generation_risks(
             obj["engineering_requirements"], (state.get("compact_context") or {}).get("supported_evidence"),
             policy=risk_policy)
-        return gate_ui_output(obj, quarantine_flags, evidence_scope=(state.get('compact_context') or {}).get('supported_evidence'))
+        obj = gate_ui_output(obj, quarantine_flags, evidence_scope=(state.get('compact_context') or {}).get('supported_evidence'))
+        if quarantined and "llm_raw" in state:
+            obj.setdefault("_quarantine_delivery", {})["raw_model_text"] = state["llm_raw"]
+        return obj
     if StateGraph is None or END is None:
         raise RuntimeError(
             "未安装 langgraph，无法运行需求工程智能体。请执行：pip install langgraph"
@@ -804,6 +814,12 @@ def build_graph(*, risk_policy: str = "legacy", quarantine_flags: list[dict] | N
         try:
             obj = extract_json(state.get("llm_raw", "{}"))
         except Exception as exc:
+            if quarantined:
+                errors.append("Quarantine: invalid JSON retained for review; remote repair disabled.")
+                fallback = fallback_with_risks(state, errors)
+                fallback.setdefault("_quarantine_delivery", {})["raw_model_text"] = state.get("llm_raw", "")
+                fallback["_delivery_status"] = "needs_review"
+                return {**state, "output": fallback, "errors": errors}
             errors.append(f"工程化需求 JSON 解析失败，尝试修复：{exc}")
             try:
                 obj = repair_json_with_deepseek(state.get("llm_raw", "{}"))
@@ -821,6 +837,8 @@ def build_graph(*, risk_policy: str = "legacy", quarantine_flags: list[dict] | N
             obj["_background_evidence_ids"] = list(compact.get("_background_evidence_ids", []) or [])
 
             obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []), risk_policy=risk_policy, quarantine_flags=quarantine_flags)
+            if quarantined:
+                obj.setdefault("_quarantine_delivery", {})["raw_model_text"] = state.get("llm_raw", "")
             if errors:
                 obj.setdefault("assumptions", [])
                 obj["assumptions"].extend(errors)
