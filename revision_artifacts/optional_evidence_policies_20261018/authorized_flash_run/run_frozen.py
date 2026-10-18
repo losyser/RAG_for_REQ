@@ -10,6 +10,7 @@ import sys
 import time
 
 import httpx
+from environment_transport import EnvironmentRoutingTransport, exception_types
 
 ROOT = Path(__file__).resolve().parents[3]
 WORK = Path(__file__).resolve().parent
@@ -120,7 +121,7 @@ def main(execute=False):
             'initial_reservation_ceiling_CNY':'40','total_ceiling_CNY':'50','protection_before':protection}
         json.dump(ledger,f,ensure_ascii=False,indent=2)
     timeout=httpx.Timeout(connect=10,read=120,write=30,pool=10)
-    transport=GuardedTransport(httpx.HTTPTransport(retries=0),ledger,ledger_path)
+    transport=GuardedTransport(EnvironmentRoutingTransport(timeout),ledger,ledger_path)
     http_client=httpx.Client(transport=transport,timeout=timeout,follow_redirects=False)
     client=OpenAI(api_key=cfg.api_key,base_url='https://api.deepseek.com',max_retries=0,timeout=timeout,http_client=http_client)
     try:
@@ -156,6 +157,7 @@ def main(execute=False):
                 record['status']='failed_stop'
                 record['error_type']=type(exc).__name__
                 record['error']=str(exc)
+                record['exception_chain_types']=exception_types(exc)
                 response=getattr(exc,'response',None)
                 if response is not None:
                     record['http_status']=response.status_code
