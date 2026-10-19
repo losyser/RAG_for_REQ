@@ -1,0 +1,208 @@
+{
+  "slot": "OR032-random_new",
+  "started_at": "2026-10-19T02:56:57.779871+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"254261f3-43a6-4df3-9cb9-5d42ef8ff9e9\",\"object\":\"chat.completion\",\"created\":1792378618,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"当主机冷却水系统出现低供水（流量不足）工况时，系统应发出明确报警。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:无|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵/流量监测|intent:低流量报警阈值|hint:证据仅列出冷却水容量与流速参数项，未给出低流量报警具体阈值，需按厂家技术数据或项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统运行工况；具体机型与系统型式待项目确认\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟低供水工况时系统在规定时间内发出可识别的报警信号\\\", \\\"报警阈值与厂家技术数据或项目计算文件一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-DRAW-004\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"当主机冷却水系统出现低压力工况时，系统应发出明确报警。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水管路/压力监测|intent:低压力报警阈值|hint:证据仅列出换热器压损等参数项，未给出低压力报警具体阈值，需按厂家技术数据或项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统运行工况；具体机型与系统型式待项目确认\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟低压力工况时系统在规定时间内发出可识别的报警信号\\\", \\\"报警阈值与厂家技术数据或项目计算文件一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-DRAW-004\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"当冷却水泵发生故障时，系统应发出明确报警。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水泵|intent:泵故障报警判据|hint:证据仅说明冷却水泵配置与预热切换关系，未给出泵故障报警具体判据，需按厂家技术数据或项目文件确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统运行工况；具体机型与系统型式待项目确认\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟冷却水泵故障时系统发出可识别的报警信号\\\", \\\"报警判据与厂家技术数据或项目文件一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-FLOW-014\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"在低供水、低压力或泵故障报警触发后，系统应支持人工切换至备用冷却水供水路径。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水阀组/切换装置|intent:人工切换功能与操作时限|hint:证据仅说明通过关闭阀A、开启阀B改变流向并由辅机驱动泵循环，未给出切换时限与验收判据，需按项目文件确定}}\\\", \\\"applicable_condition\\\": \\\"低供水、低压力或泵故障报警触发后的应急工况\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"操作人员可按切换程序完成人工切换\\\", \\\"切换后冷却水循环恢复并可由监测参数确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-FLOW-014\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-VALVE-DRAW-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"在低供水、低压力或泵故障报警触发后，系统应支持自动切换至备用冷却水供水路径。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水阀组/自动切换控制|intent:自动切换触发逻辑与响应时间|hint:证据仅说明阀A/阀B切换改变流向的配置，未给出自动切换逻辑与响应时间，需按厂家技术数据或项目文件确定}}\\\", \\\"applicable_condition\\\": \\\"低供水、低压力或泵故障报警触发后的应急工况\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟报警触发后系统自动完成切换动作\\\", \\\"切换响应时间与厂家技术数据或项目文件一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-FLOW-014\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-VALVE-DRAW-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"对于十字头式柴油机，应设置活塞冷却剂进口压力显示、极限报警和过低报警，并配置减速（动作类别b）和停车（动作类别c）保护动作。\\\", \\\"measurable_criterion\\\": \\\"[Q]十字头式柴油机应设置活塞冷却剂进口压力显示、极限报警和过低报警，动作类别为b（减速）和c（停车）。\\\", \\\"applicable_condition\\\": \\\"十字头式柴油机；具体机型与系统配置待项目确认\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"活塞冷却剂进口压力显示功能存在\\\", \\\"极限报警与过低报警功能存在\\\", \\\"报警联动减速与停车保护动作\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"L1-CCS2025-7-381.4-028\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水温度报警阈值与保护动作应受具体厂家、机型和控制系统配置约束，不得超出其限定范围泛化。\\\", \\\"measurable_criterion\\\": \\\"[Q]冷却液温度报警级别：对于较低级别基本温度值为95°C，对于较高级别基本温度值为105°C；温度在一定时间（1秒）内高于95°C时控制系统发送CAN消息并接通警告灯和诊断指示灯。\\\", \\\"applicable_condition\\\": \\\"Scania DI16 船用发动机配 EMS/S6 控制系统；其他机型与系统配置未知，不适用\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警阈值与厂家控制系统配置一致\\\", \\\"报警触发后警告灯与诊断指示灯动作\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2618,\"completion_tokens\":1812,\"total_tokens\":4430,\"prompt_tokens_details\":{\"cached_tokens\":2432},\"prompt_cache_hit_tokens\":2432,\"prompt_cache_miss_tokens\":186},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:56:58 GMT"
+  },
+  "response": {
+    "id": "254261f3-43a6-4df3-9cb9-5d42ef8ff9e9",
+    "object": "chat.completion",
+    "created": 1792378618,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"当主机冷却水系统出现低供水（流量不足）工况时，系统应发出明确报警。\", \"measurable_criterion\": \"{{TBD|unit:无|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵/流量监测|intent:低流量报警阈值|hint:证据仅列出冷却水容量与流速参数项，未给出低流量报警具体阈值，需按厂家技术数据或项目计算文件确定}}\", \"applicable_condition\": \"主机冷却水系统运行工况；具体机型与系统型式待项目确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟低供水工况时系统在规定时间内发出可识别的报警信号\", \"报警阈值与厂家技术数据或项目计算文件一致\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-DRAW-004\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": false}, {\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"当主机冷却水系统出现低压力工况时，系统应发出明确报警。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水管路/压力监测|intent:低压力报警阈值|hint:证据仅列出换热器压损等参数项，未给出低压力报警具体阈值，需按厂家技术数据或项目计算文件确定}}\", \"applicable_condition\": \"主机冷却水系统运行工况；具体机型与系统型式待项目确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟低压力工况时系统在规定时间内发出可识别的报警信号\", \"报警阈值与厂家技术数据或项目计算文件一致\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-DRAW-004\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": false}, {\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"当冷却水泵发生故障时，系统应发出明确报警。\", \"measurable_criterion\": \"{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水泵|intent:泵故障报警判据|hint:证据仅说明冷却水泵配置与预热切换关系，未给出泵故障报警具体判据，需按厂家技术数据或项目文件确定}}\", \"applicable_condition\": \"主机冷却水系统运行工况；具体机型与系统型式待项目确认\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟冷却水泵故障时系统发出可识别的报警信号\", \"报警判据与厂家技术数据或项目文件一致\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-FLOW-014\", \"tier\": \"L3\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": false}, {\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"在低供水、低压力或泵故障报警触发后，系统应支持人工切换至备用冷却水供水路径。\", \"measurable_criterion\": \"{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水阀组/切换装置|intent:人工切换功能与操作时限|hint:证据仅说明通过关闭阀A、开启阀B改变流向并由辅机驱动泵循环，未给出切换时限与验收判据，需按项目文件确定}}\", \"applicable_condition\": \"低供水、低压力或泵故障报警触发后的应急工况\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"操作人员可按切换程序完成人工切换\", \"切换后冷却水循环恢复并可由监测参数确认\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-FLOW-014\", \"tier\": \"L3\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": false}, {\"kb_id\": \"E-VALVE-DRAW-005\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"在低供水、低压力或泵故障报警触发后，系统应支持自动切换至备用冷却水供水路径。\", \"measurable_criterion\": \"{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水阀组/自动切换控制|intent:自动切换触发逻辑与响应时间|hint:证据仅说明阀A/阀B切换改变流向的配置，未给出自动切换逻辑与响应时间，需按厂家技术数据或项目文件确定}}\", \"applicable_condition\": \"低供水、低压力或泵故障报警触发后的应急工况\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟报警触发后系统自动完成切换动作\", \"切换响应时间与厂家技术数据或项目文件一致\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-FLOW-014\", \"tier\": \"L3\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": false}, {\"kb_id\": \"E-VALVE-DRAW-005\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"对于十字头式柴油机，应设置活塞冷却剂进口压力显示、极限报警和过低报警，并配置减速（动作类别b）和停车（动作类别c）保护动作。\", \"measurable_criterion\": \"[Q]十字头式柴油机应设置活塞冷却剂进口压力显示、极限报警和过低报警，动作类别为b（减速）和c（停车）。\", \"applicable_condition\": \"十字头式柴油机；具体机型与系统配置待项目确认\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"活塞冷却剂进口压力显示功能存在\", \"极限报警与过低报警功能存在\", \"报警联动减速与停车保护动作\"], \"evidence_citations\": [{\"kb_id\": \"L1-CCS2025-7-381.4-028\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水温度报警阈值与保护动作应受具体厂家、机型和控制系统配置约束，不得超出其限定范围泛化。\", \"measurable_criterion\": \"[Q]冷却液温度报警级别：对于较低级别基本温度值为95°C，对于较高级别基本温度值为105°C；温度在一定时间（1秒）内高于95°C时控制系统发送CAN消息并接通警告灯和诊断指示灯。\", \"applicable_condition\": \"Scania DI16 船用发动机配 EMS/S6 控制系统；其他机型与系统配置未知，不适用\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警阈值与厂家控制系统配置一致\", \"报警触发后警告灯与诊断指示灯动作\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2618,
+      "completion_tokens": 1812,
+      "total_tokens": 4430,
+      "prompt_tokens_details": {
+        "cached_tokens": 2432
+      },
+      "prompt_cache_hit_tokens": 2432,
+      "prompt_cache_miss_tokens": 186
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.019732",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.019732",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "当主机冷却水系统出现低供水（流量不足）工况时，系统应发出明确报警。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵/流量监测|intent:低流量报警阈值|hint:证据仅列出冷却水容量与流速参数项，未给出低流量报警具体阈值，需按厂家技术数据或项目计算文件确定}}",
+        "applicable_condition": "主机冷却水系统运行工况；具体机型与系统型式待项目确认",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟低供水工况时系统在规定时间内发出可识别的报警信号",
+          "报警阈值与厂家技术数据或项目计算文件一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-DRAW-004",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "当主机冷却水系统出现低压力工况时，系统应发出明确报警。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水管路/压力监测|intent:低压力报警阈值|hint:证据仅列出换热器压损等参数项，未给出低压力报警具体阈值，需按厂家技术数据或项目计算文件确定}}",
+        "applicable_condition": "主机冷却水系统运行工况；具体机型与系统型式待项目确认",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟低压力工况时系统在规定时间内发出可识别的报警信号",
+          "报警阈值与厂家技术数据或项目计算文件一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-DRAW-004",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "当冷却水泵发生故障时，系统应发出明确报警。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水泵|intent:泵故障报警判据|hint:证据仅说明冷却水泵配置与预热切换关系，未给出泵故障报警具体判据，需按厂家技术数据或项目文件确定}}",
+        "applicable_condition": "主机冷却水系统运行工况；具体机型与系统型式待项目确认",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟冷却水泵故障时系统发出可识别的报警信号",
+          "报警判据与厂家技术数据或项目文件一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-FLOW-014",
+            "tier": "L3",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "在低供水、低压力或泵故障报警触发后，系统应支持人工切换至备用冷却水供水路径。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水阀组/切换装置|intent:人工切换功能与操作时限|hint:证据仅说明通过关闭阀A、开启阀B改变流向并由辅机驱动泵循环，未给出切换时限与验收判据，需按项目文件确定}}",
+        "applicable_condition": "低供水、低压力或泵故障报警触发后的应急工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "操作人员可按切换程序完成人工切换",
+          "切换后冷却水循环恢复并可由监测参数确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-FLOW-014",
+            "tier": "L3",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-VALVE-DRAW-005",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "在低供水、低压力或泵故障报警触发后，系统应支持自动切换至备用冷却水供水路径。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水阀组/自动切换控制|intent:自动切换触发逻辑与响应时间|hint:证据仅说明阀A/阀B切换改变流向的配置，未给出自动切换逻辑与响应时间，需按厂家技术数据或项目文件确定}}",
+        "applicable_condition": "低供水、低压力或泵故障报警触发后的应急工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟报警触发后系统自动完成切换动作",
+          "切换响应时间与厂家技术数据或项目文件一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-FLOW-014",
+            "tier": "L3",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-VALVE-DRAW-005",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "对于十字头式柴油机，应设置活塞冷却剂进口压力显示、极限报警和过低报警，并配置减速（动作类别b）和停车（动作类别c）保护动作。",
+        "measurable_criterion": "[Q]十字头式柴油机应设置活塞冷却剂进口压力显示、极限报警和过低报警，动作类别为b（减速）和c（停车）。",
+        "applicable_condition": "十字头式柴油机；具体机型与系统配置待项目确认",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "活塞冷却剂进口压力显示功能存在",
+          "极限报警与过低报警功能存在",
+          "报警联动减速与停车保护动作"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-7-381.4-028",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度报警阈值与保护动作应受具体厂家、机型和控制系统配置约束，不得超出其限定范围泛化。",
+        "measurable_criterion": "[Q]冷却液温度报警级别：对于较低级别基本温度值为95°C，对于较高级别基本温度值为105°C；温度在一定时间（1秒）内高于95°C时控制系统发送CAN消息并接通警告灯和诊断指示灯。",
+        "applicable_condition": "Scania DI16 船用发动机配 EMS/S6 控制系统；其他机型与系统配置未知，不适用",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警阈值与厂家控制系统配置一致",
+          "报警触发后警告灯与诊断指示灯动作"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:57:04.988536+00:00",
+  "elapsed_seconds": 7.062
+}

@@ -1,0 +1,196 @@
+{
+  "slot": "OR034-semantic_old",
+  "started_at": "2026-10-19T02:58:06.685685+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"b708fc7b-b744-40ed-aa98-22e1e05a627d\",\"object\":\"chat.completion\",\"created\":1792378687,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"温度控制阀应能根据实际冷却水温变化调节冷却水流量，使被控温度维持在设定值附近，不得出现明显控制滞后。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀TCV-005|intent:温度控制偏差|hint:依据厂家技术数据或项目计算文件确定允许的温度偏差限值}}\\\",\\\"applicable_condition\\\":\\\"喷嘴冷却水温度控制回路，冷却水添加防冻液后需考虑传热率降低的影响\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度控制阀调节范围应覆盖约55°C至65°C区间（依据TCV-005调节范围）\\\",\\\"在负荷变化工况下被控温度不得出现明显滞后，温度偏差应满足项目计算文件确定的限值\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-231\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"温度控制阀应保证发动机出口冷却水温度在允许范围内，并受最大出口温度限制。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:温度控制阀|intent:出口温度上限|hint:标准应用最大出口温度限值及余热回收应用放宽限值依据来源文件确定}}\\\",\\\"applicable_condition\\\":\\\"49/60DF机型，气缸冷却水出口温度随发动机负荷和进气温度变化，标准应用与余热回收应用分别适用\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"标准应用下发动机出口冷却水温度不超过100°C\\\",\\\"余热回收应用下出口温度上限可放宽至106°C\\\",\\\"出口温度随负荷变化范围应覆盖88°C至100°C\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-233\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"低温冷却水温度控制阀应维持低温冷却水在设定温度，采用线性特性的电动三通调节阀作为混合阀安装。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN 49/60 Project Guide|component:低温冷却水温度控制阀MOV-016|intent:设定温度|hint:标准设定温度为32°C，具体设定值依据来源文件确定}}\\\",\\\"applicable_condition\\\":\\\"49/60机型低温冷却水系统，MOV-016作为混合阀安装\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"低温冷却水温度维持在设定温度32°C（标准值）\\\",\\\"阀门具备线性调节特性\\\",\\\"阀门以混合阀方式安装\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-162\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"高温冷却水温度应通过恒温阀用低温水混合方式进行调节，恒温阀应根据发动机负荷调节回流量与外部系统流量比例。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀|intent:高温回路温度|hint:辅助发动机出口恒定温度约80°C，具体控制目标依据来源文件确定}}\\\",\\\"applicable_condition\\\":\\\"L16/24、L21/31、L27/38机型中央冷却水系统，推进发动机高温回路\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"高温回路温度通过恒温阀用低温水混合调节\\\",\\\"辅助发动机出口温度维持约80°C恒定\\\",\\\"恒温阀根据发动机负荷调节回流量与外部系统流量比例\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-LT-PRESS-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-TCV-TEMP-237\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-TCV-TEMP-081\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"温度控制阀相关温度传感器应布置在能反映实际水温变化的管路位置，避免因测量非流动低温管路导致控制滞后。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀温度传感器|intent:传感器测量位置温度代表性|hint:传感器应布置于流动管路，具体位置与温度代表性要求依据来源文件确定}}\\\",\\\"applicable_condition\\\":\\\"L16/24机型恒温控制三通阀，传感器测量位置选择\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"温度传感器不得布置在非流动、低温管路中\\\",\\\"传感器测量值应能反映实际水温变化\\\",\\\"恒温阀动作与实际水温变化之间不得出现明显滞后\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-LT-PRESS-005\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置高低温回路独立的三通恒温阀，分别控制高温水与低温水温度。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀|intent:高低温回路温度控制|hint:高低温水分别通过独立三通恒温阀离开发动机，具体控制参数依据来源文件确定}}\\\",\\\"applicable_condition\\\":\\\"MAN L16/24机型，Tier II排放标准，内部冷却水系统\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却水系统包含高温和低温两个回路\\\",\\\"高低温水分别通过独立的三通恒温阀离开发动机\\\",\\\"恒温阀控制水温\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-042\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"温度控制阀相关温度监测应配置高低温回路进出口温度传感器，用于反映实际水温变化并支撑控制逻辑。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:温度传感器TE401/TE402/TE471/TE482|intent:温度监测点配置|hint:高低温回路进出口温度监测点配置依据来源文件确定}}\\\",\\\"applicable_condition\\\":\\\"Wärtsilä 32机型冷却水系统\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"配置HT水发动机进口温度传感器TE401\\\",\\\"配置HT水发动机出口温度传感器TE402\\\",\\\"配置LT水CAC进口温度传感器TE471\\\",\\\"配置LT水LOC进口温度传感器TE482\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-034\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2496,\"completion_tokens\":1613,\"total_tokens\":4109,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2496},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:58:07 GMT"
+  },
+  "response": {
+    "id": "b708fc7b-b744-40ed-aa98-22e1e05a627d",
+    "object": "chat.completion",
+    "created": 1792378687,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"温度控制阀应能根据实际冷却水温变化调节冷却水流量，使被控温度维持在设定值附近，不得出现明显控制滞后。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀TCV-005|intent:温度控制偏差|hint:依据厂家技术数据或项目计算文件确定允许的温度偏差限值}}\",\"applicable_condition\":\"喷嘴冷却水温度控制回路，冷却水添加防冻液后需考虑传热率降低的影响\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度控制阀调节范围应覆盖约55°C至65°C区间（依据TCV-005调节范围）\",\"在负荷变化工况下被控温度不得出现明显滞后，温度偏差应满足项目计算文件确定的限值\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-231\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"温度控制阀应保证发动机出口冷却水温度在允许范围内，并受最大出口温度限制。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:温度控制阀|intent:出口温度上限|hint:标准应用最大出口温度限值及余热回收应用放宽限值依据来源文件确定}}\",\"applicable_condition\":\"49/60DF机型，气缸冷却水出口温度随发动机负荷和进气温度变化，标准应用与余热回收应用分别适用\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"标准应用下发动机出口冷却水温度不超过100°C\",\"余热回收应用下出口温度上限可放宽至106°C\",\"出口温度随负荷变化范围应覆盖88°C至100°C\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-233\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"低温冷却水温度控制阀应维持低温冷却水在设定温度，采用线性特性的电动三通调节阀作为混合阀安装。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN 49/60 Project Guide|component:低温冷却水温度控制阀MOV-016|intent:设定温度|hint:标准设定温度为32°C，具体设定值依据来源文件确定}}\",\"applicable_condition\":\"49/60机型低温冷却水系统，MOV-016作为混合阀安装\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"低温冷却水温度维持在设定温度32°C（标准值）\",\"阀门具备线性调节特性\",\"阀门以混合阀方式安装\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-162\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"高温冷却水温度应通过恒温阀用低温水混合方式进行调节，恒温阀应根据发动机负荷调节回流量与外部系统流量比例。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀|intent:高温回路温度|hint:辅助发动机出口恒定温度约80°C，具体控制目标依据来源文件确定}}\",\"applicable_condition\":\"L16/24、L21/31、L27/38机型中央冷却水系统，推进发动机高温回路\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"高温回路温度通过恒温阀用低温水混合调节\",\"辅助发动机出口温度维持约80°C恒定\",\"恒温阀根据发动机负荷调节回流量与外部系统流量比例\"],\"evidence_citations\":[{\"kb_id\":\"E-LT-PRESS-003\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-TCV-TEMP-237\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-TCV-TEMP-081\",\"tier\":\"L2\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"温度控制阀相关温度传感器应布置在能反映实际水温变化的管路位置，避免因测量非流动低温管路导致控制滞后。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀温度传感器|intent:传感器测量位置温度代表性|hint:传感器应布置于流动管路，具体位置与温度代表性要求依据来源文件确定}}\",\"applicable_condition\":\"L16/24机型恒温控制三通阀，传感器测量位置选择\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"温度传感器不得布置在非流动、低温管路中\",\"传感器测量值应能反映实际水温变化\",\"恒温阀动作与实际水温变化之间不得出现明显滞后\"],\"evidence_citations\":[{\"kb_id\":\"E-LT-PRESS-005\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置高低温回路独立的三通恒温阀，分别控制高温水与低温水温度。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀|intent:高低温回路温度控制|hint:高低温水分别通过独立三通恒温阀离开发动机，具体控制参数依据来源文件确定}}\",\"applicable_condition\":\"MAN L16/24机型，Tier II排放标准，内部冷却水系统\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却水系统包含高温和低温两个回路\",\"高低温水分别通过独立的三通恒温阀离开发动机\",\"恒温阀控制水温\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-042\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"温度控制阀相关温度监测应配置高低温回路进出口温度传感器，用于反映实际水温变化并支撑控制逻辑。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:温度传感器TE401/TE402/TE471/TE482|intent:温度监测点配置|hint:高低温回路进出口温度监测点配置依据来源文件确定}}\",\"applicable_condition\":\"Wärtsilä 32机型冷却水系统\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"配置HT水发动机进口温度传感器TE401\",\"配置HT水发动机出口温度传感器TE402\",\"配置LT水CAC进口温度传感器TE471\",\"配置LT水LOC进口温度传感器TE482\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-034\",\"tier\":\"L2\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2496,
+      "completion_tokens": 1613,
+      "total_tokens": 4109,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2496
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.017896",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.017896",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "温度控制阀应能根据实际冷却水温变化调节冷却水流量，使被控温度维持在设定值附近，不得出现明显控制滞后。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀TCV-005|intent:温度控制偏差|hint:依据厂家技术数据或项目计算文件确定允许的温度偏差限值}}",
+        "applicable_condition": "喷嘴冷却水温度控制回路，冷却水添加防冻液后需考虑传热率降低的影响",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度控制阀调节范围应覆盖约55°C至65°C区间（依据TCV-005调节范围）",
+          "在负荷变化工况下被控温度不得出现明显滞后，温度偏差应满足项目计算文件确定的限值"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-231",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀应保证发动机出口冷却水温度在允许范围内，并受最大出口温度限制。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:温度控制阀|intent:出口温度上限|hint:标准应用最大出口温度限值及余热回收应用放宽限值依据来源文件确定}}",
+        "applicable_condition": "49/60DF机型，气缸冷却水出口温度随发动机负荷和进气温度变化，标准应用与余热回收应用分别适用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "标准应用下发动机出口冷却水温度不超过100°C",
+          "余热回收应用下出口温度上限可放宽至106°C",
+          "出口温度随负荷变化范围应覆盖88°C至100°C"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-233",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温冷却水温度控制阀应维持低温冷却水在设定温度，采用线性特性的电动三通调节阀作为混合阀安装。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN 49/60 Project Guide|component:低温冷却水温度控制阀MOV-016|intent:设定温度|hint:标准设定温度为32°C，具体设定值依据来源文件确定}}",
+        "applicable_condition": "49/60机型低温冷却水系统，MOV-016作为混合阀安装",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "低温冷却水温度维持在设定温度32°C（标准值）",
+          "阀门具备线性调节特性",
+          "阀门以混合阀方式安装"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-162",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水温度应通过恒温阀用低温水混合方式进行调节，恒温阀应根据发动机负荷调节回流量与外部系统流量比例。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀|intent:高温回路温度|hint:辅助发动机出口恒定温度约80°C，具体控制目标依据来源文件确定}}",
+        "applicable_condition": "L16/24、L21/31、L27/38机型中央冷却水系统，推进发动机高温回路",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "高温回路温度通过恒温阀用低温水混合调节",
+          "辅助发动机出口温度维持约80°C恒定",
+          "恒温阀根据发动机负荷调节回流量与外部系统流量比例"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-PRESS-003",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TCV-TEMP-237",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TCV-TEMP-081",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀相关温度传感器应布置在能反映实际水温变化的管路位置，避免因测量非流动低温管路导致控制滞后。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀温度传感器|intent:传感器测量位置温度代表性|hint:传感器应布置于流动管路，具体位置与温度代表性要求依据来源文件确定}}",
+        "applicable_condition": "L16/24机型恒温控制三通阀，传感器测量位置选择",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "温度传感器不得布置在非流动、低温管路中",
+          "传感器测量值应能反映实际水温变化",
+          "恒温阀动作与实际水温变化之间不得出现明显滞后"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-PRESS-005",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置高低温回路独立的三通恒温阀，分别控制高温水与低温水温度。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:三通恒温阀|intent:高低温回路温度控制|hint:高低温水分别通过独立三通恒温阀离开发动机，具体控制参数依据来源文件确定}}",
+        "applicable_condition": "MAN L16/24机型，Tier II排放标准，内部冷却水系统",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却水系统包含高温和低温两个回路",
+          "高低温水分别通过独立的三通恒温阀离开发动机",
+          "恒温阀控制水温"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-042",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀相关温度监测应配置高低温回路进出口温度传感器，用于反映实际水温变化并支撑控制逻辑。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:温度传感器TE401/TE402/TE471/TE482|intent:温度监测点配置|hint:高低温回路进出口温度监测点配置依据来源文件确定}}",
+        "applicable_condition": "Wärtsilä 32机型冷却水系统",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "配置HT水发动机进口温度传感器TE401",
+          "配置HT水发动机出口温度传感器TE402",
+          "配置LT水CAC进口温度传感器TE471",
+          "配置LT水LOC进口温度传感器TE482"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-034",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:58:14.164227+00:00",
+  "elapsed_seconds": 7.328
+}

@@ -1,0 +1,117 @@
+{
+  "slot": "OR036-norag_original",
+  "started_at": "2026-10-19T02:59:20.822212+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"0c190ce1-fa81-4562-9824-7e384287d100\",\"object\":\"chat.completion\",\"created\":1792378762,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应监测冷却水温度，当温度超过高温报警阈值时，系统应在报警确认前持续发出高温报警信号。\\\",\\\"measurable_criterion\\\":\\\"高温报警阈值可设定，默认取冷却水正常出口温度上限加5℃（如正常上限为80℃时，报警阈值取85℃）；从温度越限到报警输出延迟不大于2 s。\\\",\\\"applicable_condition\\\":\\\"主机运行工况（含额定负荷及部分负荷），冷却水系统投运。\\\",\\\"verification_method\\\":\\\"试验验证：在试验台或实船上模拟温度信号越限，测量报警输出时间并检查报警指示。\\\",\\\"acceptance_criteria\\\":[\\\"温度超过报警阈值时报警信号在2 s内输出\\\",\\\"报警信号在越限期间保持，直至人工确认\\\",\\\"报警指示（声/光）清晰可辨\\\"]},{\\\"shall_statement\\\":\\\"冷却水系统应监测冷却水压力，当压力低于低压报警阈值时，系统应发出低压报警信号。\\\",\\\"measurable_criterion\\\":\\\"低压报警阈值可设定，默认取冷却水系统最低允许工作压力的1.1倍（如最低允许压力0.2 MPa时，报警阈值取0.22 MPa）；报警输出延迟不大于2 s。\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水泵运行。\\\",\\\"verification_method\\\":\\\"试验验证：模拟压力信号下降至阈值以下，检查报警输出及延迟。\\\",\\\"acceptance_criteria\\\":[\\\"压力低于报警阈值时报警信号在2 s内输出\\\",\\\"报警信号保持至人工确认\\\",\\\"报警阈值可在设定范围内调整\\\"]},{\\\"shall_statement\\\":\\\"冷却水系统应监测膨胀水箱或冷却水柜液位，当液位低于低液位报警阈值时，系统应发出低液位报警信号。\\\",\\\"measurable_criterion\\\":\\\"低液位报警阈值可设定，默认取膨胀水箱正常液位下限（如正常液位范围的10%以上裕量）；报警输出延迟不大于5 s。\\\",\\\"applicable_condition\\\":\\\"冷却水系统投运，主机运行或备车工况。\\\",\\\"verification_method\\\":\\\"试验验证：模拟液位下降至阈值以下，检查报警输出。\\\",\\\"acceptance_criteria\\\":[\\\"液位低于报警阈值时报警信号在5 s内输出\\\",\\\"报警信号保持至人工确认\\\",\\\"液位传感器故障时应输出故障报警\\\"]},{\\\"shall_statement\\\":\\\"冷却水系统应监测冷却水流量，当流量低于流量不足报警阈值时，系统应发出流量不足报警信号。\\\",\\\"measurable_criterion\\\":\\\"流量不足报警阈值可设定，默认取主机冷却水额定流量的80%；报警输出延迟不大于5 s。\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水泵运行。\\\",\\\"verification_method\\\":\\\"试验验证：通过调节阀或模拟信号使流量降至阈值以下，检查报警输出。\\\",\\\"acceptance_criteria\\\":[\\\"流量低于报警阈值时报警信号在5 s内输出\\\",\\\"报警信号保持至人工确认\\\",\\\"流量信号失效时应输出故障报警\\\"]},{\\\"shall_statement\\\":\\\"冷却水系统报警应在主机冷却水温度达到过热保护动作值之前发出，报警触发应早于主机过热保护动作。\\\",\\\"measurable_criterion\\\":\\\"高温报警阈值与主机过热保护动作温度之间应留有至少5℃的裕量；从任一报警条件成立到报警输出的总延迟不大于5 s。\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水系统投运。\\\",\\\"verification_method\\\":\\\"分析验证与试验验证：核对报警阈值与过热保护定值裕量，并通过试验测量报警响应时间。\\\",\\\"acceptance_criteria\\\":[\\\"高温报警阈值低于过热保护动作值至少5℃\\\",\\\"任一报警条件成立后5 s内输出报警\\\",\\\"报警记录可追溯（时间戳）\\\"]},{\\\"shall_statement\\\":\\\"冷却水系统应具备报警自检功能，在传感器信号开路、短路或超出量程时输出传感器故障报警。\\\",\\\"measurable_criterion\\\":\\\"传感器故障检测覆盖温度、压力、液位、流量四类信号；故障检测响应时间不大于5 s。\\\",\\\"applicable_condition\\\":\\\"冷却水系统投运，监控系统上电。\\\",\\\"verification_method\\\":\\\"试验验证：模拟传感器开路、短路及超量程信号，检查故障报警输出。\\\",\\\"acceptance_criteria\\\":[\\\"四类传感器故障均能检出并报警\\\",\\\"故障报警在5 s内输出\\\",\\\"故障报警与越限报警可区分\\\"]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":184,\"completion_tokens\":915,\"total_tokens\":1099,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":184},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:59:21 GMT"
+  },
+  "response": {
+    "id": "0c190ce1-fa81-4562-9824-7e384287d100",
+    "object": "chat.completion",
+    "created": 1792378762,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应监测冷却水温度，当温度超过高温报警阈值时，系统应在报警确认前持续发出高温报警信号。\",\"measurable_criterion\":\"高温报警阈值可设定，默认取冷却水正常出口温度上限加5℃（如正常上限为80℃时，报警阈值取85℃）；从温度越限到报警输出延迟不大于2 s。\",\"applicable_condition\":\"主机运行工况（含额定负荷及部分负荷），冷却水系统投运。\",\"verification_method\":\"试验验证：在试验台或实船上模拟温度信号越限，测量报警输出时间并检查报警指示。\",\"acceptance_criteria\":[\"温度超过报警阈值时报警信号在2 s内输出\",\"报警信号在越限期间保持，直至人工确认\",\"报警指示（声/光）清晰可辨\"]},{\"shall_statement\":\"冷却水系统应监测冷却水压力，当压力低于低压报警阈值时，系统应发出低压报警信号。\",\"measurable_criterion\":\"低压报警阈值可设定，默认取冷却水系统最低允许工作压力的1.1倍（如最低允许压力0.2 MPa时，报警阈值取0.22 MPa）；报警输出延迟不大于2 s。\",\"applicable_condition\":\"主机运行工况，冷却水泵运行。\",\"verification_method\":\"试验验证：模拟压力信号下降至阈值以下，检查报警输出及延迟。\",\"acceptance_criteria\":[\"压力低于报警阈值时报警信号在2 s内输出\",\"报警信号保持至人工确认\",\"报警阈值可在设定范围内调整\"]},{\"shall_statement\":\"冷却水系统应监测膨胀水箱或冷却水柜液位，当液位低于低液位报警阈值时，系统应发出低液位报警信号。\",\"measurable_criterion\":\"低液位报警阈值可设定，默认取膨胀水箱正常液位下限（如正常液位范围的10%以上裕量）；报警输出延迟不大于5 s。\",\"applicable_condition\":\"冷却水系统投运，主机运行或备车工况。\",\"verification_method\":\"试验验证：模拟液位下降至阈值以下，检查报警输出。\",\"acceptance_criteria\":[\"液位低于报警阈值时报警信号在5 s内输出\",\"报警信号保持至人工确认\",\"液位传感器故障时应输出故障报警\"]},{\"shall_statement\":\"冷却水系统应监测冷却水流量，当流量低于流量不足报警阈值时，系统应发出流量不足报警信号。\",\"measurable_criterion\":\"流量不足报警阈值可设定，默认取主机冷却水额定流量的80%；报警输出延迟不大于5 s。\",\"applicable_condition\":\"主机运行工况，冷却水泵运行。\",\"verification_method\":\"试验验证：通过调节阀或模拟信号使流量降至阈值以下，检查报警输出。\",\"acceptance_criteria\":[\"流量低于报警阈值时报警信号在5 s内输出\",\"报警信号保持至人工确认\",\"流量信号失效时应输出故障报警\"]},{\"shall_statement\":\"冷却水系统报警应在主机冷却水温度达到过热保护动作值之前发出，报警触发应早于主机过热保护动作。\",\"measurable_criterion\":\"高温报警阈值与主机过热保护动作温度之间应留有至少5℃的裕量；从任一报警条件成立到报警输出的总延迟不大于5 s。\",\"applicable_condition\":\"主机运行工况，冷却水系统投运。\",\"verification_method\":\"分析验证与试验验证：核对报警阈值与过热保护定值裕量，并通过试验测量报警响应时间。\",\"acceptance_criteria\":[\"高温报警阈值低于过热保护动作值至少5℃\",\"任一报警条件成立后5 s内输出报警\",\"报警记录可追溯（时间戳）\"]},{\"shall_statement\":\"冷却水系统应具备报警自检功能，在传感器信号开路、短路或超出量程时输出传感器故障报警。\",\"measurable_criterion\":\"传感器故障检测覆盖温度、压力、液位、流量四类信号；故障检测响应时间不大于5 s。\",\"applicable_condition\":\"冷却水系统投运，监控系统上电。\",\"verification_method\":\"试验验证：模拟传感器开路、短路及超量程信号，检查故障报警输出。\",\"acceptance_criteria\":[\"四类传感器故障均能检出并报警\",\"故障报警在5 s内输出\",\"故障报警与越限报警可区分\"]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 184,
+      "completion_tokens": 915,
+      "total_tokens": 1099,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 184
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.007688",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.007688",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应监测冷却水温度，当温度超过高温报警阈值时，系统应在报警确认前持续发出高温报警信号。",
+        "measurable_criterion": "高温报警阈值可设定，默认取冷却水正常出口温度上限加5℃（如正常上限为80℃时，报警阈值取85℃）；从温度越限到报警输出延迟不大于2 s。",
+        "applicable_condition": "主机运行工况（含额定负荷及部分负荷），冷却水系统投运。",
+        "verification_method": "试验验证：在试验台或实船上模拟温度信号越限，测量报警输出时间并检查报警指示。",
+        "acceptance_criteria": [
+          "温度超过报警阈值时报警信号在2 s内输出",
+          "报警信号在越限期间保持，直至人工确认",
+          "报警指示（声/光）清晰可辨"
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应监测冷却水压力，当压力低于低压报警阈值时，系统应发出低压报警信号。",
+        "measurable_criterion": "低压报警阈值可设定，默认取冷却水系统最低允许工作压力的1.1倍（如最低允许压力0.2 MPa时，报警阈值取0.22 MPa）；报警输出延迟不大于2 s。",
+        "applicable_condition": "主机运行工况，冷却水泵运行。",
+        "verification_method": "试验验证：模拟压力信号下降至阈值以下，检查报警输出及延迟。",
+        "acceptance_criteria": [
+          "压力低于报警阈值时报警信号在2 s内输出",
+          "报警信号保持至人工确认",
+          "报警阈值可在设定范围内调整"
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应监测膨胀水箱或冷却水柜液位，当液位低于低液位报警阈值时，系统应发出低液位报警信号。",
+        "measurable_criterion": "低液位报警阈值可设定，默认取膨胀水箱正常液位下限（如正常液位范围的10%以上裕量）；报警输出延迟不大于5 s。",
+        "applicable_condition": "冷却水系统投运，主机运行或备车工况。",
+        "verification_method": "试验验证：模拟液位下降至阈值以下，检查报警输出。",
+        "acceptance_criteria": [
+          "液位低于报警阈值时报警信号在5 s内输出",
+          "报警信号保持至人工确认",
+          "液位传感器故障时应输出故障报警"
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应监测冷却水流量，当流量低于流量不足报警阈值时，系统应发出流量不足报警信号。",
+        "measurable_criterion": "流量不足报警阈值可设定，默认取主机冷却水额定流量的80%；报警输出延迟不大于5 s。",
+        "applicable_condition": "主机运行工况，冷却水泵运行。",
+        "verification_method": "试验验证：通过调节阀或模拟信号使流量降至阈值以下，检查报警输出。",
+        "acceptance_criteria": [
+          "流量低于报警阈值时报警信号在5 s内输出",
+          "报警信号保持至人工确认",
+          "流量信号失效时应输出故障报警"
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统报警应在主机冷却水温度达到过热保护动作值之前发出，报警触发应早于主机过热保护动作。",
+        "measurable_criterion": "高温报警阈值与主机过热保护动作温度之间应留有至少5℃的裕量；从任一报警条件成立到报警输出的总延迟不大于5 s。",
+        "applicable_condition": "主机运行工况，冷却水系统投运。",
+        "verification_method": "分析验证与试验验证：核对报警阈值与过热保护定值裕量，并通过试验测量报警响应时间。",
+        "acceptance_criteria": [
+          "高温报警阈值低于过热保护动作值至少5℃",
+          "任一报警条件成立后5 s内输出报警",
+          "报警记录可追溯（时间戳）"
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应具备报警自检功能，在传感器信号开路、短路或超出量程时输出传感器故障报警。",
+        "measurable_criterion": "传感器故障检测覆盖温度、压力、液位、流量四类信号；故障检测响应时间不大于5 s。",
+        "applicable_condition": "冷却水系统投运，监控系统上电。",
+        "verification_method": "试验验证：模拟传感器开路、短路及超量程信号，检查故障报警输出。",
+        "acceptance_criteria": [
+          "四类传感器故障均能检出并报警",
+          "故障报警在5 s内输出",
+          "故障报警与越限报警可区分"
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:59:26.103030+00:00",
+  "elapsed_seconds": 5.109
+}

@@ -1,0 +1,237 @@
+{
+  "slot": "OR023-semantic_new",
+  "started_at": "2026-10-19T02:52:05.796416+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"42c5bde3-0a80-4cd8-9e92-8e370c60bf31\",\"object\":\"chat.completion\",\"created\":1792378326,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"温度控制阀的压降参数应依据厂家技术数据或项目计算文件确定，并在所适用的机型与系统型式范围内满足厂家给出的限值。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide / S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:压降|hint:内置式恒温阀压降约0.5 bar，需按具体机型与系统型式确认}}\\\", \\\"applicable_condition\\\": \\\"适用于内置式恒温阀；仅限来源文件限定的厂家、机型与系统型式范围，不得跨机型或跨系统型式泛化\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"温度控制阀压降参数有明确的厂家技术数据或项目计算文件作为依据\\\", \\\"所采用数值不超出来源文件限定的机型与系统型式范围\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-059\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-TCV-TEMP-021\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"温度控制阀所连接外部管路的冷却水流速应不超过厂家规定的最大流速限值。\\\", \\\"measurable_criterion\\\": \\\"淡水最大流速 3.0 m/s；海水最大流速 3.0 m/s\\\", \\\"applicable_condition\\\": \\\"适用于外部管路连接；仅限来源文件限定的厂家与机型范围\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"外部管路淡水侧计算流速不大于 3.0 m/s\\\", \\\"外部管路海水侧计算流速不大于 3.0 m/s\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-021\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-TCV-TEMP-059\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"温度控制阀的流量与接口配置应与自动化系统的信号和接口要求相对应，并按厂家产品指南给出的回路接口标识进行配置。\\\", \\\"measurable_criterion\\\": \\\"[Q]温度控制阀配置应包含热回收温度控制阀4V02、预热循环泵4P04及HT/LT冷却水进出口与放气接口（416、401、451、402、452、404、483、406）等接口标识\\\", \\\"applicable_condition\\\": \\\"适用于Wärtsilä 32产品指南所限定的机型与冷却水系统型式；其他机型接口标识未知，不适用\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"温度控制阀及其关联接口标识与厂家产品指南所列一致\\\", \\\"接口配置清单可追溯到厂家产品指南对应章节\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-028\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水系统温度测点的量程应覆盖厂家规定的各测点温度范围，并与自动化系统测量通道相匹配。\\\", \\\"measurable_criterion\\\": \\\"[Q]HT冷却水温度在HP TC增压空气冷却器出口处为60°C至80°C（TE3145/3102测点）；在缸套冷却出口处为60°C至92°C（TE3170测点）；在LP TC增压空气冷却器出口处标称值为90°C（TE3180测点）；发动机进口处启动前预热为-100°C（3111、TE3190测点）\\\", \\\"applicable_condition\\\": \\\"适用于MAN 49/60 Project Guide所限定机型及上述指定测点；其他机型测点范围未知，不适用\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"各温度测点传感器量程覆盖对应测点的温度范围\\\", \\\"测点标识与厂家项目指南所列测点编号一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-036\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水温度报警元件的报警阈值与动作逻辑应按厂家控制系统配置设置，并与自动化系统信号接口相匹配。\\\", \\\"measurable_criterion\\\": \\\"[Q]冷却液温度较低级别报警基本温度值为95°C，较高级别报警基本温度值为105°C；温度在1秒内高于95°C时S6发送CAN消息，经协调器接通警告灯和诊断指示灯\\\", \\\"applicable_condition\\\": \\\"仅适用于Scania DI16配EMS/S6控制系统的配置；其他厂家、机型或控制系统配置未知，不适用\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"报警阈值按95°C与105°C两级设置\\\", \\\"超温持续1秒后发出CAN报警消息并点亮警告灯与诊断指示灯\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-003\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统故障应在持续有人值班的控制站设置声光报警，以指示冷却系统任何故障。\\\", \\\"measurable_criterion\\\": \\\"[Q]在持续有人值班的控制站设置声光报警，以指示冷却系统的任何故障\\\", \\\"applicable_condition\\\": \\\"适用于ABS Marine Vessel Rules Part 4 2021所适用的船舶冷却水系统；具体阈值未知\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"持续有人值班控制站配置冷却系统故障声光报警\\\", \\\"报警功能符合船级社规则对应条款\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-009\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"温度传感器的预热温度监测参数应依据厂家技术数据确定，并与自动化系统信号接口相匹配。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:温度传感器|intent:预热温度监测范围|hint:顶盖处≥60°C，缸套出口约25至45°C，需按具体机型确认}}\\\", \\\"applicable_condition\\\": \\\"适用于MAN L16/24预热自动运行配置（发动机运行时断开、待机时接通）；其他机型未知，不适用\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"预热温度监测参数有厂家技术数据依据\\\", \\\"传感器量程覆盖顶盖与缸套出口温度范围\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TSENS-PRESS-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-TSENS-PRESS-008\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"低温冷却水回路元件的设计温度应与自动化系统测量与报警量程相匹配，并按厂家规定的最高允许温度确定。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:低温冷却水回路元件|intent:最高设计温度|hint:LT冷却水回路元件按最高38°C设计，对应海水温度32°C（热带工况），需按具体机型确认}}\\\", \\\"applicable_condition\\\": \\\"适用于Everllence 49/60DF项目指南所限定的LT冷却水回路；其他机型未知，不适用\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"LT冷却水回路元件设计温度有厂家项目指南依据\\\", \\\"传感器与报警量程覆盖设计温度范围\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-022\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"温度控制阀的设定值应与自动化系统设定通道相匹配，并按厂家规定的设定点配置。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:设定点|hint:HT冷却水发动机出口设定点82°C（配HT恒温阀），需按具体机型与工况确认}}\\\", \\\"applicable_condition\\\": \\\"适用于MAN 5-8L23/30H发电机组在热带参考条件下的配置；其他机型与工况未知，不适用\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"温度控制阀设定点有厂家项目指南依据\\\", \\\"设定点与自动化系统设定通道一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-051\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3031,\"completion_tokens\":2213,\"total_tokens\":5244,\"prompt_tokens_details\":{\"cached_tokens\":2816},\"prompt_cache_hit_tokens\":2816,\"prompt_cache_miss_tokens\":215},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:52:06 GMT"
+  },
+  "response": {
+    "id": "42c5bde3-0a80-4cd8-9e92-8e370c60bf31",
+    "object": "chat.completion",
+    "created": 1792378326,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"温度控制阀的压降参数应依据厂家技术数据或项目计算文件确定，并在所适用的机型与系统型式范围内满足厂家给出的限值。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide / S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:压降|hint:内置式恒温阀压降约0.5 bar，需按具体机型与系统型式确认}}\", \"applicable_condition\": \"适用于内置式恒温阀；仅限来源文件限定的厂家、机型与系统型式范围，不得跨机型或跨系统型式泛化\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"温度控制阀压降参数有明确的厂家技术数据或项目计算文件作为依据\", \"所采用数值不超出来源文件限定的机型与系统型式范围\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-059\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-TCV-TEMP-021\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"温度控制阀所连接外部管路的冷却水流速应不超过厂家规定的最大流速限值。\", \"measurable_criterion\": \"淡水最大流速 3.0 m/s；海水最大流速 3.0 m/s\", \"applicable_condition\": \"适用于外部管路连接；仅限来源文件限定的厂家与机型范围\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"外部管路淡水侧计算流速不大于 3.0 m/s\", \"外部管路海水侧计算流速不大于 3.0 m/s\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-021\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-TCV-TEMP-059\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}]}, {\"shall_statement\": \"温度控制阀的流量与接口配置应与自动化系统的信号和接口要求相对应，并按厂家产品指南给出的回路接口标识进行配置。\", \"measurable_criterion\": \"[Q]温度控制阀配置应包含热回收温度控制阀4V02、预热循环泵4P04及HT/LT冷却水进出口与放气接口（416、401、451、402、452、404、483、406）等接口标识\", \"applicable_condition\": \"适用于Wärtsilä 32产品指南所限定的机型与冷却水系统型式；其他机型接口标识未知，不适用\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"温度控制阀及其关联接口标识与厂家产品指南所列一致\", \"接口配置清单可追溯到厂家产品指南对应章节\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-028\", \"tier\": \"L2\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水系统温度测点的量程应覆盖厂家规定的各测点温度范围，并与自动化系统测量通道相匹配。\", \"measurable_criterion\": \"[Q]HT冷却水温度在HP TC增压空气冷却器出口处为60°C至80°C（TE3145/3102测点）；在缸套冷却出口处为60°C至92°C（TE3170测点）；在LP TC增压空气冷却器出口处标称值为90°C（TE3180测点）；发动机进口处启动前预热为-100°C（3111、TE3190测点）\", \"applicable_condition\": \"适用于MAN 49/60 Project Guide所限定机型及上述指定测点；其他机型测点范围未知，不适用\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"各温度测点传感器量程覆盖对应测点的温度范围\", \"测点标识与厂家项目指南所列测点编号一致\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-036\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水温度报警元件的报警阈值与动作逻辑应按厂家控制系统配置设置，并与自动化系统信号接口相匹配。\", \"measurable_criterion\": \"[Q]冷却液温度较低级别报警基本温度值为95°C，较高级别报警基本温度值为105°C；温度在1秒内高于95°C时S6发送CAN消息，经协调器接通警告灯和诊断指示灯\", \"applicable_condition\": \"仅适用于Scania DI16配EMS/S6控制系统的配置；其他厂家、机型或控制系统配置未知，不适用\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"报警阈值按95°C与105°C两级设置\", \"超温持续1秒后发出CAN报警消息并点亮警告灯与诊断指示灯\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}, {\"kb_id\": \"E-ALARM-ALARM-003\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统故障应在持续有人值班的控制站设置声光报警，以指示冷却系统任何故障。\", \"measurable_criterion\": \"[Q]在持续有人值班的控制站设置声光报警，以指示冷却系统的任何故障\", \"applicable_condition\": \"适用于ABS Marine Vessel Rules Part 4 2021所适用的船舶冷却水系统；具体阈值未知\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"持续有人值班控制站配置冷却系统故障声光报警\", \"报警功能符合船级社规则对应条款\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-009\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}]}, {\"shall_statement\": \"温度传感器的预热温度监测参数应依据厂家技术数据确定，并与自动化系统信号接口相匹配。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:温度传感器|intent:预热温度监测范围|hint:顶盖处≥60°C，缸套出口约25至45°C，需按具体机型确认}}\", \"applicable_condition\": \"适用于MAN L16/24预热自动运行配置（发动机运行时断开、待机时接通）；其他机型未知，不适用\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"预热温度监测参数有厂家技术数据依据\", \"传感器量程覆盖顶盖与缸套出口温度范围\"], \"evidence_citations\": [{\"kb_id\": \"E-TSENS-PRESS-005\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-TSENS-PRESS-008\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"低温冷却水回路元件的设计温度应与自动化系统测量与报警量程相匹配，并按厂家规定的最高允许温度确定。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:低温冷却水回路元件|intent:最高设计温度|hint:LT冷却水回路元件按最高38°C设计，对应海水温度32°C（热带工况），需按具体机型确认}}\", \"applicable_condition\": \"适用于Everllence 49/60DF项目指南所限定的LT冷却水回路；其他机型未知，不适用\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"LT冷却水回路元件设计温度有厂家项目指南依据\", \"传感器与报警量程覆盖设计温度范围\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-022\", \"tier\": \"L2\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"温度控制阀的设定值应与自动化系统设定通道相匹配，并按厂家规定的设定点配置。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:设定点|hint:HT冷却水发动机出口设定点82°C（配HT恒温阀），需按具体机型与工况确认}}\", \"applicable_condition\": \"适用于MAN 5-8L23/30H发电机组在热带参考条件下的配置；其他机型与工况未知，不适用\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"温度控制阀设定点有厂家项目指南依据\", \"设定点与自动化系统设定通道一致\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-051\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3031,
+      "completion_tokens": 2213,
+      "total_tokens": 5244,
+      "prompt_tokens_details": {
+        "cached_tokens": 2816
+      },
+      "prompt_cache_hit_tokens": 2816,
+      "prompt_cache_miss_tokens": 215
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.023766",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.023766",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "温度控制阀的压降参数应依据厂家技术数据或项目计算文件确定，并在所适用的机型与系统型式范围内满足厂家给出的限值。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide / S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:压降|hint:内置式恒温阀压降约0.5 bar，需按具体机型与系统型式确认}}",
+        "applicable_condition": "适用于内置式恒温阀；仅限来源文件限定的厂家、机型与系统型式范围，不得跨机型或跨系统型式泛化",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "温度控制阀压降参数有明确的厂家技术数据或项目计算文件作为依据",
+          "所采用数值不超出来源文件限定的机型与系统型式范围"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-059",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TCV-TEMP-021",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀所连接外部管路的冷却水流速应不超过厂家规定的最大流速限值。",
+        "measurable_criterion": "淡水最大流速 3.0 m/s；海水最大流速 3.0 m/s",
+        "applicable_condition": "适用于外部管路连接；仅限来源文件限定的厂家与机型范围",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "外部管路淡水侧计算流速不大于 3.0 m/s",
+          "外部管路海水侧计算流速不大于 3.0 m/s"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-021",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TCV-TEMP-059",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀的流量与接口配置应与自动化系统的信号和接口要求相对应，并按厂家产品指南给出的回路接口标识进行配置。",
+        "measurable_criterion": "[Q]温度控制阀配置应包含热回收温度控制阀4V02、预热循环泵4P04及HT/LT冷却水进出口与放气接口（416、401、451、402、452、404、483、406）等接口标识",
+        "applicable_condition": "适用于Wärtsilä 32产品指南所限定的机型与冷却水系统型式；其他机型接口标识未知，不适用",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "温度控制阀及其关联接口标识与厂家产品指南所列一致",
+          "接口配置清单可追溯到厂家产品指南对应章节"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-028",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水系统温度测点的量程应覆盖厂家规定的各测点温度范围，并与自动化系统测量通道相匹配。",
+        "measurable_criterion": "[Q]HT冷却水温度在HP TC增压空气冷却器出口处为60°C至80°C（TE3145/3102测点）；在缸套冷却出口处为60°C至92°C（TE3170测点）；在LP TC增压空气冷却器出口处标称值为90°C（TE3180测点）；发动机进口处启动前预热为-100°C（3111、TE3190测点）",
+        "applicable_condition": "适用于MAN 49/60 Project Guide所限定机型及上述指定测点；其他机型测点范围未知，不适用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "各温度测点传感器量程覆盖对应测点的温度范围",
+          "测点标识与厂家项目指南所列测点编号一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-036",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度报警元件的报警阈值与动作逻辑应按厂家控制系统配置设置，并与自动化系统信号接口相匹配。",
+        "measurable_criterion": "[Q]冷却液温度较低级别报警基本温度值为95°C，较高级别报警基本温度值为105°C；温度在1秒内高于95°C时S6发送CAN消息，经协调器接通警告灯和诊断指示灯",
+        "applicable_condition": "仅适用于Scania DI16配EMS/S6控制系统的配置；其他厂家、机型或控制系统配置未知，不适用",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "报警阈值按95°C与105°C两级设置",
+          "超温持续1秒后发出CAN报警消息并点亮警告灯与诊断指示灯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-003",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统故障应在持续有人值班的控制站设置声光报警，以指示冷却系统任何故障。",
+        "measurable_criterion": "[Q]在持续有人值班的控制站设置声光报警，以指示冷却系统的任何故障",
+        "applicable_condition": "适用于ABS Marine Vessel Rules Part 4 2021所适用的船舶冷却水系统；具体阈值未知",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "持续有人值班控制站配置冷却系统故障声光报警",
+          "报警功能符合船级社规则对应条款"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-009",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度传感器的预热温度监测参数应依据厂家技术数据确定，并与自动化系统信号接口相匹配。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:温度传感器|intent:预热温度监测范围|hint:顶盖处≥60°C，缸套出口约25至45°C，需按具体机型确认}}",
+        "applicable_condition": "适用于MAN L16/24预热自动运行配置（发动机运行时断开、待机时接通）；其他机型未知，不适用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "预热温度监测参数有厂家技术数据依据",
+          "传感器量程覆盖顶盖与缸套出口温度范围"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TSENS-PRESS-005",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TSENS-PRESS-008",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温冷却水回路元件的设计温度应与自动化系统测量与报警量程相匹配，并按厂家规定的最高允许温度确定。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:低温冷却水回路元件|intent:最高设计温度|hint:LT冷却水回路元件按最高38°C设计，对应海水温度32°C（热带工况），需按具体机型确认}}",
+        "applicable_condition": "适用于Everllence 49/60DF项目指南所限定的LT冷却水回路；其他机型未知，不适用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "LT冷却水回路元件设计温度有厂家项目指南依据",
+          "传感器与报警量程覆盖设计温度范围"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-022",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀的设定值应与自动化系统设定通道相匹配，并按厂家规定的设定点配置。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:温度控制阀|intent:设定点|hint:HT冷却水发动机出口设定点82°C（配HT恒温阀），需按具体机型与工况确认}}",
+        "applicable_condition": "适用于MAN 5-8L23/30H发电机组在热带参考条件下的配置；其他机型与工况未知，不适用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "温度控制阀设定点有厂家项目指南依据",
+          "设定点与自动化系统设定通道一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-051",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:52:15.091233+00:00",
+  "elapsed_seconds": 9.187
+}

@@ -1,0 +1,261 @@
+{
+  "slot": "OR001-semantic_new",
+  "started_at": "2026-10-19T02:37:56.206545+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"d9d4b95a-68ed-4922-a235-981960182279\",\"object\":\"chat.completion\",\"created\":1792377477,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"主机冷却水系统应设置高温冷却水（HT）温度调节功能，使HT冷却水在HP增压空气冷却器出口处的温度维持在设定值，并在必要时由SaCoS功能降低温度设定点，以避免超过发动机出口最高温度。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:HT冷却水（HP增压空气冷却器出口）|intent:温度设定点与上限|hint:证据给出80°C参考值及设定点降低逻辑，但发动机出口最高温度限值未明确，需按厂家技术数据确定}}\\\",\\\"applicable_condition\\\":\\\"V49/60DF IMO Tier II，液体燃料模式，电力推进/EPROX-AC，1300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级冷却水38°C，总大气压力1000 mbar，相对湿度60%）；报警级别运行时由SaCoS降低设定点\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"HT冷却水在HP增压空气冷却器出口处温度维持在厂家设定值（参考值80°C）\\\",\\\"报警级别运行时温度设定点可由SaCoS功能降低，且不超过发动机出口最高温度\\\",\\\"温度限值依据厂家技术数据或项目计算文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-JACKET-PRESS-009\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-JACKET-MON-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统应设置高温冷却水（HT）压力监测与保护，使发动机进口HT冷却水压力在额定转速下维持在允许范围内，压力越限时按厂家要求触发报警、降负荷或停机保护。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:HT冷却水（发动机进口，PT3145）|intent:压力额定值与允许范围|hint:证据给出额定值4 bar、范围3 bar至8 bar，需按具体机型与工况确认适用性}}\\\",\\\"applicable_condition\\\":\\\"额定转速工况；具体机型（6L至14V）与系统型式按项目确定\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"额定转速下发动机进口HT冷却水压力维持在厂家允许范围内（参考3 bar至8 bar）\\\",\\\"压力越限时按厂家或规则要求触发报警、降负荷或停机保护\\\",\\\"报警阈值与保护动作经厂家技术数据或项目文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统应保证高温冷却水（HT）回路在额定流量下的发动机总压力损失与附装HT冷却水泵压升相匹配，使冷却水流量满足推进设备正常运行要求。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:HT冷却水回路（发动机总成与附装泵）|intent:压力损失与泵压升|hint:证据按机型给出压力损失1.1~1.7 bar、泵压升3.3~4.4 bar，需按选定机型取值}}\\\",\\\"applicable_condition\\\":\\\"额定流量（压力损失）与额定转速（泵压升）工况；机型6L、7L、8L、9L、10L、12V、14V按项目选定\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选定机型的发动机总压力损失与附装HT冷却水泵压升符合厂家技术数据\\\",\\\"HT冷却水流经HP HT级增压空气冷却器、缸套冷却、LP HT级增压空气冷却器的回路流量满足设计要求\\\",\\\"参数取值依据厂家技术数据或项目计算文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统应设置低温冷却水（LT）温度控制，使LT冷却水在LP增压空气冷却器出口处温度维持在设定点附近，以稳定扫气温度并避免影响推进设备正常运行。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:LT冷却水（LP增压空气冷却器出口）|intent:温度值与设定点|hint:证据给出38°C（设定点32°C），需按机型与参考条件确认适用性}}\\\",\\\"applicable_condition\\\":\\\"V49/60DF IMO Tier II，液体燃料模式，电力推进/EPROX-AC，1300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级冷却水38°C，总大气压力1000 mbar，相对湿度60%）；L49/60机型6L至10L，7800 kW至13000 kW，600 rpm\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"LT冷却水在LP增压空气冷却器出口处温度维持在设定点附近（参考38°C，设定点32°C）\\\",\\\"温度控制偏差与限值依据厂家技术数据或项目计算文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-JACKET-PRESS-009\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-JACKET-MON-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统应设置冷却水温度、压力、液位及传感器异常的监测与报警，并在冷却系统故障时于就地及有人值班处发出报警并自动降低输出电流。\\\",\\\"measurable_criterion\\\":\\\"[Q]冷却系统故障时，应在就地及持续有人值班处发出报警，并自动降低输出电流。\\\",\\\"applicable_condition\\\":\\\"冷却系统故障工况；船舶运行期间\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却系统故障时就地与远程有人值班处均发出报警\\\",\\\"故障时输出电流自动降低\\\",\\\"报警与保护配置符合船级社规则要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SENSOR-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统应设置冷却水收集柜，其容量与布置应能将缸套、涡轮增压器及喷嘴冷却系统回路中的冷却水排入，以便维护。\\\",\\\"measurable_criterion\\\":\\\"[Q]冷却水收集柜（T-074）的尺寸与布置应使缸套、涡轮增压器及喷嘴冷却系统回路中的冷却水可排入其中，以满足维护需要。\\\",\\\"applicable_condition\\\":\\\"维护排放工况；外部冷却水系统收集与供给系统\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"收集柜容量与布置满足缸套、涡轮增压器、喷嘴冷却回路排放需求\\\",\\\"排放布置满足环境保护与防腐要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SENSOR-ALARM-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统在低负荷或空载运行时，应限制连续运行持续时间，以避免冷却水温度下降过快导致扫气温度和燃烧室温度过低而恶化低负荷燃烧。\\\",\\\"measurable_criterion\\\":\\\"[Q]空载或零负荷运行限制为：液体模式最长两小时（每年一次）；气体模式零负荷运行时间应限制在最小值；小于25%全负荷范围内的低负荷运行受特定限制。\\\",\\\"applicable_condition\\\":\\\"空载、零负荷及小于25%全负荷的低负荷运行工况；液体模式与气体模式分别适用\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"液体模式空载或零负荷连续运行不超过两小时（每年一次）\\\",\\\"气体模式零负荷运行时间限制在最小值\\\",\\\"低负荷运行阶段后按厂家要求立即执行缓解运行\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-PRESS-021\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统在极地（低温进气）条件下运行时，应配置预热措施，使发动机启动前进气温度不低于规定最低值，并配置与发动机并联运行的HT预热器以补偿HT能量损失。\\\",\\\"measurable_criterion\\\":\\\"[Q]发动机进气温度低于+0°C时，须以预热后的发动机进行正常启动；Case1将发动机进气预热至最低0°C；Case2安装与发动机运行并联的足够容量HT预热器以补偿HT能量损失。\\\",\\\"applicable_condition\\\":\\\"极地条件（发动机进气温度低于+0°C）及低负荷运行；Range I运行需求时\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"进气温度低于+0°C时采用预热后正常启动\\\",\\\"进气预热至最低0°C\\\",\\\"HT预热器容量满足补偿HT能量损失要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-PRESS-022\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-PRESS-014\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"主机冷却水系统应布置成在船舶于危险大气中运行时，无需直接取用海水即可冷却机械及相关装置。\\\",\\\"measurable_criterion\\\":\\\"[Q]冷却水系统应布置成在船舶于危险大气中运行时，无需直接取用海水即可冷却机械及相关装置，例如通过箱式冷却或壳体冷却。\\\",\\\"applicable_condition\\\":\\\"船舶在危险大气中运行期间\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"危险大气运行工况下冷却水系统不直接取用海水\\\",\\\"采用箱式冷却或壳体冷却等间接冷却方式\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-INST-002\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S44 PRS Ship Machinery Piping Systems\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3426,\"completion_tokens\":2572,\"total_tokens\":5998,\"prompt_tokens_details\":{\"cached_tokens\":3072},\"prompt_cache_hit_tokens\":3072,\"prompt_cache_miss_tokens\":354},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:37:57 GMT"
+  },
+  "response": {
+    "id": "d9d4b95a-68ed-4922-a235-981960182279",
+    "object": "chat.completion",
+    "created": 1792377477,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"主机冷却水系统应设置高温冷却水（HT）温度调节功能，使HT冷却水在HP增压空气冷却器出口处的温度维持在设定值，并在必要时由SaCoS功能降低温度设定点，以避免超过发动机出口最高温度。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:HT冷却水（HP增压空气冷却器出口）|intent:温度设定点与上限|hint:证据给出80°C参考值及设定点降低逻辑，但发动机出口最高温度限值未明确，需按厂家技术数据确定}}\",\"applicable_condition\":\"V49/60DF IMO Tier II，液体燃料模式，电力推进/EPROX-AC，1300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级冷却水38°C，总大气压力1000 mbar，相对湿度60%）；报警级别运行时由SaCoS降低设定点\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"HT冷却水在HP增压空气冷却器出口处温度维持在厂家设定值（参考值80°C）\",\"报警级别运行时温度设定点可由SaCoS功能降低，且不超过发动机出口最高温度\",\"温度限值依据厂家技术数据或项目计算文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-JACKET-PRESS-009\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-JACKET-MON-001\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统应设置高温冷却水（HT）压力监测与保护，使发动机进口HT冷却水压力在额定转速下维持在允许范围内，压力越限时按厂家要求触发报警、降负荷或停机保护。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:HT冷却水（发动机进口，PT3145）|intent:压力额定值与允许范围|hint:证据给出额定值4 bar、范围3 bar至8 bar，需按具体机型与工况确认适用性}}\",\"applicable_condition\":\"额定转速工况；具体机型（6L至14V）与系统型式按项目确定\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"额定转速下发动机进口HT冷却水压力维持在厂家允许范围内（参考3 bar至8 bar）\",\"压力越限时按厂家或规则要求触发报警、降负荷或停机保护\",\"报警阈值与保护动作经厂家技术数据或项目文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统应保证高温冷却水（HT）回路在额定流量下的发动机总压力损失与附装HT冷却水泵压升相匹配，使冷却水流量满足推进设备正常运行要求。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:HT冷却水回路（发动机总成与附装泵）|intent:压力损失与泵压升|hint:证据按机型给出压力损失1.1~1.7 bar、泵压升3.3~4.4 bar，需按选定机型取值}}\",\"applicable_condition\":\"额定流量（压力损失）与额定转速（泵压升）工况；机型6L、7L、8L、9L、10L、12V、14V按项目选定\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选定机型的发动机总压力损失与附装HT冷却水泵压升符合厂家技术数据\",\"HT冷却水流经HP HT级增压空气冷却器、缸套冷却、LP HT级增压空气冷却器的回路流量满足设计要求\",\"参数取值依据厂家技术数据或项目计算文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统应设置低温冷却水（LT）温度控制，使LT冷却水在LP增压空气冷却器出口处温度维持在设定点附近，以稳定扫气温度并避免影响推进设备正常运行。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:LT冷却水（LP增压空气冷却器出口）|intent:温度值与设定点|hint:证据给出38°C（设定点32°C），需按机型与参考条件确认适用性}}\",\"applicable_condition\":\"V49/60DF IMO Tier II，液体燃料模式，电力推进/EPROX-AC，1300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级冷却水38°C，总大气压力1000 mbar，相对湿度60%）；L49/60机型6L至10L，7800 kW至13000 kW，600 rpm\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"LT冷却水在LP增压空气冷却器出口处温度维持在设定点附近（参考38°C，设定点32°C）\",\"温度控制偏差与限值依据厂家技术数据或项目计算文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-JACKET-PRESS-009\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-JACKET-MON-001\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统应设置冷却水温度、压力、液位及传感器异常的监测与报警，并在冷却系统故障时于就地及有人值班处发出报警并自动降低输出电流。\",\"measurable_criterion\":\"[Q]冷却系统故障时，应在就地及持续有人值班处发出报警，并自动降低输出电流。\",\"applicable_condition\":\"冷却系统故障工况；船舶运行期间\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却系统故障时就地与远程有人值班处均发出报警\",\"故障时输出电流自动降低\",\"报警与保护配置符合船级社规则要求\"],\"evidence_citations\":[{\"kb_id\":\"E-SENSOR-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统应设置冷却水收集柜，其容量与布置应能将缸套、涡轮增压器及喷嘴冷却系统回路中的冷却水排入，以便维护。\",\"measurable_criterion\":\"[Q]冷却水收集柜（T-074）的尺寸与布置应使缸套、涡轮增压器及喷嘴冷却系统回路中的冷却水可排入其中，以满足维护需要。\",\"applicable_condition\":\"维护排放工况；外部冷却水系统收集与供给系统\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"收集柜容量与布置满足缸套、涡轮增压器、喷嘴冷却回路排放需求\",\"排放布置满足环境保护与防腐要求\"],\"evidence_citations\":[{\"kb_id\":\"E-SENSOR-ALARM-003\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统在低负荷或空载运行时，应限制连续运行持续时间，以避免冷却水温度下降过快导致扫气温度和燃烧室温度过低而恶化低负荷燃烧。\",\"measurable_criterion\":\"[Q]空载或零负荷运行限制为：液体模式最长两小时（每年一次）；气体模式零负荷运行时间应限制在最小值；小于25%全负荷范围内的低负荷运行受特定限制。\",\"applicable_condition\":\"空载、零负荷及小于25%全负荷的低负荷运行工况；液体模式与气体模式分别适用\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"液体模式空载或零负荷连续运行不超过两小时（每年一次）\",\"气体模式零负荷运行时间限制在最小值\",\"低负荷运行阶段后按厂家要求立即执行缓解运行\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-PRESS-021\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统在极地（低温进气）条件下运行时，应配置预热措施，使发动机启动前进气温度不低于规定最低值，并配置与发动机并联运行的HT预热器以补偿HT能量损失。\",\"measurable_criterion\":\"[Q]发动机进气温度低于+0°C时，须以预热后的发动机进行正常启动；Case1将发动机进气预热至最低0°C；Case2安装与发动机运行并联的足够容量HT预热器以补偿HT能量损失。\",\"applicable_condition\":\"极地条件（发动机进气温度低于+0°C）及低负荷运行；Range I运行需求时\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"进气温度低于+0°C时采用预热后正常启动\",\"进气预热至最低0°C\",\"HT预热器容量满足补偿HT能量损失要求\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-PRESS-022\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-PRESS-014\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"主机冷却水系统应布置成在船舶于危险大气中运行时，无需直接取用海水即可冷却机械及相关装置。\",\"measurable_criterion\":\"[Q]冷却水系统应布置成在船舶于危险大气中运行时，无需直接取用海水即可冷却机械及相关装置，例如通过箱式冷却或壳体冷却。\",\"applicable_condition\":\"船舶在危险大气中运行期间\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"危险大气运行工况下冷却水系统不直接取用海水\",\"采用箱式冷却或壳体冷却等间接冷却方式\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-INST-002\",\"tier\":\"L1\",\"source\":\"S44 PRS Ship Machinery Piping Systems\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3426,
+      "completion_tokens": 2572,
+      "total_tokens": 5998,
+      "prompt_tokens_details": {
+        "cached_tokens": 3072
+      },
+      "prompt_cache_hit_tokens": 3072,
+      "prompt_cache_miss_tokens": 354
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.027428",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.027428",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "主机冷却水系统应设置高温冷却水（HT）温度调节功能，使HT冷却水在HP增压空气冷却器出口处的温度维持在设定值，并在必要时由SaCoS功能降低温度设定点，以避免超过发动机出口最高温度。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:HT冷却水（HP增压空气冷却器出口）|intent:温度设定点与上限|hint:证据给出80°C参考值及设定点降低逻辑，但发动机出口最高温度限值未明确，需按厂家技术数据确定}}",
+        "applicable_condition": "V49/60DF IMO Tier II，液体燃料模式，电力推进/EPROX-AC，1300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级冷却水38°C，总大气压力1000 mbar，相对湿度60%）；报警级别运行时由SaCoS降低设定点",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "HT冷却水在HP增压空气冷却器出口处温度维持在厂家设定值（参考值80°C）",
+          "报警级别运行时温度设定点可由SaCoS功能降低，且不超过发动机出口最高温度",
+          "温度限值依据厂家技术数据或项目计算文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-PRESS-009",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-JACKET-MON-001",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统应设置高温冷却水（HT）压力监测与保护，使发动机进口HT冷却水压力在额定转速下维持在允许范围内，压力越限时按厂家要求触发报警、降负荷或停机保护。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:HT冷却水（发动机进口，PT3145）|intent:压力额定值与允许范围|hint:证据给出额定值4 bar、范围3 bar至8 bar，需按具体机型与工况确认适用性}}",
+        "applicable_condition": "额定转速工况；具体机型（6L至14V）与系统型式按项目确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "额定转速下发动机进口HT冷却水压力维持在厂家允许范围内（参考3 bar至8 bar）",
+          "压力越限时按厂家或规则要求触发报警、降负荷或停机保护",
+          "报警阈值与保护动作经厂家技术数据或项目文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统应保证高温冷却水（HT）回路在额定流量下的发动机总压力损失与附装HT冷却水泵压升相匹配，使冷却水流量满足推进设备正常运行要求。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:HT冷却水回路（发动机总成与附装泵）|intent:压力损失与泵压升|hint:证据按机型给出压力损失1.1~1.7 bar、泵压升3.3~4.4 bar，需按选定机型取值}}",
+        "applicable_condition": "额定流量（压力损失）与额定转速（泵压升）工况；机型6L、7L、8L、9L、10L、12V、14V按项目选定",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选定机型的发动机总压力损失与附装HT冷却水泵压升符合厂家技术数据",
+          "HT冷却水流经HP HT级增压空气冷却器、缸套冷却、LP HT级增压空气冷却器的回路流量满足设计要求",
+          "参数取值依据厂家技术数据或项目计算文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统应设置低温冷却水（LT）温度控制，使LT冷却水在LP增压空气冷却器出口处温度维持在设定点附近，以稳定扫气温度并避免影响推进设备正常运行。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:LT冷却水（LP增压空气冷却器出口）|intent:温度值与设定点|hint:证据给出38°C（设定点32°C），需按机型与参考条件确认适用性}}",
+        "applicable_condition": "V49/60DF IMO Tier II，液体燃料模式，电力推进/EPROX-AC，1300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级冷却水38°C，总大气压力1000 mbar，相对湿度60%）；L49/60机型6L至10L，7800 kW至13000 kW，600 rpm",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "LT冷却水在LP增压空气冷却器出口处温度维持在设定点附近（参考38°C，设定点32°C）",
+          "温度控制偏差与限值依据厂家技术数据或项目计算文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-PRESS-009",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-JACKET-MON-001",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统应设置冷却水温度、压力、液位及传感器异常的监测与报警，并在冷却系统故障时于就地及有人值班处发出报警并自动降低输出电流。",
+        "measurable_criterion": "[Q]冷却系统故障时，应在就地及持续有人值班处发出报警，并自动降低输出电流。",
+        "applicable_condition": "冷却系统故障工况；船舶运行期间",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却系统故障时就地与远程有人值班处均发出报警",
+          "故障时输出电流自动降低",
+          "报警与保护配置符合船级社规则要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SENSOR-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统应设置冷却水收集柜，其容量与布置应能将缸套、涡轮增压器及喷嘴冷却系统回路中的冷却水排入，以便维护。",
+        "measurable_criterion": "[Q]冷却水收集柜（T-074）的尺寸与布置应使缸套、涡轮增压器及喷嘴冷却系统回路中的冷却水可排入其中，以满足维护需要。",
+        "applicable_condition": "维护排放工况；外部冷却水系统收集与供给系统",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "收集柜容量与布置满足缸套、涡轮增压器、喷嘴冷却回路排放需求",
+          "排放布置满足环境保护与防腐要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SENSOR-ALARM-003",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统在低负荷或空载运行时，应限制连续运行持续时间，以避免冷却水温度下降过快导致扫气温度和燃烧室温度过低而恶化低负荷燃烧。",
+        "measurable_criterion": "[Q]空载或零负荷运行限制为：液体模式最长两小时（每年一次）；气体模式零负荷运行时间应限制在最小值；小于25%全负荷范围内的低负荷运行受特定限制。",
+        "applicable_condition": "空载、零负荷及小于25%全负荷的低负荷运行工况；液体模式与气体模式分别适用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "液体模式空载或零负荷连续运行不超过两小时（每年一次）",
+          "气体模式零负荷运行时间限制在最小值",
+          "低负荷运行阶段后按厂家要求立即执行缓解运行"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-PRESS-021",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统在极地（低温进气）条件下运行时，应配置预热措施，使发动机启动前进气温度不低于规定最低值，并配置与发动机并联运行的HT预热器以补偿HT能量损失。",
+        "measurable_criterion": "[Q]发动机进气温度低于+0°C时，须以预热后的发动机进行正常启动；Case1将发动机进气预热至最低0°C；Case2安装与发动机运行并联的足够容量HT预热器以补偿HT能量损失。",
+        "applicable_condition": "极地条件（发动机进气温度低于+0°C）及低负荷运行；Range I运行需求时",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "进气温度低于+0°C时采用预热后正常启动",
+          "进气预热至最低0°C",
+          "HT预热器容量满足补偿HT能量损失要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-PRESS-022",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-PRESS-014",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机冷却水系统应布置成在船舶于危险大气中运行时，无需直接取用海水即可冷却机械及相关装置。",
+        "measurable_criterion": "[Q]冷却水系统应布置成在船舶于危险大气中运行时，无需直接取用海水即可冷却机械及相关装置，例如通过箱式冷却或壳体冷却。",
+        "applicable_condition": "船舶在危险大气中运行期间",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "危险大气运行工况下冷却水系统不直接取用海水",
+          "采用箱式冷却或壳体冷却等间接冷却方式"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-INST-002",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:38:06.913954+00:00",
+  "elapsed_seconds": 10.703
+}

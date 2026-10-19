@@ -1,0 +1,37 @@
+{
+  "slot": "OR042-semantic_old",
+  "body_sha256": "7506c801ce431b21afc84f671d1a02b78f9883fb43db3b776b2f535e10fedcc7",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:03:01.655917+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR042-semantic_old",
+    "source_id": "OR042",
+    "group": "semantic_old",
+    "context_sha256": "e03462ecd1193b2ad7788fa02ab412394b020ed6937fad707905f216af8ecb3c",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水泵、冷却器、管路和报警保护的配置要能在图纸和资料里看出规范依据。\n\n## 证据清单\n[E-COOLER-DRAW-015] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却水温度与压力参数\ncombustion and at the same time cold corrosion is avoided; the latter is also the reason why the engine, in stand-by position and when starting on HFO, should be preheated with a cooling water temperature of ≥ 60°C – either by means of cooling water from running engines or by means of a separate pre- heating system. System lay-out MAN Diesel's standard for the internal cooling water system is shown on our Basic Diagram. Temperature regulation in the HT and LT systems takes place in th\n  [量化参数] 60、10、40\n\n[E-COOLER-DRAW-001] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 中央冷却器选型要求\nDesign features and working principle This diagram describes the possibilities with regard to the design of a com- mon auxiliary system for a two-stroke main engine of the MC-type and four- stroke GenSets fromMAN Energy Solutions. The central cooling system is an alternative to the conventional seawater cool- ing system, based on the same design principles with regard to cooler loca- tions, flow control and preheating, but with a central cooler and one additional set of pumps. The cent\n\n[E-COOLER-DRAW-002] 层级:L3 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 中央冷却器选型要求\nDesign features and working principle This diagram describes the possibilities with regard to the design of a common auxiliary system for a two-stroke main engine of the MC-type and four- stroke GenSets from MAN Diesel & Turbo. The central cooling system is an alternative to the conventional seawater cooling system, based on the same design principles with regard to cooler locations, flow control and preheating, but with a central cooler and one additional set of pumps. The central coo\n\n[E-COOLER-FLOW-012] 层级:L2 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 液压计算与流量分配\nmust pass through the cooler before it goes through the radiator. If the hydraulic oil overheats, so can the cooling system. Hot hydraulic oil is normally the result of a cycle time that is too rapid, the relief valve pressure set too low or exceeded, or the hydraulic system operated in an overload condition. - 10 - SEBD0518-09 Fig 11: Water cooled turbocharger. Fig 12: Hydraulic oil coolers. Fig. 10: Combination retarder/transmission oil cooler.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具\n\n[E-PUMP-DRAW-010] 层级:L1 来源:S45 46 CFR 56.01-10 Plan approval\n  内容: 泵容量和关断扬程图纸标注要求\nPump rated capacity and pump shutoff head must appear on piping diagrams.\n整理说明：该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。\n可支撑：管系图纸\n材料信息\n设计压力和泵额定参数应在送审文件中清楚标注。\n图纸审查应覆盖与冷却水管系相关的接口\n材料\n压力等级和泵参数。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。\n2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。\n3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n\n[E-PUMP-DRAW-005] 层级:L3 来源:S07 Scania Marine Cooling System Issue 8\n  内容: 淡水侧流向\nminimum coolant flow in litres/minute at different engine speeds are covered in the diagrams on this page and the next one. If in doubt, check that the pressure drop across the external cooling system does not exceed permissible values. The pressure drop is determined by measuring the differ- ence in pressure between the thermostat housing and the coolant pump intake with the thermostats blocked in the open position and with no pressure cap.\n整理说明：该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "7506c801ce431b21afc84f671d1a02b78f9883fb43db3b776b2f535e10fedcc7",
+    "utf8_message_bytes": 5236,
+    "execution_index": 210
+  }
+}

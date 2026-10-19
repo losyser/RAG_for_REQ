@@ -1,0 +1,244 @@
+{
+  "slot": "OR038-random_old",
+  "started_at": "2026-10-19T03:00:04.170522+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"b75ae750-49f3-4d61-80f0-35b25f604b64\",\"object\":\"chat.completion\",\"created\":1792378805,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"冷却水系统应设置冷却水压力低报警和流量低报警，并应在机舱集控站和驾驶室控制站同时显示。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:MPa|ref:CCS《钢质海船入级规范》2025 第7-27节表4|component:冷却水系统|intent:报警阈值|hint:压力低报警设定值需按厂家技术数据确定}}；{{TBD|unit:m³/h|ref:CCS《钢质海船入级规范》2025 第7-27节表4|component:冷却水系统|intent:报警阈值|hint:流量低报警设定值需按厂家技术数据确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统运行工况；报警显示位置覆盖机舱集控站与驾驶室控制站\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"冷却水压力低报警功能存在且可在机舱集控站显示\\\", \\\"冷却水流量低报警功能存在且可在机舱集控站显示\\\", \\\"上述报警在驾驶室控制站同步显示\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"L1-CCS2025-7-27表4主燃气轮机-025\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统需求应明确区分仅作提醒的报警与会导致主机降负荷或停机的保护动作，并应在需求文件中提前逐项说明其类别归属。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:项|ref:S30 MAN 49/60 Project Guide|component:冷却水系统报警与保护|intent:分类清单完整性|hint:需按厂家和控制系统配置逐项列出报警类与保护类条目}}\\\", \\\"applicable_condition\\\": \\\"冷却水温度、压力、液位或传感器异常等触发条件；具体阈值受厂家、机型和控制系统配置约束\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"需求文件中每条报警/保护条目均标注为“提醒类”或“影响主机运行类”\\\", \\\"影响主机运行的条目明确其动作形式（降负荷或停机）\\\", \\\"分类结果与厂家技术资料及控制系统配置一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-SHUT-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"当HT冷却水备用泵因任何原因未运行时，主机应在最终停机前以规定低负荷运行规定时长，以便由发动机驱动的HT冷却水泵散热。\\\", \\\"measurable_criterion\\\": \\\"负荷范围0%至10%；运行时长15分钟\\\", \\\"applicable_condition\\\": \\\"HT冷却水备用泵未运行的工况；最终停机前\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"备用泵未运行时触发低负荷运行程序\\\", \\\"负荷维持在0%至10%区间\\\", \\\"低负荷运行持续时间不少于15分钟后方可最终停机\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-SHUT-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"主机停止后，HT冷却水泵应继续运行规定时长，并同时用于压缩机叶轮冷却。\\\", \\\"measurable_criterion\\\": \\\"运行时长15分钟\\\", \\\"applicable_condition\\\": \\\"主机停止后阶段；HT冷却水系统按预加热和后冷却期间最小流量要求布置\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"主机停机后HT冷却水泵持续运行不少于15分钟\\\", \\\"该运行期间压缩机叶轮冷却功能有效\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-SHUT-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统设计应满足温度控制阀配置要求，并在低于规定负荷下运行规定时长后方可停机。\\\", \\\"measurable_criterion\\\": \\\"负荷低于15% MCR；运行时长至少4分钟\\\", \\\"applicable_condition\\\": \\\"主机低负荷运行及停机前阶段\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"低于15% MCR负荷下运行至少4分钟后执行停机\\\", \\\"温度控制阀配置满足厂家要求\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-223\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"LT冷却水系统部件应按最大LT冷却水温度和对应海水温度条件进行设计。\\\", \\\"measurable_criterion\\\": \\\"最大LT冷却水温度38°C；对应海水温度32°C（热带条件）\\\", \\\"applicable_condition\\\": \\\"热带工况设计条件\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"LT冷却水回路部件设计温度不低于38°C\\\", \\\"设计所依据海水温度不低于32°C\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-223\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统送审的管系图纸应清楚标注材料、管径、设计压力、泵额定容量和关断扬程等信息，图纸审查应覆盖冷却水管系相关接口、材料和压力等级。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:MPa|ref:S42 MAN 49/60DF Project Guide|component:冷却水管系|intent:设计压力标注|hint:具体数值需按项目文件确定}}；{{TBD|unit:m³/h|ref:S42 MAN 49/60DF Project Guide|component:冷却水泵|intent:额定容量标注|hint:具体数值需按项目文件确定}}；{{TBD|unit:m|ref:S42 MAN 49/60DF Project Guide|component:冷却水泵|intent:关断扬程标注|hint:具体数值需按项目文件确定}}\\\", \\\"applicable_condition\\\": \\\"MAN L49/60DF，燃气模式，电力推进/EPROX-AC；送审与图纸审查阶段\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"管系图纸标注材料、管径、设计压力\\\", \\\"送审文件标注泵额定容量和关断扬程\\\", \\\"图纸审查覆盖冷却水管系接口、材料与压力等级\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-SYS-DRAW-015\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统在首次启动前及管系修理后应使用合适清洗剂在发动机停机状态下进行清洗，并通过彻底冲洗去除松散固体物。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:次|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水系统|intent:清洗时机与次数|hint:首次启动前及管系修理后各执行一次}}\\\", \\\"applicable_condition\\\": \\\"发动机首次启动前；管系修理后；清洗期间发动机停机\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"首次启动前完成系统清洗并记录\\\", \\\"管系修理后完成系统清洗并记录\\\", \\\"冲洗后无松散固体物残留，清洗剂不腐蚀海水侧部件\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLANT-CLEAN-038\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却液浓度应按制造商说明进行检查，并应定期对冷却液进行分析以保障发动机安全运行。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:ppm|ref:S30 MAN 49/60 Project Guide|component:冷却液|intent:浓度限值|hint:1 mg/l 折算为 1 ppm，具体限值按制造商说明确定}}\\\", \\\"applicable_condition\\\": \\\"冷却液日常监测与取样分析；取样点位于膨胀水箱\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"按制造商说明完成冷却液浓度检查\\\", \\\"定期取样分析记录完整\\\", \\\"膨胀水箱取样目视检查无润滑油混入迹象\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLANT-INSP-045\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-EXP-INSP-023\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置膨胀水箱配置，单回路系统LT系统经HT系统排气并共用膨胀水箱，双回路系统LT与HT系统应分别设置独立膨胀水箱。\\\", \\\"measurable_criterion\\\": \\\"膨胀水箱容积V = 0.1 + (每台附加发动机膨胀容积) [m³]\\\", \\\"applicable_condition\\\": \\\"单回路（1-string）或双回路（2-string）冷却水系统配置\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"单回路系统LT与HT共用同一膨胀水箱并经HT系统排气\\\", \\\"双回路系统LT与HT分别设置独立膨胀水箱\\\", \\\"膨胀水箱容积按公式计算满足温度变化与泄漏补偿\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-EXP-INSP-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2112,\"completion_tokens\":2289,\"total_tokens\":4401,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2112},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:00:05 GMT"
+  },
+  "response": {
+    "id": "b75ae750-49f3-4d61-80f0-35b25f604b64",
+    "object": "chat.completion",
+    "created": 1792378805,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"冷却水系统应设置冷却水压力低报警和流量低报警，并应在机舱集控站和驾驶室控制站同时显示。\", \"measurable_criterion\": \"{{TBD|unit:MPa|ref:CCS《钢质海船入级规范》2025 第7-27节表4|component:冷却水系统|intent:报警阈值|hint:压力低报警设定值需按厂家技术数据确定}}；{{TBD|unit:m³/h|ref:CCS《钢质海船入级规范》2025 第7-27节表4|component:冷却水系统|intent:报警阈值|hint:流量低报警设定值需按厂家技术数据确定}}\", \"applicable_condition\": \"主机冷却水系统运行工况；报警显示位置覆盖机舱集控站与驾驶室控制站\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"冷却水压力低报警功能存在且可在机舱集控站显示\", \"冷却水流量低报警功能存在且可在机舱集控站显示\", \"上述报警在驾驶室控制站同步显示\"], \"evidence_citations\": [{\"kb_id\": \"L1-CCS2025-7-27表4主燃气轮机-025\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统需求应明确区分仅作提醒的报警与会导致主机降负荷或停机的保护动作，并应在需求文件中提前逐项说明其类别归属。\", \"measurable_criterion\": \"{{TBD|unit:项|ref:S30 MAN 49/60 Project Guide|component:冷却水系统报警与保护|intent:分类清单完整性|hint:需按厂家和控制系统配置逐项列出报警类与保护类条目}}\", \"applicable_condition\": \"冷却水温度、压力、液位或传感器异常等触发条件；具体阈值受厂家、机型和控制系统配置约束\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"需求文件中每条报警/保护条目均标注为“提醒类”或“影响主机运行类”\", \"影响主机运行的条目明确其动作形式（降负荷或停机）\", \"分类结果与厂家技术资料及控制系统配置一致\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-SHUT-006\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}]}, {\"shall_statement\": \"当HT冷却水备用泵因任何原因未运行时，主机应在最终停机前以规定低负荷运行规定时长，以便由发动机驱动的HT冷却水泵散热。\", \"measurable_criterion\": \"负荷范围0%至10%；运行时长15分钟\", \"applicable_condition\": \"HT冷却水备用泵未运行的工况；最终停机前\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"备用泵未运行时触发低负荷运行程序\", \"负荷维持在0%至10%区间\", \"低负荷运行持续时间不少于15分钟后方可最终停机\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-SHUT-006\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}]}, {\"shall_statement\": \"主机停止后，HT冷却水泵应继续运行规定时长，并同时用于压缩机叶轮冷却。\", \"measurable_criterion\": \"运行时长15分钟\", \"applicable_condition\": \"主机停止后阶段；HT冷却水系统按预加热和后冷却期间最小流量要求布置\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"主机停机后HT冷却水泵持续运行不少于15分钟\", \"该运行期间压缩机叶轮冷却功能有效\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-SHUT-006\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统设计应满足温度控制阀配置要求，并在低于规定负荷下运行规定时长后方可停机。\", \"measurable_criterion\": \"负荷低于15% MCR；运行时长至少4分钟\", \"applicable_condition\": \"主机低负荷运行及停机前阶段\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"低于15% MCR负荷下运行至少4分钟后执行停机\", \"温度控制阀配置满足厂家要求\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-223\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}]}, {\"shall_statement\": \"LT冷却水系统部件应按最大LT冷却水温度和对应海水温度条件进行设计。\", \"measurable_criterion\": \"最大LT冷却水温度38°C；对应海水温度32°C（热带条件）\", \"applicable_condition\": \"热带工况设计条件\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"LT冷却水回路部件设计温度不低于38°C\", \"设计所依据海水温度不低于32°C\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-223\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统送审的管系图纸应清楚标注材料、管径、设计压力、泵额定容量和关断扬程等信息，图纸审查应覆盖冷却水管系相关接口、材料和压力等级。\", \"measurable_criterion\": \"{{TBD|unit:MPa|ref:S42 MAN 49/60DF Project Guide|component:冷却水管系|intent:设计压力标注|hint:具体数值需按项目文件确定}}；{{TBD|unit:m³/h|ref:S42 MAN 49/60DF Project Guide|component:冷却水泵|intent:额定容量标注|hint:具体数值需按项目文件确定}}；{{TBD|unit:m|ref:S42 MAN 49/60DF Project Guide|component:冷却水泵|intent:关断扬程标注|hint:具体数值需按项目文件确定}}\", \"applicable_condition\": \"MAN L49/60DF，燃气模式，电力推进/EPROX-AC；送审与图纸审查阶段\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"管系图纸标注材料、管径、设计压力\", \"送审文件标注泵额定容量和关断扬程\", \"图纸审查覆盖冷却水管系接口、材料与压力等级\"], \"evidence_citations\": [{\"kb_id\": \"E-SYS-DRAW-015\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统在首次启动前及管系修理后应使用合适清洗剂在发动机停机状态下进行清洗，并通过彻底冲洗去除松散固体物。\", \"measurable_criterion\": \"{{TBD|unit:次|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水系统|intent:清洗时机与次数|hint:首次启动前及管系修理后各执行一次}}\", \"applicable_condition\": \"发动机首次启动前；管系修理后；清洗期间发动机停机\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"首次启动前完成系统清洗并记录\", \"管系修理后完成系统清洗并记录\", \"冲洗后无松散固体物残留，清洗剂不腐蚀海水侧部件\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-CLEAN-038\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却液浓度应按制造商说明进行检查，并应定期对冷却液进行分析以保障发动机安全运行。\", \"measurable_criterion\": \"{{TBD|unit:ppm|ref:S30 MAN 49/60 Project Guide|component:冷却液|intent:浓度限值|hint:1 mg/l 折算为 1 ppm，具体限值按制造商说明确定}}\", \"applicable_condition\": \"冷却液日常监测与取样分析；取样点位于膨胀水箱\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"按制造商说明完成冷却液浓度检查\", \"定期取样分析记录完整\", \"膨胀水箱取样目视检查无润滑油混入迹象\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-INSP-045\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}, {\"kb_id\": \"E-EXP-INSP-023\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统应设置膨胀水箱配置，单回路系统LT系统经HT系统排气并共用膨胀水箱，双回路系统LT与HT系统应分别设置独立膨胀水箱。\", \"measurable_criterion\": \"膨胀水箱容积V = 0.1 + (每台附加发动机膨胀容积) [m³]\", \"applicable_condition\": \"单回路（1-string）或双回路（2-string）冷却水系统配置\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"单回路系统LT与HT共用同一膨胀水箱并经HT系统排气\", \"双回路系统LT与HT分别设置独立膨胀水箱\", \"膨胀水箱容积按公式计算满足温度变化与泄漏补偿\"], \"evidence_citations\": [{\"kb_id\": \"E-EXP-INSP-006\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2112,
+      "completion_tokens": 2289,
+      "total_tokens": 4401,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2112
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.022536",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.022536",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应设置冷却水压力低报警和流量低报警，并应在机舱集控站和驾驶室控制站同时显示。",
+        "measurable_criterion": "{{TBD|unit:MPa|ref:CCS《钢质海船入级规范》2025 第7-27节表4|component:冷却水系统|intent:报警阈值|hint:压力低报警设定值需按厂家技术数据确定}}；{{TBD|unit:m³/h|ref:CCS《钢质海船入级规范》2025 第7-27节表4|component:冷却水系统|intent:报警阈值|hint:流量低报警设定值需按厂家技术数据确定}}",
+        "applicable_condition": "主机冷却水系统运行工况；报警显示位置覆盖机舱集控站与驾驶室控制站",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却水压力低报警功能存在且可在机舱集控站显示",
+          "冷却水流量低报警功能存在且可在机舱集控站显示",
+          "上述报警在驾驶室控制站同步显示"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-7-27表4主燃气轮机-025",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统需求应明确区分仅作提醒的报警与会导致主机降负荷或停机的保护动作，并应在需求文件中提前逐项说明其类别归属。",
+        "measurable_criterion": "{{TBD|unit:项|ref:S30 MAN 49/60 Project Guide|component:冷却水系统报警与保护|intent:分类清单完整性|hint:需按厂家和控制系统配置逐项列出报警类与保护类条目}}",
+        "applicable_condition": "冷却水温度、压力、液位或传感器异常等触发条件；具体阈值受厂家、机型和控制系统配置约束",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "需求文件中每条报警/保护条目均标注为“提醒类”或“影响主机运行类”",
+          "影响主机运行的条目明确其动作形式（降负荷或停机）",
+          "分类结果与厂家技术资料及控制系统配置一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "当HT冷却水备用泵因任何原因未运行时，主机应在最终停机前以规定低负荷运行规定时长，以便由发动机驱动的HT冷却水泵散热。",
+        "measurable_criterion": "负荷范围0%至10%；运行时长15分钟",
+        "applicable_condition": "HT冷却水备用泵未运行的工况；最终停机前",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "备用泵未运行时触发低负荷运行程序",
+          "负荷维持在0%至10%区间",
+          "低负荷运行持续时间不少于15分钟后方可最终停机"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "主机停止后，HT冷却水泵应继续运行规定时长，并同时用于压缩机叶轮冷却。",
+        "measurable_criterion": "运行时长15分钟",
+        "applicable_condition": "主机停止后阶段；HT冷却水系统按预加热和后冷却期间最小流量要求布置",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "主机停机后HT冷却水泵持续运行不少于15分钟",
+          "该运行期间压缩机叶轮冷却功能有效"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统设计应满足温度控制阀配置要求，并在低于规定负荷下运行规定时长后方可停机。",
+        "measurable_criterion": "负荷低于15% MCR；运行时长至少4分钟",
+        "applicable_condition": "主机低负荷运行及停机前阶段",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "低于15% MCR负荷下运行至少4分钟后执行停机",
+          "温度控制阀配置满足厂家要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-223",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "LT冷却水系统部件应按最大LT冷却水温度和对应海水温度条件进行设计。",
+        "measurable_criterion": "最大LT冷却水温度38°C；对应海水温度32°C（热带条件）",
+        "applicable_condition": "热带工况设计条件",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "LT冷却水回路部件设计温度不低于38°C",
+          "设计所依据海水温度不低于32°C"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-223",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统送审的管系图纸应清楚标注材料、管径、设计压力、泵额定容量和关断扬程等信息，图纸审查应覆盖冷却水管系相关接口、材料和压力等级。",
+        "measurable_criterion": "{{TBD|unit:MPa|ref:S42 MAN 49/60DF Project Guide|component:冷却水管系|intent:设计压力标注|hint:具体数值需按项目文件确定}}；{{TBD|unit:m³/h|ref:S42 MAN 49/60DF Project Guide|component:冷却水泵|intent:额定容量标注|hint:具体数值需按项目文件确定}}；{{TBD|unit:m|ref:S42 MAN 49/60DF Project Guide|component:冷却水泵|intent:关断扬程标注|hint:具体数值需按项目文件确定}}",
+        "applicable_condition": "MAN L49/60DF，燃气模式，电力推进/EPROX-AC；送审与图纸审查阶段",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "管系图纸标注材料、管径、设计压力",
+          "送审文件标注泵额定容量和关断扬程",
+          "图纸审查覆盖冷却水管系接口、材料与压力等级"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-DRAW-015",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统在首次启动前及管系修理后应使用合适清洗剂在发动机停机状态下进行清洗，并通过彻底冲洗去除松散固体物。",
+        "measurable_criterion": "{{TBD|unit:次|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却水系统|intent:清洗时机与次数|hint:首次启动前及管系修理后各执行一次}}",
+        "applicable_condition": "发动机首次启动前；管系修理后；清洗期间发动机停机",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "首次启动前完成系统清洗并记录",
+          "管系修理后完成系统清洗并记录",
+          "冲洗后无松散固体物残留，清洗剂不腐蚀海水侧部件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-CLEAN-038",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却液浓度应按制造商说明进行检查，并应定期对冷却液进行分析以保障发动机安全运行。",
+        "measurable_criterion": "{{TBD|unit:ppm|ref:S30 MAN 49/60 Project Guide|component:冷却液|intent:浓度限值|hint:1 mg/l 折算为 1 ppm，具体限值按制造商说明确定}}",
+        "applicable_condition": "冷却液日常监测与取样分析；取样点位于膨胀水箱",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "按制造商说明完成冷却液浓度检查",
+          "定期取样分析记录完整",
+          "膨胀水箱取样目视检查无润滑油混入迹象"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-INSP-045",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-EXP-INSP-023",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置膨胀水箱配置，单回路系统LT系统经HT系统排气并共用膨胀水箱，双回路系统LT与HT系统应分别设置独立膨胀水箱。",
+        "measurable_criterion": "膨胀水箱容积V = 0.1 + (每台附加发动机膨胀容积) [m³]",
+        "applicable_condition": "单回路（1-string）或双回路（2-string）冷却水系统配置",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "单回路系统LT与HT共用同一膨胀水箱并经HT系统排气",
+          "双回路系统LT与HT分别设置独立膨胀水箱",
+          "膨胀水箱容积按公式计算满足温度变化与泄漏补偿"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-INSP-006",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:00:13.537616+00:00",
+  "elapsed_seconds": 9.266
+}

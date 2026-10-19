@@ -1,0 +1,273 @@
+{
+  "slot": "OR027-random_new",
+  "started_at": "2026-10-19T02:54:02.656568+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"5434b6b4-ba2d-4cb7-8a42-5efd3bc3fa31\",\"object\":\"chat.completion\",\"created\":1792378443,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"冷却水系统报警信息应能区分并指示具体故障回路或故障类型，至少包括高温、低压、低液位和泵故障四类。\\\", \\\"measurable_criterion\\\": \\\"[Q]报警信息应能说明大致是哪一路出了问题，包括高温、低压、低液位或泵故障等类型。\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统（高温淡水回路、低温淡水回路及膨胀水箱回路）；具体机型与控制系统配置未知，阈值与动作逻辑须按对应厂家、机型和控制系统配置确定。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警列表或报警代码清单中可识别高温、低压、低液位、泵故障四类报警\\\", \\\"每类报警均关联到具体回路或部件标识\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却液高温报警应设置分级报警阈值，并在温度超过阈值持续规定时间后发出报警信号。\\\", \\\"measurable_criterion\\\": \\\"低温级报警基本温度值为95°C，高温级报警基本温度值为105°C；温度高于95°C持续1秒时发送报警消息。\\\", \\\"applicable_condition\\\": \\\"Scania DI16 船用发动机配 EMS/S6 控制系统；其他厂家、机型及控制系统配置不适用，须另行确定阈值。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟冷却液温度高于95°C并持续1秒，系统发出低温级报警\\\", \\\"模拟冷却液温度高于105°C，系统发出高温级报警\\\", \\\"报警消息通过协调器接通警告灯和诊断指示灯\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应配置膨胀水箱，用于补偿闭式缸套水冷却系统因温度变化或泄漏引起的体积变化，并为淡水泵提供吸入压头以防止气蚀。\\\", \\\"measurable_criterion\\\": \\\"膨胀水箱最低水位应高于曲轴中心线最小8-10 m；膨胀容积0.15升；推荐水箱容积0.15 m³。\\\", \\\"applicable_condition\\\": \\\"MAN L23/30H GenSet，发动机型号5L23/30H、6L23/30H、7L23/30H、8L23/30H、5L28/32H、6L28/32H、7L28/32H、8L28/32H、9L28/32H、5L28/32DF、6L28/32DF、7L28/32DF、8L28/32DF、9L28/32DF。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"膨胀水箱最低水位高于曲轴中心线不小于8-10 m\\\", \\\"膨胀容积满足0.15升\\\", \\\"推荐水箱容积满足0.15 m³\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-INSP-022\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"膨胀水箱应配备透气管和用于加水及添加抑制剂的法兰，透气管应连接至膨胀水箱最低水位以下。\\\", \\\"measurable_criterion\\\": \\\"[Q]膨胀水箱应配备透气管和用于加水及添加抑制剂的法兰；透气管必须连接至膨胀水箱最低水位以下，以防止因透气管“飞溅”导致冷却水氧化。\\\", \\\"applicable_condition\\\": \\\"MAN L23/30H GenSet 及上述适用发动机型号的闭式缸套水冷却系统。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"膨胀水箱设有透气管\\\", \\\"膨胀水箱设有加水及添加抑制剂的法兰\\\", \\\"透气管接入点位于膨胀水箱最低水位以下\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-INSP-022\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置冷却液温度监测与报警功能，报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度传感器|intent:报警阈值|hint:除Scania DI16 EMS/S6外的机型阈值须按厂家技术文件确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统；具体厂家、机型与控制系统配置待定，阈值不得跨机型泛化。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"报警阈值经厂家技术文件或项目计算文件确认\\\", \\\"报警动作逻辑与所选控制系统配置一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置压力、液位及传感器异常报警，报警设置应符合厂家或规则要求。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水压力传感器|intent:低压报警阈值|hint:压力报警阈值须按厂家技术文件确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统；具体厂家、机型与控制系统配置待定。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"压力报警阈值经厂家技术文件确认\\\", \\\"液位报警阈值经厂家技术文件确认\\\", \\\"传感器异常报警逻辑经确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置降负荷或停机保护功能，保护动作应受具体厂家、机型和控制系统配置约束。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度监测|intent:降负荷或停机保护阈值|hint:保护阈值与动作方式须按厂家技术文件确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统；具体厂家、机型与控制系统配置待定。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"降负荷或停机保护阈值经厂家技术文件确认\\\", \\\"保护动作方式与控制系统配置一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统管系安装后应进行水压泄漏试验，试验压力与见证要求应按适用法规或船级社要求确定。\\\", \\\"measurable_criterion\\\": \\\"水压泄漏试验压力为最大允许工作压力的1.5倍。\\\", \\\"applicable_condition\\\": \\\"属于46 CFR Part 56范围的管系；用于主机冷却水系统时须先确认该系统是否落入Part 56适用范围。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"试验压力为最大允许工作压力的1.5倍\\\", \\\"试验在验船师见证下进行\\\", \\\"试验期间无泄漏\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PIPE-PTEST-AUTH-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"46 CFR 56.97-40 Installation tests\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置温度控制阀以调节冷却水温度，其配置应依据厂家技术数据或项目计算文件确定。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S37 MAN L27/38 Propulsion Project Guide|component:温度控制阀|intent:调节温度设定值|hint:温控阀设定值须按厂家技术数据或项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"MAN L27/38 推进用主机冷却水系统；其他机型须另行确认。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"温控阀设定值经厂家技术数据或项目计算文件确认\\\", \\\"温控阀配置与冷却水回路组成一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-TCV-TEMP-016\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水系统应按规定流程流经高压HT级中冷器、缸套冷却和低压HT级中冷器，并实现温度调节。\\\", \\\"measurable_criterion\\\": \\\"[Q]高温冷却水流经顺序为：1. 高压HT级中冷器；2. 缸套冷却；3. 低压HT级中冷器；并调节温度。\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 发动机（12V/14V）相关工厂系统；其他机型不适用。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"高温冷却水流经顺序符合高压HT级中冷器→缸套冷却→低压HT级中冷器\\\", \\\"系统具备温度调节功能\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-077\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置冷却液水质检测与维护要求，检测限值和周期应按来源文件适用条件执行。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:mg/L|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却液|intent:水质限值|hint:水质限值与检测周期须按厂家技术数据或项目维护程序确定}}\\\", \\\"applicable_condition\\\": \\\"MAN 49/60 船用四冲程柴油机冷却水系统；其他机型须另行确认。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"水质检测项目与限值经厂家技术文件确认\\\", \\\"检测周期经项目维护程序确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-SW-DRAW-004\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统清洗、冲洗和复查应按来源文件或项目维护程序执行，清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。\\\", \\\"measurable_criterion\\\": \\\"[Q]冷却水系统清洗、冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。\\\", \\\"applicable_condition\\\": \\\"MAN L23/30H GenSet 中央冷却系统及缸套水冷却系统；其他机型须另行确认。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"清洗与冲洗按项目维护程序执行并记录\\\", \\\"重新投运前确认无残留清洗剂、泄漏和沉积物\\\", \\\"换热能力恢复情况经确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-CENTRAL-COMP-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3541,\"completion_tokens\":2699,\"total_tokens\":6240,\"prompt_tokens_details\":{\"cached_tokens\":3328},\"prompt_cache_hit_tokens\":3328,\"prompt_cache_miss_tokens\":213},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:54:03 GMT"
+  },
+  "response": {
+    "id": "5434b6b4-ba2d-4cb7-8a42-5efd3bc3fa31",
+    "object": "chat.completion",
+    "created": 1792378443,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"冷却水系统报警信息应能区分并指示具体故障回路或故障类型，至少包括高温、低压、低液位和泵故障四类。\", \"measurable_criterion\": \"[Q]报警信息应能说明大致是哪一路出了问题，包括高温、低压、低液位或泵故障等类型。\", \"applicable_condition\": \"主机冷却水系统（高温淡水回路、低温淡水回路及膨胀水箱回路）；具体机型与控制系统配置未知，阈值与动作逻辑须按对应厂家、机型和控制系统配置确定。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警列表或报警代码清单中可识别高温、低压、低液位、泵故障四类报警\", \"每类报警均关联到具体回路或部件标识\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却液高温报警应设置分级报警阈值，并在温度超过阈值持续规定时间后发出报警信号。\", \"measurable_criterion\": \"低温级报警基本温度值为95°C，高温级报警基本温度值为105°C；温度高于95°C持续1秒时发送报警消息。\", \"applicable_condition\": \"Scania DI16 船用发动机配 EMS/S6 控制系统；其他厂家、机型及控制系统配置不适用，须另行确定阈值。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟冷却液温度高于95°C并持续1秒，系统发出低温级报警\", \"模拟冷却液温度高于105°C，系统发出高温级报警\", \"报警消息通过协调器接通警告灯和诊断指示灯\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应配置膨胀水箱，用于补偿闭式缸套水冷却系统因温度变化或泄漏引起的体积变化，并为淡水泵提供吸入压头以防止气蚀。\", \"measurable_criterion\": \"膨胀水箱最低水位应高于曲轴中心线最小8-10 m；膨胀容积0.15升；推荐水箱容积0.15 m³。\", \"applicable_condition\": \"MAN L23/30H GenSet，发动机型号5L23/30H、6L23/30H、7L23/30H、8L23/30H、5L28/32H、6L28/32H、7L28/32H、8L28/32H、9L28/32H、5L28/32DF、6L28/32DF、7L28/32DF、8L28/32DF、9L28/32DF。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"膨胀水箱最低水位高于曲轴中心线不小于8-10 m\", \"膨胀容积满足0.15升\", \"推荐水箱容积满足0.15 m³\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-INSP-022\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"膨胀水箱应配备透气管和用于加水及添加抑制剂的法兰，透气管应连接至膨胀水箱最低水位以下。\", \"measurable_criterion\": \"[Q]膨胀水箱应配备透气管和用于加水及添加抑制剂的法兰；透气管必须连接至膨胀水箱最低水位以下，以防止因透气管“飞溅”导致冷却水氧化。\", \"applicable_condition\": \"MAN L23/30H GenSet 及上述适用发动机型号的闭式缸套水冷却系统。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"膨胀水箱设有透气管\", \"膨胀水箱设有加水及添加抑制剂的法兰\", \"透气管接入点位于膨胀水箱最低水位以下\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-INSP-022\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应设置冷却液温度监测与报警功能，报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度传感器|intent:报警阈值|hint:除Scania DI16 EMS/S6外的机型阈值须按厂家技术文件确定}}\", \"applicable_condition\": \"主机冷却水系统；具体厂家、机型与控制系统配置待定，阈值不得跨机型泛化。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"报警阈值经厂家技术文件或项目计算文件确认\", \"报警动作逻辑与所选控制系统配置一致\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应设置压力、液位及传感器异常报警，报警设置应符合厂家或规则要求。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水压力传感器|intent:低压报警阈值|hint:压力报警阈值须按厂家技术文件确定}}\", \"applicable_condition\": \"主机冷却水系统；具体厂家、机型与控制系统配置待定。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"压力报警阈值经厂家技术文件确认\", \"液位报警阈值经厂家技术文件确认\", \"传感器异常报警逻辑经确认\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应设置降负荷或停机保护功能，保护动作应受具体厂家、机型和控制系统配置约束。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度监测|intent:降负荷或停机保护阈值|hint:保护阈值与动作方式须按厂家技术文件确定}}\", \"applicable_condition\": \"主机冷却水系统；具体厂家、机型与控制系统配置待定。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"降负荷或停机保护阈值经厂家技术文件确认\", \"保护动作方式与控制系统配置一致\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统管系安装后应进行水压泄漏试验，试验压力与见证要求应按适用法规或船级社要求确定。\", \"measurable_criterion\": \"水压泄漏试验压力为最大允许工作压力的1.5倍。\", \"applicable_condition\": \"属于46 CFR Part 56范围的管系；用于主机冷却水系统时须先确认该系统是否落入Part 56适用范围。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"试验压力为最大允许工作压力的1.5倍\", \"试验在验船师见证下进行\", \"试验期间无泄漏\"], \"evidence_citations\": [{\"kb_id\": \"E-PIPE-PTEST-AUTH-001\", \"tier\": \"L1\", \"source\": \"46 CFR 56.97-40 Installation tests\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应设置温度控制阀以调节冷却水温度，其配置应依据厂家技术数据或项目计算文件确定。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S37 MAN L27/38 Propulsion Project Guide|component:温度控制阀|intent:调节温度设定值|hint:温控阀设定值须按厂家技术数据或项目计算文件确定}}\", \"applicable_condition\": \"MAN L27/38 推进用主机冷却水系统；其他机型须另行确认。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"温控阀设定值经厂家技术数据或项目计算文件确认\", \"温控阀配置与冷却水回路组成一致\"], \"evidence_citations\": [{\"kb_id\": \"E-TCV-TEMP-016\", \"tier\": \"L2\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水系统应按规定流程流经高压HT级中冷器、缸套冷却和低压HT级中冷器，并实现温度调节。\", \"measurable_criterion\": \"[Q]高温冷却水流经顺序为：1. 高压HT级中冷器；2. 缸套冷却；3. 低压HT级中冷器；并调节温度。\", \"applicable_condition\": \"MAN 49/60DF 发动机（12V/14V）相关工厂系统；其他机型不适用。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"高温冷却水流经顺序符合高压HT级中冷器→缸套冷却→低压HT级中冷器\", \"系统具备温度调节功能\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-077\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应设置冷却液水质检测与维护要求，检测限值和周期应按来源文件适用条件执行。\", \"measurable_criterion\": \"{{TBD|unit:mg/L|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却液|intent:水质限值|hint:水质限值与检测周期须按厂家技术数据或项目维护程序确定}}\", \"applicable_condition\": \"MAN 49/60 船用四冲程柴油机冷却水系统；其他机型须另行确认。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"水质检测项目与限值经厂家技术文件确认\", \"检测周期经项目维护程序确认\"], \"evidence_citations\": [{\"kb_id\": \"E-SW-DRAW-004\", \"tier\": \"L3\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统清洗、冲洗和复查应按来源文件或项目维护程序执行，清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。\", \"measurable_criterion\": \"[Q]冷却水系统清洗、冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。\", \"applicable_condition\": \"MAN L23/30H GenSet 中央冷却系统及缸套水冷却系统；其他机型须另行确认。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"清洗与冲洗按项目维护程序执行并记录\", \"重新投运前确认无残留清洗剂、泄漏和沉积物\", \"换热能力恢复情况经确认\"], \"evidence_citations\": [{\"kb_id\": \"E-CENTRAL-COMP-005\", \"tier\": \"L3\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3541,
+      "completion_tokens": 2699,
+      "total_tokens": 6240,
+      "prompt_tokens_details": {
+        "cached_tokens": 3328
+      },
+      "prompt_cache_hit_tokens": 3328,
+      "prompt_cache_miss_tokens": 213
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.028674",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.028674",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统报警信息应能区分并指示具体故障回路或故障类型，至少包括高温、低压、低液位和泵故障四类。",
+        "measurable_criterion": "[Q]报警信息应能说明大致是哪一路出了问题，包括高温、低压、低液位或泵故障等类型。",
+        "applicable_condition": "主机冷却水系统（高温淡水回路、低温淡水回路及膨胀水箱回路）；具体机型与控制系统配置未知，阈值与动作逻辑须按对应厂家、机型和控制系统配置确定。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警列表或报警代码清单中可识别高温、低压、低液位、泵故障四类报警",
+          "每类报警均关联到具体回路或部件标识"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却液高温报警应设置分级报警阈值，并在温度超过阈值持续规定时间后发出报警信号。",
+        "measurable_criterion": "低温级报警基本温度值为95°C，高温级报警基本温度值为105°C；温度高于95°C持续1秒时发送报警消息。",
+        "applicable_condition": "Scania DI16 船用发动机配 EMS/S6 控制系统；其他厂家、机型及控制系统配置不适用，须另行确定阈值。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟冷却液温度高于95°C并持续1秒，系统发出低温级报警",
+          "模拟冷却液温度高于105°C，系统发出高温级报警",
+          "报警消息通过协调器接通警告灯和诊断指示灯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置膨胀水箱，用于补偿闭式缸套水冷却系统因温度变化或泄漏引起的体积变化，并为淡水泵提供吸入压头以防止气蚀。",
+        "measurable_criterion": "膨胀水箱最低水位应高于曲轴中心线最小8-10 m；膨胀容积0.15升；推荐水箱容积0.15 m³。",
+        "applicable_condition": "MAN L23/30H GenSet，发动机型号5L23/30H、6L23/30H、7L23/30H、8L23/30H、5L28/32H、6L28/32H、7L28/32H、8L28/32H、9L28/32H、5L28/32DF、6L28/32DF、7L28/32DF、8L28/32DF、9L28/32DF。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "膨胀水箱最低水位高于曲轴中心线不小于8-10 m",
+          "膨胀容积满足0.15升",
+          "推荐水箱容积满足0.15 m³"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INSP-022",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "膨胀水箱应配备透气管和用于加水及添加抑制剂的法兰，透气管应连接至膨胀水箱最低水位以下。",
+        "measurable_criterion": "[Q]膨胀水箱应配备透气管和用于加水及添加抑制剂的法兰；透气管必须连接至膨胀水箱最低水位以下，以防止因透气管“飞溅”导致冷却水氧化。",
+        "applicable_condition": "MAN L23/30H GenSet 及上述适用发动机型号的闭式缸套水冷却系统。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "膨胀水箱设有透气管",
+          "膨胀水箱设有加水及添加抑制剂的法兰",
+          "透气管接入点位于膨胀水箱最低水位以下"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INSP-022",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置冷却液温度监测与报警功能，报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度传感器|intent:报警阈值|hint:除Scania DI16 EMS/S6外的机型阈值须按厂家技术文件确定}}",
+        "applicable_condition": "主机冷却水系统；具体厂家、机型与控制系统配置待定，阈值不得跨机型泛化。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "报警阈值经厂家技术文件或项目计算文件确认",
+          "报警动作逻辑与所选控制系统配置一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置压力、液位及传感器异常报警，报警设置应符合厂家或规则要求。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水压力传感器|intent:低压报警阈值|hint:压力报警阈值须按厂家技术文件确定}}",
+        "applicable_condition": "主机冷却水系统；具体厂家、机型与控制系统配置待定。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "压力报警阈值经厂家技术文件确认",
+          "液位报警阈值经厂家技术文件确认",
+          "传感器异常报警逻辑经确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置降负荷或停机保护功能，保护动作应受具体厂家、机型和控制系统配置约束。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水温度监测|intent:降负荷或停机保护阈值|hint:保护阈值与动作方式须按厂家技术文件确定}}",
+        "applicable_condition": "主机冷却水系统；具体厂家、机型与控制系统配置待定。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "降负荷或停机保护阈值经厂家技术文件确认",
+          "保护动作方式与控制系统配置一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统管系安装后应进行水压泄漏试验，试验压力与见证要求应按适用法规或船级社要求确定。",
+        "measurable_criterion": "水压泄漏试验压力为最大允许工作压力的1.5倍。",
+        "applicable_condition": "属于46 CFR Part 56范围的管系；用于主机冷却水系统时须先确认该系统是否落入Part 56适用范围。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "试验压力为最大允许工作压力的1.5倍",
+          "试验在验船师见证下进行",
+          "试验期间无泄漏"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-PTEST-AUTH-001",
+            "tier": "L1",
+            "source": "46 CFR 56.97-40 Installation tests",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置温度控制阀以调节冷却水温度，其配置应依据厂家技术数据或项目计算文件确定。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S37 MAN L27/38 Propulsion Project Guide|component:温度控制阀|intent:调节温度设定值|hint:温控阀设定值须按厂家技术数据或项目计算文件确定}}",
+        "applicable_condition": "MAN L27/38 推进用主机冷却水系统；其他机型须另行确认。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "温控阀设定值经厂家技术数据或项目计算文件确认",
+          "温控阀配置与冷却水回路组成一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-016",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水系统应按规定流程流经高压HT级中冷器、缸套冷却和低压HT级中冷器，并实现温度调节。",
+        "measurable_criterion": "[Q]高温冷却水流经顺序为：1. 高压HT级中冷器；2. 缸套冷却；3. 低压HT级中冷器；并调节温度。",
+        "applicable_condition": "MAN 49/60DF 发动机（12V/14V）相关工厂系统；其他机型不适用。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "高温冷却水流经顺序符合高压HT级中冷器→缸套冷却→低压HT级中冷器",
+          "系统具备温度调节功能"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-077",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置冷却液水质检测与维护要求，检测限值和周期应按来源文件适用条件执行。",
+        "measurable_criterion": "{{TBD|unit:mg/L|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却液|intent:水质限值|hint:水质限值与检测周期须按厂家技术数据或项目维护程序确定}}",
+        "applicable_condition": "MAN 49/60 船用四冲程柴油机冷却水系统；其他机型须另行确认。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "水质检测项目与限值经厂家技术文件确认",
+          "检测周期经项目维护程序确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-DRAW-004",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统清洗、冲洗和复查应按来源文件或项目维护程序执行，清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。",
+        "measurable_criterion": "[Q]冷却水系统清洗、冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。",
+        "applicable_condition": "MAN L23/30H GenSet 中央冷却系统及缸套水冷却系统；其他机型须另行确认。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "清洗与冲洗按项目维护程序执行并记录",
+          "重新投运前确认无残留清洗剂、泄漏和沉积物",
+          "换热能力恢复情况经确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-CENTRAL-COMP-005",
+            "tier": "L3",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:54:13.537445+00:00",
+  "elapsed_seconds": 10.75
+}

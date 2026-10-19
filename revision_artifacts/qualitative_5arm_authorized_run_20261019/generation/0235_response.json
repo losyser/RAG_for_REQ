@@ -1,0 +1,326 @@
+{
+  "slot": "OR047-semantic_old",
+  "started_at": "2026-10-19T03:05:51.363826+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"e6ef6f6a-b314-4f9a-9fa6-ad2889a0dd8d\",\"object\":\"chat.completion\",\"created\":1792379152,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统冲洗应按规定的分步程序执行，依次完成排水、测量pH值、充注淡水、预热并运行至暖机、提高转速运行、取样、停机、排水等步骤。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:步骤数|ref:S26 MTU A001065 8.3|component:主机冷却水系统|intent:冲洗程序完整性|hint:原文给出9步冲洗流程，需按项目维护程序确认并固化步骤清单}}\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统清洗后的冲洗作业，发动机处于可运行状态\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冲洗步骤清单完整并覆盖排水、充水、暖机运行、取样、排水各环节\\\",\\\"每一步骤均有可追溯的执行记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-008\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统冲洗时，发动机应在提高转速下运行约30分钟，以保证冲洗效果。\\\",\\\"measurable_criterion\\\":\\\"30 分钟（提高转速运行时长）\\\",\\\"applicable_condition\\\":\\\"冲洗程序中暖机后的提高转速运行阶段\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"提高转速运行时长不少于30分钟\\\",\\\"运行转速与时长记录可追溯\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-008\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统冲洗后应取样检测冲洗水pH值，并以冲洗前后pH值差值作为清洁结果判据。\\\",\\\"measurable_criterion\\\":\\\"pH值差值 > 1（判定需进一步清洗的阈值）\\\",\\\"applicable_condition\\\":\\\"每次冲洗作业结束后在发动机冷却水取样旋塞处取样\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"取样点位于发动机冷却水取样旋塞\\\",\\\"pH值差值不大于1时判定冲洗合格\\\",\\\"pH值差值大于1时按程序继续冲洗或转入清洗\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-009\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"当冲洗后pH值差值仍大于1时，应执行4至5次冲洗操作，若仍不满足则转入冷却水系统清洗程序。\\\",\\\"measurable_criterion\\\":\\\"4 to 5 次（冲洗操作次数）\\\",\\\"applicable_condition\\\":\\\"pH值差值大于1的重复冲洗工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"重复冲洗次数记录在4至5次范围内\\\",\\\"超过规定次数仍不合格时启动清洗程序并记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-009\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统化学清洗时，清洗剂应按规定浓度与淡水混合，发动机温热时使用45℃温水配制。\\\",\\\"measurable_criterion\\\":\\\"45 ℃（配制清洗液用温水温度）\\\",\\\"applicable_condition\\\":\\\"发动机处于温热状态下的冷却水系统化学清洗\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"配制用水温度符合45℃要求\\\",\\\"清洗剂浓度按厂家文件规定执行并有记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-010\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"使用清洗剂清洗冷却水系统后，应多次冲洗并每次更换冲洗水，直至残留清洗剂被清除。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:次|ref:S39 MAN L21/31 Project Guide / S10 MAN L23/30DF Project Guide|component:主机冷却水系统|intent:清洗后冲洗次数|hint:原文要求多次冲洗并更换水，未给出具体次数，需由项目维护程序确认}}\\\",\\\"applicable_condition\\\":\\\"使用清洗剂完成冷却水系统清洗之后\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冲洗次数满足项目维护程序规定\\\",\\\"每次冲洗均更换冲洗水\\\",\\\"冲洗后残留清洗剂检测合格\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PIPE-CLEAN-018\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-CLEAN-006\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"采用酸类清洗剂清洗冷却水系统后，应使用合适化学品对系统进行中和，然后再进行冲洗。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:pH值|ref:S39 MAN L21/31 Project Guide|component:主机冷却水系统|intent:中和后冲洗水pH合格范围|hint:原文要求中和后冲洗，未给出中和终点pH值，需由项目维护程序确认}}\\\",\\\"applicable_condition\\\":\\\"使用酸类清洗剂进行冷却水系统清洗之后\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"中和剂与系统材料相容\\\",\\\"中和后冲洗水pH值满足项目维护程序规定\\\",\\\"中和与冲洗过程有记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PIPE-CLEAN-018\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-CLEAN-006\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统清洗程序只能在发动机冷却后进行，不得在热态发动机上开始清洗。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:℃|ref:S39 MAN L21/31 Project Guide|component:主机|intent:允许开始清洗的发动机温度上限|hint:原文仅要求发动机冷却后开始，未给出温度数值，需由项目维护程序确认}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统清洗作业开始前\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"清洗开始前确认发动机已冷却\\\",\\\"高温部件不接触清洗液\\\",\\\"冷却状态确认有记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PIPE-CLEAN-018\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应按定期检查要求检查污染与沉积情况，并按需清除水垢沉积和冲洗系统。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:周期|ref:S38 MAN L16/24 GenSet Project Guide|component:主机冷却水系统|intent:污染检查周期|hint:原文要求定期检查，未给出具体周期，需由项目维护程序确认}}\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统运行维护期间\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"定期检查记录完整\\\",\\\"发现沉积或污染时已安排清洗或冲洗\\\",\\\"清洗后系统恢复有效冷却能力\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-015\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统机械设备应每年检修一次，并完成清洗、修漏、防腐及附属机械设备检修工作。\\\",\\\"measurable_criterion\\\":\\\"每年一次（机械设备检修周期）\\\",\\\"applicable_condition\\\":\\\"海水循环冷却水处理构筑物及设备的维护\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"年度检修计划覆盖全部机械设备\\\",\\\"清洗、修漏、防腐项目均已完成并记录\\\",\\\"检修记录可追溯\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-CENTRAL-INSP-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S32 HY/T 海水循环冷却系统运行管理规范\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统清洗后重新投运前，应确认无残留清洗剂、无泄漏、无沉积物且换热能力已恢复。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:判据|ref:S26 MTU A001065 / S32 HY/T|component:主机冷却水系统|intent:清洗后投运验收|hint:原文要求关注残留清洗剂、泄漏、沉积物和换热能力，未给出量化验收值，需由项目维护程序确认}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统清洗或冲洗完成、重新投运之前\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"残留清洗剂检查合格\\\",\\\"系统无泄漏\\\",\\\"无可见沉积物\\\",\\\"换热能力恢复情况确认合格\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-CLEAN-009\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-CENTRAL-INSP-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S32 HY/T 海水循环冷却系统运行管理规范\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统使用杀菌剂时，应确保杀菌剂适用于具体应用、与系统密封材料相容且不产生腐蚀，其分解产物不得含氯离子或硫酸根离子，且不得引起冷却液起泡。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:浓度|ref:S30 MAN 49/60 Project Guide / S36 MAN L23/30H GenSet Project Guide|component:主机冷却水系统|intent:杀菌剂适用性与投加控制|hint:原文给出相容性与成分限制，未给出投加浓度，需由项目维护程序确认}}\\\",\\\"applicable_condition\\\":\\\"冷却液被细菌污染且必须使用杀菌剂时\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"杀菌剂选型经适用性与材料相容性确认\\\",\\\"杀菌剂及其分解产物不含氯离子和硫酸根离子\\\",\\\"杀菌剂不引起冷却液起泡\\\",\\\"投加记录可追溯\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PIPE-CTRL-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PIPE-CTRL-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S36 MAN L23/30H GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PIPE-CTRL-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统压力试验前，所有设备与管路应彻底清除污物、焊渣和施工杂物。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:清洁度|ref:S52 BN-G-Y015 Piping Systems Inspection and Testing|component:冷却水管路及设备|intent:试压前清洁度|hint:原文要求彻底清洁，未给出量化清洁度判据，需由项目试验程序确认}}\\\",\\\"applicable_condition\\\":\\\"冷却水管系安装后压力试验之前\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"管路内无污物、焊渣和施工杂物\\\",\\\"清洁检查记录完整\\\",\\\"清洁合格后方可进行压力试验\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PIPE-PTEST-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S52 BN-G-Y015 Piping Systems Inspection and Testing\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2358,\"completion_tokens\":2566,\"total_tokens\":4924,\"prompt_tokens_details\":{\"cached_tokens\":2048},\"prompt_cache_hit_tokens\":2048,\"prompt_cache_miss_tokens\":310},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:05:52 GMT"
+  },
+  "response": {
+    "id": "e6ef6f6a-b314-4f9a-9fa6-ad2889a0dd8d",
+    "object": "chat.completion",
+    "created": 1792379152,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统冲洗应按规定的分步程序执行，依次完成排水、测量pH值、充注淡水、预热并运行至暖机、提高转速运行、取样、停机、排水等步骤。\",\"measurable_criterion\":\"{{TBD|unit:步骤数|ref:S26 MTU A001065 8.3|component:主机冷却水系统|intent:冲洗程序完整性|hint:原文给出9步冲洗流程，需按项目维护程序确认并固化步骤清单}}\",\"applicable_condition\":\"主机冷却水系统清洗后的冲洗作业，发动机处于可运行状态\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冲洗步骤清单完整并覆盖排水、充水、暖机运行、取样、排水各环节\",\"每一步骤均有可追溯的执行记录\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-008\",\"tier\":\"L3\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统冲洗时，发动机应在提高转速下运行约30分钟，以保证冲洗效果。\",\"measurable_criterion\":\"30 分钟（提高转速运行时长）\",\"applicable_condition\":\"冲洗程序中暖机后的提高转速运行阶段\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"提高转速运行时长不少于30分钟\",\"运行转速与时长记录可追溯\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-008\",\"tier\":\"L3\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统冲洗后应取样检测冲洗水pH值，并以冲洗前后pH值差值作为清洁结果判据。\",\"measurable_criterion\":\"pH值差值 > 1（判定需进一步清洗的阈值）\",\"applicable_condition\":\"每次冲洗作业结束后在发动机冷却水取样旋塞处取样\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"取样点位于发动机冷却水取样旋塞\",\"pH值差值不大于1时判定冲洗合格\",\"pH值差值大于1时按程序继续冲洗或转入清洗\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-009\",\"tier\":\"L2\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":true}]},{\"shall_statement\":\"当冲洗后pH值差值仍大于1时，应执行4至5次冲洗操作，若仍不满足则转入冷却水系统清洗程序。\",\"measurable_criterion\":\"4 to 5 次（冲洗操作次数）\",\"applicable_condition\":\"pH值差值大于1的重复冲洗工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"重复冲洗次数记录在4至5次范围内\",\"超过规定次数仍不合格时启动清洗程序并记录\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-009\",\"tier\":\"L2\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统化学清洗时，清洗剂应按规定浓度与淡水混合，发动机温热时使用45℃温水配制。\",\"measurable_criterion\":\"45 ℃（配制清洗液用温水温度）\",\"applicable_condition\":\"发动机处于温热状态下的冷却水系统化学清洗\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"配制用水温度符合45℃要求\",\"清洗剂浓度按厂家文件规定执行并有记录\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-010\",\"tier\":\"L3\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":true}]},{\"shall_statement\":\"使用清洗剂清洗冷却水系统后，应多次冲洗并每次更换冲洗水，直至残留清洗剂被清除。\",\"measurable_criterion\":\"{{TBD|unit:次|ref:S39 MAN L21/31 Project Guide / S10 MAN L23/30DF Project Guide|component:主机冷却水系统|intent:清洗后冲洗次数|hint:原文要求多次冲洗并更换水，未给出具体次数，需由项目维护程序确认}}\",\"applicable_condition\":\"使用清洗剂完成冷却水系统清洗之后\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冲洗次数满足项目维护程序规定\",\"每次冲洗均更换冲洗水\",\"冲洗后残留清洗剂检测合格\"],\"evidence_citations\":[{\"kb_id\":\"E-PIPE-CLEAN-018\",\"tier\":\"L2\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-CLEAN-006\",\"tier\":\"L2\",\"source\":\"S10 MAN L23/30DF Project Guide Internal cooling water system\",\"has_clause\":true}]},{\"shall_statement\":\"采用酸类清洗剂清洗冷却水系统后，应使用合适化学品对系统进行中和，然后再进行冲洗。\",\"measurable_criterion\":\"{{TBD|unit:pH值|ref:S39 MAN L21/31 Project Guide|component:主机冷却水系统|intent:中和后冲洗水pH合格范围|hint:原文要求中和后冲洗，未给出中和终点pH值，需由项目维护程序确认}}\",\"applicable_condition\":\"使用酸类清洗剂进行冷却水系统清洗之后\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"中和剂与系统材料相容\",\"中和后冲洗水pH值满足项目维护程序规定\",\"中和与冲洗过程有记录\"],\"evidence_citations\":[{\"kb_id\":\"E-PIPE-CLEAN-018\",\"tier\":\"L2\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-CLEAN-006\",\"tier\":\"L2\",\"source\":\"S10 MAN L23/30DF Project Guide Internal cooling water system\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统清洗程序只能在发动机冷却后进行，不得在热态发动机上开始清洗。\",\"measurable_criterion\":\"{{TBD|unit:℃|ref:S39 MAN L21/31 Project Guide|component:主机|intent:允许开始清洗的发动机温度上限|hint:原文仅要求发动机冷却后开始，未给出温度数值，需由项目维护程序确认}}\",\"applicable_condition\":\"冷却水系统清洗作业开始前\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"清洗开始前确认发动机已冷却\",\"高温部件不接触清洗液\",\"冷却状态确认有记录\"],\"evidence_citations\":[{\"kb_id\":\"E-PIPE-CLEAN-018\",\"tier\":\"L2\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应按定期检查要求检查污染与沉积情况，并按需清除水垢沉积和冲洗系统。\",\"measurable_criterion\":\"{{TBD|unit:周期|ref:S38 MAN L16/24 GenSet Project Guide|component:主机冷却水系统|intent:污染检查周期|hint:原文要求定期检查，未给出具体周期，需由项目维护程序确认}}\",\"applicable_condition\":\"主机冷却水系统运行维护期间\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"定期检查记录完整\",\"发现沉积或污染时已安排清洗或冲洗\",\"清洗后系统恢复有效冷却能力\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-015\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统机械设备应每年检修一次，并完成清洗、修漏、防腐及附属机械设备检修工作。\",\"measurable_criterion\":\"每年一次（机械设备检修周期）\",\"applicable_condition\":\"海水循环冷却水处理构筑物及设备的维护\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"年度检修计划覆盖全部机械设备\",\"清洗、修漏、防腐项目均已完成并记录\",\"检修记录可追溯\"],\"evidence_citations\":[{\"kb_id\":\"E-CENTRAL-INSP-001\",\"tier\":\"L3\",\"source\":\"S32 HY/T 海水循环冷却系统运行管理规范\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统清洗后重新投运前，应确认无残留清洗剂、无泄漏、无沉积物且换热能力已恢复。\",\"measurable_criterion\":\"{{TBD|unit:判据|ref:S26 MTU A001065 / S32 HY/T|component:主机冷却水系统|intent:清洗后投运验收|hint:原文要求关注残留清洗剂、泄漏、沉积物和换热能力，未给出量化验收值，需由项目维护程序确认}}\",\"applicable_condition\":\"冷却水系统清洗或冲洗完成、重新投运之前\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"残留清洗剂检查合格\",\"系统无泄漏\",\"无可见沉积物\",\"换热能力恢复情况确认合格\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-CLEAN-009\",\"tier\":\"L2\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":true},{\"kb_id\":\"E-CENTRAL-INSP-001\",\"tier\":\"L3\",\"source\":\"S32 HY/T 海水循环冷却系统运行管理规范\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统使用杀菌剂时，应确保杀菌剂适用于具体应用、与系统密封材料相容且不产生腐蚀，其分解产物不得含氯离子或硫酸根离子，且不得引起冷却液起泡。\",\"measurable_criterion\":\"{{TBD|unit:浓度|ref:S30 MAN 49/60 Project Guide / S36 MAN L23/30H GenSet Project Guide|component:主机冷却水系统|intent:杀菌剂适用性与投加控制|hint:原文给出相容性与成分限制，未给出投加浓度，需由项目维护程序确认}}\",\"applicable_condition\":\"冷却液被细菌污染且必须使用杀菌剂时\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"杀菌剂选型经适用性与材料相容性确认\",\"杀菌剂及其分解产物不含氯离子和硫酸根离子\",\"杀菌剂不引起冷却液起泡\",\"投加记录可追溯\"],\"evidence_citations\":[{\"kb_id\":\"E-PIPE-CTRL-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true},{\"kb_id\":\"E-PIPE-CTRL-003\",\"tier\":\"L2\",\"source\":\"S36 MAN L23/30H GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-PIPE-CTRL-001\",\"tier\":\"L2\",\"source\":\"S10 MAN L23/30DF Project Guide Internal cooling water system\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统压力试验前，所有设备与管路应彻底清除污物、焊渣和施工杂物。\",\"measurable_criterion\":\"{{TBD|unit:清洁度|ref:S52 BN-G-Y015 Piping Systems Inspection and Testing|component:冷却水管路及设备|intent:试压前清洁度|hint:原文要求彻底清洁，未给出量化清洁度判据，需由项目试验程序确认}}\",\"applicable_condition\":\"冷却水管系安装后压力试验之前\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"管路内无污物、焊渣和施工杂物\",\"清洁检查记录完整\",\"清洁合格后方可进行压力试验\"],\"evidence_citations\":[{\"kb_id\":\"E-PIPE-PTEST-002\",\"tier\":\"L2\",\"source\":\"S52 BN-G-Y015 Piping Systems Inspection and Testing\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2358,
+      "completion_tokens": 2566,
+      "total_tokens": 4924,
+      "prompt_tokens_details": {
+        "cached_tokens": 2048
+      },
+      "prompt_cache_hit_tokens": 2048,
+      "prompt_cache_miss_tokens": 310
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.025244",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.025244",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统冲洗应按规定的分步程序执行，依次完成排水、测量pH值、充注淡水、预热并运行至暖机、提高转速运行、取样、停机、排水等步骤。",
+        "measurable_criterion": "{{TBD|unit:步骤数|ref:S26 MTU A001065 8.3|component:主机冷却水系统|intent:冲洗程序完整性|hint:原文给出9步冲洗流程，需按项目维护程序确认并固化步骤清单}}",
+        "applicable_condition": "主机冷却水系统清洗后的冲洗作业，发动机处于可运行状态",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冲洗步骤清单完整并覆盖排水、充水、暖机运行、取样、排水各环节",
+          "每一步骤均有可追溯的执行记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-008",
+            "tier": "L3",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统冲洗时，发动机应在提高转速下运行约30分钟，以保证冲洗效果。",
+        "measurable_criterion": "30 分钟（提高转速运行时长）",
+        "applicable_condition": "冲洗程序中暖机后的提高转速运行阶段",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "提高转速运行时长不少于30分钟",
+          "运行转速与时长记录可追溯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-008",
+            "tier": "L3",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统冲洗后应取样检测冲洗水pH值，并以冲洗前后pH值差值作为清洁结果判据。",
+        "measurable_criterion": "pH值差值 > 1（判定需进一步清洗的阈值）",
+        "applicable_condition": "每次冲洗作业结束后在发动机冷却水取样旋塞处取样",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "取样点位于发动机冷却水取样旋塞",
+          "pH值差值不大于1时判定冲洗合格",
+          "pH值差值大于1时按程序继续冲洗或转入清洗"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-009",
+            "tier": "L2",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当冲洗后pH值差值仍大于1时，应执行4至5次冲洗操作，若仍不满足则转入冷却水系统清洗程序。",
+        "measurable_criterion": "4 to 5 次（冲洗操作次数）",
+        "applicable_condition": "pH值差值大于1的重复冲洗工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "重复冲洗次数记录在4至5次范围内",
+          "超过规定次数仍不合格时启动清洗程序并记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-009",
+            "tier": "L2",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统化学清洗时，清洗剂应按规定浓度与淡水混合，发动机温热时使用45℃温水配制。",
+        "measurable_criterion": "45 ℃（配制清洗液用温水温度）",
+        "applicable_condition": "发动机处于温热状态下的冷却水系统化学清洗",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "配制用水温度符合45℃要求",
+          "清洗剂浓度按厂家文件规定执行并有记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-010",
+            "tier": "L3",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "使用清洗剂清洗冷却水系统后，应多次冲洗并每次更换冲洗水，直至残留清洗剂被清除。",
+        "measurable_criterion": "{{TBD|unit:次|ref:S39 MAN L21/31 Project Guide / S10 MAN L23/30DF Project Guide|component:主机冷却水系统|intent:清洗后冲洗次数|hint:原文要求多次冲洗并更换水，未给出具体次数，需由项目维护程序确认}}",
+        "applicable_condition": "使用清洗剂完成冷却水系统清洗之后",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冲洗次数满足项目维护程序规定",
+          "每次冲洗均更换冲洗水",
+          "冲洗后残留清洗剂检测合格"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-CLEAN-018",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-CLEAN-006",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "采用酸类清洗剂清洗冷却水系统后，应使用合适化学品对系统进行中和，然后再进行冲洗。",
+        "measurable_criterion": "{{TBD|unit:pH值|ref:S39 MAN L21/31 Project Guide|component:主机冷却水系统|intent:中和后冲洗水pH合格范围|hint:原文要求中和后冲洗，未给出中和终点pH值，需由项目维护程序确认}}",
+        "applicable_condition": "使用酸类清洗剂进行冷却水系统清洗之后",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "中和剂与系统材料相容",
+          "中和后冲洗水pH值满足项目维护程序规定",
+          "中和与冲洗过程有记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-CLEAN-018",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-CLEAN-006",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统清洗程序只能在发动机冷却后进行，不得在热态发动机上开始清洗。",
+        "measurable_criterion": "{{TBD|unit:℃|ref:S39 MAN L21/31 Project Guide|component:主机|intent:允许开始清洗的发动机温度上限|hint:原文仅要求发动机冷却后开始，未给出温度数值，需由项目维护程序确认}}",
+        "applicable_condition": "冷却水系统清洗作业开始前",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "清洗开始前确认发动机已冷却",
+          "高温部件不接触清洗液",
+          "冷却状态确认有记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-CLEAN-018",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应按定期检查要求检查污染与沉积情况，并按需清除水垢沉积和冲洗系统。",
+        "measurable_criterion": "{{TBD|unit:周期|ref:S38 MAN L16/24 GenSet Project Guide|component:主机冷却水系统|intent:污染检查周期|hint:原文要求定期检查，未给出具体周期，需由项目维护程序确认}}",
+        "applicable_condition": "主机冷却水系统运行维护期间",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "定期检查记录完整",
+          "发现沉积或污染时已安排清洗或冲洗",
+          "清洗后系统恢复有效冷却能力"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-015",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统机械设备应每年检修一次，并完成清洗、修漏、防腐及附属机械设备检修工作。",
+        "measurable_criterion": "每年一次（机械设备检修周期）",
+        "applicable_condition": "海水循环冷却水处理构筑物及设备的维护",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "年度检修计划覆盖全部机械设备",
+          "清洗、修漏、防腐项目均已完成并记录",
+          "检修记录可追溯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-CENTRAL-INSP-001",
+            "tier": "L3",
+            "source": "S32 HY/T 海水循环冷却系统运行管理规范",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统清洗后重新投运前，应确认无残留清洗剂、无泄漏、无沉积物且换热能力已恢复。",
+        "measurable_criterion": "{{TBD|unit:判据|ref:S26 MTU A001065 / S32 HY/T|component:主机冷却水系统|intent:清洗后投运验收|hint:原文要求关注残留清洗剂、泄漏、沉积物和换热能力，未给出量化验收值，需由项目维护程序确认}}",
+        "applicable_condition": "冷却水系统清洗或冲洗完成、重新投运之前",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "残留清洗剂检查合格",
+          "系统无泄漏",
+          "无可见沉积物",
+          "换热能力恢复情况确认合格"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-CLEAN-009",
+            "tier": "L2",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-CENTRAL-INSP-001",
+            "tier": "L3",
+            "source": "S32 HY/T 海水循环冷却系统运行管理规范",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统使用杀菌剂时，应确保杀菌剂适用于具体应用、与系统密封材料相容且不产生腐蚀，其分解产物不得含氯离子或硫酸根离子，且不得引起冷却液起泡。",
+        "measurable_criterion": "{{TBD|unit:浓度|ref:S30 MAN 49/60 Project Guide / S36 MAN L23/30H GenSet Project Guide|component:主机冷却水系统|intent:杀菌剂适用性与投加控制|hint:原文给出相容性与成分限制，未给出投加浓度，需由项目维护程序确认}}",
+        "applicable_condition": "冷却液被细菌污染且必须使用杀菌剂时",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "杀菌剂选型经适用性与材料相容性确认",
+          "杀菌剂及其分解产物不含氯离子和硫酸根离子",
+          "杀菌剂不引起冷却液起泡",
+          "投加记录可追溯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-CTRL-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PIPE-CTRL-003",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PIPE-CTRL-001",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统压力试验前，所有设备与管路应彻底清除污物、焊渣和施工杂物。",
+        "measurable_criterion": "{{TBD|unit:清洁度|ref:S52 BN-G-Y015 Piping Systems Inspection and Testing|component:冷却水管路及设备|intent:试压前清洁度|hint:原文要求彻底清洁，未给出量化清洁度判据，需由项目试验程序确认}}",
+        "applicable_condition": "冷却水管系安装后压力试验之前",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "管路内无污物、焊渣和施工杂物",
+          "清洁检查记录完整",
+          "清洁合格后方可进行压力试验"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-PTEST-002",
+            "tier": "L2",
+            "source": "S52 BN-G-Y015 Piping Systems Inspection and Testing",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:06:02.317183+00:00",
+  "elapsed_seconds": 10.765
+}

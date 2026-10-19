@@ -1,0 +1,95 @@
+{
+  "slot": "OR027-norag_original",
+  "started_at": "2026-10-19T02:54:13.887779+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"0a8a3a72-583f-4038-adfd-cfdb191df6b3\",\"object\":\"chat.completion\",\"created\":1792378455,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统报警信息应能识别并指示故障所属的具体回路或子系统（如高温回路、低温回路、海水回路等）。\\\",\\\"measurable_criterion\\\":\\\"报警信息中应包含回路标识字段，标识取值覆盖系统定义的全部回路（不少于高温淡水回路、低温淡水回路、海水回路3类），标识正确率100%。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及报警触发工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"触发任一回路报警时，报警信息中回路标识与实际故障回路一致\\\",\\\"回路标识字段在报警记录中可查询、可显示\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"冷却水系统报警信息应能区分并指示故障类型，至少包括高温、低压、低液位和泵故障四类。\\\",\\\"measurable_criterion\\\":\\\"报警信息中应包含故障类型代码字段，代码集合覆盖高温、低压、低液位、泵故障4类，每类故障触发时类型代码正确率100%。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及报警触发工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"分别模拟高温、低压、低液位、泵故障，报警信息类型代码与故障类型一一对应\\\",\\\"报警信息中故障类型以可读文本或标准代码形式呈现\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"冷却水系统报警信息应同时包含回路标识与故障类型，形成可定位的复合报警描述。\\\",\\\"measurable_criterion\\\":\\\"每条报警信息应同时含回路标识和故障类型两个字段，字段完整率100%，缺失任一字段的报警条数为0。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及报警触发工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"任一条报警记录均包含回路标识与故障类型\\\",\\\"复合报警描述可被操作人员直接理解并定位故障点\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"冷却水系统报警信息应在故障触发后及时生成并显示，满足操作人员快速定位的要求。\\\",\\\"measurable_criterion\\\":\\\"从故障信号触发到报警信息显示的时间不大于3秒。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及报警触发工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"故障触发至报警显示延时实测不大于3秒\\\",\\\"连续10次触发测试均满足延时要求\\\"],\\\"evidence_citations\\\":[]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":180,\"completion_tokens\":509,\"total_tokens\":689,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":180},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:54:14 GMT"
+  },
+  "response": {
+    "id": "0a8a3a72-583f-4038-adfd-cfdb191df6b3",
+    "object": "chat.completion",
+    "created": 1792378455,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统报警信息应能识别并指示故障所属的具体回路或子系统（如高温回路、低温回路、海水回路等）。\",\"measurable_criterion\":\"报警信息中应包含回路标识字段，标识取值覆盖系统定义的全部回路（不少于高温淡水回路、低温淡水回路、海水回路3类），标识正确率100%。\",\"applicable_condition\":\"冷却水系统运行及报警触发工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"触发任一回路报警时，报警信息中回路标识与实际故障回路一致\",\"回路标识字段在报警记录中可查询、可显示\"],\"evidence_citations\":[]},{\"shall_statement\":\"冷却水系统报警信息应能区分并指示故障类型，至少包括高温、低压、低液位和泵故障四类。\",\"measurable_criterion\":\"报警信息中应包含故障类型代码字段，代码集合覆盖高温、低压、低液位、泵故障4类，每类故障触发时类型代码正确率100%。\",\"applicable_condition\":\"冷却水系统运行及报警触发工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"分别模拟高温、低压、低液位、泵故障，报警信息类型代码与故障类型一一对应\",\"报警信息中故障类型以可读文本或标准代码形式呈现\"],\"evidence_citations\":[]},{\"shall_statement\":\"冷却水系统报警信息应同时包含回路标识与故障类型，形成可定位的复合报警描述。\",\"measurable_criterion\":\"每条报警信息应同时含回路标识和故障类型两个字段，字段完整率100%，缺失任一字段的报警条数为0。\",\"applicable_condition\":\"冷却水系统运行及报警触发工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"任一条报警记录均包含回路标识与故障类型\",\"复合报警描述可被操作人员直接理解并定位故障点\"],\"evidence_citations\":[]},{\"shall_statement\":\"冷却水系统报警信息应在故障触发后及时生成并显示，满足操作人员快速定位的要求。\",\"measurable_criterion\":\"从故障信号触发到报警信息显示的时间不大于3秒。\",\"applicable_condition\":\"冷却水系统运行及报警触发工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"故障触发至报警显示延时实测不大于3秒\",\"连续10次触发测试均满足延时要求\"],\"evidence_citations\":[]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 180,
+      "completion_tokens": 509,
+      "total_tokens": 689,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 180
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.004432",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.004432",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统报警信息应能识别并指示故障所属的具体回路或子系统（如高温回路、低温回路、海水回路等）。",
+        "measurable_criterion": "报警信息中应包含回路标识字段，标识取值覆盖系统定义的全部回路（不少于高温淡水回路、低温淡水回路、海水回路3类），标识正确率100%。",
+        "applicable_condition": "冷却水系统运行及报警触发工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "触发任一回路报警时，报警信息中回路标识与实际故障回路一致",
+          "回路标识字段在报警记录中可查询、可显示"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统报警信息应能区分并指示故障类型，至少包括高温、低压、低液位和泵故障四类。",
+        "measurable_criterion": "报警信息中应包含故障类型代码字段，代码集合覆盖高温、低压、低液位、泵故障4类，每类故障触发时类型代码正确率100%。",
+        "applicable_condition": "冷却水系统运行及报警触发工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "分别模拟高温、低压、低液位、泵故障，报警信息类型代码与故障类型一一对应",
+          "报警信息中故障类型以可读文本或标准代码形式呈现"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统报警信息应同时包含回路标识与故障类型，形成可定位的复合报警描述。",
+        "measurable_criterion": "每条报警信息应同时含回路标识和故障类型两个字段，字段完整率100%，缺失任一字段的报警条数为0。",
+        "applicable_condition": "冷却水系统运行及报警触发工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "任一条报警记录均包含回路标识与故障类型",
+          "复合报警描述可被操作人员直接理解并定位故障点"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统报警信息应在故障触发后及时生成并显示，满足操作人员快速定位的要求。",
+        "measurable_criterion": "从故障信号触发到报警信息显示的时间不大于3秒。",
+        "applicable_condition": "冷却水系统运行及报警触发工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "故障触发至报警显示延时实测不大于3秒",
+          "连续10次触发测试均满足延时要求"
+        ],
+        "evidence_citations": []
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:54:17.243732+00:00",
+  "elapsed_seconds": 3.235
+}

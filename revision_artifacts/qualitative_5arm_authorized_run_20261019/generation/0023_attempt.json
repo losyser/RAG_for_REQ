@@ -1,0 +1,37 @@
+{
+  "slot": "OR005-semantic_new",
+  "body_sha256": "1985f898ff63b2444c120931bd7053acf18b6a7858c0f304197c70400bee1835",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:40:37.135588+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR005-semantic_new",
+    "source_id": "OR005",
+    "group": "semantic_new",
+    "context_sha256": "558a162dfdcd8a638d4a2cfec4eb57bc625df1bc08033ccf83a7222801eaba13",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水系统后期维护不要太复杂，像滤器、冷却器、泵和阀门这些地方要能方便处理。\n\n## 证据清单\n[E-SYS-MAINT-001] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 热交换器清洁与维护\n更换冷却液 ”。 2. 排空海水回路，并松开热交换器海水进口和出口接头。从热交换 器顶部将水箱 （若安装）连同管路一起拆下。 3. 拆下进出发动机冷却系统的管路。 4. 拆下进出进气冷却器的管路。 5. 拆下整个热交换器装置。 6. 松开后护盖，然后将进气冷却器芯连同 O 型环一起拆下。 7. 将进气冷却器外壳和活套法兰连同 O 型环一起拆下。 8. 将中间块连同海水出口一起松开。 9. 松开前盖，然后将活套法兰连同 O 型环一起拆下。 10. 拆下主发动机回路的冷却器中心部分。 11. 清洁水箱芯的外部。使用石蜡基发动机清洁剂。 12. 可以用圆杆机械清除管路中的内部积垢。 13. 润滑所有新 O 型环。 14. 在主芯凸缘内安装新 O 型环，然后将芯推入外壳。 15. 在芯的端部安装新 O 型环，使活套法兰位于其之间。 16. 安装前盖，然后将六角螺钉紧固至 26 Nm。 17. 在中间块内安装新 O 型环，并将其拧紧至热交换器上，紧固扭矩 为 26 Nm。 18. 在螺杆螺栓上安装小型热交换器外壳。 19. 在小型芯凸缘内安装新 O 型环，然后将其推入外壳。 \n  [量化参数] 26、26、26、92\n\n[E-COOLER-MAINT-024] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液更换与加注要求\n更换冷却液 1. 从膨胀水箱上拆下加油盖。 2. 冷却液在 3 个点处排放： - 气缸体右下侧上的 2 个泄水阀，如图所示 - 气缸体左下侧上的泄水阀，如图所示。在冷却系统的最低点处， 拆下热交换器下的 2 个塞子。 3. 关闭泄水阀。 4. 通过膨胀水箱的加注孔将冷却液加注至正确的液位。 按照第 33 页所述混合冷却液。\n整理说明：该证据针对 cooler 的 maintenance / environmental_protection 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：可支撑 cooler 在 maintenance\nenvironmental_protection 方面的系统设计\n运行或维护依据。\n具体指标和验收条件应结合来源文件适用范围进一步确认。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。\n2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。\n3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n  [量化参数] 3 个点、2 个泄水阀、2 个塞子、第 33 页\n\n[E-COOLER-MAINT-003] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 冷却水系统维护空间要求\nDismantling space It must be considered that there is sufficient space for pulling the charge air cooler element, air filter on the turbocharger, lubricating oil cooler, lubricating oil filter cartridge and bracing bolt. Figure 2: Overhaul areas for charge air cooler element, turbocharger filter element, lub. oil cooler, lub. oil filter cartridge and bracing bolt. Cyl.\n整理说明：该证据针对 cooler 的 maintenance / accessibility 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应\n\n[E-COOLER-CLEAN-016] 层级:L1 来源:S32 HY/T 海水循环冷却系统运行管理规范\n  内容: 板式换热器拆解清洗要求\n9.3.10 当板式换热器结垢严重而影响换热效果时， 应进行拆解清洗。板式换热器的拆解清洗应满足以 下要求： a) 不应使用金属刷刷洗板片； b) 宜采用甲酸类清洗液进行辅助刷洗，其他清洗液不应腐蚀板片； c) 拆解清洗过程中应检查板片与密封垫圈的粘合是否完好并应更换损坏密封垫圈； d) 损坏板片应及时更换； e) 重新压紧板片时应根据上一次压紧的刻度位置，防止压紧过度； f) 螺栓应对角压紧，受力均匀； g) 清洗的质量应符合 GB/T 25146 的规定。\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序执行。\n清洗后重新投运前应关注残留清洗剂\n泄漏\n沉积物或换热能力恢复情况。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。\n2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。\n3. 不能替代更高权威等级的规范、厂家\n\n[E-SW-CLEAN-002] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 冷却水连接关系\n7.7.2 Strainers Where sea water is used for direct cooling of the engines, suitable strainers are to be fitted between the sea valve and the pump suction. The strainers are to be either of the duplex type or arranged such that they can be cleaned without interrupting the cooling water supply. This applies also to engines fitted with indirect cooling, where direct sea water cooling is used as an emergency means of cooling.\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期\n\n[E-JACKET-MAINT-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 热交换器清洁与维护\nApply similar guidelines to radiators, heat recovery units, deaeration units, jacket water heaters and other components requiring service or replacement. System Monitoring Provide locations to measure pressure and temperature differentials across major system components.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：jacket_water_cooling_system 的 maintenance\nmonitoring\npressure 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具\n\n[E-IFACE-MAINT-001] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却水系统维护空间要求\nDismantling space Is must be considered that there is sufficient space for pulling the charge air cooler element, air filter on the turbocharger, lubricating oil cooler, lubricating oil filter cartridge and bracing bolt. Figure 1: Overhaul areas for charge air cooler element, turbocharger filter element, lubricating oil cooler, lubricating oil filter cartridge and bracing bolt 2020-05-11 - en B 10 01 1 MAN Energy Solutions\n整理说明：该证据针对 equipment_interface 的 maintenance / accessibility \n\n[E-COOLER-MAINT-004] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却水系统维护空间要求：必须考虑有足够的空间用于拉出增压空气冷却器元件、滑油冷却器、滑油滤器滤芯、润滑油泵和水泵。适用条件：L16/24, 2009.05.04 - Tier II。\n\n可支撑：冷却水系统布置应考虑来源文件提出的安装操作或维护可达性原则。具体施工空间、支架、接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。2. 不能替代船厂施工规范、管系布置标准或安装验收程序。3. 不能直接支撑冷却水温度、压力和流量参数限值。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "1985f898ff63b2444c120931bd7053acf18b6a7858c0f304197c70400bee1835",
+    "utf8_message_bytes": 9526,
+    "execution_index": 23
+  }
+}

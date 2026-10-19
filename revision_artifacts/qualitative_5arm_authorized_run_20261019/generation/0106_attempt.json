@@ -1,0 +1,37 @@
+{
+  "slot": "OR022-semantic_new",
+  "body_sha256": "0a7577254969dc51fa81d733833e5f019a2715b982338580509fc6a73e56a989",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:51:00.384916+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR022-semantic_new",
+    "source_id": "OR022",
+    "group": "semantic_new",
+    "context_sha256": "138a826d4289e76cde511fa5d9c79b5b2033f6de8672d7b5c6cbf41ed7ca521a",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却器选型要考虑海水温度、换热余量和长期脏污影响，不能只满足理想工况。\n\n## 证据清单\n[E-COOLER-INST-007] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 中央冷却器选型要求：适用对象为L21/31、L27/38机型，柴油-电力推进船舶；海水温度推荐使用25°C或32°C，取决于船舶运营区域；当船舶在MCR工况下航速低于3节（如拖船、挖泥船等）时，冷却器设计需考虑航速影响。适用条件：中央冷却器选型，L21/31、L27/38机型，柴油-电力推进船舶。\n\n可支撑：cooler的installation pressure temperature参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 25、32、3\n\n[E-SW-COMP-006] 层级:L3 来源:S32 HY/T 海水循环冷却系统运行管理规范\n  内容: 海水侧系统组成：ICS 07.060；91.140 CCS A 45；备案号：中华人民共和国海洋行业标准 HY/T××××—202× 代替GB 12763.2-1991；海水循环冷却系统运行管理规范 Specification for operation management of recirculating cooling seawater system （征求意见稿）。适用条件：在提交反馈意见时，请将您知道的相关专利连同支持性文件一并附上。\n\n可支撑：sea_water_cooling_system 的 composition；flow 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 07.060、91.140、45、12763.2、1991\n\n[E-COOLER-ARR-005] 层级:L2 来源:S37 MAN L27/38 Propulsion Project Guide\n  内容: 主机冷却型式与设计条件：HT冷却水首先流经HT级增压空气冷却器，然后流经水套和气缸盖，发动机出口水温由机械式恒温器调节；LT冷却水首先流经LT级增压空气冷却器，然后流经滑油冷却器，发动机出口水温由机械式恒温器调节。适用条件：参考条件。  \n冷却器额定值：公差 +10%；热回收：公差 -15%。适用条件：冷却器布置基本值。  \n冷却水流量：公差 ±5%；冷却水温度：公差 ±20°C。适用条件：涡轮出口温度及压力按上述参考条件。  \n\n可支撑：cooler的arrangement、control、pressure参数应依据来源文件、厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。  \n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。  \n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] +10%、-15%、±5%、±20°C\n\n[E-COOLER-INST-016] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 中央冷却器选型要求\nturbulator design and the number of raw or treated water passes. Tight baffling around the heat exchanger is critical to obtaining good heat transfer performance. Heat Exchanger (plate and frame type) Figure 20 Design Criteria and Considerations Many engine models have attachment heat exchangers in the price list. Consider the following factors when designing and installing a heat exchanger cooling system. Size the heat exchanger to accommodate a heat rejection rate approximately 10% g\n  [量化参数] 10%、10%\n\n[E-COOLER-INST-008] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 中央冷却器选型要求：海水温度 25°C 或 32°C，取决于船舶运行区域。适用条件：L27/38;L21/31 机型，柴电推进船舶，2016.09.28 版本。\n\n可支撑：cooler 的 installation pressure temperature 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 25、32、2016.09.28\n\n[E-COOLER-LOAD-001] 层级:L3 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 主机冷却型式与设计条件：冷却水温度进气口充气冷却器（LT级）≤ 311 K（38°C）；适用条件：无降额，满足所列条件，环境温度在涡轮增压器前T ≤ 318 K（45°C），环境压力≥ 100 kPa（1 bar），进气压力在压缩机前≥ –2 kPa，排气背压在涡轮增压器后≤ 5 kPa，相对湿度Φ ≤ 60%。\n\n可支撑：cooler 的 load_reduction pressure temperature 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 311 K、38°C、318 K、45°C、100 kPa、1 bar、–2 kPa、5 kPa、60%\n\n[E-LT-MAINT-001] 层级:L3 来源:S37 MAN L27/38 Propulsion Project Guide\n  内容: 热交换器清洁与维护：MAN Diesel & Turbo L27/38冷却水系统。设计数据：热传递：参见规划数据；通过所有冷却器的压降：最大 0.5 bar；MCR 工况下最低船速：通常大于 3 节。适用条件：箱式冷却器由 MAN Diesel & Turbo 供应时，包括焊接至船体的钢架、管束和顶箱，附带配对法兰、垫片和螺栓交付。其他冷却器类型：一些传统低效的冷却器（如龙骨冷却、船壳冷却或舱柜冷却）不推荐用于 L27/38 发动机，其布置困难且因效率不足进行改造非常复杂和昂贵，海水与低温冷却水之间的低温差导致需要非常大的冷却水表面积。\n\n可支撑：lt_cooling_water_loop 的 maintenance arrangement pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 0.5、3\n\n[E-COOLER-INST-015] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 中央冷却器选型要求\ncalculated by totaling the pressure drop in each of the system’s components. The Piping System Basic Information Application and Installation Guide can be used to determine pressure drop through pipe fittings and valves. The guide can also be used to determine flow velocities in tubes and pipes for a given volume of flow. It is important to observe the water velocity guidelines to help insure proper operation of the cooling system and to extend its life. Excessive velocities lead to er\n\n[E-COOLER-ARR-003] 层级:L3 来源:S42 MAN 49/60DF Project Guide\n  内容: 中央冷却器选型要求\nThere are many possible concepts for the arrangement of cooling water sys- tems and the best solution always depends on the specific application of the engine and ship. The table below shows the main characteristics and schemes of two main concepts. For further information contact MAN Energy Solutions. Concept Mixing CW system Conventional CW system Arrangement Physically and thermodynamically connected LT and HT circuit Physically and thermodynamically separated LT and HT circuit Feat\n\n[E-SW-CLEAN-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却液污染与沉积风险：污垢系数 FF = [(1/UCoolant) – (1/UClean Core)]；其中 FF 单位为 hr-m²-°C/kJ (hr-ft²-°F/Btu)，UCoolant 单位为 kJ/hr-m²-°C (Btu/hr-ft² °F)，UClean Core 单位为 kJ/hr-m²-°C (Btu/hr-ft² °F)。适用条件：发动机冷却液温度 < 116°C (240°F)，原水温度 < 52°C (125°F)。\n\n海水：原水速度 ≤0.9 m/s (3 ft/sec) 时污垢系数为 0.0005 hr-ft²-°F/Btu；原水速度 >0.9 m/s (3 ft/sec) 时污垢系数为 0.0005 hr-ft²-°F/Btu。适用条件：发动机冷却液温度 < 116°C (240°F)，原水温度 < 52°C (125°F)。\n\n半咸水：原水速度 ≤0.9 m/s (3 ft/sec) 时污垢系数为 0.002 hr-ft²-°F/Btu；原水速度 >0.9 m/s (3 ft/sec) 时污垢系数为 0.001 hr-ft²-°F/Btu。适用\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "0a7577254969dc51fa81d733833e5f019a2715b982338580509fc6a73e56a989",
+    "utf8_message_bytes": 10213,
+    "execution_index": 106
+  }
+}

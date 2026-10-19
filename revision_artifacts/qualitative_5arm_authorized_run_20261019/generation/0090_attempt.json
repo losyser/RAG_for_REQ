@@ -1,0 +1,37 @@
+{
+  "slot": "OR018-semantic_new",
+  "body_sha256": "029ecebfb60c9509643ca1bf5bb4e7af8ddce2fd5351cd38a55c317abef6516f",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:49:11.061870+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR018-semantic_new",
+    "source_id": "OR018",
+    "group": "semantic_new",
+    "context_sha256": "10db9264a1b495f75f582d059015680f552e4ebc31a2dfae7ac392b1b4984c82",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n阀门、滤器和仪表不要装在很难够到的位置，后期操作和检修会很不方便。\n\n## 证据清单\n[E-SYS-COMP-019] 层级:L3 来源:S41 Everllence 49/60DF Project Guide\n  内容: 淡水侧系统组成\nY-type strainers with magnetic inserts and a mesh size of 1–2 mm depending on the pipe diameter. The strainers have to be installed in horizontal pipes or pipes with flow direc- tion downwards. We recommend to install shut off-flaps upstream and downstream of the strainer. HE-005/Nozzle cooling wa- ter cooler The nozzle cooling water system is a separate and closed cooling circuit. It is cooled down by LT cooling water via the nozzle cooling water cooler (HE-005). Heat data, flow rates a\n  [量化参数] 1–2\n\n[E-PUMP-FUNC-001] 层级:L2 来源:S14 Nanni Marine Engine Manual\n  内容: 海水泵组配置\n200 mm above it. A siphon breaker is mandatory in all Sail Boat and when there’s a risk of water entry in the engine. A raw water filter must be fitted between the raw water intake and the raw water pump of the engine. ELECTRICAL SYSTEM The engine extension harness should be away from any water projection and must be correctly attached as high as possible in the hold. Engines in metallic hulls are generally fitted with a two- pole electrical system. This system allows to electrically isol\n  [量化参数] 200\n\n[E-VALVE-ARR-001] 层级:L1 来源:S44 PRS Ship Machinery Piping Systems\n  内容: 冷却水连接关系\n11.2.2 Sea-water supply to the cooling system shall be provided by means of at least two inlet valves, one of which shall be located at the bottom, the other one on the side of the ship. These valves shall be interconnected and the cooling water shall be taken from the connecting sea-water main.\n整理说明：该证据针对 valve 的 arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n具体施工空间\n支架\n接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要\n  [量化参数] two、11.2.2\n\n[E-FILTER-FLOW-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 海水侧流向\nfirst component of the cooling system. The strainer must be installed so it can be easily cleaned, even in the worst weather conditions. Although simplex strainers will adequately protect the engine, they require the seawater flow to be shutoff during servicing.\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序执行。\n清洗后重新投运前应关注残留清洗剂\n泄漏\n沉积物或换热能力恢复情况。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛\n\n[E-VALVE-INSP-010] 层级:L2 来源:S51 NASA NTRS 19800002357 Piping Specification\n  内容: 水管路最低点放水和最高点排气要求\nInstall manual drain valves at every low point of water piping systems and a manual air vent at every high point. S52 BN-G-Y015 Piping Systems Inspection and Testing\n整理说明：该证据针对 valve 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n具体施工空间\n支架\n接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。\n2. 不能替代船厂施工规范、管系布置标准或安装验收程序。\n3. 不能直接支撑冷却水温度、压力和流量参数限值。\n\n[E-SYS-CORR-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却水连接关系\ncooler systems require the installation of strainers between the cooler and the pump inlet. Material, such as weld slag and corrosion products, must be removed from the system to prevent wear and plugging of cooling system components. Use a continuous bypass filter to remove smaller particles and sediment.\n整理说明：该证据针对 main_engine_cooling_water_system 的 corrosion_protection / installation / material 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n\n[E-TSENS-PRESS-003] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 冷却水温度与压力参数\n▪ 1 temperature sensor TE, directly downstream of the three-way mixing valve in the supply pipe to charge air cooler stage 1 (for EDS visualisation and control of preheater valve). This sensor will be delivered by Everllence and has to be installed by the shipyard. ▪ 1 temperature sensor TE, directly downstream of the engine outlet. This sensor is already installed at the engine by Everllence. The temperature controllers are available as software functions inside the Gateway Communica\n\n[E-TSENS-PRESS-016] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 冷却水温度与压力参数\n▪ 1 electrically activated three-way mixing valve with linear characteristic curve (MOV-002). ▪ 1 temperature sensor TE, directly downstream of the three-way mixing valve in the supply pipe to charge air cooler stage 1 (for EDS visualisation and control of preheater valve). This sensor will be delivered by MAN Energy Solutions and has to be in- stalled by the shipyard. ▪ 1 temperature sensor TE, directly downstream of the engine outlet. This sensor is already installed at the engine b\n\n[E-PUMP-PRESS-005] 层级:L3 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 冷却水温度与压力参数\n9.3.14 Thermometers and pressure gauges Local thermometers should be installed wherever there is a temperature change, i.e. before and after heat exchangers etc. Local pressure gauges should be installed on the suction and discharge side of each pump.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：cooling_water_pump 的 pressure\ntemperature\ninstallation 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "029ecebfb60c9509643ca1bf5bb4e7af8ddce2fd5351cd38a55c317abef6516f",
+    "utf8_message_bytes": 8813,
+    "execution_index": 90
+  }
+}

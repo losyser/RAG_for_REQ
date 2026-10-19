@@ -1,0 +1,37 @@
+{
+  "slot": "OR007-norag_original",
+  "body_sha256": "c6e537f93249e763d928e4063b1bb85796e67523b3e66f9d3fd2e5adb287c71a",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:41:59.657046+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR007-norag_original",
+    "source_id": "OR007",
+    "group": "norag_original",
+    "context_sha256": null,
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n高温冷却水和低温冷却水的回路要分清楚，不能把不同服务对象混在一个模糊系统里。\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（根据工程知识填写具体值，或填无法确定）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式\n- acceptance_criteria：验收准则列表\n- evidence_citations：空列表 []\n\n所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "c6e537f93249e763d928e4063b1bb85796e67523b3e66f9d3fd2e5adb287c71a",
+    "utf8_message_bytes": 682,
+    "execution_index": 34
+  }
+}

@@ -119,6 +119,17 @@ def summarize():
             w=csv.DictWriter(f,fieldnames=['review_id','human_support','human_applicability','human_faithfulness','human_verifiability','human_reason']);w.writeheader();w.writerows({'review_id':r['review_id']} for r in sample)
         atomic(WORK/'MANUAL_SAMPLE_KEY_LOCAL_ONLY.json',sample)
     atomic(WORK/'REVIEW_DIAGNOSTICS.json',review_results)
+    review_source=[]
+    for s in stats:
+        rs=[r for r in review_results if r['source_id']==s['source_id'] and r['group']==s['group']]
+        review_source.append({'source_id':s['source_id'],'group':s['group'],'generated_rows':s['n_rows'],'Q_candidates':s.get('q_candidate',0),'review_completed':sum(r['review_status']=='completed' for r in rs),'machine_direct_and_applicable':sum(r['band']=='direct_and_applicable' for r in rs),'machine_explicit_negative':sum(r['band']=='explicit_negative' for r in rs),'other_uncertain_error':sum(r['band']=='other_uncertain_error' for r in rs),'unreviewed_Q':sum(r['review_status']!='completed' for r in rs),'human_verified':0})
+    atomic(WORK/'SOURCE_LEVEL_REVIEW_COUNTS.json',review_source)
+    ri={(r['source_id'],r['group']):r for r in review_source};review_pairs=[]
+    for sid in sorted({s['source_id'] for s in stats}):
+        a=ri.get((sid,'semantic_new'));b=ri.get((sid,'random_new'))
+        if a is not None and b is not None:
+            review_pairs.append({'source_id':sid,'semantic_Q':a['Q_candidates'],'random_Q':b['Q_candidates'],'semantic_unreviewed_Q':a['unreviewed_Q'],'random_unreviewed_Q':b['unreviewed_Q'],'machine_joint_count_difference_semantic_minus_random':a['machine_direct_and_applicable']-b['machine_direct_and_applicable'],'interpretation':'Q-only machine-label yield in a paired source; not overall engineering accuracy, independent-shall inference or stochastic stability.'})
+    atomic(WORK/'PAIRED_SOURCE_REVIEW_DIFFERENCES.json',review_pairs)
     summary={'generation_state':read(WORK/'generation/state.json'),'groups':group_stats,'paired_source_comparisons':len(paired),'Q_candidates_total':sum(g.get('q_candidate',0) for g in group_stats.values()),'reviewed_completed':sum(r['review_status']=='completed' for r in review_results),'review_bands':dict(Counter(r['band'] for r in review_results)),'manual_sample_prepared':len(sample),'human_judgments_completed':0,'quality_boundary':'Format and machine labels are not semantic/engineering truth. One trial does not estimate stochastic variation. Source-paired exploratory summaries, no main experiment changes.'}
     atomic(WORK/'RESULT_SUMMARY.json',summary);print(json.dumps(summary,ensure_ascii=False))
 

@@ -1,0 +1,37 @@
+{
+  "slot": "OR057-random_new",
+  "body_sha256": "0b5ebc7a00b1311a5027cf772d6a532a037aa87c128d7f0e83163870b1cfa666",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:11:38.927752+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR057-random_new",
+    "source_id": "OR057",
+    "group": "random_new",
+    "context_sha256": "4b3e459977798989bc5d9fa54eca5594ad5e20bad60f62beff8f883d6d98cc48",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水系统压力试验要有试验压力、保压时间和泄漏检查记录。\n\n## 证据清单\n[E-JACKET-FLOW-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 淡水侧流向\nand occasionally by means of nucleate boiling at very high heat fluxes where discrete vapor bubbles form on the wall and detach. When the local heat flux is above the critical heat flux, nucleate boiling becomes film boiling, in which a blanket of vapor over the metal surface interferes with heat transfer and causes damage on interior surfaces. After Boil After boil can occur after an engine hot shut-down, when coolant flow ceases, local hot spots begin boiling, and without adequate pressu\n  [量化参数] 99、4 to 7\n\n[E-COOLANT-CLEAN-001] 层级:L3 来源:S09 MAN Energy Solutions SL2014-584 Cooling Water System\n  内容: 冷却系统清洗要求\nflushed, refilled and recharged with the inhibitor. Every four-five years and after long out-of-operation periods Based on the regular checks, clean the cooling water system for oil sludge, rust and lime. During cleaning, cool - ing jackets should be removed from the cylinder liner and cylinder cover, and the exhaust valve should be removed from the cylinder cover. This is necessary in order to per - form thorough cleaning of the entire cooling water system. Finally, refill the system a\n  [量化参数] four-five\n\n[E-LSENS-FLOW-001] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却水连接关系：发动机类型 8L21/31、9L21/31、8L27/38 和 9L27/38 仅使用双轴承交流发电机，以保持发动机后曲轴轴承负载处于低水平；交流发电机可提供空气冷却（绝缘等级 IP23）或水冷却（绝缘等级 IP44）；空气冷却交流发电机通过过滤器吸入空气，通过内置通风机引导空气穿过交流发电机并排出；水冷却交流发电机通过通风机使空气在内部循环，气流通过内置水冷却器，通过连接的冷却水系统带走热量；主电缆入口可位于交流发电机右侧或左侧，采用水平或垂直入口。适用条件：S39 MAN L21/31 Project Guide。\n\n可支撑：level_sensor 的 flow 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 8L21/31、9L21/31、8L27/38、9L27/38、IP23、IP44、S39\n\n[E-HT-COMP-088] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: [MAN Energy Solutions L16/24;L21/31;L27/38 机型内部冷却水系统]：系统由低温（LT）回路和高温（HT）回路组成；系统仅设计用于处理过的淡水。适用条件：MAN Energy Solutions B 13 00 0 L16/24;L21/31;L27/38, 2012.05.07 - NG 1 ( 2 ) Internal cooling water system。\n\n[MAN Energy Solutions L16/24;L21/31;L27/38 机型低温冷却水系统]：低温冷却水系统包括增压空气冷却和滑油冷却。适用条件：同上。\n\n[MAN Energy Solutions L16/24;L21/31;L27/38 机型高温冷却水系统]：高温冷却水用于气缸套和气缸盖的冷却；发动机出口温度确保在燃用重油（HFO）时整个负荷区域的最佳燃烧，即该温度限制高负荷区域的热负荷，并避免燃烧区域的热腐蚀。适用条件：同上。\n\n可支撑：ht_cooling_water_loop 的 composition；corrosion_protection；pressur\n\n[L1-CCS2025-7-539-021] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 气缸冷却水压力或流量低报警\n条款 7-53 9\n气缸冷却水压力或流量低时应发出报警。\n\n[E-TCV-TEMP-044] 层级:L2 来源:S39 MAN L21/31 Project Guide\n  内容: 温度控制阀配置\nThe engine is equipped with built-on freshwater pumps for both the high and low temperature cooling water systems. To facilitate automatic start-up of stand-by pumps, non-return valves are standard. Thermostatic valve elements, which control the high and low temperature cool- ing water system, are also integrated parts of the front-end box. As alternative the build-on freshwater pumps and thermostatic valve element can be replaced by \"dummies\" inside the front-end box. Then these functio\n\n[L1-CCS2025-7-46-015] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 气缸冷却水压力或流量报警\n条款 7-46\n气缸冷却水压力或流量低时，应在机舱集控站（室）显示并发出极限报警。\n\n[E-COOLANT-INSP-032] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却液污染与沉积风险\nservice life. In fact, coolant is as important as the quality of your fuel and lubricating oil. This booklet tells the coolant story: its composition, contamination, and typical consequences. This booklet also offers preventive measures to help you avoid the costly effects of coolant related failures. NOTE: Always check the latest Service Information for updates to ensure that the most current specifications and test procedures are used.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "0b5ebc7a00b1311a5027cf772d6a532a037aa87c128d7f0e83163870b1cfa666",
+    "utf8_message_bytes": 6736,
+    "execution_index": 283
+  }
+}

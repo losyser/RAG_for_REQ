@@ -1,0 +1,158 @@
+{
+  "slot": "OR027-random_old",
+  "started_at": "2026-10-19T02:53:55.139943+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"bda6f879-356b-47c9-bf8f-34c358bf8190\",\"object\":\"chat.completion\",\"created\":1792378436,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统报警信息应能区分并指示具体故障回路或故障类型，至少包括高温、低压、低液位和泵故障四类。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:类别数|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水报警系统|intent:报警分类粒度|hint:报警应可区分高温/低压/低液位/泵故障四类，具体分类编码与显示文本待项目报警清单确定}}\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统（高温回路、低温回路及膨胀水箱）运行与停机监视工况；报警阈值与动作逻辑受具体厂家、机型和控制系统配置约束。\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"报警清单中高温、低压、低液位、泵故障四类报警均有独立报警代码与显示文本\\\",\\\"每类报警的触发源（传感器/开关）在报警清单中可追溯至对应回路\\\",\\\"报警显示文本能指明故障所在回路或部件\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水高温报警应设置分级阈值，较低级别与较高级别分别对应不同的基本温度值，并在温度持续超限达到规定延时后发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水高温报警|intent:分级报警温度阈值|hint:来源给出较低级别95°C、较高级别105°C、延时1s，仅适用于该厂家机型与EMS/S6控制系统配置，本项目阈值须按选定机型确认}}\\\",\\\"applicable_condition\\\":\\\"适用于配置EMS/S6控制系统的冷却水温度监视；阈值与延时仅在来源文件限定的厂家、机型和控制系统配置范围内有效。\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"较低级别与较高级别高温报警阈值按确认后的设定值整定并记录\\\",\\\"温度超过阈值并持续达到规定延时后触发对应级别报警\\\",\\\"报警触发后警告灯与诊断指示灯按逻辑接通\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统低压、低液位及泵故障报警应设置各自的触发判据，并在触发后按厂家或规则要求执行报警、降负荷或停机保护动作。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水低压报警|intent:低压报警阈值|hint:压力阈值与延时须按选定机型厂家数据或项目计算文件确定}}；{{TBD|unit:mm|ref:S36 MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:低液位报警阈值|hint:液位阈值须结合膨胀水箱最低水位要求与项目布置确定}}\\\",\\\"applicable_condition\\\":\\\"闭式缸套水冷却系统，含膨胀水箱及淡水泵；报警与保护动作逻辑受具体厂家、机型和控制系统配置约束。\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"低压、低液位、泵故障报警分别按整定值触发且显示文本可区分故障类型\\\",\\\"报警触发后降负荷或停机保护动作按确认的逻辑执行\\\",\\\"报警与保护动作记录可追溯至对应传感器或开关\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-INSP-022\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S36 MAN L23/30H GenSet Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"膨胀水箱应配置液位监视，其最低水位应满足淡水泵吸入压头要求以防止气蚀，低液位状态应能触发报警并指明膨胀水箱回路。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:m|ref:S36 MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:最低水位相对曲轴中心线高度|hint:来源给出8-10 m，仅适用于所列L23/30H、L28/32H、L28/32DF机型，本项目须按选定机型与布置确认}}\\\",\\\"applicable_condition\\\":\\\"适用于来源文件所列发动机型号（5L23/30H～8L23/30H、5L28/32H～9L28/32H、5L28/32DF～9L28/32DF）的闭式缸套水冷却系统。\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"膨胀水箱最低水位相对曲轴中心线的高度满足确认后的限值\\\",\\\"低液位报警触发时显示文本指明膨胀水箱回路\\\",\\\"透气管连接位置位于膨胀水箱最低水位以下\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-INSP-022\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S36 MAN L23/30H GenSet Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水报警与保护逻辑的阈值、延时和动作应在报警清单中按厂家、机型和控制系统配置逐项限定，不得跨机型或跨系统型式泛化引用。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:项|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水报警清单|intent:阈值适用条件标注完整性|hint:报警清单中每项阈值均须标注适用厂家、机型与控制系统配置}}\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统报警设计、整定与验证全过程。\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"报警清单中每项阈值均标注适用厂家、机型与控制系统配置\\\",\\\"不存在超出源文件限定范围的泛化阈值\\\",\\\"阈值变更具有可追溯的确认记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-COMP-077\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3446,\"completion_tokens\":1447,\"total_tokens\":4893,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":3446},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:53:56 GMT"
+  },
+  "response": {
+    "id": "bda6f879-356b-47c9-bf8f-34c358bf8190",
+    "object": "chat.completion",
+    "created": 1792378436,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统报警信息应能区分并指示具体故障回路或故障类型，至少包括高温、低压、低液位和泵故障四类。\",\"measurable_criterion\":\"{{TBD|unit:类别数|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水报警系统|intent:报警分类粒度|hint:报警应可区分高温/低压/低液位/泵故障四类，具体分类编码与显示文本待项目报警清单确定}}\",\"applicable_condition\":\"主机冷却水系统（高温回路、低温回路及膨胀水箱）运行与停机监视工况；报警阈值与动作逻辑受具体厂家、机型和控制系统配置约束。\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"报警清单中高温、低压、低液位、泵故障四类报警均有独立报警代码与显示文本\",\"每类报警的触发源（传感器/开关）在报警清单中可追溯至对应回路\",\"报警显示文本能指明故障所在回路或部件\"],\"evidence_citations\":[{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水高温报警应设置分级阈值，较低级别与较高级别分别对应不同的基本温度值，并在温度持续超限达到规定延时后发出报警。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水高温报警|intent:分级报警温度阈值|hint:来源给出较低级别95°C、较高级别105°C、延时1s，仅适用于该厂家机型与EMS/S6控制系统配置，本项目阈值须按选定机型确认}}\",\"applicable_condition\":\"适用于配置EMS/S6控制系统的冷却水温度监视；阈值与延时仅在来源文件限定的厂家、机型和控制系统配置范围内有效。\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"较低级别与较高级别高温报警阈值按确认后的设定值整定并记录\",\"温度超过阈值并持续达到规定延时后触发对应级别报警\",\"报警触发后警告灯与诊断指示灯按逻辑接通\"],\"evidence_citations\":[{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统低压、低液位及泵故障报警应设置各自的触发判据，并在触发后按厂家或规则要求执行报警、降负荷或停机保护动作。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水低压报警|intent:低压报警阈值|hint:压力阈值与延时须按选定机型厂家数据或项目计算文件确定}}；{{TBD|unit:mm|ref:S36 MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:低液位报警阈值|hint:液位阈值须结合膨胀水箱最低水位要求与项目布置确定}}\",\"applicable_condition\":\"闭式缸套水冷却系统，含膨胀水箱及淡水泵；报警与保护动作逻辑受具体厂家、机型和控制系统配置约束。\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"低压、低液位、泵故障报警分别按整定值触发且显示文本可区分故障类型\",\"报警触发后降负荷或停机保护动作按确认的逻辑执行\",\"报警与保护动作记录可追溯至对应传感器或开关\"],\"evidence_citations\":[{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-INSP-022\",\"tier\":\"L2\",\"source\":\"S36 MAN L23/30H GenSet Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"膨胀水箱应配置液位监视，其最低水位应满足淡水泵吸入压头要求以防止气蚀，低液位状态应能触发报警并指明膨胀水箱回路。\",\"measurable_criterion\":\"{{TBD|unit:m|ref:S36 MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:最低水位相对曲轴中心线高度|hint:来源给出8-10 m，仅适用于所列L23/30H、L28/32H、L28/32DF机型，本项目须按选定机型与布置确认}}\",\"applicable_condition\":\"适用于来源文件所列发动机型号（5L23/30H～8L23/30H、5L28/32H～9L28/32H、5L28/32DF～9L28/32DF）的闭式缸套水冷却系统。\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"膨胀水箱最低水位相对曲轴中心线的高度满足确认后的限值\",\"低液位报警触发时显示文本指明膨胀水箱回路\",\"透气管连接位置位于膨胀水箱最低水位以下\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-INSP-022\",\"tier\":\"L2\",\"source\":\"S36 MAN L23/30H GenSet Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水报警与保护逻辑的阈值、延时和动作应在报警清单中按厂家、机型和控制系统配置逐项限定，不得跨机型或跨系统型式泛化引用。\",\"measurable_criterion\":\"{{TBD|unit:项|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水报警清单|intent:阈值适用条件标注完整性|hint:报警清单中每项阈值均须标注适用厂家、机型与控制系统配置}}\",\"applicable_condition\":\"主机冷却水系统报警设计、整定与验证全过程。\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"报警清单中每项阈值均标注适用厂家、机型与控制系统配置\",\"不存在超出源文件限定范围的泛化阈值\",\"阈值变更具有可追溯的确认记录\"],\"evidence_citations\":[{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":true},{\"kb_id\":\"E-HT-COMP-077\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3446,
+      "completion_tokens": 1447,
+      "total_tokens": 4893,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 3446
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.018468",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.018468",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统报警信息应能区分并指示具体故障回路或故障类型，至少包括高温、低压、低液位和泵故障四类。",
+        "measurable_criterion": "{{TBD|unit:类别数|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水报警系统|intent:报警分类粒度|hint:报警应可区分高温/低压/低液位/泵故障四类，具体分类编码与显示文本待项目报警清单确定}}",
+        "applicable_condition": "主机冷却水系统（高温回路、低温回路及膨胀水箱）运行与停机监视工况；报警阈值与动作逻辑受具体厂家、机型和控制系统配置约束。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警清单中高温、低压、低液位、泵故障四类报警均有独立报警代码与显示文本",
+          "每类报警的触发源（传感器/开关）在报警清单中可追溯至对应回路",
+          "报警显示文本能指明故障所在回路或部件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水高温报警应设置分级阈值，较低级别与较高级别分别对应不同的基本温度值，并在温度持续超限达到规定延时后发出报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水高温报警|intent:分级报警温度阈值|hint:来源给出较低级别95°C、较高级别105°C、延时1s，仅适用于该厂家机型与EMS/S6控制系统配置，本项目阈值须按选定机型确认}}",
+        "applicable_condition": "适用于配置EMS/S6控制系统的冷却水温度监视；阈值与延时仅在来源文件限定的厂家、机型和控制系统配置范围内有效。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "较低级别与较高级别高温报警阈值按确认后的设定值整定并记录",
+          "温度超过阈值并持续达到规定延时后触发对应级别报警",
+          "报警触发后警告灯与诊断指示灯按逻辑接通"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统低压、低液位及泵故障报警应设置各自的触发判据，并在触发后按厂家或规则要求执行报警、降负荷或停机保护动作。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水低压报警|intent:低压报警阈值|hint:压力阈值与延时须按选定机型厂家数据或项目计算文件确定}}；{{TBD|unit:mm|ref:S36 MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:低液位报警阈值|hint:液位阈值须结合膨胀水箱最低水位要求与项目布置确定}}",
+        "applicable_condition": "闭式缸套水冷却系统，含膨胀水箱及淡水泵；报警与保护动作逻辑受具体厂家、机型和控制系统配置约束。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "低压、低液位、泵故障报警分别按整定值触发且显示文本可区分故障类型",
+          "报警触发后降负荷或停机保护动作按确认的逻辑执行",
+          "报警与保护动作记录可追溯至对应传感器或开关"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-INSP-022",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "膨胀水箱应配置液位监视，其最低水位应满足淡水泵吸入压头要求以防止气蚀，低液位状态应能触发报警并指明膨胀水箱回路。",
+        "measurable_criterion": "{{TBD|unit:m|ref:S36 MAN L23/30H GenSet Project Guide|component:膨胀水箱|intent:最低水位相对曲轴中心线高度|hint:来源给出8-10 m，仅适用于所列L23/30H、L28/32H、L28/32DF机型，本项目须按选定机型与布置确认}}",
+        "applicable_condition": "适用于来源文件所列发动机型号（5L23/30H～8L23/30H、5L28/32H～9L28/32H、5L28/32DF～9L28/32DF）的闭式缸套水冷却系统。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "膨胀水箱最低水位相对曲轴中心线的高度满足确认后的限值",
+          "低液位报警触发时显示文本指明膨胀水箱回路",
+          "透气管连接位置位于膨胀水箱最低水位以下"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INSP-022",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水报警与保护逻辑的阈值、延时和动作应在报警清单中按厂家、机型和控制系统配置逐项限定，不得跨机型或跨系统型式泛化引用。",
+        "measurable_criterion": "{{TBD|unit:项|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水报警清单|intent:阈值适用条件标注完整性|hint:报警清单中每项阈值均须标注适用厂家、机型与控制系统配置}}",
+        "applicable_condition": "主机冷却水系统报警设计、整定与验证全过程。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警清单中每项阈值均标注适用厂家、机型与控制系统配置",
+          "不存在超出源文件限定范围的泛化阈值",
+          "阈值变更具有可追溯的确认记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-COMP-077",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:54:02.349207+00:00",
+  "elapsed_seconds": 7.078
+}

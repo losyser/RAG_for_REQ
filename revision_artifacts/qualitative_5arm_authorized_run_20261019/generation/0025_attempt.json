@@ -1,0 +1,37 @@
+{
+  "slot": "OR005-random_new",
+  "body_sha256": "214de6bbc4980a01be26e2e647aa31994e61f7d57668c0d0131375438250ff2c",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:40:52.262717+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR005-random_new",
+    "source_id": "OR005",
+    "group": "random_new",
+    "context_sha256": "54c14140df37fc34ed4fbafe037f851dfc231cd4e759831ff4ca040b49cb31a9",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水系统后期维护不要太复杂，像滤器、冷却器、泵和阀门这些地方要能方便处理。\n\n## 证据清单\n[E-JACKET-PRESS-003] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 主机冷却型式与设计条件：HT冷却水温度在HP TC增压空气冷却器出口处 = 80 °C；HT冷却水在缸套冷却出口处温度未明确给出；LT冷却水在LP TC增压空气冷却器出口处（= 最后一个增压空气冷却器）温度未明确给出；LT冷却水在空气冷却器进口处温度 = 38 °C（设定点32 °C）；滑油在发动机进口处温度 = 65 °C；喷嘴冷却水在发动机进口处温度 = 60 °C。适用条件：V49/60 IMO Tier II – Electric propulsion/EPROX-AC 1,300 kW/cyl.; 600 rpm – Electric propulsion/EPROX-AC，参考条件：热带，空气温度45 °C，冷却水温度在增压空气冷却器前（LT级）38 °C，总大气压力1000 mbar，相对湿度60%。\n\n主机冷却型式与设计条件：HT冷却水温度在HP TC增压空气冷却器出口处 = 80 °C；HT冷却水在缸套冷却出口处温度未明确给出；LT冷却水在LP TC增压空气冷却器出口处（= 最后一个增压空气冷却器）温度未明确给出；LT冷却水在空气冷却器进口处温度 = 38 °C（设定\n  [量化参数] 80、38、32、65、60、1,300、600、45、38、1000、60、12、15600、600、14、18200、600\n\n[E-COOLER-PRESS-022] 层级:L2 来源:S37 MAN L27/38 Propulsion Project Guide\n  内容: 冷却水温度与压力参数\ncreased negative intake pressure before compressor leeds to an de-rating, calculated as increased air temperature before turbocharger U = (-20mbar – p Air before compressor[mbar]) x 0.25K/mbar with U ≥ O Increased e xhaust gas back pressure after turbocharger leads to a de-rating, calculated as increased air temperature before turbocharger: O = (P Exhaust after Turbine[mbar] – 30mbar) x 0.25K/mbar with O ≥ Tcx Cooling w ater temperature inlet charge air cooler (LT -stage) [K] being co\n  [量化参数] -20、0.25、0、30、0.25、0、273、4\n\n[E-HT-ALARM-005] 层级:L3 来源:S41 Everllence 49/60DF Project Guide\n  内容: 高温冷却水系统组成：预热器使用蒸汽或热油运行时可能触发报警，因为发动机启动后无法对热交换器进行后冷却（预热泵被发动机驱动泵的背压阻塞）；预热期间需要电动泵循环高温冷却水。适用条件：高温冷却水系统。\n\n6L缸数配置：最小流量需求 14 – 21；适用条件：预热和后冷却期间。  \n7L缸数配置：最小流量需求 16 – 24；适用条件：预热和后冷却期间。  \n8L缸数配置：最小流量需求 18 – 27；适用条件：预热和后冷却期间。  \n9L缸数配置：最小流量需求 20 – 30；适用条件：预热和后冷却期间。  \n10L缸数配置：最小流量需求 22 – 33；适用条件：预热和后冷却期间。  \n12V缸数配置：最小流量需求 28 – 42；适用条件：预热和后冷却期间。  \n14V缸数配置：最小流量需求 32 – 48；适用条件：预热和后冷却期间。\n\n可支撑：冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。  \n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型\n  [量化参数] 14 – 21、16 – 24、18 – 27、20 – 30、22 – 33、28 – 42、32 – 48\n\n[E-DRAIN-WATER-001] 层级:L3 来源:S50 Washington State Department of Ecology Antifreeze\n  内容: 废冷却液禁止排入地面和排水系统\nNever pour spent antifreeze down or on: The ground. Sewers. Storm drains.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：drain_point 的 water_quality\nenvironmental_protection 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n[L1-CCS2025-7-491.6-018] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 气缸冷却水进机压力或流量报警\n条款 7-49 1.6\n气缸冷却水进机压力或流量应设低报警，过低时触发减速和报警。对十字头式柴油机仅要求压力项目。\n接受标准: 低报警：压力或流量低；过低报警：压力或流量过低，触发减速\n\n[E-COOLER-CTRL-001] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 中央冷却器选型要求\nThe engine control system starts the pump automatically via a motor starter, if the cooling water pressure drops below a preset level when the engine is running. There is a dedicated sensor on the engine for this purpose.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：cooler 的 control\nmonitoring\npressure 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n[E-SYS-SHUT-001] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 冷却水温度与压力参数\nThe safety system Figure 1: External connections to/from the engine control box. The engine control box is watching the most impor- tant safety operating functions of the diesel engine, i.e. low lub. oil pressure, high cooling water temper- ature, and overspeed. If an unintended condition occurs to one of the above functions, the engine control box will release automatic stop of the engine (shutdown). In order to avoid an unintended re-starting after release of a shutdown, there is a \n\n[E-EXP-WATER-008] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 膨胀水箱配置\nA second water pump is used to push sea water through the heat exchanger and, in some applications, through an aftercooler. In heat exchanger cooling systems, an expansion tank and heat exchanger perform the same function as the radiator. However, instead of transferring heat into the air, a heat exchanger system transfers coolant heat to\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：expansion_tank 的 water_quality\nfunction 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "214de6bbc4980a01be26e2e647aa31994e61f7d57668c0d0131375438250ff2c",
+    "utf8_message_bytes": 8737,
+    "execution_index": 25
+  }
+}

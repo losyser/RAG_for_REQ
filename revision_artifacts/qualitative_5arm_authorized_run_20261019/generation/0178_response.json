@@ -1,0 +1,184 @@
+{
+  "slot": "OR036-random_old",
+  "started_at": "2026-10-19T02:59:07.638276+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"34888358-acce-4324-b5d3-fcd35178bc32\",\"object\":\"chat.completion\",\"created\":1792378748,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应配置高温报警功能，当冷却水温度超过设定报警阈值时及时触发报警，不得等到主机过热后才报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:temperature_control_valve|intent:高温报警阈值|hint:原文仅给出温度控制阀配置与接口编号，未给出报警温度限值，需按机型技术数据确定}}\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水高温回路与低温回路均适用；具体阈值按厂家机型技术数据确定\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却水温度达到报警阈值时报警在规定时间内触发\\\",\\\"报警信号在主机过热前发出\\\",\\\"报警阈值与厂家技术数据一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-029\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置低压报警功能，当冷却水压力低于设定报警阈值时及时触发报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mbar|ref:S37 MAN L27/38 Propulsion Project Guide|component:cooler|intent:低压报警阈值|hint:原文给出冷却水进口温度与增压器前后压力降额参数，未给出冷却水低压报警限值，需按项目计算文件确定}}\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水进口冷却器（低温级）回路；具体阈值按厂家技术数据或项目计算文件确定\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却水压力低于报警阈值时报警触发\\\",\\\"报警在主机过热前发出\\\",\\\"阈值依据厂家技术数据或项目计算文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-PRESS-022\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置低液位报警功能，当膨胀水箱或冷却水回路液位低于设定报警阈值时及时触发报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mm|ref:S51 NASA NTRS 19800002357 Piping Specification|component:vent_point|intent:低液位报警阈值|hint:证据仅支撑管路高点排气与低点放水布置原则，未给出液位限值，需按项目设计文件确定}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行与停机状态；液位测点布置应满足可达性与维护要求\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"液位低于报警阈值时报警触发\\\",\\\"液位测点安装位置满足操作与维护可达性\\\",\\\"报警阈值依据项目设计文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-VENT-INSP-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S51 NASA NTRS 19800002357 Piping Specification\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置流量不足报警功能，当冷却水流量低于设定报警阈值时及时触发报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:m³/h|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:cooler|intent:流量不足报警阈值|hint:原文要求复核冷却系统压降与外部阻力-流量曲线以确认流量，未给出报警流量限值，需按选型计算确定}}\\\",\\\"applicable_condition\\\":\\\"主机运行工况，中央冷却器及冷却水回路；流量阈值按冷却系统选型计算结果确定\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"流量低于报警阈值时报警触发\\\",\\\"报警在主机过热前发出\\\",\\\"流量阈值与冷却系统选型计算结果一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-INSP-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统报警监测应覆盖高温、低压、低液位和流量不足四类异常，并在主机过热前完成报警输出。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:s|ref:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine|component:cooler|intent:报警响应时间|hint:原文给出ISO参考工况与负载特定值，未给出报警响应时间限值，需按项目安全分析确定}}\\\",\\\"applicable_condition\\\":\\\"ISO参考工况及部分负载工况（发动机输出100%与85%）；具体响应时间按项目安全分析确定\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"四类异常均具备独立报警通道\\\",\\\"报警输出先于主机过热保护动作\\\",\\\"响应时间满足项目安全分析要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-PRESS-009\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水水质应满足硬度控制要求，防止沉积与腐蚀影响报警监测的可靠性。\\\",\\\"measurable_criterion\\\":\\\"总硬度不超过10°dGH；超过时须与蒸馏水或软化水混合\\\",\\\"applicable_condition\\\":\\\"冷却水加注与运行维护阶段；适用于采用淡水冷却的冷却水系统\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却水总硬度不大于10°dGH\\\",\\\"超标时完成软化或与蒸馏水混合处理\\\",\\\"水质记录可追溯\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLANT-WATER-100\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S36 MAN L23/30H GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统在可能低于冰点的环境条件下应添加兼具防腐作用的防冻剂，或对系统相应部位加热。\\\",\\\"measurable_criterion\\\":\\\"防冻剂冰点不高于–22°C\\\",\\\"applicable_condition\\\":\\\"环境温度可能低于水的冰点的运行或停机工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"防冻剂冰点不高于–22°C\\\",\\\"防冻剂具备防腐性能\\\",\\\"或系统相应部位配置加热措施\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLANT-WATER-142\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1620,\"completion_tokens\":1416,\"total_tokens\":3036,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":1620},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:59:08 GMT"
+  },
+  "response": {
+    "id": "34888358-acce-4324-b5d3-fcd35178bc32",
+    "object": "chat.completion",
+    "created": 1792378748,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应配置高温报警功能，当冷却水温度超过设定报警阈值时及时触发报警，不得等到主机过热后才报警。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:temperature_control_valve|intent:高温报警阈值|hint:原文仅给出温度控制阀配置与接口编号，未给出报警温度限值，需按机型技术数据确定}}\",\"applicable_condition\":\"主机运行工况，冷却水高温回路与低温回路均适用；具体阈值按厂家机型技术数据确定\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却水温度达到报警阈值时报警在规定时间内触发\",\"报警信号在主机过热前发出\",\"报警阈值与厂家技术数据一致\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-029\",\"tier\":\"L3\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置低压报警功能，当冷却水压力低于设定报警阈值时及时触发报警。\",\"measurable_criterion\":\"{{TBD|unit:mbar|ref:S37 MAN L27/38 Propulsion Project Guide|component:cooler|intent:低压报警阈值|hint:原文给出冷却水进口温度与增压器前后压力降额参数，未给出冷却水低压报警限值，需按项目计算文件确定}}\",\"applicable_condition\":\"主机运行工况，冷却水进口冷却器（低温级）回路；具体阈值按厂家技术数据或项目计算文件确定\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却水压力低于报警阈值时报警触发\",\"报警在主机过热前发出\",\"阈值依据厂家技术数据或项目计算文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-PRESS-022\",\"tier\":\"L2\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置低液位报警功能，当膨胀水箱或冷却水回路液位低于设定报警阈值时及时触发报警。\",\"measurable_criterion\":\"{{TBD|unit:mm|ref:S51 NASA NTRS 19800002357 Piping Specification|component:vent_point|intent:低液位报警阈值|hint:证据仅支撑管路高点排气与低点放水布置原则，未给出液位限值，需按项目设计文件确定}}\",\"applicable_condition\":\"冷却水系统运行与停机状态；液位测点布置应满足可达性与维护要求\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"液位低于报警阈值时报警触发\",\"液位测点安装位置满足操作与维护可达性\",\"报警阈值依据项目设计文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-VENT-INSP-001\",\"tier\":\"L3\",\"source\":\"S51 NASA NTRS 19800002357 Piping Specification\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置流量不足报警功能，当冷却水流量低于设定报警阈值时及时触发报警。\",\"measurable_criterion\":\"{{TBD|unit:m³/h|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:cooler|intent:流量不足报警阈值|hint:原文要求复核冷却系统压降与外部阻力-流量曲线以确认流量，未给出报警流量限值，需按选型计算确定}}\",\"applicable_condition\":\"主机运行工况，中央冷却器及冷却水回路；流量阈值按冷却系统选型计算结果确定\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"流量低于报警阈值时报警触发\",\"报警在主机过热前发出\",\"流量阈值与冷却系统选型计算结果一致\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-INSP-001\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统报警监测应覆盖高温、低压、低液位和流量不足四类异常，并在主机过热前完成报警输出。\",\"measurable_criterion\":\"{{TBD|unit:s|ref:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine|component:cooler|intent:报警响应时间|hint:原文给出ISO参考工况与负载特定值，未给出报警响应时间限值，需按项目安全分析确定}}\",\"applicable_condition\":\"ISO参考工况及部分负载工况（发动机输出100%与85%）；具体响应时间按项目安全分析确定\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"四类异常均具备独立报警通道\",\"报警输出先于主机过热保护动作\",\"响应时间满足项目安全分析要求\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-PRESS-009\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水水质应满足硬度控制要求，防止沉积与腐蚀影响报警监测的可靠性。\",\"measurable_criterion\":\"总硬度不超过10°dGH；超过时须与蒸馏水或软化水混合\",\"applicable_condition\":\"冷却水加注与运行维护阶段；适用于采用淡水冷却的冷却水系统\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却水总硬度不大于10°dGH\",\"超标时完成软化或与蒸馏水混合处理\",\"水质记录可追溯\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLANT-WATER-100\",\"tier\":\"L2\",\"source\":\"S36 MAN L23/30H GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统在可能低于冰点的环境条件下应添加兼具防腐作用的防冻剂，或对系统相应部位加热。\",\"measurable_criterion\":\"防冻剂冰点不高于–22°C\",\"applicable_condition\":\"环境温度可能低于水的冰点的运行或停机工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"防冻剂冰点不高于–22°C\",\"防冻剂具备防腐性能\",\"或系统相应部位配置加热措施\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLANT-WATER-142\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1620,
+      "completion_tokens": 1416,
+      "total_tokens": 3036,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1620
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.014568",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.014568",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应配置高温报警功能，当冷却水温度超过设定报警阈值时及时触发报警，不得等到主机过热后才报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:temperature_control_valve|intent:高温报警阈值|hint:原文仅给出温度控制阀配置与接口编号，未给出报警温度限值，需按机型技术数据确定}}",
+        "applicable_condition": "主机运行工况，冷却水高温回路与低温回路均适用；具体阈值按厂家机型技术数据确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却水温度达到报警阈值时报警在规定时间内触发",
+          "报警信号在主机过热前发出",
+          "报警阈值与厂家技术数据一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-029",
+            "tier": "L3",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置低压报警功能，当冷却水压力低于设定报警阈值时及时触发报警。",
+        "measurable_criterion": "{{TBD|unit:mbar|ref:S37 MAN L27/38 Propulsion Project Guide|component:cooler|intent:低压报警阈值|hint:原文给出冷却水进口温度与增压器前后压力降额参数，未给出冷却水低压报警限值，需按项目计算文件确定}}",
+        "applicable_condition": "主机运行工况，冷却水进口冷却器（低温级）回路；具体阈值按厂家技术数据或项目计算文件确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却水压力低于报警阈值时报警触发",
+          "报警在主机过热前发出",
+          "阈值依据厂家技术数据或项目计算文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-PRESS-022",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置低液位报警功能，当膨胀水箱或冷却水回路液位低于设定报警阈值时及时触发报警。",
+        "measurable_criterion": "{{TBD|unit:mm|ref:S51 NASA NTRS 19800002357 Piping Specification|component:vent_point|intent:低液位报警阈值|hint:证据仅支撑管路高点排气与低点放水布置原则，未给出液位限值，需按项目设计文件确定}}",
+        "applicable_condition": "冷却水系统运行与停机状态；液位测点布置应满足可达性与维护要求",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "液位低于报警阈值时报警触发",
+          "液位测点安装位置满足操作与维护可达性",
+          "报警阈值依据项目设计文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-VENT-INSP-001",
+            "tier": "L3",
+            "source": "S51 NASA NTRS 19800002357 Piping Specification",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置流量不足报警功能，当冷却水流量低于设定报警阈值时及时触发报警。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:cooler|intent:流量不足报警阈值|hint:原文要求复核冷却系统压降与外部阻力-流量曲线以确认流量，未给出报警流量限值，需按选型计算确定}}",
+        "applicable_condition": "主机运行工况，中央冷却器及冷却水回路；流量阈值按冷却系统选型计算结果确定",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "流量低于报警阈值时报警触发",
+          "报警在主机过热前发出",
+          "流量阈值与冷却系统选型计算结果一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INSP-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统报警监测应覆盖高温、低压、低液位和流量不足四类异常，并在主机过热前完成报警输出。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine|component:cooler|intent:报警响应时间|hint:原文给出ISO参考工况与负载特定值，未给出报警响应时间限值，需按项目安全分析确定}}",
+        "applicable_condition": "ISO参考工况及部分负载工况（发动机输出100%与85%）；具体响应时间按项目安全分析确定",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "四类异常均具备独立报警通道",
+          "报警输出先于主机过热保护动作",
+          "响应时间满足项目安全分析要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-PRESS-009",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水水质应满足硬度控制要求，防止沉积与腐蚀影响报警监测的可靠性。",
+        "measurable_criterion": "总硬度不超过10°dGH；超过时须与蒸馏水或软化水混合",
+        "applicable_condition": "冷却水加注与运行维护阶段；适用于采用淡水冷却的冷却水系统",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却水总硬度不大于10°dGH",
+          "超标时完成软化或与蒸馏水混合处理",
+          "水质记录可追溯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-WATER-100",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统在可能低于冰点的环境条件下应添加兼具防腐作用的防冻剂，或对系统相应部位加热。",
+        "measurable_criterion": "防冻剂冰点不高于–22°C",
+        "applicable_condition": "环境温度可能低于水的冰点的运行或停机工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "防冻剂冰点不高于–22°C",
+          "防冻剂具备防腐性能",
+          "或系统相应部位配置加热措施"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-WATER-142",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:59:14.578582+00:00",
+  "elapsed_seconds": 6.781
+}

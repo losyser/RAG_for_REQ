@@ -1,0 +1,111 @@
+{
+  "slot": "OR007-norag_original",
+  "started_at": "2026-10-19T02:41:59.657046+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"4e72158f-94ff-46b1-9b3c-6e29a55c74b2\",\"object\":\"chat.completion\",\"created\":1792377720,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"高温冷却水回路与低温冷却水回路应作为两个独立回路分别建模，各自具有独立的回路标识、介质参数和服务对象清单。\\\",\\\"measurable_criterion\\\":\\\"回路数量=2；每个回路具备唯一标识；每个回路服务对象清单非空且两清单交集为空\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统全工况（含设计工况、部分负荷工况、港内工况）\\\",\\\"verification_method\\\":\\\"模型审查（SysML块定义图/内部块图检查）\\\",\\\"acceptance_criteria\\\":[\\\"高温回路与低温回路在系统架构模型中为两个独立块，无共享的模糊父块\\\",\\\"两回路服务对象清单无重复条目\\\",\\\"每个服务对象均明确归属唯一回路\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"高温冷却水回路应仅向高温服务对象（主机缸套、缸盖、排气阀等）供水，低温冷却水回路应仅向低温服务对象（空冷器、滑油冷却器、淡水冷却器等）供水，不得交叉混接。\\\",\\\"measurable_criterion\\\":\\\"高温回路服务对象清单中低温类设备数量=0；低温回路服务对象清单中高温类设备数量=0；交叉连接管路数量=0\\\",\\\"applicable_condition\\\":\\\"所有运行工况及管路布置设计状态\\\",\\\"verification_method\\\":\\\"模型审查结合管路系统图（P&ID）核对\\\",\\\"acceptance_criteria\\\":[\\\"每个服务对象在模型中仅关联一个回路端口\\\",\\\"不存在跨回路直连管路或混流阀组\\\",\\\"服务对象归属与设备热负荷特性一致\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"每个冷却水回路应定义可量化的介质参数（进口温度、出口温度、流量、压力、允许压降），且参数值应可追溯到对应服务对象的热平衡计算。\\\",\\\"measurable_criterion\\\":\\\"每个回路定义的参数项≥5项（温度、流量、压力、压降等）；每项参数均关联热平衡计算依据；参数缺失项=0\\\",\\\"applicable_condition\\\":\\\"设计工况（100%MCR）及常用部分负荷工况\\\",\\\"verification_method\\\":\\\"模型审查与热平衡计算书核对\\\",\\\"acceptance_criteria\\\":[\\\"高温回路与低温回路各自具备完整的温度、流量、压力参数集\\\",\\\"参数值与热平衡计算书一致，偏差在允许范围内\\\",\\\"无参数标注为“待定”或“模糊”\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"冷却水系统模型中应明确每个回路与海水冷却系统（中央冷却器/海水泵）的接口关系，接口处应标注热交换量与流量分配。\\\",\\\"measurable_criterion\\\":\\\"每个回路与海水系统的接口数量≥1；每个接口标注热交换量（kW）与流量（m³/h）；未标注接口数量=0\\\",\\\"applicable_condition\\\":\\\"设计工况及海水温度设计点（如32℃）\\\",\\\"verification_method\\\":\\\"模型审查与系统接口图核对\\\",\\\"acceptance_criteria\\\":[\\\"高温回路与低温回路分别通过独立换热路径与海水系统连接\\\",\\\"接口热交换量之和与主机总散热量平衡\\\",\\\"接口参数与设备选型数据一致\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"冷却水系统模型应禁止存在未归属具体回路或服务对象的模糊系统块，所有冷却水相关块应至少关联一个明确回路。\\\",\\\"measurable_criterion\\\":\\\"未归属回路的冷却水块数量=0；模糊命名块（如“冷却水系统”“水回路”等泛化命名）数量=0\\\",\\\"applicable_condition\\\":\\\"系统架构模型评审状态\\\",\\\"verification_method\\\":\\\"模型审查（命名规范与归属关系检查）\\\",\\\"acceptance_criteria\\\":[\\\"所有冷却水块均通过归属关系关联至高温或低温回路\\\",\\\"块命名符合回路标识规范\\\",\\\"模型审查记录中无模糊归属项\\\"],\\\"evidence_citations\\\":[]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":180,\"completion_tokens\":810,\"total_tokens\":990,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":180},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:42:00 GMT"
+  },
+  "response": {
+    "id": "4e72158f-94ff-46b1-9b3c-6e29a55c74b2",
+    "object": "chat.completion",
+    "created": 1792377720,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"高温冷却水回路与低温冷却水回路应作为两个独立回路分别建模，各自具有独立的回路标识、介质参数和服务对象清单。\",\"measurable_criterion\":\"回路数量=2；每个回路具备唯一标识；每个回路服务对象清单非空且两清单交集为空\",\"applicable_condition\":\"主机冷却水系统全工况（含设计工况、部分负荷工况、港内工况）\",\"verification_method\":\"模型审查（SysML块定义图/内部块图检查）\",\"acceptance_criteria\":[\"高温回路与低温回路在系统架构模型中为两个独立块，无共享的模糊父块\",\"两回路服务对象清单无重复条目\",\"每个服务对象均明确归属唯一回路\"],\"evidence_citations\":[]},{\"shall_statement\":\"高温冷却水回路应仅向高温服务对象（主机缸套、缸盖、排气阀等）供水，低温冷却水回路应仅向低温服务对象（空冷器、滑油冷却器、淡水冷却器等）供水，不得交叉混接。\",\"measurable_criterion\":\"高温回路服务对象清单中低温类设备数量=0；低温回路服务对象清单中高温类设备数量=0；交叉连接管路数量=0\",\"applicable_condition\":\"所有运行工况及管路布置设计状态\",\"verification_method\":\"模型审查结合管路系统图（P&ID）核对\",\"acceptance_criteria\":[\"每个服务对象在模型中仅关联一个回路端口\",\"不存在跨回路直连管路或混流阀组\",\"服务对象归属与设备热负荷特性一致\"],\"evidence_citations\":[]},{\"shall_statement\":\"每个冷却水回路应定义可量化的介质参数（进口温度、出口温度、流量、压力、允许压降），且参数值应可追溯到对应服务对象的热平衡计算。\",\"measurable_criterion\":\"每个回路定义的参数项≥5项（温度、流量、压力、压降等）；每项参数均关联热平衡计算依据；参数缺失项=0\",\"applicable_condition\":\"设计工况（100%MCR）及常用部分负荷工况\",\"verification_method\":\"模型审查与热平衡计算书核对\",\"acceptance_criteria\":[\"高温回路与低温回路各自具备完整的温度、流量、压力参数集\",\"参数值与热平衡计算书一致，偏差在允许范围内\",\"无参数标注为“待定”或“模糊”\"],\"evidence_citations\":[]},{\"shall_statement\":\"冷却水系统模型中应明确每个回路与海水冷却系统（中央冷却器/海水泵）的接口关系，接口处应标注热交换量与流量分配。\",\"measurable_criterion\":\"每个回路与海水系统的接口数量≥1；每个接口标注热交换量（kW）与流量（m³/h）；未标注接口数量=0\",\"applicable_condition\":\"设计工况及海水温度设计点（如32℃）\",\"verification_method\":\"模型审查与系统接口图核对\",\"acceptance_criteria\":[\"高温回路与低温回路分别通过独立换热路径与海水系统连接\",\"接口热交换量之和与主机总散热量平衡\",\"接口参数与设备选型数据一致\"],\"evidence_citations\":[]},{\"shall_statement\":\"冷却水系统模型应禁止存在未归属具体回路或服务对象的模糊系统块，所有冷却水相关块应至少关联一个明确回路。\",\"measurable_criterion\":\"未归属回路的冷却水块数量=0；模糊命名块（如“冷却水系统”“水回路”等泛化命名）数量=0\",\"applicable_condition\":\"系统架构模型评审状态\",\"verification_method\":\"模型审查（命名规范与归属关系检查）\",\"acceptance_criteria\":[\"所有冷却水块均通过归属关系关联至高温或低温回路\",\"块命名符合回路标识规范\",\"模型审查记录中无模糊归属项\"],\"evidence_citations\":[]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 180,
+      "completion_tokens": 810,
+      "total_tokens": 990,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 180
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.00684",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.00684",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "高温冷却水回路与低温冷却水回路应作为两个独立回路分别建模，各自具有独立的回路标识、介质参数和服务对象清单。",
+        "measurable_criterion": "回路数量=2；每个回路具备唯一标识；每个回路服务对象清单非空且两清单交集为空",
+        "applicable_condition": "主机冷却水系统全工况（含设计工况、部分负荷工况、港内工况）",
+        "verification_method": "模型审查（SysML块定义图/内部块图检查）",
+        "acceptance_criteria": [
+          "高温回路与低温回路在系统架构模型中为两个独立块，无共享的模糊父块",
+          "两回路服务对象清单无重复条目",
+          "每个服务对象均明确归属唯一回路"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "高温冷却水回路应仅向高温服务对象（主机缸套、缸盖、排气阀等）供水，低温冷却水回路应仅向低温服务对象（空冷器、滑油冷却器、淡水冷却器等）供水，不得交叉混接。",
+        "measurable_criterion": "高温回路服务对象清单中低温类设备数量=0；低温回路服务对象清单中高温类设备数量=0；交叉连接管路数量=0",
+        "applicable_condition": "所有运行工况及管路布置设计状态",
+        "verification_method": "模型审查结合管路系统图（P&ID）核对",
+        "acceptance_criteria": [
+          "每个服务对象在模型中仅关联一个回路端口",
+          "不存在跨回路直连管路或混流阀组",
+          "服务对象归属与设备热负荷特性一致"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "每个冷却水回路应定义可量化的介质参数（进口温度、出口温度、流量、压力、允许压降），且参数值应可追溯到对应服务对象的热平衡计算。",
+        "measurable_criterion": "每个回路定义的参数项≥5项（温度、流量、压力、压降等）；每项参数均关联热平衡计算依据；参数缺失项=0",
+        "applicable_condition": "设计工况（100%MCR）及常用部分负荷工况",
+        "verification_method": "模型审查与热平衡计算书核对",
+        "acceptance_criteria": [
+          "高温回路与低温回路各自具备完整的温度、流量、压力参数集",
+          "参数值与热平衡计算书一致，偏差在允许范围内",
+          "无参数标注为“待定”或“模糊”"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统模型中应明确每个回路与海水冷却系统（中央冷却器/海水泵）的接口关系，接口处应标注热交换量与流量分配。",
+        "measurable_criterion": "每个回路与海水系统的接口数量≥1；每个接口标注热交换量（kW）与流量（m³/h）；未标注接口数量=0",
+        "applicable_condition": "设计工况及海水温度设计点（如32℃）",
+        "verification_method": "模型审查与系统接口图核对",
+        "acceptance_criteria": [
+          "高温回路与低温回路分别通过独立换热路径与海水系统连接",
+          "接口热交换量之和与主机总散热量平衡",
+          "接口参数与设备选型数据一致"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统模型应禁止存在未归属具体回路或服务对象的模糊系统块，所有冷却水相关块应至少关联一个明确回路。",
+        "measurable_criterion": "未归属回路的冷却水块数量=0；模糊命名块（如“冷却水系统”“水回路”等泛化命名）数量=0",
+        "applicable_condition": "系统架构模型评审状态",
+        "verification_method": "模型审查（命名规范与归属关系检查）",
+        "acceptance_criteria": [
+          "所有冷却水块均通过归属关系关联至高温或低温回路",
+          "块命名符合回路标识规范",
+          "模型审查记录中无模糊归属项"
+        ],
+        "evidence_citations": []
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:42:04.669866+00:00",
+  "elapsed_seconds": 5.0
+}

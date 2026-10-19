@@ -1,0 +1,176 @@
+{
+  "slot": "OR031-semantic_old",
+  "started_at": "2026-10-19T02:56:09.246372+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"368fb040-932b-4877-9cf8-617ecd9b90cd\",\"object\":\"chat.completion\",\"created\":1792378570,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应配置高温冷却水温度监测，并将测量信号接入监控系统，以支持趋势观察和异常判断。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:HT冷却水温度传感器|intent:温度测量范围与报警阈值|hint:依据TE3145/TE3170/TE3180/TE3190测点厂家技术数据确定}}\\\",\\\"applicable_condition\\\":\\\"MAN Energy Solutions 49/60机型，高温冷却水回路，测点TE3145(3102)、TE3170、TE3180、3111/TE3190\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"高温冷却水温度测点覆盖增压空气冷却器出口、缸套冷却出口、低压增压空气冷却器出口及发动机进口\\\",\\\"温度信号接入监控系统并具备趋势记录功能\\\",\\\"报警阈值依据厂家技术数据或项目计算文件确定并形成记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-COMP-036\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置高温冷却水与低温冷却水压力监测，并将压力信号接入监控系统，以支持趋势观察和异常判断。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S38 MAN L16/24 GenSet Project Guide|component:HT/LT冷却水压力传感器PT10、PT01|intent:压力测量范围与报警阈值|hint:依据厂家技术数据或项目计算文件确定，信号范围MW64至MW77}}\\\",\\\"applicable_condition\\\":\\\"MAN Energy Solutions机型L27/38S、L16/24S、L21/31S、L16/24、L21/31、L27/38，淡水侧系统\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"配置HT冷却水压力传感器PT10与LT冷却水压力传感器PT01\\\",\\\"压力信号接入监控系统并具备趋势记录功能\\\",\\\"压力报警阈值依据厂家技术数据或项目计算文件确定并形成记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-COMP-013\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-COMP-015\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置冷却水液位监测，并将液位信号接入监控系统，以支持趋势观察和异常判断。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mm|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水液位传感器|intent:液位测量范围与报警阈值|hint:依据厂家技术数据或项目计算文件确定，并完成校准与功能检查}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统液位监测回路，传感器校准与功能检查按ABS规范要求执行\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"液位传感器安装位置与量程依据厂家技术数据确定\\\",\\\"液位信号接入监控系统并具备趋势记录功能\\\",\\\"液位开关/传感器校准与功能经检查确认正确\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-VALVE-PRESS-029\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应配置冷却水泵运行状态监测，并将泵状态信号接入监控系统，以支持趋势观察和异常判断。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水泵状态监测|intent:泵运行/停止状态信号与异常判断逻辑|hint:依据厂家技术数据或项目计算文件确定状态信号形式与判据}}\\\",\\\"applicable_condition\\\":\\\"MAN Energy Solutions机型L27/38S、L16/24S、L21/31S、L16/24、L21/31、L27/38，淡水侧冷却水系统\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却水泵运行状态信号接入监控系统\\\",\\\"泵状态异常判断逻辑依据厂家技术数据或项目计算文件确定\\\",\\\"状态信号具备趋势记录功能\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-COMP-012\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水温度、压力、液位及泵状态信号接入监控系统前，应完成传感器校准与功能检查，确保信号正确可用。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水温度/压力/液位/流量传感器及泵状态|intent:校准与功能检查|hint:依据规范要求完成校准与功能确认并形成记录}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统传感器及状态监测回路调试与检验阶段\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"液位开关、流量、压力、温度传感器及冷却水导电率传感器等完成校准与功能检查\\\",\\\"检查结果确认信号正确、功能正常并形成记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-VALVE-PRESS-029\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水监测参数的具体量程与报警限值应依据厂家技术数据或项目计算文件确定，不得超出适用机型与工况范围。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S39 MAN L21/31 Project Guide|component:冷却水监测参数|intent:量程与限值确定依据|hint:依据厂家技术数据或项目计算文件确定，适用机型8L21/31、9L21/31、8L27/38、9L27/38}}\\\",\\\"applicable_condition\\\":\\\"MAN Energy Solutions机型8L21/31、9L21/31、8L27/38、9L27/38，2015.11.27版本技术文件\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"各监测参数量程与限值均有厂家技术数据或项目计算文件支撑\\\",\\\"参数适用范围与来源文件限定的机型、系统型式及工况一致\\\",\\\"形成参数确定依据记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-LSENS-FLOW-002\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-LSENS-FLOW-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2214,\"completion_tokens\":1526,\"total_tokens\":3740,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2214},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:56:10 GMT"
+  },
+  "response": {
+    "id": "368fb040-932b-4877-9cf8-617ecd9b90cd",
+    "object": "chat.completion",
+    "created": 1792378570,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应配置高温冷却水温度监测，并将测量信号接入监控系统，以支持趋势观察和异常判断。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:HT冷却水温度传感器|intent:温度测量范围与报警阈值|hint:依据TE3145/TE3170/TE3180/TE3190测点厂家技术数据确定}}\",\"applicable_condition\":\"MAN Energy Solutions 49/60机型，高温冷却水回路，测点TE3145(3102)、TE3170、TE3180、3111/TE3190\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"高温冷却水温度测点覆盖增压空气冷却器出口、缸套冷却出口、低压增压空气冷却器出口及发动机进口\",\"温度信号接入监控系统并具备趋势记录功能\",\"报警阈值依据厂家技术数据或项目计算文件确定并形成记录\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-COMP-036\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置高温冷却水与低温冷却水压力监测，并将压力信号接入监控系统，以支持趋势观察和异常判断。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S38 MAN L16/24 GenSet Project Guide|component:HT/LT冷却水压力传感器PT10、PT01|intent:压力测量范围与报警阈值|hint:依据厂家技术数据或项目计算文件确定，信号范围MW64至MW77}}\",\"applicable_condition\":\"MAN Energy Solutions机型L27/38S、L16/24S、L21/31S、L16/24、L21/31、L27/38，淡水侧系统\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"配置HT冷却水压力传感器PT10与LT冷却水压力传感器PT01\",\"压力信号接入监控系统并具备趋势记录功能\",\"压力报警阈值依据厂家技术数据或项目计算文件确定并形成记录\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-COMP-013\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-COMP-015\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置冷却水液位监测，并将液位信号接入监控系统，以支持趋势观察和异常判断。\",\"measurable_criterion\":\"{{TBD|unit:mm|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水液位传感器|intent:液位测量范围与报警阈值|hint:依据厂家技术数据或项目计算文件确定，并完成校准与功能检查}}\",\"applicable_condition\":\"冷却水系统液位监测回路，传感器校准与功能检查按ABS规范要求执行\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"液位传感器安装位置与量程依据厂家技术数据确定\",\"液位信号接入监控系统并具备趋势记录功能\",\"液位开关/传感器校准与功能经检查确认正确\"],\"evidence_citations\":[{\"kb_id\":\"E-VALVE-PRESS-029\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应配置冷却水泵运行状态监测，并将泵状态信号接入监控系统，以支持趋势观察和异常判断。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水泵状态监测|intent:泵运行/停止状态信号与异常判断逻辑|hint:依据厂家技术数据或项目计算文件确定状态信号形式与判据}}\",\"applicable_condition\":\"MAN Energy Solutions机型L27/38S、L16/24S、L21/31S、L16/24、L21/31、L27/38，淡水侧冷却水系统\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却水泵运行状态信号接入监控系统\",\"泵状态异常判断逻辑依据厂家技术数据或项目计算文件确定\",\"状态信号具备趋势记录功能\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-COMP-012\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水温度、压力、液位及泵状态信号接入监控系统前，应完成传感器校准与功能检查，确保信号正确可用。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水温度/压力/液位/流量传感器及泵状态|intent:校准与功能检查|hint:依据规范要求完成校准与功能确认并形成记录}}\",\"applicable_condition\":\"冷却水系统传感器及状态监测回路调试与检验阶段\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"液位开关、流量、压力、温度传感器及冷却水导电率传感器等完成校准与功能检查\",\"检查结果确认信号正确、功能正常并形成记录\"],\"evidence_citations\":[{\"kb_id\":\"E-VALVE-PRESS-029\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水监测参数的具体量程与报警限值应依据厂家技术数据或项目计算文件确定，不得超出适用机型与工况范围。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S39 MAN L21/31 Project Guide|component:冷却水监测参数|intent:量程与限值确定依据|hint:依据厂家技术数据或项目计算文件确定，适用机型8L21/31、9L21/31、8L27/38、9L27/38}}\",\"applicable_condition\":\"MAN Energy Solutions机型8L21/31、9L21/31、8L27/38、9L27/38，2015.11.27版本技术文件\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"各监测参数量程与限值均有厂家技术数据或项目计算文件支撑\",\"参数适用范围与来源文件限定的机型、系统型式及工况一致\",\"形成参数确定依据记录\"],\"evidence_citations\":[{\"kb_id\":\"E-LSENS-FLOW-002\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-LSENS-FLOW-001\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2214,
+      "completion_tokens": 1526,
+      "total_tokens": 3740,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2214
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.016636",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.016636",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应配置高温冷却水温度监测，并将测量信号接入监控系统，以支持趋势观察和异常判断。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:HT冷却水温度传感器|intent:温度测量范围与报警阈值|hint:依据TE3145/TE3170/TE3180/TE3190测点厂家技术数据确定}}",
+        "applicable_condition": "MAN Energy Solutions 49/60机型，高温冷却水回路，测点TE3145(3102)、TE3170、TE3180、3111/TE3190",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "高温冷却水温度测点覆盖增压空气冷却器出口、缸套冷却出口、低压增压空气冷却器出口及发动机进口",
+          "温度信号接入监控系统并具备趋势记录功能",
+          "报警阈值依据厂家技术数据或项目计算文件确定并形成记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-036",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置高温冷却水与低温冷却水压力监测，并将压力信号接入监控系统，以支持趋势观察和异常判断。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S38 MAN L16/24 GenSet Project Guide|component:HT/LT冷却水压力传感器PT10、PT01|intent:压力测量范围与报警阈值|hint:依据厂家技术数据或项目计算文件确定，信号范围MW64至MW77}}",
+        "applicable_condition": "MAN Energy Solutions机型L27/38S、L16/24S、L21/31S、L16/24、L21/31、L27/38，淡水侧系统",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "配置HT冷却水压力传感器PT10与LT冷却水压力传感器PT01",
+          "压力信号接入监控系统并具备趋势记录功能",
+          "压力报警阈值依据厂家技术数据或项目计算文件确定并形成记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-COMP-013",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-COMP-015",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置冷却水液位监测，并将液位信号接入监控系统，以支持趋势观察和异常判断。",
+        "measurable_criterion": "{{TBD|unit:mm|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水液位传感器|intent:液位测量范围与报警阈值|hint:依据厂家技术数据或项目计算文件确定，并完成校准与功能检查}}",
+        "applicable_condition": "冷却水系统液位监测回路，传感器校准与功能检查按ABS规范要求执行",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "液位传感器安装位置与量程依据厂家技术数据确定",
+          "液位信号接入监控系统并具备趋势记录功能",
+          "液位开关/传感器校准与功能经检查确认正确"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-VALVE-PRESS-029",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置冷却水泵运行状态监测，并将泵状态信号接入监控系统，以支持趋势观察和异常判断。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水泵状态监测|intent:泵运行/停止状态信号与异常判断逻辑|hint:依据厂家技术数据或项目计算文件确定状态信号形式与判据}}",
+        "applicable_condition": "MAN Energy Solutions机型L27/38S、L16/24S、L21/31S、L16/24、L21/31、L27/38，淡水侧冷却水系统",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却水泵运行状态信号接入监控系统",
+          "泵状态异常判断逻辑依据厂家技术数据或项目计算文件确定",
+          "状态信号具备趋势记录功能"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-COMP-012",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度、压力、液位及泵状态信号接入监控系统前，应完成传感器校准与功能检查，确保信号正确可用。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水温度/压力/液位/流量传感器及泵状态|intent:校准与功能检查|hint:依据规范要求完成校准与功能确认并形成记录}}",
+        "applicable_condition": "冷却水系统传感器及状态监测回路调试与检验阶段",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "液位开关、流量、压力、温度传感器及冷却水导电率传感器等完成校准与功能检查",
+          "检查结果确认信号正确、功能正常并形成记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-VALVE-PRESS-029",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水监测参数的具体量程与报警限值应依据厂家技术数据或项目计算文件确定，不得超出适用机型与工况范围。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S39 MAN L21/31 Project Guide|component:冷却水监测参数|intent:量程与限值确定依据|hint:依据厂家技术数据或项目计算文件确定，适用机型8L21/31、9L21/31、8L27/38、9L27/38}}",
+        "applicable_condition": "MAN Energy Solutions机型8L21/31、9L21/31、8L27/38、9L27/38，2015.11.27版本技术文件",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "各监测参数量程与限值均有厂家技术数据或项目计算文件支撑",
+          "参数适用范围与来源文件限定的机型、系统型式及工况一致",
+          "形成参数确定依据记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LSENS-FLOW-002",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-LSENS-FLOW-001",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:56:16.036344+00:00",
+  "elapsed_seconds": 6.656
+}

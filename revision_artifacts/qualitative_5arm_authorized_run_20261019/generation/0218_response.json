@@ -1,0 +1,213 @@
+{
+  "slot": "OR044-semantic_old",
+  "started_at": "2026-10-19T03:03:44.442291+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"e176fe9f-fa2f-4912-8cd1-08dd659a8eb3\",\"object\":\"chat.completion\",\"created\":1792379025,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应设置泄漏检测功能，对冷却水回路中的泄漏进行监测。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:泄漏量或液位变化率|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水回路|intent:泄漏检测阈值|hint:泄漏检测阈值与灵敏度应由厂家技术数据或项目文件确定，不得跨机型泛化}}\\\",\\\"applicable_condition\\\":\\\"适用于涉及水泄漏监测的冷却设备，在正常运行工况下\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"冷却水回路配置泄漏检测装置或功能\\\",\\\"泄漏检测覆盖范围与冷却设备布置一致\\\",\\\"检测阈值来源可追溯至厂家或项目文件\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-009\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统泄漏检测触发时，应在持续有人值守的控制站发出声光报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:声压级dB(A)与光信号可见度|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:持续有人值守控制站报警装置|intent:声光报警可感知性|hint:声压级、光强及报警响应时间应由厂家或项目文件确定}}\\\",\\\"applicable_condition\\\":\\\"适用于涉及水泄漏监测的冷却设备，报警信号送至持续有人值守的控制站\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"泄漏报警同时具备听觉与视觉信号\\\",\\\"报警在持续有人值守控制站可被感知\\\",\\\"报警信号与泄漏检测功能联动正确\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-ALARM-ALARM-009\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C或bar或液位|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:报警与保护阈值|hint:阈值应严格限定在对应厂家、机型和控制系统配置范围内，不得跨机型泛化}}\\\",\\\"applicable_condition\\\":\\\"适用于具体厂家、机型和控制系统配置范围内的冷却水系统\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"报警与保护动作逻辑与厂家文件一致\\\",\\\"阈值来源可追溯至对应厂家或规则文件\\\",\\\"保护动作类型（报警/降负荷/停机）明确\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水温度报警阈值应按厂家规定设置，并在温度超过阈值持续规定时间后触发报警。\\\",\\\"measurable_criterion\\\":\\\"95°C（较低级别基本温度值）；105°C（较高级别基本温度值）；持续时间1秒\\\",\\\"applicable_condition\\\":\\\"适用于Scania DI16船用发动机EMS/S6控制系统配置\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度超过95°C持续1秒触发较低级别报警\\\",\\\"温度超过105°C触发较高级别报警\\\",\\\"报警通过协调器接通警告灯和诊断指示灯\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-003\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"高温冷却水系统压力监测应满足发动机进口额定压力及压力传感器量程要求。\\\",\\\"measurable_criterion\\\":\\\"HT冷却水压力（发动机进口，额定转速）额定值4 bar；PT3145压力范围3 bar至8 bar\\\",\\\"applicable_condition\\\":\\\"适用于MAN 49/60及Everllence 49/60DF机型，额定转速工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"发动机进口额定压力为4 bar\\\",\\\"压力传感器量程覆盖3 bar至8 bar\\\",\\\"参数限定于对应机型与额定转速工况\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统报警阈值和保护动作应受具体厂家、机型和控制系统配置约束，不得跨系统型式或跨机型泛化。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无量纲|ref:厂家技术数据或项目文件|component:冷却水系统报警与保护配置|intent:适用范围约束|hint:需逐机型、逐控制系统确认阈值与动作逻辑的适用边界}}\\\",\\\"applicable_condition\\\":\\\"适用于所有涉及冷却水报警与保护的机型与控制系统配置\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"每条报警阈值标注对应厂家、机型与控制系统\\\",\\\"保护动作逻辑限定在来源文件适用范围内\\\",\\\"无超出限定范围的泛化引用\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-HT-ALARM-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3495,\"completion_tokens\":1502,\"total_tokens\":4997,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":3495},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:03:45 GMT"
+  },
+  "response": {
+    "id": "e176fe9f-fa2f-4912-8cd1-08dd659a8eb3",
+    "object": "chat.completion",
+    "created": 1792379025,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应设置泄漏检测功能，对冷却水回路中的泄漏进行监测。\",\"measurable_criterion\":\"{{TBD|unit:泄漏量或液位变化率|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水回路|intent:泄漏检测阈值|hint:泄漏检测阈值与灵敏度应由厂家技术数据或项目文件确定，不得跨机型泛化}}\",\"applicable_condition\":\"适用于涉及水泄漏监测的冷却设备，在正常运行工况下\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"冷却水回路配置泄漏检测装置或功能\",\"泄漏检测覆盖范围与冷却设备布置一致\",\"检测阈值来源可追溯至厂家或项目文件\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-ALARM-ALARM-009\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统泄漏检测触发时，应在持续有人值守的控制站发出声光报警。\",\"measurable_criterion\":\"{{TBD|unit:声压级dB(A)与光信号可见度|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:持续有人值守控制站报警装置|intent:声光报警可感知性|hint:声压级、光强及报警响应时间应由厂家或项目文件确定}}\",\"applicable_condition\":\"适用于涉及水泄漏监测的冷却设备，报警信号送至持续有人值守的控制站\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"泄漏报警同时具备听觉与视觉信号\",\"报警在持续有人值守控制站可被感知\",\"报警信号与泄漏检测功能联动正确\"],\"evidence_citations\":[{\"kb_id\":\"E-ALARM-ALARM-009\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。\",\"measurable_criterion\":\"{{TBD|unit:°C或bar或液位|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:报警与保护阈值|hint:阈值应严格限定在对应厂家、机型和控制系统配置范围内，不得跨机型泛化}}\",\"applicable_condition\":\"适用于具体厂家、机型和控制系统配置范围内的冷却水系统\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"报警与保护动作逻辑与厂家文件一致\",\"阈值来源可追溯至对应厂家或规则文件\",\"保护动作类型（报警/降负荷/停机）明确\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水温度报警阈值应按厂家规定设置，并在温度超过阈值持续规定时间后触发报警。\",\"measurable_criterion\":\"95°C（较低级别基本温度值）；105°C（较高级别基本温度值）；持续时间1秒\",\"applicable_condition\":\"适用于Scania DI16船用发动机EMS/S6控制系统配置\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度超过95°C持续1秒触发较低级别报警\",\"温度超过105°C触发较高级别报警\",\"报警通过协调器接通警告灯和诊断指示灯\"],\"evidence_citations\":[{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":false},{\"kb_id\":\"E-ALARM-ALARM-003\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":false}]},{\"shall_statement\":\"高温冷却水系统压力监测应满足发动机进口额定压力及压力传感器量程要求。\",\"measurable_criterion\":\"HT冷却水压力（发动机进口，额定转速）额定值4 bar；PT3145压力范围3 bar至8 bar\",\"applicable_condition\":\"适用于MAN 49/60及Everllence 49/60DF机型，额定转速工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"发动机进口额定压力为4 bar\",\"压力传感器量程覆盖3 bar至8 bar\",\"参数限定于对应机型与额定转速工况\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统报警阈值和保护动作应受具体厂家、机型和控制系统配置约束，不得跨系统型式或跨机型泛化。\",\"measurable_criterion\":\"{{TBD|unit:无量纲|ref:厂家技术数据或项目文件|component:冷却水系统报警与保护配置|intent:适用范围约束|hint:需逐机型、逐控制系统确认阈值与动作逻辑的适用边界}}\",\"applicable_condition\":\"适用于所有涉及冷却水报警与保护的机型与控制系统配置\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"每条报警阈值标注对应厂家、机型与控制系统\",\"保护动作逻辑限定在来源文件适用范围内\",\"无超出限定范围的泛化引用\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":false},{\"kb_id\":\"E-HT-ALARM-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3495,
+      "completion_tokens": 1502,
+      "total_tokens": 4997,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 3495
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.019006",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.019006",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应设置泄漏检测功能，对冷却水回路中的泄漏进行监测。",
+        "measurable_criterion": "{{TBD|unit:泄漏量或液位变化率|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水回路|intent:泄漏检测阈值|hint:泄漏检测阈值与灵敏度应由厂家技术数据或项目文件确定，不得跨机型泛化}}",
+        "applicable_condition": "适用于涉及水泄漏监测的冷却设备，在正常运行工况下",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水回路配置泄漏检测装置或功能",
+          "泄漏检测覆盖范围与冷却设备布置一致",
+          "检测阈值来源可追溯至厂家或项目文件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-009",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统泄漏检测触发时，应在持续有人值守的控制站发出声光报警。",
+        "measurable_criterion": "{{TBD|unit:声压级dB(A)与光信号可见度|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:持续有人值守控制站报警装置|intent:声光报警可感知性|hint:声压级、光强及报警响应时间应由厂家或项目文件确定}}",
+        "applicable_condition": "适用于涉及水泄漏监测的冷却设备，报警信号送至持续有人值守的控制站",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "泄漏报警同时具备听觉与视觉信号",
+          "报警在持续有人值守控制站可被感知",
+          "报警信号与泄漏检测功能联动正确"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-009",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。",
+        "measurable_criterion": "{{TBD|unit:°C或bar或液位|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:报警与保护阈值|hint:阈值应严格限定在对应厂家、机型和控制系统配置范围内，不得跨机型泛化}}",
+        "applicable_condition": "适用于具体厂家、机型和控制系统配置范围内的冷却水系统",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "报警与保护动作逻辑与厂家文件一致",
+          "阈值来源可追溯至对应厂家或规则文件",
+          "保护动作类型（报警/降负荷/停机）明确"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度报警阈值应按厂家规定设置，并在温度超过阈值持续规定时间后触发报警。",
+        "measurable_criterion": "95°C（较低级别基本温度值）；105°C（较高级别基本温度值）；持续时间1秒",
+        "applicable_condition": "适用于Scania DI16船用发动机EMS/S6控制系统配置",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度超过95°C持续1秒触发较低级别报警",
+          "温度超过105°C触发较高级别报警",
+          "报警通过协调器接通警告灯和诊断指示灯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-003",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水系统压力监测应满足发动机进口额定压力及压力传感器量程要求。",
+        "measurable_criterion": "HT冷却水压力（发动机进口，额定转速）额定值4 bar；PT3145压力范围3 bar至8 bar",
+        "applicable_condition": "适用于MAN 49/60及Everllence 49/60DF机型，额定转速工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "发动机进口额定压力为4 bar",
+          "压力传感器量程覆盖3 bar至8 bar",
+          "参数限定于对应机型与额定转速工况"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统报警阈值和保护动作应受具体厂家、机型和控制系统配置约束，不得跨系统型式或跨机型泛化。",
+        "measurable_criterion": "{{TBD|unit:无量纲|ref:厂家技术数据或项目文件|component:冷却水系统报警与保护配置|intent:适用范围约束|hint:需逐机型、逐控制系统确认阈值与动作逻辑的适用边界}}",
+        "applicable_condition": "适用于所有涉及冷却水报警与保护的机型与控制系统配置",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "每条报警阈值标注对应厂家、机型与控制系统",
+          "保护动作逻辑限定在来源文件适用范围内",
+          "无超出限定范围的泛化引用"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-ALARM-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:03:50.873897+00:00",
+  "elapsed_seconds": 6.36
+}

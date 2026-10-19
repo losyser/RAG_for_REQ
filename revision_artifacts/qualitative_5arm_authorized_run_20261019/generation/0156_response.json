@@ -1,0 +1,211 @@
+{
+  "slot": "OR032-semantic_new",
+  "started_at": "2026-10-19T02:56:41.366483+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"2430b4b0-4947-4f08-a752-cd05334b1f82\",\"object\":\"chat.completion\",\"created\":1792378602,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"当主机冷却水系统出现低供水（流量不足）、低压力或冷却水泵故障时，系统应能发出明确的报警。\\\", \\\"measurable_criterion\\\": \\\"[Q]冷却水系统出现低供水、低压力或泵故障时，应在有人值班控制站提供声光报警以指示冷却系统任何故障。\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统（HT/LT回路）运行工况；报警阈值与动作逻辑受具体厂家、机型和控制系统配置约束，具体数值未知。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警功能存在且可在有人值班控制站触发声光报警\\\", \\\"报警触发条件覆盖低供水、低压力、泵故障三类事件\\\", \\\"报警阈值与动作逻辑与厂家/机型/控制系统配置一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-009\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-ALARM-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统报警阈值（低供水、低压力、泵故障判定值）应按具体厂家、机型和控制系统配置设定，不得超出该范围泛化。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:厂家/机型控制系统配置|component:冷却水系统|intent:低压力报警阈值|hint:按具体厂家机型控制系统配置确定，证据未给出数值}}\\\", \\\"applicable_condition\\\": \\\"适用于采用特定厂家、机型和控制系统配置的主机冷却水系统；具体机型与工况未知。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"报警阈值文件化并限定在对应厂家、机型和控制系统配置范围内\\\", \\\"阈值来源可追溯至厂家说明书或船级社规则表\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"当冷却水温度超过报警阈值时，系统应发出报警；在具备扭矩降低功能的配置下，应同时触发降负荷保护。\\\", \\\"measurable_criterion\\\": \\\"冷却液温度较低级别报警基本温度值为95°C，较高级别基本温度值为105°C；温度超过95°C且激活扭矩降低功能时燃油量降至70%。\\\", \\\"applicable_condition\\\": \\\"仅适用于Scania DI16配EMS/S6控制系统的冷却液温度监测；其他机型与工况未知，不得泛化。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"温度高于95°C持续1秒时发出CAN报警消息并点亮警告灯与诊断指示灯\\\", \\\"温度超过95°C且扭矩降低激活时燃油量降至70%\\\", \\\"较高级别报警在105°C阈值下动作\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-003\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-006\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"系统应支持在报警条件下进行人工或自动切换冷却水泵（含备用泵投入）。\\\", \\\"measurable_criterion\\\": \\\"[Q]应设置至少两种向发动机供应冷却水的手段，其中一种为独立驱动，且每种手段容量足以满足发动机额定功率连续运行；备用泵投入方式（人工或自动）应可操作。\\\", \\\"applicable_condition\\\": \\\"多机或单机冷却水系统配置；具体切换逻辑与备用泵容量受厂家、机型和控制系统配置约束。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"存在至少两种冷却水供应手段且其一为独立驱动\\\", \\\"每种供应手段容量满足发动机额定功率连续运行\\\", \\\"人工或自动切换操作路径明确且可执行\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-RED-002\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-RED-020\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"当HT冷却水备用泵因任何原因未运行时，发动机应在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。\\\", \\\"measurable_criterion\\\": \\\"备用泵未运行时，发动机在最终停机前以0%至10%负荷运行15分钟。\\\", \\\"applicable_condition\\\": \\\"适用于MAN 49/60四冲程柴油机HT冷却水系统；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"备用泵未运行时执行0%至10%负荷运行15分钟\\\", \\\"发动机停止后HT冷却水泵继续运行15分钟\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-SHUT-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统应配置液位监测及高/低液位报警，并在设置加热和/或冷却系统时配置相应的高/低温度报警或温度监测。\\\", \\\"measurable_criterion\\\": \\\"[Q]化学处理液储罐应设液位监测装置及高/低液位报警；设置加热和/或冷却系统时应设高/低温度报警或温度监测。\\\", \\\"applicable_condition\\\": \\\"适用于设有化学处理液储罐及加热/冷却系统的冷却水配置；具体阈值受厂家与规则约束，数值未知。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"储罐配置液位监测及高/低液位报警\\\", \\\"加热/冷却系统配置高/低温度报警或温度监测\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-LT-ALARM-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S44 PRS Ship Machinery Piping Systems\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"当主冷却水泵不适合抽输舱底水时，应急舱底水吸口可接至除舱底泵外最大1台动力泵，其排量应不小于所要求的舱底泵排量，吸口尺寸至少应与泵的进口尺寸相同。\\\", \\\"measurable_criterion\\\": \\\"替代泵排量≥舱底泵要求排量；吸口尺寸≥泵进口尺寸；接入动力泵数量最大1台。\\\", \\\"applicable_condition\\\": \\\"主冷却水泵不适合抽输舱底水的应急工况；适用于CCS入级船舶。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"替代泵排量不小于所要求舱底泵排量\\\", \\\"吸口尺寸至少等于泵进口尺寸\\\", \\\"接入动力泵不超过1台且非舱底泵\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"L1-CCS2025-3.3.3.3-042\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3337,\"completion_tokens\":1827,\"total_tokens\":5164,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":3337},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:56:42 GMT"
+  },
+  "response": {
+    "id": "2430b4b0-4947-4f08-a752-cd05334b1f82",
+    "object": "chat.completion",
+    "created": 1792378602,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"当主机冷却水系统出现低供水（流量不足）、低压力或冷却水泵故障时，系统应能发出明确的报警。\", \"measurable_criterion\": \"[Q]冷却水系统出现低供水、低压力或泵故障时，应在有人值班控制站提供声光报警以指示冷却系统任何故障。\", \"applicable_condition\": \"主机冷却水系统（HT/LT回路）运行工况；报警阈值与动作逻辑受具体厂家、机型和控制系统配置约束，具体数值未知。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警功能存在且可在有人值班控制站触发声光报警\", \"报警触发条件覆盖低供水、低压力、泵故障三类事件\", \"报警阈值与动作逻辑与厂家/机型/控制系统配置一致\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-009\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}, {\"kb_id\": \"E-HT-ALARM-001\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统报警阈值（低供水、低压力、泵故障判定值）应按具体厂家、机型和控制系统配置设定，不得超出该范围泛化。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:厂家/机型控制系统配置|component:冷却水系统|intent:低压力报警阈值|hint:按具体厂家机型控制系统配置确定，证据未给出数值}}\", \"applicable_condition\": \"适用于采用特定厂家、机型和控制系统配置的主机冷却水系统；具体机型与工况未知。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"报警阈值文件化并限定在对应厂家、机型和控制系统配置范围内\", \"阈值来源可追溯至厂家说明书或船级社规则表\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-001\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}, {\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"当冷却水温度超过报警阈值时，系统应发出报警；在具备扭矩降低功能的配置下，应同时触发降负荷保护。\", \"measurable_criterion\": \"冷却液温度较低级别报警基本温度值为95°C，较高级别基本温度值为105°C；温度超过95°C且激活扭矩降低功能时燃油量降至70%。\", \"applicable_condition\": \"仅适用于Scania DI16配EMS/S6控制系统的冷却液温度监测；其他机型与工况未知，不得泛化。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"温度高于95°C持续1秒时发出CAN报警消息并点亮警告灯与诊断指示灯\", \"温度超过95°C且扭矩降低激活时燃油量降至70%\", \"较高级别报警在105°C阈值下动作\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}, {\"kb_id\": \"E-ALARM-ALARM-003\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}, {\"kb_id\": \"E-ALARM-ALARM-006\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"系统应支持在报警条件下进行人工或自动切换冷却水泵（含备用泵投入）。\", \"measurable_criterion\": \"[Q]应设置至少两种向发动机供应冷却水的手段，其中一种为独立驱动，且每种手段容量足以满足发动机额定功率连续运行；备用泵投入方式（人工或自动）应可操作。\", \"applicable_condition\": \"多机或单机冷却水系统配置；具体切换逻辑与备用泵容量受厂家、机型和控制系统配置约束。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"存在至少两种冷却水供应手段且其一为独立驱动\", \"每种供应手段容量满足发动机额定功率连续运行\", \"人工或自动切换操作路径明确且可执行\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-RED-002\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-RED-020\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}]}, {\"shall_statement\": \"当HT冷却水备用泵因任何原因未运行时，发动机应在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。\", \"measurable_criterion\": \"备用泵未运行时，发动机在最终停机前以0%至10%负荷运行15分钟。\", \"applicable_condition\": \"适用于MAN 49/60四冲程柴油机HT冷却水系统；其他机型未知，不得泛化。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"备用泵未运行时执行0%至10%负荷运行15分钟\", \"发动机停止后HT冷却水泵继续运行15分钟\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-SHUT-006\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统应配置液位监测及高/低液位报警，并在设置加热和/或冷却系统时配置相应的高/低温度报警或温度监测。\", \"measurable_criterion\": \"[Q]化学处理液储罐应设液位监测装置及高/低液位报警；设置加热和/或冷却系统时应设高/低温度报警或温度监测。\", \"applicable_condition\": \"适用于设有化学处理液储罐及加热/冷却系统的冷却水配置；具体阈值受厂家与规则约束，数值未知。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"储罐配置液位监测及高/低液位报警\", \"加热/冷却系统配置高/低温度报警或温度监测\"], \"evidence_citations\": [{\"kb_id\": \"E-LT-ALARM-001\", \"tier\": \"L1\", \"source\": \"S44 PRS Ship Machinery Piping Systems\", \"has_clause\": true}]}, {\"shall_statement\": \"当主冷却水泵不适合抽输舱底水时，应急舱底水吸口可接至除舱底泵外最大1台动力泵，其排量应不小于所要求的舱底泵排量，吸口尺寸至少应与泵的进口尺寸相同。\", \"measurable_criterion\": \"替代泵排量≥舱底泵要求排量；吸口尺寸≥泵进口尺寸；接入动力泵数量最大1台。\", \"applicable_condition\": \"主冷却水泵不适合抽输舱底水的应急工况；适用于CCS入级船舶。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"替代泵排量不小于所要求舱底泵排量\", \"吸口尺寸至少等于泵进口尺寸\", \"接入动力泵不超过1台且非舱底泵\"], \"evidence_citations\": [{\"kb_id\": \"L1-CCS2025-3.3.3.3-042\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3337,
+      "completion_tokens": 1827,
+      "total_tokens": 5164,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 3337
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.02129",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.02129",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "当主机冷却水系统出现低供水（流量不足）、低压力或冷却水泵故障时，系统应能发出明确的报警。",
+        "measurable_criterion": "[Q]冷却水系统出现低供水、低压力或泵故障时，应在有人值班控制站提供声光报警以指示冷却系统任何故障。",
+        "applicable_condition": "主机冷却水系统（HT/LT回路）运行工况；报警阈值与动作逻辑受具体厂家、机型和控制系统配置约束，具体数值未知。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警功能存在且可在有人值班控制站触发声光报警",
+          "报警触发条件覆盖低供水、低压力、泵故障三类事件",
+          "报警阈值与动作逻辑与厂家/机型/控制系统配置一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-009",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统报警阈值（低供水、低压力、泵故障判定值）应按具体厂家、机型和控制系统配置设定，不得超出该范围泛化。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:厂家/机型控制系统配置|component:冷却水系统|intent:低压力报警阈值|hint:按具体厂家机型控制系统配置确定，证据未给出数值}}",
+        "applicable_condition": "适用于采用特定厂家、机型和控制系统配置的主机冷却水系统；具体机型与工况未知。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "报警阈值文件化并限定在对应厂家、机型和控制系统配置范围内",
+          "阈值来源可追溯至厂家说明书或船级社规则表"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "当冷却水温度超过报警阈值时，系统应发出报警；在具备扭矩降低功能的配置下，应同时触发降负荷保护。",
+        "measurable_criterion": "冷却液温度较低级别报警基本温度值为95°C，较高级别基本温度值为105°C；温度超过95°C且激活扭矩降低功能时燃油量降至70%。",
+        "applicable_condition": "仅适用于Scania DI16配EMS/S6控制系统的冷却液温度监测；其他机型与工况未知，不得泛化。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度高于95°C持续1秒时发出CAN报警消息并点亮警告灯与诊断指示灯",
+          "温度超过95°C且扭矩降低激活时燃油量降至70%",
+          "较高级别报警在105°C阈值下动作"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-003",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-006",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "系统应支持在报警条件下进行人工或自动切换冷却水泵（含备用泵投入）。",
+        "measurable_criterion": "[Q]应设置至少两种向发动机供应冷却水的手段，其中一种为独立驱动，且每种手段容量足以满足发动机额定功率连续运行；备用泵投入方式（人工或自动）应可操作。",
+        "applicable_condition": "多机或单机冷却水系统配置；具体切换逻辑与备用泵容量受厂家、机型和控制系统配置约束。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "存在至少两种冷却水供应手段且其一为独立驱动",
+          "每种供应手段容量满足发动机额定功率连续运行",
+          "人工或自动切换操作路径明确且可执行"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-002",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-RED-020",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当HT冷却水备用泵因任何原因未运行时，发动机应在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。",
+        "measurable_criterion": "备用泵未运行时，发动机在最终停机前以0%至10%负荷运行15分钟。",
+        "applicable_condition": "适用于MAN 49/60四冲程柴油机HT冷却水系统；其他机型未知，不得泛化。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "备用泵未运行时执行0%至10%负荷运行15分钟",
+          "发动机停止后HT冷却水泵继续运行15分钟"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应配置液位监测及高/低液位报警，并在设置加热和/或冷却系统时配置相应的高/低温度报警或温度监测。",
+        "measurable_criterion": "[Q]化学处理液储罐应设液位监测装置及高/低液位报警；设置加热和/或冷却系统时应设高/低温度报警或温度监测。",
+        "applicable_condition": "适用于设有化学处理液储罐及加热/冷却系统的冷却水配置；具体阈值受厂家与规则约束，数值未知。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "储罐配置液位监测及高/低液位报警",
+          "加热/冷却系统配置高/低温度报警或温度监测"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-ALARM-001",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当主冷却水泵不适合抽输舱底水时，应急舱底水吸口可接至除舱底泵外最大1台动力泵，其排量应不小于所要求的舱底泵排量，吸口尺寸至少应与泵的进口尺寸相同。",
+        "measurable_criterion": "替代泵排量≥舱底泵要求排量；吸口尺寸≥泵进口尺寸；接入动力泵数量最大1台。",
+        "applicable_condition": "主冷却水泵不适合抽输舱底水的应急工况；适用于CCS入级船舶。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "替代泵排量不小于所要求舱底泵排量",
+          "吸口尺寸至少等于泵进口尺寸",
+          "接入动力泵不超过1台且非舱底泵"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-3.3.3.3-042",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:56:49.015891+00:00",
+  "elapsed_seconds": 7.531
+}

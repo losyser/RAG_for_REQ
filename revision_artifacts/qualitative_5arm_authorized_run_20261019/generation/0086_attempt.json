@@ -1,0 +1,37 @@
+{
+  "slot": "OR018-random_old",
+  "body_sha256": "b178ea5b5342a0978480995089fba0c82a56b8ab96c15894f8e07f6f0998afa7",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:48:50.888927+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR018-random_old",
+    "source_id": "OR018",
+    "group": "random_old",
+    "context_sha256": "0aa99cc1d9b26aee4d726d6904224b827aeb29aed6c9de7686b9b31ebb18342e",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n阀门、滤器和仪表不要装在很难够到的位置，后期操作和检修会很不方便。\n\n## 证据清单\n[E-SYS-PRESS-011] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却水温度与压力参数\nthree to five minutes. Make sure the temperature of the cooling system is between 85°C (185°F) and 99°C (210°F). This temperature can be checked by installing a thermistor probe in the regulator housing ahead of the regulator. This is a test for gas in the system, not steam, which can produce similar conditions if the temperature is permitted to increase. Look at the amount of bubbles in the glass jar. If an occasional bubble is visible there is no air or combustion gases in the cooli\n  [量化参数] three to five minutes、85°C、185°F、99°C、210°F\n\n[E-PIPE-CLEAN-008] 层级:L3 来源:S42 MAN 49/60DF Project Guide\n  内容: 冷却液污染与沉积风险\nfuel oil. Cleaning of the system is quite easy and only a small amount of con- taminated water has to be discharged to the sludge tank. In case the nozzle cooling water is not contaminated, it may be drained to the cooling water col- lecting tank T-074. The nozzle cooling water is to be treated with corrosion in- hibitor according to MAN Energy Solutions specification. For further informa- tion see section Specification of engine coolant, Page 279. Note: In diesel engines designed to \n  [量化参数] 72\n\n[E-HT-INSP-001] 层级:L2 来源:S08 MAN Energy Solutions SL2016-623 Cooling water treatment\n  内容: 冷却液水质检测方法\n2 together with the requirements to the minimum additive concentration. The additive concentration must be checked once a week using the test kit provided by the additive manufacturer or by MAN Diesel & Turbo. Check 010.000.023-13: Specification of engine coolant, for further information on freshwater quality and treatment. Check 010.000.002-03: Coolants inspecting, for information on check of the cooling water. In conclusion it should be noted that alternative and ap- proved products \n  [量化参数] 60\n\n[E-SYS-DRAW-015] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 主机冷却型式与设计条件：设计参考冷却水系统图（第348页），在上述参考条件下；涡轮出口温度公差±20 °C，流量公差±10%；基于上述参考条件下涡轮出口规定温度和总大气压计算。适用条件：MAN L49/60DF，燃气模式，电力推进/EPROX-AC。\n\n该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。\n可支撑：管系图纸；材料信息；设计压力和泵额定参数应在送审文件中清楚标注；图纸审查应覆盖与冷却水管系相关的接口；材料；压力等级和泵参数。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n  [量化参数] ±20、±10、第348页\n\n[E-COOLANT-WATER-066] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却液冰点与乙二醇比例\nproportion of antifreeze lowers the proportion of additive. This will lower the ability of the coolant to protect the system from pitting, from cavitation, from erosion, and from deposits. During daily maintenance, use the premixed Cat ELC as a cooling system top-off. This action will bring the coolant up to the proper level. Check the specific gravity of the coolant system with the 245-5829 Coolant/Battery Tester/Refractometer. This tester gives readings that are immediate and accur\n  [量化参数] 245-5829\n\n[E-COOLANT-INSP-055] 层级:L3 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 冷却液水质检测方法\nand salts which means that deposits that could interfere with the transfer of heat to the cooling water, and therefore also reduce the cooling effect, can- not form. However, these waters are more corrosive than normal hard water as the thin film of lime scale that would otherwise provide temporary corro- sion protection does not form on the walls. This is why distilled water must be handled particularly carefully and the concentration of the additive must be regularly checked. The tot\n\n[E-EXP-WATER-006] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 膨胀水箱作用\nuser has no control over the function of the expansion tank. However, many engines can have custom cooling systems and/or remote radiators that have a separate customer specified expansion tank. Full Flow and Partial (Remote) Flow Expansion Tanks There are two types of expansion tanks, full flow and partial flow. Partial flow tanks are also called remote flow tanks or shunt tanks. Full Flow Since all flow circulated by the cooling system passes through it, a full flow expansion tank perfo\n\n[E-COOLER-COMP-003] 层级:L3 来源:S07 Scania Marine Cooling System Issue 8\n  内容: 中央冷却器配置\nor if the engine will be repeatedly started without sea water in the system. From the sea water pump, the water is first led through the charge air cooler, where it cools the air from the turbocharger. The water is then led through the heat exchang- er, where it cools the internal coolant circuit of the engine. After the heat exchanger, the water is led to the outlet. It is also possible to connect a water-cooled exhaust pipe bend to the sea water outlet.\n整理说明：原文说明系统组成、部件功能或连接关系，可用于确定系统边\n\n[E-COOLER-CLEAN-016] 层级:L1 来源:S32 HY/T 海水循环冷却系统运行管理规范\n  内容: 板式换热器拆解清洗要求\n9.3.10 当板式换热器结垢严重而影响换热效果时， 应进行拆解清洗。板式换热器的拆解清洗应满足以 下要求： a) 不应使用金属刷刷洗板片； b) 宜采用甲酸类清洗液进行辅助刷洗，其他清洗液不应腐蚀板片； c) 拆解清洗过程中应检查板片与密封垫圈的粘合是否完好并应更换损坏密封垫圈； d) 损坏板片应及时更换； e) 重新压紧板片时应根据上一次压紧的刻度位置，防止压紧过度； f) 螺栓应对角压紧，受力均匀； g) 清洗的质量应符合 GB/T 25146 的规定。\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序执行。\n清洗后重新投运前应关注残留清洗剂\n泄漏\n沉积物或换热能力恢复情况。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。\n2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。\n3. 不能替代更高权威等级的规范、厂家\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "b178ea5b5342a0978480995089fba0c82a56b8ab96c15894f8e07f6f0998afa7",
+    "utf8_message_bytes": 8149,
+    "execution_index": 86
+  }
+}

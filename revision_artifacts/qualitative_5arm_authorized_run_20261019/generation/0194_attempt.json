@@ -1,0 +1,37 @@
+{
+  "slot": "OR039-semantic_new",
+  "body_sha256": "878ef214294d7bd7d0b114e91b0b8c962b30a9f2374c746e6fdb3f3b0c7105ea",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:01:10.429120+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR039-semantic_new",
+    "source_id": "OR039",
+    "group": "semantic_new",
+    "context_sha256": "d406b9dac74afcfbf412dd999987afb468b06490dd0977de0ce9db00e5428ded",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n传感器异常不能被当成正常状态，系统要能提示测量信号可能有问题。\n\n## 证据清单\n[E-JACKET-FLOW-004] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 淡水侧流向\nHinged Radiator Guard A hinged radiator guard permits easy access to the front of the radiator. This makes it easy to inspect and thoroughly clean the radiator without removing the heavy guards. Coolant Flow Indicators Coolant flow indicators are found on some machines. When there is a loss of coolant, the coolant flow indicator, which will be a horn and a light, will signal the operator to let him know there is a problem. Loss of coolant flow can be caused by low coolant level, water pump\n  [量化参数] -18、0\n\n[E-HT-SHUT-005] 层级:L2 来源:S39 MAN L21/31 Project Guide\n  内容: 高温冷却水系统组成：100% load Delay sec. Auto stop of engine Start failure sec < 10 SX 83 switch Stop signal SS 84 switch Stop failure sec < 30 SX 84 switch 30 Engine run 900/1000 rpm SI 90 SS 90A (I) Ready to start SS 87 switch 0 * Acceptable value at shop test or after repair Soft shut down。适用条件：For the following alarms we recommend to implement soft shut down in the power management system: PAL 22 Lubricating oil pressure inlet engine TAH 12 HT cooling water temperature - high TAH 60 Exhaust temperatur\n  [量化参数] 100%、10、30、30、900/1000、0\n\n[E-HT-SHUT-003] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 高温冷却水系统组成：100% load时，Delay sec. 自动停机；Stop signal SS 84 switch；Stop failure sec < 30 SX 84 switch 30；Engine run 1200/1000 rpm SI 90 SS 90A (I)；Ready to start SS 87 switch 0 * Acceptable value at shop test or after repair。适用条件：Soft shut down。对于以下报警，建议在电源管理系统中实施软停机：PAL 22 润滑油压力入口发动机；TAH 12 高温冷却水温度 - 高；TAH 60 排气温度偏差 - 高。如果适用：LAH 92 高油雾浓度；TAH 58 飞溅油温度 - 高；TDAH 58 飞溅油温度偏差报警 - 高；TAH 29 主轴承温度 - 高。通过软停机，船舶电源管理系统必须启动下一台备用发动机并将负载转移至此，随后带有报警的发动机关闭。\n\n可支撑：冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。报警阈值和保护动作应受具体厂\n  [量化参数] 100%、30、1200/1000、0\n\n[E-SYS-ALARM-001] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却系统泄漏检查要求\nFuel oil leakage is led to a leakage alarm which is heated by means of fuel re- turn oil. The fuel leak oil can be reused and led to the fuel oil tank as it not are mixed with the waste oil. As mentioned above the waste oil is separated from leak oil, and led to the waste oil tank. Internal nozzle cooling system The nozzles of the injection valves on the engines are temperature controlled by means of a circuit containing the engines lubricating oil as media. The system maintains a noz\n\n[E-SENSOR-ALARM-001] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 传感器与报警配置\ncontinuously manned location if the conductivity exceeds the manufacturer specified value. In case of failure of the cooling system, an alarm is to be given both locally and remotely at a continuously manned location and the output current is to be reduced automatically. Cooling liquids which are in contact with live unearthed parts of the assembly are to be non- conductive and non-flammable. Part 4 Vessel Systems and Machinery Chapter 8 Electrical Systems Section 3 Electrical Equipment\n\n[E-SW-ALARM-001] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 传感器与报警配置\n13.5.2 Sea Water Main Circulating Pump Where scoop circulation is provided for the main condenser, a low water supply situation is to be alarmed to allow manual starting of the main circulating pump. Alternatively, the pump may be automatically started as vessel speed reduces or as required by the design of the cooling system for satisfactory operation of the propulsion machinery.\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置\n\n[E-VALVE-SHUT-001] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 传感器与报警配置：Fail-safe概念应应用于所有控制系统、手动应急控制系统和安全系统的设计；在考虑其应用时，应适当考虑单个机械、机械所属系统及整个船舶的安全。适用条件：4-9-2/3.1.1，TABLE 1展示了典型Fail-safe状态示例但非详尽，参考规则4-9-1/5.1.11和4-9-3/5.1.8。\n\n典型Fail-safe状态示例：推进速度控制系统典型Fail-safe状态为维持状态；可控螺距桨系统典型Fail-safe状态为维持状态；推进安全停机系统典型Fail-safe状态为维持状态并报警；报警系统典型Fail-safe状态为发出报警；冷却水阀典型Fail-safe状态在大多数情况下为开启状态。\n\n可支撑：冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护；报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。\n\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化；2. 不能直接生成原文未给出的具体数值、持续时间或验收判据；3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "878ef214294d7bd7d0b114e91b0b8c962b30a9f2374c746e6fdb3f3b0c7105ea",
+    "utf8_message_bytes": 7137,
+    "execution_index": 194
+  }
+}

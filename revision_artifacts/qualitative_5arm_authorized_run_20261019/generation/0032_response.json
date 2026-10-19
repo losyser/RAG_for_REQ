@@ -1,0 +1,228 @@
+{
+  "slot": "OR007-random_old",
+  "started_at": "2026-10-19T02:41:40.495339+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"23047472-41cb-43ea-9ba9-3563a6d18286\",\"object\":\"chat.completion\",\"created\":1792377701,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"高温冷却水回路与低温冷却水回路应作为两个独立回路分别建模，各自具有独立的服务对象清单、管路边界与参数定义，不得将不同服务对象的冷却需求合并到同一模糊系统中。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:回路数|ref:S42 MAN 49/60DF Project Guide|component:主机冷却水系统|intent:回路划分|hint:应明确HT与LT两个独立回路的边界及各自服务对象清单}}\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统设计、建模与审图阶段；所有工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"系统架构图中HT回路与LT回路以独立边界表示\\\",\\\"每个回路均列出明确的服务对象清单（如缸套、增压空气冷却器、喷嘴冷却水等）\\\",\\\"不存在跨回路混接的模糊系统定义\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-DRAW-005\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-JACKET-PRESS-024\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"低温冷却水回路应明确其服务对象包含喷嘴冷却水冷却器，且喷嘴冷却水温度控制阀的调节范围应保证喷嘴冷却水温度不低于规定下限。\\\",\\\"measurable_criterion\\\":\\\"55 °C（调节阀开始开启）至 65 °C（冷却器管路全开）；喷嘴冷却水温度至少 55 °C\\\",\\\"applicable_condition\\\":\\\"使用HFO燃料的主机运行工况，含待机与起动工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度控制阀在约55 °C开始开启，约65 °C全开\\\",\\\"HFO运行、待机及起动工况下喷嘴冷却水温度始终不低于55 °C\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-PRESS-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-TCV-DRAW-005\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"高温冷却水回路应明确其散热构成（含增压空气冷却器LP/HP高温级、缸套冷却、涡轮增压器冷却），并在参考工况下按规定的散热量进行设计。\\\",\\\"measurable_criterion\\\":\\\"1,166 kJ/kWh（HT回路总散热量）；参考工况：空气温度45 °C、增压空气冷却器前冷却水温度（LT级）38 °C、总大气压力1,000 mbar、相对湿度60 %、发动机输出100 %、转速600 rpm\\\",\\\"applicable_condition\\\":\\\"参考工况：热带（Tropics），发动机输出100 %，转速600 rpm\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"HT回路设计散热量不低于1,166 kJ/kWh\\\",\\\"设计文件中列明HT回路各散热构成项\\\",\\\"参考工况参数与规定值一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-JACKET-PRESS-024\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"高温冷却水回路应配置独立备用泵，其自由站立式备用泵的最小所需压升应按机型规定取值。\\\",\\\"measurable_criterion\\\":\\\"6L: 3.6 bar；7L、8L: 3.5 bar；9L: 3.4 bar；10L: 3.3 bar；12V: 3.9 bar；14V: 4.4 bar\\\",\\\"applicable_condition\\\":\\\"按具体机型（6L/7L/8L/9L/10L/12V/14V）对应的HT冷却水备用泵选型\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"备用泵最小压升满足对应机型规定值\\\",\\\"外部HT系统允许压损不超过2.5 bar\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-RED-010\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水回路的设计压力、管路等级与试验压力应按泵侧压力计算确定，并保证安全阀整定值不低于设计压力。\\\",\\\"measurable_criterion\\\":\\\"设计压力不低于1.2 MPa（12 bar）；管路等级PN16；管路试验压力为设计压力的1.5倍即1.8 MPa（18 bar）；安全阀整定值示例1.2 MPa（12 bar）\\\",\\\"applicable_condition\\\":\\\"冷却水泵排出压力达1.05 MPa（10.5 bar）的回路设计工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"设计压力≥1.2 MPa（12 bar）\\\",\\\"管路等级不低于PN16\\\",\\\"管路试验压力≥1.8 MPa（18 bar）\\\",\\\"安全阀整定值不低于设计压力\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-PRESS-006\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水回路应设置膨胀水箱，其容量应满足系统膨胀量与储备量要求，且膨胀水箱压力等级应与其所在回路（HT/LT）设计压力匹配。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:%|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:膨胀水箱|intent:容量占比|hint:膨胀水箱容积应至少为系统冷却液总容积的规定百分比，证据给出15%与3%两种来源，需按项目选定}}\\\",\\\"applicable_condition\\\":\\\"各冷却水回路膨胀水箱选型设计\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"膨胀水箱容积满足所选来源规定的系统总容积占比\\\",\\\"发动机自带膨胀水箱最大压力限值96 kPa（14 psi）不得用于超限的高温系统设计\\\",\\\"外接膨胀水箱时原膨胀水箱应拆除并设置放气管\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-EXP-WATER-007\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-EXP-WATER-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S07 Scania Marine Cooling System Issue 8\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水水质与防冻剂浓度应按厂家规定的工作浓度范围控制，并按周期对冷却液状态进行检查。\\\",\\\"measurable_criterion\\\":\\\"冷却液添加剂最小40%体积比（防冻至约-25 °C）、45%（约-31 °C）、50%（约-37 °C）、最大55%（约-45 °C）；检查周期至少每周一次\\\",\\\"applicable_condition\\\":\\\"发动机运行期间冷却液维护与检查\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却液添加剂体积比在40%～55%范围内\\\",\\\"对应冰点满足所选浓度档位要求\\\",\\\"冷却液状态检查频率不低于每周一次\\\",\\\"膨胀水箱中无水含油迹象（变色或可见油膜）\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-WATER-005\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S26 MTU, Fluids and Lubricants Specifications, A001065\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-EXP-INSP-031\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水管系图纸应完整表达各回路的材料、管径、设计压力、泵额定容量与关断扬程等信息，以支撑审图与文件完整性核查。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:项|ref:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine|component:冷却水管系图纸|intent:图纸信息完整性|hint:图纸应包含材料、管径、设计压力、泵额定容量、关断扬程等要素清单}}\\\",\\\"applicable_condition\\\":\\\"冷却水管系送审图纸编制与审查阶段\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"图纸标注材料信息\\\",\\\"图纸标注管径\\\",\\\"图纸标注设计压力\\\",\\\"图纸标注泵额定容量与关断扬程\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-DRAW-007\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2766,\"completion_tokens\":1906,\"total_tokens\":4672,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2766},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:41:41 GMT"
+  },
+  "response": {
+    "id": "23047472-41cb-43ea-9ba9-3563a6d18286",
+    "object": "chat.completion",
+    "created": 1792377701,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"高温冷却水回路与低温冷却水回路应作为两个独立回路分别建模，各自具有独立的服务对象清单、管路边界与参数定义，不得将不同服务对象的冷却需求合并到同一模糊系统中。\",\"measurable_criterion\":\"{{TBD|unit:回路数|ref:S42 MAN 49/60DF Project Guide|component:主机冷却水系统|intent:回路划分|hint:应明确HT与LT两个独立回路的边界及各自服务对象清单}}\",\"applicable_condition\":\"主机冷却水系统设计、建模与审图阶段；所有工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"系统架构图中HT回路与LT回路以独立边界表示\",\"每个回路均列出明确的服务对象清单（如缸套、增压空气冷却器、喷嘴冷却水等）\",\"不存在跨回路混接的模糊系统定义\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-DRAW-005\",\"tier\":\"L3\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":false},{\"kb_id\":\"E-JACKET-PRESS-024\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"低温冷却水回路应明确其服务对象包含喷嘴冷却水冷却器，且喷嘴冷却水温度控制阀的调节范围应保证喷嘴冷却水温度不低于规定下限。\",\"measurable_criterion\":\"55 °C（调节阀开始开启）至 65 °C（冷却器管路全开）；喷嘴冷却水温度至少 55 °C\",\"applicable_condition\":\"使用HFO燃料的主机运行工况，含待机与起动工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度控制阀在约55 °C开始开启，约65 °C全开\",\"HFO运行、待机及起动工况下喷嘴冷却水温度始终不低于55 °C\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-PRESS-001\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-TCV-DRAW-005\",\"tier\":\"L3\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"高温冷却水回路应明确其散热构成（含增压空气冷却器LP/HP高温级、缸套冷却、涡轮增压器冷却），并在参考工况下按规定的散热量进行设计。\",\"measurable_criterion\":\"1,166 kJ/kWh（HT回路总散热量）；参考工况：空气温度45 °C、增压空气冷却器前冷却水温度（LT级）38 °C、总大气压力1,000 mbar、相对湿度60 %、发动机输出100 %、转速600 rpm\",\"applicable_condition\":\"参考工况：热带（Tropics），发动机输出100 %，转速600 rpm\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"HT回路设计散热量不低于1,166 kJ/kWh\",\"设计文件中列明HT回路各散热构成项\",\"参考工况参数与规定值一致\"],\"evidence_citations\":[{\"kb_id\":\"E-JACKET-PRESS-024\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"高温冷却水回路应配置独立备用泵，其自由站立式备用泵的最小所需压升应按机型规定取值。\",\"measurable_criterion\":\"6L: 3.6 bar；7L、8L: 3.5 bar；9L: 3.4 bar；10L: 3.3 bar；12V: 3.9 bar；14V: 4.4 bar\",\"applicable_condition\":\"按具体机型（6L/7L/8L/9L/10L/12V/14V）对应的HT冷却水备用泵选型\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"备用泵最小压升满足对应机型规定值\",\"外部HT系统允许压损不超过2.5 bar\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-RED-010\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水回路的设计压力、管路等级与试验压力应按泵侧压力计算确定，并保证安全阀整定值不低于设计压力。\",\"measurable_criterion\":\"设计压力不低于1.2 MPa（12 bar）；管路等级PN16；管路试验压力为设计压力的1.5倍即1.8 MPa（18 bar）；安全阀整定值示例1.2 MPa（12 bar）\",\"applicable_condition\":\"冷却水泵排出压力达1.05 MPa（10.5 bar）的回路设计工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"设计压力≥1.2 MPa（12 bar）\",\"管路等级不低于PN16\",\"管路试验压力≥1.8 MPa（18 bar）\",\"安全阀整定值不低于设计压力\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-PRESS-006\",\"tier\":\"L2\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水回路应设置膨胀水箱，其容量应满足系统膨胀量与储备量要求，且膨胀水箱压力等级应与其所在回路（HT/LT）设计压力匹配。\",\"measurable_criterion\":\"{{TBD|unit:%|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:膨胀水箱|intent:容量占比|hint:膨胀水箱容积应至少为系统冷却液总容积的规定百分比，证据给出15%与3%两种来源，需按项目选定}}\",\"applicable_condition\":\"各冷却水回路膨胀水箱选型设计\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"膨胀水箱容积满足所选来源规定的系统总容积占比\",\"发动机自带膨胀水箱最大压力限值96 kPa（14 psi）不得用于超限的高温系统设计\",\"外接膨胀水箱时原膨胀水箱应拆除并设置放气管\"],\"evidence_citations\":[{\"kb_id\":\"E-EXP-WATER-007\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":false},{\"kb_id\":\"E-EXP-WATER-001\",\"tier\":\"L3\",\"source\":\"S07 Scania Marine Cooling System Issue 8\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水水质与防冻剂浓度应按厂家规定的工作浓度范围控制，并按周期对冷却液状态进行检查。\",\"measurable_criterion\":\"冷却液添加剂最小40%体积比（防冻至约-25 °C）、45%（约-31 °C）、50%（约-37 °C）、最大55%（约-45 °C）；检查周期至少每周一次\",\"applicable_condition\":\"发动机运行期间冷却液维护与检查\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却液添加剂体积比在40%～55%范围内\",\"对应冰点满足所选浓度档位要求\",\"冷却液状态检查频率不低于每周一次\",\"膨胀水箱中无水含油迹象（变色或可见油膜）\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-WATER-005\",\"tier\":\"L3\",\"source\":\"S26 MTU, Fluids and Lubricants Specifications, A001065\",\"has_clause\":false},{\"kb_id\":\"E-EXP-INSP-031\",\"tier\":\"L3\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水管系图纸应完整表达各回路的材料、管径、设计压力、泵额定容量与关断扬程等信息，以支撑审图与文件完整性核查。\",\"measurable_criterion\":\"{{TBD|unit:项|ref:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine|component:冷却水管系图纸|intent:图纸信息完整性|hint:图纸应包含材料、管径、设计压力、泵额定容量、关断扬程等要素清单}}\",\"applicable_condition\":\"冷却水管系送审图纸编制与审查阶段\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"图纸标注材料信息\",\"图纸标注管径\",\"图纸标注设计压力\",\"图纸标注泵额定容量与关断扬程\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-DRAW-007\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2766,
+      "completion_tokens": 1906,
+      "total_tokens": 4672,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2766
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.02078",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.02078",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "高温冷却水回路与低温冷却水回路应作为两个独立回路分别建模，各自具有独立的服务对象清单、管路边界与参数定义，不得将不同服务对象的冷却需求合并到同一模糊系统中。",
+        "measurable_criterion": "{{TBD|unit:回路数|ref:S42 MAN 49/60DF Project Guide|component:主机冷却水系统|intent:回路划分|hint:应明确HT与LT两个独立回路的边界及各自服务对象清单}}",
+        "applicable_condition": "主机冷却水系统设计、建模与审图阶段；所有工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "系统架构图中HT回路与LT回路以独立边界表示",
+          "每个回路均列出明确的服务对象清单（如缸套、增压空气冷却器、喷嘴冷却水等）",
+          "不存在跨回路混接的模糊系统定义"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-DRAW-005",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-JACKET-PRESS-024",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温冷却水回路应明确其服务对象包含喷嘴冷却水冷却器，且喷嘴冷却水温度控制阀的调节范围应保证喷嘴冷却水温度不低于规定下限。",
+        "measurable_criterion": "55 °C（调节阀开始开启）至 65 °C（冷却器管路全开）；喷嘴冷却水温度至少 55 °C",
+        "applicable_condition": "使用HFO燃料的主机运行工况，含待机与起动工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度控制阀在约55 °C开始开启，约65 °C全开",
+          "HFO运行、待机及起动工况下喷嘴冷却水温度始终不低于55 °C"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-PRESS-001",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-TCV-DRAW-005",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应明确其散热构成（含增压空气冷却器LP/HP高温级、缸套冷却、涡轮增压器冷却），并在参考工况下按规定的散热量进行设计。",
+        "measurable_criterion": "1,166 kJ/kWh（HT回路总散热量）；参考工况：空气温度45 °C、增压空气冷却器前冷却水温度（LT级）38 °C、总大气压力1,000 mbar、相对湿度60 %、发动机输出100 %、转速600 rpm",
+        "applicable_condition": "参考工况：热带（Tropics），发动机输出100 %，转速600 rpm",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "HT回路设计散热量不低于1,166 kJ/kWh",
+          "设计文件中列明HT回路各散热构成项",
+          "参考工况参数与规定值一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-PRESS-024",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应配置独立备用泵，其自由站立式备用泵的最小所需压升应按机型规定取值。",
+        "measurable_criterion": "6L: 3.6 bar；7L、8L: 3.5 bar；9L: 3.4 bar；10L: 3.3 bar；12V: 3.9 bar；14V: 4.4 bar",
+        "applicable_condition": "按具体机型（6L/7L/8L/9L/10L/12V/14V）对应的HT冷却水备用泵选型",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "备用泵最小压升满足对应机型规定值",
+          "外部HT系统允许压损不超过2.5 bar"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-010",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水回路的设计压力、管路等级与试验压力应按泵侧压力计算确定，并保证安全阀整定值不低于设计压力。",
+        "measurable_criterion": "设计压力不低于1.2 MPa（12 bar）；管路等级PN16；管路试验压力为设计压力的1.5倍即1.8 MPa（18 bar）；安全阀整定值示例1.2 MPa（12 bar）",
+        "applicable_condition": "冷却水泵排出压力达1.05 MPa（10.5 bar）的回路设计工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "设计压力≥1.2 MPa（12 bar）",
+          "管路等级不低于PN16",
+          "管路试验压力≥1.8 MPa（18 bar）",
+          "安全阀整定值不低于设计压力"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-PRESS-006",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水回路应设置膨胀水箱，其容量应满足系统膨胀量与储备量要求，且膨胀水箱压力等级应与其所在回路（HT/LT）设计压力匹配。",
+        "measurable_criterion": "{{TBD|unit:%|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:膨胀水箱|intent:容量占比|hint:膨胀水箱容积应至少为系统冷却液总容积的规定百分比，证据给出15%与3%两种来源，需按项目选定}}",
+        "applicable_condition": "各冷却水回路膨胀水箱选型设计",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "膨胀水箱容积满足所选来源规定的系统总容积占比",
+          "发动机自带膨胀水箱最大压力限值96 kPa（14 psi）不得用于超限的高温系统设计",
+          "外接膨胀水箱时原膨胀水箱应拆除并设置放气管"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-WATER-007",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-EXP-WATER-001",
+            "tier": "L3",
+            "source": "S07 Scania Marine Cooling System Issue 8",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水水质与防冻剂浓度应按厂家规定的工作浓度范围控制，并按周期对冷却液状态进行检查。",
+        "measurable_criterion": "冷却液添加剂最小40%体积比（防冻至约-25 °C）、45%（约-31 °C）、50%（约-37 °C）、最大55%（约-45 °C）；检查周期至少每周一次",
+        "applicable_condition": "发动机运行期间冷却液维护与检查",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却液添加剂体积比在40%～55%范围内",
+          "对应冰点满足所选浓度档位要求",
+          "冷却液状态检查频率不低于每周一次",
+          "膨胀水箱中无水含油迹象（变色或可见油膜）"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-WATER-005",
+            "tier": "L3",
+            "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-EXP-INSP-031",
+            "tier": "L3",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水管系图纸应完整表达各回路的材料、管径、设计压力、泵额定容量与关断扬程等信息，以支撑审图与文件完整性核查。",
+        "measurable_criterion": "{{TBD|unit:项|ref:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine|component:冷却水管系图纸|intent:图纸信息完整性|hint:图纸应包含材料、管径、设计压力、泵额定容量、关断扬程等要素清单}}",
+        "applicable_condition": "冷却水管系送审图纸编制与审查阶段",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "图纸标注材料信息",
+          "图纸标注管径",
+          "图纸标注设计压力",
+          "图纸标注泵额定容量与关断扬程"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-DRAW-007",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:41:49.360163+00:00",
+  "elapsed_seconds": 8.844
+}

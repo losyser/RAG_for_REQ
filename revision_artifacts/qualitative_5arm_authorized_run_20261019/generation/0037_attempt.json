@@ -1,0 +1,37 @@
+{
+  "slot": "OR008-random_new",
+  "body_sha256": "8a72d3e041b393eee9c7ea6d8ccf6e3c8c9ec8a20f50d9a6d334de737a6bedf3",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:42:22.653241+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR008-random_new",
+    "source_id": "OR008",
+    "group": "random_new",
+    "context_sha256": "dfb2787ffc40a4373596cc50e3b10b2f53928758fe821bcd3cc8d695d84318dd",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n温度控制阀的设定值和安装位置要按主机要求核对，不然水温可能控制不到合适范围。\n\n## 证据清单\n[E-JACKET-FLOW-004] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 淡水侧流向\nHinged Radiator Guard A hinged radiator guard permits easy access to the front of the radiator. This makes it easy to inspect and thoroughly clean the radiator without removing the heavy guards. Coolant Flow Indicators Coolant flow indicators are found on some machines. When there is a loss of coolant, the coolant flow indicator, which will be a horn and a light, will signal the operator to let him know there is a problem. Loss of coolant flow can be caused by low coolant level, water pump\n  [量化参数] -18、0\n\n[E-COOLANT-INSP-049] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 冷却液水质检测方法\n1 mg/l = 1 ppm Testing the concentration of rust inhibitors Short specification Anticorrosive agent Concentration Chemical additives According to the quality specification, see section Specification of engine coolant, Page\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：coolant 的 inspection\nwater_quality\ncorrosion_protection 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 1、1\n\n[E-SW-PRESS-002] 层级:L2 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却水温度与压力参数\nSeparate Circuit Aftercooled with Keel Coolers and Aftercooler Keel Cooler Bypass The separate circuit aftercooler cooling system must be designed with sufficient capacity for the hottest water and the higher ambient air conditions for operation in climates where both air and seawater temperatures run to extremes. This results in a cooler with excess capacity in cold seawater and warm air conditions. This can result in condensation in the engine’s intake system, especially during prol\n  [量化参数] 38、52、100、125\n\n[E-COOLER-MAINT-007] 层级:L3 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 热交换器清洁与维护\n8.5 Assemblies – Cleaning 1. Remove, disassemble and clean assemblies that are exposed to heavy sludge deposits e.g. expansion tanks, preheating units, heat exchangers (coolant cooler, oil heat-exchanger, charge-air cooler, charge-air preheat- er, fuel preheater etc.) and lower sections of pipework. 2. Before cleaning, examine degree of contamination on water sides. 3. If greasy lime deposits are found, first degrease the water side. 4. Deposits in charge-air coolers caused by oil mist\n  [量化参数] 10%\n\n[E-IACS-M73-001] 层级:L1 来源:S67 IACS Unified Requirements M73 Turbocharger\n  内容: IACS Unified Requirements M73 — Turbocharger Cooling Space Hydraulic Test\n(Directly extracted from IACS UR M73 Sec. 4.3, via ClassNK TEC-1066)\n\nSection 4.3 (directly extracted): 'Hydraulic testing of cooling spaces to 4 bars or 1.5 times maximum working pressure, whichever is higher.'\n\nThis applies to the water-cooled cooling spaces of turbochargers fitted on marine diesel engines subject to IACS classification. The test is conducted before installation and the surveyor must witness or verify th\n  [量化参数] 4、1.5\n\n[E-TCV-TEMP-051] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 温度控制阀配置：Capacities 5-8L23/30H 130 kW/Cyl., 720 rpm 或 135 kW/Cyl., 750 rpm。适用条件：Reference condition: Tropic Air temperature LT water temperature inlet engine (from system) Air pressure Relative humidity Temperature basis 2) Setpoint HT cooling water engine outlet Set point lube oil inlet engine 82°C (engine equipped with HT thermostatic valve) 60°C (SAE30), 66°C (SAE40) Number of cylinders Engine output Speed Heat to be dissipated 1) Cooling water (CW) cylinder Charge air cooler; cooling water HT\n  [量化参数] 5-8、130、720、135、750、82、60、66、7.39、3.08、7.39、3.08、7.39、3.08、7.39、3.08、10\n\n[E-TCV-TEMP-055] 层级:L3 来源:S41 Everllence 49/60DF Project Guide\n  内容: 温度控制阀配置\n▪ The low temperature (LT) cooling water temperature control works simil- arly to the HT cooling water temperature control and can be used if the LT cooling water system is designed as one individual cooling water system per engine. In case several engines are operated with a combined LT cooling water system, it is necessary to use an external temperature controller. This external controller must be mounted on the engine control room desk and is to be wired to the temperature control val\n\n[E-EXP-INST-001] 层级:L3 来源:S18 Caterpillar C32 SCAC Marine Project Guide\n  内容: 膨胀水箱作用\nThe small lines routed to the top SCAC tank and the top of the jacket water tank are vent lines. Heat Exchanger Cooled Engines Heat exchanger cooled engines were designed to accommodate thermal expansion of the coolant in the closed engine circuit. Keel Cooled Engines In a keel cooled application the shunt tanks cannot ac commodate any external expansion volume. An external vessel mounted expansion tank must connect to the engine at the top of the shunt tanks in place of the engine mounte\n\n[E-COOLER-MAINT-013] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 热交换器清洁与维护\nSome machines use other cooler cores (radiators) to lower the temperature of transmission oil, hydraulic oil or air conditioning refrigerant. In most cases, the cores are upstream of the air flow to the radiator to get the coolest air. The additional cores increase the temperature of the air that passes through the radiator as well as increase the resistance to air flow. The additional cores also make it more difficult to thoroughly clean the radiator core. Recent design changes on som\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "8a72d3e041b393eee9c7ea6d8ccf6e3c8c9ec8a20f50d9a6d334de737a6bedf3",
+    "utf8_message_bytes": 7663,
+    "execution_index": 37
+  }
+}

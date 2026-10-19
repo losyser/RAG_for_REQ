@@ -1,0 +1,37 @@
+{
+  "slot": "OR027-semantic_new",
+  "body_sha256": "6db46d0a1159f69bf61db306ca6b15666631348645df90aa8b6e8ab5396c784e",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:53:46.244193+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR027-semantic_new",
+    "source_id": "OR027",
+    "group": "semantic_new",
+    "context_sha256": "74da425b20df913c096a905bad66a2852e299cc45d1532fbf7a77a875c4e188f",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n报警信息要能说明大概是哪一路出了问题，比如高温、低压、低液位或者泵故障。\n\n## 证据清单\n[E-HT-ALARM-001] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 液压计算与流量分配：7.3 仪表和报警应根据4-3-5/7.3表1（如适用）提供。表1 推进器仪表（2019） 监测参数：导航驾驶台：主控制站（1, 2）；发动机低滑油压力报警：x (1) x；发动机冷却液高温报警：x (1) x；电机过载报警：x (1) x；推进器转速：x x；推力方向（全回转式）：x x；推进器电源故障报警：x x；可调螺距桨液压油低压报警：x (1) x；可调螺距桨液压油高压报警：x (1) x；可调螺距桨液压油高温报警：x (1) x；火灾探测：x x；永磁推进器定子高温报警：x x；永磁推进器接地故障：x x。注：整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n\n可支撑：冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。\n\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试\n  [量化参数] 7.3、4-3-5/7.3、1、2019、1, 2\n\n[E-ALARM-ALARM-001] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度95°C报警\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度在一定时间内 （1 秒）高于 95°C，则 S6 将发送一个 CAN 消息，该消息通过协调器接通警告灯和诊断指示灯。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、95、105、1、95\n\n[E-ALARM-ALARM-009] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 冷却水温度与压力参数\nuntil such a time that the lesser ambient temperature may be achieved. iv) Audible and visual alarms are provided, at a continually-manned control station, to indicate any malfunction of the cooling systems. 1.17.2(b) Rating of Cables. In accepting a lesser ambient temperature than 45°C, it is to be ensured that electrical cables for their entire length are adequately rated for the maximum ambient temperature to which they are exposed along their length. 1.17.2(c) Ambient Temperature \n  [量化参数] 45°C\n\n[E-ALARM-ALARM-006] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度95°C扭矩降低保护\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度超过 95°C，且激活了扭矩降低功能，则警告灯和诊断指 示灯将点亮，而燃油量将降至 70%。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、105、95、70\n\n[E-ALARM-ALARM-002] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度报警重置条件\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 出现警报后，应将认可值记录 2 秒以上，以重置警报。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、105、2\n\n[E-EXP-ALARM-005] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 膨胀水箱作用\nC. Cooling Water Pressure, Alarm Set Points As the system pressure in case of pump failure will depend on the height of the expansion tank above the engine, the alarm set point has to be adjusted to 0.4 bar plus the static pressure.\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 0.4 bar\n\n[E-ALARM-ALARM-003] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度报警阈值\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、105\n\n[E-COOLER-CTRL-001] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 中央冷却器选型要求\nThe engine control system starts the pump automatically via a motor starter, if the cooling water pressure drops below a preset level when the engine is running. There is a dedicated sensor on the engine for this purpose.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：cooler 的 control\nmonitoring\npressure 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n[L1-CCS2025-7-40项2-013] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 冷却水膨胀箱水位低报警\n条款 7-40 项2\n辅柴油机冷却水膨胀箱水位应设低报警，如该系统设有膨胀箱而未连接到主机系统时设置。\n\n[E-PUMP-ALARM-002] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 传感器与报警配置\nContinuous low- concentration chemical treatment via either bulk chemical or self-generating electrical processes is offered by various manufacturers. High water temperature alarms, seawater pump pressure switches and other instrumentation can be used and are highly recommended to warn of\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。\n2. 不能直接生成原文未给出的具体数值、\n\n[L1-CCS2025-9.4.2.2-032] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 冷却系统高温报警\n条款 9.4.2.2\n柴油机的冷却系统应设高温报警装置。\n\n[L1-CCS2025-7-251.6-004] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 冷却水膨胀箱水位报警\n条款 7-25 1.6\n冷却水膨胀箱水位低时，应发出报警。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "6db46d0a1159f69bf61db306ca6b15666631348645df90aa8b6e8ab5396c784e",
+    "utf8_message_bytes": 11402,
+    "execution_index": 131
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "slot": "OR031-semantic_new",
+  "body_sha256": "75fc7a94c02eb1c8e82eb34536c7265ecee9da5a3cc77898ffe25b8e3c687b30",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:56:16.458383+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR031-semantic_new",
+    "source_id": "OR031",
+    "group": "semantic_new",
+    "context_sha256": "d26fd70ba9113f06d9a50616ac62c617aff3b7e156e08cda39cf4cb29147c83c",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水温度、压力、液位和泵状态要接入监控系统，便于趋势观察和异常判断。\n\n## 证据清单\n[E-LSENS-FLOW-002] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 冷却水连接关系：发动机类型 8L21/31、9L21/31、8L27/38 和 9L27/38 仅使用双轴承交流发电机，以保持发动机后曲轴轴承上的负载处于低水平。适用条件：L27/38S、L21/31S、L16/24S、L16/24、L21/31、L27/38 机型，2015.11.27 版本。\n\n可支撑：level_sensor 的 flow 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 8L21/31、9L21/31、8L27/38、9L27/38、2015.11.27\n\n[E-SYS-COMP-015] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 淡水侧系统组成：HT冷却水压力传感器PT10，信号范围MW 64-80，单位未明确；LT冷却水压力传感器PT01，信号范围MW 65-80，单位未明确；滑油压力滤器进口传感器PT21，信号范围MW 66-80，单位未明确；滑油压力滤器出口传感器PT22，信号范围MW 67-80，单位未明确；滑油压力TC传感器PT23，信号范围MW 68-80，单位未明确；燃油压力发动机进口传感器PT40，信号范围MW 69-80，单位未明确；增压空气压力冷却器出口传感器PT31，信号范围MW 70-80，单位未明确；起动空气压力传感器PT70，信号范围MW 71-80，单位未明确；燃油压力滤器进口传感器PT43，信号范围MW 72-80，单位未明确；交流发电机负载传感器ZT59，信号范围MW 73-80，单位未明确；燃油齿条位置传感器ZT45，信号范围MW 74-80，单位未明确；环境空气压力传感器PT38，信号范围MW 75-80，单位未明确；模拟转速设定点，信号范围MW 76-80，单位未明确。适用条件：MAN Energy Solutions机型L27/38S;L16/24S;L21/31S;L\n  [量化参数] 64-80、65-80、66-80、67-80、68-80、69-80、70-80、71-80、72-80、73-80、74-80、75-80、76-80、2015.11.27\n\n[E-LSENS-FLOW-001] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却水连接关系：发动机类型 8L21/31、9L21/31、8L27/38 和 9L27/38 仅使用双轴承交流发电机，以保持发动机后曲轴轴承负载处于低水平；交流发电机可提供空气冷却（绝缘等级 IP23）或水冷却（绝缘等级 IP44）；空气冷却交流发电机通过过滤器吸入空气，通过内置通风机引导空气穿过交流发电机并排出；水冷却交流发电机通过通风机使空气在内部循环，气流通过内置水冷却器，通过连接的冷却水系统带走热量；主电缆入口可位于交流发电机右侧或左侧，采用水平或垂直入口。适用条件：S39 MAN L21/31 Project Guide。\n\n可支撑：level_sensor 的 flow 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 8L21/31、9L21/31、8L27/38、9L27/38、IP23、IP44\n\n[E-HT-COMP-036] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 高温冷却水系统组成：HT冷却水温度在HP TC增压空气冷却器出口处为60°C至80°C；适用条件：TE3145 (3102)测量点。  \n高温冷却水系统组成：HT冷却水温度在缸套冷却出口处为60°C至92°C；适用条件：TE3170测量点。  \n高温冷却水系统组成：HT冷却水温度在LP TC增压空气冷却器出口处（最后一个增压空气冷却器）标称值为90°C；适用条件：TE3180测量点。  \n高温冷却水系统组成：HT冷却水温度在发动机进口处为-100°C（启动前预热）；适用条件：3111, TE3190测量点。  \n\n可支撑：ht_cooling_water_loop 的 composition monitoring temperature 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。  \n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。  \n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 60、80、60、92、90、-100\n\n[E-SYS-COMP-013] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 淡水侧系统组成：HT冷却水压力传感器PT10；LT冷却水压力传感器PT01；滑油压力滤器进口传感器PT21；滑油压力滤器出口传感器PT22；滑油压力TC传感器PT23；燃油压力发动机进口传感器PT40；扫气压力冷却器出口传感器PT31；启动空气压力传感器PT70；燃油压力滤器进口传感器PT43；发电机负载传感器ZT59；燃油齿条位置传感器ZT45；环境空气压力传感器PT38；模拟转速设定点MW80。适用条件：MAN Energy Solutions机型L27/38S;L16/24S;L21/31S;L16/24;L21/31;L27/38，信号范围MW64至MW77。\n\n可支撑：main_engine_cooling_water_system 的 composition monitoring pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n[E-SYS-COMP-012] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 淡水侧系统组成\nTE27-1 TE27-2 HT cooling water temperature engine outlet LT cooling water temperature air cooler inlet Lube oil temperature filter inlet Fuel oil temperature engine inlet Charge air temperature cooler outlet Alternator windwing temperature L1 Alternator windwing temperature L2 Alternator windwing temperature L3 Ambient air temperature HT cooling water temperature engine inlet Alternator front bearing temperature Alternator rear bearing temperature\n整理说明：原文给出了冷却水相关参数、阈值或适用条件，可用于对应厂家、机型或规则范\n\n[E-VALVE-PRESS-029] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 冷却水温度与压力参数\nprogramming of level switch sensors, flow sensors, pressure sensors, temperature sensors, pressure relief valve operation, coolant conductivity sensor, etc., shall be checked to ensure correct calibration and functionality.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：valve 的 pressure\ntemperature\ninspection 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "75fc7a94c02eb1c8e82eb34536c7265ecee9da5a3cc77898ffe25b8e3c687b30",
+    "utf8_message_bytes": 8939,
+    "execution_index": 152
+  }
+}
