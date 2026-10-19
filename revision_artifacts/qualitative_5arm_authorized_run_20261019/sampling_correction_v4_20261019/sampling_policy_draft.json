@@ -1,0 +1,29 @@
+{
+  "version": "raw-support-sampling-v4-20261019-draft",
+  "status": "mapping_unresolved_no_formal_sampling",
+  "finalized": false,
+  "revision_timing": "Prepared after 77 Qwen judgments had already been observed. Not an ex-ante preregistration.",
+  "required_review_population": 441,
+  "target_sample_size": 30,
+  "group_order": ["semantic_old", "semantic_new", "random_old", "random_new", "norag_original"],
+  "stratum_order": ["support", "not_supported", "uncertain"],
+  "raw_support_to_stratum": {
+    "direct": "support",
+    "contradicted": "not_supported",
+    "uncertain": "uncertain",
+    "partial": null,
+    "partial_support": null,
+    "insufficient": null
+  },
+  "unresolved_explanation": {
+    "partial": "The frozen plan specifies composite negative/direct/other precedence using multiple raw fields, not a standalone support-only mapping for partial. Do not infer a new assignment from the 77 observed results.",
+    "partial_support": "Not an enum in the frozen Qwen prompt (which uses partial). If encountered, preserve the literal label and stop; do not silently normalize it.",
+    "insufficient": "The old composite rule generally falls through to other unless another negative condition applies. A support-only assignment to not_supported or uncertain is not explicitly frozen; leave unresolved."
+  },
+  "quality_flags_affect_stratum": false,
+  "applicability_affects_stratum": false,
+  "within_stratum_order": "ascending SHA256('manual-q-v2-20261019|' + slot + '|' + row_index)",
+  "allocation": "Fixed group/stratum round robin, two initial passes followed by the same order to redistribute empty/small strata, until 30 distinct rows.",
+  "completion_gate": "All 441 unique frozen review IDs must have completed review records with matching judgment IDs. No error/unreviewed substitute strata in the formal sample.",
+  "interpretation": "Even after completion and policy resolution, this stratified audit is not an unweighted representative estimate of population accuracy."
+}
