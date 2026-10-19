@@ -217,7 +217,7 @@
         "缸套冷却出口处温度监测值在60°C至92°C范围内",
         "LP TC增压空气冷却器出口处温度监测标称值为90°C",
         "发动机进口处启动前预热温度监测值为-100°C",
-        "温度监测参数可追溯至S30 MAN Energy Solutions 49/60 Project Guide"
+        "温度监测参数可追溯至 MAN Energy Solutions 49/60 Project Guide"
       ]
     },
     "removed_fields": [
@@ -225,9 +225,18 @@
       "_grade",
       "_valid_citation_ids"
     ],
-    "technical_fields_exact": true,
-    "text_rewrites": [],
-    "residual_blinding_risk": "Maker/model/source wording in technical text is intentionally retained; complete blinding not assured"
+    "technical_fields_exact": false,
+    "text_rewrites": [
+      {
+        "field": "acceptance_criteria",
+        "index_0based": 4,
+        "before": "温度监测参数可追溯至S30 MAN Energy Solutions 49/60 Project Guide",
+        "after": "温度监测参数可追溯至 MAN Energy Solutions 49/60 Project Guide",
+        "reason": "Pre-release display anonymization: remove pure internal source ID S30; retain traceability requirement, maker, model and guide title."
+      }
+    ],
+    "residual_blinding_risk": "Maker/model/source wording in technical text is intentionally retained; complete blinding not assured",
+    "technical_meaning_preserved": true
   },
   {
     "blind_id": "K168579",

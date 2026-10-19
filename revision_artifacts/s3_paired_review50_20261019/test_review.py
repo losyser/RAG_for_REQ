@@ -66,9 +66,25 @@ class ReviewTests(unittest.TestCase):
     def test_display_text_exact_and_no_tbd(self):
         for b,s in zip(B,S):
             self.assertEqual(b['original_requirement'],s['original_requirement'])
-            for k in ['shall_statement','measurable_criterion','applicable_condition','verification_method','acceptance_criteria']:self.assertEqual(b[k],s['candidate'].get(k))
+            for k in ['shall_statement','measurable_criterion','applicable_condition','verification_method','acceptance_criteria']:
+                expected=copy.deepcopy(s['candidate'].get(k))
+                if b['blind_id']=='K849074' and k=='acceptance_criteria':expected[4]=expected[4].replace('可追溯至S30 MAN','可追溯至 MAN')
+                self.assertEqual(b[k],expected)
             self.assertNotRegex(b['measurable_criterion'],r'(?i)\bTBD\b')
             self.assertEqual(set(b),{'blind_id','original_requirement','shall_statement','measurable_criterion','applicable_condition','verification_method','acceptance_criteria'})
+    def test_only_authorized_display_correction(self):
+        archive=C/'pre_display_correction_v1'
+        for name,h in a.read(archive/'ARCHIVE_HASHES.json').items():self.assertEqual(a.sha(archive/name),h)
+        old=a.read(archive/'blind_input.json');changes=[]
+        for before,after in zip(old,B):
+            self.assertEqual(before['blind_id'],after['blind_id'])
+            for k in before:
+                if before[k]!=after[k]:changes.append((after['blind_id'],k))
+        self.assertEqual(changes,[('K849074','acceptance_criteria')])
+        self.assertNotIn('S30',json.dumps(B))
+        self.assertEqual(json.dumps(old).count('S6'),json.dumps(B).count('S6'))
+        for name in ['SAMPLE_FROZEN.json','PROTOCOL_FROZEN.json','CANDIDATE_POOL_FROZEN.json','SAMPLING.json']:
+            self.assertEqual(a.sha(C/name),a.sha(archive/'02_协调者_勿发评审'/name))
     def test_inputs_and_historical_protection(self):
         for path,h in a.read(C/'PROTECTED_BEFORE.json').items():self.assertEqual(a.sha(path),h,path)
         for n,h in a.read(C/'CHECKPOINT.json')['dirty_backup_hashes'].items():self.assertEqual(a.sha(H.parents[1]/n),h,n)

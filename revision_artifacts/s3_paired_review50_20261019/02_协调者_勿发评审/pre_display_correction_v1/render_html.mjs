@@ -1,0 +1,18 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1280,height:1000},deviceScaleFactor:1});
+await page.route('**/*',route=>route.request().url().startsWith('file:')?route.continue():route.abort());
+await page.goto(pathToFileURL(path.resolve('outputs/01a13537-s3/01_仅此目录可发评审/50条原文只读阅读.html')).href);
+await fs.mkdir('output/playwright',{recursive:true});
+await page.screenshot({path:'output/playwright/html_top.png'});
+const cards=page.locator('article');
+if(await cards.count()!==50)throw Error('Card count mismatch');
+const sizes=await cards.evaluateAll(nodes=>nodes.map(e=>({id:e.id,height:e.getBoundingClientRect().height})));
+const longest=sizes.reduce((a,b)=>a.height>b.height?a:b);
+await page.locator('#'+longest.id).screenshot({path:'output/playwright/html_longest.png'});
+await cards.last().screenshot({path:'output/playwright/html_last.png'});
+await fs.writeFile('output/playwright/render_checks.json',JSON.stringify({cards:50,longest,overflow:await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),readonly:await page.locator('input,textarea,form,script').count()===0},null,2));
+await browser.close();
