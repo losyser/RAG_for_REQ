@@ -1,0 +1,40 @@
+{
+  "review_id": "1f3512b8a6b48333b3b5d20b686c696c20de282d2bcdc98bf83d0762b421f26a",
+  "source_requirement": "冷却器如果存在泄漏风险，要有检测和报警手段，特别是有人值守位置要能看到或听到。",
+  "candidate": {
+    "shall_statement": "冷却水系统应设置冷却水水质检测要求，通过氯离子浓度等指标判断是否存在海水渗入（泄漏）风险。",
+    "measurable_criterion": "[Q]应规定冷却水氯离子浓度检测要求；氯离子浓度不得超过来源文件规定的最大限值（50 mg/kg），超过即指示海水进入系统并存在腐蚀风险。",
+    "applicable_condition": "适用于来源文件 S36 MAN L23/30H GenSet Project Guide 所限定机型与冷却水系统；其他机型与系统型式未知，不得直接泛化。",
+    "verification_method": "测试",
+    "acceptance_criteria": [
+      "已规定冷却水氯离子浓度检测方法与频次",
+      "氯离子浓度限值引用来源文件规定值",
+      "检测结果超限时可触发泄漏判断与后续处置"
+    ],
+    "evidence_citations": [
+      {
+        "tier": "L3",
+        "source": "S36 MAN L23/30H GenSet Project Guide",
+        "has_clause": true,
+        "kb_id": "E001"
+      }
+    ]
+  },
+  "cited_evidence": [
+    {
+      "evidence_id": "E001",
+      "supplied_excerpt": "[E001] 层级:L3 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 冷却系统腐蚀与气蚀风险\nbe completely replaced and entire system carefully cleaned. Deposits in the cooling system may be caused by fluids that enter the cool- ing water, or the break up of emulsion, corrosion in the system and limescale deposits if the water is very hard. If the concentration of chloride ions has increased, this generally indicates that seawater has entered the system. The maximum specified concentration of 50 mg chloride ions per kg must not be exceeded as otherwise the risk of corrosion \n  [量化参数] 50",
+      "excerpt_limit_characters": 500,
+      "outside_excerpt_conditions": "not_inspected"
+    }
+  ],
+  "citation_checks": [
+    {
+      "evidence_id": "E001",
+      "in_supplied_context": true,
+      "citation_schema_valid": true
+    }
+  ],
+  "context_was_empty": false,
+  "evidence_policy": "Generation used first500 characters per selected unit; no outside text verified."
+}

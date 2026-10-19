@@ -21,7 +21,13 @@ def main():
                 assert usage_cost(r['response'],PROVIDERS[phase])==Decimal(r['usage_cost_CNY']);cost+=Decimal(r['usage_cost_CNY']);ids.append(r['response']['id'])
             else:risk+=Decimal(a['reserved_CNY'])
         assert len(ids)==len(set(ids)),'duplicate response ids'
-        phase_data[phase]={'planned':len(plan),'attempted':len(attempts),'completed':sum(r['status']=='completed' for r in records),'failed_or_unresolved':sum(r['status']!='completed' for r in records),'unsent':len(plan)-len(attempts),'usage_estimate_CNY':str(cost),'unresolved_max_risk_CNY':str(risk),'input_tokens_completed':sum(r['response']['usage']['prompt_tokens'] for r in records if r['status']=='completed'),'output_tokens_completed':sum(r['response']['usage']['completion_tokens'] for r in records if r['status']=='completed'),'state':read(folder/'state.json') if (folder/'state.json').exists() else {'status':'not_started'}}
+        errors=[]
+        for record in records:
+            if record['status']=='completed':continue
+            try:detail=json.loads(record.get('raw_response_body','{}')).get('error',{})
+            except json.JSONDecodeError:detail={}
+            errors.append({'slot':record.get('slot'),'http_status':record.get('http_status'),'provider_error':detail,'local_error':record.get('error')})
+        phase_data[phase]={'planned':len(plan),'attempted':len(attempts),'completed':sum(r['status']=='completed' for r in records),'failed_or_unresolved':sum(r['status']!='completed' for r in records),'unsent':len(plan)-len(attempts),'usage_estimate_CNY':str(cost),'unresolved_max_risk_CNY':str(risk),'errors':errors,'input_tokens_completed':sum(r['response']['usage']['prompt_tokens'] for r in records if r['status']=='completed'),'output_tokens_completed':sum(r['response']['usage']['completion_tokens'] for r in records if r['status']=='completed'),'state':read(folder/'state.json') if (folder/'state.json').exists() else {'status':'not_started'}}
         identities[phase]=[json.loads(s) for s in sorted({json.dumps(r['identity'],sort_keys=True) for r in records if r.get('identity')})]
     reviews=read(WORK/'REVIEW_DIAGNOSTICS.json');raw_support=Counter(r['machine_judgment'].get('support','missing') for r in reviews if r.get('machine_judgment'));raw_app=Counter(r['machine_judgment'].get('applicability','missing') for r in reviews if r.get('machine_judgment'))
     known=Decimal('0.563162')+sum(Decimal(v['usage_estimate_CNY']) for v in phase_data.values());risk=Decimal('4.325376')+sum(Decimal(v['unresolved_max_risk_CNY']) for v in phase_data.values());assert known+risk<=50
@@ -44,9 +50,12 @@ def main():
       '生成终态：'+phase_data['generation']['state']['status'],'评审终态：'+phase_data['review']['state']['status']]
     for phase,data in phase_data.items():
         if data['state'].get('stop_reason'):lines.append(phase+'暂停原因：'+str(data['state']['stop_reason']))
+        if data['errors']:lines.append(phase+'服务错误详情：'+json.dumps(data['errors'],ensure_ascii=False))
+    if phase_data['review']['completed']<phase_data['review']['planned']:
+        lines.append('评审覆盖不完整：失败和未发送均保留；以下机器标签仅描述已返回子集，不能外推到全部Q，不能据此完成五组质量比较。恢复需先由用户处理服务账户状态并明确恢复授权；本次未充值、未换密钥、未重试。')
     lines+=['','二、输出分布（机械候选分类，不是工程正确性）']
     for g,s in summary['groups'].items():lines.append(f"{g}：完成{s['completed_sources']}/60源；{s.get('n_rows',0)}条输出；[Q]候选{s.get('q_candidate',0)}条，格式通过{s.get('q_format_pass',0)}条；TBD/混合候选{s.get('tbd_or_mixed_candidate',0)}条；数值候选{s.get('numeric_candidate',0)}条；未标记非数值候选{s.get('unmarked_nonnumeric_candidate',0)}条。")
-    lines+=['','三、按源配对与Qwen判断','配对统计：'+json.dumps(pair_summary,ensure_ascii=False),'Qwen原始支持标签：'+json.dumps(dict(raw_support),ensure_ascii=False),'Qwen原始适用性标签：'+json.dumps(dict(raw_app),ensure_ascii=False),'经原句锚点/枚举检查后的抽样分层：'+json.dumps(summary['review_bands'],ensure_ascii=False),
+    lines+=['','三、按源配对与Qwen判断','配对统计：'+json.dumps(pair_summary,ensure_ascii=False),'Qwen原始支持标签（仅成功返回子集）：'+json.dumps(dict(raw_support),ensure_ascii=False),'Qwen原始适用性标签（仅成功返回子集）：'+json.dumps(dict(raw_app),ensure_ascii=False),'经原句锚点/枚举检查后的抽样分层（全部Q候选，other层包含未评条目）：'+json.dumps(summary['review_bands'],ensure_ascii=False),
       '机械格式通过、模型语义判断、来源可靠性与目标适用性分别报告。Qwen是跨模型意见，不是人工真值；未评、不确定、不支持及锚点核查失败均保留。不能将[Q]自动加入旧数值A/B。',
       '统计单位为源需求；不把同源shall当独立样本。单次T=0运行不能估计随机方差，也不证明提示词效应超过自然波动。noRAG约束不同，只作工作流比较。',
       '', '四、预算与风险',f"本轮DeepSeek成功usage估价：¥{phase_data['generation']['usage_estimate_CNY']}；Qwen成功usage估价：¥{phase_data['review']['usage_estimate_CNY']}。",f"含历史成功后的usage估价合计：¥{known}；历史及本轮未决风险预留：¥{risk}；累计模型账本：¥{known+risk}；距离¥50上限尚余¥{50-known-risk}。",

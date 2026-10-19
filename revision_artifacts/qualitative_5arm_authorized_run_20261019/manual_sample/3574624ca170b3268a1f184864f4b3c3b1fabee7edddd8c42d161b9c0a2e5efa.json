@@ -1,0 +1,38 @@
+{
+  "review_id": "3574624ca170b3268a1f184864f4b3c3b1fabee7edddd8c42d161b9c0a2e5efa",
+  "source_requirement": "关键报警和保护动作要区分清楚，哪些只是提醒，哪些会影响主机运行，要提前说明。",
+  "candidate": {
+    "shall_statement": "冷却液温度超过较高级别阈值但总控功能激活时，应仅执行扭矩降低功能而不执行熄火。",
+    "measurable_criterion": "[Q]温度超过105°C且发动机熄火功能激活时，如果总控功能激活，则仅扭矩降低功能起作用。",
+    "applicable_condition": "Scania DI16船用发动机，EMS/S6控制系统，总控功能激活",
+    "verification_method": "测试",
+    "acceptance_criteria": [
+      "总控功能激活时仅扭矩降低起作用，发动机不熄火"
+    ],
+    "evidence_citations": [
+      {
+        "tier": "L3",
+        "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+        "has_clause": false,
+        "kb_id": "E001"
+      }
+    ]
+  },
+  "cited_evidence": [
+    {
+      "evidence_id": "E001",
+      "supplied_excerpt": "[E001] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度105°C熄火保护\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 温度超过 105°C 且发动机熄火功能激活时，警告灯和诊断指示灯 将点亮，并且发动机将熄火。如果总控功能激活，则仅扭矩降低 功能起作用。控制单元中将生成一个故障代码。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 105、95、105、105",
+      "excerpt_limit_characters": 500,
+      "outside_excerpt_conditions": "not_inspected"
+    }
+  ],
+  "citation_checks": [
+    {
+      "evidence_id": "E001",
+      "in_supplied_context": true,
+      "citation_schema_valid": true
+    }
+  ],
+  "context_was_empty": false,
+  "evidence_policy": "Generation used first500 characters per selected unit; no outside text verified."
+}

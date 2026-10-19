@@ -1,0 +1,895 @@
+[
+  {
+    "review_id": "1ca476d0f61d1ec9589967d8fb38ac75dd0eca7253c1b891dba82d89ad2bba00",
+    "slot": "OR049-semantic_new",
+    "source_id": "OR049",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "L1-CCS2025-7-46-017": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "1ca476d0f61d1ec9589967d8fb38ac75dd0eca7253c1b891dba82d89ad2bba00",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "冷却水膨胀箱水位低时，应在机舱集控站（室）显示并发出极限报警。",
+          "candidate_span": "冷却水膨胀箱水位低时，应在机舱集控站（室）显示并发出极限报警。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选内容与证据中的条款完全一致，且适用于指定的条件。但来源版本的真实性未被验证。",
+      "limitations": []
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "1767e02070a95735e19bc6f84055dbf78b711c4fbec584084f2d912efbab80aa",
+    "slot": "OR011-semantic_new",
+    "source_id": "OR011",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-HT-PRESS-010": "E001",
+      "E-HT-DRAW-006": "E002",
+      "E-LT-COMP-001": "E003"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "1767e02070a95735e19bc6f84055dbf78b711c4fbec584084f2d912efbab80aa",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "低温回路：循环与温度调节组件置于内部系统；扫气空气冷却器与滑油冷却器串联布置；低温水经过滑油冷却器后流向恒温阀，根据水温再循环或引至外部系统；发动机冷却水侧仅需淡水，温度范围10至40°C。高温回路：发动机驱动的HT离心式循环泵为内置式。",
+          "candidate_span": "冷却水系统原理图应清晰表达高温回路与低温回路的划分、各自组成部件及回路间关系。",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E003",
+          "exact_quote": "原文说明系统组成、部件功能或连接关系，可用于确定系统边界和组件对象。",
+          "candidate_span": "原理图应标明高温回路与低温回路的组成部件及其连接关系，使两回路划分可辨识。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述是基于证据中的信息进行的新推导或综合，而不是直接摘录或忠实转述。虽然证据提到了高温回路和低温回路的具体组成和连接关系，但没有明确提到“原理图应标明”这一点。此外，适用条件中提到的特定机型和系统型式在证据中未完全覆盖。",
+      "limitations": [
+        "缺少对所有提及的特定机型和系统型式的具体支持",
+        "证据中未明确要求原理图应标明这些内容"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "c6c5e7c85b2da009b380a7f12a7c3e61a71233af1beea8ea8d0acf2282c6ac42",
+    "slot": "OR010-semantic_new",
+    "source_id": "OR010",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-COOLANT-WATER-051": "E001",
+      "E-COOLANT-INSP-014": "E002",
+      "E-COOLANT-INSP-096": "E003",
+      "E-SYS-WATER-017": "E004"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "023822d4e4616f642b3e716b81470fdf7e208762bf31906abab9c394f505fa19",
+    "slot": "OR029-random_new",
+    "source_id": "OR029",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-EXP-CORR-006": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "023822d4e4616f642b3e716b81470fdf7e208762bf31906abab9c394f505fa19",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "压力表安装在集管上，位置应便于从补水点读取；补水点应靠近压力膨胀容器。",
+          "candidate_span": "补水点应靠近压力膨胀容器，压力表位置应便于从补水点读取。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的要求与证据中的原句一致，且适用于指定的机型。但来源文件的真实性和版本可靠性无法验证。",
+      "limitations": [
+        "来源文件的真实性和版本可靠性未知"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "0f121467db304af781c5a11f95f11a84ebc19a73c3221e07a3b2f14a34f9f3c1",
+    "slot": "OR029-random_new",
+    "source_id": "OR029",
+    "group": "random_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-EXP-INSP-017": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "0f121467db304af781c5a11f95f11a84ebc19a73c3221e07a3b2f14a34f9f3c1",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "冷却液水质检测方法：防腐剂浓度必须按照制造商说明检查，或委托合适实验室测试；如有疑问，咨询MAN Energy Solutions。",
+          "candidate_span": "防腐剂浓度必须按照制造商说明检查，或委托合适实验室测试；如有疑问，咨询MAN Energy Solutions；定期从膨胀水箱取样目视检查冷却液中少量润滑油。",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E001",
+          "exact_quote": "膨胀水箱：冷却液中少量润滑油可通过定期水样目视检查发现。适用条件：定期从膨胀水箱取样。",
+          "candidate_span": "定期从膨胀水箱取样目视检查冷却液中少量润滑油。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选文本中的部分内容直接引用了证据中的原句，但添加了新的推导内容，如明确提到操作说明应包含某些检查方法，这在证据中没有直接表述。",
+      "limitations": [
+        "证据仅适用于特定的机型和工况，不能泛化到其他情况"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "559d0496237c4836c3756cba52d8c1901f11459e6310561d2af38659ae700290",
+    "slot": "OR028-random_new",
+    "source_id": "OR028",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-FILTER-FLOW-001": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "13aa9ff67941e71c3d1b97c9f521690c855d773d6f0e1d4a640e5abbbdb699d9",
+    "slot": "OR007-semantic_new",
+    "source_id": "OR007",
+    "group": "semantic_new",
+    "row_index": 10,
+    "evidence_id_map": {
+      "E-HT-PRESS-010": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "13aa9ff67941e71c3d1b97c9f521690c855d773d6f0e1d4a640e5abbbdb699d9",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "高温回路：发动机驱动的HT离心式循环泵为内置式。",
+          "candidate_span": "高温回路：发动机驱动的HT离心式循环泵为内置式。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "supported",
+      "reason": "候选中的关键信息与证据原文完全一致，且适用于明确指定的条件。",
+      "limitations": []
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "15d5a0935e61a7e7098823a26195d9c140116d0d86698b07da69f706df56c364",
+    "slot": "OR029-semantic_new",
+    "source_id": "OR029",
+    "group": "semantic_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-EXP-WATER-014": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "15d5a0935e61a7e7098823a26195d9c140116d0d86698b07da69f706df56c364",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "nected to the expansion tank below the minimum water level, this prevents oxydation of the cooling water caused by \"splashing\" from the venting pipe. We recommend to connect the venting pipes at the tank bottom.",
+          "candidate_span": "透气管应连接至膨胀水箱最低水位以下，宜连接于水箱底部，以防止冷却水飞溅氧化。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的内容与证据中的描述基本一致，但候选中增加了“宜连接于水箱底部”的建议，这在原文中虽然有提到，但并未明确作为要求。此外，候选中的操作简单清楚的需求没有被满足。",
+      "limitations": [
+        "增加的建议部分并非直接来自证据",
+        "未满足原始需求中关于操作简单清楚的要求"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "5156762d6a7eceb6f161a714b6dbdc413002dd7536b526013c61168330c4de2a",
+    "slot": "OR002-semantic_new",
+    "source_id": "OR002",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-PUMP-RED-004": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "1150d00e0a12105c595416627dde6e55a186e8dbf72bcd688646587ab74b66ae",
+    "slot": "OR016-random_new",
+    "source_id": "OR016",
+    "group": "random_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-EXP-RED-002": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "1150d00e0a12105c595416627dde6e55a186e8dbf72bcd688646587ab74b66ae",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "At the connection F3/F4 for the expansion tank there is a non-return valve with ø3 mm hole. This is for the internal connections of the en- gine to improve preheating of the engine at stand-by.",
+          "candidate_span": "膨胀水箱连接F3/F4处应设带ø3 mm孔的止回阀，用于发动机内部连接以改善待机预热",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述与证据中的描述一致，且适用于相同的条件（MAN L16/24 GenSet膨胀水箱连接配置），没有增加新的推导或综合。",
+      "limitations": [
+        "来源文件的真实性和版本可靠性未知"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "15a9e2e86df4cad3074e20c9f4c7303a40c384f1f70f964201d0f4dd50d6c611",
+    "slot": "OR058-random_new",
+    "source_id": "OR058",
+    "group": "random_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-EXP-ALARM-008": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "15a9e2e86df4cad3074e20c9f4c7303a40c384f1f70f964201d0f4dd50d6c611",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "In that case make sure, that proper air venting is ensured even in heavy seas at max. ship inclinations.",
+          "candidate_span": "在最大船舶倾斜及恶劣海况下仍能确保正常排气",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求中提到的膨胀水箱容积小于推荐值时，应确保在最大船舶倾斜及恶劣海况下仍能正常排气的内容与证据中的描述一致。但该证据没有提供关于如何验证这一要求的具体方法或标准，且机型与工况未知。",
+      "limitations": [
+        "缺少具体验证方法",
+        "未指明适用的机型与工况"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "059a308532661485542dcd7e3be10289b97ed7614d4d69a39b6e68dc2d27ab55",
+    "slot": "OR014-random_new",
+    "source_id": "OR014",
+    "group": "random_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-COOLANT-WATER-073": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "059a308532661485542dcd7e3be10289b97ed7614d4d69a39b6e68dc2d27ab55",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "coolant 的 water_quality\\ncorrosion_protection 参数应依据来源文件\\n厂家技术数据或项目计算文件确定。\\n若原文给出明确限值\\n可作为对应适用对象和工况下的参数约束。",
+          "candidate_span": "coolant 的 water_quality 与 corrosion_protection 参数应依据来源文件、厂家技术数据或项目计算文件确定；若原文给出明确限值，可作为对应适用对象和工况下的参数约束。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据支持候选中的水质与防腐保护参数应依据来源文件等确定，但未直接提供具体数值或检测周期，且仅适用于Caterpillar发动机冷却系统。",
+      "limitations": [
+        "缺少具体数值",
+        "适用范围限定为Caterpillar发动机"
+      ]
+    },
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "2bc2ab5247e8ca1e985ef587673d7dd07c9f44dcaea2d545bbe42c1c87b57756",
+    "slot": "OR029-semantic_new",
+    "source_id": "OR029",
+    "group": "semantic_new",
+    "row_index": 6,
+    "evidence_id_map": {
+      "E-SYS-FLOW-008": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "2bc2ab5247e8ca1e985ef587673d7dd07c9f44dcaea2d545bbe42c1c87b57756",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Generally, pressure caps are not required or desirable on auxiliary expansion tanks. This is to allow free venting and refilling,",
+          "candidate_span": "辅助膨胀水箱一般不应设置压力盖，以允许自由排气和补水。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的陈述与证据中的内容一致，且没有增加新的推导或综合。对象、行为、单位、运算符和范围都一致。",
+      "limitations": []
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "0b1afb6d8ce3c58cffbffdeeae6810895461dbc8414d1017b001e3bc200cb779",
+    "slot": "OR050-semantic_new",
+    "source_id": "OR050",
+    "group": "semantic_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-JACKET-MAINT-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "0b1afb6d8ce3c58cffbffdeeae6810895461dbc8414d1017b001e3bc200cb779",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "System Monitoring Provide locations to measure pressure and temperature differentials across major system components.",
+          "candidate_span": "应在主要系统部件处提供压力和温度差测量位置，以支撑系统监测",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的要求结合了运行温度数据进行冷却器换热效果评估，并且不能仅在低负荷时判定为正常。然而，提供的证据仅提到需要在主要系统组件处提供压力和温度差的测量位置，没有直接支持运行温度数据用于评估冷却器换热效果或避免仅在低负荷时判断正常的具体要求。",
+      "limitations": [
+        "具体机型、负荷范围与温度测点布置未知",
+        "缺乏明确的技术数据或计算文件支持"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "d826763a0ff876f926f6a0550094c9349f1095d5d2a14574649ca8632679b27b",
+    "slot": "OR045-semantic_new",
+    "source_id": "OR045",
+    "group": "semantic_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-SYS-CLEAN-006": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "26591232126df0ce9641dcd45d56c57b1c26a8b317fa2a308cb676141210ed62",
+    "slot": "OR042-random_new",
+    "source_id": "OR042",
+    "group": "random_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-SW-DRAW-004": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "26591232126df0ce9641dcd45d56c57b1c26a8b317fa2a308cb676141210ed62",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "The arrangement of the cooling water system shown here is only one of many possible solutions. It is recommended to inform Everllence in advance in case other arrangements should be desired.",
+          "candidate_span": "冷却水系统布置资料应注明所示布置仅为多种可能方案之一，并建议在期望采用其他布置时提前通知Everllence。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述与证据中的内容一致，且证据明确指出冷却水系统的布置是多种可能方案之一，并建议在采用其他布置时提前通知制造方。",
+      "limitations": [
+        "来源层级为L3，但未提供版本可靠性信息"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "1f3512b8a6b48333b3b5d20b686c696c20de282d2bcdc98bf83d0762b421f26a",
+    "slot": "OR037-random_new",
+    "source_id": "OR037",
+    "group": "random_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-COOLANT-CORR-011": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "1f3512b8a6b48333b3b5d20b686c696c20de282d2bcdc98bf83d0762b421f26a",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "If the concentration of chloride ions has increased, this generally indicates that seawater has entered the system. The maximum specified concentration of 50 mg chloride ions per kg must not be exceeded as otherwise the risk of corrosion",
+          "candidate_span": "氯离子浓度不得超过来源文件规定的最大限值（50 mg/kg），超过即指示海水进入系统并存在腐蚀风险。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的冷却水氯离子浓度检测要求和阈值与证据一致，但证据中没有提及检测方法、频次以及报警手段。此外，候选引入了泄漏判断与后续处置的机制，这在给定证据中并未直接提及。",
+      "limitations": [
+        "证据中未明确提到检测方法与频次",
+        "证据中未提及报警手段或泄漏判断的具体措施",
+        "适用性仅限于特定机型与冷却水系统，其他情况未知"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "a24179216aa132566430ad1a94e6e745c36f2759bd6c3631924d1acb3ed95992",
+    "slot": "OR014-random_new",
+    "source_id": "OR014",
+    "group": "random_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-PUMP-CLEAN-023": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "07a2100977362c8eccd8982356fa5483fd750862361ae15b339e86662059729e",
+    "slot": "OR043-semantic_new",
+    "source_id": "OR043",
+    "group": "semantic_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-FILTER-FLOW-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "07a2100977362c8eccd8982356fa5483fd750862361ae15b339e86662059729e",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "The strainer must be installed so it can be easily cleaned, even in the worst weather conditions.",
+          "candidate_span": "海水滤器应安装成便于清洗的位置，即使在最恶劣天气条件下也应能够进行清洗。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选语句是对证据中句子的忠实转述，且对象（海水滤器）、行为（便于清洗）和条件（最恶劣天气条件下）一致。",
+      "limitations": []
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "11f46eebcab61bc9419036019049e16b966148de029e73216382a7212926a2f1",
+    "slot": "OR020-semantic_new",
+    "source_id": "OR020",
+    "group": "semantic_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-COOLER-MAINT-019": "E001",
+      "E-PIPE-ARR-001": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "11f46eebcab61bc9419036019049e16b966148de029e73216382a7212926a2f1",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Piping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes.",
+          "candidate_span": "管路布置应提供对开口的接入通道，并允许便捷地拆卸端盖和抽管操作。",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "冷却水系统布置应考虑来源文件提出的安装操作或维护可达性原则。具体施工空间、支架、接口和验收要求仍应由项目安装规范确认。",
+          "candidate_span": "冷却水系统管路布置；具体机型、系统型式未知，施工空间、支架间距与验收要求由项目安装规范确认。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求提出了具体的冲洗接口、临时接管及放水排气点的可达性和便捷拆装的要求，而证据中只提到了管路布置需要考虑可达性和便捷拆卸的原则，并没有明确提到冲洗接口、临时接管及放水排气点的具体要求。因此，候选需求包含了新的推导和综合，无法直接从给定证据中得到完全支持。",
+      "limitations": [
+        "证据未明确提及冲洗接口、临时接管及放水排气点的具体要求",
+        "具体机型、系统型式未知，适用性无法确定",
+        "施工空间、支架间距与验收要求由项目安装规范确认，证据未提供具体细节"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "7c8910b154a25f3269b81849ec091f111180cb97e7e589b71530e2b1c05d8b1f",
+    "slot": "OR052-semantic_new",
+    "source_id": "OR052",
+    "group": "semantic_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-PUMP-MAINT-001": "E001",
+      "E-COOLER-MAINT-019": "E002"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "1d7a2acd36fcea8ae5549dde95f673210549ce6cc5df8ed3e94941f9785117a2",
+    "slot": "OR038-random_new",
+    "source_id": "OR038",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "L1-CCS2025-7-27表4主燃气轮机-025": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "1d7a2acd36fcea8ae5549dde95f673210549ce6cc5df8ed3e94941f9785117a2",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "冷却水压力或流量应设低报警，并在机舱集控站和驾驶室控制站显示。",
+          "candidate_span": "冷却水压力或流量应设低报警，并在机舱集控站和驾驶室控制站显示。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的关键内容与证据中的原句完全一致，且适用条件明确匹配主燃气轮机冷却水系统。但来源版本真实性未验证。",
+      "limitations": []
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "1b95fbd03ad44ce85df60f6a7ed623083e1cba4f347c0162b0691bb85d6c416b",
+    "slot": "OR020-random_new",
+    "source_id": "OR020",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-SW-COMP-003": "E001",
+      "E-COOLANT-CLEAN-013": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "1b95fbd03ad44ce85df60f6a7ed623083e1cba4f347c0162b0691bb85d6c416b",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "该类证据通常不能直接支撑参数限值、施工验收或试验判据。",
+          "candidate_span": "冷却水系统布置应考虑来源文件提出的安装、操作或维护可达性原则；冲洗接口与临时接管位置应在设计阶段确定，具体施工空间、支架、接口和验收要求仍应由项目文件规定。",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "Loose solid matter in particular must be removed by flushing the system thor- oughly as otherwise erosion may occur in locations where the flow velocity is high.",
+          "candidate_span": "主机冷却水系统应在系统设计阶段预先规划并设置系统冲洗接口和临时接管位置，不得在调试阶段临时增设。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述中的内容没有直接从提供的证据中得到支持。证据E001和E002主要讨论了冷却系统的组成和清洗要求，并未明确提及需要在设计阶段预先规划冲洗接口和临时接管位置。此外，证据片段不足以验证整个需求的具体细节。",
+      "limitations": [
+        "缺少关于设计阶段规划的具体要求",
+        "缺乏对冲洗接口和临时接管位置的明确指示"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "8d6937aa9bb28858e9ecf60c6e9195e1fd2b8e60578b64137f28e74c7d2199ae",
+    "slot": "OR051-random_new",
+    "source_id": "OR051",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-SW-DRAW-001": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "14a7bf4be83d9e77676f8e2c24bb05a48078ca307f68b077fcc9179f8872c364",
+    "slot": "OR036-semantic_new",
+    "source_id": "OR036",
+    "group": "semantic_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-SENSOR-ALARM-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "14a7bf4be83d9e77676f8e2c24bb05a48078ca307f68b077fcc9179f8872c364",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "In case of failure of the cooling system, an alarm is to be given both locally and remotely at a continuously manned location and the output current is to be reduced automatically.",
+          "candidate_span": "冷却系统故障时，应在就地及持续有人值班的控制站同时发出报警，并自动降低输出电流。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的描述与证据中的原句在内容上一致，均为冷却系统故障时需要在本地和远程持续有人值班的地方发出警报并自动减少输出电流。没有新增推导或综合其他信息。",
+      "limitations": []
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  },
+  {
+    "review_id": "29392af4964f8e5f95891b72ed7c09faf1ffb467ce85149a3b43145de6f19935",
+    "slot": "OR017-semantic_new",
+    "source_id": "OR017",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-COOLER-MAINT-019": "E001",
+      "E-PUMP-CORR-003": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "29392af4964f8e5f95891b72ed7c09faf1ffb467ce85149a3b43145de6f19935",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Piping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes.",
+          "candidate_span": "冷却器附近管路布置应保证水流顺畅，避免过度绕行。",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "冷却水系统布置应考虑来源文件提出的安装操作或维护可达性原则。具体施工空间、支架、接口和验收要求仍应由项目安装规范确认。",
+          "candidate_span": "冷却器附近管路布置应保证水流顺畅，避免过度绕行。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述与证据中的具体条款没有直接对应关系。虽然两个证据都提到了管路布置的可达性和维护便利性，但并没有明确提到水流顺畅或避免过度绕行的具体要求。因此，候选陈述在这些证据的基础上进行了新的推导或综合。",
+      "limitations": [
+        "缺少具体的水流顺畅和避免过度绕行的要求",
+        "机型与系统型式未知"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "3574624ca170b3268a1f184864f4b3c3b1fabee7edddd8c42d161b9c0a2e5efa",
+    "slot": "OR038-semantic_new",
+    "source_id": "OR038",
+    "group": "semantic_new",
+    "row_index": 8,
+    "evidence_id_map": {
+      "E-ALARM-SHUT-001": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "286f326cbc734f1658735d6a24aad2d6dd739bcf8e8730e3b43e421d6af5c7f2",
+    "slot": "OR056-random_new",
+    "source_id": "OR056",
+    "group": "random_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-TSENS-PRESS-015": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "286f326cbc734f1658735d6a24aad2d6dd739bcf8e8730e3b43e421d6af5c7f2",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。",
+          "candidate_span": "仪表安装位置应依据来源文件、厂家技术数据或项目计算文件确认，不得仅以外观检查代替位置确认。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据中提到的内容主要关于冷却水系统的温度与压力参数，并未直接支持候选中的仪表安装位置检查要求。虽然有提到依据来源文件和技术数据进行确认，但这是针对参数确认而非具体的位置检查。",
+      "limitations": [
+        "缺少具体的仪表安装位置检查要求",
+        "证据内容不完全对齐"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "explicit_negative"
+  },
+  {
+    "review_id": "df763af553481f92a395d121c6ee642a4cb1b9337606073e0446755b3539ef59",
+    "slot": "OR049-random_new",
+    "source_id": "OR049",
+    "group": "random_new",
+    "row_index": 8,
+    "evidence_id_map": {
+      "E-SW-WATER-004": "E001"
+    },
+    "review_status": "not_sent",
+    "machine_judgment": null,
+    "anchor_and_enum_checks_pass": false,
+    "band": "other_uncertain_error"
+  },
+  {
+    "review_id": "034415e54c656b215ccb5c11a3e3db1493ace0316dc379f28d82f43eea0d8ade",
+    "slot": "OR009-semantic_new",
+    "source_id": "OR009",
+    "group": "semantic_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-PUMP-CLEAN-022": "E001",
+      "E-PUMP-CLEAN-023": "E002",
+      "E-PUMP-CLEAN-024": "E003"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "034415e54c656b215ccb5c11a3e3db1493ace0316dc379f28d82f43eea0d8ade",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "泵的输送容量公差必须由泵制造商考虑",
+          "candidate_span": "泵的输送容量公差必须由泵制造商考虑",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "泵输送容量的公差必须由泵制造商考虑",
+          "candidate_span": "泵的输送容量公差必须由泵制造商考虑",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E003",
+          "exact_quote": "泵输送容量公差必须由泵制造商考虑",
+          "candidate_span": "泵的输送容量公差必须由泵制造商考虑",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述与证据中的原句一致，且适用条件明确。",
+      "limitations": [
+        "来源文件的真实性未验证"
+      ]
+    },
+    "anchor_and_enum_checks_pass": true,
+    "band": "direct_and_applicable"
+  }
+]
