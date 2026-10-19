@@ -1,0 +1,14 @@
+Qwen续跑终态与五组补充实验结果
+
+生成300次成功保持不变。Qwen唯一候选441，成功110，总尝试112（含原Arrearage失败）。
+续跑状态：paused_failure
+累计估算账本¥10.4038132，其中已知usage估价¥5.8916596、历史及失败风险预留¥4.5121536；距离50元上限¥39.5961868。不是核验后的账单。
+Qwen原始支持标签：{"partial": 59, "insufficient": 27, "direct": 24}
+各组原标签：{"semantic_new": {"completed": 50, "raw_support": {"partial": 26, "insufficient": 7, "direct": 17}, "raw_applicability": {"explicit_match": 29, "unknown": 20, "general_rule_with_basis": 1}}, "random_new": {"completed": 60, "raw_support": {"partial": 33, "direct": 7, "insufficient": 20}, "raw_applicability": {"unknown": 39, "explicit_match": 18, "general_rule_with_basis": 3}}}
+锚点字面核验：{"pass": 96, "fail": 14}
+正式抽样0条，人工判断0条；阻塞：all441_not_completed。
+抽样规则：五原标签×两臂，每层初始3条，固定hash排序及轮转补足；每层总数、配额和名义抽样比例见SAMPLE_STRATA.json。规则补充发生在已见77条结果后，不伪称预注册。
+旧827文件、保护文件及冻结输入哈希已核验不变。旧失败、旧临时材料、原日志全部保留。
+Qwen跨模型标签不是人工真值；partial、insufficient、uncertain独立。direct不代表机型工况已知或工程适用性成立。
+源配对统计已保存，不能把同源多个条目当独立样本，也不能将格式改善直接当作语义质量提升。
+项目新结果目录：D:\cooling_rag_multigranular\cooling_rag_multigranular\revision_artifacts\qualitative_5arm_authorized_run_20261019\authorized_resume_20261019\terminal_results
