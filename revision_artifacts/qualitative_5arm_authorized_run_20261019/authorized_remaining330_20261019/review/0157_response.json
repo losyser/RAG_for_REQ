@@ -1,0 +1,74 @@
+{
+  "slot": "a0cfdb422051d24e1d10968d498396ea91aab362ae50db1cc7f96fbe30b98fee",
+  "started_at": "2026-10-19T06:28:48.567051+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"a0cfdb422051d24e1d10968d498396ea91aab362ae50db1cc7f96fbe30b98fee\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"verifiable\\\",\\n  \\\"faithfulness\\\": \\\"new_inference_or_synthesis\\\",\\n  \\\"support\\\": \\\"partial\\\",\\n  \\\"applicability\\\": \\\"explicit_match\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line.\\\",\\n      \\\"candidate_span\\\": \\\"传感器处于非流动低温管路而导致阀门动作偏离设计意图\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"It is to be installed as a mixing valve. It maintains the LT cooling water at set point temperature (32°C standard).\\\",\\n      \\\"candidate_span\\\": \\\"温控阀按厂家文件要求安装为混合阀/三通恒温阀，且其温度传感器测点位置与厂家项目指南所述布置一致\\\",\\n      \\\"relation\\\": \\\"部分支持\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"候选陈述中包含了证据未直接提及的内容，如'避免因传感器处于非流动低温管路而导致阀门动作偏离设计意图'。尽管有部分直接匹配，但存在新的推导或综合。\\\",\\n  \\\"limitations\\\": [\\\"缺少对其他机型和系统型式的适用性验证\\\", \\\"证据仅针对特定的MAN L16/24 GenSet Project Guide配置\\\"]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1437,\"completion_tokens\":423,\"total_tokens\":1860,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"created\":1792391341,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-328ec081-ace5-9e24-b15b-6d07ab36ee2a\"}",
+  "response_headers": {
+    "x-request-id": "328ec081-ace5-9e24-b15b-6d07ab36ee2a",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:29:00 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"a0cfdb422051d24e1d10968d498396ea91aab362ae50db1cc7f96fbe30b98fee\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"verifiable\",\n  \"faithfulness\": \"new_inference_or_synthesis\",\n  \"support\": \"partial\",\n  \"applicability\": \"explicit_match\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line.\",\n      \"candidate_span\": \"传感器处于非流动低温管路而导致阀门动作偏离设计意图\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"It is to be installed as a mixing valve. It maintains the LT cooling water at set point temperature (32°C standard).\",\n      \"candidate_span\": \"温控阀按厂家文件要求安装为混合阀/三通恒温阀，且其温度传感器测点位置与厂家项目指南所述布置一致\",\n      \"relation\": \"部分支持\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"候选陈述中包含了证据未直接提及的内容，如'避免因传感器处于非流动低温管路而导致阀门动作偏离设计意图'。尽管有部分直接匹配，但存在新的推导或综合。\",\n  \"limitations\": [\"缺少对其他机型和系统型式的适用性验证\", \"证据仅针对特定的MAN L16/24 GenSet Project Guide配置\"]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1437,
+      "completion_tokens": 423,
+      "total_tokens": 1860,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "created": 1792391341,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-328ec081-ace5-9e24-b15b-6d07ab36ee2a"
+  },
+  "observed_usage_cost_CNY": "0.0075096",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0075096",
+  "parsed": {
+    "review_id": "a0cfdb422051d24e1d10968d498396ea91aab362ae50db1cc7f96fbe30b98fee",
+    "format_judgment": "pass",
+    "verifiability": "verifiable",
+    "faithfulness": "new_inference_or_synthesis",
+    "support": "partial",
+    "applicability": "explicit_match",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line.",
+        "candidate_span": "传感器处于非流动低温管路而导致阀门动作偏离设计意图",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "It is to be installed as a mixing valve. It maintains the LT cooling water at set point temperature (32°C standard).",
+        "candidate_span": "温控阀按厂家文件要求安装为混合阀/三通恒温阀，且其温度传感器测点位置与厂家项目指南所述布置一致",
+        "relation": "部分支持"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "候选陈述中包含了证据未直接提及的内容，如'避免因传感器处于非流动低温管路而导致阀门动作偏离设计意图'。尽管有部分直接匹配，但存在新的推导或综合。",
+    "limitations": [
+      "缺少对其他机型和系统型式的适用性验证",
+      "证据仅针对特定的MAN L16/24 GenSet Project Guide配置"
+    ]
+  },
+  "finished_at": "2026-10-19T06:29:00.054466+00:00",
+  "elapsed_seconds": 11.438
+}

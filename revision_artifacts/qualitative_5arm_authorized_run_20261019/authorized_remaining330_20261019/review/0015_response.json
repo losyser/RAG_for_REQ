@@ -1,0 +1,74 @@
+{
+  "slot": "4821c43668a6b71b0b121a0fc6726713c9d55f2049cc0dde4c817301d0092b78",
+  "started_at": "2026-10-19T06:06:22.808903+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"4821c43668a6b71b0b121a0fc6726713c9d55f2049cc0dde4c817301d0092b78\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"verifiable\\\",\\n  \\\"faithfulness\\\": \\\"faithful_paraphrase\\\",\\n  \\\"support\\\": \\\"partial\\\",\\n  \\\"applicability\\\": \\\"unknown\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"监测参数：导航驾驶台：主控制站（1, 2）；发动机低滑油压力报警：x (1) x；发动机冷却液高温报警：x (1) x；电机过载报警：x (1) x；推进器转速：x x；推力方向（全回转式）：x x；推进器电源故障报警：x x；可调螺距桨液压油低压报警：x (1) x；可调螺距桨液压油高压报警：x (1) x；可调螺距桨液压油高温报警：x (1) x；火灾探测：x x；永磁推进器定子高温报警：x x；永磁推进器接地故障：x x。\\\",\\n      \\\"candidate_span\\\": \\\"冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值与动作逻辑应受具体厂家、机型和控制系统配置约束。\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"冷却液温度95°C报警 冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度在一定时间内 （1 秒）高于 95°C，则 S6 将发送一个 CAN 消息，该消息通过协调器接通警告灯和诊断指示灯。\\\",\\n      \\\"candidate_span\\\": \\\"冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值与动作逻辑应受具体厂家、机型和控制系统配置约束。\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"证据E001和E002都提到冷却水相关的报警设置，但没有明确提到压力、液位或传感器异常的具体处理方式。同时，证据仅限于特定的厂家、机型和控制系统配置，不能泛化到所有情况。\\\",\\n  \\\"limitations\\\": [\\n    \\\"缺少对压力、液位或传感器异常的具体处理方式的支持\\\",\\n    \\\"适用性受限于具体厂家、机型和控制系统配置\\\"\\n  ]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1717,\"completion_tokens\":643,\"total_tokens\":2360,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"created\":1792390000,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-dc1c05cd-1b56-960b-81cc-60c642c64961\"}",
+  "response_headers": {
+    "x-request-id": "dc1c05cd-1b56-960b-81cc-60c642c64961",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:06:39 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"4821c43668a6b71b0b121a0fc6726713c9d55f2049cc0dde4c817301d0092b78\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"verifiable\",\n  \"faithfulness\": \"faithful_paraphrase\",\n  \"support\": \"partial\",\n  \"applicability\": \"unknown\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"监测参数：导航驾驶台：主控制站（1, 2）；发动机低滑油压力报警：x (1) x；发动机冷却液高温报警：x (1) x；电机过载报警：x (1) x；推进器转速：x x；推力方向（全回转式）：x x；推进器电源故障报警：x x；可调螺距桨液压油低压报警：x (1) x；可调螺距桨液压油高压报警：x (1) x；可调螺距桨液压油高温报警：x (1) x；火灾探测：x x；永磁推进器定子高温报警：x x；永磁推进器接地故障：x x。\",\n      \"candidate_span\": \"冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值与动作逻辑应受具体厂家、机型和控制系统配置约束。\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"冷却液温度95°C报警 冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度在一定时间内 （1 秒）高于 95°C，则 S6 将发送一个 CAN 消息，该消息通过协调器接通警告灯和诊断指示灯。\",\n      \"candidate_span\": \"冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值与动作逻辑应受具体厂家、机型和控制系统配置约束。\",\n      \"relation\": \"支持\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"证据E001和E002都提到冷却水相关的报警设置，但没有明确提到压力、液位或传感器异常的具体处理方式。同时，证据仅限于特定的厂家、机型和控制系统配置，不能泛化到所有情况。\",\n  \"limitations\": [\n    \"缺少对压力、液位或传感器异常的具体处理方式的支持\",\n    \"适用性受限于具体厂家、机型和控制系统配置\"\n  ]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1717,
+      "completion_tokens": 643,
+      "total_tokens": 2360,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "created": 1792390000,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-dc1c05cd-1b56-960b-81cc-60c642c64961"
+  },
+  "observed_usage_cost_CNY": "0.0102936",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0102936",
+  "parsed": {
+    "review_id": "4821c43668a6b71b0b121a0fc6726713c9d55f2049cc0dde4c817301d0092b78",
+    "format_judgment": "pass",
+    "verifiability": "verifiable",
+    "faithfulness": "faithful_paraphrase",
+    "support": "partial",
+    "applicability": "unknown",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "监测参数：导航驾驶台：主控制站（1, 2）；发动机低滑油压力报警：x (1) x；发动机冷却液高温报警：x (1) x；电机过载报警：x (1) x；推进器转速：x x；推力方向（全回转式）：x x；推进器电源故障报警：x x；可调螺距桨液压油低压报警：x (1) x；可调螺距桨液压油高压报警：x (1) x；可调螺距桨液压油高温报警：x (1) x；火灾探测：x x；永磁推进器定子高温报警：x x；永磁推进器接地故障：x x。",
+        "candidate_span": "冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值与动作逻辑应受具体厂家、机型和控制系统配置约束。",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "冷却液温度95°C报警 冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度在一定时间内 （1 秒）高于 95°C，则 S6 将发送一个 CAN 消息，该消息通过协调器接通警告灯和诊断指示灯。",
+        "candidate_span": "冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护，阈值与动作逻辑应受具体厂家、机型和控制系统配置约束。",
+        "relation": "支持"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "证据E001和E002都提到冷却水相关的报警设置，但没有明确提到压力、液位或传感器异常的具体处理方式。同时，证据仅限于特定的厂家、机型和控制系统配置，不能泛化到所有情况。",
+    "limitations": [
+      "缺少对压力、液位或传感器异常的具体处理方式的支持",
+      "适用性受限于具体厂家、机型和控制系统配置"
+    ]
+  },
+  "finished_at": "2026-10-19T06:06:38.735867+00:00",
+  "elapsed_seconds": 15.906
+}

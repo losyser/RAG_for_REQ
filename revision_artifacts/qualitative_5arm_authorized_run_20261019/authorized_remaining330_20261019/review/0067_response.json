@@ -1,0 +1,68 @@
+{
+  "slot": "686038226775570c03ddf9343b716d11a68e00f75d7398fee2351a1e39c0113f",
+  "started_at": "2026-10-19T06:14:52.508268+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"686038226775570c03ddf9343b716d11a68e00f75d7398fee2351a1e39c0113f\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"verifiable\\\",\\n  \\\"faithfulness\\\": \\\"faithful_paraphrase\\\",\\n  \\\"support\\\": \\\"partial\\\",\\n  \\\"applicability\\\": \\\"unknown\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"In case of failure of the cooling system, an alarm is to be given both locally and remotely at a continuously manned location and the output current is to be reduced automatically.\\\",\\n      \\\"candidate_span\\\": \\\"冷却系统故障时，应在就地及持续有人值班处发出报警，并自动降低输出电流。\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"supported\\\",\\n  \\\"reason\\\": \\\"候选中的关键行为（在冷却系统故障时发出报警并自动降低输出电流）得到了证据E001的支持。但原文需求强调的是系统的稳定性，而候选则引入了具体的监测与报警措施，这虽然有助于实现需求目标，但并未直接对应于原需求的表述。\\\",\\n  \\\"limitations\\\": [\\n    \\\"缺少对温度、压力或液位的具体监测要求是否符合原需求的明确说明\\\",\\n    \\\"未具体指明适用条件下的工况匹配情况\\\"\\n  ]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1553,\"completion_tokens\":333,\"total_tokens\":1886,\"prompt_tokens_details\":{\"cached_tokens\":256}},\"created\":1792390504,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-ee620ee4-dfb4-9d2f-99ea-adfa70cb747a\"}",
+  "response_headers": {
+    "x-request-id": "ee620ee4-dfb4-9d2f-99ea-adfa70cb747a",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:15:03 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"686038226775570c03ddf9343b716d11a68e00f75d7398fee2351a1e39c0113f\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"verifiable\",\n  \"faithfulness\": \"faithful_paraphrase\",\n  \"support\": \"partial\",\n  \"applicability\": \"unknown\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"In case of failure of the cooling system, an alarm is to be given both locally and remotely at a continuously manned location and the output current is to be reduced automatically.\",\n      \"candidate_span\": \"冷却系统故障时，应在就地及持续有人值班处发出报警，并自动降低输出电流。\",\n      \"relation\": \"支持\"\n    }\n  ],\n  \"source_reliability\": \"supported\",\n  \"reason\": \"候选中的关键行为（在冷却系统故障时发出报警并自动降低输出电流）得到了证据E001的支持。但原文需求强调的是系统的稳定性，而候选则引入了具体的监测与报警措施，这虽然有助于实现需求目标，但并未直接对应于原需求的表述。\",\n  \"limitations\": [\n    \"缺少对温度、压力或液位的具体监测要求是否符合原需求的明确说明\",\n    \"未具体指明适用条件下的工况匹配情况\"\n  ]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1553,
+      "completion_tokens": 333,
+      "total_tokens": 1886,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      }
+    },
+    "created": 1792390504,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-ee620ee4-dfb4-9d2f-99ea-adfa70cb747a"
+  },
+  "observed_usage_cost_CNY": "0.006924",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.006924",
+  "parsed": {
+    "review_id": "686038226775570c03ddf9343b716d11a68e00f75d7398fee2351a1e39c0113f",
+    "format_judgment": "pass",
+    "verifiability": "verifiable",
+    "faithfulness": "faithful_paraphrase",
+    "support": "partial",
+    "applicability": "unknown",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "In case of failure of the cooling system, an alarm is to be given both locally and remotely at a continuously manned location and the output current is to be reduced automatically.",
+        "candidate_span": "冷却系统故障时，应在就地及持续有人值班处发出报警，并自动降低输出电流。",
+        "relation": "支持"
+      }
+    ],
+    "source_reliability": "supported",
+    "reason": "候选中的关键行为（在冷却系统故障时发出报警并自动降低输出电流）得到了证据E001的支持。但原文需求强调的是系统的稳定性，而候选则引入了具体的监测与报警措施，这虽然有助于实现需求目标，但并未直接对应于原需求的表述。",
+    "limitations": [
+      "缺少对温度、压力或液位的具体监测要求是否符合原需求的明确说明",
+      "未具体指明适用条件下的工况匹配情况"
+    ]
+  },
+  "finished_at": "2026-10-19T06:15:03.099108+00:00",
+  "elapsed_seconds": 10.562
+}
