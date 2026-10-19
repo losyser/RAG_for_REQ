@@ -1,0 +1,1686 @@
+[
+  {
+    "code": "H01",
+    "review_id": "d323f6f79ed531285557944230c90053af41648414871ecf7bff85b5ff78251f",
+    "slot": "OR021-random_new",
+    "source_id": "OR021",
+    "group": "random_new",
+    "row_index": 7,
+    "evidence_id_map": {
+      "E-TCV-TEMP-101": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "d323f6f79ed531285557944230c90053af41648414871ecf7bff85b5ff78251f",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "MOV-002 HT cooling water temperature con- trol valve ... MOV-016 LT cooling water temperature con- trol valve ... P-002 HT cooling water service pump, at- tached ... P-004 LT cooling water service pump, at- tached",
+          "candidate_span": "冷却水系统配置HT冷却水温度控制阀、LT冷却水温度控制阀，以及HT冷却水服务泵（P-002，附带）和LT冷却水服务泵（P-004，附带）。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中提到的组件（HT冷却水温度控制阀、LT冷却水温度控制阀、HT冷却水服务泵、LT冷却水服务泵）在证据中确实存在，但候选中关于'核对冷却水温度控制要求，并确认泵组配置与温度控制阀配置相协调'的内容是新的推导或综合，没有直接证据支持。同时，来源可靠性无法从给定信息中确定。",
+      "limitations": [
+        "缺少关于温度控制要求的具体说明",
+        "未提供如何确认泵组配置与温度控制阀配置相协调的具体方法"
+      ]
+    },
+    "anchor_quality": {
+      "status": "fail",
+      "checked_anchors": 1,
+      "mismatches": [
+        {
+          "index": 0,
+          "reason": "quote_not_exact_substring"
+        }
+      ]
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0248_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "partial",
+      "population": 96,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.052083333333333336,
+      "nominal_weight": 19.2,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0c4dc6194aa9177c6072c5df518ba87b956be17de72ba0f5d50836ae8af4a7c3",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H02",
+    "review_id": "8def3eac3cb46e9ea07ec2f1d3010ee85bca75b63eb8250c701038205d597ac1",
+    "slot": "OR056-semantic_new",
+    "source_id": "OR056",
+    "group": "semantic_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-PUMP-PRESS-005": "E001",
+      "E-TSENS-INSP-001": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "8def3eac3cb46e9ea07ec2f1d3010ee85bca75b63eb8250c701038205d597ac1",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Local thermometers should be installed wherever there is a temperature change, i.e. before and after heat exchangers etc. Local pressure gauges should be installed on the suction and discharge side of each pump.",
+          "candidate_span": "温度仪表应布置在存在温度变化的位置（如热交换器前后等），压力仪表应布置在各泵的吸入侧与排出侧",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据E001中确实提到了温度和压力仪表的具体安装位置，这与候选中的描述一致。但是，由于适用机型与工况未知，且来源文件没有明确指出具体的检查方法或验收标准，因此适用性为unknown。",
+      "limitations": [
+        "适用机型与工况未知",
+        "缺少具体的检查方法和验收标准"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0121_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "partial",
+      "population": 133,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.03759398496240601,
+      "nominal_weight": 26.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "04f2c166eefd350283df16b9a8454c36547432179355ca50bf6c15c5d15831c2",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H03",
+    "review_id": "eb19e6db6653c59d337eb46a7310e31378ab88d90cf4c4962036da2570e6867d",
+    "slot": "OR015-semantic_new",
+    "source_id": "OR015",
+    "group": "semantic_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-COOLER-DRAW-007": "E001",
+      "E-COOLER-DRAW-011": "E002",
+      "E-COOLER-DRAW-008": "E003"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "eb19e6db6653c59d337eb46a7310e31378ab88d90cf4c4962036da2570e6867d",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。",
+          "candidate_span": "中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "It is important, that no condensed water of the intake air/charge air will be led to the compressor of the turbocharger,",
+          "candidate_span": "凝水不得引至增压器压气机。",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E003",
+          "exact_quote": "In case of one-string cooling water system are the dual fuel engine is delivered with connection branches for the external preheater unit. In case of two-string cooling water systems, the preheater is connected at the external piping just in front of the engine.",
+          "candidate_span": "中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的部分内容（如“中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确”）在提供的证据片段中没有直接对应的内容。虽然有部分提到冷却水连接关系和凝水排放的处理，但这些信息并不足以全面支持候选中的所有要求。此外，具体机型与工况未明确定义，适用性无法确定。",
+      "limitations": [
+        "缺少具体机型与工况",
+        "证据片段未能全面覆盖候选要求"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 3,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0295_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "insufficient",
+      "population": 35,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.14285714285714285,
+      "nominal_weight": 7.0,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "05315c45e349180e3922818c8543b4a5058ea9baddc399cb54635c73831edb25",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H04",
+    "review_id": "36448a480444d0aa5eb07906cfcb2ccebbf4c24bf0bf81a9aaa0039c699ebc19",
+    "slot": "OR042-random_new",
+    "source_id": "OR042",
+    "group": "random_new",
+    "row_index": 10,
+    "evidence_id_map": {
+      "E-COOLANT-INSP-055": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "36448a480444d0aa5eb07906cfcb2ccebbf4c24bf0bf81a9aaa0039c699ebc19",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "This is why distilled water must be handled particularly carefully and the concentration of the additive must be regularly checked.",
+          "candidate_span": "资料中规定必须定期检查添加剂浓度，并说明蒸馏水必须特别谨慎处理。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的要求与证据中的原句在内容上一致，且没有增加新的推导或综合。对象（冷却液水质检测）、行为（定期检查添加剂浓度、蒸馏水需特别谨慎处理）和条件（适用于所引用发电机组项目指南对应机型）均与证据相符。",
+      "limitations": [
+        "检测周期数值未知"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_resume_20261019\\review\\0007_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "direct",
+      "population": 29,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.1724137931034483,
+      "nominal_weight": 5.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0e10d26452689e533fc30185cefe4c5a4600f436da96a4e83ca3c8db4099f5c2",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H05",
+    "review_id": "352a110692258857a626d12a7cbfae423aed7047ce347ccc78747a63507b8a84",
+    "slot": "OR053-semantic_new",
+    "source_id": "OR053",
+    "group": "semantic_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-COOLER-MAINT-007": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "352a110692258857a626d12a7cbfae423aed7047ce347ccc78747a63507b8a84",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Remove, disassemble and clean assemblies that are exposed to heavy sludge deposits e.g. expansion tanks, preheating units, heat exchangers (coolant cooler, oil heat-exchanger, charge-air cooler, charge-air preheat- er, fuel preheater etc.) and lower sections of pipework.",
+          "candidate_span": "海水侧和淡水侧易结垢、沉积或污染的换热器（冷却水冷却器、滑油换热器、增压空气冷却器等）及管路低位段应设计为可拆卸、可拆解并便于检查与清洗的结构。",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Before cleaning, examine degree of contamination on water sides.",
+          "candidate_span": "清洗前应检查水侧污染程度。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求中的内容是对证据中提到的具体要求的忠实转述，没有增加新的推导或综合。对象（换热器及管路）、行为（拆卸/拆解以进行清洗）、条件（存在结垢、沉积或污染风险）均一致。但由于具体机型与工况未知，适用性保持unknown。",
+      "limitations": [
+        "缺少具体机型与工况信息"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 2,
+      "mismatches": []
+    },
+    "response_file": "authorized_resume_20261019\\review\\0004_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "direct",
+      "population": 64,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.078125,
+      "nominal_weight": 12.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0857e2fa026d8eafe889e09af42b3e92ea8bfb02c55e14023b71c67db47d8958",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H06",
+    "review_id": "d826763a0ff876f926f6a0550094c9349f1095d5d2a14574649ca8632679b27b",
+    "slot": "OR045-semantic_new",
+    "source_id": "OR045",
+    "group": "semantic_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-SYS-CLEAN-006": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "d826763a0ff876f926f6a0550094c9349f1095d5d2a14574649ca8632679b27b",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "general_rule_with_basis",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Following cleaning The cooling system must be flushed several times once it has been cleaned using cleaning agents. Replace the water during this process. If acids are used to carry out the cleaning, neutralise the cooling system afterwards with suitable chemicals then flush. The system can then be refilled with water that has been prepared accordingly.",
+          "candidate_span": "冷却水系统使用清洗剂清洗后应多次冲洗并更换水，如使用酸类清洗剂应先用合适化学品中和再冲洗",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选内容是对证据的忠实转述，但增加了关于记录保存的要求，而证据中并未明确提到这一点。此外，具体冲洗次数和中和剂参数在证据中也未给出，需按来源文件或项目维护程序执行。",
+      "limitations": [
+        "缺少具体冲洗次数和中和剂参数",
+        "证据未明确提到记录保存要求"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0257_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "partial",
+      "population": 133,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.03759398496240601,
+      "nominal_weight": 26.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "01f21068f5fa216534f2b2f7ee0d2045ae8b491d95dfc2e4678f2fbdc3aefc1b",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H07",
+    "review_id": "c6c5e7c85b2da009b380a7f12a7c3e61a71233af1beea8ea8d0acf2282c6ac42",
+    "slot": "OR010-semantic_new",
+    "source_id": "OR010",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-COOLANT-WATER-051": "E001",
+      "E-COOLANT-INSP-014": "E002",
+      "E-COOLANT-INSP-096": "E003",
+      "E-SYS-WATER-017": "E004"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "c6c5e7c85b2da009b380a7f12a7c3e61a71233af1beea8ea8d0acf2282c6ac42",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "The use of an approved cooling water additive is mandatory. An updated list of approved products is supplied for every installation and it can also be found in the Instruction manual of the engine, together with dosage and further instructions.",
+          "candidate_span": "冷却液应按厂家要求使用经批准的化学添加剂",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "当使用化学添加剂时，测试设备应依据供应商建议；供应商提供的测试套件可用于测定淡水水质。",
+          "candidate_span": "当使用化学添加剂时，测试设备应依据供应商建议，供应商提供的测试套件可用于测定淡水水质",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E004",
+          "exact_quote": "Additives may only be used in closed circuits where no significant consump- tion occurs, apart from leaks or evaporation losses.",
+          "candidate_span": "添加剂仅可用于除泄漏或蒸发损失外无显著消耗的闭式回路",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求中的大部分内容可以从引用的证据中找到直接支持，但具体适用机型和工况未在证据中明确指出，因此适用性为unknown。",
+      "limitations": [
+        "缺少具体适用机型",
+        "工况条件不明确"
+      ]
+    },
+    "anchor_quality": {
+      "status": "fail",
+      "checked_anchors": 3,
+      "mismatches": [
+        {
+          "index": 0,
+          "reason": "quote_not_exact_substring"
+        }
+      ]
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0223_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "partial",
+      "population": 133,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.03759398496240601,
+      "nominal_weight": 26.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "00e3d05692c8688355423388322f013b2923f4d478a9459d79cff825e8fd9b3f",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H08",
+    "review_id": "841b083a4e92818891ca49968e7d919421d0fd583f7cbbbbb270407bafa703b6",
+    "slot": "OR060-semantic_new",
+    "source_id": "OR060",
+    "group": "semantic_new",
+    "row_index": 6,
+    "evidence_id_map": {
+      "E-HT-DRAW-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "841b083a4e92818891ca49968e7d919421d0fd583f7cbbbbb270407bafa703b6",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "海水侧流向：Internal cooling water system Figure 1: Diagram for internal cooling water system 2. Pipe F1 HT fresh water inlet DN 80；F2 HT fresh water outlet DN 80；F3 Venting to expansion tank DN 15；G1 LT fresh water inlet DN 80/100；(G3) LT sea water inlet DN 80/100；G2 LT fresh water outlet DN 80/100；(G4) LT sea water outlet DN 80/100。适用条件：法兰连接标准根据DIN 2501。",
+          "candidate_span": "冷却水管系接口的管径与法兰连接标准应在厂家资料、规范要求、采购清单和施工图中保持一致。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据支持了冷却水管系接口的管径和法兰连接标准的一致性，但仅限于MAN L23/30H机型。其他机型的情况未知，因此整体支持为部分。",
+      "limitations": [
+        "仅适用于MAN L23/30H机型",
+        "未提及采购清单和施工图的一致性"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0096_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "partial",
+      "population": 133,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.03759398496240601,
+      "nominal_weight": 26.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "04e42edf7ae84dd9aff80dc5d687d4c87a02710132071d70007c5dcb2028ab1d",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H09",
+    "review_id": "5156762d6a7eceb6f161a714b6dbdc413002dd7536b526013c61168330c4de2a",
+    "slot": "OR002-semantic_new",
+    "source_id": "OR002",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-PUMP-RED-004": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "5156762d6a7eceb6f161a714b6dbdc413002dd7536b526013c61168330c4de2a",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Sea-water cooling system of one main engine shall be provided with two pumps, one of which shall be a stand-by pump. The capacity of the stand-by pump shall not be less than that of the main pump. At least one of the pumps shall have independent drive.",
+          "candidate_span": "海水冷却系统应配置两台泵，其中一台为备用泵，备用泵容量不应小于主泵容量，且至少一台泵应具有独立驱动。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求中的内容与证据中的描述一致，没有增加新的推导或综合，并且对象、行为、单位和运算符都是一致的。但由于具体机型与系统型式未知，适用性需按项目厂家文件确认。",
+      "limitations": [
+        "具体机型与系统型式未知"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0030_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "direct",
+      "population": 64,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.078125,
+      "nominal_weight": 12.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "01d2ec09b40b3267d329984116c6bab56bc528f45bdb07fb121f38320aabb01f",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H10",
+    "review_id": "a1a58e73db01b21f6246555065e3c45c50c20e158349591367962ceebf791258",
+    "slot": "OR033-semantic_new",
+    "source_id": "OR033",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-SYS-COMP-015": "E001",
+      "E-SYS-COMP-013": "E002",
+      "E-LSENS-FLOW-002": "E003"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "a1a58e73db01b21f6246555065e3c45c50c20e158349591367962ceebf791258",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "淡水侧系统组成：HT冷却水压力传感器PT10，信号范围MW 64-80，单位未明确；LT冷却水压力传感器PT01，信号范围MW 65-80，单位未明确；滑油压力滤器进口传感器PT21，信号范围MW 66-80，单位未明确；滑油压力滤器出口传感器PT22，信号范围MW 67-80，单位未明确；滑油压力TC传感器PT23，信号范围MW 68-80，单位未明确；燃油压力发动机进口传感器PT40，信号范围MW 69-80，单位未明确；增压空气压力冷却器出口传感器PT31，信号范围MW 70-80，单位未明确；起动空气压力传感器PT70，信号范围MW 71-80，单位未明确；燃油压力滤器进口传感器PT43，信号范围MW 72-80，单位未明确；交流发电机负载传感器ZT59，信号范围MW 73-80，单位未明确；燃油齿条位置传感器ZT45，信号范围MW 74-80，单位未明确；环境空气压力传感器PT38，信号范围MW 75-80，单位未明确；模拟转速设定点，信号范围MW 76-80，单位未明确。",
+          "candidate_span": "传感器量程和报警设定值应限定在来源文件规定的厂家、机型、系统型式和工况范围内，不得超出该范围泛化使用。",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "淡水侧系统组成：HT冷却水压力传感器PT10；LT冷却水压力传感器PT01；滑油压力滤器进口传感器PT21；滑油压力滤器出口传感器PT22；滑油压力TC传感器PT23；燃油压力发动机进口传感器PT40；扫气压力冷却器出口传感器PT31；启动空气压力传感器PT70；燃油压力滤器进口传感器PT43；发电机负载传感器ZT59；燃油齿条位置传感器ZT45；环境空气压力传感器PT38；模拟转速设定点MW80。适用条件：MAN Energy Solutions机型L27/38S;L16/24S;L21/31S;L16/24;L21/31;L27/38，信号范围MW64至MW77。",
+          "candidate_span": "传感器量程和报警设定值应限定在来源文件规定的厂家、机型、系统型式和工况范围内，不得超出该范围泛化使用。",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E003",
+          "exact_quote": "冷却水连接关系：发动机类型 8L21/31、9L21/31、8L27/38 和 9L27/38 仅使用双轴承交流发电机，以保持发动机后曲轴轴承上的负载处于低水平。",
+          "candidate_span": "传感器量程和报警设定值应限定在来源文件规定的厂家、机型、系统型式和工况范围内，不得超出该范围泛化使用。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述中提到的“传感器量程和报警设定值应限定在来源文件规定的厂家、机型、系统型式和工况范围内”并没有在提供的证据中直接找到对应的支持。证据中提到了一些传感器及其信号范围，但没有明确指出这些量程和报警设定值的具体依据以及是否需要严格遵守这些规定。此外，证据中的内容并未明确提及不能超出限定范围泛化使用的要求。",
+      "limitations": [
+        "缺少具体依据文件",
+        "未明确量程和报警设定值的具体依据",
+        "未明确禁止超出限定范围泛化使用"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 3,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0163_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "insufficient",
+      "population": 35,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.14285714285714285,
+      "nominal_weight": 7.0,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "09d03c7024f7dcc8748f7f75a64dfb3830f61fa6c948b4c66cbf3da03b8af3e3",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H11",
+    "review_id": "fff8923cb6c20ac78d74f1aae8a045e1a779fa35b01b9420fa5e7cbf5907502c",
+    "slot": "OR006-random_new",
+    "source_id": "OR006",
+    "group": "random_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-PUMP-PRESS-005": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "fff8923cb6c20ac78d74f1aae8a045e1a779fa35b01b9420fa5e7cbf5907502c",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Local thermometers should be installed wherever there is a temperature change, i.e. before and after heat exchangers etc. Local pressure gauges should be installed on the suction and discharge side of each pump.",
+          "candidate_span": "每台泵的吸入侧与排出侧应设置就地压力表；温度变化处（如热交换器前后）应设置就地温度计。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据直接支持了冷却水泵吸入口与排出口、以及热交换器前后等温度变化部位应设置就地温度计与压力表的要求。但没有明确提到具体厂家、机型和系统型式，因此适用性未知。",
+      "limitations": [
+        "缺失具体厂家、机型和系统型式的限定条件"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0330_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "partial",
+      "population": 96,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.052083333333333336,
+      "nominal_weight": 19.2,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "09bf4069ac60287a3530c211d0d4fe637109f3a76ff690f459b78c31c67aea06",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H12",
+    "review_id": "df763af553481f92a395d121c6ee642a4cb1b9337606073e0446755b3539ef59",
+    "slot": "OR049-random_new",
+    "source_id": "OR049",
+    "group": "random_new",
+    "row_index": 8,
+    "evidence_id_map": {
+      "E-SW-WATER-004": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "df763af553481f92a395d121c6ee642a4cb1b9337606073e0446755b3539ef59",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Every 2 to 6 months, a coolant sample must be sent to an independent labor- atory or to the engine manufacturer for an integrated analysis. If chemical additives or antifreeze agents are used, coolant should be re- placed after 3 years at the latest.",
+          "candidate_span": "每2至6个月送冷却液样品进行综合化验；使用化学添加剂或防冻剂时冷却液最迟3年后更换。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的冷却水取样分析周期和更换条件与证据中一致，但增加了对膨胀水箱液位、补水和低液位报警的要求，这些在证据中没有提及。因此，候选包含了新的推导或综合。",
+      "limitations": [
+        "证据未涵盖膨胀水箱液位、补水和低液位报警的检查要求"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0275_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "partial",
+      "population": 96,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.052083333333333336,
+      "nominal_weight": 19.2,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "06fdab8d3c906b2d9e51b7c8977a2e719153e580b26a573009c94214551f72eb",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H13",
+    "review_id": "c75291a9b1425ae184d222cf6c27cd24a901d81bc0ffd90c6a177d88c0e3a887",
+    "slot": "OR029-random_new",
+    "source_id": "OR029",
+    "group": "random_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-EXP-CORR-006": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "c75291a9b1425ae184d222cf6c27cd24a901d81bc0ffd90c6a177d88c0e3a887",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "安全阀安装在集管上；压力表安装在集管上，位置应便于从补水点读取。",
+          "candidate_span": "安全阀与压力表应安装在集管上，且压力表位置应便于从补水点读取",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选内容直接引用了证据中的原句，且适用条件一致。",
+      "limitations": []
+    },
+    "anchor_quality": {
+      "status": "fail",
+      "checked_anchors": 1,
+      "mismatches": [
+        {
+          "index": 0,
+          "reason": "quote_not_exact_substring"
+        }
+      ]
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0226_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "direct",
+      "population": 29,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.1724137931034483,
+      "nominal_weight": 5.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "1404b8a4236ebc3965c1d151ff7b05fb247095c19121d4a72ba4ef42e33e708b",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H14",
+    "review_id": "dd45ee9dadce18632896032558c942b77ca287fadfe708b300cf9a8d0431abc3",
+    "slot": "OR059-semantic_new",
+    "source_id": "OR059",
+    "group": "semantic_new",
+    "row_index": 9,
+    "evidence_id_map": {
+      "E-SYS-INSP-005": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "dd45ee9dadce18632896032558c942b77ca287fadfe708b300cf9a8d0431abc3",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "It is therefore advisable to check the cool- ing system and the condition of the coolant regularly. To detect leaks in the lubricating oil system, regular checking of the water in the expansion tank is recommended. Signs of oil in the water include discoloration or a visible oil film on the surface of the water sample.",
+          "candidate_span": "应定期检查冷却系统与冷却液状态；建议定期检查膨胀水箱中的水以发现滑油系统泄漏，水中出现油迹包括变色或水样表面可见油膜。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选要求和测量标准中的内容直接对应于证据中提到的定期检查冷却系统和冷却液状态以及通过膨胀水箱水位检查发现滑油系统泄漏的方法。对象、行为和条件一致，没有增加新的推导或综合。",
+      "limitations": [
+        "来源层级为L3，真实性/版本可靠性未知",
+        "适用性仅明确适用于MAN 49/60 Project Guide，其他机型或工况未知"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0269_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "direct",
+      "population": 64,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.078125,
+      "nominal_weight": 12.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0a7f0261d08824399d530e2f4de3fba16b6ca0ec19d623cd9d0f0af372d78e84",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H15",
+    "review_id": "580ee77834fe379290f030ce036e7bcbd813f86ad59c4e8564c5f3e6a0a6d18d",
+    "slot": "OR038-semantic_new",
+    "source_id": "OR038",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "L1-CCS2025-9.4.2.2-032": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "580ee77834fe379290f030ce036e7bcbd813f86ad59c4e8564c5f3e6a0a6d18d",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "direct",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "柴油机的冷却系统应设高温报警装置。",
+          "candidate_span": "柴油机的冷却系统应设高温报警装置。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选中的可测量标准与证据中的原句完全一致，没有增加新的推导或综合。但适用性未知，因为具体机型与工况未提供。",
+      "limitations": [
+        "具体机型与工况未知"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0037_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "direct",
+      "population": 64,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.078125,
+      "nominal_weight": 12.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "055a59ef18d572d169d76abfe52b4f6c09a708458f8e91c467954631165c3a75",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H16",
+    "review_id": "f370db84d1b9d935df5da6973635f7c0a6418afd4ea84305b973e8d7fb1cd291",
+    "slot": "OR034-semantic_new",
+    "source_id": "OR034",
+    "group": "semantic_new",
+    "row_index": 2,
+    "evidence_id_map": {
+      "E-LT-PRESS-003": "E001",
+      "E-LT-PRESS-005": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "f370db84d1b9d935df5da6973635f7c0a6418afd4ea84305b973e8d7fb1cd291",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line.",
+          "candidate_span": "温度控制阀的感温元件应布置在具有实际流动的冷却水管路中，避免因安装于无流动、低温管路而导致控制滞后。",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line.",
+          "candidate_span": "温度控制阀的感温元件应布置在具有实际流动的冷却水管路中，避免因安装于无流动、低温管路而导致控制滞后。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据片段仅描述了当前操作模式下的特定情况，而候选条目提出了一个一般性的要求。证据未直接说明感温元件应布置在有流动的管路中，而是指出在非流动、低温管路中的测量结果会导致某种行为。此外，适用性条件没有得到明确的支持。",
+      "limitations": [
+        "缺少对其他操作模式或工况的说明",
+        "缺乏对具体机型和系统的详细验证"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 2,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0314_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "insufficient",
+      "population": 35,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.14285714285714285,
+      "nominal_weight": 7.0,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "07186a7ab4e48f99c880902d7d0e29d09aea0cdfcee20b268a6e88823e25e7dc",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H17",
+    "review_id": "660a76518b6ee9b47af68c5e9b66d3a9056c6bac454da48358a556073b0f75f8",
+    "slot": "OR054-random_new",
+    "source_id": "OR054",
+    "group": "random_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-COOLANT-CLEAN-013": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "660a76518b6ee9b47af68c5e9b66d3a9056c6bac454da48358a556073b0f75f8",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Loose solid matter in particular must be removed by flushing the system thoroughly as otherwise erosion may occur in locations where the flow velocity is high. The cleaning agents must not corrode the seals and materials of the cooling system.",
+          "candidate_span": "系统须经彻底冲洗以去除松散固体物质，清洁剂不得腐蚀冷却系统密封件与材料。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选语句是对证据中内容的忠实转述，且在适用条件和要求上没有增加新的推导或综合。对象、行为、单位、运算符及范围条件一致。",
+      "limitations": [
+        "来源层级为L3，但未提供足够的信息来评估来源的真实性和版本可靠性"
+      ]
+    },
+    "anchor_quality": {
+      "status": "fail",
+      "checked_anchors": 1,
+      "mismatches": [
+        {
+          "index": 0,
+          "reason": "quote_not_exact_substring"
+        }
+      ]
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0061_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "direct",
+      "population": 29,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.1724137931034483,
+      "nominal_weight": 5.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "091ae71aaf8861ce90156a8495aac13ecfe0c97b48102812c0b406bf44f86315",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H18",
+    "review_id": "059a308532661485542dcd7e3be10289b97ed7614d4d69a39b6e68dc2d27ab55",
+    "slot": "OR014-random_new",
+    "source_id": "OR014",
+    "group": "random_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-COOLANT-WATER-073": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "059a308532661485542dcd7e3be10289b97ed7614d4d69a39b6e68dc2d27ab55",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "quote",
+      "support": "partial",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "coolant 的 water_quality\\ncorrosion_protection 参数应依据来源文件\\n厂家技术数据或项目计算文件确定。\\n若原文给出明确限值\\n可作为对应适用对象和工况下的参数约束。",
+          "candidate_span": "coolant 的 water_quality 与 corrosion_protection 参数应依据来源文件、厂家技术数据或项目计算文件确定；若原文给出明确限值，可作为对应适用对象和工况下的参数约束。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据支持候选中的水质与防腐保护参数应依据来源文件等确定，但未直接提供具体数值或检测周期，且仅适用于Caterpillar发动机冷却系统。",
+      "limitations": [
+        "缺少具体数值",
+        "适用范围限定为Caterpillar发动机"
+      ]
+    },
+    "anchor_quality": {
+      "status": "fail",
+      "checked_anchors": 1,
+      "mismatches": [
+        {
+          "index": 0,
+          "reason": "quote_not_exact_substring"
+        }
+      ]
+    },
+    "response_file": "review\\0010_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "partial",
+      "population": 96,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.052083333333333336,
+      "nominal_weight": 19.2,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "03c9128b482de4f8325bea28734f28e11436ef8d859517a7bf493b18d9b358d3",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H19",
+    "review_id": "bd6d6153a7106edded2e1bdcf8580b382b68de39b27fb7d5d6bf9a8741cbbc2d",
+    "slot": "OR012-semantic_new",
+    "source_id": "OR012",
+    "group": "semantic_new",
+    "row_index": 3,
+    "evidence_id_map": {
+      "E-HT-DRAW-002": "E001",
+      "E-COOLER-DRAW-008": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "bd6d6153a7106edded2e1bdcf8580b382b68de39b27fb7d5d6bf9a8741cbbc2d",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Please see the installation drawing to identify the supply and return locations from the engine to the vessel cabin heater.",
+          "candidate_span": "图纸应表达泵、冷却器、温控阀和膨胀水箱的接口位置，并标识发动机至船舶舱柜加热器的供回接口位置。",
+          "relation": "部分支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "In case of one-string cooling water system are the dual fuel engine is delivered with connection branches for the external preheater unit. In case of two-string cooling water systems, the preheater is connected at the external piping just in front of the engine.",
+          "candidate_span": "外部预热器连接支管位置在图纸中可识别",
+          "relation": "部分支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求包含了一些证据中未明确提及的内容，如泵、冷却器、温控阀和膨胀水箱的具体接口位置。同时，虽然证据提到了供应和返回位置以及外部预热器的连接，但并未具体说明这些设备的所有接口位置都应在图纸上标注。此外，没有提供具体的适用机型和工况，适用性无法确定。",
+      "limitations": [
+        "缺少具体机型和工况",
+        "证据未涵盖所有设备接口位置"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 2,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0212_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "insufficient",
+      "population": 35,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.14285714285714285,
+      "nominal_weight": 7.0,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0e83fd0f98fb18c6d6fa04cc56944932ca45852b70386782969f65a7c6a99da8",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H20",
+    "review_id": "fdccc8c361b9e0dd1b07d22423de1f9cdd33318f3fe9d65a227e443c97eb4d17",
+    "slot": "OR042-random_new",
+    "source_id": "OR042",
+    "group": "random_new",
+    "row_index": 8,
+    "evidence_id_map": {
+      "E-COOLER-COMP-003": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "fdccc8c361b9e0dd1b07d22423de1f9cdd33318f3fe9d65a227e443c97eb4d17",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "From the sea water pump, the water is first led through the charge air cooler, where it cools the air from the turbocharger. The water is then led through the heat exchanger, where it cools the internal coolant circuit of the engine. After the heat exchanger, the water is led to the outlet.",
+          "candidate_span": "海水从海水泵先流经空冷器冷却增压空气，再流经热交换器冷却发动机内部冷却液回路，之后流向出口。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选陈述与证据中的描述一致，且没有增加新的推导或综合。适用条件明确指出了引用资料对应的机型。",
+      "limitations": []
+    },
+    "anchor_quality": {
+      "status": "fail",
+      "checked_anchors": 1,
+      "mismatches": [
+        {
+          "index": 0,
+          "reason": "quote_not_exact_substring"
+        }
+      ]
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0322_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "direct",
+      "population": 29,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.1724137931034483,
+      "nominal_weight": 5.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "14ca160a69cd76603fd6af1543587b55d87211d8ba47ddb88969ee0e99c059cf",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H21",
+    "review_id": "8d6937aa9bb28858e9ecf60c6e9195e1fd2b8e60578b64137f28e74c7d2199ae",
+    "slot": "OR051-random_new",
+    "source_id": "OR051",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-SW-DRAW-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "8d6937aa9bb28858e9ecf60c6e9195e1fd2b8e60578b64137f28e74c7d2199ae",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "unsupported",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "FIL-021 /Strainer for cooling water In order to protect the engine and system components, several strainers are to be provi",
+          "candidate_span": "冷却器应设计为可方便打开，以便进行清洗和检查。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "提供的证据摘录中没有直接提到冷却器的设计要求或其维护的便利性。候选中的内容无法从给定的证据中得到支持。",
+      "limitations": [
+        "证据中未提供关于冷却器的具体结构或维护要求的信息",
+        "机型与系统型式未知，具体结构形式待项目确定"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0120_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "insufficient",
+      "population": 83,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.060240963855421686,
+      "nominal_weight": 16.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "05f4e822487d97c6275e0268f0d75109d3831f79009c364b81c69ba95566fbff",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H22",
+    "review_id": "99eecc00512b5ee2d26d3512980891d7fcff9bb8ef3a71729adf35d5d4529478",
+    "slot": "OR010-random_new",
+    "source_id": "OR010",
+    "group": "random_new",
+    "row_index": 12,
+    "evidence_id_map": {
+      "E-LT-COMP-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "99eecc00512b5ee2d26d3512980891d7fcff9bb8ef3a71729adf35d5d4529478",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "The pump draws the oil from the sump in the base frame, and on the pressure side the oil passes through the lubricating oil cooler and the filter which both are mounted on the engine. Cooling is carried out by the low temperature cooling water system and the temperature regulating is made by a thermostatic 3-way valve on the oil side. The engine is as standard equipped with an electrically driven prelubricating pump.",
+          "candidate_span": "泵从基座油底壳抽油，压力侧滑油经过安装在发动机上的滑油冷却器和过滤器；冷却由低温冷却水系统完成，温度调节由滑油侧恒温三通阀实现；发动机标准配置电动预润滑泵。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选内容忠实转述了证据中的描述，且没有增加新的推导或综合。对象、行为、单位、运算符和范围与条件一致。",
+      "limitations": []
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0145_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "direct",
+      "population": 29,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.1724137931034483,
+      "nominal_weight": 5.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "115a114fb8900ab9084090cad113ca11d5e4ce029dc35ee6b3fb6c010772be04",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H23",
+    "review_id": "3574624ca170b3268a1f184864f4b3c3b1fabee7edddd8c42d161b9c0a2e5efa",
+    "slot": "OR038-semantic_new",
+    "source_id": "OR038",
+    "group": "semantic_new",
+    "row_index": 8,
+    "evidence_id_map": {
+      "E-ALARM-SHUT-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "3574624ca170b3268a1f184864f4b3c3b1fabee7edddd8c42d161b9c0a2e5efa",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "direct",
+      "applicability": "explicit_match",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "温度超过 105°C 且发动机熄火功能激活时，警告灯和诊断指示灯 将点亮，并且发动机将熄火。如果总控功能激活，则仅扭矩降低 功能起作用。",
+          "candidate_span": "温度超过105°C且发动机熄火功能激活时，如果总控功能激活，则仅扭矩降低功能起作用。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选内容与证据中的描述一致，没有增加新的推导或综合，且适用条件明确匹配Scania DI16船用发动机和EMS/S6控制系统。",
+      "limitations": [
+        "来源文件的真实性未验证"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_resume_20261019\\review\\0005_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "direct",
+      "population": 64,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.078125,
+      "nominal_weight": 12.8,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "02bc4c23ac6df064db87258630b88e624b1fb3b50b88a2b2889eab2dc51c533b",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H24",
+    "review_id": "7c8910b154a25f3269b81849ec091f111180cb97e7e589b71530e2b1c05d8b1f",
+    "slot": "OR052-semantic_new",
+    "source_id": "OR052",
+    "group": "semantic_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-PUMP-MAINT-001": "E001",
+      "E-COOLER-MAINT-019": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "7c8910b154a25f3269b81849ec091f111180cb97e7e589b71530e2b1c05d8b1f",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "faithful_paraphrase",
+      "support": "partial",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "Engine water pumps must be easy to remove.",
+          "candidate_span": "冷却水泵必须易于拆卸",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "Piping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes.",
+          "candidate_span": "管路布置应允许接近开口并便于拆卸端盖和抽出管束",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "候选需求忠实转述了证据中的内容，但没有明确提到‘无需先移开无关管路’这一具体条件。此外，适用性需要具体机型、泵型及安装位置的确认。",
+      "limitations": [
+        "缺少具体机型、泵型及安装位置的确认",
+        "未明确说明‘无需先移开无关管路’的具体条件"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 2,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0091_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "partial",
+      "population": 133,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.03759398496240601,
+      "nominal_weight": 26.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "027327a0b7ce421ad8d363105f8b26fa61c7024ce47359c153509e68bee6c039",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H25",
+    "review_id": "62522531766428e70d63cddcdd323d10fd5dfbcb861e42dedb80de6266d23c36",
+    "slot": "OR006-random_new",
+    "source_id": "OR006",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-COOLER-PRESS-041": "E001",
+      "E-HT-COMP-071": "E002",
+      "E-PUMP-PRESS-005": "E003"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "62522531766428e70d63cddcdd323d10fd5dfbcb861e42dedb80de6266d23c36",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "冷却水温度与压力参数",
+          "candidate_span": "冷却水温度与压力参数",
+          "relation": "支持"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "高温冷却水系统组成：Heat radiation engine (based on engine room temp. 55 °C) 流量值 249 249 290 291；HT circuit (charge air cooler LP and HP HT stage, Jacket cooling and turbocharger cooling) 流量 180.4 /h；LT circuit (charge air cooler LP and HP LT stage) 流量 209.4 /h。适用条件：基于机舱温度55°C。",
+          "candidate_span": "依据发动机制造厂家的技术资料或项目计算文件确定，不得依据经验值设定",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E003",
+          "exact_quote": "Local thermometers should be installed wherever there is a temperature change, i.e. before and after heat exchangers etc. Local pressure gauges should be installed on the suction and discharge side of each pump.",
+          "candidate_span": "依据来源文件、厂家技术数据或项目计算文件确定；若原文给出明确限值，仅可作为对应适用对象和工况下的参数约束",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据片段虽然提到了冷却水温度与压力参数，但没有明确说明这些参数应依据厂家技术资料或项目计算文件来确定，且不能直接支撑不得依据经验值设定的要求。此外，具体机型与工况未知时的适用性也没有得到明确支持。",
+      "limitations": [
+        "缺少具体机型与工况",
+        "未明确说明参数来源依据"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 3,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0053_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "insufficient",
+      "population": 83,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.060240963855421686,
+      "nominal_weight": 16.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "090acdf3b3a23c73a91eaad7f94bdaa76b1bd0ddd765eabb5c4062b29f0d41ac",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H26",
+    "review_id": "6068e2cebc8b7d7c5ccbbe339dc739444692f89f5650033c2745a8382fab048a",
+    "slot": "OR056-semantic_new",
+    "source_id": "OR056",
+    "group": "semantic_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-VALVE-INSP-010": "E001",
+      "E-VALVE-ARR-001": "E002"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "6068e2cebc8b7d7c5ccbbe339dc739444692f89f5650033c2745a8382fab048a",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "整理说明：该证据针对 valve 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。",
+          "candidate_span": "冷却水系统安装完成后，应检查阀门的安装方向，确认其与设计流向及阀门标识一致。",
+          "relation": "缺失说明"
+        },
+        {
+          "evidence_id": "E002",
+          "exact_quote": "整理说明：该证据针对 valve 的 arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。",
+          "candidate_span": "冷却水系统安装完成后，应检查阀门的安装方向，确认其与设计流向及阀门标识一致。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "提供的证据片段主要讨论了水管路最低点放水、最高点排气要求以及海水供应到冷却系统的连接关系，并未直接提及关于阀门方向检查的具体内容。候选中的具体检查方法和接受标准在给定的证据中没有得到支持。",
+      "limitations": [
+        "缺少关于阀门方向检查的具体说明",
+        "具体机型与工况未知"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 2,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0049_response.json",
+    "sampling": {
+      "group": "semantic_new",
+      "raw_support": "insufficient",
+      "population": 35,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.14285714285714285,
+      "nominal_weight": 7.0,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0d200dd6541fcbe6dc3ec1dc6e0246538e79f89c457257d6228adaf754c08fbc",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H27",
+    "review_id": "a24179216aa132566430ad1a94e6e745c36f2759bd6c3631924d1acb3ed95992",
+    "slot": "OR014-random_new",
+    "source_id": "OR014",
+    "group": "random_new",
+    "row_index": 4,
+    "evidence_id_map": {
+      "E-PUMP-CLEAN-023": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "a24179216aa132566430ad1a94e6e745c36f2759bd6c3631924d1acb3ed95992",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "冷却器规格与泵容量参考：基本值用于冷却器布局设计；泵输送容量的公差必须由泵制造商考虑。z = 自动过滤器的冲洗油。适用条件：表51：冷却器规格标称值 – L 49/60 – 带CPP的机械推进。",
+          "candidate_span": "冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "提供的证据内容主要涉及冷却器规格与泵容量，未直接提到冲洗和复查的具体要求，也没有提及清洗后重新投运前需关注的事项。候选中的具体操作步骤和检查要点在证据中没有直接支持。",
+      "limitations": [
+        "缺少具体的冲洗和复查操作要求",
+        "缺少对清洗后重新投运前的关注事项的支持"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0167_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "insufficient",
+      "population": 83,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.060240963855421686,
+      "nominal_weight": 16.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "05301d9f1c227e3dc141da228b5ad0f25ac87316114e8fe79b69d0b09cc0dc29",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H28",
+    "review_id": "aac5a9d4b8ad88177327e9412bddb06dd63b09b1fe430bead46f7a59646dbb08",
+    "slot": "OR049-random_new",
+    "source_id": "OR049",
+    "group": "random_new",
+    "row_index": 5,
+    "evidence_id_map": {
+      "E-PUMP-INSP-004": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "aac5a9d4b8ad88177327e9412bddb06dd63b09b1fe430bead46f7a59646dbb08",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "In Figure 17, the main (Cat) expansion tank provides the regulator mounting location and deaeration function for the cooling system. The auxiliary expansion tank is the highest point in th",
+          "candidate_span": "膨胀水箱为系统最高点并提供调节器安装位置与除气功能；辅助膨胀水箱为系统最高点",
+          "relation": "部分支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据中提到主膨胀水箱提供调节器安装位置和除气功能，辅助膨胀水箱是系统最高点。但候选中提到的“冷却水系统应设置泄漏检查”和“防止泵密封处泄漏”在证据中没有直接对应内容。同时，具体高度限值、适用的具体机型与工况均未知。",
+      "limitations": [
+        "缺少具体高度限值",
+        "缺少具体机型与工况信息",
+        "未提及泄漏检查和防止泵密封处泄漏的内容"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0178_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "insufficient",
+      "population": 83,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.060240963855421686,
+      "nominal_weight": 16.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "097490b63e4e39bf562df89def734543cc72f90ecb0b90e37d96c7ca4a537bf1",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H29",
+    "review_id": "c7e3c97513a01088b927e54021283829d66288eba29e10bbf9a6f9d014cfce76",
+    "slot": "OR042-random_new",
+    "source_id": "OR042",
+    "group": "random_new",
+    "row_index": 7,
+    "evidence_id_map": {
+      "E-LT-PRESS-004": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "c7e3c97513a01088b927e54021283829d66288eba29e10bbf9a6f9d014cfce76",
+      "format_judgment": "pass",
+      "verifiability": "verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "partial",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "it flows to the thermostatically controlled 3-way valve. As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxil",
+          "candidate_span": "冷却水系统中配置热静力控制三通阀，按温度进行流量调节。",
+          "relation": "支持"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据提到了热静力控制三通阀的存在及其按温度调节冷却水流量的功能，但没有明确说明这是规范要求或适用于所有情况。候选中的适用条件和具体温度设定值在证据中未提及。",
+      "limitations": [
+        "缺失具体温度设定值",
+        "适用条件不明确"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0230_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "partial",
+      "population": 96,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.052083333333333336,
+      "nominal_weight": 19.2,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "0b463246b59ca02ed31497f1c763c6e916cd445e4deae9d326e447e298a97f85",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "H30",
+    "review_id": "559d0496237c4836c3756cba52d8c1901f11459e6310561d2af38659ae700290",
+    "slot": "OR028-random_new",
+    "source_id": "OR028",
+    "group": "random_new",
+    "row_index": 1,
+    "evidence_id_map": {
+      "E-FILTER-FLOW-001": "E001"
+    },
+    "review_status": "completed",
+    "machine_judgment": {
+      "review_id": "559d0496237c4836c3756cba52d8c1901f11459e6310561d2af38659ae700290",
+      "format_judgment": "pass",
+      "verifiability": "not_verifiable",
+      "faithfulness": "new_inference_or_synthesis",
+      "support": "insufficient",
+      "applicability": "unknown",
+      "anchors": [
+        {
+          "evidence_id": "E001",
+          "exact_quote": "The strainer must be installed so it can be easily cleaned, even in the worst weather conditions.",
+          "candidate_span": "冷却器、滤器和泵等常维护设备应布置为便于船员日常巡检接近和操作的结构。",
+          "relation": "缺失说明"
+        }
+      ],
+      "source_reliability": "unknown",
+      "reason": "证据仅提到滤器（strainer）需容易清洁，未直接提及冷却器和泵的接近性要求。候选陈述扩展了原文范围，引入了新的设备类型和维护活动，且具体接近空间尺寸未知。",
+      "limitations": [
+        "缺少对冷却器和泵的具体支持",
+        "对象范围扩大",
+        "具体接近空间尺寸未知",
+        "适用机型与工况未知"
+      ]
+    },
+    "anchor_quality": {
+      "status": "pass",
+      "checked_anchors": 1,
+      "mismatches": []
+    },
+    "response_file": "authorized_remaining330_20261019\\review\\0034_response.json",
+    "sampling": {
+      "group": "random_new",
+      "raw_support": "insufficient",
+      "population": 83,
+      "selected": 5,
+      "nominal_inclusion_fraction": 0.060240963855421686,
+      "nominal_weight": 16.6,
+      "probability_caveat": "Fixed deterministic hash ordering; n_h/N_h and N_h/n_h are nominal inclusion fractions and weights under a hash-as-random interpretation, not randomization guarantees. Population amendment occurred after all440 valid outcomes were observed; cannot remove post-run selection or missingness bias.",
+      "hash_order": "005f80c4f90256dbe9bad94ab432e42885d1692d65f13919d4a58760b0636943",
+      "policy_version": "postrun-440-valid-v6-20261019"
+    },
+    "included_in_machine_agreement": true
+  },
+  {
+    "code": "X01",
+    "review_id": "41c7bbe6ed093d83ba37d50df45b0fdc3f51de9e44a80c0a664c8b570764c2c1",
+    "slot": "OR002-semantic_new",
+    "source_id": "OR002",
+    "group": "semantic_new",
+    "row_index": 9,
+    "evidence_id_map": {
+      "E-PUMP-INST-003": "E001",
+      "E-CENTRAL-COMP-009": "E002"
+    },
+    "review_status": "no_successful_judgment",
+    "machine_judgment": null,
+    "included_in_machine_agreement": false
+  }
+]
