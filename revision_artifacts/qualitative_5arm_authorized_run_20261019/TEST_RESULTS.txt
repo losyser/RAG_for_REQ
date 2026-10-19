@@ -1,0 +1,57 @@
+test_budget_before_dispatch (test_runner.RunnerTests.test_budget_before_dispatch) ... ok
+test_cap (test_runner.RunnerTests.test_cap) ... ok
+test_crash_pending_prevents_resend (test_runner.RunnerTests.test_crash_pending_prevents_resend) ... ok
+test_duplicate_slots (test_runner.RunnerTests.test_duplicate_slots) ... ok
+test_extra_tools_rejected (test_runner.RunnerTests.test_extra_tools_rejected) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "HTTP_500"}
+test_failed_resume_refused (test_runner.RunnerTests.test_failed_resume_refused) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "completed", "debit_CNY": "4.890338", "error": null}
+test_frozen_wire (test_runner.RunnerTests.test_frozen_wire) ... ok
+test_hash_tamper (test_runner.RunnerTests.test_hash_tamper) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 2, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "HTTP_402"}
+test_http_failure_stops_remaining (test_runner.RunnerTests.test_http_failure_stops_remaining) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 3, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "completed", "debit_CNY": "4.890338", "error": null}
+{"event": "dispatch", "phase": "generation", "index": 2, "total": 3, "slot": "b", "debit_including_reservation_CNY": "7.053026"}
+{"event": "result", "phase": "generation", "index": 2, "status": "failed_stop", "debit_CNY": "7.053026", "error": "observable_model_identity_drift"}
+test_identity_drift_stops (test_runner.RunnerTests.test_identity_drift_stops) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "Expecting value: line 1 column 1 (char 0)"}
+test_invalid_json_stops_no_repair (test_runner.RunnerTests.test_invalid_json_stops_no_repair) ... ok
+test_invalid_usage_boolean (test_runner.RunnerTests.test_invalid_usage_boolean) ... ok
+test_lock_prevents_parallel (test_runner.RunnerTests.test_lock_prevents_parallel) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "invalid_or_missing_usage_prompt_tokens"}
+test_missing_usage_retains_full_reserve (test_runner.RunnerTests.test_missing_usage_retains_full_reserve) ... ok
+test_parameter_tamper (test_runner.RunnerTests.test_parameter_tamper) ... ok
+test_redaction (test_runner.RunnerTests.test_redaction) ... ok
+test_reservations (test_runner.RunnerTests.test_reservations) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "completed", "debit_CNY": "4.890338", "error": null}
+test_resume_plan_changed (test_runner.RunnerTests.test_resume_plan_changed) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "[REDACTED]"}
+test_secret_error_not_logged (test_runner.RunnerTests.test_secret_error_not_logged) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "completed", "debit_CNY": "4.890338", "error": null}
+test_success_resume_does_not_repeat (test_runner.RunnerTests.test_success_resume_does_not_repeat) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "completed", "debit_CNY": "4.890338", "error": null}
+test_success_updates_usage_and_redacts_headers (test_runner.RunnerTests.test_success_updates_usage_and_redacts_headers) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 2, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "timeout"}
+test_timeout_does_not_retry (test_runner.RunnerTests.test_timeout_does_not_retry) ... ok
+test_total_mismatch (test_runner.RunnerTests.test_total_mismatch) ... ok
+{"event": "dispatch", "phase": "generation", "index": 1, "total": 1, "slot": "a", "debit_including_reservation_CNY": "7.051226"}
+{"event": "result", "phase": "generation", "index": 1, "status": "failed_stop", "debit_CNY": "7.051226", "error": "non_stop_finish_length"}
+test_truncation_stops (test_runner.RunnerTests.test_truncation_stops) ... ok
+test_usage_over_output_limit (test_runner.RunnerTests.test_usage_over_output_limit) ... ok
+test_wrong_model (test_runner.RunnerTests.test_wrong_model) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.161s
+
+OK
