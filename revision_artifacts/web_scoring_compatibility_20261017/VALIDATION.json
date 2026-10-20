@@ -1,0 +1,28 @@
+{
+  "status": "fixed_and_verified",
+  "previous_installed_web_missing_required_fields": true,
+  "production_feature": [
+    "formal-review-details-v2"
+  ],
+  "production_process_id": 41136,
+  "actual_installed_end_to_end": {
+    "passed": true,
+    "checks": [
+      "Installed-format formal UI => save => downloaded backup => strict scorer succeeds with synthetic complete answers",
+      "Reload and export preserve all stage fields and answers",
+      "Legacy completed judgments preserved; missing historical metadata stays blank/uncertain and blocks scoring",
+      "Explicit UI metadata supplementation enables scoring without changing or repeating prior judgments"
+    ],
+    "application": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\tools\\expert_mapping_review\\server.py",
+    "synthetic_only": true,
+    "production_records_touched": false
+  },
+  "regression_tests_passed": 9,
+  "records_unchanged_during_install": true,
+  "existing_record_file_count": 2,
+  "frozen_package_and_desktop_templates_unchanged": true,
+  "no_real_answers_or_research_scores_created": true,
+  "existing_open_tab_action": "Save existing work, then refresh to load updated form. No re-entry of judgments.",
+  "missing_historical_metadata_policy": "Only reviewer-provided truthful supplementation; blank/uncertain remains blocking. Never infer old times from file timestamps.",
+  "new_formal_export_compatible_with_scorer": true
+}

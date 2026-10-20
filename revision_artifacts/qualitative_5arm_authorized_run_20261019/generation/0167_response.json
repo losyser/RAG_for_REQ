@@ -1,0 +1,111 @@
+{
+  "slot": "OR034-norag_original",
+  "started_at": "2026-10-19T02:58:02.717730+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"06e9387f-2fb2-4330-acb2-62c73a482d73\",\"object\":\"chat.completion\",\"created\":1792378683,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"温度控制阀应基于主机冷却水实际温度信号进行控制，温度传感器测量值与实际水温的偏差应不大于0.5℃。\\\",\\\"measurable_criterion\\\":\\\"传感器测量偏差≤0.5℃；响应时间常数≤2s\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统正常运行工况，水温范围20℃~95℃\\\",\\\"verification_method\\\":\\\"试验验证（温度传感器比对试验）\\\",\\\"acceptance_criteria\\\":[\\\"传感器测量值与标准温度计读数偏差≤0.5℃\\\",\\\"传感器时间常数≤2s\\\",\\\"在20℃~95℃全量程内偏差均满足要求\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"温度控制阀从检测到水温变化至阀门动作完成的响应时间应不大于5s。\\\",\\\"measurable_criterion\\\":\\\"阀门响应时间≤5s（从温度信号变化到阀芯位移达到目标位置90%）\\\",\\\"applicable_condition\\\":\\\"水温阶跃变化≥2℃的工况\\\",\\\"verification_method\\\":\\\"试验验证（阶跃响应试验）\\\",\\\"acceptance_criteria\\\":[\\\"水温阶跃变化2℃时，阀门响应时间≤5s\\\",\\\"阀芯位移达到目标位置90%的时间≤5s\\\",\\\"连续3次试验结果均满足要求\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"温度控制阀控制系统应保证冷却水温度控制滞后时间不大于10s。\\\",\\\"measurable_criterion\\\":\\\"控制滞后时间≤10s（从水温偏离设定值到阀门开始调节动作）\\\",\\\"applicable_condition\\\":\\\"主机负荷变化引起的冷却水温波动工况\\\",\\\"verification_method\\\":\\\"试验验证（负荷变化工况下的温度响应试验）\\\",\\\"acceptance_criteria\\\":[\\\"负荷阶跃变化时，控制滞后时间≤10s\\\",\\\"温度超调量≤3℃\\\",\\\"温度稳定时间≤60s\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"温度控制阀应具备实时信号采集功能，信号采样周期应不大于1s。\\\",\\\"measurable_criterion\\\":\\\"采样周期≤1s\\\",\\\"applicable_condition\\\":\\\"系统全工况运行\\\",\\\"verification_method\\\":\\\"分析验证（控制逻辑分析）与试验验证（采样周期测试）\\\",\\\"acceptance_criteria\\\":[\\\"温度信号采样周期≤1s\\\",\\\"采样数据无丢失\\\",\\\"采样周期在连续运行24h内保持稳定\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"温度控制阀控制逻辑应包含前馈补偿或PID调节功能，以抑制控制滞后，稳态温度控制精度应达到±1℃。\\\",\\\"measurable_criterion\\\":\\\"稳态控制精度±1℃；PID参数可调\\\",\\\"applicable_condition\\\":\\\"主机稳定运行工况\\\",\\\"verification_method\\\":\\\"试验验证（稳态温度控制精度试验）\\\",\\\"acceptance_criteria\\\":[\\\"稳态工况下冷却水温度波动≤±1℃\\\",\\\"PID参数可根据工况调整\\\",\\\"控制逻辑具备前馈补偿功能\\\"],\\\"evidence_citations\\\":[]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":180,\"completion_tokens\":603,\"total_tokens\":783,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":180},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:58:03 GMT"
+  },
+  "response": {
+    "id": "06e9387f-2fb2-4330-acb2-62c73a482d73",
+    "object": "chat.completion",
+    "created": 1792378683,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"温度控制阀应基于主机冷却水实际温度信号进行控制，温度传感器测量值与实际水温的偏差应不大于0.5℃。\",\"measurable_criterion\":\"传感器测量偏差≤0.5℃；响应时间常数≤2s\",\"applicable_condition\":\"主机冷却水系统正常运行工况，水温范围20℃~95℃\",\"verification_method\":\"试验验证（温度传感器比对试验）\",\"acceptance_criteria\":[\"传感器测量值与标准温度计读数偏差≤0.5℃\",\"传感器时间常数≤2s\",\"在20℃~95℃全量程内偏差均满足要求\"],\"evidence_citations\":[]},{\"shall_statement\":\"温度控制阀从检测到水温变化至阀门动作完成的响应时间应不大于5s。\",\"measurable_criterion\":\"阀门响应时间≤5s（从温度信号变化到阀芯位移达到目标位置90%）\",\"applicable_condition\":\"水温阶跃变化≥2℃的工况\",\"verification_method\":\"试验验证（阶跃响应试验）\",\"acceptance_criteria\":[\"水温阶跃变化2℃时，阀门响应时间≤5s\",\"阀芯位移达到目标位置90%的时间≤5s\",\"连续3次试验结果均满足要求\"],\"evidence_citations\":[]},{\"shall_statement\":\"温度控制阀控制系统应保证冷却水温度控制滞后时间不大于10s。\",\"measurable_criterion\":\"控制滞后时间≤10s（从水温偏离设定值到阀门开始调节动作）\",\"applicable_condition\":\"主机负荷变化引起的冷却水温波动工况\",\"verification_method\":\"试验验证（负荷变化工况下的温度响应试验）\",\"acceptance_criteria\":[\"负荷阶跃变化时，控制滞后时间≤10s\",\"温度超调量≤3℃\",\"温度稳定时间≤60s\"],\"evidence_citations\":[]},{\"shall_statement\":\"温度控制阀应具备实时信号采集功能，信号采样周期应不大于1s。\",\"measurable_criterion\":\"采样周期≤1s\",\"applicable_condition\":\"系统全工况运行\",\"verification_method\":\"分析验证（控制逻辑分析）与试验验证（采样周期测试）\",\"acceptance_criteria\":[\"温度信号采样周期≤1s\",\"采样数据无丢失\",\"采样周期在连续运行24h内保持稳定\"],\"evidence_citations\":[]},{\"shall_statement\":\"温度控制阀控制逻辑应包含前馈补偿或PID调节功能，以抑制控制滞后，稳态温度控制精度应达到±1℃。\",\"measurable_criterion\":\"稳态控制精度±1℃；PID参数可调\",\"applicable_condition\":\"主机稳定运行工况\",\"verification_method\":\"试验验证（稳态温度控制精度试验）\",\"acceptance_criteria\":[\"稳态工况下冷却水温度波动≤±1℃\",\"PID参数可根据工况调整\",\"控制逻辑具备前馈补偿功能\"],\"evidence_citations\":[]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 180,
+      "completion_tokens": 603,
+      "total_tokens": 783,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 180
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.005184",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.005184",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "温度控制阀应基于主机冷却水实际温度信号进行控制，温度传感器测量值与实际水温的偏差应不大于0.5℃。",
+        "measurable_criterion": "传感器测量偏差≤0.5℃；响应时间常数≤2s",
+        "applicable_condition": "主机冷却水系统正常运行工况，水温范围20℃~95℃",
+        "verification_method": "试验验证（温度传感器比对试验）",
+        "acceptance_criteria": [
+          "传感器测量值与标准温度计读数偏差≤0.5℃",
+          "传感器时间常数≤2s",
+          "在20℃~95℃全量程内偏差均满足要求"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "温度控制阀从检测到水温变化至阀门动作完成的响应时间应不大于5s。",
+        "measurable_criterion": "阀门响应时间≤5s（从温度信号变化到阀芯位移达到目标位置90%）",
+        "applicable_condition": "水温阶跃变化≥2℃的工况",
+        "verification_method": "试验验证（阶跃响应试验）",
+        "acceptance_criteria": [
+          "水温阶跃变化2℃时，阀门响应时间≤5s",
+          "阀芯位移达到目标位置90%的时间≤5s",
+          "连续3次试验结果均满足要求"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "温度控制阀控制系统应保证冷却水温度控制滞后时间不大于10s。",
+        "measurable_criterion": "控制滞后时间≤10s（从水温偏离设定值到阀门开始调节动作）",
+        "applicable_condition": "主机负荷变化引起的冷却水温波动工况",
+        "verification_method": "试验验证（负荷变化工况下的温度响应试验）",
+        "acceptance_criteria": [
+          "负荷阶跃变化时，控制滞后时间≤10s",
+          "温度超调量≤3℃",
+          "温度稳定时间≤60s"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "温度控制阀应具备实时信号采集功能，信号采样周期应不大于1s。",
+        "measurable_criterion": "采样周期≤1s",
+        "applicable_condition": "系统全工况运行",
+        "verification_method": "分析验证（控制逻辑分析）与试验验证（采样周期测试）",
+        "acceptance_criteria": [
+          "温度信号采样周期≤1s",
+          "采样数据无丢失",
+          "采样周期在连续运行24h内保持稳定"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "温度控制阀控制逻辑应包含前馈补偿或PID调节功能，以抑制控制滞后，稳态温度控制精度应达到±1℃。",
+        "measurable_criterion": "稳态控制精度±1℃；PID参数可调",
+        "applicable_condition": "主机稳定运行工况",
+        "verification_method": "试验验证（稳态温度控制精度试验）",
+        "acceptance_criteria": [
+          "稳态工况下冷却水温度波动≤±1℃",
+          "PID参数可根据工况调整",
+          "控制逻辑具备前馈补偿功能"
+        ],
+        "evidence_citations": []
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:58:06.305071+00:00",
+  "elapsed_seconds": 3.5
+}

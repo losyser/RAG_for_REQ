@@ -1,0 +1,413 @@
+{
+  "group": "G2",
+  "result_sets": [
+    {
+      "requirement_set_id": "ER-R001",
+      "source_requirement_id": "R001",
+      "stakeholder": "船东代表",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统可靠性要求，包含冷却能力、冗余配置和工况适应性。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R001-01",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "reliability",
+          "topic": "冷却能力与工况适应性",
+          "shall_statement": "主机冷却水系统应能在连续运行、热带海区高温环境和主机负荷变化时保持稳定冷却能力，确保主机缸套出口温度不超过主机厂家规定的限值。",
+          "engineering_rationale": "本条覆盖方面【冷却能力与工况适应性】，来自原始需求「系统应能在连续运行、热带海区高温环境和主机负荷变化时保持稳定冷却能力」。E-SUPP-SHUT-001 支撑了停机后冷却循环的温度阈值要求，间接支撑温度控制；E-PUMP-CAP-011 和 E-PUMP-CAP-012 支撑了泵容量参数需依据厂家数据确认；E-SYS-PRESS-026 支撑了温度压力参数需依据厂家数据。",
+          "acceptance_criteria": [
+            "设计文件中应明确冷却水系统在热带海区高温环境下的热平衡计算，确认冷却能力满足主机要求。",
+            "主机缸套出口温度限值按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [
+            "E-SUPP-SHUT-001",
+            "E-PUMP-CAP-011",
+            "E-PUMP-CAP-012",
+            "E-SYS-PRESS-026"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "冷却能力不足将导致主机过热，影响推进安全。"
+        },
+        {
+          "id": "ER-R001-02",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "redundancy",
+          "topic": "冷却水循环中断防护",
+          "shall_statement": "主机冷却水系统应配置冗余冷却水泵，一用一备，当主泵故障时备用泵应能自动启动，确保冷却水循环不中断。",
+          "engineering_rationale": "本条覆盖方面【冷却水循环中断防护】，来自原始需求「不能因冷却水循环中断影响推进装置安全运行」。E-SUPP-SHUT-001 支撑了停机后冷却循环的流量要求（备用电动泵提供30-50% MCR流量），间接支撑冗余配置的必要性。",
+          "acceptance_criteria": [
+            "检查系统图确认配置两台冷却水泵，一用一备。",
+            "调试期间模拟主泵故障，确认备用泵自动启动并维持冷却水循环，具体切换时间和流量按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-SUPP-SHUT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "冷却水循环中断将导致主机停机。"
+        },
+        {
+          "id": "ER-R001-03",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "safety",
+          "topic": "温度失控防护",
+          "shall_statement": "主机冷却水系统应设置温度监测和报警装置，当冷却水温度超过主机厂家规定限值时发出报警，并具备自动调节冷却水流量的能力。",
+          "engineering_rationale": "本条覆盖方面【温度失控防护】，来自原始需求「不能因温度失控影响推进装置安全运行」。E-SUPP-SHUT-001 支撑了温度阈值（缸套出口<60°C正常停机，<55°C紧急停机），间接支撑温度监控要求；E-SYS-PRESS-026 支撑了温度参数需依据厂家数据。",
+          "acceptance_criteria": [
+            "检查系统图确认温度传感器和报警装置配置。",
+            "温度报警限值按主机厂家 Technical Data 确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-SHUT-001",
+            "E-SYS-PRESS-026"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温度失控可能导致主机损坏。"
+        },
+        {
+          "id": "ER-R001-04",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "operation",
+          "topic": "停机后冷却循环",
+          "shall_statement": "主机停机后，冷却水系统应维持循环，正常停机时HT冷却水循环至少20-30分钟直至缸套出口温度低于60°C，紧急停机时循环不得中断超过5分钟并持续至缸套出口温度稳定低于55°C，涡轮增压器后冷却水循环至少30分钟。",
+          "engineering_rationale": "本条覆盖方面【停机后冷却循环】，来自原始需求「系统应能在连续运行和负荷变化时保持稳定冷却能力」。E-SUPP-SHUT-001 直接给出了停机后冷却循环的持续时间、温度阈值和流量要求，其 constraint 字段明确了核心要求和可接受标准。",
+          "acceptance_criteria": [
+            "正常停机：缸套出口温度<60°C，循环时间20-30分钟。",
+            "紧急停机：缸套出口温度<55°C，循环时间45-90分钟。",
+            "涡轮增压器后冷却：≥30分钟。",
+            "备用电动泵流量：30-50% MCR冷却流量。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-SHUT-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "本条需求基于 MAN Wartsila 停机后冷却程序证据，适用范围限于该厂家/机型，其他厂家和机型应按各自 Technical Data 另行确认。"
+          ],
+          "risk_if_unmet": "停机后冷却不足可能导致主机部件过热损坏。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R001",
+          "target": "ER-R001-01",
+          "type": "derive",
+          "description": "由原始需求「冷却能力与工况适应性」和间接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-02",
+          "type": "derive",
+          "description": "由原始需求「冷却水循环中断防护」和间接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-03",
+          "type": "derive",
+          "description": "由原始需求「温度失控防护」和间接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-04",
+          "type": "derive",
+          "description": "由原始需求「连续运行和负荷变化时保持稳定冷却能力」和直接证据 E-SUPP-SHUT-001 派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认主机在热带海区高温环境下的冷却水温度限值。",
+          "reason": "现有证据未给出热带海区高温环境下的具体温度限值，需主机厂家 Technical Data 确认。"
+        },
+        {
+          "item": "确认冷却水泵的流量和压力参数。",
+          "reason": "现有证据仅说明需满足换热需要，未给出具体数值，需厂家 Technical Data 确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [],
+      "generated_at": "2026-07-30T10:46:34",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G2"
+    },
+    {
+      "requirement_set_id": "ER-R002",
+      "source_requirement_id": "R002",
+      "stakeholder": "主机厂家",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统设计参数一致性要求，包括温度、压力、流量参数应与主机技术文件一致，高低温回路设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R002-01",
+          "parent_id": "ER-R002",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却水温度、压力、流量参数",
+          "shall_statement": "主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求。",
+          "engineering_rationale": "本条覆盖方面【冷却水温度、压力、流量参数】，来自原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」。E-HT-PRESS-006 间接支撑了温度参数要求，但限于 MAN L23/30H 机型，具体数值需按实际主机厂家 Technical Data 确认。",
+          "acceptance_criteria": [
+            "按主机厂家 Technical Data 确认主机入口和出口冷却水温度、压力、流量限值。",
+            "设计图纸和计算报告中应明确标注上述参数，并与主机厂家技术文件一致。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-HT-PRESS-006"
+          ],
+          "support_status": "need_confirmation",
+          "applicability_constraints": [
+            "本条需求基于 MAN L23/30H 证据，适用范围限于该机型，其他厂家和机型应按各自 Technical Data 另行确认。"
+          ],
+          "risk_if_unmet": "参数不匹配可能导致主机冷却不足或过度冷却，影响主机性能和寿命。"
+        },
+        {
+          "id": "ER-R002-02",
+          "parent_id": "ER-R002",
+          "level": 1,
+          "requirement_type": "design",
+          "topic": "高低温回路设计参数一致性",
+          "shall_statement": "高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致。",
+          "engineering_rationale": "本条覆盖方面【高低温回路设计参数一致性】，来自原始需求「高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」。L1-CCS2025-9.1.12.112-036 要求提交冷却水系统原理图批准，间接支撑设计参数一致性的审查要求。",
+          "acceptance_criteria": [
+            "提交冷却水系统原理图或等效文件，经船级社批准。",
+            "设计计算书中应包含热平衡计算、泵选型计算和冷却器选型计算，结果与主机技术数据一致。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "L1-CCS2025-9.1.12.112-036"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "设计参数不一致可能导致系统运行不匹配，影响冷却效果和主机可靠性。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R002",
+          "target": "ER-R002-01",
+          "type": "derive",
+          "description": "由原始需求「温度、压力、流量应满足主机厂家技术文件要求」派生。"
+        },
+        {
+          "source": "R002",
+          "target": "ER-R002-02",
+          "type": "derive",
+          "description": "由原始需求「高低温回路设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-R002",
+          "gap_type": "parameter_source_gap",
+          "description": "缺少主机厂家 Technical Data 中具体温度、压力、流量限值，以及泵曲线、冷却器选型和热平衡计算的具体参数。",
+          "suggested_document_update": "补充主机厂家 Technical Data 和项目设计计算书。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家技术文件中主机入口和出口冷却水温度、压力、流量具体限值。",
+          "reason": "现有证据仅给出 MAN L23/30H 的预热器恒温器设定值 70°C，不足以覆盖所有机型。"
+        },
+        {
+          "item": "确认高低温回路设计参数一致性所需的泵曲线、冷却器选型和热平衡计算文件。",
+          "reason": "现有证据仅要求提交原理图，未明确计算文件要求。"
+        }
+      ],
+      "allowed_engineering_aspects": [],
+      "generated_at": "2026-07-30T10:46:41",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G2"
+    },
+    {
+      "requirement_set_id": "ER-R003",
+      "source_requirement_id": "R003",
+      "stakeholder": "系统设计方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统回路划分和原理图表达要求，包含高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界的明确区分，以及各回路设备连接、流向、接口和服务对象的清晰表达。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R003-01",
+          "parent_id": "ER-R003",
+          "level": 1,
+          "requirement_type": "specification",
+          "topic": "冷却水系统图纸提交",
+          "shall_statement": "应将柴油机冷却水系统原理图或等效文件提交批准。",
+          "engineering_rationale": "本条覆盖方面【冷却水系统图纸提交】，来自原始需求「系统原理图中表达清楚」。依据 CCS《钢质海船入级规范》2025 第 9.1.12.1(12) 条，该要求为强制。",
+          "acceptance_criteria": [
+            "提交的冷却水系统原理图应经船级社批准。"
+          ],
+          "verification_method": "class_approval",
+          "evidence_ids": [
+            "L1-CCS2025-9.1.12.112-036"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "未经批准的图纸可能导致系统设计不符合规范要求，影响船舶入级。"
+        },
+        {
+          "id": "ER-R003-02",
+          "parent_id": "ER-R003",
+          "level": 1,
+          "requirement_type": "composition",
+          "topic": "高温冷却水系统组成",
+          "shall_statement": "系统原理图应明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界，并清晰表达各回路的设备连接、流向、接口和服务对象。",
+          "engineering_rationale": "本条覆盖方面【高温冷却水系统组成】，来自原始需求「明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界」。E-HT-COMP-087 和 E-HT-COMP-034 间接支撑了高温冷却水系统的组成和回路划分，但未直接给出原理图表达要求。",
+          "acceptance_criteria": [
+            "原理图中应标注各回路名称、边界、主要设备（如冷却器、泵、阀件等）、流向箭头、接口标识及服务对象（如主机缸套、空冷器等）。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-HT-COMP-087",
+            "E-HT-COMP-034"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "E-HT-COMP-087 和 E-HT-COMP-034 基于 MAN 49/60 机型，适用范围限于该厂家和机型，其他厂家和机型应参照各自技术资料。"
+          ],
+          "risk_if_unmet": "回路边界不清可能导致系统设计错误，影响冷却效果和主机运行安全。"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R003",
+          "target": "ER-R003-01",
+          "type": "derive",
+          "description": "由原始需求「系统原理图中表达清楚」和 CCS 规范直接证据派生。"
+        },
+        {
+          "source": "R003",
+          "target": "ER-R003-02",
+          "type": "derive",
+          "description": "由原始需求「明确区分各回路」和间接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统的具体边界定义和接口标识方法。",
+          "reason": "现有间接证据未提供具体的边界定义和标识要求，需结合项目设计文件确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [],
+      "generated_at": "2026-07-30T10:46:47",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G2"
+    },
+    {
+      "requirement_set_id": "ER-R004",
+      "source_requirement_id": "R004",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统管路布置、施工、试验和检查要求，确保管路布置清晰紧凑，便于施工、冲洗、压力试验和后续检查。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R004-01-01",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "cleaning",
+          "topic": "管路冲洗与清洁",
+          "shall_statement": "管路安装后、压力试验前，应彻底清除管路内部所有污垢、焊渣和施工碎屑。",
+          "engineering_rationale": "E-PIPE-PTEST-002明确要求试验前所有设备和管路应彻底清除污垢、焊渣和施工碎屑，支撑本条冲洗清洁要求。",
+          "acceptance_criteria": [
+            "冲洗后管路内部应无可见污物、焊渣和碎屑，目视检查或采用通球检查确认清洁度。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-PIPE-PTEST-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路内部残留污物可能导致冷却水污染、换热器堵塞或主机损坏。"
+        },
+        {
+          "id": "ER-R004-01-02",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "pressure_test",
+          "topic": "管路压力试验",
+          "shall_statement": "管路安装完成后应在验船师在场的情况下进行水压泄漏试验，试验压力为系统最大允许工作压力的1.5倍，保压时间不少于30分钟，不得有渗漏现象。",
+          "engineering_rationale": "E-PIPE-PTEST-007要求管系安装后以1.5倍最大允许工作压力进行水压泄漏试验且需验船师见证；E-CCS-COOL-002要求管路按1.5倍设计压力水压试验保压30分钟。两者一致，支撑本条压力试验要求。",
+          "acceptance_criteria": [
+            "试验压力为系统最大允许工作压力的1.5倍，保压时间不少于30分钟，试验期间无渗漏。",
+            "验船师见证并签署试验报告。"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [
+            "E-PIPE-PTEST-007",
+            "E-CCS-COOL-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "本条需求基于CCS和USCG规则证据，适用范围限于入级CCS或USCG的项目，其他船级社应按其规范确认。"
+          ],
+          "risk_if_unmet": "未进行压力试验或试验不合格可能导致管路泄漏，影响系统安全运行。"
+        },
+        {
+          "id": "ER-R004-01-03",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "safety",
+          "topic": "压力试验安全防护",
+          "shall_statement": "压力试验应在采取适当防护措施以保护人员和设备后方可进行。",
+          "engineering_rationale": "E-PIPE-PTEST-001明确要求压力试验前采取人员和设备防护措施，支撑本条安全防护要求。",
+          "acceptance_criteria": [
+            "试验前确认已设置警示标志、隔离区域，并采取必要的防护措施（如防护罩、泄压装置等）。"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [
+            "E-PIPE-PTEST-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "未采取防护措施可能导致人员受伤或设备损坏。"
+        },
+        {
+          "id": "ER-R004-01-04",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "test",
+          "topic": "系统功能试验与系泊航行试验",
+          "shall_statement": "冷却水系统安装完成后应进行功能试验、系泊试验和航行试验，验证系统运行稳定性。",
+          "engineering_rationale": "E-CCS-COOL-002要求功能试验覆盖泵、阀、温控阀、报警，以及系泊试验和MCR航行试验验证稳定性，支撑本条试验要求。",
+          "acceptance_criteria": [
+            "功能试验确认泵、阀、温控阀和报警系统工作正常。",
+            "系泊试验和航行试验中冷却水系统运行稳定，参数满足设计要求。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CCS-COOL-002"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "本条需求基于CCS规则，适用范围限于入级CCS的项目。"
+          ],
+          "risk_if_unmet": "未进行系统试验可能导致运行隐患未被发现，影响主机安全。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认管路布置图中阀门、支架、放水点、排气点的具体位置是否满足施工和检修空间要求。",
+          "reason": "原始需求要求便于施工和检查，但证据未提供具体尺寸或间距要求，需设计确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [],
+      "generated_at": "2026-07-30T10:46:58",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "G2"
+    }
+  ]
+}

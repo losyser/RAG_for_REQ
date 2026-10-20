@@ -1,0 +1,37 @@
+{
+  "slot": "OR040-semantic_new",
+  "body_sha256": "2d3db41189b15b51a7a2482714597f075fe01cece710653c0996aa23b6f0a31b",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:01:37.535891+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR040-semantic_new",
+    "source_id": "OR040",
+    "group": "semantic_new",
+    "context_sha256": "97c99248b11b36546c2fd7d87e4785c230dac14de312d96958e6ba72adaa55c3",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n报警设定和延时不要太随意，既不能太迟，也不能因为误报警频繁影响运行。\n\n## 证据清单\n[E-HT-SHUT-005] 层级:L2 来源:S39 MAN L21/31 Project Guide\n  内容: 高温冷却水系统组成：100% load Delay sec. Auto stop of engine Start failure sec < 10 SX 83 switch Stop signal SS 84 switch Stop failure sec < 30 SX 84 switch 30 Engine run 900/1000 rpm SI 90 SS 90A (I) Ready to start SS 87 switch 0 * Acceptable value at shop test or after repair Soft shut down。适用条件：For the following alarms we recommend to implement soft shut down in the power management system: PAL 22 Lubricating oil pressure inlet engine TAH 12 HT cooling water temperature - high TAH 60 Exhaust temperatur\n  [量化参数] 100%、10、30、30、900/1000、0\n\n[E-ALARM-ALARM-001] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度95°C报警\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度在一定时间内 （1 秒）高于 95°C，则 S6 将发送一个 CAN 消息，该消息通过协调器接通警告灯和诊断指示灯。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、95、105、1、95\n\n[E-ALARM-ALARM-009] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 冷却水温度与压力参数\nuntil such a time that the lesser ambient temperature may be achieved. iv) Audible and visual alarms are provided, at a continually-manned control station, to indicate any malfunction of the cooling systems. 1.17.2(b) Rating of Cables. In accepting a lesser ambient temperature than 45°C, it is to be ensured that electrical cables for their entire length are adequately rated for the maximum ambient temperature to which they are exposed along their length. 1.17.2(c) Ambient Temperature \n  [量化参数] 45°C\n\n[E-ALARM-ALARM-006] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度95°C扭矩降低保护\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 - 如果温度超过 95°C，且激活了扭矩降低功能，则警告灯和诊断指 示灯将点亮，而燃油量将降至 70%。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、105、95、70\n\n[E-ALARM-ALARM-002] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度报警重置条件\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。 出现警报后，应将认可值记录 2 秒以上，以重置警报。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、105、2\n\n[E-ALARM-ALARM-003] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液温度报警阈值\n冷却液温度， EMS/S6 控制系统拥有下述警报级别： 对于较低级别，基本温度值为 95°C，对于较高级别，基本温度值为 105°C。\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 95、105\n\n[E-HT-SHUT-003] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 高温冷却水系统组成：100% load时，Delay sec. 自动停机；Stop signal SS 84 switch；Stop failure sec < 30 SX 84 switch 30；Engine run 1200/1000 rpm SI 90 SS 90A (I)；Ready to start SS 87 switch 0 * Acceptable value at shop test or after repair。适用条件：Soft shut down。对于以下报警，建议在电源管理系统中实施软停机：PAL 22 润滑油压力入口发动机；TAH 12 高温冷却水温度 - 高；TAH 60 排气温度偏差 - 高。如果适用：LAH 92 高油雾浓度；TAH 58 飞溅油温度 - 高；TDAH 58 飞溅油温度偏差报警 - 高；TAH 29 主轴承温度 - 高。通过软停机，船舶电源管理系统必须启动下一台备用发动机并将负载转移至此，随后带有报警的发动机关闭。\n\n可支撑：冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。报警阈值和保护动作应受具体厂\n  [量化参数] 100%、30、1200/1000、0\n\n[L1-CCS2025-9.4.2.2-032] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 冷却系统高温报警\n条款 9.4.2.2\n柴油机的冷却系统应设高温报警装置。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "2d3db41189b15b51a7a2482714597f075fe01cece710653c0996aa23b6f0a31b",
+    "utf8_message_bytes": 8208,
+    "execution_index": 198
+  }
+}

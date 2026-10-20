@@ -1,0 +1,3529 @@
+{
+  "components": {
+    "cooling_water_pump": "冷却水泵（含海水泵）",
+    "cooler": "冷却器 / 热交换器",
+    "expansion_tank": "膨胀水箱 / 高位水箱",
+    "temperature_control_valve": "温控阀 / 温度调节阀",
+    "pipe": "冷却水管路",
+    "valve": "阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）",
+    "pipe_fitting": "管件（弯头、三通、异径管、法兰等）",
+    "filter": "过滤器 / 滤网",
+    "pipe_support": "管路支架 / 吊架",
+    "temperature_sensor": "温度传感器 / 温度计",
+    "pressure_sensor": "压力传感器 / 压力表",
+    "level_sensor": "液位传感器 / 液位计",
+    "flow_meter": "流量计",
+    "alarm_system": "报警与保护系统",
+    "control_system": "自动控制系统（PLC / 集控）",
+    "coolant": "淡水冷却液（含缓蚀剂、防冻剂）",
+    "sea_water": "海水（冷却侧介质）",
+    "anode": "牺牲阳极（锌块 / 铝块）",
+    "insulation": "隔热保温材料及护套",
+    "sea_chest": "海水箱（金水箱）",
+    "cooling_system": "冷却水系统（系统级，不能归入具体部件时使用）"
+  },
+  "intents": {
+    "specification": "额定参数（容量、流量、扬程、功率、换热量、压力等级等）",
+    "material": "材料选择（牌号、标准、兼容性要求）",
+    "wall_thickness": "壁厚 / 强度等级",
+    "pressure_rating": "设计压力等级（PN 等级、管路类别）",
+    "connection_type": "连接方式（焊接、法兰、螺纹、卡压等）",
+    "redundancy": "冗余配置（一用一备、切换条件、切换方式）",
+    "auto_start": "备用设备自动启动逻辑与条件",
+    "control_logic": "自动控制逻辑（启停、调节、联锁）",
+    "set_point": "调节设定值（温度设定、开启点、全开点）",
+    "fail_safe": "故障安全状态（失电 / 失信号后的默认位置）",
+    "manual_override": "手动操控要求（就地操作、手动旁通）",
+    "bypass": "旁通阀配置与旁通逻辑",
+    "alarm_setpoint": "报警定值（高温、低压、低液位、高压差等）",
+    "trip_setpoint": "停机保护定值（超温、失压、失流等触发停机的阈值）",
+    "alarm_response": "报警处置程序（操作员响应、自动联锁动作）",
+    "installation": "安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）",
+    "pipe_support": "管路支架间距、固定方式、减振要求",
+    "welding": "焊接工艺（WPS/WPQR）、焊工资质、无损检测比例",
+    "thermal_insulation": "隔热保温材料、厚度、护套施工",
+    "labeling": "色标（ISO 14726）、流向标识、铭牌",
+    "hot_surface_warning": "高温表面警示标识（ISO 11684）",
+    "vent_drain": "排气点与放水点的设置位置、数量、阀门要求",
+    "corrosion_protection": "防腐处理（涂层、电化学保护、材料防腐措施）",
+    "cathodic_protection": "阴极保护（牺牲阳极布置、连接方式、电气隔离）",
+    "biofouling": "防海生物附着（防污涂料、机械清除）",
+    "pressure_test": "水压试验（试验压力倍数、保压时间、合格判据）",
+    "test_procedure": "功能试验程序（调试前、调试中、验收试验）",
+    "calibration": "仪表校验（校验方法、周期、允许误差）",
+    "inspection": "检查项目与周期（外观、性能、完整性检查）",
+    "maintenance": "维护保养程序（定期维护、易损件更换）",
+    "cleaning": "清洗方式与周期（机械清洗、化学清洗）",
+    "replacement_cycle": "更换周期（介质更换、阳极更换等）",
+    "water_quality": "水质指标（pH、硬度、电导率、氯离子、含氧量等）",
+    "corrosion_inhibitor": "缓蚀剂种类、浓度范围、补加方法",
+    "antifreeze": "防冻剂（乙二醇比例、冰点要求）",
+    "sampling": "取样检测方法、频率、送检要求",
+    "compatibility": "介质与管材 / 设备材料的兼容性限制",
+    "environmental_protection": "废液处置（乙二醇含量、排放标准）",
+    "initial_fill": "首次充注程序（冲洗、加药、排气）",
+    "documentation": "文件要求（厂家说明书、图纸、计算书、备件目录）",
+    "drawing_requirement": "图纸提交要求（系统图、布置图、单线图提交节点）",
+    "class_approval": "船级社审批 / 认可 / 检验要求",
+    "spare_parts": "备品备件清单与最低储量要求",
+    "interface": "与其他系统或设备的接口要求",
+    "system_description": "系统功能描述、工作原理、系统边界",
+    "pressure_drop": "[原目录行注释] 水侧/海水侧允许压降",
+    "fouling": "[原目录行注释] 结垢系数、防污措施",
+    "capacity": "[原目录行注释] 有效容积计算依据（系统膨胀量）",
+    "level_control": "[原目录行注释] 正常液位范围、控制逻辑",
+    "makeup_water": "[原目录行注释] 自动补水触发条件、补水源",
+    "venting": "[原目录行注释] 排气管管径、连接位置",
+    "pressure": "[原目录行注释] 工作压力（膨胀压力）",
+    "type": "[原目录行注释] 阀门类型选用（截止/球/蝶/止回/安全阀）",
+    "position_indicator": "[原目录行注释] 开/关状态指示（就地 + 远程）",
+    "lockout": "[原目录行注释] 锁定要求（防误关的常开阀）",
+    "drain": "[原目录行注释] 阀体排空（低点阀门的排空接头）",
+    "spacing": "[原目录行注释] 支架最大间距（按管径/壁厚查表）",
+    "vibration_isolation": "[原目录行注释] 减振垫、弹性支架选用条件",
+    "thickness": "[原目录行注释] 隔热厚度（按表面温度和环境温度计算）"
+  },
+  "taxonomy": {
+    "cooling_water_pump": [
+      "specification",
+      "redundancy",
+      "auto_start",
+      "material",
+      "corrosion_protection",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "pressure_test",
+      "inspection",
+      "maintenance",
+      "documentation",
+      "class_approval",
+      "spare_parts"
+    ],
+    "cooler": [
+      "specification",
+      "pressure_drop",
+      "material",
+      "corrosion_protection",
+      "fouling",
+      "cleaning",
+      "bypass",
+      "alarm_setpoint",
+      "installation",
+      "pressure_test",
+      "inspection",
+      "maintenance",
+      "documentation",
+      "drawing_requirement",
+      "class_approval",
+      "spare_parts",
+      "interface"
+    ],
+    "expansion_tank": [
+      "specification",
+      "capacity",
+      "level_control",
+      "makeup_water",
+      "venting",
+      "pressure",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "control_logic",
+      "material",
+      "corrosion_protection",
+      "installation",
+      "inspection",
+      "maintenance",
+      "documentation",
+      "drawing_requirement",
+      "class_approval"
+    ],
+    "temperature_control_valve": [
+      "specification",
+      "set_point",
+      "control_logic",
+      "fail_safe",
+      "bypass",
+      "redundancy",
+      "material",
+      "installation",
+      "inspection",
+      "maintenance",
+      "drawing_requirement",
+      "class_approval"
+    ],
+    "pipe": [
+      "material",
+      "wall_thickness",
+      "pressure_rating",
+      "connection_type",
+      "corrosion_protection",
+      "cathodic_protection",
+      "thermal_insulation",
+      "pipe_support",
+      "welding",
+      "vent_drain",
+      "installation",
+      "labeling",
+      "hot_surface_warning",
+      "pressure_test",
+      "cleaning",
+      "inspection",
+      "documentation",
+      "drawing_requirement",
+      "class_approval"
+    ],
+    "valve": [
+      "type",
+      "specification",
+      "material",
+      "installation",
+      "drawing_requirement",
+      "position_indicator",
+      "lockout",
+      "drain",
+      "inspection",
+      "maintenance",
+      "class_approval"
+    ],
+    "pipe_fitting": [
+      "material",
+      "pressure_rating",
+      "welding",
+      "class_approval"
+    ],
+    "filter": [
+      "specification",
+      "redundancy",
+      "pressure_drop",
+      "alarm_setpoint",
+      "bypass",
+      "cleaning",
+      "material",
+      "installation",
+      "inspection",
+      "maintenance"
+    ],
+    "pipe_support": [
+      "spacing",
+      "material",
+      "vibration_isolation",
+      "installation"
+    ],
+    "temperature_sensor": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "calibration",
+      "redundancy",
+      "class_approval"
+    ],
+    "pressure_sensor": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "calibration",
+      "class_approval"
+    ],
+    "level_sensor": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "calibration"
+    ],
+    "flow_meter": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "calibration"
+    ],
+    "alarm_system": [
+      "alarm_setpoint",
+      "trip_setpoint",
+      "alarm_response",
+      "test_procedure",
+      "redundancy",
+      "documentation",
+      "class_approval"
+    ],
+    "control_system": [
+      "control_logic",
+      "manual_override",
+      "fail_safe",
+      "redundancy",
+      "interface",
+      "documentation",
+      "class_approval"
+    ],
+    "coolant": [
+      "water_quality",
+      "corrosion_inhibitor",
+      "antifreeze",
+      "sampling",
+      "inspection",
+      "replacement_cycle",
+      "compatibility",
+      "environmental_protection",
+      "initial_fill"
+    ],
+    "sea_water": [
+      "corrosion_protection",
+      "cathodic_protection",
+      "biofouling",
+      "material",
+      "cleaning",
+      "water_quality"
+    ],
+    "anode": [
+      "material",
+      "specification",
+      "installation",
+      "inspection",
+      "replacement_cycle"
+    ],
+    "insulation": [
+      "specification",
+      "thickness",
+      "installation",
+      "hot_surface_warning"
+    ],
+    "sea_chest": [
+      "specification",
+      "redundancy",
+      "material",
+      "corrosion_protection",
+      "cathodic_protection",
+      "installation",
+      "inspection",
+      "class_approval"
+    ],
+    "cooling_system": [
+      "system_description",
+      "interface",
+      "drawing_requirement",
+      "test_procedure",
+      "spare_parts",
+      "documentation",
+      "class_approval"
+    ]
+  },
+  "sources": [
+    {
+      "id": "OR001",
+      "text": "主机冷却水系统平时要稳定一点，不能因为温度、压力或者流量波动就影响推进设备正常运行。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "cooler:specification",
+          "component": "cooler",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_water_pump:trip_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_control_valve:control_logic",
+          "component": "temperature_control_valve",
+          "intent": "control_logic"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "valve:specification",
+          "component": "valve",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR002",
+      "text": "冷却系统最好有一定备用能力，泵或者某个关键设备出问题时，不要马上导致主机冷却中断。",
+      "candidates": [
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        }
+      ]
+    },
+    {
+      "id": "OR003",
+      "text": "冷却器和冷却水泵的容量要留得合理一些，不要刚好够用，后面海水温度高或者设备脏了就不够。",
+      "candidates": [
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooler:specification",
+          "component": "cooler",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:class_approval",
+          "component": "cooling_water_pump",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "sea_water:water_quality",
+          "component": "sea_water",
+          "intent": "water_quality"
+        }
+      ]
+    },
+    {
+      "id": "OR004",
+      "text": "冷却水系统的主要报警要可靠，船员要能早点知道水温、水压或者液位不正常。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooler:alarm_setpoint",
+          "component": "cooler",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:class_approval",
+          "component": "cooling_water_pump",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "expansion_tank:alarm_setpoint",
+          "component": "expansion_tank",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "filter:alarm_setpoint",
+          "component": "filter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR005",
+      "text": "冷却水系统后期维护不要太复杂，像滤器、冷却器、泵和阀门这些地方要能方便处理。",
+      "candidates": [
+        {
+          "id": "cooler:cleaning",
+          "component": "cooler",
+          "intent": "cleaning"
+        },
+        {
+          "id": "cooler:maintenance",
+          "component": "cooler",
+          "intent": "maintenance"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:maintenance",
+          "component": "cooling_water_pump",
+          "intent": "maintenance"
+        },
+        {
+          "id": "filter:cleaning",
+          "component": "filter",
+          "intent": "cleaning"
+        },
+        {
+          "id": "filter:maintenance",
+          "component": "filter",
+          "intent": "maintenance"
+        },
+        {
+          "id": "valve:maintenance",
+          "component": "valve",
+          "intent": "maintenance"
+        }
+      ]
+    },
+    {
+      "id": "OR006",
+      "text": "主机进出口冷却水温度和压力要按厂家技术资料来，不要按经验随便设。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "alarm_system:trip_setpoint",
+          "component": "alarm_system",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "pipe:documentation",
+          "component": "pipe",
+          "intent": "documentation"
+        },
+        {
+          "id": "pipe:pressure_rating",
+          "component": "pipe",
+          "intent": "pressure_rating"
+        },
+        {
+          "id": "pipe:pressure_test",
+          "component": "pipe",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:specification",
+          "component": "pressure_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "pressure_sensor:trip_setpoint",
+          "component": "pressure_sensor",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_sensor:trip_setpoint",
+          "component": "temperature_sensor",
+          "intent": "trip_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR007",
+      "text": "高温冷却水和低温冷却水的回路要分清楚，不能把不同服务对象混在一个模糊系统里。",
+      "candidates": [
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "pipe:drawing_requirement",
+          "component": "pipe",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "pipe:hot_surface_warning",
+          "component": "pipe",
+          "intent": "hot_surface_warning"
+        },
+        {
+          "id": "pipe:labeling",
+          "component": "pipe",
+          "intent": "labeling"
+        }
+      ]
+    },
+    {
+      "id": "OR008",
+      "text": "温度控制阀的设定值和安装位置要按主机要求核对，不然水温可能控制不到合适范围。",
+      "candidates": [
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "control_system:fail_safe",
+          "component": "control_system",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        },
+        {
+          "id": "temperature_control_valve:fail_safe",
+          "component": "temperature_control_valve",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "temperature_control_valve:installation",
+          "component": "temperature_control_valve",
+          "intent": "installation"
+        },
+        {
+          "id": "temperature_control_valve:set_point",
+          "component": "temperature_control_valve",
+          "intent": "set_point"
+        },
+        {
+          "id": "temperature_control_valve:specification",
+          "component": "temperature_control_valve",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR009",
+      "text": "冷却水泵的流量、压头和工作点要和主机技术数据匹配，不要只看泵样本上的额定值。",
+      "candidates": [
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:class_approval",
+          "component": "cooling_water_pump",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_water_pump:trip_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "trip_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR010",
+      "text": "冷却液的水质、添加剂和防冻比例要符合厂家要求，否则容易出现腐蚀、沉积或者换热变差。",
+      "candidates": [
+        {
+          "id": "coolant:antifreeze",
+          "component": "coolant",
+          "intent": "antifreeze"
+        },
+        {
+          "id": "coolant:compatibility",
+          "component": "coolant",
+          "intent": "compatibility"
+        },
+        {
+          "id": "coolant:corrosion_inhibitor",
+          "component": "coolant",
+          "intent": "corrosion_inhibitor"
+        },
+        {
+          "id": "coolant:initial_fill",
+          "component": "coolant",
+          "intent": "initial_fill"
+        },
+        {
+          "id": "coolant:sampling",
+          "component": "coolant",
+          "intent": "sampling"
+        },
+        {
+          "id": "coolant:water_quality",
+          "component": "coolant",
+          "intent": "water_quality"
+        }
+      ]
+    },
+    {
+      "id": "OR011",
+      "text": "冷却水系统原理图要把淡水侧、海水侧、高温回路和低温回路画清楚，不能让人靠猜。",
+      "candidates": [
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "pipe:drawing_requirement",
+          "component": "pipe",
+          "intent": "drawing_requirement"
+        }
+      ]
+    },
+    {
+      "id": "OR012",
+      "text": "冷却水流向、设备连接关系和接口位置要在图纸上表达清楚，尤其是泵、冷却器、温控阀和膨胀水箱。",
+      "candidates": [
+        {
+          "id": "cooler:drawing_requirement",
+          "component": "cooler",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "expansion_tank:capacity",
+          "component": "expansion_tank",
+          "intent": "capacity"
+        },
+        {
+          "id": "expansion_tank:drawing_requirement",
+          "component": "expansion_tank",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "expansion_tank:level_control",
+          "component": "expansion_tank",
+          "intent": "level_control"
+        },
+        {
+          "id": "expansion_tank:makeup_water",
+          "component": "expansion_tank",
+          "intent": "makeup_water"
+        },
+        {
+          "id": "expansion_tank:venting",
+          "component": "expansion_tank",
+          "intent": "venting"
+        },
+        {
+          "id": "pipe:drawing_requirement",
+          "component": "pipe",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "temperature_control_valve:drawing_requirement",
+          "component": "temperature_control_valve",
+          "intent": "drawing_requirement"
+        }
+      ]
+    },
+    {
+      "id": "OR013",
+      "text": "膨胀水箱的位置和容量要考虑系统补水、排气和水位变化，不要只是简单接一根管。",
+      "candidates": [
+        {
+          "id": "expansion_tank:capacity",
+          "component": "expansion_tank",
+          "intent": "capacity"
+        },
+        {
+          "id": "expansion_tank:installation",
+          "component": "expansion_tank",
+          "intent": "installation"
+        },
+        {
+          "id": "expansion_tank:level_control",
+          "component": "expansion_tank",
+          "intent": "level_control"
+        },
+        {
+          "id": "expansion_tank:maintenance",
+          "component": "expansion_tank",
+          "intent": "maintenance"
+        },
+        {
+          "id": "expansion_tank:makeup_water",
+          "component": "expansion_tank",
+          "intent": "makeup_water"
+        },
+        {
+          "id": "expansion_tank:specification",
+          "component": "expansion_tank",
+          "intent": "specification"
+        },
+        {
+          "id": "expansion_tank:venting",
+          "component": "expansion_tank",
+          "intent": "venting"
+        }
+      ]
+    },
+    {
+      "id": "OR014",
+      "text": "管路高点要考虑排气，低点要考虑放水，不然运行和检修时会比较麻烦。",
+      "candidates": [
+        {
+          "id": "coolant:antifreeze",
+          "component": "coolant",
+          "intent": "antifreeze"
+        },
+        {
+          "id": "coolant:initial_fill",
+          "component": "coolant",
+          "intent": "initial_fill"
+        },
+        {
+          "id": "pipe:hot_surface_warning",
+          "component": "pipe",
+          "intent": "hot_surface_warning"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:pipe_support",
+          "component": "pipe",
+          "intent": "pipe_support"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        },
+        {
+          "id": "pipe_support:installation",
+          "component": "pipe_support",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR015",
+      "text": "中央冷却器、海水侧和淡水侧之间的边界要清楚，避免后面审图和施工时理解不一致。",
+      "candidates": [
+        {
+          "id": "cooler:bypass",
+          "component": "cooler",
+          "intent": "bypass"
+        },
+        {
+          "id": "cooler:drawing_requirement",
+          "component": "cooler",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooler:installation",
+          "component": "cooler",
+          "intent": "installation"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooler:pressure_drop",
+          "component": "cooler",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:thermal_insulation",
+          "component": "pipe",
+          "intent": "thermal_insulation"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR016",
+      "text": "冷却水管路布置要便于施工，焊接、安装、冲洗和压力试验都要留出操作条件。",
+      "candidates": [
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "pipe:connection_type",
+          "component": "pipe",
+          "intent": "connection_type"
+        },
+        {
+          "id": "pipe:drawing_requirement",
+          "component": "pipe",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:pipe_support",
+          "component": "pipe",
+          "intent": "pipe_support"
+        },
+        {
+          "id": "pipe:pressure_test",
+          "component": "pipe",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "pipe:thermal_insulation",
+          "component": "pipe",
+          "intent": "thermal_insulation"
+        },
+        {
+          "id": "pipe:welding",
+          "component": "pipe",
+          "intent": "welding"
+        }
+      ]
+    },
+    {
+      "id": "OR017",
+      "text": "泵入口和冷却器附近的管路不要太绕，现场安装时要能保证水流顺畅。",
+      "candidates": [
+        {
+          "id": "cooler:bypass",
+          "component": "cooler",
+          "intent": "bypass"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooler:installation",
+          "component": "cooler",
+          "intent": "installation"
+        },
+        {
+          "id": "cooler:pressure_drop",
+          "component": "cooler",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        }
+      ]
+    },
+    {
+      "id": "OR018",
+      "text": "阀门、滤器和仪表不要装在很难够到的位置，后期操作和检修会很不方便。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "control_system:manual_override",
+          "component": "control_system",
+          "intent": "manual_override"
+        },
+        {
+          "id": "filter:bypass",
+          "component": "filter",
+          "intent": "bypass"
+        },
+        {
+          "id": "filter:installation",
+          "component": "filter",
+          "intent": "installation"
+        },
+        {
+          "id": "filter:pressure_drop",
+          "component": "filter",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "flow_meter:installation",
+          "component": "flow_meter",
+          "intent": "installation"
+        },
+        {
+          "id": "level_sensor:installation",
+          "component": "level_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        },
+        {
+          "id": "pressure_sensor:installation",
+          "component": "pressure_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "temperature_sensor:installation",
+          "component": "temperature_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "valve:installation",
+          "component": "valve",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR019",
+      "text": "管路支架要布置合理，不要让泵、冷却器或者阀门接口承受不该有的管路重量。",
+      "candidates": [
+        {
+          "id": "cooler:installation",
+          "component": "cooler",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:pipe_support",
+          "component": "pipe",
+          "intent": "pipe_support"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        },
+        {
+          "id": "pipe_support:installation",
+          "component": "pipe_support",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe_support:material",
+          "component": "pipe_support",
+          "intent": "material"
+        },
+        {
+          "id": "pipe_support:spacing",
+          "component": "pipe_support",
+          "intent": "spacing"
+        },
+        {
+          "id": "pipe_support:vibration_isolation",
+          "component": "pipe_support",
+          "intent": "vibration_isolation"
+        },
+        {
+          "id": "valve:installation",
+          "component": "valve",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR020",
+      "text": "系统冲洗接口和临时接管位置要提前考虑，不要等调试时再临时想办法。",
+      "candidates": [
+        {
+          "id": "alarm_system:test_procedure",
+          "component": "alarm_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "filter:installation",
+          "component": "filter",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "valve:installation",
+          "component": "valve",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR021",
+      "text": "冷却水泵采购时要核对流量、压力、材料、接口和备用要求，不能只按名称买。",
+      "candidates": [
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:corrosion_protection",
+          "component": "cooling_water_pump",
+          "intent": "corrosion_protection"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:material",
+          "component": "cooling_water_pump",
+          "intent": "material"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR022",
+      "text": "冷却器选型要考虑海水温度、换热余量和长期脏污影响，不能只满足理想工况。",
+      "candidates": [
+        {
+          "id": "cooler:bypass",
+          "component": "cooler",
+          "intent": "bypass"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooler:pressure_drop",
+          "component": "cooler",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "cooler:specification",
+          "component": "cooler",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:material",
+          "component": "cooling_water_pump",
+          "intent": "material"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        },
+        {
+          "id": "sea_water:water_quality",
+          "component": "sea_water",
+          "intent": "water_quality"
+        }
+      ]
+    },
+    {
+      "id": "OR023",
+      "text": "温控阀、传感器和报警元件的量程、信号和接口要和自动化系统对得上。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "alarm_system:documentation",
+          "component": "alarm_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "flow_meter:specification",
+          "component": "flow_meter",
+          "intent": "specification"
+        },
+        {
+          "id": "level_sensor:specification",
+          "component": "level_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "pressure_sensor:specification",
+          "component": "pressure_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_control_valve:control_logic",
+          "component": "temperature_control_valve",
+          "intent": "control_logic"
+        },
+        {
+          "id": "temperature_control_valve:drawing_requirement",
+          "component": "temperature_control_valve",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "temperature_control_valve:fail_safe",
+          "component": "temperature_control_valve",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "temperature_control_valve:specification",
+          "component": "temperature_control_valve",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR024",
+      "text": "膨胀水箱要确认容积、液位显示、低液位报警和补水接口，不能只看外形尺寸。",
+      "candidates": [
+        {
+          "id": "expansion_tank:alarm_setpoint",
+          "component": "expansion_tank",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "expansion_tank:capacity",
+          "component": "expansion_tank",
+          "intent": "capacity"
+        },
+        {
+          "id": "expansion_tank:inspection",
+          "component": "expansion_tank",
+          "intent": "inspection"
+        },
+        {
+          "id": "expansion_tank:installation",
+          "component": "expansion_tank",
+          "intent": "installation"
+        },
+        {
+          "id": "expansion_tank:level_control",
+          "component": "expansion_tank",
+          "intent": "level_control"
+        },
+        {
+          "id": "expansion_tank:makeup_water",
+          "component": "expansion_tank",
+          "intent": "makeup_water"
+        },
+        {
+          "id": "expansion_tank:specification",
+          "component": "expansion_tank",
+          "intent": "specification"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR025",
+      "text": "海水侧滤器和阀门材料要适合海水环境，不然后期容易腐蚀、堵塞或者维护频繁。",
+      "candidates": [
+        {
+          "id": "cooling_water_pump:maintenance",
+          "component": "cooling_water_pump",
+          "intent": "maintenance"
+        },
+        {
+          "id": "cooling_water_pump:material",
+          "component": "cooling_water_pump",
+          "intent": "material"
+        },
+        {
+          "id": "filter:installation",
+          "component": "filter",
+          "intent": "installation"
+        },
+        {
+          "id": "filter:maintenance",
+          "component": "filter",
+          "intent": "maintenance"
+        },
+        {
+          "id": "filter:material",
+          "component": "filter",
+          "intent": "material"
+        },
+        {
+          "id": "sea_chest:material",
+          "component": "sea_chest",
+          "intent": "material"
+        },
+        {
+          "id": "sea_water:corrosion_protection",
+          "component": "sea_water",
+          "intent": "corrosion_protection"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        },
+        {
+          "id": "valve:maintenance",
+          "component": "valve",
+          "intent": "maintenance"
+        },
+        {
+          "id": "valve:material",
+          "component": "valve",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR026",
+      "text": "集控室要能看到主要冷却水温度、压力、液位和泵运行状态，不要只靠机旁仪表。",
+      "candidates": [
+        {
+          "id": "control_system:fail_safe",
+          "component": "control_system",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "level_sensor:calibration",
+          "component": "level_sensor",
+          "intent": "calibration"
+        },
+        {
+          "id": "level_sensor:installation",
+          "component": "level_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "level_sensor:specification",
+          "component": "level_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "pressure_sensor:calibration",
+          "component": "pressure_sensor",
+          "intent": "calibration"
+        },
+        {
+          "id": "pressure_sensor:installation",
+          "component": "pressure_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "pressure_sensor:specification",
+          "component": "pressure_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_sensor:calibration",
+          "component": "temperature_sensor",
+          "intent": "calibration"
+        },
+        {
+          "id": "temperature_sensor:installation",
+          "component": "temperature_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR027",
+      "text": "报警信息要能说明大概是哪一路出了问题，比如高温、低压、低液位或者泵故障。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "expansion_tank:alarm_setpoint",
+          "component": "expansion_tank",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "filter:alarm_setpoint",
+          "component": "filter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR028",
+      "text": "冷却器、滤器和泵这些常维护设备要好接近，船员日常巡检不能太费劲。",
+      "candidates": [
+        {
+          "id": "cooler:installation",
+          "component": "cooler",
+          "intent": "installation"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooler:maintenance",
+          "component": "cooler",
+          "intent": "maintenance"
+        },
+        {
+          "id": "cooling_water_pump:inspection",
+          "component": "cooling_water_pump",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:maintenance",
+          "component": "cooling_water_pump",
+          "intent": "maintenance"
+        },
+        {
+          "id": "filter:installation",
+          "component": "filter",
+          "intent": "installation"
+        },
+        {
+          "id": "filter:maintenance",
+          "component": "filter",
+          "intent": "maintenance"
+        },
+        {
+          "id": "filter:pressure_drop",
+          "component": "filter",
+          "intent": "pressure_drop"
+        }
+      ]
+    },
+    {
+      "id": "OR029",
+      "text": "补水、排气、放水和换液操作要简单清楚，不要每次都要翻很厚的资料才能做。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "control_system:manual_override",
+          "component": "control_system",
+          "intent": "manual_override"
+        },
+        {
+          "id": "coolant:initial_fill",
+          "component": "coolant",
+          "intent": "initial_fill"
+        },
+        {
+          "id": "coolant:replacement_cycle",
+          "component": "coolant",
+          "intent": "replacement_cycle"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "expansion_tank:level_control",
+          "component": "expansion_tank",
+          "intent": "level_control"
+        },
+        {
+          "id": "expansion_tank:maintenance",
+          "component": "expansion_tank",
+          "intent": "maintenance"
+        },
+        {
+          "id": "expansion_tank:makeup_water",
+          "component": "expansion_tank",
+          "intent": "makeup_water"
+        },
+        {
+          "id": "expansion_tank:venting",
+          "component": "expansion_tank",
+          "intent": "venting"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        }
+      ]
+    },
+    {
+      "id": "OR030",
+      "text": "海水侧滤器最好能在不中断冷却供应的情况下清洗，不然运行中处理起来风险比较大。",
+      "candidates": [
+        {
+          "id": "cooler:cleaning",
+          "component": "cooler",
+          "intent": "cleaning"
+        },
+        {
+          "id": "filter:bypass",
+          "component": "filter",
+          "intent": "bypass"
+        },
+        {
+          "id": "filter:cleaning",
+          "component": "filter",
+          "intent": "cleaning"
+        },
+        {
+          "id": "filter:maintenance",
+          "component": "filter",
+          "intent": "maintenance"
+        },
+        {
+          "id": "filter:redundancy",
+          "component": "filter",
+          "intent": "redundancy"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:cleaning",
+          "component": "sea_water",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR031",
+      "text": "冷却水温度、压力、液位和泵状态要接入监控系统，便于趋势观察和异常判断。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "control_system:fail_safe",
+          "component": "control_system",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:inspection",
+          "component": "cooling_water_pump",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:specification",
+          "component": "level_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:specification",
+          "component": "pressure_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_control_valve:fail_safe",
+          "component": "temperature_control_valve",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR032",
+      "text": "低供水、低压力或者泵故障时，系统要能给出明确报警，必要时支持人工或自动切换。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "alarm_system:redundancy",
+          "component": "alarm_system",
+          "intent": "redundancy"
+        },
+        {
+          "id": "alarm_system:trip_setpoint",
+          "component": "alarm_system",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "control_system:fail_safe",
+          "component": "control_system",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "control_system:redundancy",
+          "component": "control_system",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:trip_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR033",
+      "text": "传感器量程和报警设定要有依据，不能现场随便填一个值。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "filter:alarm_setpoint",
+          "component": "filter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "flow_meter:specification",
+          "component": "flow_meter",
+          "intent": "specification"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:specification",
+          "component": "level_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:specification",
+          "component": "pressure_sensor",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:class_approval",
+          "component": "temperature_sensor",
+          "intent": "class_approval"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR034",
+      "text": "温度控制阀相关信号和控制逻辑要能反映实际水温变化，不要出现控制滞后太明显的情况。",
+      "candidates": [
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "control_system:fail_safe",
+          "component": "control_system",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "expansion_tank:control_logic",
+          "component": "expansion_tank",
+          "intent": "control_logic"
+        },
+        {
+          "id": "temperature_control_valve:bypass",
+          "component": "temperature_control_valve",
+          "intent": "bypass"
+        },
+        {
+          "id": "temperature_control_valve:control_logic",
+          "component": "temperature_control_valve",
+          "intent": "control_logic"
+        },
+        {
+          "id": "temperature_control_valve:installation",
+          "component": "temperature_control_valve",
+          "intent": "installation"
+        },
+        {
+          "id": "temperature_control_valve:set_point",
+          "component": "temperature_control_valve",
+          "intent": "set_point"
+        },
+        {
+          "id": "temperature_control_valve:specification",
+          "component": "temperature_control_valve",
+          "intent": "specification"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR035",
+      "text": "冷却水泵的运行、停止、故障和备用状态要能反馈到监控界面。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:class_approval",
+          "component": "cooling_water_pump",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:inspection",
+          "component": "cooling_water_pump",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooling_water_pump:material",
+          "component": "cooling_water_pump",
+          "intent": "material"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        }
+      ]
+    },
+    {
+      "id": "OR036",
+      "text": "冷却水高温、低压、低液位和流量不足这类情况要能及时报警，不能等主机已经过热才发现。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:trip_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "expansion_tank:alarm_setpoint",
+          "component": "expansion_tank",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "filter:alarm_setpoint",
+          "component": "filter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR037",
+      "text": "冷却器如果存在泄漏风险，要有检测和报警手段，特别是有人值守位置要能看到或听到。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooler:alarm_setpoint",
+          "component": "cooler",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooler:bypass",
+          "component": "cooler",
+          "intent": "bypass"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooler:inspection",
+          "component": "cooler",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooler:pressure_drop",
+          "component": "cooler",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:redundancy",
+          "component": "temperature_sensor",
+          "intent": "redundancy"
+        }
+      ]
+    },
+    {
+      "id": "OR038",
+      "text": "关键报警和保护动作要区分清楚，哪些只是提醒，哪些会影响主机运行，要提前说明。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "alarm_system:documentation",
+          "component": "alarm_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "alarm_system:test_procedure",
+          "component": "alarm_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "alarm_system:trip_setpoint",
+          "component": "alarm_system",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        }
+      ]
+    },
+    {
+      "id": "OR039",
+      "text": "传感器异常不能被当成正常状态，系统要能提示测量信号可能有问题。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "control_system:fail_safe",
+          "component": "control_system",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:class_approval",
+          "component": "pressure_sensor",
+          "intent": "class_approval"
+        },
+        {
+          "id": "temperature_control_valve:fail_safe",
+          "component": "temperature_control_valve",
+          "intent": "fail_safe"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:class_approval",
+          "component": "temperature_sensor",
+          "intent": "class_approval"
+        },
+        {
+          "id": "temperature_sensor:trip_setpoint",
+          "component": "temperature_sensor",
+          "intent": "trip_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR040",
+      "text": "报警设定和延时不要太随意，既不能太迟，也不能因为误报警频繁影响运行。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "alarm_system:redundancy",
+          "component": "alarm_system",
+          "intent": "redundancy"
+        },
+        {
+          "id": "alarm_system:trip_setpoint",
+          "component": "alarm_system",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "filter:alarm_setpoint",
+          "component": "filter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_control_valve:set_point",
+          "component": "temperature_control_valve",
+          "intent": "set_point"
+        }
+      ]
+    },
+    {
+      "id": "OR041",
+      "text": "海水冷却系统如果采用主循环泵相关配置，低供水情况要能报警，便于及时启动或切换。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "alarm_system:redundancy",
+          "component": "alarm_system",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "sea_water:biofouling",
+          "component": "sea_water",
+          "intent": "biofouling"
+        },
+        {
+          "id": "sea_water:cleaning",
+          "component": "sea_water",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR042",
+      "text": "冷却水泵、冷却器、管路和报警保护的配置要能在图纸和资料里看出规范依据。",
+      "candidates": [
+        {
+          "id": "alarm_system:documentation",
+          "component": "alarm_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooler:documentation",
+          "component": "cooler",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:corrosion_protection",
+          "component": "cooling_water_pump",
+          "intent": "corrosion_protection"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "pipe:documentation",
+          "component": "pipe",
+          "intent": "documentation"
+        }
+      ]
+    },
+    {
+      "id": "OR043",
+      "text": "海水侧直接冷却时，滤器布置要考虑运行中清洗，不能一清洗就影响冷却供应。",
+      "candidates": [
+        {
+          "id": "cooler:cleaning",
+          "component": "cooler",
+          "intent": "cleaning"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "filter:bypass",
+          "component": "filter",
+          "intent": "bypass"
+        },
+        {
+          "id": "filter:cleaning",
+          "component": "filter",
+          "intent": "cleaning"
+        },
+        {
+          "id": "filter:installation",
+          "component": "filter",
+          "intent": "installation"
+        },
+        {
+          "id": "filter:redundancy",
+          "component": "filter",
+          "intent": "redundancy"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:cleaning",
+          "component": "sea_water",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR044",
+      "text": "涉及水泄漏监测的冷却设备，要按适用规则考虑泄漏检测和声光报警。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "coolant:sampling",
+          "component": "coolant",
+          "intent": "sampling"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:alarm_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "expansion_tank:alarm_setpoint",
+          "component": "expansion_tank",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pipe:welding",
+          "component": "pipe",
+          "intent": "welding"
+        }
+      ]
+    },
+    {
+      "id": "OR045",
+      "text": "冷却水系统的压力试验、冲洗和检查记录要完整，不能只口头说明已经做过。",
+      "candidates": [
+        {
+          "id": "cooler:inspection",
+          "component": "cooler",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooler:pressure_test",
+          "component": "cooler",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "cooling_water_pump:inspection",
+          "component": "cooling_water_pump",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooling_water_pump:pressure_test",
+          "component": "cooling_water_pump",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "expansion_tank:inspection",
+          "component": "expansion_tank",
+          "intent": "inspection"
+        },
+        {
+          "id": "filter:cleaning",
+          "component": "filter",
+          "intent": "cleaning"
+        },
+        {
+          "id": "filter:inspection",
+          "component": "filter",
+          "intent": "inspection"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "pipe:inspection",
+          "component": "pipe",
+          "intent": "inspection"
+        },
+        {
+          "id": "pipe:pressure_test",
+          "component": "pipe",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "sea_chest:inspection",
+          "component": "sea_chest",
+          "intent": "inspection"
+        },
+        {
+          "id": "temperature_control_valve:inspection",
+          "component": "temperature_control_valve",
+          "intent": "inspection"
+        },
+        {
+          "id": "valve:inspection",
+          "component": "valve",
+          "intent": "inspection"
+        }
+      ]
+    },
+    {
+      "id": "OR046",
+      "text": "调试时要验证冷却水泵的压力、流量和备用切换情况，不要只看泵能不能转。",
+      "candidates": [
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:pressure_test",
+          "component": "cooling_water_pump",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_water_pump:trip_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "trip_setpoint"
+        }
+      ]
+    },
+    {
+      "id": "OR047",
+      "text": "冷却系统冲洗要有明确步骤，冲洗速度、时间和清洁结果不能太随意。",
+      "candidates": [
+        {
+          "id": "coolant:initial_fill",
+          "component": "coolant",
+          "intent": "initial_fill"
+        },
+        {
+          "id": "cooler:cleaning",
+          "component": "cooler",
+          "intent": "cleaning"
+        },
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:cleaning",
+          "component": "sea_water",
+          "intent": "cleaning"
+        }
+      ]
+    },
+    {
+      "id": "OR048",
+      "text": "温控阀实际动作情况要在试车中确认，不能只看采购文件上的设定。",
+      "candidates": [
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "temperature_control_valve:bypass",
+          "component": "temperature_control_valve",
+          "intent": "bypass"
+        },
+        {
+          "id": "temperature_control_valve:class_approval",
+          "component": "temperature_control_valve",
+          "intent": "class_approval"
+        },
+        {
+          "id": "temperature_control_valve:control_logic",
+          "component": "temperature_control_valve",
+          "intent": "control_logic"
+        },
+        {
+          "id": "temperature_control_valve:drawing_requirement",
+          "component": "temperature_control_valve",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "temperature_control_valve:inspection",
+          "component": "temperature_control_valve",
+          "intent": "inspection"
+        },
+        {
+          "id": "temperature_control_valve:installation",
+          "component": "temperature_control_valve",
+          "intent": "installation"
+        },
+        {
+          "id": "temperature_control_valve:set_point",
+          "component": "temperature_control_valve",
+          "intent": "set_point"
+        }
+      ]
+    },
+    {
+      "id": "OR049",
+      "text": "膨胀水箱液位、补水和低液位报警要在试车前后检查，避免运行中液位异常。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "expansion_tank:alarm_setpoint",
+          "component": "expansion_tank",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "expansion_tank:inspection",
+          "component": "expansion_tank",
+          "intent": "inspection"
+        },
+        {
+          "id": "expansion_tank:level_control",
+          "component": "expansion_tank",
+          "intent": "level_control"
+        },
+        {
+          "id": "expansion_tank:makeup_water",
+          "component": "expansion_tank",
+          "intent": "makeup_water"
+        },
+        {
+          "id": "expansion_tank:trip_setpoint",
+          "component": "expansion_tank",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:installation",
+          "component": "level_sensor",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR050",
+      "text": "冷却器换热效果要结合运行温度数据判断，不要只在低负荷时认为正常。",
+      "candidates": [
+        {
+          "id": "cooler:alarm_setpoint",
+          "component": "cooler",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "cooler:bypass",
+          "component": "cooler",
+          "intent": "bypass"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooler:inspection",
+          "component": "cooler",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooler:maintenance",
+          "component": "cooler",
+          "intent": "maintenance"
+        },
+        {
+          "id": "cooler:pressure_drop",
+          "component": "cooler",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "cooler:specification",
+          "component": "cooler",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "temperature_sensor:specification",
+          "component": "temperature_sensor",
+          "intent": "specification"
+        }
+      ]
+    },
+    {
+      "id": "OR051",
+      "text": "冷却器要方便打开、清洗和检查，周围管路不要挡住端盖或检修空间。",
+      "candidates": [
+        {
+          "id": "cooler:cleaning",
+          "component": "cooler",
+          "intent": "cleaning"
+        },
+        {
+          "id": "cooler:inspection",
+          "component": "cooler",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooler:installation",
+          "component": "cooler",
+          "intent": "installation"
+        },
+        {
+          "id": "cooler:pressure_drop",
+          "component": "cooler",
+          "intent": "pressure_drop"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR052",
+      "text": "冷却水泵的密封、轴承和电机维护要有空间，不能拆一个小件就要移开很多管路。",
+      "candidates": [
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:class_approval",
+          "component": "cooling_water_pump",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_water_pump:inspection",
+          "component": "cooling_water_pump",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:maintenance",
+          "component": "cooling_water_pump",
+          "intent": "maintenance"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "valve:installation",
+          "component": "valve",
+          "intent": "installation"
+        }
+      ]
+    },
+    {
+      "id": "OR053",
+      "text": "海水侧和淡水侧容易结垢、沉积或污染的地方，要方便检查和清洗。",
+      "candidates": [
+        {
+          "id": "coolant:inspection",
+          "component": "coolant",
+          "intent": "inspection"
+        },
+        {
+          "id": "cooler:cleaning",
+          "component": "cooler",
+          "intent": "cleaning"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "filter:cleaning",
+          "component": "filter",
+          "intent": "cleaning"
+        },
+        {
+          "id": "pipe:cleaning",
+          "component": "pipe",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:biofouling",
+          "component": "sea_water",
+          "intent": "biofouling"
+        },
+        {
+          "id": "sea_water:cleaning",
+          "component": "sea_water",
+          "intent": "cleaning"
+        },
+        {
+          "id": "sea_water:corrosion_protection",
+          "component": "sea_water",
+          "intent": "corrosion_protection"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR054",
+      "text": "防腐剂、冷却液和水质检测要求要说清楚，船上不能凭经验乱加。",
+      "candidates": [
+        {
+          "id": "coolant:antifreeze",
+          "component": "coolant",
+          "intent": "antifreeze"
+        },
+        {
+          "id": "coolant:corrosion_inhibitor",
+          "component": "coolant",
+          "intent": "corrosion_inhibitor"
+        },
+        {
+          "id": "coolant:initial_fill",
+          "component": "coolant",
+          "intent": "initial_fill"
+        },
+        {
+          "id": "coolant:sampling",
+          "component": "coolant",
+          "intent": "sampling"
+        },
+        {
+          "id": "coolant:water_quality",
+          "component": "coolant",
+          "intent": "water_quality"
+        },
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "sea_water:material",
+          "component": "sea_water",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR055",
+      "text": "牺牲阳极或者其他防腐部件如果有配置，要方便检查和更换。",
+      "candidates": [
+        {
+          "id": "anode:inspection",
+          "component": "anode",
+          "intent": "inspection"
+        },
+        {
+          "id": "anode:installation",
+          "component": "anode",
+          "intent": "installation"
+        },
+        {
+          "id": "anode:material",
+          "component": "anode",
+          "intent": "material"
+        },
+        {
+          "id": "anode:replacement_cycle",
+          "component": "anode",
+          "intent": "replacement_cycle"
+        },
+        {
+          "id": "pipe:cathodic_protection",
+          "component": "pipe",
+          "intent": "cathodic_protection"
+        }
+      ]
+    },
+    {
+      "id": "OR056",
+      "text": "安装完成后要检查阀门方向、管路连接、支架和仪表安装位置，不能只看外观。",
+      "candidates": [
+        {
+          "id": "flow_meter:installation",
+          "component": "flow_meter",
+          "intent": "installation"
+        },
+        {
+          "id": "level_sensor:installation",
+          "component": "level_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:connection_type",
+          "component": "pipe",
+          "intent": "connection_type"
+        },
+        {
+          "id": "pipe:inspection",
+          "component": "pipe",
+          "intent": "inspection"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "pipe:vent_drain",
+          "component": "pipe",
+          "intent": "vent_drain"
+        },
+        {
+          "id": "pipe_support:installation",
+          "component": "pipe_support",
+          "intent": "installation"
+        },
+        {
+          "id": "pressure_sensor:installation",
+          "component": "pressure_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "temperature_sensor:installation",
+          "component": "temperature_sensor",
+          "intent": "installation"
+        },
+        {
+          "id": "valve:drawing_requirement",
+          "component": "valve",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "valve:installation",
+          "component": "valve",
+          "intent": "installation"
+        },
+        {
+          "id": "valve:material",
+          "component": "valve",
+          "intent": "material"
+        }
+      ]
+    },
+    {
+      "id": "OR057",
+      "text": "冷却水系统压力试验要有试验压力、保压时间和泄漏检查记录。",
+      "candidates": [
+        {
+          "id": "cooler:pressure_test",
+          "component": "cooler",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "cooling_water_pump:pressure_test",
+          "component": "cooling_water_pump",
+          "intent": "pressure_test"
+        },
+        {
+          "id": "pipe:pressure_test",
+          "component": "pipe",
+          "intent": "pressure_test"
+        }
+      ]
+    },
+    {
+      "id": "OR058",
+      "text": "报警和传感器要做实际动作测试，不要只确认监控画面上有信号。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_response",
+          "component": "alarm_system",
+          "intent": "alarm_response"
+        },
+        {
+          "id": "alarm_system:test_procedure",
+          "component": "alarm_system",
+          "intent": "test_procedure"
+        },
+        {
+          "id": "flow_meter:calibration",
+          "component": "flow_meter",
+          "intent": "calibration"
+        },
+        {
+          "id": "level_sensor:alarm_setpoint",
+          "component": "level_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "level_sensor:calibration",
+          "component": "level_sensor",
+          "intent": "calibration"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pressure_sensor:calibration",
+          "component": "pressure_sensor",
+          "intent": "calibration"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_sensor:calibration",
+          "component": "temperature_sensor",
+          "intent": "calibration"
+        }
+      ]
+    },
+    {
+      "id": "OR059",
+      "text": "冷却液水质、污染物和沉积风险要有检查办法，不能等系统运行后再发现问题。",
+      "candidates": [
+        {
+          "id": "coolant:initial_fill",
+          "component": "coolant",
+          "intent": "initial_fill"
+        },
+        {
+          "id": "coolant:inspection",
+          "component": "coolant",
+          "intent": "inspection"
+        },
+        {
+          "id": "coolant:sampling",
+          "component": "coolant",
+          "intent": "sampling"
+        },
+        {
+          "id": "coolant:water_quality",
+          "component": "coolant",
+          "intent": "water_quality"
+        },
+        {
+          "id": "cooler:fouling",
+          "component": "cooler",
+          "intent": "fouling"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:test_procedure",
+          "component": "cooling_system",
+          "intent": "test_procedure"
+        }
+      ]
+    },
+    {
+      "id": "OR060",
+      "text": "冷却水系统的厂家资料、规范要求、采购清单和施工图要保持一致，不然后面变更会很多。",
+      "candidates": [
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:drawing_requirement",
+          "component": "cooling_system",
+          "intent": "drawing_requirement"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_water_pump:documentation",
+          "component": "cooling_water_pump",
+          "intent": "documentation"
+        }
+      ]
+    }
+  ],
+  "format": "mapping-review-source-library-v1",
+  "not_an_assignment": true,
+  "purpose": "Unlabelled reference only; not a requirement to review all 60 sources",
+  "version": "9ba662a9b49665ee1dc882c2c482d9df7523cf8f9daf77d9ee7dfdece54f3627"
+}

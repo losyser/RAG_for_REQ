@@ -1,0 +1,213 @@
+{
+  "slot": "OR004-random_old",
+  "started_at": "2026-10-19T02:40:14.434852+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"e056147f-c7a0-47cf-bac4-4643b04d47a7\",\"object\":\"chat.completion\",\"created\":1792377615,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应设置高温冷却水压力报警，当发动机进口压力超出允许范围时向船员发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统压力|intent:报警阈值|hint:证据给出额定值4 bar及PT3145范围3 bar至8 bar，报警上下限须按厂家设定确认}}\\\",\\\"applicable_condition\\\":\\\"额定转速运行工况；L49/60DF机型高温冷却水系统\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"在模拟压力越限时报警在规定时间内触发并可在集控室与机旁识别\\\",\\\"报警设定值经厂家或项目文件确认并记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置高温冷却水温度报警，当发动机出口冷却水温度超过允许上限时向船员发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:高温冷却水温度|intent:报警阈值|hint:证据给出HP TC增压空气冷却器出口80 °C等参考温度，报警上限须按厂家设定确认}}\\\",\\\"applicable_condition\\\":\\\"L49/60DF机型液体燃料模式，电推/EPROX-AC，热带参考条件\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度越限时报警触发并明确指示越限部位\\\",\\\"报警阈值与厂家技术数据一致并经确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-JACKET-MON-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置膨胀水箱液位异常报警，当液位偏离正常范围时向船员发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mm|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:膨胀水箱液位|intent:报警阈值|hint:证据仅支撑膨胀水箱检查与液位监测，具体液位报警值须按厂家或项目文件确定}}\\\",\\\"applicable_condition\\\":\\\"正常运行及补液工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"液位高/低越限时报警触发并可在集控室识别\\\",\\\"报警设定值经厂家或项目文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-EXP-INSP-020\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-TCV-ALARM-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水温度、压力、液位传感器异常时，系统应发出传感器故障报警，避免误报警或报警失效。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S28 Wärtsilä 32 Product Guide|component:冷却水传感器与报警回路|intent:故障诊断与报警|hint:证据支撑传感器异常应按厂家或规则要求设置报警，具体判据须按控制系统配置确认}}\\\",\\\"applicable_condition\\\":\\\"对应厂家、机型和控制系统配置范围内\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"模拟传感器断线或信号超范围时触发故障报警\\\",\\\"故障报警与工艺越限报警可区分显示\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-ALARM-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水温度报警触发时，系统应能按设定逻辑降低温度设定点或触发降负荷保护，以避免超过发动机出口最高温度。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水温度设定点|intent:保护动作阈值|hint:证据说明必要时由SaCoS功能降低设定点，具体动作值与降负荷逻辑须按厂家文件确认}}\\\",\\\"applicable_condition\\\":\\\"报警水平运行工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"报警后保护动作按设定逻辑执行并记录\\\",\\\"动作逻辑与厂家SaCoS功能说明一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统报警应在机旁与集控室（或报警面板）同时可识别，保证船员及时获知异常。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:s|ref:S28 Wärtsilä 32 Product Guide|component:报警面板与指示|intent:报警响应时间|hint:证据仅支撑报警面板配置，具体响应时间须按项目或规则要求确定}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及报警工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"报警面板配置清单与图纸一致\\\",\\\"报警信号在指定位置可听可视\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-ALARM-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置冷却液水质监测与取样检查要求，以支撑腐蚀、结垢和污染沉积风险的早期发现。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:冷却液|intent:水质检测周期与限值|hint:证据支撑定期取样与分析，具体限值和周期须按来源文件适用条件使用}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统正常运行与维护期间\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"取样点与检测项目在维护文件中明确\\\",\\\"检测记录可追溯并按规定周期执行\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-EXP-INSP-020\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-COOLANT-DRAW-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统送审图纸应标注材料、管径、设计压力、泵额定容量和关断扬程等参数，以支撑报警与保护设计的可审查性。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S42 MAN 49/60DF Project Guide|component:冷却水管系与泵|intent:图纸参数完整性|hint:证据要求送审文件清楚标注材料、设计压力和泵额定参数，具体数值须按项目文件确定}}\\\",\\\"applicable_condition\\\":\\\"MAN L49/60DF燃气模式，电力推进/EPROX-AC；设计参考冷却水系统图\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"送审图纸包含材料、管径、设计压力、泵额定容量与关断扬程标注\\\",\\\"图纸审查覆盖冷却水管系相关接口、材料与压力等级\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-DRAW-015\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2397,\"completion_tokens\":1761,\"total_tokens\":4158,\"prompt_tokens_details\":{\"cached_tokens\":2176},\"prompt_cache_hit_tokens\":2176,\"prompt_cache_miss_tokens\":221},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:40:15 GMT"
+  },
+  "response": {
+    "id": "e056147f-c7a0-47cf-bac4-4643b04d47a7",
+    "object": "chat.completion",
+    "created": 1792377615,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应设置高温冷却水压力报警，当发动机进口压力超出允许范围时向船员发出报警。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统压力|intent:报警阈值|hint:证据给出额定值4 bar及PT3145范围3 bar至8 bar，报警上下限须按厂家设定确认}}\",\"applicable_condition\":\"额定转速运行工况；L49/60DF机型高温冷却水系统\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"在模拟压力越限时报警在规定时间内触发并可在集控室与机旁识别\",\"报警设定值经厂家或项目文件确认并记录\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应设置高温冷却水温度报警，当发动机出口冷却水温度超过允许上限时向船员发出报警。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:高温冷却水温度|intent:报警阈值|hint:证据给出HP TC增压空气冷却器出口80 °C等参考温度，报警上限须按厂家设定确认}}\",\"applicable_condition\":\"L49/60DF机型液体燃料模式，电推/EPROX-AC，热带参考条件\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度越限时报警触发并明确指示越限部位\",\"报警阈值与厂家技术数据一致并经确认\"],\"evidence_citations\":[{\"kb_id\":\"E-JACKET-MON-003\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":false},{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应设置膨胀水箱液位异常报警，当液位偏离正常范围时向船员发出报警。\",\"measurable_criterion\":\"{{TBD|unit:mm|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:膨胀水箱液位|intent:报警阈值|hint:证据仅支撑膨胀水箱检查与液位监测，具体液位报警值须按厂家或项目文件确定}}\",\"applicable_condition\":\"正常运行及补液工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"液位高/低越限时报警触发并可在集控室识别\",\"报警设定值经厂家或项目文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-EXP-INSP-020\",\"tier\":\"L3\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-TCV-ALARM-001\",\"tier\":\"L2\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水温度、压力、液位传感器异常时，系统应发出传感器故障报警，避免误报警或报警失效。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S28 Wärtsilä 32 Product Guide|component:冷却水传感器与报警回路|intent:故障诊断与报警|hint:证据支撑传感器异常应按厂家或规则要求设置报警，具体判据须按控制系统配置确认}}\",\"applicable_condition\":\"对应厂家、机型和控制系统配置范围内\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"模拟传感器断线或信号超范围时触发故障报警\",\"故障报警与工艺越限报警可区分显示\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-ALARM-001\",\"tier\":\"L2\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水温度报警触发时，系统应能按设定逻辑降低温度设定点或触发降负荷保护，以避免超过发动机出口最高温度。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水温度设定点|intent:保护动作阈值|hint:证据说明必要时由SaCoS功能降低设定点，具体动作值与降负荷逻辑须按厂家文件确认}}\",\"applicable_condition\":\"报警水平运行工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"报警后保护动作按设定逻辑执行并记录\",\"动作逻辑与厂家SaCoS功能说明一致\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-002\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统报警应在机旁与集控室（或报警面板）同时可识别，保证船员及时获知异常。\",\"measurable_criterion\":\"{{TBD|unit:s|ref:S28 Wärtsilä 32 Product Guide|component:报警面板与指示|intent:报警响应时间|hint:证据仅支撑报警面板配置，具体响应时间须按项目或规则要求确定}}\",\"applicable_condition\":\"冷却水系统运行及报警工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"报警面板配置清单与图纸一致\",\"报警信号在指定位置可听可视\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-ALARM-001\",\"tier\":\"L2\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应设置冷却液水质监测与取样检查要求，以支撑腐蚀、结垢和污染沉积风险的早期发现。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:冷却液|intent:水质检测周期与限值|hint:证据支撑定期取样与分析，具体限值和周期须按来源文件适用条件使用}}\",\"applicable_condition\":\"冷却水系统正常运行与维护期间\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"取样点与检测项目在维护文件中明确\",\"检测记录可追溯并按规定周期执行\"],\"evidence_citations\":[{\"kb_id\":\"E-EXP-INSP-020\",\"tier\":\"L3\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-COOLANT-DRAW-001\",\"tier\":\"L3\",\"source\":\"S10 MAN L23/30DF Project Guide Internal cooling water system\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统送审图纸应标注材料、管径、设计压力、泵额定容量和关断扬程等参数，以支撑报警与保护设计的可审查性。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S42 MAN 49/60DF Project Guide|component:冷却水管系与泵|intent:图纸参数完整性|hint:证据要求送审文件清楚标注材料、设计压力和泵额定参数，具体数值须按项目文件确定}}\",\"applicable_condition\":\"MAN L49/60DF燃气模式，电力推进/EPROX-AC；设计参考冷却水系统图\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"送审图纸包含材料、管径、设计压力、泵额定容量与关断扬程标注\",\"图纸审查覆盖冷却水管系相关接口、材料与压力等级\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-DRAW-015\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2397,
+      "completion_tokens": 1761,
+      "total_tokens": 4158,
+      "prompt_tokens_details": {
+        "cached_tokens": 2176
+      },
+      "prompt_cache_hit_tokens": 2176,
+      "prompt_cache_miss_tokens": 221
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.018882",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.018882",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应设置高温冷却水压力报警，当发动机进口压力超出允许范围时向船员发出报警。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统压力|intent:报警阈值|hint:证据给出额定值4 bar及PT3145范围3 bar至8 bar，报警上下限须按厂家设定确认}}",
+        "applicable_condition": "额定转速运行工况；L49/60DF机型高温冷却水系统",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "在模拟压力越限时报警在规定时间内触发并可在集控室与机旁识别",
+          "报警设定值经厂家或项目文件确认并记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置高温冷却水温度报警，当发动机出口冷却水温度超过允许上限时向船员发出报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide|component:高温冷却水温度|intent:报警阈值|hint:证据给出HP TC增压空气冷却器出口80 °C等参考温度，报警上限须按厂家设定确认}}",
+        "applicable_condition": "L49/60DF机型液体燃料模式，电推/EPROX-AC，热带参考条件",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度越限时报警触发并明确指示越限部位",
+          "报警阈值与厂家技术数据一致并经确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-MON-003",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置膨胀水箱液位异常报警，当液位偏离正常范围时向船员发出报警。",
+        "measurable_criterion": "{{TBD|unit:mm|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:膨胀水箱液位|intent:报警阈值|hint:证据仅支撑膨胀水箱检查与液位监测，具体液位报警值须按厂家或项目文件确定}}",
+        "applicable_condition": "正常运行及补液工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "液位高/低越限时报警触发并可在集控室识别",
+          "报警设定值经厂家或项目文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-INSP-020",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-TCV-ALARM-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度、压力、液位传感器异常时，系统应发出传感器故障报警，避免误报警或报警失效。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S28 Wärtsilä 32 Product Guide|component:冷却水传感器与报警回路|intent:故障诊断与报警|hint:证据支撑传感器异常应按厂家或规则要求设置报警，具体判据须按控制系统配置确认}}",
+        "applicable_condition": "对应厂家、机型和控制系统配置范围内",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟传感器断线或信号超范围时触发故障报警",
+          "故障报警与工艺越限报警可区分显示"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-ALARM-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度报警触发时，系统应能按设定逻辑降低温度设定点或触发降负荷保护，以避免超过发动机出口最高温度。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水温度设定点|intent:保护动作阈值|hint:证据说明必要时由SaCoS功能降低设定点，具体动作值与降负荷逻辑须按厂家文件确认}}",
+        "applicable_condition": "报警水平运行工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "报警后保护动作按设定逻辑执行并记录",
+          "动作逻辑与厂家SaCoS功能说明一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-002",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统报警应在机旁与集控室（或报警面板）同时可识别，保证船员及时获知异常。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S28 Wärtsilä 32 Product Guide|component:报警面板与指示|intent:报警响应时间|hint:证据仅支撑报警面板配置，具体响应时间须按项目或规则要求确定}}",
+        "applicable_condition": "冷却水系统运行及报警工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警面板配置清单与图纸一致",
+          "报警信号在指定位置可听可视"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-ALARM-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置冷却液水质监测与取样检查要求，以支撑腐蚀、结垢和污染沉积风险的早期发现。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:冷却液|intent:水质检测周期与限值|hint:证据支撑定期取样与分析，具体限值和周期须按来源文件适用条件使用}}",
+        "applicable_condition": "冷却水系统正常运行与维护期间",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "取样点与检测项目在维护文件中明确",
+          "检测记录可追溯并按规定周期执行"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-INSP-020",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-COOLANT-DRAW-001",
+            "tier": "L3",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统送审图纸应标注材料、管径、设计压力、泵额定容量和关断扬程等参数，以支撑报警与保护设计的可审查性。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S42 MAN 49/60DF Project Guide|component:冷却水管系与泵|intent:图纸参数完整性|hint:证据要求送审文件清楚标注材料、设计压力和泵额定参数，具体数值须按项目文件确定}}",
+        "applicable_condition": "MAN L49/60DF燃气模式，电力推进/EPROX-AC；设计参考冷却水系统图",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "送审图纸包含材料、管径、设计压力、泵额定容量与关断扬程标注",
+          "图纸审查覆盖冷却水管系相关接口、材料与压力等级"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-DRAW-015",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:40:22.427864+00:00",
+  "elapsed_seconds": 7.985
+}

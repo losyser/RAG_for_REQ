@@ -1,0 +1,240 @@
+{
+  "slot": "OR022-semantic_new",
+  "started_at": "2026-10-19T02:51:00.384916+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"1294fc81-7aed-4591-bf0f-cb86a03b194c\",\"object\":\"chat.completion\",\"created\":1792378261,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"中央冷却器选型应依据船舶运营区域确定的海水设计温度进行，海水设计温度应取25°C或32°C之一。\\\", \\\"measurable_criterion\\\": \\\"海水设计温度取值为25°C或32°C，取决于船舶运营区域\\\", \\\"applicable_condition\\\": \\\"L21/31、L27/38机型，柴油-电力推进船舶的中央冷却器选型\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"选型文件中明确给出海水设计温度，且取值为25°C或32°C之一\\\", \\\"海水设计温度取值与船舶运营区域相对应\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-INST-007\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-INST-008\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"当船舶在MCR工况下航速低于3节时，中央冷却器设计应考虑航速影响。\\\", \\\"measurable_criterion\\\": \\\"MCR工况下航速低于3节时，冷却器设计需计入航速影响\\\", \\\"applicable_condition\\\": \\\"L21/31、L27/38机型，柴油-电力推进船舶，MCR工况航速低于3节（如拖船、挖泥船等）\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型计算文件中包含航速低于3节工况的冷却能力核算\\\", \\\"冷却器设计参数覆盖该低航速工况\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-INST-007\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"中央冷却器选型应计入长期脏污影响，按污垢系数进行换热面积校核。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:hr-m²-°C/kJ|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:中央冷却器|intent:污垢系数取值|hint:按海水原水速度与温度条件选取对应污垢系数并计入换热面积}}\\\", \\\"applicable_condition\\\": \\\"发动机冷却液温度<116°C、原水温度<52°C的海水冷却工况\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型计算中明确给出所采用的污垢系数\\\", \\\"换热面积按计入污垢系数后的总传热系数确定\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-SW-CLEAN-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"中央冷却器选型应预留换热余量，换热器容量应按约10%的排热率余量确定。\\\", \\\"measurable_criterion\\\": \\\"换热器容量按约10%的排热率余量确定\\\", \\\"applicable_condition\\\": \\\"中央冷却器换热器设计与选型\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型计算中换热器容量包含约10%的排热率余量\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-INST-016\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却器额定值应满足+10%公差要求，热回收应满足-15%公差要求。\\\", \\\"measurable_criterion\\\": \\\"冷却器额定值公差+10%，热回收公差-15%\\\", \\\"applicable_condition\\\": \\\"L27/38机型冷却器布置基本值\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"冷却器技术数据中的额定值公差不超过+10%\\\", \\\"热回收公差不超过-15%\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-ARR-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水流量应满足±5%公差要求，冷却水温度应满足±20°C公差要求。\\\", \\\"measurable_criterion\\\": \\\"冷却水流量公差±5%，冷却水温度公差±20°C\\\", \\\"applicable_condition\\\": \\\"涡轮出口温度及压力按参考条件\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"冷却水流量设计值与额定值偏差在±5%以内\\\", \\\"冷却水温度设计值与额定值偏差在±20°C以内\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-ARR-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"通过所有冷却器的压降应不超过最大0.5 bar。\\\", \\\"measurable_criterion\\\": \\\"通过所有冷却器的压降最大0.5 bar\\\", \\\"applicable_condition\\\": \\\"L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"冷却水系统压降计算值不超过0.5 bar\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-LT-MAINT-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"LT级进气口充气冷却器冷却水温度应不高于311 K（38°C），以保证无降额运行。\\\", \\\"measurable_criterion\\\": \\\"LT级进气口充气冷却器冷却水温度≤311 K（38°C）\\\", \\\"applicable_condition\\\": \\\"无降额条件：环境温度涡轮增压器前T≤318 K（45°C），环境压力≥100 kPa（1 bar），压缩机前进气压力≥–2 kPa，涡轮后排气背压≤5 kPa，相对湿度Φ≤60%\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"冷却水系统设计保证LT级进气口充气冷却器进水温度≤311 K（38°C）\\\", \\\"在上述环境条件下发动机无降额\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-LOAD-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"海水侧原水流速应满足污垢控制要求，以限制长期运行中的污垢系数。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:m/s|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:海水侧换热管|intent:原水流速|hint:按海水/半咸水及污垢系数要求确定原水流速限值}}\\\", \\\"applicable_condition\\\": \\\"发动机冷却液温度<116°C、原水温度<52°C的海水冷却工况\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型计算中给出海水侧原水流速设计值\\\", \\\"所取流速对应的污垢系数满足换热面积校核要求\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-SW-CLEAN-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"中央冷却器选型应依据厂家技术数据或项目计算文件确定安装压力与温度参数。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S39 MAN L21/31 Project Guide|component:中央冷却器|intent:安装压力|hint:依据厂家技术数据或项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"L21/31、L27/38机型，柴油-电力推进船舶中央冷却器选型\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"选型文件中的安装压力参数有厂家技术数据或项目计算文件支撑\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-INST-007\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-INST-008\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2619,\"completion_tokens\":1961,\"total_tokens\":4580,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2619},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:51:01 GMT"
+  },
+  "response": {
+    "id": "1294fc81-7aed-4591-bf0f-cb86a03b194c",
+    "object": "chat.completion",
+    "created": 1792378261,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"中央冷却器选型应依据船舶运营区域确定的海水设计温度进行，海水设计温度应取25°C或32°C之一。\", \"measurable_criterion\": \"海水设计温度取值为25°C或32°C，取决于船舶运营区域\", \"applicable_condition\": \"L21/31、L27/38机型，柴油-电力推进船舶的中央冷却器选型\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"选型文件中明确给出海水设计温度，且取值为25°C或32°C之一\", \"海水设计温度取值与船舶运营区域相对应\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-INST-007\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-INST-008\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"当船舶在MCR工况下航速低于3节时，中央冷却器设计应考虑航速影响。\", \"measurable_criterion\": \"MCR工况下航速低于3节时，冷却器设计需计入航速影响\", \"applicable_condition\": \"L21/31、L27/38机型，柴油-电力推进船舶，MCR工况航速低于3节（如拖船、挖泥船等）\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型计算文件中包含航速低于3节工况的冷却能力核算\", \"冷却器设计参数覆盖该低航速工况\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-INST-007\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"中央冷却器选型应计入长期脏污影响，按污垢系数进行换热面积校核。\", \"measurable_criterion\": \"{{TBD|unit:hr-m²-°C/kJ|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:中央冷却器|intent:污垢系数取值|hint:按海水原水速度与温度条件选取对应污垢系数并计入换热面积}}\", \"applicable_condition\": \"发动机冷却液温度<116°C、原水温度<52°C的海水冷却工况\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型计算中明确给出所采用的污垢系数\", \"换热面积按计入污垢系数后的总传热系数确定\"], \"evidence_citations\": [{\"kb_id\": \"E-SW-CLEAN-001\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"中央冷却器选型应预留换热余量，换热器容量应按约10%的排热率余量确定。\", \"measurable_criterion\": \"换热器容量按约10%的排热率余量确定\", \"applicable_condition\": \"中央冷却器换热器设计与选型\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型计算中换热器容量包含约10%的排热率余量\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-INST-016\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却器额定值应满足+10%公差要求，热回收应满足-15%公差要求。\", \"measurable_criterion\": \"冷却器额定值公差+10%，热回收公差-15%\", \"applicable_condition\": \"L27/38机型冷却器布置基本值\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"冷却器技术数据中的额定值公差不超过+10%\", \"热回收公差不超过-15%\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-ARR-005\", \"tier\": \"L2\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水流量应满足±5%公差要求，冷却水温度应满足±20°C公差要求。\", \"measurable_criterion\": \"冷却水流量公差±5%，冷却水温度公差±20°C\", \"applicable_condition\": \"涡轮出口温度及压力按参考条件\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"冷却水流量设计值与额定值偏差在±5%以内\", \"冷却水温度设计值与额定值偏差在±20°C以内\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-ARR-005\", \"tier\": \"L2\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"通过所有冷却器的压降应不超过最大0.5 bar。\", \"measurable_criterion\": \"通过所有冷却器的压降最大0.5 bar\", \"applicable_condition\": \"L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"冷却水系统压降计算值不超过0.5 bar\"], \"evidence_citations\": [{\"kb_id\": \"E-LT-MAINT-001\", \"tier\": \"L3\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"LT级进气口充气冷却器冷却水温度应不高于311 K（38°C），以保证无降额运行。\", \"measurable_criterion\": \"LT级进气口充气冷却器冷却水温度≤311 K（38°C）\", \"applicable_condition\": \"无降额条件：环境温度涡轮增压器前T≤318 K（45°C），环境压力≥100 kPa（1 bar），压缩机前进气压力≥–2 kPa，涡轮后排气背压≤5 kPa，相对湿度Φ≤60%\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"冷却水系统设计保证LT级进气口充气冷却器进水温度≤311 K（38°C）\", \"在上述环境条件下发动机无降额\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-LOAD-001\", \"tier\": \"L3\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"海水侧原水流速应满足污垢控制要求，以限制长期运行中的污垢系数。\", \"measurable_criterion\": \"{{TBD|unit:m/s|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:海水侧换热管|intent:原水流速|hint:按海水/半咸水及污垢系数要求确定原水流速限值}}\", \"applicable_condition\": \"发动机冷却液温度<116°C、原水温度<52°C的海水冷却工况\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型计算中给出海水侧原水流速设计值\", \"所取流速对应的污垢系数满足换热面积校核要求\"], \"evidence_citations\": [{\"kb_id\": \"E-SW-CLEAN-001\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"中央冷却器选型应依据厂家技术数据或项目计算文件确定安装压力与温度参数。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S39 MAN L21/31 Project Guide|component:中央冷却器|intent:安装压力|hint:依据厂家技术数据或项目计算文件确定}}\", \"applicable_condition\": \"L21/31、L27/38机型，柴油-电力推进船舶中央冷却器选型\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"选型文件中的安装压力参数有厂家技术数据或项目计算文件支撑\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-INST-007\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-INST-008\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2619,
+      "completion_tokens": 1961,
+      "total_tokens": 4580,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2619
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.020926",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.020926",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "中央冷却器选型应依据船舶运营区域确定的海水设计温度进行，海水设计温度应取25°C或32°C之一。",
+        "measurable_criterion": "海水设计温度取值为25°C或32°C，取决于船舶运营区域",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶的中央冷却器选型",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "选型文件中明确给出海水设计温度，且取值为25°C或32°C之一",
+          "海水设计温度取值与船舶运营区域相对应"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-INST-008",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当船舶在MCR工况下航速低于3节时，中央冷却器设计应考虑航速影响。",
+        "measurable_criterion": "MCR工况下航速低于3节时，冷却器设计需计入航速影响",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶，MCR工况航速低于3节（如拖船、挖泥船等）",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算文件中包含航速低于3节工况的冷却能力核算",
+          "冷却器设计参数覆盖该低航速工况"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "中央冷却器选型应计入长期脏污影响，按污垢系数进行换热面积校核。",
+        "measurable_criterion": "{{TBD|unit:hr-m²-°C/kJ|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:中央冷却器|intent:污垢系数取值|hint:按海水原水速度与温度条件选取对应污垢系数并计入换热面积}}",
+        "applicable_condition": "发动机冷却液温度<116°C、原水温度<52°C的海水冷却工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算中明确给出所采用的污垢系数",
+          "换热面积按计入污垢系数后的总传热系数确定"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-CLEAN-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "中央冷却器选型应预留换热余量，换热器容量应按约10%的排热率余量确定。",
+        "measurable_criterion": "换热器容量按约10%的排热率余量确定",
+        "applicable_condition": "中央冷却器换热器设计与选型",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算中换热器容量包含约10%的排热率余量"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-016",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器额定值应满足+10%公差要求，热回收应满足-15%公差要求。",
+        "measurable_criterion": "冷却器额定值公差+10%，热回收公差-15%",
+        "applicable_condition": "L27/38机型冷却器布置基本值",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却器技术数据中的额定值公差不超过+10%",
+          "热回收公差不超过-15%"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-005",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水流量应满足±5%公差要求，冷却水温度应满足±20°C公差要求。",
+        "measurable_criterion": "冷却水流量公差±5%，冷却水温度公差±20°C",
+        "applicable_condition": "涡轮出口温度及压力按参考条件",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却水流量设计值与额定值偏差在±5%以内",
+          "冷却水温度设计值与额定值偏差在±20°C以内"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-005",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "通过所有冷却器的压降应不超过最大0.5 bar。",
+        "measurable_criterion": "通过所有冷却器的压降最大0.5 bar",
+        "applicable_condition": "L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水系统压降计算值不超过0.5 bar"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-MAINT-001",
+            "tier": "L3",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "LT级进气口充气冷却器冷却水温度应不高于311 K（38°C），以保证无降额运行。",
+        "measurable_criterion": "LT级进气口充气冷却器冷却水温度≤311 K（38°C）",
+        "applicable_condition": "无降额条件：环境温度涡轮增压器前T≤318 K（45°C），环境压力≥100 kPa（1 bar），压缩机前进气压力≥–2 kPa，涡轮后排气背压≤5 kPa，相对湿度Φ≤60%",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水系统设计保证LT级进气口充气冷却器进水温度≤311 K（38°C）",
+          "在上述环境条件下发动机无降额"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-LOAD-001",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水侧原水流速应满足污垢控制要求，以限制长期运行中的污垢系数。",
+        "measurable_criterion": "{{TBD|unit:m/s|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:海水侧换热管|intent:原水流速|hint:按海水/半咸水及污垢系数要求确定原水流速限值}}",
+        "applicable_condition": "发动机冷却液温度<116°C、原水温度<52°C的海水冷却工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算中给出海水侧原水流速设计值",
+          "所取流速对应的污垢系数满足换热面积校核要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-CLEAN-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "中央冷却器选型应依据厂家技术数据或项目计算文件确定安装压力与温度参数。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S39 MAN L21/31 Project Guide|component:中央冷却器|intent:安装压力|hint:依据厂家技术数据或项目计算文件确定}}",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶中央冷却器选型",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "选型文件中的安装压力参数有厂家技术数据或项目计算文件支撑"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-INST-008",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:51:08.034187+00:00",
+  "elapsed_seconds": 7.594
+}

@@ -1,0 +1,13 @@
+# Real browser acceptance — completed
+
+Local Streamlit http://127.0.0.1:8501, real headless Chromium 148.0.7778.96 controlled through Playwright. A separate browser session was used; no paid generation button was clicked and EA was never accessed.
+
+Actual clicks completed: Engineering requirements -> select existing saved batch -> load saved results -> original EA XMI download; load a uniquely named source-derived English offline fixture -> original XMI download -> English paper figures expander -> mapping-template download -> wrong-batch mapping upload and visible rejection -> current-model mapping upload -> English paper ZIP download -> original XMI download again -> reload original real batch -> original XMI download again.
+
+The existing real batch returned 128 requirements and 98 relationships before and after; all properties and business-ID relationship endpoints are semantically identical (fresh technical GUIDs intentionally differ). The UI acceptance fixture has 9 requirements and 6 relationships drawn from the existing English source. Its ZIP contains one full view plus three 3-node views; all four packages preserve all 9 requirements, 6 relationships, independent id/text and every original property. English titles match the uploaded mapping. The mismatched 23-node production mapping was visibly rejected rather than silently applied. No browser page errors were reported.
+
+This is a browser workflow fixture, not a replacement for the delivered 23-node journal model or its four figures. The fixture's displayed grades are recomputed by the live configured KB; they are not asserted to reproduce audited paper grades. The temporary batch was removed after acceptance. Existing source/result JSON files were SHA256 checked against the pre-test baseline with zero changes. See browser_acceptance.json for the exact count and download evidence.
+
+Two initial automation attempts exposed script synchronization problems: clicking before Streamlit finished loading returned the old payload, and blindly toggling the loader collapsed an already-open expander. The script now waits for current content and render completion and checks the expander's actual state. The completed rerun passed. No product code fix was needed or applied during this round, so the previously completed 272-test suite was not needlessly repeated.
+
+The screenshot is internal acceptance evidence only. Nothing in this browser test was published or uploaded to Library. The prior user-delivered ZIP and Library identity remain unchanged. EA 111.qea was not written or switched; new native PNG/EMF import, readback and visual acceptance remain pending explicit approval.

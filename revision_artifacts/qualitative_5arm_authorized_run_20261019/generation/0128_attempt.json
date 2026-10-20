@@ -1,0 +1,37 @@
+{
+  "slot": "OR026-random_old",
+  "body_sha256": "065980d52a6cb8c4bbb8250aaa74fb9ae0418334cf82ddd7ee7adde89dc1b3bf",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:53:30.108908+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR026-random_old",
+    "source_id": "OR026",
+    "group": "random_old",
+    "context_sha256": "248d72114193c02ead6a3b1756f99a4d2ec2993d2637a2f52d0469e2d96592c0",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n集控室要能看到主要冷却水温度、压力、液位和泵运行状态，不要只靠机旁仪表。\n\n## 证据清单\n[E-EXP-INSP-023] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却液水质检测方法\nThese recommended concentrations may be other than those specified by the manufacturer. The concentration must be checked in accordance with the manufacturer's instructions or the test can be outsourced to a suitable laboratory. If in doubt, consult MAN Diesel & Turbo. Small quantities of lube oil in coolant can be found by visual check during regular water sampling from the expansion tank. Regular analysis of coolant is very important for safe engine operation. We can analyse fuel for\n\n[E-PUMP-CAP-007] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却水流量与泵容量参数\nit to the external restriction vs. flow curve to determine if the flow rate changed from the assumed value. If the value changed, recheck the cooling system at the new value to assure the system is sized correctly. As long as the operating point is on the given pump curve for the engine, it is an acceptable operating point for the engine. Do not extrapolate the curve, as this operating point will not be acceptable for the engine.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径\n\n[E-PIPE-INSP-013] 层级:L2 来源:S51 NASA NTRS 19800002357 Piping Specification\n  内容: 水管路最低点放水和最高点排气要求\nInstall manual drain valves at every low point of water piping systems and a manual air vent at every high point. S52 BN-G-Y015 Piping Systems Inspection and Testing\n整理说明：该证据针对 pipe 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n具体施工空间\n支架\n接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。\n2. 不能替代船厂施工规范、管系布置标准或安装验收程序。\n3. 不能直接支撑冷却水温度、压力和流量参数限值。\n\n[E-SYS-PRESS-026] 层级:L2 来源:S08 MAN Energy Solutions SL2016-623 Cooling water treatment\n  内容: 冷却水温度与压力参数\ning on MDO to ensure the longest service life of the engines wear parts. The pre-heat temperature must be maintained under all circumstances to ensure an optimal engine perfor - mance and to minimize the risk of cold corrosion. We enclose a quick guide for treatment and maintenance of cooling water. S09 MAN Energy Solutions SL2014-584 Cooling Water System\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：main_engine_cooling_water_system 的 pressure\ntemperature\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "065980d52a6cb8c4bbb8250aaa74fb9ae0418334cf82ddd7ee7adde89dc1b3bf",
+    "utf8_message_bytes": 4226,
+    "execution_index": 128
+  }
+}

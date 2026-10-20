@@ -1,0 +1,114 @@
+{
+  "slot": "OR039-norag_original",
+  "started_at": "2026-10-19T03:00:58.342035+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"fe5913e6-7eec-4ffc-8a28-264d2f93e30b\",\"object\":\"chat.completion\",\"created\":1792378859,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"系统应识别冷却水温度、压力、流量传感器的测量信号异常，且不得将异常信号作为正常状态参与控制、报警或显示。\\\",\\\"measurable_criterion\\\":\\\"在传感器信号超出物理量程、变化率超过设定阈值、或信号固定不变超过设定时间时，系统应在3秒内将该信号标记为异常状态；异常信号不得进入正常状态判定逻辑。\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统运行及停机状态下的全部工况，包括传感器上电自检、稳态运行和瞬态工况。\\\",\\\"verification_method\\\":\\\"测试验证：注入超量程、阶跃、信号冻结、断线等故障信号，检查系统状态标记与逻辑输出。\\\",\\\"acceptance_criteria\\\":[\\\"超量程信号在3秒内被标记为异常\\\",\\\"信号冻结超过设定时间后被标记为异常\\\",\\\"异常信号不参与正常状态判定\\\",\\\"异常信号不触发正常状态显示或控制输出\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"系统应在检测到传感器测量信号可能异常时，向操作人员发出明确的提示信息，提示内容应包含异常传感器标识和异常类型。\\\",\\\"measurable_criterion\\\":\\\"提示信息应在信号被判定为异常后5秒内发出，且提示内容包含传感器编号、异常类型（超量程/断线/冻结/漂移）和时间戳。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行期间及传感器自检期间。\\\",\\\"verification_method\\\":\\\"测试验证：模拟各类传感器异常，检查提示信息的发出时间与内容完整性。\\\",\\\"acceptance_criteria\\\":[\\\"异常判定后5秒内发出提示\\\",\\\"提示信息包含传感器标识\\\",\\\"提示信息包含异常类型\\\",\\\"提示信息包含时间戳\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"系统应对传感器测量信号进行有效性校验，当信号超出预设有效范围或变化率异常时，判定该信号不可信。\\\",\\\"measurable_criterion\\\":\\\"温度信号有效范围应可配置，默认-10℃至150℃；压力信号默认0至2.5MPa；流量信号默认0至额定流量的120%；变化率阈值应可配置，默认温度10℃/s、压力0.5MPa/s。\\\",\\\"applicable_condition\\\":\\\"冷却水系统全部运行工况及传感器上电初始化阶段。\\\",\\\"verification_method\\\":\\\"测试验证：输入边界值、超范围值和异常变化率信号，检查有效性判定结果。\\\",\\\"acceptance_criteria\\\":[\\\"超出有效范围的信号被判定为不可信\\\",\\\"变化率超过阈值的信号被判定为不可信\\\",\\\"有效范围和变化率阈值可配置\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"系统应在传感器信号异常期间保持冷却水系统的安全状态，不得因异常信号导致误报警、误联锁或误调节。\\\",\\\"measurable_criterion\\\":\\\"在单一传感器信号异常条件下，系统不应产生非预期的报警、联锁动作或调节输出变化；异常期间应采用保持上一有效值或切换至冗余传感器策略。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行工况，包括单传感器故障和冗余传感器部分故障。\\\",\\\"verification_method\\\":\\\"测试验证：注入单传感器异常信号，监测报警、联锁和调节输出是否发生非预期变化。\\\",\\\"acceptance_criteria\\\":[\\\"单传感器异常不触发误报警\\\",\\\"单传感器异常不触发误联锁\\\",\\\"单传感器异常不引起调节输出非预期变化\\\",\\\"异常期间采用保持或冗余切换策略\\\"],\\\"evidence_citations\\\":[]},{\\\"shall_statement\\\":\\\"系统应记录传感器异常事件，包括异常发生时间、传感器标识、异常类型及恢复时间，并支持查询。\\\",\\\"measurable_criterion\\\":\\\"异常事件记录应包含时间戳、传感器标识、异常类型、恢复时间，记录保存时间不少于30天，支持按时间和传感器标识查询。\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及停机期间的全部传感器异常事件。\\\",\\\"verification_method\\\":\\\"测试验证：模拟异常发生与恢复，检查事件记录的完整性和可查询性。\\\",\\\"acceptance_criteria\\\":[\\\"记录包含时间戳、传感器标识、异常类型和恢复时间\\\",\\\"记录保存不少于30天\\\",\\\"支持按时间和传感器标识查询\\\"],\\\"evidence_citations\\\":[]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":174,\"completion_tokens\":875,\"total_tokens\":1049,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":174},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:00:59 GMT"
+  },
+  "response": {
+    "id": "fe5913e6-7eec-4ffc-8a28-264d2f93e30b",
+    "object": "chat.completion",
+    "created": 1792378859,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"系统应识别冷却水温度、压力、流量传感器的测量信号异常，且不得将异常信号作为正常状态参与控制、报警或显示。\",\"measurable_criterion\":\"在传感器信号超出物理量程、变化率超过设定阈值、或信号固定不变超过设定时间时，系统应在3秒内将该信号标记为异常状态；异常信号不得进入正常状态判定逻辑。\",\"applicable_condition\":\"主机冷却水系统运行及停机状态下的全部工况，包括传感器上电自检、稳态运行和瞬态工况。\",\"verification_method\":\"测试验证：注入超量程、阶跃、信号冻结、断线等故障信号，检查系统状态标记与逻辑输出。\",\"acceptance_criteria\":[\"超量程信号在3秒内被标记为异常\",\"信号冻结超过设定时间后被标记为异常\",\"异常信号不参与正常状态判定\",\"异常信号不触发正常状态显示或控制输出\"],\"evidence_citations\":[]},{\"shall_statement\":\"系统应在检测到传感器测量信号可能异常时，向操作人员发出明确的提示信息，提示内容应包含异常传感器标识和异常类型。\",\"measurable_criterion\":\"提示信息应在信号被判定为异常后5秒内发出，且提示内容包含传感器编号、异常类型（超量程/断线/冻结/漂移）和时间戳。\",\"applicable_condition\":\"冷却水系统运行期间及传感器自检期间。\",\"verification_method\":\"测试验证：模拟各类传感器异常，检查提示信息的发出时间与内容完整性。\",\"acceptance_criteria\":[\"异常判定后5秒内发出提示\",\"提示信息包含传感器标识\",\"提示信息包含异常类型\",\"提示信息包含时间戳\"],\"evidence_citations\":[]},{\"shall_statement\":\"系统应对传感器测量信号进行有效性校验，当信号超出预设有效范围或变化率异常时，判定该信号不可信。\",\"measurable_criterion\":\"温度信号有效范围应可配置，默认-10℃至150℃；压力信号默认0至2.5MPa；流量信号默认0至额定流量的120%；变化率阈值应可配置，默认温度10℃/s、压力0.5MPa/s。\",\"applicable_condition\":\"冷却水系统全部运行工况及传感器上电初始化阶段。\",\"verification_method\":\"测试验证：输入边界值、超范围值和异常变化率信号，检查有效性判定结果。\",\"acceptance_criteria\":[\"超出有效范围的信号被判定为不可信\",\"变化率超过阈值的信号被判定为不可信\",\"有效范围和变化率阈值可配置\"],\"evidence_citations\":[]},{\"shall_statement\":\"系统应在传感器信号异常期间保持冷却水系统的安全状态，不得因异常信号导致误报警、误联锁或误调节。\",\"measurable_criterion\":\"在单一传感器信号异常条件下，系统不应产生非预期的报警、联锁动作或调节输出变化；异常期间应采用保持上一有效值或切换至冗余传感器策略。\",\"applicable_condition\":\"冷却水系统运行工况，包括单传感器故障和冗余传感器部分故障。\",\"verification_method\":\"测试验证：注入单传感器异常信号，监测报警、联锁和调节输出是否发生非预期变化。\",\"acceptance_criteria\":[\"单传感器异常不触发误报警\",\"单传感器异常不触发误联锁\",\"单传感器异常不引起调节输出非预期变化\",\"异常期间采用保持或冗余切换策略\"],\"evidence_citations\":[]},{\"shall_statement\":\"系统应记录传感器异常事件，包括异常发生时间、传感器标识、异常类型及恢复时间，并支持查询。\",\"measurable_criterion\":\"异常事件记录应包含时间戳、传感器标识、异常类型、恢复时间，记录保存时间不少于30天，支持按时间和传感器标识查询。\",\"applicable_condition\":\"冷却水系统运行及停机期间的全部传感器异常事件。\",\"verification_method\":\"测试验证：模拟异常发生与恢复，检查事件记录的完整性和可查询性。\",\"acceptance_criteria\":[\"记录包含时间戳、传感器标识、异常类型和恢复时间\",\"记录保存不少于30天\",\"支持按时间和传感器标识查询\"],\"evidence_citations\":[]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 174,
+      "completion_tokens": 875,
+      "total_tokens": 1049,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 174
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.007348",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.007348",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "系统应识别冷却水温度、压力、流量传感器的测量信号异常，且不得将异常信号作为正常状态参与控制、报警或显示。",
+        "measurable_criterion": "在传感器信号超出物理量程、变化率超过设定阈值、或信号固定不变超过设定时间时，系统应在3秒内将该信号标记为异常状态；异常信号不得进入正常状态判定逻辑。",
+        "applicable_condition": "主机冷却水系统运行及停机状态下的全部工况，包括传感器上电自检、稳态运行和瞬态工况。",
+        "verification_method": "测试验证：注入超量程、阶跃、信号冻结、断线等故障信号，检查系统状态标记与逻辑输出。",
+        "acceptance_criteria": [
+          "超量程信号在3秒内被标记为异常",
+          "信号冻结超过设定时间后被标记为异常",
+          "异常信号不参与正常状态判定",
+          "异常信号不触发正常状态显示或控制输出"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "系统应在检测到传感器测量信号可能异常时，向操作人员发出明确的提示信息，提示内容应包含异常传感器标识和异常类型。",
+        "measurable_criterion": "提示信息应在信号被判定为异常后5秒内发出，且提示内容包含传感器编号、异常类型（超量程/断线/冻结/漂移）和时间戳。",
+        "applicable_condition": "冷却水系统运行期间及传感器自检期间。",
+        "verification_method": "测试验证：模拟各类传感器异常，检查提示信息的发出时间与内容完整性。",
+        "acceptance_criteria": [
+          "异常判定后5秒内发出提示",
+          "提示信息包含传感器标识",
+          "提示信息包含异常类型",
+          "提示信息包含时间戳"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "系统应对传感器测量信号进行有效性校验，当信号超出预设有效范围或变化率异常时，判定该信号不可信。",
+        "measurable_criterion": "温度信号有效范围应可配置，默认-10℃至150℃；压力信号默认0至2.5MPa；流量信号默认0至额定流量的120%；变化率阈值应可配置，默认温度10℃/s、压力0.5MPa/s。",
+        "applicable_condition": "冷却水系统全部运行工况及传感器上电初始化阶段。",
+        "verification_method": "测试验证：输入边界值、超范围值和异常变化率信号，检查有效性判定结果。",
+        "acceptance_criteria": [
+          "超出有效范围的信号被判定为不可信",
+          "变化率超过阈值的信号被判定为不可信",
+          "有效范围和变化率阈值可配置"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "系统应在传感器信号异常期间保持冷却水系统的安全状态，不得因异常信号导致误报警、误联锁或误调节。",
+        "measurable_criterion": "在单一传感器信号异常条件下，系统不应产生非预期的报警、联锁动作或调节输出变化；异常期间应采用保持上一有效值或切换至冗余传感器策略。",
+        "applicable_condition": "冷却水系统运行工况，包括单传感器故障和冗余传感器部分故障。",
+        "verification_method": "测试验证：注入单传感器异常信号，监测报警、联锁和调节输出是否发生非预期变化。",
+        "acceptance_criteria": [
+          "单传感器异常不触发误报警",
+          "单传感器异常不触发误联锁",
+          "单传感器异常不引起调节输出非预期变化",
+          "异常期间采用保持或冗余切换策略"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "系统应记录传感器异常事件，包括异常发生时间、传感器标识、异常类型及恢复时间，并支持查询。",
+        "measurable_criterion": "异常事件记录应包含时间戳、传感器标识、异常类型、恢复时间，记录保存时间不少于30天，支持按时间和传感器标识查询。",
+        "applicable_condition": "冷却水系统运行及停机期间的全部传感器异常事件。",
+        "verification_method": "测试验证：模拟异常发生与恢复，检查事件记录的完整性和可查询性。",
+        "acceptance_criteria": [
+          "记录包含时间戳、传感器标识、异常类型和恢复时间",
+          "记录保存不少于30天",
+          "支持按时间和传感器标识查询"
+        ],
+        "evidence_citations": []
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:01:03.595968+00:00",
+  "elapsed_seconds": 5.078
+}

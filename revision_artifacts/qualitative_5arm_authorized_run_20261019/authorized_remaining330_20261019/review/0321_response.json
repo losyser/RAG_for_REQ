@@ -1,0 +1,74 @@
+{
+  "slot": "fd3ff7e589b62a556588cda079922b5608149cb857d5ffb992a6ac97f8b93699",
+  "started_at": "2026-10-19T06:58:42.267187+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"fd3ff7e589b62a556588cda079922b5608149cb857d5ffb992a6ac97f8b93699\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"verifiable\\\",\\n  \\\"faithfulness\\\": \\\"faithful_paraphrase\\\",\\n  \\\"support\\\": \\\"partial\\\",\\n  \\\"applicability\\\": \\\"explicit_match\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"The engine control system starts the pump automatically via a motor starter, if the cooling water pressure drops below a preset level when the engine is running. There is a dedicated sensor on the engine for this purpose.\\\",\\n      \\\"candidate_span\\\": \\\"发动机运行中冷却水压力降至预设水平以下时，控制系统通过电机启动器自动启动泵，并指示泵故障/压力异常回路。\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"High water temperature alarms, seawater pump pressure switches and other instrumentation can be used and are highly recommended to warn of\\\",\\n      \\\"candidate_span\\\": \\\"冷却水系统应设置泵故障报警\\\",\\n      \\\"relation\\\": \\\"部分支持\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"候选中的自动启泵和报警机制在E001中有直接支持，但E002仅提到推荐使用报警装置，没有具体说明泵故障报警。适用性明确限定于特定厂家、机型和控制系统配置。\\\",\\n  \\\"limitations\\\": [\\n    \\\"缺少具体的预设压力水平数值\\\",\\n    \\\"适用性受限于特定厂家、机型和控制系统配置\\\"\\n  ]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1434,\"completion_tokens\":393,\"total_tokens\":1827,\"prompt_tokens_details\":{\"cached_tokens\":256}},\"created\":1792393134,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-b523cc87-8bb6-9e0e-89b9-37a32ba9de9a\"}",
+  "response_headers": {
+    "x-request-id": "b523cc87-8bb6-9e0e-89b9-37a32ba9de9a",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:58:53 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"fd3ff7e589b62a556588cda079922b5608149cb857d5ffb992a6ac97f8b93699\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"verifiable\",\n  \"faithfulness\": \"faithful_paraphrase\",\n  \"support\": \"partial\",\n  \"applicability\": \"explicit_match\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"The engine control system starts the pump automatically via a motor starter, if the cooling water pressure drops below a preset level when the engine is running. There is a dedicated sensor on the engine for this purpose.\",\n      \"candidate_span\": \"发动机运行中冷却水压力降至预设水平以下时，控制系统通过电机启动器自动启动泵，并指示泵故障/压力异常回路。\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"High water temperature alarms, seawater pump pressure switches and other instrumentation can be used and are highly recommended to warn of\",\n      \"candidate_span\": \"冷却水系统应设置泵故障报警\",\n      \"relation\": \"部分支持\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"候选中的自动启泵和报警机制在E001中有直接支持，但E002仅提到推荐使用报警装置，没有具体说明泵故障报警。适用性明确限定于特定厂家、机型和控制系统配置。\",\n  \"limitations\": [\n    \"缺少具体的预设压力水平数值\",\n    \"适用性受限于特定厂家、机型和控制系统配置\"\n  ]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1434,
+      "completion_tokens": 393,
+      "total_tokens": 1827,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      }
+    },
+    "created": 1792393134,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-b523cc87-8bb6-9e0e-89b9-37a32ba9de9a"
+  },
+  "observed_usage_cost_CNY": "0.0072144",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0072144",
+  "parsed": {
+    "review_id": "fd3ff7e589b62a556588cda079922b5608149cb857d5ffb992a6ac97f8b93699",
+    "format_judgment": "pass",
+    "verifiability": "verifiable",
+    "faithfulness": "faithful_paraphrase",
+    "support": "partial",
+    "applicability": "explicit_match",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "The engine control system starts the pump automatically via a motor starter, if the cooling water pressure drops below a preset level when the engine is running. There is a dedicated sensor on the engine for this purpose.",
+        "candidate_span": "发动机运行中冷却水压力降至预设水平以下时，控制系统通过电机启动器自动启动泵，并指示泵故障/压力异常回路。",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "High water temperature alarms, seawater pump pressure switches and other instrumentation can be used and are highly recommended to warn of",
+        "candidate_span": "冷却水系统应设置泵故障报警",
+        "relation": "部分支持"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "候选中的自动启泵和报警机制在E001中有直接支持，但E002仅提到推荐使用报警装置，没有具体说明泵故障报警。适用性明确限定于特定厂家、机型和控制系统配置。",
+    "limitations": [
+      "缺少具体的预设压力水平数值",
+      "适用性受限于特定厂家、机型和控制系统配置"
+    ]
+  },
+  "finished_at": "2026-10-19T06:58:52.971681+00:00",
+  "elapsed_seconds": 10.453
+}

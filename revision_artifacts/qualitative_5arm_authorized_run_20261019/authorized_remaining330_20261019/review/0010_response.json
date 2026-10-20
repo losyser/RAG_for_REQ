@@ -1,0 +1,75 @@
+{
+  "slot": "469e6706ea3506a0ed9e417f644f52cb2e406016a7b82501255d541fe1f4e9b5",
+  "started_at": "2026-10-19T06:05:22.648921+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"469e6706ea3506a0ed9e417f644f52cb2e406016a7b82501255d541fe1f4e9b5\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"not_verifiable\\\",\\n  \\\"faithfulness\\\": \\\"new_inference_or_synthesis\\\",\\n  \\\"support\\\": \\\"insufficient\\\",\\n  \\\"applicability\\\": \\\"unknown\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"Compressor and turbine cooling of TCX-turbocharger The TCX-turbocharger as a standard is equipped with a cooling system of the compressor and of the turbine side. Herefore HT-water is used and it is integ- rated into the internal cooling water circuit of the engi\\\",\\n      \\\"candidate_span\\\": \\\"HT回路所服务的增压器压缩机与涡轮侧冷却等用户\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"HT冷却水泵在发动机停止后需继续运行15分钟，同时用于压缩机叶轮冷却；若HT冷却水备用泵因任何原因未运行，发动机必须在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。\\\",\\n      \\\"candidate_span\\\": \\\"HT回路所服务的内部冷却水回路用户（含增压器冷却）标注明确\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"证据E001和E002提到了HT冷却水系统对增压器压缩机和涡轮侧冷却的作用，但没有明确提到原理图应如何绘制或区分高温回路和低温回路。候选中的详细要求如完整表达、标明各回路的用户与连接关系等，在提供的证据中没有直接支持。\\\",\\n  \\\"limitations\\\": [\\n    \\\"证据中缺少关于原理图绘制的具体指导\\\",\\n    \\\"证据中未提及低温回路的相关信息\\\",\\n    \\\"证据中未提供完整的高温回路和低温回路的设计要求\\\"\\n  ]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1503,\"completion_tokens\":499,\"total_tokens\":2002,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"created\":1792389937,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-d346a07e-6960-9851-9cf6-910edddaa323\"}",
+  "response_headers": {
+    "x-request-id": "d346a07e-6960-9851-9cf6-910edddaa323",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:05:37 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"469e6706ea3506a0ed9e417f644f52cb2e406016a7b82501255d541fe1f4e9b5\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"not_verifiable\",\n  \"faithfulness\": \"new_inference_or_synthesis\",\n  \"support\": \"insufficient\",\n  \"applicability\": \"unknown\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"Compressor and turbine cooling of TCX-turbocharger The TCX-turbocharger as a standard is equipped with a cooling system of the compressor and of the turbine side. Herefore HT-water is used and it is integ- rated into the internal cooling water circuit of the engi\",\n      \"candidate_span\": \"HT回路所服务的增压器压缩机与涡轮侧冷却等用户\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"HT冷却水泵在发动机停止后需继续运行15分钟，同时用于压缩机叶轮冷却；若HT冷却水备用泵因任何原因未运行，发动机必须在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。\",\n      \"candidate_span\": \"HT回路所服务的内部冷却水回路用户（含增压器冷却）标注明确\",\n      \"relation\": \"支持\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"证据E001和E002提到了HT冷却水系统对增压器压缩机和涡轮侧冷却的作用，但没有明确提到原理图应如何绘制或区分高温回路和低温回路。候选中的详细要求如完整表达、标明各回路的用户与连接关系等，在提供的证据中没有直接支持。\",\n  \"limitations\": [\n    \"证据中缺少关于原理图绘制的具体指导\",\n    \"证据中未提及低温回路的相关信息\",\n    \"证据中未提供完整的高温回路和低温回路的设计要求\"\n  ]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1503,
+      "completion_tokens": 499,
+      "total_tokens": 2002,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "created": 1792389937,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-d346a07e-6960-9851-9cf6-910edddaa323"
+  },
+  "observed_usage_cost_CNY": "0.0083976",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0083976",
+  "parsed": {
+    "review_id": "469e6706ea3506a0ed9e417f644f52cb2e406016a7b82501255d541fe1f4e9b5",
+    "format_judgment": "pass",
+    "verifiability": "not_verifiable",
+    "faithfulness": "new_inference_or_synthesis",
+    "support": "insufficient",
+    "applicability": "unknown",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "Compressor and turbine cooling of TCX-turbocharger The TCX-turbocharger as a standard is equipped with a cooling system of the compressor and of the turbine side. Herefore HT-water is used and it is integ- rated into the internal cooling water circuit of the engi",
+        "candidate_span": "HT回路所服务的增压器压缩机与涡轮侧冷却等用户",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "HT冷却水泵在发动机停止后需继续运行15分钟，同时用于压缩机叶轮冷却；若HT冷却水备用泵因任何原因未运行，发动机必须在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。",
+        "candidate_span": "HT回路所服务的内部冷却水回路用户（含增压器冷却）标注明确",
+        "relation": "支持"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "证据E001和E002提到了HT冷却水系统对增压器压缩机和涡轮侧冷却的作用，但没有明确提到原理图应如何绘制或区分高温回路和低温回路。候选中的详细要求如完整表达、标明各回路的用户与连接关系等，在提供的证据中没有直接支持。",
+    "limitations": [
+      "证据中缺少关于原理图绘制的具体指导",
+      "证据中未提及低温回路的相关信息",
+      "证据中未提供完整的高温回路和低温回路的设计要求"
+    ]
+  },
+  "finished_at": "2026-10-19T06:05:36.066319+00:00",
+  "elapsed_seconds": 13.406
+}

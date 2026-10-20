@@ -1,0 +1,235 @@
+{
+  "slot": "OR041-random_old",
+  "started_at": "2026-10-19T03:02:17.149280+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"dc07d5fb-b8df-4671-88ea-53d6f44d2bc9\",\"object\":\"chat.completion\",\"created\":1792378938,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"海水冷却系统采用主循环泵配置时，应设置低供水报警功能，以便在低供水工况下及时启动或切换泵组。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S42 MAN 49/60DF Project Guide|component:海水冷却主循环泵|intent:低供水报警触发阈值|hint:需依据泵容量与系统压降计算确定低供水压力/流量报警设定值}}\\\",\\\"applicable_condition\\\":\\\"海水冷却系统采用主循环泵相关配置；MAN V49/60DF 发动机，液体燃料模式/气体模式，机械推进带CPP（最小MN 70-95）\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"模拟低供水工况时，报警应在设定阈值内触发\\\",\\\"报警信号应可被船舶监控系统接收并显示\\\",\\\"报警后应具备启动备用泵或切换泵组的操作接口\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-CLEAN-029\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统主循环泵的输送能力应满足冷却器规格与泵容量参考要求，泵容量应按发动机缸数配置选取。\\\",\\\"measurable_criterion\\\":\\\"12V 配置：HFO supply pump 5.2 m³/h、HFO circulating pump 10.4 m³/h；14V 配置：HFO supply pump 6.1 m³/h、HFO circulating pump 12.1 m³/h\\\",\\\"applicable_condition\\\":\\\"MAN V49/60DF，液体燃料模式/气体模式，机械推进带CPP（最小MN 70-95）；冷却器额定值公差+15%，HT或LT或滑油系统热回收公差–20%\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"12V 配置泵容量不低于 5.2 m³/h（供给泵）与 10.4 m³/h（循环泵）\\\",\\\"14V 配置泵容量不低于 6.1 m³/h（供给泵）与 12.1 m³/h（循环泵）\\\",\\\"泵的输送能力公差由泵制造商考虑\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-CLEAN-029\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统低供水报警应关联冷却水温度控制，确保在参考海水温度条件下维持规定的LT冷却水温度。\\\",\\\"measurable_criterion\\\":\\\"100% 发动机负荷、海水温度 25°C 时，增压空气冷却器第2级（HE-008）前 LT 冷却水温度维持 32°C\\\",\\\"applicable_condition\\\":\\\"IMO Tier I/IMO Tier II 参考温度工况；其他温度下需调整发动机设定\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"100% 负荷、25°C 海水温度下 LT 冷却水温度维持在 32°C\\\",\\\"低供水报警触发时温度控制功能仍可维持或安全降级\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-DRAW-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统低供水报警设定应考虑LT冷却水回路元件的最高允许温度限制，防止低供水导致超温。\\\",\\\"measurable_criterion\\\":\\\"LT 冷却水回路元件设计最高 LT 冷却水温度为 38°C，参考工况为 32°C\\\",\\\"applicable_condition\\\":\\\"LT 冷却水回路系统元件设计工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"低供水报警触发后 LT 冷却水温度不超过 38°C\\\",\\\"报警阈值设定应保证在达到 38°C 前触发\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-SHUT-002\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统低供水报警应支持多台发动机共用LT冷却水系统时的外部温度控制器联动。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:LT冷却水外部温度控制器|intent:外部控制器温度设定|hint:多机共用LT系统时外部控制器安装于发动机上的设定值需依据项目计算确定}}\\\",\\\"applicable_condition\\\":\\\"多台发动机共用组合式LT冷却水系统\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"外部温度控制器安装于发动机上\\\",\\\"低供水报警与外部温度控制器信号联动可用\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-049\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"海水冷却系统管路与软管连接尺寸应保证冷却液流量不因节流而降低，避免影响低供水报警判断的准确性。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:m³/h|ref:S07 Scania Marine Cooling System Issue 8|component:冷却水管路与软管|intent:最小冷却液流量|hint:需依据冷却器与管路压降计算确定最小流量，防止节流阀或部件导致流量下降}}\\\",\\\"applicable_condition\\\":\\\"发动机与冷却器之间的冷却水管路及软管连接\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"管路与软管尺寸满足冷却液流量要求\\\",\\\"系统中接入部件或节流阀后流量降低不影响报警阈值判断\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLANT-FLOW-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S07 Scania Marine Cooling System Issue 8\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"海水冷却系统应配置冷却水滤器以保护发动机和系统元件，防止堵塞引起低供水误报警。\\\",\\\"measurable_criterion\\\":\\\"滤器网孔尺寸 1–2 mm\\\",\\\"applicable_condition\\\":\\\"冷却水系统（FIL-021 滤器配置）\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"滤器网孔尺寸在 1–2 mm 范围内\\\",\\\"滤器配置数量满足保护发动机和系统元件要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-DRAW-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统冷却水水质应满足检测限值要求，防止结垢与腐蚀影响低供水报警可靠性。\\\",\\\"measurable_criterion\\\":\\\"总硬度 ≤ 10 dGH；pH 值 6.5–8（20°C，无添加剂补水）；pH 值 ≥ 7.5（20°C，含添加剂循环水）；氯离子含量 ≤ 50 mg/l\\\",\\\"applicable_condition\\\":\\\"补水和再补水（无添加剂，淡水无外来杂质）；循环水（含添加剂，处理过的冷却液）\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"总硬度 ≤ 10 dGH\\\",\\\"无添加剂补水 pH 值 6.5–8（20°C）\\\",\\\"含添加剂循环水 pH 值 ≥ 7.5（20°C）\\\",\\\"氯离子含量 ≤ 50 mg/l\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLANT-INSP-089\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统应避免使用镀锌钢管，防止冷却液添加剂侵蚀锌层造成腐蚀产物影响流量与报警判断。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无|ref:S42 MAN 49/60DF Project Guide|component:冷却水管路|intent:管材防腐要求|hint:禁止使用镀锌钢管，需明确可接受的管材类型}}\\\",\\\"applicable_condition\\\":\\\"外部冷却水系统管路\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"管路中不使用镀锌钢管\\\",\\\"管材内壁防腐处理符合 MAN Energy Solutions 冷却水处理规范\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PIPE-WATER-007\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"海水冷却系统低供水报警应便于在报警后及时启动或切换主循环泵，报警信号应接入船舶监控系统。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide|component:低供水报警与泵切换控制|intent:报警响应与泵切换时间|hint:需依据系统响应时间要求确定从报警触发到泵启动或切换完成的允许时间}}\\\",\\\"applicable_condition\\\":\\\"海水冷却系统采用主循环泵配置\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"报警触发后可在规定时间内启动备用泵或切换泵组\\\",\\\"报警信号在监控系统上可显示并记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-CLEAN-029\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2516,\"completion_tokens\":2048,\"total_tokens\":4564,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2516},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:02:18 GMT"
+  },
+  "response": {
+    "id": "dc07d5fb-b8df-4671-88ea-53d6f44d2bc9",
+    "object": "chat.completion",
+    "created": 1792378938,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"海水冷却系统采用主循环泵配置时，应设置低供水报警功能，以便在低供水工况下及时启动或切换泵组。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S42 MAN 49/60DF Project Guide|component:海水冷却主循环泵|intent:低供水报警触发阈值|hint:需依据泵容量与系统压降计算确定低供水压力/流量报警设定值}}\",\"applicable_condition\":\"海水冷却系统采用主循环泵相关配置；MAN V49/60DF 发动机，液体燃料模式/气体模式，机械推进带CPP（最小MN 70-95）\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"模拟低供水工况时，报警应在设定阈值内触发\",\"报警信号应可被船舶监控系统接收并显示\",\"报警后应具备启动备用泵或切换泵组的操作接口\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-CLEAN-029\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统主循环泵的输送能力应满足冷却器规格与泵容量参考要求，泵容量应按发动机缸数配置选取。\",\"measurable_criterion\":\"12V 配置：HFO supply pump 5.2 m³/h、HFO circulating pump 10.4 m³/h；14V 配置：HFO supply pump 6.1 m³/h、HFO circulating pump 12.1 m³/h\",\"applicable_condition\":\"MAN V49/60DF，液体燃料模式/气体模式，机械推进带CPP（最小MN 70-95）；冷却器额定值公差+15%，HT或LT或滑油系统热回收公差–20%\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"12V 配置泵容量不低于 5.2 m³/h（供给泵）与 10.4 m³/h（循环泵）\",\"14V 配置泵容量不低于 6.1 m³/h（供给泵）与 12.1 m³/h（循环泵）\",\"泵的输送能力公差由泵制造商考虑\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-CLEAN-029\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统低供水报警应关联冷却水温度控制，确保在参考海水温度条件下维持规定的LT冷却水温度。\",\"measurable_criterion\":\"100% 发动机负荷、海水温度 25°C 时，增压空气冷却器第2级（HE-008）前 LT 冷却水温度维持 32°C\",\"applicable_condition\":\"IMO Tier I/IMO Tier II 参考温度工况；其他温度下需调整发动机设定\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"100% 负荷、25°C 海水温度下 LT 冷却水温度维持在 32°C\",\"低供水报警触发时温度控制功能仍可维持或安全降级\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-DRAW-001\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统低供水报警设定应考虑LT冷却水回路元件的最高允许温度限制，防止低供水导致超温。\",\"measurable_criterion\":\"LT 冷却水回路元件设计最高 LT 冷却水温度为 38°C，参考工况为 32°C\",\"applicable_condition\":\"LT 冷却水回路系统元件设计工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"低供水报警触发后 LT 冷却水温度不超过 38°C\",\"报警阈值设定应保证在达到 38°C 前触发\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-SHUT-002\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统低供水报警应支持多台发动机共用LT冷却水系统时的外部温度控制器联动。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:LT冷却水外部温度控制器|intent:外部控制器温度设定|hint:多机共用LT系统时外部控制器安装于发动机上的设定值需依据项目计算确定}}\",\"applicable_condition\":\"多台发动机共用组合式LT冷却水系统\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"外部温度控制器安装于发动机上\",\"低供水报警与外部温度控制器信号联动可用\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-049\",\"tier\":\"L3\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]},{\"shall_statement\":\"海水冷却系统管路与软管连接尺寸应保证冷却液流量不因节流而降低，避免影响低供水报警判断的准确性。\",\"measurable_criterion\":\"{{TBD|unit:m³/h|ref:S07 Scania Marine Cooling System Issue 8|component:冷却水管路与软管|intent:最小冷却液流量|hint:需依据冷却器与管路压降计算确定最小流量，防止节流阀或部件导致流量下降}}\",\"applicable_condition\":\"发动机与冷却器之间的冷却水管路及软管连接\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"管路与软管尺寸满足冷却液流量要求\",\"系统中接入部件或节流阀后流量降低不影响报警阈值判断\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLANT-FLOW-001\",\"tier\":\"L2\",\"source\":\"S07 Scania Marine Cooling System Issue 8\",\"has_clause\":false}]},{\"shall_statement\":\"海水冷却系统应配置冷却水滤器以保护发动机和系统元件，防止堵塞引起低供水误报警。\",\"measurable_criterion\":\"滤器网孔尺寸 1–2 mm\",\"applicable_condition\":\"冷却水系统（FIL-021 滤器配置）\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"滤器网孔尺寸在 1–2 mm 范围内\",\"滤器配置数量满足保护发动机和系统元件要求\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-DRAW-001\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统冷却水水质应满足检测限值要求，防止结垢与腐蚀影响低供水报警可靠性。\",\"measurable_criterion\":\"总硬度 ≤ 10 dGH；pH 值 6.5–8（20°C，无添加剂补水）；pH 值 ≥ 7.5（20°C，含添加剂循环水）；氯离子含量 ≤ 50 mg/l\",\"applicable_condition\":\"补水和再补水（无添加剂，淡水无外来杂质）；循环水（含添加剂，处理过的冷却液）\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"总硬度 ≤ 10 dGH\",\"无添加剂补水 pH 值 6.5–8（20°C）\",\"含添加剂循环水 pH 值 ≥ 7.5（20°C）\",\"氯离子含量 ≤ 50 mg/l\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLANT-INSP-089\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统应避免使用镀锌钢管，防止冷却液添加剂侵蚀锌层造成腐蚀产物影响流量与报警判断。\",\"measurable_criterion\":\"{{TBD|unit:无|ref:S42 MAN 49/60DF Project Guide|component:冷却水管路|intent:管材防腐要求|hint:禁止使用镀锌钢管，需明确可接受的管材类型}}\",\"applicable_condition\":\"外部冷却水系统管路\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"管路中不使用镀锌钢管\",\"管材内壁防腐处理符合 MAN Energy Solutions 冷却水处理规范\"],\"evidence_citations\":[{\"kb_id\":\"E-PIPE-WATER-007\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"海水冷却系统低供水报警应便于在报警后及时启动或切换主循环泵，报警信号应接入船舶监控系统。\",\"measurable_criterion\":\"{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide|component:低供水报警与泵切换控制|intent:报警响应与泵切换时间|hint:需依据系统响应时间要求确定从报警触发到泵启动或切换完成的允许时间}}\",\"applicable_condition\":\"海水冷却系统采用主循环泵配置\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"报警触发后可在规定时间内启动备用泵或切换泵组\",\"报警信号在监控系统上可显示并记录\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-CLEAN-029\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2516,
+      "completion_tokens": 2048,
+      "total_tokens": 4564,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2516
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.021416",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.021416",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "海水冷却系统采用主循环泵配置时，应设置低供水报警功能，以便在低供水工况下及时启动或切换泵组。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S42 MAN 49/60DF Project Guide|component:海水冷却主循环泵|intent:低供水报警触发阈值|hint:需依据泵容量与系统压降计算确定低供水压力/流量报警设定值}}",
+        "applicable_condition": "海水冷却系统采用主循环泵相关配置；MAN V49/60DF 发动机，液体燃料模式/气体模式，机械推进带CPP（最小MN 70-95）",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟低供水工况时，报警应在设定阈值内触发",
+          "报警信号应可被船舶监控系统接收并显示",
+          "报警后应具备启动备用泵或切换泵组的操作接口"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CLEAN-029",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统主循环泵的输送能力应满足冷却器规格与泵容量参考要求，泵容量应按发动机缸数配置选取。",
+        "measurable_criterion": "12V 配置：HFO supply pump 5.2 m³/h、HFO circulating pump 10.4 m³/h；14V 配置：HFO supply pump 6.1 m³/h、HFO circulating pump 12.1 m³/h",
+        "applicable_condition": "MAN V49/60DF，液体燃料模式/气体模式，机械推进带CPP（最小MN 70-95）；冷却器额定值公差+15%，HT或LT或滑油系统热回收公差–20%",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "12V 配置泵容量不低于 5.2 m³/h（供给泵）与 10.4 m³/h（循环泵）",
+          "14V 配置泵容量不低于 6.1 m³/h（供给泵）与 12.1 m³/h（循环泵）",
+          "泵的输送能力公差由泵制造商考虑"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CLEAN-029",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统低供水报警应关联冷却水温度控制，确保在参考海水温度条件下维持规定的LT冷却水温度。",
+        "measurable_criterion": "100% 发动机负荷、海水温度 25°C 时，增压空气冷却器第2级（HE-008）前 LT 冷却水温度维持 32°C",
+        "applicable_condition": "IMO Tier I/IMO Tier II 参考温度工况；其他温度下需调整发动机设定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "100% 负荷、25°C 海水温度下 LT 冷却水温度维持在 32°C",
+          "低供水报警触发时温度控制功能仍可维持或安全降级"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-DRAW-001",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统低供水报警设定应考虑LT冷却水回路元件的最高允许温度限制，防止低供水导致超温。",
+        "measurable_criterion": "LT 冷却水回路元件设计最高 LT 冷却水温度为 38°C，参考工况为 32°C",
+        "applicable_condition": "LT 冷却水回路系统元件设计工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "低供水报警触发后 LT 冷却水温度不超过 38°C",
+          "报警阈值设定应保证在达到 38°C 前触发"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-SHUT-002",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统低供水报警应支持多台发动机共用LT冷却水系统时的外部温度控制器联动。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:LT冷却水外部温度控制器|intent:外部控制器温度设定|hint:多机共用LT系统时外部控制器安装于发动机上的设定值需依据项目计算确定}}",
+        "applicable_condition": "多台发动机共用组合式LT冷却水系统",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "外部温度控制器安装于发动机上",
+          "低供水报警与外部温度控制器信号联动可用"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-049",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统管路与软管连接尺寸应保证冷却液流量不因节流而降低，避免影响低供水报警判断的准确性。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S07 Scania Marine Cooling System Issue 8|component:冷却水管路与软管|intent:最小冷却液流量|hint:需依据冷却器与管路压降计算确定最小流量，防止节流阀或部件导致流量下降}}",
+        "applicable_condition": "发动机与冷却器之间的冷却水管路及软管连接",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "管路与软管尺寸满足冷却液流量要求",
+          "系统中接入部件或节流阀后流量降低不影响报警阈值判断"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-FLOW-001",
+            "tier": "L2",
+            "source": "S07 Scania Marine Cooling System Issue 8",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统应配置冷却水滤器以保护发动机和系统元件，防止堵塞引起低供水误报警。",
+        "measurable_criterion": "滤器网孔尺寸 1–2 mm",
+        "applicable_condition": "冷却水系统（FIL-021 滤器配置）",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "滤器网孔尺寸在 1–2 mm 范围内",
+          "滤器配置数量满足保护发动机和系统元件要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-DRAW-001",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统冷却水水质应满足检测限值要求，防止结垢与腐蚀影响低供水报警可靠性。",
+        "measurable_criterion": "总硬度 ≤ 10 dGH；pH 值 6.5–8（20°C，无添加剂补水）；pH 值 ≥ 7.5（20°C，含添加剂循环水）；氯离子含量 ≤ 50 mg/l",
+        "applicable_condition": "补水和再补水（无添加剂，淡水无外来杂质）；循环水（含添加剂，处理过的冷却液）",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "总硬度 ≤ 10 dGH",
+          "无添加剂补水 pH 值 6.5–8（20°C）",
+          "含添加剂循环水 pH 值 ≥ 7.5（20°C）",
+          "氯离子含量 ≤ 50 mg/l"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-INSP-089",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统应避免使用镀锌钢管，防止冷却液添加剂侵蚀锌层造成腐蚀产物影响流量与报警判断。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S42 MAN 49/60DF Project Guide|component:冷却水管路|intent:管材防腐要求|hint:禁止使用镀锌钢管，需明确可接受的管材类型}}",
+        "applicable_condition": "外部冷却水系统管路",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "管路中不使用镀锌钢管",
+          "管材内壁防腐处理符合 MAN Energy Solutions 冷却水处理规范"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PIPE-WATER-007",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统低供水报警应便于在报警后及时启动或切换主循环泵，报警信号应接入船舶监控系统。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide|component:低供水报警与泵切换控制|intent:报警响应与泵切换时间|hint:需依据系统响应时间要求确定从报警触发到泵启动或切换完成的允许时间}}",
+        "applicable_condition": "海水冷却系统采用主循环泵配置",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "报警触发后可在规定时间内启动备用泵或切换泵组",
+          "报警信号在监控系统上可显示并记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CLEAN-029",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:02:26.897261+00:00",
+  "elapsed_seconds": 9.609
+}

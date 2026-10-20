@@ -1,0 +1,37 @@
+{
+  "slot": "OR051-random_new",
+  "body_sha256": "9f2e32ad016178164f7a4b2afb41b9251997ec464636a545144761026e9f70ad",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:08:11.117870+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR051-random_new",
+    "source_id": "OR051",
+    "group": "random_new",
+    "context_sha256": "10bf4aa53f2e269a4f597320bb35bfa880300ef271e0dd2a23c2abecff764f62",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却器要方便打开、清洗和检查，周围管路不要挡住端盖或检修空间。\n\n## 证据清单\n[E-SW-DRAW-001] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 淡水侧系统组成\nemission, according to IMO Tier I/IMO Tier II requirement, at 100% engine load and a seawater temperature of 25°C (IMO Tier I/IMO Tier II reference temperature), an LT cooling water temperat- ure of 32°C before charge air cooler stage 2 (HE-008) is to be maintained. For other temperatures, the engine setting has to be adapted. For further details contact Everllence. FIL-021 /Strainer for cooling water In order to protect the engine and system components, several strainers are to be provi\n  [量化参数] 100%、25°C、32°C、1–2 mm\n\n[E-COOLER-PRESS-003] 层级:L3 来源:S07 Scania Marine Cooling System Issue 8\n  内容: 中央冷却器选型要求\nConnecting an auxiliary oil cooler 02:05 Issue 8.0 en-GB 23 Connecting an auxiliary oil cooler Engines with heat exchanger On engines with heat exchanger, the cooler for cooling the transmission oil for re- verse gear and the like can be connected directly to the sea water outlet. Information on a suitable type of oil cooler can be obtained from the reverse gear supplier. REQUIREMENT! Connection pipes must have an outer diameter of 54 mm to fit existing heat exchang- er connections. Th\n  [量化参数] 54 mm、1.3 bar\n\n[E-HT-COMP-030] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 高温冷却水系统组成\n9.3.12 Preheating The cooling water circulating through the cylinders must be preheated to at least 60 ºC, preferably 70 ºC. This is an absolute requirement for installations that are designed to operate on heavy fuel, but strongly recommended also for engines that operate exclusively on marine diesel fuel. The energy required for preheating of the HT cooling water can be supplied by a separate source or by a running engine, often a combination of both. In all cases a separate circulat\n  [量化参数] 60、70\n\n[E-COOLER-PRESS-001] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 冷却水温度与压力参数\nelements regulates the flow through the cooler to reach the required inlet tem- perature of the nozzle cooling water. It has a regulating range from approxim- ately 55°C (valve begins to open the pipe from the cooler) to 65°C (pipe from the cooler completely open). For reliable engine operation with HFO incl. stand-by and starting, a nozzle cooling water temperature of at least 55°C must always be ensured. FIL-021/Strainer for cooling water To protect the nozzles for the first commiss\n  [量化参数] 55、65、55、1\n\n[E-EXP-INST-015] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 膨胀水箱作用：预加热管安装在开关阀前（尺寸3/4\"-1\"仅供参考），连接到预加热单元（可选）或直接连接到膨胀水箱管；预加热水通过（F3）输送到备用发动机；辅助发动机运行时，通气管（F3）中的止回阀关闭，通过止回阀阀盘上的小ø3孔流向膨胀水箱进行除气；止回阀阀盘上的小ø3孔也使辅助发动机在低负荷运行时保持HT系统推荐的冷却水温度，这对HFO燃烧至关重要。适用条件：L27/38；L21/31，2016.09.28 - 柴油-电力推进装置。\n\n内置预加热元件：电预加热所需加热功率如下：\n发动机类型 加热功率\n6L21/31 12 kW\n7L21/31 15 kW\n8L21/31 15 kW\n\n可支撑：expansion_tank 的 installation redundancy flow 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 3/4\"-1\"、ø3、ø3、12、15、15\n\n[E-COOLANT-WATER-036] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却液冰点与乙二醇比例\nhave been written for ethylene glycol systems with temperatures less than 100°C (210°F). This is not applicable for low-pressure steam and high temperature heat recovery systems. Minerals in the water can precipitate during the heating process and form deposits within the cooling system of the engine.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：coolant 的 water_quality\npressure\ntemperature 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支\n  [量化参数] 100、210\n\n[E-HT-COMP-019] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 高温冷却水系统组成\nsystem (2-circuit), the auxiliary pump circulates water in series through the aftercooler and the oil cooler. This system is most often used when the oil cooler heat cannot be effectively recovered. If the oil cooler heat is recoverable, separate aftercooler and oil cooler circuits (3-circuit) are available. With a 3-circuit system, an auxiliary pump supplies the aftercooler circuit while a new pump supplies the oil cooler. This new pump is mounted in the location normally used by the \n  [量化参数] 2、3、3\n\n[E-COOLANT-PRESS-018] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却水温度与压力参数\nCaterpillar provides Cat ELC for use in the following applications: • Heavy-duty diesel engines • Automotive applications When Cat ELC is compared to conventional coolants the Cat ELC anti-corrosion package is based on a totally different additive system. Cat ELC has been formulated with the correct amounts of additives in order to provide superior corrosion protection for all metals that are in engine cooling systems.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源\n\n[E-PUMP-DRAW-005] 层级:L3 来源:S07 Scania Marine Cooling System Issue 8\n  内容: 淡水侧流向\nminimum coolant flow in litres/minute at different engine speeds are covered in the diagrams on this page and the next one. If in doubt, check that the pressure drop across the external cooling system does not exceed permissible values. The pressure drop is determined by measuring the differ- ence in pressure between the thermostat housing and the coolant pump intake with the thermostats blocked in the open position and with no pressure cap.\n整理说明：该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "9f2e32ad016178164f7a4b2afb41b9251997ec464636a545144761026e9f70ad",
+    "utf8_message_bytes": 8479,
+    "execution_index": 254
+  }
+}

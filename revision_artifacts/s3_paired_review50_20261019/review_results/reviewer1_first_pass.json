@@ -1,0 +1,1412 @@
+{
+  "status": "complete_first_pass_forms",
+  "external_non_author_present": true,
+  "protocol_deviations": [
+    "身份/过程字段未填:start_time",
+    "身份/过程字段未填:end_time",
+    "start_time:请写含时区ISO时间，例如2026-10-20T09:00:00+08:00（例子不是填写值）",
+    "end_time:请写含时区ISO时间，例如2026-10-20T09:00:00+08:00（例子不是填写值）"
+  ],
+  "reviewers": [
+    {
+      "metadata": {
+        "reviewer_id": "评审员1",
+        "role": "外部非作者领域评审",
+        "expertise": "轮机工程",
+        "organization": "外部公司工程人员（表中原填写：专业硕士研究生）",
+        "prior_exposure": "无",
+        "independent_first_pass": "是",
+        "record_stage": "独立首判",
+        "start_time": null,
+        "end_time": null
+      },
+      "input_sha256": "e8e11b001aad6a21465dd3742e0817452a9a4bdcdd9a6c0fa6d1597039ff164a",
+      "raw_ratings": [
+        {
+          "blind_id": "K211115",
+          "source_id": "OR011",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "适用",
+          "basis": "工程依据（项目制图管理）：系统P&ID/管系原理图、图例/编码规定及设计审查清单；未核实CCS有“流向箭头覆盖率100%”条文。",
+          "confidence": 2,
+          "note": "100%是项目图纸完整性指标；核对图纸范围、主干管识别规则和版次，不作为船级社统一数值。"
+        },
+        {
+          "blind_id": "K627088",
+          "source_id": "OR013",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "适用",
+          "basis": "工程依据（待提供）：膨胀水箱设计计算书、正常/事故补水计算书、P&ID及管径水力计算；未查得“正常补水2倍且循环量1%”的型号适用原文。",
+          "confidence": 2,
+          "note": "接口补水能力需结合漏损工况、补水时限及水箱容积计算；2倍、1%不得视为通用规范。"
+        },
+        {
+          "blind_id": "K591793",
+          "source_id": "OR023",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "Everllence《49/60DF Project Guide – Marine, IMO Tier III》，官方PDF PG_P-III_4960DF.pdf，LT cooling water system章节（本轮官网全文检索直接命中对应句，PDF具体页码、修订号未核定）：LT回路部件按最高38°C设计，与海水32°C热带条件对应；该指南亦说明LT温控阀设定32°C，海水32°C时LT温度可能升至38°C。官网：https://www.everllence.com/applications/projectguides/4stroke/Propulsion/PG_P-III_4960DF.pdf",
+          "confidence": 3,
+          "note": "本轮核实：官方厂家文档同机型原文直接支持38°C/32°C及对象，但具体PDF页码和修订号未取得；官方来源为IMO Tier III版本，不自动证明项目采用的49/60DF其它排放版本完全相同。结论“正确”仅指该厂家版本的参数描述；须按项目批准版本确认。"
+        },
+        {
+          "blind_id": "K783304",
+          "source_id": "OR023",
+          "arm": "norag",
+          "correctness": "错误",
+          "applicability": "适用",
+          "basis": "工程依据（待提供）：温度测点清单、I/O list、传感器数据表、自动化系统接线图及校验证书；未发现PT100三线制/4–20mA、0–150℃、±0.5%FS统一强制条款。",
+          "confidence": 1,
+          "note": "接口是否兼容可以核实，量程精度应按实际热工测点与设备设计确定。"
+        },
+        {
+          "blind_id": "K522557",
+          "source_id": "OR057",
+          "arm": "norag",
+          "correctness": "错误",
+          "applicability": "不适用",
+          "basis": "CCS《钢质海船入级规范》2025，第3篇第4章泵与管系（PDF约1401–1403）及2024英文版相邻章节，仅作管路试验范围导航；未验证1.5倍设计压力、最低0.4MPa及仪表1.6级适用于本系统。",
+          "confidence": 2,
+          "note": "待核对试验对象（管路/附件/整机）、设计压力、保压时间及检查标准；不得将通用系数自动套用。"
+        },
+        {
+          "blind_id": "K849074",
+          "source_id": "OR033",
+          "arm": "rag",
+          "correctness": "错误",
+          "applicability": "适用",
+          "basis": "Everllence《49/60 IMO Tier II Project Guide – Marine》Rev.3.0（2025-12-03），2.17运行温压表约PDF133–139；提取行“3111, TE3190 - 100 °C”是表格分隔/空值，不能判作−100℃。",
+          "confidence": 3,
+          "note": "发动机进口启动前预热−100℃属于表格误读；其他测点60/80/92/90℃仍需核对各列含义。"
+        },
+        {
+          "blind_id": "K168579",
+          "source_id": "OR003",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "CCS《Rules for Classification of Sea-Going Steel Ships》2024，第3篇第4章第5节Cooling water systems（PDF1541–1543）作为备用冷却能力背景；30秒、90%流量无已核实来源。",
+          "confidence": 2,
+          "note": "泵台数与余量须由船级规定和项目回路类型确定；“每台剩余泵100%”也依系统架构判断。"
+        },
+        {
+          "blind_id": "K636170",
+          "source_id": "OR022",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "Everllence《49/60 IMO Tier II Project Guide – Marine》Rev.3.0（2025-12-03），2.5/Derating参考条件（对应厂家资料）；311K=38℃限于LT级增压空气冷却器前水温。",
+          "confidence": 3,
+          "note": "需保持空气45℃、压强100kPa等全部无降额条件；不要推广成整个中央冷却水系统所有测点限值。"
+        },
+        {
+          "blind_id": "K748946",
+          "source_id": "OR032",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "Scania《Operator's Manual DI16 EMS with S6/PDE – Marine Engine》，冷却液温度报警/扭矩降低章节，约第21页（手册年份/版号需复核）；95℃触发、启用保护时燃油量降至70%。",
+          "confidence": 3,
+          "note": "仅在DI16 EMS/S6且扭矩降低功能激活时成立；与原需求“低压/泵故障”主题有偏移。"
+        },
+        {
+          "blind_id": "K288080",
+          "source_id": "OR024",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "二次证据摘录：MAN《L23/30H GenSet Project Guide》，库标P257，C. Cooling Water Pressure, Alarm Set Points：泵失效时按膨胀水箱静压调整为0.4 bar + static pressure；MAN《L16/24 GenSet Project Guide》，库标P363，B. Cooling water pressure, alarm set points：同一数值与逻辑；另有库标MAN《L21/31 Project Guide》P356的归属出现L16/24抬头串页，不能视为L21/31已核实。上述均为检索摘录，未逐机型核对完整原版PDF、修订号及页内表头。",
+          "confidence": 2,
+          "note": "修复理由：原先“正确/适用”与未核实的多机型适用范围相冲突。0.4bar+静压并非无来源，但L21/31、L16/24、L23/30H逐一适用性及显示模块调节能力尚未经各完整原件核实；故调整“无法判断/工况不明”，信心保留2。"
+        },
+        {
+          "blind_id": "K732549",
+          "source_id": "OR011",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "Everllence《49/60 IMO Tier II Project Guide – Marine》Rev.3.0（2025），2.14–2.17温度参考表（LT空气冷却器前32℃/海水25℃）；“发动机水侧10–40℃”对应其他机型/工况未证实。",
+          "confidence": 2,
+          "note": "对不同测点和不同机型混合设限，不能仅凭温度基准表确认为统一系统出口温度。"
+        },
+        {
+          "blind_id": "K452269",
+          "source_id": "OR021",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "适用",
+          "basis": "工程依据范围不匹配：70%校核低水位、陆上2条输水管事故工况属于取水/输水工程设计背景，非船舶冷却水泵采购的一般定值；原规程名称条款待核实。",
+          "confidence": 2,
+          "note": "原需求为船用泵采购；候选跨至陆上取水构筑物，应单列陆上项目，不能泛化。"
+        },
+        {
+          "blind_id": "K997682",
+          "source_id": "OR001",
+          "arm": "rag",
+          "correctness": "错误",
+          "applicability": "工况不明",
+          "basis": "Everllence《49/60 IMO Tier II Project Guide – Marine》Rev.3.0（2025），2.14温度基准和自动化监测内容；LT 32℃是否为LP TC出口设定点与报警动作原文不符/待核对。",
+          "confidence": 3,
+          "note": "应区分“LT级空气冷却器入口设计设定点”与“LP TC出口监测报警”；报警后自动降负荷也无直接对应依据。"
+        },
+        {
+          "blind_id": "K661062",
+          "source_id": "OR037",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：泄漏检测器自诊断说明书、报警系统功能规格书及船级社监测报警章节；未核实自检≤24h及故障报警≤10s。",
+          "confidence": 2,
+          "note": "故障自检与泄漏报警区分合理，但时限是项目/产品专用指标。"
+        },
+        {
+          "blind_id": "K330617",
+          "source_id": "OR032",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：冷却泵切换控制说明、泵特性曲线、调试大纲及发动机最低供水压力；60秒、90%、0.25MPa和供水中断10秒未有直接依据。",
+          "confidence": 2,
+          "note": "测点、切换初始负荷、手动操作条件及是否允许瞬断均未明确。"
+        },
+        {
+          "blind_id": "K901284",
+          "source_id": "OR047",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MTU《Fluids and Lubricants Specifications》A001065/02E（2020），第8.3节，PDF约49页：发动机暖机后以较高转速运行约30min，适用特定冷却液冲洗流程。",
+          "confidence": 3,
+          "note": "“约30min”不等于严格≥30min；未给出MTU机型/冲洗流程，不能用作所有施工管路冲洗标准。"
+        },
+        {
+          "blind_id": "K646321",
+          "source_id": "OR001",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：主机厂家温控特性、温控阀数据表、动态运行与试验工况文件；未核实温度偏差±2℃、24h稳定性和探头±0.5℃。",
+          "confidence": 2,
+          "note": "不同HT/LT测点、环境与负荷变化条件差异大；各指标应独立确定。"
+        },
+        {
+          "blind_id": "K737574",
+          "source_id": "OR002",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《L32/44 GenSet IMO Tier II Project Guide – Marine》，停机/后冷却章节约印刷44–45页：HT备用泵不工作时，最终停机前0–10%负荷运行15min；同类49/60DF指南第73页亦见此条件。",
+          "confidence": 3,
+          "note": "厂家机型专用；未指定机型时数值本身有对应案例但当前项目工况不明。"
+        },
+        {
+          "blind_id": "K866911",
+          "source_id": "OR046",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《L32/44 GenSet IMO Tier II Project Guide – Marine》，停机后冷却相关章节约印刷44–45页：备用HT泵不工作，停机前0–10%负荷15min。",
+          "confidence": 3,
+          "note": "这是停机前由发动机驱动泵散热，不是备用泵的功能测试或停机后续转时间；限特定发动机。"
+        },
+        {
+          "blind_id": "K692349",
+          "source_id": "OR010",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《Service Letter SL2016-623/JFH》（2016），冷却水处理及添加剂表1/表2：需按认可产品规定浓度检测；未规定跨添加剂统一1000–2000mg/L、50–200mg/L、±10%。",
+          "confidence": 2,
+          "note": "杀菌剂等适用性由产品与系统决定；必须按具体添加剂说明及检测方法判定。"
+        },
+        {
+          "blind_id": "K965410",
+          "source_id": "OR054",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《Service Letter SL2016-623/JFH》（2016），第1页表1“Water for filling and topping up”：总硬度≤10°dGH、20℃时pH6.5–8、氯离子≤50mg/L。",
+          "confidence": 3,
+          "note": "这是未处理的填充/补充水指标，不能等同已加添加剂的循环水指标；机型覆盖范围需核对。"
+        },
+        {
+          "blind_id": "K221247",
+          "source_id": "OR037",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "Scania《Operator's Manual DI16 EMS with S6/PDE – Marine Engine》，冷却液温度章节约第21页：报警后温度需回归可接受值并保持>2s才可复位。",
+          "confidence": 3,
+          "note": "“认可值记录>2秒”是达到正常/接受范围的持续条件，不是按确认按钮2秒。"
+        },
+        {
+          "blind_id": "K817906",
+          "source_id": "OR022",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "IACS《UR M28 Ambient Reference Conditions》，1页版：海水32℃可作为发动机参考条件；未规定所有项目最低0℃或设计范围0–32℃。",
+          "confidence": 2,
+          "note": "冷却器设计需按服务航区实际海水温度和厂家工况确定。"
+        },
+        {
+          "blind_id": "K538764",
+          "source_id": "OR032",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "CCS《Rules for Classification of Sea-Going Steel Ships》2024，第7篇自动化报警章节（PDF2004–2007）提供原则性背景；0.2MPa和≤3s未有直接依据。",
+          "confidence": 2,
+          "note": "“低于0.2MPa”与验收“降至0.2MPa”存在边界条件不一致。"
+        },
+        {
+          "blind_id": "K573282",
+          "source_id": "OR023",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：压力传感器技术规格书、I/O清单和最大工作压力计算；1.5×工作压力为待验证选型余量，4–20mA、±0.5%FS非统一船级强制值。",
+          "confidence": 2,
+          "note": "传感器量程不应混同管路压力试验系数；量程/精度由使用测点确定。"
+        },
+        {
+          "blind_id": "K189805",
+          "source_id": "OR015",
+          "arm": "rag",
+          "correctness": "错误",
+          "applicability": "不适用",
+          "basis": "MAN《49/60DF Project Guide – Marine》2022 Rev.3.1，2.17.6气体模式EPROX-AC标称空气/排气数据表约P115–116：涡轮出口温度±20℃及流量±10%系排气数据公差。",
+          "confidence": 3,
+          "note": "与冷却水海淡水边界无关；不可因页中交叉引用冷却水图就将排气公差归于冷却水。"
+        },
+        {
+          "blind_id": "K124367",
+          "source_id": "OR008",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：主机专用温控阀设定值表、阀门/恒温元件允差和校验规程；未核实通用±1℃。",
+          "confidence": 2,
+          "note": "应按机械恒温器元件性能及安装位置判断，不能用所有型号统一±1℃。"
+        },
+        {
+          "blind_id": "K395496",
+          "source_id": "OR021",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "Caterpillar《Cooling Systems Application and Installation Guide》，泵曲线/阻力与必需流量校核章节（相关资料摘录约P38）；未规定泵扬程统一允许0%～+10%。",
+          "confidence": 2,
+          "note": "额定扬程应满足水力阻力及设备余压，过高扬程也需评估；偏差限值需项目泵曲线支持。"
+        },
+        {
+          "blind_id": "K323039",
+          "source_id": "OR032",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "Scania《Operator's Manual DI16 EMS with S6/PDE – Marine Engine》，冷却液温度章节约第21页：95℃持续1s触发S6 CAN信号、警告灯/诊断灯。",
+          "confidence": 3,
+          "note": "仅DI16 EMS/S6配置；与原需求“低供水/低压”不完全同题。"
+        },
+        {
+          "blind_id": "K612522",
+          "source_id": "OR010",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《Service Letter SL2016-623/JFH》（2016），表1（已处理循环水）：20℃时pH≥7.5；MAN《L23/30DF Project Guide – Marine》冷却液处理章节亦有对应值。",
+          "confidence": 3,
+          "note": "49/60DF和L16/24各变体适用性须核对，未证明所有列出机型使用相同水处理方案。"
+        },
+        {
+          "blind_id": "K754421",
+          "source_id": "OR002",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "CCS《Rules for Classification of Sea-Going Steel Ships》2024，第3篇冷却水管系、第7篇报警章节作原则参考；未规定85℃、0.2MPa、5s、10s统一阈值。",
+          "confidence": 2,
+          "note": "高温/低压阈值和备用泵启动需按发动机厂家及控制设计，不能自动将任意高温关联泵启动。"
+        },
+        {
+          "blind_id": "K620579",
+          "source_id": "OR046",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：泵设计流量、性能曲线、流量计校准和调试计划；无100m³/h、±5%、稳定5min、±2m³/h项目依据。",
+          "confidence": 2,
+          "note": "基准流量100m³/h无泵型号/设计计算；这些均为待确认验收数值。"
+        },
+        {
+          "blind_id": "K692264",
+          "source_id": "OR054",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《Service Letter SL2016-623/JFH》（2016），冷却水添加剂推荐及周期监测要求；并无通用浓度±5%或添加周期±10%规定。",
+          "confidence": 2,
+          "note": "添加剂产品、补加时机、频次应按具体厂家说明/检测值，不可简单设置统一比例容差。"
+        },
+        {
+          "blind_id": "K823041",
+          "source_id": "OR031",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "CCS 2024年第7篇自动化监测及IACS UR M35冷却液位报警背景（需依项目适用标志核对）；0–1000mm、±5mm、≤1s、4–20mA及30天存储均无已核实依据。",
+          "confidence": 2,
+          "note": "连续液位趋势监测与低液位开关不是同一功能；需按项目水箱及I/O配置。"
+        },
+        {
+          "blind_id": "K867382",
+          "source_id": "OR024",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "CCS《Rules for Classification of Sea-Going Steel Ships》2024，第3篇第4章第5节（PDF1541–1543）为水箱/冷却水背景；未查证±2%FS为统一液位显示精度。",
+          "confidence": 2,
+          "note": "最低至最高液位量程及仪表±2%FS需依液位计技术规格书、水箱图纸确认。"
+        },
+        {
+          "blind_id": "K204711",
+          "source_id": "OR031",
+          "arm": "rag",
+          "correctness": "错误",
+          "applicability": "不适用",
+          "basis": "Everllence《49/60 IMO Tier II Project Guide – Marine》2025-12-03 Rev.3.0，2.17运行/服务温压（PDF133–139）；另49/60DF资料约P163含同组测点。“3111, TE3190 - 100 °C”并非−100℃预热。",
+          "confidence": 3,
+          "note": "提取表格连字符被误读成负号；保留测点对应关系及各列属性，−100℃为明确错误。"
+        },
+        {
+          "blind_id": "K464919",
+          "source_id": "OR033",
+          "arm": "norag",
+          "correctness": "可接受",
+          "applicability": "适用",
+          "basis": "工程依据（项目文控要求）：CCS《E-13 Monitoring and Alarm (Display) System》§4 Plans and documents（PDF6–7）；CCS 2024第7篇（PDF2004–2007）为审图背景；无“覆盖率100%”强制条款。",
+          "confidence": 2,
+          "note": "100%作为项目内设定完整性指标可接受；引用版本要有效相容，不须版本号字面一致。"
+        },
+        {
+          "blind_id": "K299956",
+          "source_id": "OR013",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "Everllence《49/60DF Project Guide – Marine》，本地摘录E00513，来源标P374，Cooling water system / Venting：最高发动机转速下，从发动机HT排气接口至膨胀水箱的最小流量为该指南第2章HT冷却水流量的1%；冷却系统最高点应排气。核对依据为对应厂家项目指南的带出处摘录，尚未独立取得完整原版PDF的修订号和页图。",
+          "confidence": 2,
+          "note": "本轮核实：E00513厂家原文语句和测量对象明确；“正确”针对指定49/60DF版次的最小1%要求，并非全部型号通用。P374是资料库页面定位而非已目视校验原版印刷页码。燃气/低闪点燃料的排气通大气及HT/LT管路分离限制仍须纳入实际布置审核。"
+        },
+        {
+          "blind_id": "K814606",
+          "source_id": "OR023",
+          "arm": "rag",
+          "correctness": "错误",
+          "applicability": "适用",
+          "basis": "MAN《L23/30DF Project Guide – Internal Cooling Water System》，B13章节约P189：“HT system exclusive pump and thermostatic valve approx.0.5bar”；“built-on thermostatic valve approx.0.5bar”。",
+          "confidence": 3,
+          "note": "两项0.5bar分别对应不同对象，均为约值；将“approx.”转成“≤0.5bar”严格上限错误。"
+        },
+        {
+          "blind_id": "K797131",
+          "source_id": "OR037",
+          "arm": "norag",
+          "correctness": "错误",
+          "applicability": "适用",
+          "basis": "ABS《Rules for Building and Classing Marine Vessels》2021，Part4 Ch9 §2, 7.5/7.7（约PDF889）：人工确认后声停、闪烁视觉转常亮，故障消除后视觉指示才解除。CCS/IACS对应原条款待核。",
+          "confidence": 3,
+          "note": "≤1s无确认依据；“人工确认即复位全部报警”错误，尤其视觉信号必须保持至故障消除。"
+        },
+        {
+          "blind_id": "K187408",
+          "source_id": "OR003",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "MAN Diesel & Turbo《L27/38 Propulsion Project Guide》，D10 List of Capacities，冷却器容量表备注3、4、5，资料库P118：\"Tolerance: +10% for rating coolers, -15% for heat recovery\"；备注4指出为冷却器布置基本数据，备注5限定前述参考条件。公开相同型号指南摘录亦与该条一致（https://www.scribd.com/document/676829805/PG-P-II-L2738）。已交叉核对具体数字及脚注归属；官方原版PDF修订号、印刷页未在本轮独立确认。",
+          "confidence": 2,
+          "note": "本轮核实：+10%对应冷却器额定容量选型，−15%对应可回收热量，非制造允许误差；“正确”仅指该型号厂家容量表的计算修正。P118为资料库索引页，非已目视复核的纸面页码。项目实际机型、转速、负荷和参考条件待按项目技术文件核对。"
+        },
+        {
+          "blind_id": "K807026",
+          "source_id": "OR015",
+          "arm": "norag",
+          "correctness": "可接受",
+          "applicability": "适用",
+          "basis": "工程依据（项目制图一致性）：CCS 2024第3篇第4章管系图纸提交（PDF1479–1480）仅作审图背景；MAN《L23/30DF Project Guide – Marine》B13中央冷却系统示意可区分海淡水侧。",
+          "confidence": 2,
+          "note": "100%是项目跨专业语义一致性目标，未证实船级社要求三类线型/颜色或图纸全部同色。"
+        },
+        {
+          "blind_id": "K836062",
+          "source_id": "OR047",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "MAN《L23/30DF Project Guide – Marine》Cleaning cooling water system，约P185–186：化学清洗后多次冲洗并换水；MAN《L27/38 Propulsion Project Guide》约P149：彻底冲洗清除固体杂质。",
+          "confidence": 2,
+          "note": "均未规定施工管路冲洗≥30min；勿混用MTU特定发动机冷却液循环“约30min”工艺。"
+        },
+        {
+          "blind_id": "K244601",
+          "source_id": "OR001",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：冷却水动态控制规格书、发动机厂家最小压力/最大温度/负荷响应曲线、扰动试验大纲；CCS 2024第7篇仅属监测报警原则背景。",
+          "confidence": 2,
+          "note": "±10%阶跃、功率±2%、30s均无直接依据；如达到报警/保护阈值，不能无条件要求“无报警”。"
+        },
+        {
+          "blind_id": "K849466",
+          "source_id": "OR057",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "工况不明",
+          "basis": "IACS《Requirements concerning Machinery Installations》，UR M73 Turbochargers，Rev.2 (May 2023)，第4.3条，第6页（7页文件）；针对增压器ACS认证审核项目，水冷腔液压试验为4 bar或1.5倍最大工作压力，取较高者。Rev.2适用性说明见文件第1页；在线完整文字：https://www.scribd.com/document/954339961/ur-m73rev2 。",
+          "confidence": 3,
+          "note": "数值正确性已核：4 bar、1.5倍和取较高者三要素均在UR M73 Rev.2 §4.3。适用性工况不明不矛盾：须确认实际增压器类别（M73 §1.3 A/B/C）、制造商ACS或逐台认证方案及证书适用日期。§4.3为类别C的认证审核背景，不代表整船冷却水管系统一试压值，也不能推定验船师每台现场见证。"
+        },
+        {
+          "blind_id": "K445671",
+          "source_id": "OR037",
+          "arm": "rag",
+          "correctness": "错误",
+          "applicability": "适用",
+          "basis": "Scania《Operator's Manual DI16 EMS with S6/PDE – Marine Engine》，冷却液温度章节约第21页：高于95℃持续1秒后S6发送CAN警报并点亮两指示灯。",
+          "confidence": 3,
+          "note": "“1秒内高于95℃”误读持续条件；原需求为冷却器泄漏报警，候选为高温报警，语义漂移。"
+        },
+        {
+          "blind_id": "K972248",
+          "source_id": "OR046",
+          "arm": "norag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "工程依据（待提供）：冷却水泵主备切换操作规程、泵特性曲线、额定流量与压力测点、调试大纲；CCS 2024第3篇第4章第5节仅作备用冷却能力背景。",
+          "confidence": 2,
+          "note": "0.2MPa及15s均无统一来源；先停主泵后开备用泵可能使供水中断，需项目安全工艺确认。"
+        },
+        {
+          "blind_id": "K746254",
+          "source_id": "OR046",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "Everllence《49/60 IMO Tier II Project Guide – Marine》Rev.3.0（2025-12-03）P61停机后运行时间表见15min；MAN《49/60DF Project Guide》约P346则见HT电动备用泵停机后冷却30min。",
+          "confidence": 3,
+          "note": "机型未指明，15min不能通用；发动机驱动泵在主机停机后不能自行续转，应核对电动备用/独立循环泵。"
+        },
+        {
+          "blind_id": "K227030",
+          "source_id": "OR001",
+          "arm": "rag",
+          "correctness": "无法判断",
+          "applicability": "工况不明",
+          "basis": "Everllence《49/60DF Project Guide – Marine》§2.9 Low-load operation，约P77表26：液体模式空载最长2h（每年一次），气体模式零负荷尽量短，低负荷<25%受限。",
+          "confidence": 3,
+          "note": "未指定49/60DF机型；低负荷后需按厂家的relieving operation负荷-持续时间图恢复，不能简单写“正常负荷”。"
+        },
+        {
+          "blind_id": "K831135",
+          "source_id": "OR008",
+          "arm": "rag",
+          "correctness": "正确",
+          "applicability": "适用",
+          "basis": "MAN《L16/24 GenSet Project Guide》，2017-03-03，参数表约P36（1000rpm）和P38（1200rpm），表头同时列L16/24S、L16/24；LT出口35℃ nominal，机械恒温元件29–41℃。",
+          "confidence": 2,
+          "note": "摘录同时包含两个型号，但需核对实际1000/1200rpm及元件配置；29–41℃是恒温元件范围，非水温运行允许偏差。"
+        }
+      ],
+      "summary": {
+        "primary": {
+          "source_count": 20,
+          "source_equal_confirmed_success": {
+            "rag": 0.3,
+            "norag": 0.0
+          },
+          "source_equal_difference": 0.3,
+          "source_equal_difference_exact": "3/10",
+          "unknown_assignment_bounds": [
+            -0.5,
+            0.775
+          ],
+          "source_bootstrap_percentile_interval": [
+            0.125,
+            0.5
+          ],
+          "interval_scope": "exploratory 10000 source resamples; seed202610191556; 20 eligible common sources, not all60; not guaranteed population CI and not model run variability",
+          "sign_test": {
+            "positive_sources": 7,
+            "negative_sources": 0,
+            "ties": 13,
+            "n_nonzero": 7,
+            "two_sided_p": 0.015625,
+            "scope": "descriptive exact sign test; assumes independent source signs and equal positive/negative probability under null; no equivalence/power claim"
+          },
+          "per_source": [
+            {
+              "source_id": "OR001",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.5,
+                "possible_success_upper": 0.5
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 0.5
+            },
+            {
+              "source_id": "OR002",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR003",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR008",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR010",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR011",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR013",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR015",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 0.0
+            },
+            {
+              "source_id": "OR021",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR022",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR023",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.5,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.5
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.5,
+                "possible_success_upper": 0.5
+              },
+              "confirmed_success_difference": 0.5,
+              "difference_exact": "1/2",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 0.5
+            },
+            {
+              "source_id": "OR024",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR031",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 0.0
+            },
+            {
+              "source_id": "OR032",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR033",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 0.0
+            },
+            {
+              "source_id": "OR037",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.5,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.5
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.5,
+                "possible_success_upper": 0.5
+              },
+              "confirmed_success_difference": 0.5,
+              "difference_exact": "1/2",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 0.5
+            },
+            {
+              "source_id": "OR046",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR047",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR054",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR057",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            }
+          ],
+          "item_descriptive": {
+            "rag": {
+              "n": 25,
+              "confirmed_success_count": 8,
+              "confirmed_success_fraction": 0.32,
+              "unresolved_count": 11
+            },
+            "norag": {
+              "n": 25,
+              "confirmed_success_count": 0,
+              "confirmed_success_fraction": 0.0,
+              "unresolved_count": 20
+            }
+          }
+        },
+        "secondary": {
+          "source_count": 20,
+          "source_equal_confirmed_success": {
+            "rag": 0.3,
+            "norag": 0.1
+          },
+          "source_equal_difference": 0.2,
+          "source_equal_difference_exact": "1/5",
+          "unknown_assignment_bounds": [
+            -0.6,
+            0.675
+          ],
+          "source_bootstrap_percentile_interval": [
+            -0.05,
+            0.45
+          ],
+          "interval_scope": "exploratory 10000 source resamples; seed202610191556; 20 eligible common sources, not all60; not guaranteed population CI and not model run variability",
+          "sign_test": null,
+          "per_source": [
+            {
+              "source_id": "OR001",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.5,
+                "possible_success_upper": 0.5
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 0.5
+            },
+            {
+              "source_id": "OR002",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR003",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR008",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR010",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR011",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR013",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR015",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": -1.0,
+              "difference_exact": "-1",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": -1.0
+            },
+            {
+              "source_id": "OR021",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR022",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR023",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.5,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.5
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.5,
+                "possible_success_upper": 0.5
+              },
+              "confirmed_success_difference": 0.5,
+              "difference_exact": "1/2",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 0.5
+            },
+            {
+              "source_id": "OR024",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR031",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 0.0
+            },
+            {
+              "source_id": "OR032",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 1.0,
+              "difference_exact": "1",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR033",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 1.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": -1.0,
+              "difference_exact": "-1",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": -1.0
+            },
+            {
+              "source_id": "OR037",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.5,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.5
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.5,
+                "possible_success_upper": 0.5
+              },
+              "confirmed_success_difference": 0.5,
+              "difference_exact": "1/2",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 0.5
+            },
+            {
+              "source_id": "OR046",
+              "rag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 2,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR047",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR054",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": -1.0,
+              "favorable_bound": 1.0
+            },
+            {
+              "source_id": "OR057",
+              "rag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 1.0,
+                "possible_success_upper": 1.0
+              },
+              "norag": {
+                "n": 1,
+                "confirmed_success": 0.0,
+                "unresolved_possible_success": 0.0,
+                "possible_success_upper": 0.0
+              },
+              "confirmed_success_difference": 0.0,
+              "difference_exact": "0",
+              "unfavorable_bound": 0.0,
+              "favorable_bound": 1.0
+            }
+          ],
+          "item_descriptive": {
+            "rag": {
+              "n": 25,
+              "confirmed_success_count": 8,
+              "confirmed_success_fraction": 0.32,
+              "unresolved_count": 11
+            },
+            "norag": {
+              "n": 25,
+              "confirmed_success_count": 2,
+              "confirmed_success_fraction": 0.08,
+              "unresolved_count": 20
+            }
+          }
+        },
+        "labels_and_risks": {
+          "rag": {
+            "n": 25,
+            "correctness": {
+              "正确": 9,
+              "错误": 6,
+              "无法判断": 10
+            },
+            "applicability": {
+              "适用": 12,
+              "工况不明": 11,
+              "不适用": 2
+            },
+            "practice_basis_items": 0,
+            "error_item_rate": 0.24,
+            "error_source_equal_rate": 0.225,
+            "unknown_item_rate": 0.48,
+            "unknown_source_equal_rate": 0.5,
+            "not_applicable_item_rate": 0.08,
+            "not_applicable_source_equal_rate": 0.1
+          },
+          "norag": {
+            "n": 25,
+            "correctness": {
+              "无法判断": 20,
+              "错误": 3,
+              "可接受": 2
+            },
+            "applicability": {
+              "适用": 6,
+              "不适用": 1,
+              "工况不明": 18
+            },
+            "practice_basis_items": 0,
+            "error_item_rate": 0.12,
+            "error_source_equal_rate": 0.1,
+            "unknown_item_rate": 0.8,
+            "unknown_source_equal_rate": 0.8,
+            "not_applicable_item_rate": 0.04,
+            "not_applicable_source_equal_rate": 0.05
+          }
+        },
+        "interpretation": "Confirmed-success rate counts observed positive joint judgments; unknown is separately retained, not imputed factual error. Bounds express unresolved outcomes. Reviewers analyzed separately; no pooled gold."
+      }
+    }
+  ],
+  "agreement": null,
+  "remaining_limit": "Single reviewer; no inter-rater agreement. Identity relayed by corresponding author, not independently authenticated."
+}

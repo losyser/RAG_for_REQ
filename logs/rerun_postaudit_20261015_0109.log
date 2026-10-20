@@ -1,0 +1,516 @@
+加载索引...
+[Searcher] Loading SentenceTransformer on device = cpu
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 42412.73it/s]
+[Searcher] Model actual device = cpu
+处理 60 条需求
+
+[ 1/60] OR001: 主机冷却水系统平时要稳定一点，不能因为温度、压力或者流量波动就影响推进设备正常运行。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooling_system × system_description)
+    (alarm_system × alarm_setpoint)
+    (control_system × control_logic)
+    (temperature_control_valve × control_logic)
+  RAG v3: 10 shall，10/10 有证据归因，平均 1.4 条/shall
+
+[ 2/60] OR002: 冷却系统最好有一定备用能力，泵或者某个关键设备出问题时，不要马上导致主机冷却中断。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_water_pump × redundancy)
+    (cooling_water_pump × auto_start)
+    (cooling_system × system_description)
+  RAG v3: 17 shall，17/17 有证据归因，平均 1.2 条/shall
+
+[ 3/60] OR003: 冷却器和冷却水泵的容量要留得合理一些，不要刚好够用，后面海水温度高或者设备脏了就不够。...
+  aligned_retrieve: 2 对 → 20 条证据
+    (cooler × specification)
+    (cooling_water_pump × specification)
+  RAG v3: 10 shall，10/10 有证据归因，平均 1.1 条/shall
+
+[ 4/60] OR004: 冷却水系统的主要报警要可靠，船员要能早点知道水温、水压或者液位不正常。...
+  aligned_retrieve: 4 对 → 13 条证据
+    (alarm_system × alarm_setpoint)
+    (temperature_sensor × alarm_setpoint)
+    (pressure_sensor × alarm_setpoint)
+    (level_sensor × alarm_setpoint)
+  RAG v3: 10 shall，10/10 有证据归因，平均 1.9 条/shall
+
+[ 5/60] OR005: 冷却水系统后期维护不要太复杂，像滤器、冷却器、泵和阀门这些地方要能方便处理。...
+  aligned_retrieve: 6 对 → 20 条证据
+    (filter × maintenance)
+    (filter × cleaning)
+    (cooler × maintenance)
+    (cooler × cleaning)
+    (cooling_water_pump × maintenance)
+    (valve × maintenance)
+  RAG v3: 9 shall，9/9 有证据归因，平均 1.2 条/shall
+
+[ 6/60] OR006: 主机进出口冷却水温度和压力要按厂家技术资料来，不要按经验随便设。...
+  aligned_retrieve: 3 对 → 17 条证据
+    (temperature_sensor × specification)
+    (pressure_sensor × specification)
+    (cooling_system × documentation)
+  RAG v3: 9 shall，9/9 有证据归因，平均 1.4 条/shall
+
+[ 7/60] OR007: 高温冷却水和低温冷却水的回路要分清楚，不能把不同服务对象混在一个模糊系统里。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooling_system × system_description)
+    (cooling_system × drawing_requirement)
+    (pipe × drawing_requirement)
+    (pipe × labeling)
+  RAG v3: 19 shall，19/19 有证据归因，平均 1.5 条/shall
+
+[ 8/60] OR008: 温度控制阀的设定值和安装位置要按主机要求核对，不然水温可能控制不到合适范围。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (temperature_control_valve × set_point)
+    (temperature_control_valve × installation)
+    (temperature_control_valve × specification)
+  RAG v3: 6 shall，5/6 有证据归因，平均 1.3 条/shall
+
+[ 9/60] OR009: 冷却水泵的流量、压头和工作点要和主机技术数据匹配，不要只看泵样本上的额定值。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_water_pump × specification)
+    (cooling_system × system_description)
+    (cooling_system × interface)
+  RAG v3: 6 shall，6/6 有证据归因，平均 1.8 条/shall
+
+[10/60] OR010: 冷却液的水质、添加剂和防冻比例要符合厂家要求，否则容易出现腐蚀、沉积或者换热变差。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (coolant × water_quality)
+    (coolant × corrosion_inhibitor)
+    (coolant × antifreeze)
+    (coolant × compatibility)
+  RAG v3: 11 shall，11/11 有证据归因，平均 1.8 条/shall
+
+[11/60] OR011: 冷却水系统原理图要把淡水侧、海水侧、高温回路和低温回路画清楚，不能让人靠猜。...
+  aligned_retrieve: 2 对 → 20 条证据
+    (cooling_system × drawing_requirement)
+    (cooling_system × system_description)
+  ⚠ RAG 返回空（连续 1 次）
+  RAG v3: 0 shall，0/0 有证据归因，平均 0.0 条/shall
+
+[12/60] OR012: 冷却水流向、设备连接关系和接口位置要在图纸上表达清楚，尤其是泵、冷却器、温控阀和膨胀水箱。...
+  aligned_retrieve: 5 对 → 20 条证据
+    (cooling_system × drawing_requirement)
+    (cooling_water_pump × documentation)
+    (cooler × drawing_requirement)
+    (temperature_control_valve × drawing_requirement)
+    (expansion_tank × drawing_requirement)
+  RAG v3: 12 shall，12/12 有证据归因，平均 1.5 条/shall
+
+[13/60] OR013: 膨胀水箱的位置和容量要考虑系统补水、排气和水位变化，不要只是简单接一根管。...
+  aligned_retrieve: 4 对 → 19 条证据
+    (expansion_tank × capacity)
+    (expansion_tank × makeup_water)
+    (expansion_tank × venting)
+    (expansion_tank × installation)
+  RAG v3: 19 shall，18/19 有证据归因，平均 1.2 条/shall
+
+[14/60] OR014: 管路高点要考虑排气，低点要考虑放水，不然运行和检修时会比较麻烦。...
+  aligned_retrieve: 2 对 → 11 条证据
+    (pipe × vent_drain)
+    (pipe × installation)
+  RAG v3: 4 shall，4/4 有证据归因，平均 2.0 条/shall
+
+[15/60] OR015: 中央冷却器、海水侧和淡水侧之间的边界要清楚，避免后面审图和施工时理解不一致。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooler × interface)
+    (cooler × drawing_requirement)
+    (cooling_system × interface)
+    (cooling_system × drawing_requirement)
+  RAG v3: 10 shall，10/10 有证据归因，平均 2.4 条/shall
+
+[16/60] OR016: 冷却水管路布置要便于施工，焊接、安装、冲洗和压力试验都要留出操作条件。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (pipe × installation)
+    (pipe × welding)
+    (pipe × cleaning)
+    (pipe × pressure_test)
+  RAG v3: 7 shall，7/7 有证据归因，平均 1.6 条/shall
+
+[17/60] OR017: 泵入口和冷却器附近的管路不要太绕，现场安装时要能保证水流顺畅。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (pipe × installation)
+    (cooling_water_pump × installation)
+    (cooler × installation)
+  RAG v3: 10 shall，10/10 有证据归因，平均 1.3 条/shall
+
+[18/60] OR018: 阀门、滤器和仪表不要装在很难够到的位置，后期操作和检修会很不方便。...
+  aligned_retrieve: 6 对 → 15 条证据
+    (valve × installation)
+    (filter × installation)
+    (temperature_sensor × installation)
+    (pressure_sensor × installation)
+    (level_sensor × installation)
+    (flow_meter × installation)
+  RAG v3: 6 shall，6/6 有证据归因，平均 1.3 条/shall
+
+[19/60] OR019: 管路支架要布置合理，不要让泵、冷却器或者阀门接口承受不该有的管路重量。...
+  aligned_retrieve: 6 对 → 20 条证据
+    (pipe_support × spacing)
+    (pipe_support × installation)
+    (pipe × pipe_support)
+    (cooling_water_pump × installation)
+    (cooler × installation)
+    (valve × installation)
+  RAG v3: 4 shall，4/4 有证据归因，平均 1.5 条/shall
+
+[20/60] OR020: 系统冲洗接口和临时接管位置要提前考虑，不要等调试时再临时想办法。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (pipe × cleaning)
+    (pipe × installation)
+    (cooling_system × test_procedure)
+    (cooling_system × drawing_requirement)
+  RAG v3: 8 shall，8/8 有证据归因，平均 1.8 条/shall
+
+[21/60] OR021: 冷却水泵采购时要核对流量、压力、材料、接口和备用要求，不能只按名称买。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_water_pump × specification)
+    (cooling_water_pump × material)
+    (cooling_water_pump × redundancy)
+  RAG v3: 14 shall，14/14 有证据归因，平均 2.1 条/shall
+
+[22/60] OR022: 冷却器选型要考虑海水温度、换热余量和长期脏污影响，不能只满足理想工况。...
+  aligned_retrieve: 3 对 → 19 条证据
+    (cooler × specification)
+    (cooler × fouling)
+    (sea_water × water_quality)
+  RAG v3: 9 shall，9/9 有证据归因，平均 1.0 条/shall
+
+[23/60] OR023: 温控阀、传感器和报警元件的量程、信号和接口要和自动化系统对得上。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (temperature_control_valve × control_logic)
+    (temperature_sensor × specification)
+    (alarm_system × alarm_setpoint)
+    (control_system × interface)
+  RAG v3: 15 shall，15/15 有证据归因，平均 1.5 条/shall
+
+[24/60] OR024: 膨胀水箱要确认容积、液位显示、低液位报警和补水接口，不能只看外形尺寸。...
+  aligned_retrieve: 4 对 → 16 条证据
+    (expansion_tank × capacity)
+    (expansion_tank × level_control)
+    (expansion_tank × alarm_setpoint)
+    (expansion_tank × makeup_water)
+  RAG v3: 11 shall，9/11 有证据归因，平均 1.3 条/shall
+
+[25/60] OR025: 海水侧滤器和阀门材料要适合海水环境，不然后期容易腐蚀、堵塞或者维护频繁。...
+  aligned_retrieve: 4 对 → 2 条证据
+    (filter × material)
+    (valve × material)
+    (sea_water × material)
+    (sea_water × corrosion_protection)
+  RAG v3: 1 shall，1/1 有证据归因，平均 1.0 条/shall
+
+[26/60] OR026: 集控室要能看到主要冷却水温度、压力、液位和泵运行状态，不要只靠机旁仪表。...
+  aligned_retrieve: 5 对 → 10 条证据
+    (control_system × interface)
+    (temperature_sensor × specification)
+    (pressure_sensor × specification)
+    (level_sensor × specification)
+    (cooling_water_pump × auto_start)
+  RAG v3: 7 shall，7/7 有证据归因，平均 2.0 条/shall
+
+[27/60] OR027: 报警信息要能说明大概是哪一路出了问题，比如高温、低压、低液位或者泵故障。...
+  aligned_retrieve: 5 对 → 19 条证据
+    (alarm_system × alarm_setpoint)
+    (cooling_water_pump × alarm_setpoint)
+    (temperature_sensor × alarm_setpoint)
+    (pressure_sensor × alarm_setpoint)
+    (level_sensor × alarm_setpoint)
+  RAG v3: 9 shall，9/9 有证据归因，平均 2.8 条/shall
+
+[28/60] OR028: 冷却器、滤器和泵这些常维护设备要好接近，船员日常巡检不能太费劲。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooler × installation)
+    (filter × installation)
+    (cooling_water_pump × installation)
+  RAG v3: 13 shall，13/13 有证据归因，平均 1.4 条/shall
+
+[29/60] OR029: 补水、排气、放水和换液操作要简单清楚，不要每次都要翻很厚的资料才能做。...
+  aligned_retrieve: 5 对 → 16 条证据
+    (expansion_tank × makeup_water)
+    (expansion_tank × venting)
+    (pipe × vent_drain)
+    (coolant × replacement_cycle)
+    (cooling_system × documentation)
+  RAG v3: 5 shall，4/5 有证据归因，平均 1.0 条/shall
+
+[30/60] OR030: 海水侧滤器最好能在不中断冷却供应的情况下清洗，不然运行中处理起来风险比较大。...
+  aligned_retrieve: 4 对 → 15 条证据
+    (filter × redundancy)
+    (filter × bypass)
+    (filter × cleaning)
+    (cooling_water_pump × redundancy)
+  RAG v3: 1 shall，1/1 有证据归因，平均 1.0 条/shall
+
+[31/60] OR031: 冷却水温度、压力、液位和泵状态要接入监控系统，便于趋势观察和异常判断。...
+  aligned_retrieve: 5 对 → 10 条证据
+    (temperature_sensor × specification)
+    (pressure_sensor × specification)
+    (level_sensor × specification)
+    (cooling_water_pump × auto_start)
+    (control_system × interface)
+  RAG v3: 5 shall，4/5 有证据归因，平均 2.0 条/shall
+
+[32/60] OR032: 低供水、低压力或者泵故障时，系统要能给出明确报警，必要时支持人工或自动切换。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooling_water_pump × auto_start)
+    (cooling_water_pump × redundancy)
+    (alarm_system × alarm_setpoint)
+    (control_system × control_logic)
+  RAG v3: 10 shall，10/10 有证据归因，平均 2.3 条/shall
+
+[33/60] OR033: 传感器量程和报警设定要有依据，不能现场随便填一个值。...
+  aligned_retrieve: 9 对 → 20 条证据
+    (temperature_sensor × specification)
+    (temperature_sensor × alarm_setpoint)
+    (pressure_sensor × specification)
+    (pressure_sensor × alarm_setpoint)
+    (level_sensor × specification)
+    (level_sensor × alarm_setpoint)
+    (flow_meter × specification)
+    (flow_meter × alarm_setpoint)
+    (alarm_system × alarm_setpoint)
+  RAG v3: 7 shall，7/7 有证据归因，平均 2.3 条/shall
+
+[34/60] OR034: 温度控制阀相关信号和控制逻辑要能反映实际水温变化，不要出现控制滞后太明显的情况。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (temperature_control_valve × control_logic)
+    (temperature_control_valve × set_point)
+    (temperature_sensor × specification)
+    (control_system × control_logic)
+  RAG v3: 8 shall，7/8 有证据归因，平均 1.4 条/shall
+
+[35/60] OR035: 冷却水泵的运行、停止、故障和备用状态要能反馈到监控界面。...
+  aligned_retrieve: 3 对 → 7 条证据
+    (cooling_water_pump × auto_start)
+    (control_system × interface)
+    (alarm_system × alarm_response)
+  RAG v3: 1 shall，0/1 有证据归因，平均 0.0 条/shall
+
+[36/60] OR036: 冷却水高温、低压、低液位和流量不足这类情况要能及时报警，不能等主机已经过热才发现。...
+  aligned_retrieve: 5 对 → 12 条证据
+    (alarm_system × alarm_setpoint)
+    (temperature_sensor × alarm_setpoint)
+    (pressure_sensor × alarm_setpoint)
+    (level_sensor × alarm_setpoint)
+    (flow_meter × alarm_setpoint)
+  RAG v3: 8 shall，8/8 有证据归因，平均 1.4 条/shall
+
+[37/60] OR037: 冷却器如果存在泄漏风险，要有检测和报警手段，特别是有人值守位置要能看到或听到。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooler × alarm_setpoint)
+    (alarm_system × alarm_setpoint)
+    (alarm_system × alarm_response)
+  RAG v3: 7 shall，7/7 有证据归因，平均 3.9 条/shall
+
+[38/60] OR038: 关键报警和保护动作要区分清楚，哪些只是提醒，哪些会影响主机运行，要提前说明。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (alarm_system × alarm_setpoint)
+    (alarm_system × trip_setpoint)
+    (alarm_system × alarm_response)
+    (control_system × control_logic)
+  RAG v3: 9 shall，9/9 有证据归因，平均 2.1 条/shall
+
+[39/60] OR039: 传感器异常不能被当成正常状态，系统要能提示测量信号可能有问题。...
+  aligned_retrieve: 5 对 → 10 条证据
+    (temperature_sensor × alarm_setpoint)
+    (pressure_sensor × alarm_setpoint)
+    (level_sensor × alarm_setpoint)
+    (alarm_system × alarm_response)
+    (control_system × fail_safe)
+  RAG v3: 5 shall，5/5 有证据归因，平均 1.2 条/shall
+
+[40/60] OR040: 报警设定和延时不要太随意，既不能太迟，也不能因为误报警频繁影响运行。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (alarm_system × alarm_setpoint)
+    (alarm_system × alarm_response)
+    (control_system × control_logic)
+  RAG v3: 9 shall，9/9 有证据归因，平均 2.9 条/shall
+
+[41/60] OR041: 海水冷却系统如果采用主循环泵相关配置，低供水情况要能报警，便于及时启动或切换。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooling_water_pump × alarm_setpoint)
+    (cooling_water_pump × auto_start)
+    (cooling_water_pump × redundancy)
+    (alarm_system × alarm_setpoint)
+  RAG v3: 5 shall，5/5 有证据归因，平均 1.8 条/shall
+
+[42/60] OR042: 冷却水泵、冷却器、管路和报警保护的配置要能在图纸和资料里看出规范依据。...
+  aligned_retrieve: 4 对 → 6 条证据
+    (cooling_water_pump × documentation)
+    (cooler × documentation)
+    (pipe × documentation)
+    (alarm_system × documentation)
+  RAG v3: 7 shall，7/7 有证据归因，平均 1.1 条/shall
+
+[43/60] OR043: 海水侧直接冷却时，滤器布置要考虑运行中清洗，不能一清洗就影响冷却供应。...
+  aligned_retrieve: 4 对 → 5 条证据
+    (filter × redundancy)
+    (filter × bypass)
+    (filter × cleaning)
+    (filter × installation)
+  RAG v3: 7 shall，7/7 有证据归因，平均 1.0 条/shall
+
+[44/60] OR044: 涉及水泄漏监测的冷却设备，要按适用规则考虑泄漏检测和声光报警。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_system × system_description)
+    (alarm_system × alarm_setpoint)
+    (alarm_system × alarm_response)
+  RAG v3: 6 shall，5/6 有证据归因，平均 1.2 条/shall
+
+[45/60] OR045: 冷却水系统的压力试验、冲洗和检查记录要完整，不能只口头说明已经做过。...
+  aligned_retrieve: 5 对 → 20 条证据
+    (cooling_system × test_procedure)
+    (cooling_system × documentation)
+    (pipe × pressure_test)
+    (pipe × cleaning)
+    (pipe × inspection)
+  RAG v3: 6 shall，6/6 有证据归因，平均 2.5 条/shall
+
+[46/60] OR046: 调试时要验证冷却水泵的压力、流量和备用切换情况，不要只看泵能不能转。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooling_water_pump × specification)
+    (cooling_water_pump × redundancy)
+    (cooling_water_pump × auto_start)
+    (cooling_system × test_procedure)
+  RAG v3: 16 shall，16/16 有证据归因，平均 2.1 条/shall
+
+[47/60] OR047: 冷却系统冲洗要有明确步骤，冲洗速度、时间和清洁结果不能太随意。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_system × test_procedure)
+    (pipe × cleaning)
+    (cooler × cleaning)
+  RAG v3: 11 shall，11/11 有证据归因，平均 2.2 条/shall
+
+[48/60] OR048: 温控阀实际动作情况要在试车中确认，不能只看采购文件上的设定。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (temperature_control_valve × set_point)
+    (temperature_control_valve × control_logic)
+    (cooling_system × test_procedure)
+  RAG v3: 8 shall，8/8 有证据归因，平均 2.6 条/shall
+
+[49/60] OR049: 膨胀水箱液位、补水和低液位报警要在试车前后检查，避免运行中液位异常。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (expansion_tank × level_control)
+    (expansion_tank × makeup_water)
+    (expansion_tank × alarm_setpoint)
+    (expansion_tank × inspection)
+  RAG v3: 8 shall，8/8 有证据归因，平均 2.2 条/shall
+
+[50/60] OR050: 冷却器换热效果要结合运行温度数据判断，不要只在低负荷时认为正常。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooler × inspection)
+    (cooler × maintenance)
+    (temperature_sensor × specification)
+    (cooling_system × test_procedure)
+  ⚠ RAG 返回空（连续 1 次）
+  RAG v3: 0 shall，0/0 有证据归因，平均 0.0 条/shall
+
+[51/60] OR051: 冷却器要方便打开、清洗和检查，周围管路不要挡住端盖或检修空间。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooler × cleaning)
+    (cooler × inspection)
+    (cooler × installation)
+    (pipe × installation)
+  RAG v3: 15 shall，15/15 有证据归因，平均 1.1 条/shall
+
+[52/60] OR052: 冷却水泵的密封、轴承和电机维护要有空间，不能拆一个小件就要移开很多管路。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_water_pump × maintenance)
+    (cooling_water_pump × installation)
+    (pipe × installation)
+  RAG v3: 30 shall，30/30 有证据归因，平均 1.1 条/shall
+
+[53/60] OR053: 海水侧和淡水侧容易结垢、沉积或污染的地方，要方便检查和清洗。...
+  aligned_retrieve: 5 对 → 16 条证据
+    (cooler × cleaning)
+    (cooler × fouling)
+    (filter × cleaning)
+    (sea_water × biofouling)
+    (sea_water × cleaning)
+  RAG v3: 12 shall，12/12 有证据归因，平均 1.2 条/shall
+
+[54/60] OR054: 防腐剂、冷却液和水质检测要求要说清楚，船上不能凭经验乱加。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (coolant × corrosion_inhibitor)
+    (coolant × water_quality)
+    (coolant × sampling)
+    (coolant × initial_fill)
+  RAG v3: 13 shall，12/13 有证据归因，平均 2.0 条/shall
+
+[55/60] OR055: 牺牲阳极或者其他防腐部件如果有配置，要方便检查和更换。...
+  aligned_retrieve: 3 对 → 4 条证据
+    (anode × inspection)
+    (anode × replacement_cycle)
+    (anode × installation)
+  RAG v3: 4 shall，4/4 有证据归因，平均 1.0 条/shall
+
+[56/60] OR056: 安装完成后要检查阀门方向、管路连接、支架和仪表安装位置，不能只看外观。...
+  aligned_retrieve: 5 对 → 20 条证据
+    (valve × installation)
+    (pipe × installation)
+    (pipe_support × installation)
+    (temperature_sensor × installation)
+    (pressure_sensor × installation)
+  RAG v3: 11 shall，11/11 有证据归因，平均 2.0 条/shall
+
+[57/60] OR057: 冷却水系统压力试验要有试验压力、保压时间和泄漏检查记录。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (cooling_system × test_procedure)
+    (pipe × pressure_test)
+    (cooler × pressure_test)
+    (cooling_water_pump × pressure_test)
+  RAG v3: 9 shall，9/9 有证据归因，平均 3.1 条/shall
+
+[58/60] OR058: 报警和传感器要做实际动作测试，不要只确认监控画面上有信号。...
+  aligned_retrieve: 4 对 → 0 条证据
+    (alarm_system × test_procedure)
+    (temperature_sensor × calibration)
+    (pressure_sensor × calibration)
+    (level_sensor × calibration)
+  ⚠ RAG 返回空（连续 1 次）
+  RAG v3: 0 shall，0/0 有证据归因，平均 0.0 条/shall
+
+[59/60] OR059: 冷却液水质、污染物和沉积风险要有检查办法，不能等系统运行后再发现问题。...
+  aligned_retrieve: 4 对 → 20 条证据
+    (coolant × water_quality)
+    (coolant × sampling)
+    (coolant × inspection)
+    (cooler × fouling)
+  RAG v3: 19 shall，19/19 有证据归因，平均 1.1 条/shall
+
+[60/60] OR060: 冷却水系统的厂家资料、规范要求、采购清单和施工图要保持一致，不然后面变更会很多。...
+  aligned_retrieve: 3 对 → 20 条证据
+    (cooling_system × documentation)
+    (cooling_system × drawing_requirement)
+    (cooling_system × spare_parts)
+  RAG v3: 24 shall，24/24 有证据归因，平均 1.4 条/shall
+已写入: D:\cooling_rag_multigranular\cooling_rag_multigranular\data\search_results\exp_v3\rag_v3_results.json
+
+=======================================================
+v3 流程完成
+=======================================================
+RAG v3: 60 源 / 552 shall
+  有证据归因 shall: 542/552 (98.2%)
+  平均检索对数/源: 4.0
+  平均证据数/源:   17.0（v2 为 ~32）
+结果目录: D:\cooling_rag_multigranular\cooling_rag_multigranular\data\search_results\exp_v3
+
+下一步评估：
+  python scripts/46_evaluate_v2.py  （可复用评估脚本对比 v3 结果）
+
+===== [0] scripts/54_run_pipelines_v3.py --rag-only =====
+加载 v3 RAG 结果（rag_v3_results.json）...
+加载证据单元索引（evidence_units_v3_audited.jsonl）...
+加载原始需求文本（original_requirements_v2.jsonl）...
+[01/60] OR001 evidence=10 with_values=8 shalls=8 grades={'C': 7, 'B': 1}
+[02/60] OR002 evidence=17 with_values=10 shalls=7 grades={'C': 5, 'B': 2}
+[03/60] OR003 extract_values_from_evidence: failed to parse LLM response
+evidence=10 with_values=4 shalls=8 grades={'C': 7, 'B': 1}
+[04/60] OR004 evidence=8 with_values=7 shalls=0 grades={}
+[05/60] OR005 evidence=11 with_values=3 shalls=9 grades={'C': 9}
+[06/60] OR006 evidence=11 with_values=7 shalls=0 grades={}
+[07/60] OR007 evidence=20 with_values=13 shalls=0 grades={}
+[08/60] OR008 evidence=4 with_values=4 shalls=6 grades={'B': 1, 'C': 5}
+[09/60] OR009 evidence=3 with_values=1 shalls=3 grades={'C': 3}
+[10/60] OR010 evidence=18 with_values=10 
+===== [1] scripts/77_run_v4_rag.py =====

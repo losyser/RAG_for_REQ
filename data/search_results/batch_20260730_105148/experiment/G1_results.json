@@ -1,0 +1,359 @@
+{
+  "group": "G1",
+  "result_sets": [
+    {
+      "requirement_set_id": "ER-G1-001",
+      "source_requirement_id": "R001",
+      "stakeholder": "船东代表",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "将船东对主机冷却水系统高可靠性的要求转化为具体工程需求，包括冗余设计、参数控制、报警保护等，确保系统在连续运行、高温环境及负荷变化下稳定工作。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-001-01",
+          "parent_id": "ER-G1-001",
+          "level": 1,
+          "requirement_type": "redundancy",
+          "topic": "冷却水泵冗余",
+          "shall_statement": "主机冷却水系统应配备至少两台冷却水泵，其中一台为备用泵，当运行泵故障时备用泵应能自动启动并维持冷却水循环。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "备用泵自动启动时间不超过规定值",
+            "切换后冷却水流量不低于设计值"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "单泵故障可能导致冷却中断，影响主机安全。"
+        },
+        {
+          "id": "ER-G1-001-02",
+          "parent_id": "ER-G1-001",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "冷却能力设计",
+          "shall_statement": "主机冷却水系统在热带海区高温环境（海水温度32°C）及主机最大持续功率工况下，应能保持主机冷却水出口温度不超过制造商规定的最高允许值。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "在指定工况下冷却水出口温度低于最高允许值"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "冷却能力不足导致主机过热，影响推进安全。"
+        },
+        {
+          "id": "ER-G1-001-03",
+          "parent_id": "ER-G1-001",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "温度控制",
+          "shall_statement": "主机冷却水系统应配备自动温度控制阀，根据主机负荷变化调节冷却水旁通量，使主机冷却水出口温度稳定在制造商规定的正常工作范围内。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "温度控制阀响应时间符合要求",
+            "温度波动范围在制造商规定内"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "温度失控可能导致主机热应力过大或效率降低。"
+        },
+        {
+          "id": "ER-G1-001-04",
+          "level": 1,
+          "parent_id": "ER-G1-001",
+          "requirement_type": "alarm_protection",
+          "topic": "冷却水高温报警",
+          "shall_statement": "主机冷却水系统应设置冷却水出口高温报警，当温度超过制造商规定的报警设定值时，发出声光报警。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "报警功能正常，设定值准确"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法及时预警高温，可能导致主机损坏。"
+        },
+        {
+          "id": "ER-G1-001-05",
+          "level": 1,
+          "parent_id": "ER-G1-001",
+          "requirement_type": "alarm_protection",
+          "topic": "冷却水流量低报警",
+          "shall_statement": "主机冷却水系统应设置冷却水流量低报警，当流量低于制造商规定的最小允许值时，发出声光报警。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "报警功能正常，设定值准确"
+          ],
+          "verification_method": "test",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "无法及时发现循环中断，导致主机过热。"
+        },
+        {
+          "id": "ER-G1-001-06",
+          "level": 1,
+          "parent_id": "ER-G1-001",
+          "requirement_type": "configuration",
+          "topic": "系统配置",
+          "shall_statement": "主机冷却水系统应包括膨胀水箱、冷却器、温度控制阀、压力表、温度传感器等必要组件，并满足相关船级社规范要求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "组件齐全，符合规范"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "系统不完整或不符合规范，影响运行可靠性。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        "确认制造商关于冷却水温度、流量、压力等参数的具体数值",
+        "确认热带海区海水温度设计值",
+        "确认船级社规范要求"
+      ],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-002",
+      "source_requirement_id": "R002",
+      "stakeholder": "主机厂家",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该要求确保主机冷却水系统设计参数（温度、压力、流量）与主机厂家技术文件一致，并保证高温和低温冷却水回路的设计参数与主机技术数据、泵曲线、冷却器选型和热平衡计算相匹配。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-002-01",
+          "parent_id": "ER-G1-002",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "主机入口冷却水参数",
+          "shall_statement": "主机入口冷却水温度、压力和流量应满足主机厂家技术文件规定的范围，具体数值待主机厂家技术数据确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "主机入口冷却水温度、压力和流量在主机厂家技术文件规定的范围内"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "可能导致主机冷却不足或过度冷却，影响主机性能和寿命。"
+        },
+        {
+          "id": "ER-G1-002-02",
+          "parent_id": "ER-G1-002",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "主机出口冷却水参数",
+          "shall_statement": "主机出口冷却水温度、压力和流量应满足主机厂家技术文件规定的范围，具体数值待主机厂家技术数据确认。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "主机出口冷却水温度、压力和流量在主机厂家技术文件规定的范围内"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "可能导致主机冷却系统效率降低或损坏。"
+        },
+        {
+          "id": "ER-G1-002-03",
+          "parent_id": "ER-G1-002",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "高温冷却水回路设计参数一致性",
+          "shall_statement": "高温冷却水回路的设计参数（温度、压力、流量）应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "高温冷却水回路设计参数与主机技术数据、泵曲线、冷却器选型和热平衡计算结果一致"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "可能导致系统不匹配，冷却效果不佳或能耗过高。"
+        },
+        {
+          "id": "ER-G1-002-04",
+          "parent_id": "ER-G1-002",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "低温冷却水回路设计参数一致性",
+          "shall_statement": "低温冷却水回路的设计参数（温度、压力、流量）应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "低温冷却水回路设计参数与主机技术数据、泵曲线、冷却器选型和热平衡计算结果一致"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "可能导致系统不匹配，冷却效果不佳或能耗过高。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-R003",
+      "source_requirement_id": "R003",
+      "stakeholder": "系统设计方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "该需求要求主机冷却水系统在原理图中清晰区分高温冷却水回路、低温冷却水回路以及海水侧或中央冷却系统的边界，并明确各回路的设备连接、流向、接口和服务对象。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-R003-01",
+          "parent_id": "ER-G1-R003",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "系统原理图边界定义",
+          "shall_statement": "主机冷却水系统原理图应明确标示高温冷却水回路、低温冷却水回路以及海水侧或中央冷却系统的边界，包括各回路之间的隔离点或连接点。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "原理图中各回路边界用虚线或不同颜色区分，并标注边界名称"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "系统边界不清可能导致调试和运行中误操作，影响冷却效果和设备安全。"
+        },
+        {
+          "id": "ER-G1-R003-02",
+          "parent_id": "ER-G1-R003",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "设备连接与流向",
+          "shall_statement": "系统原理图应详细表示每个回路内所有设备的连接关系、冷却介质流向、接口类型（如法兰、螺纹）以及各接口所服务的具体对象（如主机、发电机、滑油冷却器等）。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "原理图中每个设备均标注名称、接口规格和流向箭头，服务对象列表清晰"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "连接关系不明确会导致安装错误和维修困难。"
+        },
+        {
+          "id": "ER-G1-R003-03",
+          "parent_id": "ER-G1-R003",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "回路标识与图例",
+          "shall_statement": "系统原理图应包含图例，明确区分高温冷却水回路、低温冷却水回路和海水侧/中央冷却系统的符号、颜色或线型，并在图中统一使用。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "图例中定义各回路标识，原理图中所有回路均按图例标识"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "标识混乱会导致读图错误，影响系统理解。"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    },
+    {
+      "requirement_set_id": "ER-G1-R004",
+      "source_requirement_id": "R004",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "direct_llm_no_evidence",
+      "professional_summary": "冷却水系统管路布置需满足施工便利性、紧凑性和可维护性要求，包括管路走向、阀门位置、支架布置、放水点、排气点和设备接口的易操作性。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-G1-R004-01",
+          "parent_id": "ER-G1-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "管路布置紧凑性",
+          "shall_statement": "冷却水系统管路布置应紧凑，在满足功能要求的前提下，尽量减少管路长度和弯头数量，以降低流动阻力和安装空间需求。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "管路布置图经审查确认紧凑性符合设计要求"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路占用过多空间，影响其他设备布置，增加建造成本"
+        },
+        {
+          "id": "ER-G1-R004-02",
+          "parent_id": "ER-G1-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "管路施工便利性",
+          "shall_statement": "冷却水系统管路布置应便于现场焊接、安装、冲洗、压力试验和后续检查。管路走向应避免与其他系统干涉，阀门位置应易于操作和维修，支架布置应合理且便于固定。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "施工方确认管路布置满足施工便利性要求",
+            "现场验证无干涉"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "施工困难，延长工期，增加人工成本"
+        },
+        {
+          "id": "ER-G1-R004-03",
+          "parent_id": "ER-G1-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "放水点与排气点布置",
+          "shall_statement": "冷却水系统应在管路最低点设置放水点，在最高点设置排气点，放水点和排气点的位置应便于操作和排放。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "放水点位于管路最低点，排气点位于最高点",
+            "操作空间满足要求"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "系统排水不彻底或气体积聚，影响冷却效果和系统安全"
+        },
+        {
+          "id": "ER-G1-R004-04",
+          "parent_id": "ER-G1-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "设备接口布置",
+          "shall_statement": "冷却水系统设备接口（如泵、冷却器、发动机等）的布置应便于连接、拆卸和维修，接口处应预留足够的操作空间。",
+          "engineering_rationale": "Generated from domain knowledge without evidence.",
+          "acceptance_criteria": [
+            "接口处操作空间满足工具使用要求",
+            "接口连接方便"
+          ],
+          "verification_method": "inspection",
+          "evidence_ids": [],
+          "support_status": "no_evidence_baseline",
+          "applicability_constraints": [],
+          "risk_if_unmet": "设备维修困难，增加停机时间"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": [],
+      "confirmation_items": [],
+      "_group": "G1"
+    }
+  ]
+}

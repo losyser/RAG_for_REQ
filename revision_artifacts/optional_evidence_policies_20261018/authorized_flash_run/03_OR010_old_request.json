@@ -1,0 +1,46 @@
+{
+  "case": "OR010",
+  "arm": "old",
+  "commit": "3659d37ed21a2f286027f2603b171f2ad22565fe",
+  "reason": "Fixed prior dGH unit boundary",
+  "selected_ids": [
+    "E-COOLANT-WATER-040",
+    "E-COOLANT-INSP-014",
+    "E-COOLANT-INSP-096",
+    "E-SYS-INSP-009",
+    "E-COOLANT-MAINT-003",
+    "E-COOLANT-WATER-065",
+    "E-COOLANT-INSP-077",
+    "E-COOLANT-WATER-157",
+    "E-HT-WATER-002",
+    "E-COOLANT-WATER-051",
+    "E-SYS-WATER-013",
+    "E-SYS-WATER-017"
+  ],
+  "options": {},
+  "prompt_chars": 7320,
+  "prompt_utf8_bytes": 13052,
+  "input_token_planning_ceiling": 17148,
+  "max_output_tokens": 8192,
+  "request_utf8_bytes": 13371,
+  "request_sha256": "0abb2092a8c065a10b9e12f5ca0a3ef51d694a8c33151df6208b0a6543731a30",
+  "request": {
+    "model": "deepseek-flash",
+    "messages": [
+      {
+        "role": "user",
+        "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却液的水质、添加剂和防冻比例要符合厂家要求，否则容易出现腐蚀、沉积或者换热变差。\n\n## 证据清单\n[E-COOLANT-WATER-040] 层级:L3 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 冷却液冰点与乙二醇比例：冷却液浓缩液储存能力规格适用于原装、密封包装，储存温度最高为30°C；冷却液浓缩液限值品牌名称/备注防冻剂约3年，需遵守制造商规范。适用条件：储存于原装密封包装，温度≤30°C。\n\n重要：出于腐蚀防护原因，不得储存于镀锌容器中；当冷却液需要转移时需考虑此要求；容器应密封储存于阴凉干燥处；寒冷季节需确保适当的防冻保护。适用条件：通用冷却液储存与处理。\n\n可支撑：coolant 的 water_quality；corrosion_protection；temperature 参数应依据来源文件、厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 30°C、约3年\n\n[E-COOLANT-INSP-014] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却液水质检测方法：当使用化学添加剂时，测试设备应依据供应商建议；供应商提供的测试套件可用于测定淡水水质。\n\n适用对象/类别（冷却液，无添加剂）：总硬度 ≤ 10 dGH；pH值 6.5 – 8 在20 °C；氯离子含量 ≤ 50 mg/l。适用条件：用于填充和补充的水（无添加剂）。\n\n适用对象/类别（冷却液，有添加剂）：总硬度 ≤ 10 dGH；pH值 ≥ 7.5 在20 °C；氯离子含量 ≤ 50 mg/l。适用条件：循环水（有添加剂）。\n\n可支撑：coolant 的 inspection；water_quality；environmental_protection 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 10、6.5、8、20、50、10、7.5、20、50\n\n[E-COOLANT-INSP-096] 层级:L3 来源:S42 MAN 49/60DF Project Guide\n  内容: 冷却液水质检测方法：添加剂浓度，当使用化学添加剂时，检测设备应遵循供应商建议；供应商提供的检测套件也可用于测定淡水水质。适用条件：水质检测。\n\n淡水（无添加剂，用于加注和补充）：总硬度 ≤ 10 dGH；pH值 6.5 – 8 在 20 °C；氯离子含量 ≤ 50 mg/l。适用条件：冷却液水质规格（短版）。\n\n循环水（含添加剂）：总硬度 ≤ 10 dGH；pH值 ≥ 7.5 在 20 °C；氯离子含量 ≤ 50 mg/l。适用条件：冷却液水质规格（短版）。\n\ndGH：德国硬度单位。\n\n可支撑：coolant 的 inspection；water_quality；environmental_protection 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 10、6.5、8、20、50、10、7.5、20、50\n\n[E-SYS-INSP-009] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却液水质检测方法：总硬度 ≤ 10 dGH；适用条件：水类型为清水（无添加剂），用于填充和再填充。\n冷却液水质检测方法：总硬度 ≤ 10 dGH；适用条件：水类型为处理过的冷却液（循环水，含添加剂）。\n冷却液水质检测方法：pH值 6.5 – 8 在 20 °C；适用条件：水类型为清水（无添加剂），用于填充和再填充。\n冷却液水质检测方法：pH值 ≥ 7.5 在 20 °C；适用条件：水类型为处理过的冷却液（循环水，含添加剂）。\n冷却液水质检测方法：氯离子含量 ≤ 50 mg/l；适用条件：水类型为清水（无添加剂），用于填充和再填充。\n冷却液水质检测方法：氯离子含量 ≤ 50 mg/l；适用条件：水类型为处理过的冷却液（循环水，含添加剂）。\n\n可支撑：main_engine_cooling_water_system 的 inspection water_quality flow 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、\n  [量化参数] 10、6.5、8、20、7.5、20、50、50\n\n[E-COOLANT-MAINT-003] 层级:L2 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 冷却液更换与合规要求：氯离子含量 ≤ 25 mg/l。适用条件：Table 11 冷却液要求；冷却液必须在不满足上述规格时更换。注意：对于冷却液功能的整体评估，除上述限值外，还必须考虑各自冷却液的特有特性数据以及所用淡水水质。\n\n可支撑：coolant 的 maintenance；water_quality；function 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 25\n\n[E-COOLANT-WATER-065] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却液冰点与乙二醇比例：服务时间 = 12000小时或6年；Cat ELC不需要频繁添加SCA（补充冷却液添加剂）；在6000服务小时或ELC使用寿命的一半时，仅需添加Extender；Cat ELC以1:1预混合冷却液形式提供，使用蒸馏水；预混合ELC提供防冻保护至-37°C（-34°F）；预混合ELC推荐用于冷却系统的初始加注；预混合ELC也推荐用于冷却系统的加满；ELC浓缩液也可使用；ELC浓缩液可将冰点降低至-52°C（-62°F），适用于北极条件。适用条件：Cat ELC冷却液，基于Caterpillar EC-1规范。\n\n可支撑：coolant 的 water_quality；maintenance；temperature 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 12000、6、6000、1:1、-37、-34、-52、-62\n\n[E-COOLANT-INSP-077] 层级:L2 来源:S39 MAN L21/31 Project Guide\n  内容: 冷却液水质检测方法：未处理冷却液的性质必须符合以下限值：总硬度 ≤ 10 dGH；pH值 6.5 – 8；氯离子含量 ≤ 50 mg/l。适用条件：水质类型为蒸馏水或淡水，无外来杂质。1 dGH（德国硬度）≙ 10 mg CaO/升水 ≙ 17.9 mg CaCO3/l ≙ 0.357 mval/l ≙ 0.179 mmol/l；1 mg/l ≙ 1 ppm。MAN Energy Solutions 水质检测设备包含直接测定上述水性质的装置。防腐蚀剂制造商也提供用户友好的检测设备。冷却水检查说明见 010.005 Engine – Work Instructions 010.000.002-03。若使用蒸馏水（例如来自淡水发生器）或完全脱盐水，需注意相关要求。\n\n可支撑：coolant 的 inspection；water_quality 参数应依据来源文件、厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 10、6.5、8、50、1、10、17.9、0.357、0.179、1、1、010.005、010.000.002-03\n\n[E-COOLANT-WATER-157] 层级:L2 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 冷却液冰点与乙二醇比例：冷却液容量（总容量）为A；测量浓度为B；升数为C；体积百分比为D；防冻液补充量（如果冷却液液位在规格范围内，必须排出此量！）为E；计算示例为F。适用条件：MTU发动机冷却液或冷却液添加剂，MTU ValueCare框架内可用。\n\nMTU Friedrichshafen GmbH，MTU Asia Europe Middle East Africa Asia：产品名称为Coolant AH 100，类型为防冻浓缩液；产品名称为Coolant AH 50/50，类型为防冻预混液；产品名称为Coolant AH 40/60，类型为防冻预混液。适用条件：防冻浓缩液、防冻预混液。\n\nMTU America Inc.，Americas：产品名称为Power Cool®Universal 50/50 mix，类型为防冻预混液。适用条件：防冻预混液。\n\n可支撑：coolant 的 water_quality capacity calculation 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直\n  [量化参数] 100、50/50、40/60、50/50\n\n[E-HT-WATER-002] 层级:L3 来源:S09 MAN Energy Solutions SL2014-584 Cooling Water System\n  内容: 冷却液污染与沉积风险\nascertained and evaluated on an ongoing basis. Any time a substantial amount of cooling water is changed or added, the inhibitor concentration should be checked to ensure a proper level. Improved O-ring compound (peroxide cured) In cases of repeated cooling water leakages from the cool - ing jackets on the cylinder liner or the cylinder cover, we recommend installation of our new O-rings of an improved compound. The new O-rings will provide improved resis - tance against high temperat\n\n[E-COOLANT-WATER-051] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 冷却液防腐剂使用前提\n9.1.1 Corrosion inhibitors The use of an approved cooling water additiveis mandatory. An updated list of approved products is supplied for every installation and it can also be found in the Instruction manual of the engine, together with dosage and further instructions.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：coolant 的 water_quality\ncorrosion_protection\ninstallation 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具\n\n[E-SYS-WATER-013] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却液污染与沉积风险\nCorrosion is a chemical or electrochemical action that gradually wears away metal surfaces in the cooling system. In some instances, corrosion can eventually destroy an engine. All cooling system components need protection from corrosion. Supplemental coolant additives are used to protect metal surfaces. They coat these surfaces and prevent the formation of scale, rust, and cavitation erosion. Types of cooling system corrosion are pitting and cavitation erosion, rust, acidity-alkalini\n\n[E-SYS-WATER-017] 层级:L3 来源:S42 MAN 49/60DF Project Guide\n  内容: 水质参数要求\nIn closed circuits only Additives may only be used in closed circuits where no significant consump- tion occurs, apart from leaks or evaporation losses. Observe the applicable environmental protection regulations when disposing of coolant containing additives. For more information, consult the additive supplier. Chemical additives Sodium nitrite and sodium borate based additives etc. have a proven track re- cord. Galvanised iron pipes or zinc sacrificial anodes must not be used in cooling\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 8192,
+    "response_format": {
+      "type": "json_object"
+    },
+    "extra_body": {
+      "thinking": {
+        "type": "disabled"
+      }
+    }
+  }
+}

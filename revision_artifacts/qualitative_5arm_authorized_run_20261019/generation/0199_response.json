@@ -1,0 +1,228 @@
+{
+  "slot": "OR040-random_old",
+  "started_at": "2026-10-19T03:01:45.480083+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"ecacb510-1175-4df9-b119-648e4493357c\",\"object\":\"chat.completion\",\"created\":1792378906,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"主机高温冷却水系统应设置气缸冷却水出口温度高报警，并在机舱集控站（室）显示并发出极限报警。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025 第7-46条|component:气缸冷却水出口|intent:高温报警设定值|hint:规范仅要求设置高温极限报警，具体报警阈值需依据主机厂家MAN 49/60DF文件确定，不得随意设定}}\\\", \\\"applicable_condition\\\": \\\"主机运行于MAN L49/60DF IMO Tier II气体模式，电力推进/EPROX-AC配置，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"气缸冷却水出口温度达到设定阈值时，机舱集控站（室）显示并发出极限报警\\\", \\\"报警触发值不低于厂家设计文件中规定的气缸冷却水出口温度限值\\\", \\\"报警信号在集控站可被确认并记录\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"L1-CCS2025-7-46-016\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-JACKET-MON-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"高温冷却水温度报警设定值应以主机设计工况下的HT冷却水温度为基准确定，其中HP TC增压空气冷却器出口HT冷却水温度设计值为83°C，不得随意偏离该设计基准。\\\", \\\"measurable_criterion\\\": \\\"83 °C（HP TC增压空气冷却器出口HT冷却水温度设计值）\\\", \\\"applicable_condition\\\": \\\"MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"报警设定值以83°C设计温度为基准并留有合理裕量，裕量取值在需求评审中记录并可追溯\\\", \\\"报警设定值不得低于设计工况稳态运行温度，避免正常运行误报警\\\", \\\"设定依据形成文件并经船东/船级社确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-JACKET-MON-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"低温冷却水及增压空气冷却相关温度报警设定应以设计条件为基准，其中LP TC增压空气冷却器出口（最后一个增压空气冷却器）HT冷却水温度等于LT冷却水空气冷却器入口38°C、设定点32°C，滑油发动机入口65°C，喷嘴冷却水发动机入口60°C。\\\", \\\"measurable_criterion\\\": \\\"38 °C（LP TC增压空气冷却器出口HT冷却水温度/LT冷却水空气冷却器入口）；32 °C（LT冷却水空气冷却器设定点）；65 °C（滑油发动机入口）；60 °C（喷嘴冷却水发动机入口）\\\", \\\"applicable_condition\\\": \\\"MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"各温度测点报警设定值以对应设计值为基准，偏差在需求评审中记录\\\", \\\"报警设定值不侵入设计稳态运行区间，避免频繁误报警\\\", \\\"设定值清单纳入报警设定表并经确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-JACKET-MON-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水温度报警应设置延时确认，延时时间应兼顾既不过迟报警也不因瞬时波动频繁误报警，延时值应依据主机热惯性及厂家文件确定并形成可追溯记录。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide / 项目报警设定程序|component:冷却水温度报警回路|intent:报警延时时间|hint:需依据主机热惯性与厂家推荐确定，避免过迟报警与频繁误报警，不得随意取值}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统所有温度类报警回路，含HT/LT冷却水及滑油、喷嘴冷却水温度报警\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"温度越限持续时间小于延时设定值时不应触发报警\\\", \\\"温度持续越限超过延时设定值时应可靠触发报警\\\", \\\"延时设定值在报警设定表中记录并经船东/船级社确认\\\", \\\"在典型工况波动下不产生频繁误报警\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-JACKET-MON-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"L1-CCS2025-7-46-016\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统报警设定与延时参数应形成统一的报警设定表，明确每个测点的设定值、延时、死区与复位方式，禁止未经评审的随意修改。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:项|ref:项目报警设定程序|component:冷却水系统报警设定表|intent:受控参数项数|hint:应覆盖全部冷却水温度/泄漏类报警测点，具体项数由系统测点清单确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统设计、调试与运行阶段\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警设定表覆盖全部冷却水相关报警测点\\\", \\\"每个测点均记录设定值、延时、死区、复位方式及依据来源\\\", \\\"设定表变更须经评审并保留变更记录\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-JACKET-MON-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-HT-SHUT-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置泄漏报警，泄漏报警信号应在机舱集控站（室）显示，报警设定与延时不得随意调整。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:—|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泄漏检测回路|intent:泄漏报警触发判据与延时|hint:厂家文件仅说明设置泄漏报警，具体触发阈值与延时需由项目报警设定程序确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统运行工况，含内部喷嘴冷却系统（以发动机滑油为介质的温度控制回路）\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟泄漏时集控站显示泄漏报警\\\", \\\"泄漏报警延时设定避免因正常补水或波动误触发\\\", \\\"报警设定值记录于报警设定表\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-SYS-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水温度报警设定应结合冷却系统腐蚀、气蚀与结垢风险确定，避免因报警阈值过宽导致缸套壁面点蚀与腐蚀长期不被发现。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S29 Caterpillar, Know Your Cooling System / S21 Caterpillar Cooling Systems Application and Installation Guide|component:气缸冷却水回路|intent:腐蚀与气蚀风险相关温度报警裕量|hint:证据仅给出风险机理，未给出具体数值，阈值需由厂家文件与项目程序确定}}\\\", \\\"applicable_condition\\\": \\\"主机冷却水系统全寿命运行阶段，含冷却液维护与清洗后重新投运工况\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"报警设定分析中考虑气蚀-腐蚀联合作用风险\\\", \\\"报警阈值不宽于厂家推荐的冷却水温度运行限值\\\", \\\"分析结论纳入报警设定依据文件\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLANT-CORR-006\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S29 Caterpillar, Know Your Cooling System\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-JACKET-WATER-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"板式换热器清洗后重新投运前，应确认换热能力恢复情况并复查残留清洗剂、泄漏与沉积物，相关确认结果应作为冷却水温度报警设定复核的输入。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:—|ref:S32 HY/T 海水循环冷却系统运行管理规范 9.3.10|component:板式换热器|intent:清洗后换热能力恢复与残留复查判据|hint:来源文件未给出具体数值判据，需按项目维护程序或厂家文件确认}}\\\", \\\"applicable_condition\\\": \\\"板式换热器结垢严重而影响换热效果后的拆解清洗及重新投运工况\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"清洗后投运前完成残留清洗剂、泄漏、沉积物及换热能力恢复检查\\\", \\\"检查结果记录并可追溯\\\", \\\"换热能力未恢复时复核冷却水温度报警设定与延时\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-CLEAN-016\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S32 HY/T 海水循环冷却系统运行管理规范\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1853,\"completion_tokens\":2425,\"total_tokens\":4278,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":1853},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:01:46 GMT"
+  },
+  "response": {
+    "id": "ecacb510-1175-4df9-b119-648e4493357c",
+    "object": "chat.completion",
+    "created": 1792378906,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"主机高温冷却水系统应设置气缸冷却水出口温度高报警，并在机舱集控站（室）显示并发出极限报警。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025 第7-46条|component:气缸冷却水出口|intent:高温报警设定值|hint:规范仅要求设置高温极限报警，具体报警阈值需依据主机厂家MAN 49/60DF文件确定，不得随意设定}}\", \"applicable_condition\": \"主机运行于MAN L49/60DF IMO Tier II气体模式，电力推进/EPROX-AC配置，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"气缸冷却水出口温度达到设定阈值时，机舱集控站（室）显示并发出极限报警\", \"报警触发值不低于厂家设计文件中规定的气缸冷却水出口温度限值\", \"报警信号在集控站可被确认并记录\"], \"evidence_citations\": [{\"kb_id\": \"L1-CCS2025-7-46-016\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}, {\"kb_id\": \"E-JACKET-MON-005\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"高温冷却水温度报警设定值应以主机设计工况下的HT冷却水温度为基准确定，其中HP TC增压空气冷却器出口HT冷却水温度设计值为83°C，不得随意偏离该设计基准。\", \"measurable_criterion\": \"83 °C（HP TC增压空气冷却器出口HT冷却水温度设计值）\", \"applicable_condition\": \"MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"报警设定值以83°C设计温度为基准并留有合理裕量，裕量取值在需求评审中记录并可追溯\", \"报警设定值不得低于设计工况稳态运行温度，避免正常运行误报警\", \"设定依据形成文件并经船东/船级社确认\"], \"evidence_citations\": [{\"kb_id\": \"E-JACKET-MON-005\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"低温冷却水及增压空气冷却相关温度报警设定应以设计条件为基准，其中LP TC增压空气冷却器出口（最后一个增压空气冷却器）HT冷却水温度等于LT冷却水空气冷却器入口38°C、设定点32°C，滑油发动机入口65°C，喷嘴冷却水发动机入口60°C。\", \"measurable_criterion\": \"38 °C（LP TC增压空气冷却器出口HT冷却水温度/LT冷却水空气冷却器入口）；32 °C（LT冷却水空气冷却器设定点）；65 °C（滑油发动机入口）；60 °C（喷嘴冷却水发动机入口）\", \"applicable_condition\": \"MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"各温度测点报警设定值以对应设计值为基准，偏差在需求评审中记录\", \"报警设定值不侵入设计稳态运行区间，避免频繁误报警\", \"设定值清单纳入报警设定表并经确认\"], \"evidence_citations\": [{\"kb_id\": \"E-JACKET-MON-005\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水温度报警应设置延时确认，延时时间应兼顾既不过迟报警也不因瞬时波动频繁误报警，延时值应依据主机热惯性及厂家文件确定并形成可追溯记录。\", \"measurable_criterion\": \"{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide / 项目报警设定程序|component:冷却水温度报警回路|intent:报警延时时间|hint:需依据主机热惯性与厂家推荐确定，避免过迟报警与频繁误报警，不得随意取值}}\", \"applicable_condition\": \"主机冷却水系统所有温度类报警回路，含HT/LT冷却水及滑油、喷嘴冷却水温度报警\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"温度越限持续时间小于延时设定值时不应触发报警\", \"温度持续越限超过延时设定值时应可靠触发报警\", \"延时设定值在报警设定表中记录并经船东/船级社确认\", \"在典型工况波动下不产生频繁误报警\"], \"evidence_citations\": [{\"kb_id\": \"E-JACKET-MON-005\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": false}, {\"kb_id\": \"L1-CCS2025-7-46-016\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统报警设定与延时参数应形成统一的报警设定表，明确每个测点的设定值、延时、死区与复位方式，禁止未经评审的随意修改。\", \"measurable_criterion\": \"{{TBD|unit:项|ref:项目报警设定程序|component:冷却水系统报警设定表|intent:受控参数项数|hint:应覆盖全部冷却水温度/泄漏类报警测点，具体项数由系统测点清单确定}}\", \"applicable_condition\": \"主机冷却水系统设计、调试与运行阶段\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警设定表覆盖全部冷却水相关报警测点\", \"每个测点均记录设定值、延时、死区、复位方式及依据来源\", \"设定表变更须经评审并保留变更记录\"], \"evidence_citations\": [{\"kb_id\": \"E-JACKET-MON-005\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": false}, {\"kb_id\": \"E-HT-SHUT-001\", \"tier\": \"L3\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统应设置泄漏报警，泄漏报警信号应在机舱集控站（室）显示，报警设定与延时不得随意调整。\", \"measurable_criterion\": \"{{TBD|unit:—|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泄漏检测回路|intent:泄漏报警触发判据与延时|hint:厂家文件仅说明设置泄漏报警，具体触发阈值与延时需由项目报警设定程序确定}}\", \"applicable_condition\": \"主机冷却水系统运行工况，含内部喷嘴冷却系统（以发动机滑油为介质的温度控制回路）\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟泄漏时集控站显示泄漏报警\", \"泄漏报警延时设定避免因正常补水或波动误触发\", \"报警设定值记录于报警设定表\"], \"evidence_citations\": [{\"kb_id\": \"E-SYS-ALARM-001\", \"tier\": \"L3\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水温度报警设定应结合冷却系统腐蚀、气蚀与结垢风险确定，避免因报警阈值过宽导致缸套壁面点蚀与腐蚀长期不被发现。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S29 Caterpillar, Know Your Cooling System / S21 Caterpillar Cooling Systems Application and Installation Guide|component:气缸冷却水回路|intent:腐蚀与气蚀风险相关温度报警裕量|hint:证据仅给出风险机理，未给出具体数值，阈值需由厂家文件与项目程序确定}}\", \"applicable_condition\": \"主机冷却水系统全寿命运行阶段，含冷却液维护与清洗后重新投运工况\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"报警设定分析中考虑气蚀-腐蚀联合作用风险\", \"报警阈值不宽于厂家推荐的冷却水温度运行限值\", \"分析结论纳入报警设定依据文件\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLANT-CORR-006\", \"tier\": \"L3\", \"source\": \"S29 Caterpillar, Know Your Cooling System\", \"has_clause\": false}, {\"kb_id\": \"E-JACKET-WATER-001\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"板式换热器清洗后重新投运前，应确认换热能力恢复情况并复查残留清洗剂、泄漏与沉积物，相关确认结果应作为冷却水温度报警设定复核的输入。\", \"measurable_criterion\": \"{{TBD|unit:—|ref:S32 HY/T 海水循环冷却系统运行管理规范 9.3.10|component:板式换热器|intent:清洗后换热能力恢复与残留复查判据|hint:来源文件未给出具体数值判据，需按项目维护程序或厂家文件确认}}\", \"applicable_condition\": \"板式换热器结垢严重而影响换热效果后的拆解清洗及重新投运工况\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"清洗后投运前完成残留清洗剂、泄漏、沉积物及换热能力恢复检查\", \"检查结果记录并可追溯\", \"换热能力未恢复时复核冷却水温度报警设定与延时\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-CLEAN-016\", \"tier\": \"L1\", \"source\": \"S32 HY/T 海水循环冷却系统运行管理规范\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1853,
+      "completion_tokens": 2425,
+      "total_tokens": 4278,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1853
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.023106",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.023106",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "主机高温冷却水系统应设置气缸冷却水出口温度高报警，并在机舱集控站（室）显示并发出极限报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025 第7-46条|component:气缸冷却水出口|intent:高温报警设定值|hint:规范仅要求设置高温极限报警，具体报警阈值需依据主机厂家MAN 49/60DF文件确定，不得随意设定}}",
+        "applicable_condition": "主机运行于MAN L49/60DF IMO Tier II气体模式，电力推进/EPROX-AC配置，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "气缸冷却水出口温度达到设定阈值时，机舱集控站（室）显示并发出极限报警",
+          "报警触发值不低于厂家设计文件中规定的气缸冷却水出口温度限值",
+          "报警信号在集控站可被确认并记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-7-46-016",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-JACKET-MON-005",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水温度报警设定值应以主机设计工况下的HT冷却水温度为基准确定，其中HP TC增压空气冷却器出口HT冷却水温度设计值为83°C，不得随意偏离该设计基准。",
+        "measurable_criterion": "83 °C（HP TC增压空气冷却器出口HT冷却水温度设计值）",
+        "applicable_condition": "MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "报警设定值以83°C设计温度为基准并留有合理裕量，裕量取值在需求评审中记录并可追溯",
+          "报警设定值不得低于设计工况稳态运行温度，避免正常运行误报警",
+          "设定依据形成文件并经船东/船级社确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-MON-005",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温冷却水及增压空气冷却相关温度报警设定应以设计条件为基准，其中LP TC增压空气冷却器出口（最后一个增压空气冷却器）HT冷却水温度等于LT冷却水空气冷却器入口38°C、设定点32°C，滑油发动机入口65°C，喷嘴冷却水发动机入口60°C。",
+        "measurable_criterion": "38 °C（LP TC增压空气冷却器出口HT冷却水温度/LT冷却水空气冷却器入口）；32 °C（LT冷却水空气冷却器设定点）；65 °C（滑油发动机入口）；60 °C（喷嘴冷却水发动机入口）",
+        "applicable_condition": "MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.，600 rpm，热带参考条件（空气温度45°C，LT级增压空气冷却器前冷却水温度38°C，大气压力1,000 mbar，相对湿度60%）",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "各温度测点报警设定值以对应设计值为基准，偏差在需求评审中记录",
+          "报警设定值不侵入设计稳态运行区间，避免频繁误报警",
+          "设定值清单纳入报警设定表并经确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-MON-005",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度报警应设置延时确认，延时时间应兼顾既不过迟报警也不因瞬时波动频繁误报警，延时值应依据主机热惯性及厂家文件确定并形成可追溯记录。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide / 项目报警设定程序|component:冷却水温度报警回路|intent:报警延时时间|hint:需依据主机热惯性与厂家推荐确定，避免过迟报警与频繁误报警，不得随意取值}}",
+        "applicable_condition": "主机冷却水系统所有温度类报警回路，含HT/LT冷却水及滑油、喷嘴冷却水温度报警",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度越限持续时间小于延时设定值时不应触发报警",
+          "温度持续越限超过延时设定值时应可靠触发报警",
+          "延时设定值在报警设定表中记录并经船东/船级社确认",
+          "在典型工况波动下不产生频繁误报警"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-MON-005",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "L1-CCS2025-7-46-016",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统报警设定与延时参数应形成统一的报警设定表，明确每个测点的设定值、延时、死区与复位方式，禁止未经评审的随意修改。",
+        "measurable_criterion": "{{TBD|unit:项|ref:项目报警设定程序|component:冷却水系统报警设定表|intent:受控参数项数|hint:应覆盖全部冷却水温度/泄漏类报警测点，具体项数由系统测点清单确定}}",
+        "applicable_condition": "主机冷却水系统设计、调试与运行阶段",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警设定表覆盖全部冷却水相关报警测点",
+          "每个测点均记录设定值、延时、死区、复位方式及依据来源",
+          "设定表变更须经评审并保留变更记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-MON-005",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-SHUT-001",
+            "tier": "L3",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置泄漏报警，泄漏报警信号应在机舱集控站（室）显示，报警设定与延时不得随意调整。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泄漏检测回路|intent:泄漏报警触发判据与延时|hint:厂家文件仅说明设置泄漏报警，具体触发阈值与延时需由项目报警设定程序确定}}",
+        "applicable_condition": "主机冷却水系统运行工况，含内部喷嘴冷却系统（以发动机滑油为介质的温度控制回路）",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟泄漏时集控站显示泄漏报警",
+          "泄漏报警延时设定避免因正常补水或波动误触发",
+          "报警设定值记录于报警设定表"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-ALARM-001",
+            "tier": "L3",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度报警设定应结合冷却系统腐蚀、气蚀与结垢风险确定，避免因报警阈值过宽导致缸套壁面点蚀与腐蚀长期不被发现。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S29 Caterpillar, Know Your Cooling System / S21 Caterpillar Cooling Systems Application and Installation Guide|component:气缸冷却水回路|intent:腐蚀与气蚀风险相关温度报警裕量|hint:证据仅给出风险机理，未给出具体数值，阈值需由厂家文件与项目程序确定}}",
+        "applicable_condition": "主机冷却水系统全寿命运行阶段，含冷却液维护与清洗后重新投运工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "报警设定分析中考虑气蚀-腐蚀联合作用风险",
+          "报警阈值不宽于厂家推荐的冷却水温度运行限值",
+          "分析结论纳入报警设定依据文件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-CORR-006",
+            "tier": "L3",
+            "source": "S29 Caterpillar, Know Your Cooling System",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-JACKET-WATER-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "板式换热器清洗后重新投运前，应确认换热能力恢复情况并复查残留清洗剂、泄漏与沉积物，相关确认结果应作为冷却水温度报警设定复核的输入。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S32 HY/T 海水循环冷却系统运行管理规范 9.3.10|component:板式换热器|intent:清洗后换热能力恢复与残留复查判据|hint:来源文件未给出具体数值判据，需按项目维护程序或厂家文件确认}}",
+        "applicable_condition": "板式换热器结垢严重而影响换热效果后的拆解清洗及重新投运工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "清洗后投运前完成残留清洗剂、泄漏、沉积物及换热能力恢复检查",
+          "检查结果记录并可追溯",
+          "换热能力未恢复时复核冷却水温度报警设定与延时"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-CLEAN-016",
+            "tier": "L1",
+            "source": "S32 HY/T 海水循环冷却系统运行管理规范",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:01:57.166199+00:00",
+  "elapsed_seconds": 11.516
+}

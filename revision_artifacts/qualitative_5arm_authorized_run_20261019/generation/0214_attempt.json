@@ -1,0 +1,37 @@
+{
+  "slot": "OR043-semantic_old",
+  "body_sha256": "72a417241fcf7bceb98576affb88785e9dadd6c9380000060f062c053faf4a0d",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:03:24.689818+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR043-semantic_old",
+    "source_id": "OR043",
+    "group": "semantic_old",
+    "context_sha256": "b28b7000abe667b0891ed5bf626d0b8207d95723e857c36e889eb830f880cd5c",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n海水侧直接冷却时，滤器布置要考虑运行中清洗，不能一清洗就影响冷却供应。\n\n## 证据清单\n[E-PUMP-FUNC-001] 层级:L2 来源:S14 Nanni Marine Engine Manual\n  内容: 海水泵组配置\n200 mm above it. A siphon breaker is mandatory in all Sail Boat and when there’s a risk of water entry in the engine. A raw water filter must be fitted between the raw water intake and the raw water pump of the engine. ELECTRICAL SYSTEM The engine extension harness should be away from any water projection and must be correctly attached as high as possible in the hold. Engines in metallic hulls are generally fitted with a two- pole electrical system. This system allows to electrically isol\n  [量化参数] 200\n\n[E-FILTER-FLOW-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 海水侧流向\nfirst component of the cooling system. The strainer must be installed so it can be easily cleaned, even in the worst weather conditions. Although simplex strainers will adequately protect the engine, they require the seawater flow to be shutoff during servicing.\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序执行。\n清洗后重新投运前应关注残留清洗剂\n泄漏\n沉积物或换热能力恢复情况。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛\n\n[E-SW-CLEAN-002] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 冷却水连接关系\n7.7.2 Strainers Where sea water is used for direct cooling of the engines, suitable strainers are to be fitted between the sea valve and the pump suction. The strainers are to be either of the duplex type or arranged such that they can be cleaned without interrupting the cooling water supply. This applies also to engines fitted with indirect cooling, where direct sea water cooling is used as an emergency means of cooling.\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "72a417241fcf7bceb98576affb88785e9dadd6c9380000060f062c053faf4a0d",
+    "utf8_message_bytes": 3488,
+    "execution_index": 214
+  }
+}

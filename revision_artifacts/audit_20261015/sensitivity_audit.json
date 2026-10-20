@@ -1,0 +1,258 @@
+{
+  "boundary_scope": "25 condition-numeric sentences; boundary analysis only, not end-to-end window/overlap experiment",
+  "rrf_k0": "rank-fusion smoothing constant, not candidate pool size",
+  "boundary": {
+    "n_used_units": 356,
+    "pct_used_units_longer_than_prompt_limit": 65.4,
+    "pct_values_beyond_prompt_limit": 24.1,
+    "eu_atomic": {
+      "window": 1000000,
+      "overlap": 0.0,
+      "n_condition_value_sentences": 25,
+      "split_pct": 0.0
+    },
+    "fixed_windows": [
+      {
+        "window": 128,
+        "overlap": 0.0,
+        "n_condition_value_sentences": 25,
+        "split_pct": 76.0
+      },
+      {
+        "window": 128,
+        "overlap": 0.2,
+        "n_condition_value_sentences": 25,
+        "split_pct": 72.0
+      },
+      {
+        "window": 256,
+        "overlap": 0.0,
+        "n_condition_value_sentences": 25,
+        "split_pct": 28.0
+      },
+      {
+        "window": 256,
+        "overlap": 0.2,
+        "n_condition_value_sentences": 25,
+        "split_pct": 44.0
+      },
+      {
+        "window": 512,
+        "overlap": 0.0,
+        "n_condition_value_sentences": 25,
+        "split_pct": 16.0
+      },
+      {
+        "window": 512,
+        "overlap": 0.2,
+        "n_condition_value_sentences": 25,
+        "split_pct": 4.0
+      }
+    ]
+  },
+  "variants": {
+    "default": {
+      "sha256": "302b44bb4a47111199a390a2b1e12f042660b749caaec047d78426535a8a439e",
+      "accepted": true,
+      "reasons": [],
+      "source_coverage_complete": true,
+      "actual_summary_v2": {
+        "n_shalls": 513,
+        "n_sets": 60,
+        "grade_A": 1,
+        "grade_A_pct": 0.2,
+        "grade_B": 69,
+        "grade_B_pct": 13.5,
+        "grade_C": 443,
+        "grade_C_pct": 86.4,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 13.6,
+        "grade_X_ci": [
+          0.0,
+          0.7
+        ],
+        "citation_rate_pct": 98.6,
+        "l1_citation_rate_pct": 21.6,
+        "multi_source_pct": 41.1
+      },
+      "historical_summary": {
+        "n_shalls": 513,
+        "n_sets": 60,
+        "grade_A": 1,
+        "grade_A_pct": 0.2,
+        "grade_B": 73,
+        "grade_B_pct": 14.2,
+        "grade_C": 439,
+        "grade_C_pct": 85.6,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 14.4,
+        "grade_X_ci": [
+          0.0,
+          0.7
+        ],
+        "citation_rate_pct": 98.6,
+        "l1_citation_rate_pct": 21.6,
+        "multi_source_pct": 41.1
+      }
+    },
+    "vector_only": {
+      "sha256": "157cb606e7ae4f3d14af753a62a9d8c87e38b6631b54b6db706a250cbf693d36",
+      "accepted": false,
+      "reasons": [
+        "OR035: empty output; cause requires run log",
+        "OR050: empty output; cause requires run log",
+        "OR058: empty output; cause requires run log"
+      ],
+      "source_coverage_complete": true,
+      "actual_summary_v2": {
+        "n_shalls": 487,
+        "n_sets": 60,
+        "grade_A": 0,
+        "grade_A_pct": 0.0,
+        "grade_B": 59,
+        "grade_B_pct": 12.1,
+        "grade_C": 428,
+        "grade_C_pct": 87.9,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 12.1,
+        "grade_X_ci": [
+          0.0,
+          0.8
+        ],
+        "citation_rate_pct": 100.0,
+        "l1_citation_rate_pct": 23.0,
+        "multi_source_pct": 38.4
+      },
+      "historical_summary": {
+        "n_shalls": 487,
+        "n_sets": 60,
+        "grade_A": 0,
+        "grade_A_pct": 0.0,
+        "grade_B": 60,
+        "grade_B_pct": 12.3,
+        "grade_C": 427,
+        "grade_C_pct": 87.7,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 12.3,
+        "grade_X_ci": [
+          0.0,
+          0.8
+        ],
+        "citation_rate_pct": 100.0,
+        "l1_citation_rate_pct": 23.0,
+        "multi_source_pct": 38.4
+      }
+    },
+    "bm25_only": {
+      "sha256": "f64caba0491785ed30a1b0c49da4f4f3c04e62a4bf0a3e67616754e60c1d56cc",
+      "accepted": false,
+      "reasons": [
+        "OR006: empty output; cause requires run log",
+        "OR007: empty output; cause requires run log",
+        "OR019: empty output; cause requires run log",
+        "OR035: empty output; cause requires run log",
+        "OR058: empty output; cause requires run log"
+      ],
+      "source_coverage_complete": true,
+      "actual_summary_v2": {
+        "n_shalls": 477,
+        "n_sets": 60,
+        "grade_A": 1,
+        "grade_A_pct": 0.2,
+        "grade_B": 51,
+        "grade_B_pct": 10.7,
+        "grade_C": 425,
+        "grade_C_pct": 89.1,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 10.9,
+        "grade_X_ci": [
+          0.0,
+          0.8
+        ],
+        "citation_rate_pct": 100.0,
+        "l1_citation_rate_pct": 19.5,
+        "multi_source_pct": 31.9
+      },
+      "historical_summary": {
+        "n_shalls": 477,
+        "n_sets": 60,
+        "grade_A": 1,
+        "grade_A_pct": 0.2,
+        "grade_B": 51,
+        "grade_B_pct": 10.7,
+        "grade_C": 425,
+        "grade_C_pct": 89.1,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 10.9,
+        "grade_X_ci": [
+          0.0,
+          0.8
+        ],
+        "citation_rate_pct": 100.0,
+        "l1_citation_rate_pct": 19.5,
+        "multi_source_pct": 31.9
+      }
+    },
+    "embed_mpnet": {
+      "sha256": "aa1929e6a415bafdcb69699d10a9afbaf7ef424456359b23f7c964e495edc446",
+      "accepted": false,
+      "reasons": [
+        "OR035: empty output; cause requires run log",
+        "OR044: empty output; cause requires run log",
+        "OR050: empty output; cause requires run log",
+        "OR058: empty output; cause requires run log",
+        "OR060: empty output; cause requires run log"
+      ],
+      "source_coverage_complete": true,
+      "actual_summary_v2": {
+        "n_shalls": 497,
+        "n_sets": 60,
+        "grade_A": 1,
+        "grade_A_pct": 0.2,
+        "grade_B": 63,
+        "grade_B_pct": 12.7,
+        "grade_C": 433,
+        "grade_C_pct": 87.1,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 12.9,
+        "grade_X_ci": [
+          0.0,
+          0.8
+        ],
+        "citation_rate_pct": 100.0,
+        "l1_citation_rate_pct": 20.7,
+        "multi_source_pct": 32.0
+      },
+      "historical_summary": {
+        "n_shalls": 497,
+        "n_sets": 60,
+        "grade_A": 1,
+        "grade_A_pct": 0.2,
+        "grade_B": 63,
+        "grade_B_pct": 12.7,
+        "grade_C": 433,
+        "grade_C_pct": 87.1,
+        "grade_X": 0,
+        "grade_X_pct": 0.0,
+        "grade_AB_pct": 12.9,
+        "grade_X_ci": [
+          0.0,
+          0.8
+        ],
+        "citation_rate_pct": 100.0,
+        "l1_citation_rate_pct": 20.7,
+        "multi_source_pct": 32.0
+      }
+    }
+  },
+  "failed_trunc_1200_in_summary": false,
+  "historical_failed_artifact": "absent at baseline; prior ledger documents HTTP402 deletion; no reconstructed result",
+  "historical_tokens_and_memory": "unknown unless explicit run record; no inferred settings"
+}

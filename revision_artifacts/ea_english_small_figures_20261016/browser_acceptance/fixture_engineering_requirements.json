@@ -1,0 +1,119 @@
+{
+  "acceptance_fixture": true,
+  "requirement_sets": [
+    {
+      "source_requirement_id": "OR041",
+      "requirement_set_id": "RS-OR041",
+      "engineering_requirements": [
+        {
+          "id": "OR041.1",
+          "parent_id": "RS-OR041",
+          "topic": "Low Supply Alarm Display Requirement",
+          "shall_statement": "When the seawater cooling system is configured with a main circulation pump, a low supply alarm function shall be provided. The alarm signal shall be capable of being displayed on the bridge or at the main control station so that operators can promptly start the standby pump or change over to the standby pump.",
+          "measurable_criterion": "{{TBD|unit:MPa|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:海水冷却系统主循环泵|intent:低供水报警阈值|hint:报警阈值应依据厂家技术数据或项目计算文件确定，不得超出具体厂家、机型和控制系统配置范围}}",
+          "evidence_citations": [
+            {
+              "kb_id": "E-HT-ALARM-001"
+            },
+            {
+              "kb_id": "E-PUMP-ALARM-002"
+            }
+          ],
+          "support_status": "need_confirmation",
+          "review_route": "OPEN_ITEM"
+        },
+        {
+          "id": "OR041.2",
+          "parent_id": "RS-OR041",
+          "topic": "Cooling Water Pump Redundancy Requirement",
+          "shall_statement": "The seawater cooling system shall be provided with at least two cooling water pumps, one of which shall be a standby pump. The capacity of the standby pump shall not be less than the capacity of the main pump, and at least one pump shall be driven by an independent drive unit.",
+          "measurable_criterion": "{{TBD|unit:台|ref:S44 PRS Ship Machinery Piping Systems|component:海水冷却水泵|intent:泵数量及备用泵容量|hint:至少两台泵，其中一台为备用泵，备用泵容量不小于主泵容量，至少一台泵独立驱动}}",
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-RED-004"
+            },
+            {
+              "kb_id": "E-PUMP-RED-002"
+            }
+          ],
+          "support_status": "need_confirmation",
+          "review_route": "OPEN_ITEM"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": []
+    },
+    {
+      "source_requirement_id": "OR052",
+      "requirement_set_id": "RS-OR052",
+      "engineering_requirements": [
+        {
+          "id": "OR052.1",
+          "parent_id": "RS-OR052",
+          "topic": "Direct Removal of Pump Components",
+          "shall_statement": "The seals, bearings, and motor of the cooling water pump shall be arranged so that they can be directly removed and installed without first moving unrelated piping or other equipment.",
+          "measurable_criterion": "{{TBD|unit:mm|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却水泵|intent:维护空间|hint:需明确密封、轴承和电机拆卸所需的最小净空尺寸}}",
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-MAINT-001"
+            }
+          ],
+          "support_status": "need_confirmation",
+          "review_route": "OPEN_ITEM"
+        },
+        {
+          "id": "OR052.4",
+          "parent_id": "RS-OR052",
+          "topic": "Manufacturer Maintenance Space Compliance",
+          "shall_statement": "The maintenance space for the cooling water pump seals, bearings, and motor shall meet the manufacturer's specified maintenance operation requirements, ensuring that maintenance can be performed without removing unrelated piping.",
+          "measurable_criterion": "{{TBD|unit:mm|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却水泵|intent:维护空间|hint:需明确厂家规定的维护空间尺寸}}",
+          "evidence_citations": [
+            {
+              "kb_id": "E-PUMP-MAINT-001"
+            }
+          ],
+          "support_status": "need_confirmation",
+          "review_route": "OPEN_ITEM"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": []
+    },
+    {
+      "source_requirement_id": "OR008",
+      "requirement_set_id": "RS-OR008",
+      "engineering_requirements": [
+        {
+          "id": "OR008.1",
+          "parent_id": "RS-OR008",
+          "topic": "High Temperature Cooling Valve Setting",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The high-temperature cooling water engine outlet temperature setpoint shall be 79°C nominal, and the mechanical thermostatic element adjustment range shall be 77-85°C.",
+          "measurable_criterion": "79°C nominal; mechanical thermostatic element range 77-85°C",
+          "evidence_citations": [
+            {
+              "kb_id": "E-LT-COMP-006"
+            }
+          ],
+          "support_status": "need_confirmation",
+          "review_route": "ENGINEER_CONFIRM"
+        },
+        {
+          "id": "OR008.5",
+          "parent_id": "RS-OR008",
+          "topic": "Temperature Sensor Piping Distance",
+          "shall_statement": "The installation position of the temperature control valve shall be checked against the main engine manufacturer's requirements. The pipe length between the temperature sensor installation position and the three-way valve shall be maintained at 10 to 15 times the pipe diameter.",
+          "measurable_criterion": "10 to 15 times the pipe diameter",
+          "evidence_citations": [
+            {
+              "kb_id": "E-TCV-TEMP-047"
+            }
+          ],
+          "support_status": "need_confirmation",
+          "review_route": "ENGINEER_CONFIRM"
+        }
+      ],
+      "relationships": [],
+      "evidence_gaps": []
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "slot": "OR022-semantic_old",
+  "started_at": "2026-10-19T02:51:29.117145+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"a902a5c2-a15a-4029-bcd9-55a3dd26e4db\",\"object\":\"chat.completion\",\"created\":1792378290,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"中央冷却器选型应依据船舶运营区域确定设计海水温度，并采用25°C或32°C作为选型输入海水温度。\\\",\\\"measurable_criterion\\\":\\\"设计海水温度取25°C或32°C（按运营区域选取）\\\",\\\"applicable_condition\\\":\\\"L21/31、L27/38机型，柴油-电力推进船舶，中央冷却器选型工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"选型文件中明确给出设计海水温度，且取值为25°C或32°C之一\\\",\\\"设计海水温度与船舶运营区域声明一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-INST-007\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-COOLER-INST-008\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"当船舶在MCR工况下航速低于3节（如拖船、挖泥船等）时，冷却器设计应考虑航速影响进行选型修正。\\\",\\\"measurable_criterion\\\":\\\"MCR工况航速阈值3节\\\",\\\"applicable_condition\\\":\\\"L21/31、L27/38机型，柴油-电力推进船舶，MCR工况航速低于3节的船舶（拖船、挖泥船等）\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型计算中记录MCR工况航速，并判定是否低于3节\\\",\\\"航速低于3节时，选型计算包含航速影响的修正说明\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-INST-007\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-LT-MAINT-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器换热能力选型应计入换热余量，换热能力按额定值附加不小于10%的余量进行选取。\\\",\\\"measurable_criterion\\\":\\\"换热余量+10%\\\",\\\"applicable_condition\\\":\\\"冷却器布置基本值，参考条件下的冷却器额定值选取\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型计算书中换热能力余量不低于+10%\\\",\\\"余量取值与所引用的厂家技术数据或项目计算文件一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-ARR-005\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-COOLER-INST-016\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应计入长期脏污影响，按海水侧污垢系数进行换热面积修正。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:hr-ft²-°F/Btu|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:中央冷却器海水侧换热面|intent:长期脏污热阻修正|hint:按海水原水速度≤0.9 m/s或>0.9 m/s分别取对应污垢系数，并明确设计取值}}\\\",\\\"applicable_condition\\\":\\\"发动机冷却液温度<116°C（240°F）、原水温度<52°C（125°F）的海水冷却工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型计算书中明确给出所采用的污垢系数取值及其对应原水速度条件\\\",\\\"换热面积计算已包含污垢热阻项\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-CLEAN-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应校核通过所有冷却器的压降，压降不应超过最大允许值0.5 bar。\\\",\\\"measurable_criterion\\\":\\\"通过所有冷却器的压降最大0.5 bar\\\",\\\"applicable_condition\\\":\\\"L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时的设计数据\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"冷却水系统压降计算值不超过0.5 bar\\\",\\\"压降计算涵盖所有冷却器\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-LT-MAINT-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应满足低温级冷却水进口温度限值，进气口充气冷却器（LT级）冷却水温度不高于38°C（311 K）。\\\",\\\"measurable_criterion\\\":\\\"LT级冷却水温度≤311 K（38°C）\\\",\\\"applicable_condition\\\":\\\"无降额条件：环境温度涡轮增压器前≤318 K（45°C）、环境压力≥100 kPa（1 bar）、压缩机前进气压力≥–2 kPa、涡轮后排气背压≤5 kPa、相对湿度≤60%\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型计算中LT级冷却水进口温度不超过311 K（38°C）\\\",\\\"所列无降额环境条件在选型输入中逐项确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-LOAD-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应计入冷却水流量与冷却水温度的公差影响，流量公差取±5%、冷却水温度公差取±20°C进行校核。\\\",\\\"measurable_criterion\\\":\\\"冷却水流量公差±5%，冷却水温度公差±20°C\\\",\\\"applicable_condition\\\":\\\"涡轮出口温度及压力按参考条件，冷却器布置基本值\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型校核覆盖流量±5%与温度±20°C的公差组合\\\",\\\"校核结果满足换热能力与压降要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-ARR-005\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应计入热回收量公差，热回收量按-15%公差进行校核。\\\",\\\"measurable_criterion\\\":\\\"热回收公差-15%\\\",\\\"applicable_condition\\\":\\\"冷却器布置基本值，参考条件\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型计算中热回收量按-15%公差工况校核\\\",\\\"校核结果满足系统热平衡要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-ARR-005\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应明确海水侧系统组成与海水流量参数，作为选型输入。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:m³/h|ref:S32 HY/T 海水循环冷却系统运行管理规范|component:海水侧冷却系统|intent:海水流量|hint:依据厂家技术数据或项目计算文件确定，不得直接引用标准数值}}\\\",\\\"applicable_condition\\\":\\\"海水循环冷却系统运行管理适用范围内，中央冷却器选型输入阶段\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"选型输入文件列出海水侧系统组成清单\\\",\\\"海水流量参数来源标注为厂家技术数据或项目计算文件\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-COMP-006\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S32 HY/T 海水循环冷却系统运行管理规范\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应明确冷却水系统布置概念（混合式或常规式），并据此确定LT与HT回路的热力连接关系。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无|ref:S42 MAN 49/60DF Project Guide|component:冷却水系统|intent:布置概念选型|hint:在混合式CW系统与常规式CW系统中明确选定一种并记录LT/HT回路连接关系}}\\\",\\\"applicable_condition\\\":\\\"中央冷却器选型，按具体发动机与船舶应用确定冷却水系统布置概念\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"选型文件明确标注所采用的冷却水系统布置概念\\\",\\\"LT与HT回路物理及热力连接关系与所选概念一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-ARR-003\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却器选型应校核管内与管路水流速度，使其处于水流速度导则范围内以避免过度流速与侵蚀。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:m/s|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却器管束及管路|intent:水流速度|hint:按该指南水流速度导则确定上下限，并结合海水侧原水速度条件}}\\\",\\\"applicable_condition\\\":\\\"冷却系统设计与选型阶段，给定流量条件下的管束与管路流速校核\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"选型计算给出管束与管路流速值\\\",\\\"流速值处于所引用导则规定范围内\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-INST-015\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2524,\"completion_tokens\":2134,\"total_tokens\":4658,\"prompt_tokens_details\":{\"cached_tokens\":2304},\"prompt_cache_hit_tokens\":2304,\"prompt_cache_miss_tokens\":220},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:51:30 GMT"
+  },
+  "response": {
+    "id": "a902a5c2-a15a-4029-bcd9-55a3dd26e4db",
+    "object": "chat.completion",
+    "created": 1792378290,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"中央冷却器选型应依据船舶运营区域确定设计海水温度，并采用25°C或32°C作为选型输入海水温度。\",\"measurable_criterion\":\"设计海水温度取25°C或32°C（按运营区域选取）\",\"applicable_condition\":\"L21/31、L27/38机型，柴油-电力推进船舶，中央冷却器选型工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"选型文件中明确给出设计海水温度，且取值为25°C或32°C之一\",\"设计海水温度与船舶运营区域声明一致\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-INST-007\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-COOLER-INST-008\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"当船舶在MCR工况下航速低于3节（如拖船、挖泥船等）时，冷却器设计应考虑航速影响进行选型修正。\",\"measurable_criterion\":\"MCR工况航速阈值3节\",\"applicable_condition\":\"L21/31、L27/38机型，柴油-电力推进船舶，MCR工况航速低于3节的船舶（拖船、挖泥船等）\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型计算中记录MCR工况航速，并判定是否低于3节\",\"航速低于3节时，选型计算包含航速影响的修正说明\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-INST-007\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-LT-MAINT-001\",\"tier\":\"L3\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器换热能力选型应计入换热余量，换热能力按额定值附加不小于10%的余量进行选取。\",\"measurable_criterion\":\"换热余量+10%\",\"applicable_condition\":\"冷却器布置基本值，参考条件下的冷却器额定值选取\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型计算书中换热能力余量不低于+10%\",\"余量取值与所引用的厂家技术数据或项目计算文件一致\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-ARR-005\",\"tier\":\"L2\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-COOLER-INST-016\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应计入长期脏污影响，按海水侧污垢系数进行换热面积修正。\",\"measurable_criterion\":\"{{TBD|unit:hr-ft²-°F/Btu|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:中央冷却器海水侧换热面|intent:长期脏污热阻修正|hint:按海水原水速度≤0.9 m/s或>0.9 m/s分别取对应污垢系数，并明确设计取值}}\",\"applicable_condition\":\"发动机冷却液温度<116°C（240°F）、原水温度<52°C（125°F）的海水冷却工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型计算书中明确给出所采用的污垢系数取值及其对应原水速度条件\",\"换热面积计算已包含污垢热阻项\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-CLEAN-001\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应校核通过所有冷却器的压降，压降不应超过最大允许值0.5 bar。\",\"measurable_criterion\":\"通过所有冷却器的压降最大0.5 bar\",\"applicable_condition\":\"L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时的设计数据\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"冷却水系统压降计算值不超过0.5 bar\",\"压降计算涵盖所有冷却器\"],\"evidence_citations\":[{\"kb_id\":\"E-LT-MAINT-001\",\"tier\":\"L3\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应满足低温级冷却水进口温度限值，进气口充气冷却器（LT级）冷却水温度不高于38°C（311 K）。\",\"measurable_criterion\":\"LT级冷却水温度≤311 K（38°C）\",\"applicable_condition\":\"无降额条件：环境温度涡轮增压器前≤318 K（45°C）、环境压力≥100 kPa（1 bar）、压缩机前进气压力≥–2 kPa、涡轮后排气背压≤5 kPa、相对湿度≤60%\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型计算中LT级冷却水进口温度不超过311 K（38°C）\",\"所列无降额环境条件在选型输入中逐项确认\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-LOAD-001\",\"tier\":\"L3\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应计入冷却水流量与冷却水温度的公差影响，流量公差取±5%、冷却水温度公差取±20°C进行校核。\",\"measurable_criterion\":\"冷却水流量公差±5%，冷却水温度公差±20°C\",\"applicable_condition\":\"涡轮出口温度及压力按参考条件，冷却器布置基本值\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型校核覆盖流量±5%与温度±20°C的公差组合\",\"校核结果满足换热能力与压降要求\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-ARR-005\",\"tier\":\"L2\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应计入热回收量公差，热回收量按-15%公差进行校核。\",\"measurable_criterion\":\"热回收公差-15%\",\"applicable_condition\":\"冷却器布置基本值，参考条件\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型计算中热回收量按-15%公差工况校核\",\"校核结果满足系统热平衡要求\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-ARR-005\",\"tier\":\"L2\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应明确海水侧系统组成与海水流量参数，作为选型输入。\",\"measurable_criterion\":\"{{TBD|unit:m³/h|ref:S32 HY/T 海水循环冷却系统运行管理规范|component:海水侧冷却系统|intent:海水流量|hint:依据厂家技术数据或项目计算文件确定，不得直接引用标准数值}}\",\"applicable_condition\":\"海水循环冷却系统运行管理适用范围内，中央冷却器选型输入阶段\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"选型输入文件列出海水侧系统组成清单\",\"海水流量参数来源标注为厂家技术数据或项目计算文件\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-COMP-006\",\"tier\":\"L3\",\"source\":\"S32 HY/T 海水循环冷却系统运行管理规范\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应明确冷却水系统布置概念（混合式或常规式），并据此确定LT与HT回路的热力连接关系。\",\"measurable_criterion\":\"{{TBD|unit:无|ref:S42 MAN 49/60DF Project Guide|component:冷却水系统|intent:布置概念选型|hint:在混合式CW系统与常规式CW系统中明确选定一种并记录LT/HT回路连接关系}}\",\"applicable_condition\":\"中央冷却器选型，按具体发动机与船舶应用确定冷却水系统布置概念\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"选型文件明确标注所采用的冷却水系统布置概念\",\"LT与HT回路物理及热力连接关系与所选概念一致\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-ARR-003\",\"tier\":\"L3\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却器选型应校核管内与管路水流速度，使其处于水流速度导则范围内以避免过度流速与侵蚀。\",\"measurable_criterion\":\"{{TBD|unit:m/s|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却器管束及管路|intent:水流速度|hint:按该指南水流速度导则确定上下限，并结合海水侧原水速度条件}}\",\"applicable_condition\":\"冷却系统设计与选型阶段，给定流量条件下的管束与管路流速校核\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"选型计算给出管束与管路流速值\",\"流速值处于所引用导则规定范围内\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-INST-015\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2524,
+      "completion_tokens": 2134,
+      "total_tokens": 4658,
+      "prompt_tokens_details": {
+        "cached_tokens": 2304
+      },
+      "prompt_cache_hit_tokens": 2304,
+      "prompt_cache_miss_tokens": 220
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.02212",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.02212",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "中央冷却器选型应依据船舶运营区域确定设计海水温度，并采用25°C或32°C作为选型输入海水温度。",
+        "measurable_criterion": "设计海水温度取25°C或32°C（按运营区域选取）",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶，中央冷却器选型工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "选型文件中明确给出设计海水温度，且取值为25°C或32°C之一",
+          "设计海水温度与船舶运营区域声明一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-INST-008",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当船舶在MCR工况下航速低于3节（如拖船、挖泥船等）时，冷却器设计应考虑航速影响进行选型修正。",
+        "measurable_criterion": "MCR工况航速阈值3节",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶，MCR工况航速低于3节的船舶（拖船、挖泥船等）",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算中记录MCR工况航速，并判定是否低于3节",
+          "航速低于3节时，选型计算包含航速影响的修正说明"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-LT-MAINT-001",
+            "tier": "L3",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器换热能力选型应计入换热余量，换热能力按额定值附加不小于10%的余量进行选取。",
+        "measurable_criterion": "换热余量+10%",
+        "applicable_condition": "冷却器布置基本值，参考条件下的冷却器额定值选取",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算书中换热能力余量不低于+10%",
+          "余量取值与所引用的厂家技术数据或项目计算文件一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-005",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-INST-016",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应计入长期脏污影响，按海水侧污垢系数进行换热面积修正。",
+        "measurable_criterion": "{{TBD|unit:hr-ft²-°F/Btu|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:中央冷却器海水侧换热面|intent:长期脏污热阻修正|hint:按海水原水速度≤0.9 m/s或>0.9 m/s分别取对应污垢系数，并明确设计取值}}",
+        "applicable_condition": "发动机冷却液温度<116°C（240°F）、原水温度<52°C（125°F）的海水冷却工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算书中明确给出所采用的污垢系数取值及其对应原水速度条件",
+          "换热面积计算已包含污垢热阻项"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-CLEAN-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应校核通过所有冷却器的压降，压降不应超过最大允许值0.5 bar。",
+        "measurable_criterion": "通过所有冷却器的压降最大0.5 bar",
+        "applicable_condition": "L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时的设计数据",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水系统压降计算值不超过0.5 bar",
+          "压降计算涵盖所有冷却器"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-MAINT-001",
+            "tier": "L3",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应满足低温级冷却水进口温度限值，进气口充气冷却器（LT级）冷却水温度不高于38°C（311 K）。",
+        "measurable_criterion": "LT级冷却水温度≤311 K（38°C）",
+        "applicable_condition": "无降额条件：环境温度涡轮增压器前≤318 K（45°C）、环境压力≥100 kPa（1 bar）、压缩机前进气压力≥–2 kPa、涡轮后排气背压≤5 kPa、相对湿度≤60%",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算中LT级冷却水进口温度不超过311 K（38°C）",
+          "所列无降额环境条件在选型输入中逐项确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-LOAD-001",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应计入冷却水流量与冷却水温度的公差影响，流量公差取±5%、冷却水温度公差取±20°C进行校核。",
+        "measurable_criterion": "冷却水流量公差±5%，冷却水温度公差±20°C",
+        "applicable_condition": "涡轮出口温度及压力按参考条件，冷却器布置基本值",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型校核覆盖流量±5%与温度±20°C的公差组合",
+          "校核结果满足换热能力与压降要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-005",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应计入热回收量公差，热回收量按-15%公差进行校核。",
+        "measurable_criterion": "热回收公差-15%",
+        "applicable_condition": "冷却器布置基本值，参考条件",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算中热回收量按-15%公差工况校核",
+          "校核结果满足系统热平衡要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-005",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应明确海水侧系统组成与海水流量参数，作为选型输入。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S32 HY/T 海水循环冷却系统运行管理规范|component:海水侧冷却系统|intent:海水流量|hint:依据厂家技术数据或项目计算文件确定，不得直接引用标准数值}}",
+        "applicable_condition": "海水循环冷却系统运行管理适用范围内，中央冷却器选型输入阶段",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "选型输入文件列出海水侧系统组成清单",
+          "海水流量参数来源标注为厂家技术数据或项目计算文件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-COMP-006",
+            "tier": "L3",
+            "source": "S32 HY/T 海水循环冷却系统运行管理规范",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应明确冷却水系统布置概念（混合式或常规式），并据此确定LT与HT回路的热力连接关系。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S42 MAN 49/60DF Project Guide|component:冷却水系统|intent:布置概念选型|hint:在混合式CW系统与常规式CW系统中明确选定一种并记录LT/HT回路连接关系}}",
+        "applicable_condition": "中央冷却器选型，按具体发动机与船舶应用确定冷却水系统布置概念",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "选型文件明确标注所采用的冷却水系统布置概念",
+          "LT与HT回路物理及热力连接关系与所选概念一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-003",
+            "tier": "L3",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器选型应校核管内与管路水流速度，使其处于水流速度导则范围内以避免过度流速与侵蚀。",
+        "measurable_criterion": "{{TBD|unit:m/s|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却器管束及管路|intent:水流速度|hint:按该指南水流速度导则确定上下限，并结合海水侧原水速度条件}}",
+        "applicable_condition": "冷却系统设计与选型阶段，给定流量条件下的管束与管路流速校核",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算给出管束与管路流速值",
+          "流速值处于所引用导则规定范围内"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-015",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:51:38.222613+00:00",
+  "elapsed_seconds": 8.984
+}

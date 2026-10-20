@@ -1,0 +1,41 @@
+[
+  {
+    "mode": "existing_environment_proxy",
+    "method": "GET",
+    "url": "https://api.deepseek.com/",
+    "authenticated": false,
+    "project_content_sent": false,
+    "http_status": 401,
+    "content_type": null,
+    "tls_reached": true,
+    "elapsed_seconds": 0.64
+  },
+  {
+    "mode": "original_custom_transport",
+    "method": "GET",
+    "url": "https://api.deepseek.com/",
+    "authenticated": false,
+    "project_content_sent": false,
+    "exception_chain": [
+      {
+        "type": "ConnectError",
+        "message": "[WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。",
+        "errno": null,
+        "winerror": null
+      },
+      {
+        "type": "ConnectError",
+        "message": "[WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。",
+        "errno": null,
+        "winerror": null
+      },
+      {
+        "type": "PermissionError",
+        "message": "[WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。",
+        "errno": 13,
+        "winerror": 10013
+      }
+    ],
+    "elapsed_seconds": 0.047
+  }
+]

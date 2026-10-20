@@ -14,7 +14,7 @@
 
 输入：
   data/search_results/exp_v4/rag_v4_results.json   （取各OR的证据数量 _n_evidence）
-  data/processed/evidence_units_v2.jsonl
+  data/processed/evidence_units_v3_audited.jsonl
   data/processed/original_requirements_v2.jsonl
 输出：
   data/search_results/exp_v4/ablation_random_retrieval_results.json
@@ -38,7 +38,7 @@ from cooling_rag_mg.structured_req_generator import generate_structured_shalls
 
 EXP_DIR  = ROOT / "data/search_results/exp_v4"
 RAG_FILE = EXP_DIR / "rag_v4_results.json"
-EU_JSONL = ROOT / "data/processed/evidence_units_v2.jsonl"
+EU_JSONL = ROOT / "data/processed/evidence_units_v3_audited.jsonl"
 OR_JSONL = ROOT / "data/processed/original_requirements_v2.jsonl"
 OUT_FILE = EXP_DIR / "ablation_random_retrieval_results.json"
 SUM_FILE = EXP_DIR / "ablation_random_retrieval_summary.json"
@@ -107,6 +107,7 @@ def main():
 
     print(f"加载 KB 全量证据单元（{EU_JSONL.name}）...")
     all_eus = load_eu_list(EU_JSONL)
+    kb_index = {u["id"]: u for u in all_eus}
     print(f"  共 {len(all_eus)} 条")
 
     print(f"加载原始需求文本（{OR_JSONL.name}）...")
@@ -158,8 +159,9 @@ def main():
             "_n_evidence": len(annotated),
             "_n_with_quantitative": n_with_values,
             "engineering_requirements": new_shalls,
+            "_evidence_values": {eu["id"]: eu["_extracted_values"] for eu in annotated},
         }
-        classified_rs = classify_result_set(new_rs)
+        classified_rs = classify_result_set(new_rs, kb_index)
         output_result_sets.append(classified_rs)
 
         grades = [er["_grade"] for er in classified_rs["engineering_requirements"]]

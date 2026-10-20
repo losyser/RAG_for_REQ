@@ -1,0 +1,233 @@
+{
+  "version": "five-arm-budget-v3-20261019",
+  "supersedes": "v1/v2 budget interpretation only; frozen five-arm inputs/prompts/classifier unchanged",
+  "prior_successful_attempts": 14,
+  "prior_usage_input_tokens": 130297,
+  "prior_usage_output_tokens": 37821,
+  "prior_usage_estimate_CNY": "0.563162",
+  "prior_failed_attempts": 2,
+  "prior_failed_max_risk_CNY": "4.325376",
+  "prior_modeled_cost_plus_failure_risk_CNY": "4.888538",
+  "unexecuted_budget_after_usage_reconciliation_CNY": "45.111462",
+  "billing_verified": false,
+  "old_full_reservation_not_actual_spend_CNY": "34.603008",
+  "frozen_generation_count": 300,
+  "frozen_utf8_message_bytes": 2245449,
+  "matching_official_tokenizer_found": false,
+  "tokenizer_search_scope": [
+    "D:/models",
+    "D:/cooling_rag_multigranular (excluding inaccessible old pytest directories)"
+  ],
+  "nonmatching_models_not_used": [
+    "Qwen2.5-VL-3B-Instruct",
+    "BGE/MPNet/rerankers"
+  ],
+  "empirical_scenario": {
+    "reference": "14 prior successful DeepSeek Flash responses, different tasks and prompt lengths; not a confidence bound",
+    "bytes_per_input_token_min": 3.643670637518,
+    "bytes_per_input_token_median": 3.776522314163137,
+    "bytes_per_input_token_max": 4.113831727012243,
+    "estimated_input_tokens": 594581.1551487106,
+    "mean_output_tokens_per_call": 2701.5,
+    "estimated_output_tokens": 810450.0,
+    "generation_estimate_CNY": 7.672762310297421
+  },
+  "conditional_byte_scenario": {
+    "input_tokens_proxy": 3474249,
+    "message_bytes": 2245449,
+    "assumed_protocol_and_json_allowance_per_request": 4096,
+    "generation_output_tokens_max": 2457600,
+    "generation_CNY": "26.609298",
+    "assumptions": "Only if the exact provider tokenizer has <=1 token per UTF-8 input byte, normalization does not expand this bound, and provider serialization overhead fits4096 tokens per request. Not verified for current model; NOT a dispatch guarantee or actual-token claim."
+  },
+  "provider_context_theoretical_ceiling": {
+    "generation_per_attempt_CNY": "2.162688",
+    "generation_all_300_CNY": "648.806400",
+    "purpose": "Sum of maximum possible requests, not expected spend, not a reason alone to reject complete execution. Use next-attempt reservation and usage reconciliation."
+  },
+  "Qwen": {
+    "provider": "Alibaba Cloud Model Studio Beijing",
+    "model": "qwen-max",
+    "price_date": "2026-10-19",
+    "input_CNY_per_million": "2.4",
+    "output_CNY_per_million": "9.6",
+    "actual_N_Q": null,
+    "attempt_cap_proposed": 1200,
+    "max_output_tokens_per_attempt": 2048,
+    "full_context_per_attempt_CNY": "0.0933888",
+    "scenarios": [
+      {
+        "N_Q": 0,
+        "assumed_input_tokens_per_review": 2000,
+        "assumed_output_tokens_per_review": 600,
+        "assumption_not_measured": true,
+        "illustrative_Q_cost_CNY": "0.0",
+        "full_context_Q_ceiling_CNY": "0E-7"
+      },
+      {
+        "N_Q": 300,
+        "assumed_input_tokens_per_review": 2000,
+        "assumed_output_tokens_per_review": 600,
+        "assumption_not_measured": true,
+        "illustrative_Q_cost_CNY": "3.168",
+        "full_context_Q_ceiling_CNY": "28.0166400"
+      },
+      {
+        "N_Q": 600,
+        "assumed_input_tokens_per_review": 2000,
+        "assumed_output_tokens_per_review": 600,
+        "assumption_not_measured": true,
+        "illustrative_Q_cost_CNY": "6.336",
+        "full_context_Q_ceiling_CNY": "56.0332800"
+      },
+      {
+        "N_Q": 1200,
+        "assumed_input_tokens_per_review": 2000,
+        "assumed_output_tokens_per_review": 600,
+        "assumption_not_measured": true,
+        "illustrative_Q_cost_CNY": "12.672",
+        "full_context_Q_ceiling_CNY": "112.0665600"
+      }
+    ],
+    "all_Q_rule": "If N_Q exceeds1200 or cumulative affordability, pause; no silent sampling while claiming all-Q coverage."
+  },
+  "hard_stop_accounting": {
+    "cap_CNY": "50",
+    "safety_buffer_CNY": "1.000000",
+    "formula": "known_usage_estimates + all_unresolved_failed_or_inflight_reservations + next_provider_max_reservation + safety_buffer <= 50",
+    "no_concurrent_calls": true,
+    "max_retries": 0,
+    "success": "On valid usage, model and price confirmation, replace only that attempt reservation with peak uncached usage cost estimate; retain response evidence. This is a tariff ledger, not verified provider billing.",
+    "failure": "Retain full attempt reservation; immediate stop. Unknown/missing usage, timeout or identity drift also stop. No automatic retries, repair or continuation.",
+    "other_usage": "Before run include any intervening account/task spend; cap cannot govern unrelated processes without account reconciliation.",
+    "guarantee": "Bounds this dedicated serial run under verified provider limits/rates and complete usage accounting; does not guarantee all300+allQ finish or authoritative invoice total."
+  },
+  "generation_success_records": [
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\02_OR001_new_response.json",
+      "sha256": "b5f7ba6d5ab8989783570e864742234bb1bfca79ced351e7197da15b074419db",
+      "prompt_tokens": 7639,
+      "completion_tokens": 3403,
+      "message_utf8_bytes": 27834,
+      "peak_uncached_usage_estimate_CNY": "0.042502"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\03_OR010_old_response.json",
+      "sha256": "5f1b7670a20b4431f96ae5b4b1a00c88a23fb9dbfb15a10bdc17a2ced3448522",
+      "prompt_tokens": 3274,
+      "completion_tokens": 4282,
+      "message_utf8_bytes": 13052,
+      "peak_uncached_usage_estimate_CNY": "0.040804"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\04_OR010_new_response.json",
+      "sha256": "1fc4870345bd05344bebe7d13dba50e6e609874c9a61756a5b3a220a75d28c31",
+      "prompt_tokens": 7177,
+      "completion_tokens": 2836,
+      "message_utf8_bytes": 26494,
+      "peak_uncached_usage_estimate_CNY": "0.037042"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\05_OR023_old_response.json",
+      "sha256": "a46849a22940d7df5fd73284c8a59572f632e403c61815e2b9226934609b9c19",
+      "prompt_tokens": 2936,
+      "completion_tokens": 2114,
+      "message_utf8_bytes": 11460,
+      "peak_uncached_usage_estimate_CNY": "0.022784"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\06_OR023_new_response.json",
+      "sha256": "239cddd43d140a2bf63bdbb4e5504f76cf3675a92041fdc21c3b7042a6844ea9",
+      "prompt_tokens": 6525,
+      "completion_tokens": 2245,
+      "message_utf8_bytes": 24125,
+      "peak_uncached_usage_estimate_CNY": "0.03101"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\07_R001_old_response.json",
+      "sha256": "8df840a108f78818438f6388523ca9a9f5d15381819e98da048a2134c6f22f88",
+      "prompt_tokens": 16065,
+      "completion_tokens": 4067,
+      "message_utf8_bytes": 64072,
+      "peak_uncached_usage_estimate_CNY": "0.064666"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\08_R001_new_response.json",
+      "sha256": "32c142c481e3f61b1d6d46ebb19791a989e68dd550349fe8bc185943373514bd",
+      "prompt_tokens": 25650,
+      "completion_tokens": 3187,
+      "message_utf8_bytes": 98567,
+      "peak_uncached_usage_estimate_CNY": "0.076796"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\09_R002_old_response.json",
+      "sha256": "87421f1ca0675b5af0e54f9b24e3f4de8c2ab1a0bc2d08cc0c67ba37b714ca9e",
+      "prompt_tokens": 11257,
+      "completion_tokens": 2208,
+      "message_utf8_bytes": 45181,
+      "peak_uncached_usage_estimate_CNY": "0.040178"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\10_R002_new_response.json",
+      "sha256": "7c29d18d16931424a7537e17c0803fb257da66f1c3e4f33163afd693b1862c39",
+      "prompt_tokens": 18934,
+      "completion_tokens": 2935,
+      "message_utf8_bytes": 72692,
+      "peak_uncached_usage_estimate_CNY": "0.061348"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_slot12\\12_R003_new_response.json",
+      "sha256": "150e6434c33eb95d7e0fac7c1319505a5996c9e66eddcc60a8c213dcfbbe259d",
+      "prompt_tokens": 3839,
+      "completion_tokens": 646,
+      "message_utf8_bytes": 15793,
+      "peak_uncached_usage_estimate_CNY": "0.012846"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\quarantine_flash_comparison_20261018\\13_OR010_off_response.json",
+      "sha256": "4573c625cf115cfdd7039f51a1986afa4e4b893420313cc5bcbfeffc5d01c05d",
+      "prompt_tokens": 7177,
+      "completion_tokens": 2183,
+      "message_utf8_bytes": 26494,
+      "peak_uncached_usage_estimate_CNY": "0.031818"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\quarantine_flash_comparison_20261018\\14_OR010_on_response.json",
+      "sha256": "6e8c184cdd85c50409fb2e58e16a6425c74a1783cd8f9eae17470141fa3c0878",
+      "prompt_tokens": 7247,
+      "completion_tokens": 3372,
+      "message_utf8_bytes": 26852,
+      "peak_uncached_usage_estimate_CNY": "0.04147"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\quarantine_flash_comparison_20261018\\15_OR023_off_response.json",
+      "sha256": "54b1f54d400297a32abc28ff852143fcc113226b79701b866863d39972b4f1ae",
+      "prompt_tokens": 6525,
+      "completion_tokens": 2302,
+      "message_utf8_bytes": 24125,
+      "peak_uncached_usage_estimate_CNY": "0.031466"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\quarantine_flash_comparison_20261018\\16_OR023_on_response.json",
+      "sha256": "2abc3b21bc0d8487b1da6cd47f015024374cfcb2306bee328dd5c812eb57f31a",
+      "prompt_tokens": 6052,
+      "completion_tokens": 2041,
+      "message_utf8_bytes": 22476,
+      "peak_uncached_usage_estimate_CNY": "0.028432"
+    }
+  ],
+  "failure_records": [
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\01_OR001_old_response.json",
+      "sha256": "ecc1f2976595f005b2b09b2f711410a42640cb0155f84ccaf37fd48346bc8df6",
+      "status": "failed_stop",
+      "max_risk_reservation_CNY": "2.162688"
+    },
+    {
+      "path": "D:\\cooling_rag_multigranular\\cooling_rag_multigranular\\revision_artifacts\\optional_evidence_policies_20261018\\authorized_flash_run\\11_R003_old_response.json",
+      "sha256": "701752a9792cdff8390c29474436fde310cc82061a96eb4b1af0e160aae7c57d",
+      "status": "failed_stop",
+      "max_risk_reservation_CNY": "2.162688"
+    }
+  ]
+}

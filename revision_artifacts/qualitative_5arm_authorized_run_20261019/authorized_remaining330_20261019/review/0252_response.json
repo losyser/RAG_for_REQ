@@ -1,0 +1,74 @@
+{
+  "slot": "d5a0e431480d58341254d30f2ce4f3847273f5b1325ebe6880eb18dbeb010ee3",
+  "started_at": "2026-10-19T06:46:11.614360+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"d5a0e431480d58341254d30f2ce4f3847273f5b1325ebe6880eb18dbeb010ee3\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"not_verifiable\\\",\\n  \\\"faithfulness\\\": \\\"new_inference_or_synthesis\\\",\\n  \\\"support\\\": \\\"insufficient\\\",\\n  \\\"applicability\\\": \\\"unknown\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"The high temperature cooling water is used for the cooling of cylinder liners and cylinder heads.\\\",\\n      \\\"candidate_span\\\": \\\"高温冷却水回路所服务的缸套与缸头冷却对象\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"HT cooling water temperature ≥ 60 °C.\\\",\\n      \\\"candidate_span\\\": \\\"高温冷却水系统组成\\\",\\n      \\\"relation\\\": \\\"缺失说明\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"证据E001提到高温冷却水用于缸套和缸头的冷却，但没有明确提到图纸表达要求。证据E002提到了高温冷却水温度的要求，但未提及图纸表达的具体内容。候选需求增加了图纸表达的要求，属于新的推导或综合。\\\",\\n  \\\"limitations\\\": [\\\"缺少关于图纸表达的具体要求\\\", \\\"未限定具体机型工况\\\"]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1314,\"completion_tokens\":342,\"total_tokens\":1656,\"prompt_tokens_details\":{\"cached_tokens\":256}},\"created\":1792392382,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-de7c6a76-9400-9ef4-86db-f9521706944c\"}",
+  "response_headers": {
+    "x-request-id": "de7c6a76-9400-9ef4-86db-f9521706944c",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:46:22 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"d5a0e431480d58341254d30f2ce4f3847273f5b1325ebe6880eb18dbeb010ee3\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"not_verifiable\",\n  \"faithfulness\": \"new_inference_or_synthesis\",\n  \"support\": \"insufficient\",\n  \"applicability\": \"unknown\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"The high temperature cooling water is used for the cooling of cylinder liners and cylinder heads.\",\n      \"candidate_span\": \"高温冷却水回路所服务的缸套与缸头冷却对象\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"HT cooling water temperature ≥ 60 °C.\",\n      \"candidate_span\": \"高温冷却水系统组成\",\n      \"relation\": \"缺失说明\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"证据E001提到高温冷却水用于缸套和缸头的冷却，但没有明确提到图纸表达要求。证据E002提到了高温冷却水温度的要求，但未提及图纸表达的具体内容。候选需求增加了图纸表达的要求，属于新的推导或综合。\",\n  \"limitations\": [\"缺少关于图纸表达的具体要求\", \"未限定具体机型工况\"]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1314,
+      "completion_tokens": 342,
+      "total_tokens": 1656,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      }
+    },
+    "created": 1792392382,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-de7c6a76-9400-9ef4-86db-f9521706944c"
+  },
+  "observed_usage_cost_CNY": "0.0064368",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0064368",
+  "parsed": {
+    "review_id": "d5a0e431480d58341254d30f2ce4f3847273f5b1325ebe6880eb18dbeb010ee3",
+    "format_judgment": "pass",
+    "verifiability": "not_verifiable",
+    "faithfulness": "new_inference_or_synthesis",
+    "support": "insufficient",
+    "applicability": "unknown",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "The high temperature cooling water is used for the cooling of cylinder liners and cylinder heads.",
+        "candidate_span": "高温冷却水回路所服务的缸套与缸头冷却对象",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "HT cooling water temperature ≥ 60 °C.",
+        "candidate_span": "高温冷却水系统组成",
+        "relation": "缺失说明"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "证据E001提到高温冷却水用于缸套和缸头的冷却，但没有明确提到图纸表达要求。证据E002提到了高温冷却水温度的要求，但未提及图纸表达的具体内容。候选需求增加了图纸表达的要求，属于新的推导或综合。",
+    "limitations": [
+      "缺少关于图纸表达的具体要求",
+      "未限定具体机型工况"
+    ]
+  },
+  "finished_at": "2026-10-19T06:46:21.145652+00:00",
+  "elapsed_seconds": 9.343
+}

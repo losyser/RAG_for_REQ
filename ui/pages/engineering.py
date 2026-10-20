@@ -2,6 +2,7 @@
 """Engineering requirements generation page."""
 from __future__ import annotations
 
+import json
 from html import escape
 from pathlib import Path
 from typing import Any
@@ -13,7 +14,9 @@ from cooling_rag_mg.engineering_requirement_agent import (
     generate_engineering_requirements,
     save_engineering_requirements,
 )
-from cooling_rag_mg.sysml_exporter import export_payload_bytes
+from cooling_rag_mg.ea_ui_export import export_ea_payload_bytes, load_kb
+from cooling_rag_mg.ea_paper_figures import mapping_template, paper_zip
+from cooling_rag_mg.requirement_status import normalize_status, display_colors, display_payload
 from ui.state import ENGINEERING_STATUS_LABELS, normalize_df
 from ui.components.shared import (
     render_workspace_header,
@@ -40,7 +43,9 @@ def _sysml_block_html(item: dict[str, Any], depth: int = 0) -> str:
         "evidence_gap": "sysml-gap",
         "need_confirmation": "sysml-confirm",
     }.get(status, "sysml-unknown")
-    status_label = ENGINEERING_STATUS_LABELS.get(status, status)
+    state = item.get("_display_state") or normalize_status(item)
+    status_label = state["evidence_support_label"]
+    bg, border = display_colors(state, item.get("_color_mode", "Evidence support"))
     badge_class = ENGINEERING_STATUS_CLASS.get(status, "badge-na")
     req_id = escape(str(item.get("id", "") or ""))
     topic = escape(str(item.get("topic", "") or ""))
@@ -56,7 +61,7 @@ def _sysml_block_html(item: dict[str, Any], depth: int = 0) -> str:
         inner = "".join(_sysml_block_html(c, depth + 1) for c in children)
         children_html = f'<div class="sysml-children">{inner}</div>'
     return (
-        f'<div class="sysml-block {status_class} {depth_class}">'
+        f'<div class="sysml-block {status_class} {depth_class}" data-coloring-mode="{item.get("_color_mode", "Evidence support")}" data-rule-grade="{state["rule_grade"]}" data-support-state="{state["evidence_support_state"]}" style="background:{bg};border-color:{border};">'
         f'<div class="sysml-stereotype">«requirement»</div>'
         f'<div class="sysml-block-name">{topic}</div>'
         f'<div class="sysml-block-body">'
@@ -65,6 +70,7 @@ def _sysml_block_html(item: dict[str, Any], depth: int = 0) -> str:
         f'<span class="sysml-text-val">{shall_display}</span></div>'
         f'<div class="sysml-meta">'
         f'<span class="badge {badge_class}">{escape(status_label)}</span>'
+        f'<span>Rule grade: {escape(state["rule_grade"])}</span>'
         f'<span class="sysml-verif-chip">{verif}</span>'
         f'<div class="sysml-evidence-line">证据：{evidence}</div>'
         f'</div></div>'
@@ -92,7 +98,7 @@ def render_engineering_requirement_overview(payload: dict[str, Any]) -> None:
     for col, label, value, caption in [
         (cols[0], "需求集", len(req_sets), ""),
         (cols[1], "工程需求", total_items, ""),
-        (cols[2], "证据缺口", gap_items, f"直接证据支撑 {direct_items} 条"),
+        (cols[2], "证据缺口", gap_items, f"模型自报直接支撑（未核验）{direct_items} 条"),
     ]:
         with col:
             extra = f'<div class="muted">{escape(caption)}</div>' if caption else ""
@@ -120,7 +126,7 @@ def render_sysml_requirement_table(payload: dict[str, Any]) -> None:
                 "主题": item.get("topic", ""),
                 "工程化需求": item.get("shall_statement", ""),
                 "验证方式": item.get("verification_method", ""),
-                "支撑状态": ENGINEERING_STATUS_LABELS.get(item.get("support_status", ""), item.get("support_status", "")),
+                "支撑状态": normalize_status(item)["evidence_support_label"],
                 "证据": ", ".join([str(x) for x in item.get("evidence_ids", []) or []]),
             })
     if not rows:
@@ -136,7 +142,7 @@ def render_sysml_requirement_table(payload: dict[str, Any]) -> None:
             for item in req_set.get("engineering_requirements", []) or []:
                 st.markdown(
                     f'<div class="evidence-card">'
-                    f'<div class="evidence-title">{engineering_badge_html(item.get("support_status", ""))}'
+                    f'<div class="evidence-title">{escape(normalize_status(item)["evidence_support_label"])}'
                     f'{escape(str(item.get("id", "") or ""))}｜{escape(str(item.get("topic", "") or ""))}</div>'
                     f'<div>{escape(str(item.get("shall_statement", "") or ""))}</div>'
                     f'<div class="muted">验证方式：{escape(str(item.get("verification_method", "") or ""))}｜'
@@ -193,7 +199,7 @@ def render_sysml_requirement_diagram(payload: dict[str, Any]) -> None:
                 st.markdown(
                     f'<div class="evidence-card">'
                     f'<div class="evidence-title">'
-                    f'{engineering_badge_html(item.get("support_status", ""))}'
+                    f'{escape(normalize_status(item)["evidence_support_label"])}'
                     f'{escape(str(item.get("id", "") or ""))} ｜ {escape(str(item.get("topic", "") or ""))}'
                     f'</div>'
                     f'<div>{escape(str(item.get("shall_statement", "") or ""))}</div>'
@@ -219,6 +225,38 @@ def render_engineering_workspace(cfg: Any) -> None:
         "基于原始需求和有支撑证据生成工程化需求，以 SysML 需求图方式呈现层级结构与支撑状态。",
         "SysML Requirement",
     )
+    with st.expander("加载已保存的工程化结果（离线）", expanded=not bool(st.session_state.engineering_requirements)):
+        saved = sorted(Path(cfg.paths.search_results_dir).glob("batch_*/engineering_requirements_*/engineering_requirements.json"), reverse=True)
+        if saved:
+            selected = st.selectbox("已保存结果", saved, format_func=lambda p: str(p.relative_to(cfg.paths.search_results_dir)))
+            st.caption("从同批检索结果恢复原文；未包含的需求使用当前原始需求表。编号相同但原文不同会阻止加载。仅更新本次会话，不调用模型或改写文件。")
+            if st.button("加载已保存结果"):
+                try:
+                    loaded = json.loads(selected.read_text(encoding="utf-8"))
+                    retrieval_path = selected.parent.parent / "all_requirements_results.json"
+                    retrieval = json.loads(retrieval_path.read_text(encoding="utf-8"))
+                    source_rows = [{"需求编号": r["requirement_id"], "提出方": r.get("stakeholder", ""), "需求内容": r["raw_requirement_text"], "启用": True} for r in retrieval["requirements"]]
+                    current = {r["requirement_id"]: {"需求编号": r["requirement_id"], "提出方": r["stakeholder"], "需求内容": r["requirement_text"], "启用": True} for r in normalize_df(st.session_state.requirements_df)}
+                    for row in source_rows:
+                        old = current.get(row["需求编号"])
+                        if old and old["需求内容"] != row["需求内容"]:
+                            raise ValueError(f"原始需求内容冲突：{row['需求编号']}")
+                        current[row["需求编号"]] = row
+                    source_rows = list(current.values())
+                    source_ids = {r["需求编号"] for r in source_rows if r["需求内容"]}
+                    if not loaded.get("requirement_sets") or any(r["source_requirement_id"] not in source_ids for r in loaded["requirement_sets"]):
+                        raise ValueError("保存结果缺少对应的原始需求")
+                    st.session_state.requirements_df = pd.DataFrame(source_rows)
+                    st.session_state.results = retrieval
+                    st.session_state.last_output = str(retrieval_path)
+                    st.session_state.engineering_requirements = loaded
+                    st.session_state.last_engineering_output = str(selected)
+                    st.rerun()
+                except (OSError, ValueError, KeyError, TypeError) as exc:
+                    st.error(f"加载失败：{exc}")
+        else:
+            st.info("未找到已保存的工程化结果。")
+
     has_results = st.session_state.results is not None
     control_col, note_col = st.columns([1.1, 4])
     with control_col:
@@ -268,28 +306,50 @@ def render_engineering_workspace(cfg: Any) -> None:
     if not payload:
         st.info("尚未生成工程化需求。点击上方按钮后可在需求图中查看层级结构和支撑状态。")
         return
+    coloring_by = st.radio("Coloring by", ["Rule grade", "Evidence support"], horizontal=True, index=1, key="ea_coloring_by")
+    st.caption("Rule grade = criterion/citation rules. Evidence support = reported status, not independently verified. Missing support status = Not assessed. Colors do not prove semantic support.")
+    status_kb = load_kb(cfg.paths.evidence_units_jsonl)
+    shown_payload = display_payload(payload, status_kb, coloring_by)
     render_engineering_requirement_overview(payload)
 
     # ── Export row ──────────────────────────────────────────────────────────
     export_col, _ = st.columns([1.1, 4])
     with export_col:
         try:
-            xml_bytes = export_payload_bytes(payload)
+            xml_bytes = export_ea_payload_bytes(
+                payload, source_requirements=normalize_df(st.session_state.requirements_df),
+                kb_index=status_kb, coloring_by=coloring_by,
+                batch_id=Path(st.session_state.last_engineering_output).parent.parent.name if st.session_state.last_engineering_output else "current_session",
+                source_path=str(st.session_state.last_engineering_output or "current_session"),
+            )
             st.download_button(
-                label="导出 SysML XML",
+                label="导出 EA 原生 XMI（默认折叠）",
                 data=xml_bytes,
-                file_name="requirements_sysml.xml",
+                file_name="requirements_ea_folded.xml",
                 mime="application/xml",
+                on_click="ignore",
                 width="stretch",
             )
+            with st.expander("English paper figures / 英文论文分图"):
+                st.caption("Select about five nodes per figure: one real root above its actual descendants. Translate every selected name and full text; retain the original mapping. Combined and individual XMLs use the current UI coloring mode.")
+                st.download_button("Download English figure mapping template", json.dumps(mapping_template(xml_bytes), ensure_ascii=False, indent=2), "english_figure_mapping.json", "application/json", key="ea_english_template", on_click="ignore")
+                figure_mapping = st.file_uploader("Upload reviewed English titles / translation and selection map", type=["json"], key="ea_english_map")
+                if figure_mapping is not None:
+                    try:
+                        bundle = paper_zip(xml_bytes, json.loads(figure_mapping.getvalue()))
+                        st.download_button("Export landscape English paper figures", bundle, "english_paper_figures.zip", "application/zip", key="ea_english_export", on_click="ignore")
+                    except (ValueError, KeyError, TypeError) as figure_error:
+                        st.error(f"English figure mapping: {figure_error}")
         except Exception as _exc:
             st.error(f"SysML XML 导出失败：{_exc}")
 
+    st.caption("EA 默认隐藏长正文；选中元素 → Compartment Visibility → Notes 可展开。等级是指标/证据规则分类，不是置信概率。")
+
     diagram_tab, table_tab, gap_tab, raw_tab = st.tabs(["需求图", "SysML 需求表", "证据缺口", "原始 JSON"])
     with diagram_tab:
-        render_sysml_requirement_diagram(payload)
+        render_sysml_requirement_diagram(shown_payload)
     with table_tab:
-        render_sysml_requirement_table(payload)
+        render_sysml_requirement_table(shown_payload)
     with gap_tab:
         gaps = []
         for req_set in payload.get("requirement_sets", []) or []:

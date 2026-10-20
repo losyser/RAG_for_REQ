@@ -1,0 +1,37 @@
+{
+  "slot": "OR055-random_old",
+  "body_sha256": "915e856552ed6066fb8229b155d9a708a9946b461872876c9baf571adb48e3a8",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:10:42.961610+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR055-random_old",
+    "source_id": "OR055",
+    "group": "random_old",
+    "context_sha256": "3e5cac9d276042a0ea301de6bcf0322bcec11f8e4e4e0e4a70db457e753d754c",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n牺牲阳极或者其他防腐部件如果有配置，要方便检查和更换。\n\n## 证据清单\n[E-EXP-CTRL-005] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 膨胀水箱作用\n172 kPa (25 psi) static head greater than 35 kPa (5 psi) requires the expansion tank to be vented to air, i.e., no pressure cap. High Temperature Heat Recovery Circuits To ensure proper cooling in all types of high temperature systems, the engine oil cooler and aftercooler require a cooling water circuit separate from the engine jacket water. A thermostat in the oil system bypasses the oil cooler to control lubricating oil minimum temperatures and prevent overcooling. If the coolant in th\n  [量化参数] 172、25、35、5、10、50、99-127、210-260\n\n[E-SYS-COMP-028] 层级:L3 来源:S41 Everllence 49/60DF Project Guide\n  内容: 淡水侧系统组成\npumps Actual factor for impact of attached pumps HT pumps Number of attached HT cooling water service pumps LT pumps Number of attached LT cooling water service pumps Actual engine speed [rpm] Nominal engine speed [rpm] load% Actual engine load [%] Nominal output per cylinder Insert the nominal output per cylinder [kW/cyl.] 2. For exhaust gas back pressure after turbine > 50 mbar Every additional 1 mbar (0.1 kPa) back pressure addition of 0.015 g/kWh has to be calculated. 3. For exhaust \n  [量化参数] 50、1、0.1、0.015、1、0.03、0.5、44\n\n[E-PUMP-INSP-004] 层级:L2 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却系统泄漏检查要求\nradiators more than 17.4 m (57 ft) above the pump. At greater heights, the static resistance developed may cause leakage at the engine water pump seal. Static head is the maximum height the coolant is raised; refer to Figure 16. Note the use of an auxiliary expansion tank and appropriate vent lines. In Figure 17, the main (Cat) expansion tank provides the regulator mounting location and deaeration function for the cooling system. The auxiliary expansion tank is the highest point in th\n  [量化参数] 17.4、57、6.9、1\n\n[E-COOLER-INSP-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 中央冷却器选型要求\n_____________________________ x 1.______ =________________ kW or Btu/min Jacket Water Circuit Heat Rejection: ____________________ kW or Btu/min 5. Recheck Cooling System Pressure Drop After selecting a cooling system, calculate the pressure drop of the system and compare it to the external restriction vs. flow curve to determine if the flow rate changed from the assumed value. If the value changed, recheck the cooling system at the new value to assure the system is sized correctly. As\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "915e856552ed6066fb8229b155d9a708a9946b461872876c9baf571adb48e3a8",
+    "utf8_message_bytes": 3710,
+    "execution_index": 274
+  }
+}

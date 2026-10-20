@@ -1,0 +1,277 @@
+{
+  "generation": {
+    "semantic_old": {
+      "n_rows": 448,
+      "n_sources": 60,
+      "grade_A": 1,
+      "grade_B": 61,
+      "grade_C": 386,
+      "grade_X": 0,
+      "grade_X_pct": 0.0,
+      "grade_AB_pct": 13.8,
+      "n_tbd": 345,
+      "tbd_pct": 77.0,
+      "n_q": 0,
+      "q_pct": 0.0,
+      "citation_pct": 98.2,
+      "tbd_source_mean_pct": 82.2
+    },
+    "semantic_new": {
+      "n_rows": 448,
+      "n_sources": 60,
+      "grade_A": 1,
+      "grade_B": 53,
+      "grade_C": 394,
+      "grade_X": 0,
+      "grade_X_pct": 0.0,
+      "grade_AB_pct": 12.1,
+      "n_tbd": 134,
+      "tbd_pct": 29.9,
+      "n_q": 233,
+      "q_pct": 52.0,
+      "citation_pct": 98.9,
+      "tbd_source_mean_pct": 32.8
+    },
+    "random_old": {
+      "n_rows": 408,
+      "n_sources": 60,
+      "grade_A": 0,
+      "grade_B": 36,
+      "grade_C": 372,
+      "grade_X": 0,
+      "grade_X_pct": 0.0,
+      "grade_AB_pct": 8.8,
+      "n_tbd": 353,
+      "tbd_pct": 86.5,
+      "n_q": 0,
+      "q_pct": 0.0,
+      "citation_pct": 100.0,
+      "tbd_source_mean_pct": 89.9
+    },
+    "random_new": {
+      "n_rows": 398,
+      "n_sources": 60,
+      "grade_A": 0,
+      "grade_B": 45,
+      "grade_C": 353,
+      "grade_X": 0,
+      "grade_X_pct": 0.0,
+      "grade_AB_pct": 11.3,
+      "n_tbd": 138,
+      "tbd_pct": 34.7,
+      "n_q": 208,
+      "q_pct": 52.3,
+      "citation_pct": 100.0,
+      "tbd_source_mean_pct": 39.2
+    },
+    "norag_original": {
+      "n_rows": 289,
+      "n_sources": 60,
+      "grade_A": 0,
+      "grade_B": 0,
+      "grade_C": 72,
+      "grade_X": 217,
+      "grade_X_pct": 75.1,
+      "grade_AB_pct": 0.0,
+      "n_tbd": 0,
+      "tbd_pct": 0.0,
+      "n_q": 0,
+      "q_pct": 0.0,
+      "citation_pct": 0.0,
+      "tbd_source_mean_pct": 0.0
+    }
+  },
+  "qwen": {
+    "semantic_new": {
+      "n_q": 233,
+      "n_reviewed": 232,
+      "support": {
+        "partial": 133,
+        "insufficient": 35,
+        "direct": 64
+      },
+      "applicability": {
+        "explicit_match": 99,
+        "unknown": 121,
+        "general_rule_with_basis": 12
+      },
+      "faithfulness": {
+        "new_inference_or_synthesis": 57,
+        "faithful_paraphrase": 147,
+        "quote": 27,
+        "unsupported": 1
+      },
+      "verifiability": {
+        "verifiable": 195,
+        "not_verifiable": 37
+      },
+      "anchor": {
+        "pass": 201,
+        "fail": 31
+      },
+      "direct_pct": 27.6,
+      "partial_pct": 57.3,
+      "insufficient_pct": 15.1,
+      "contradicted": 0,
+      "explicit_match_pct": 42.7,
+      "new_inference_pct": 25.0,
+      "verifiable_pct": 84.1,
+      "anchor_pass_pct": 86.6
+    },
+    "random_new": {
+      "n_q": 208,
+      "n_reviewed": 208,
+      "support": {
+        "partial": 96,
+        "direct": 29,
+        "insufficient": 83
+      },
+      "applicability": {
+        "unknown": 139,
+        "explicit_match": 62,
+        "general_rule_with_basis": 6,
+        "explicit_mismatch": 1
+      },
+      "faithfulness": {
+        "faithful_paraphrase": 66,
+        "new_inference_or_synthesis": 113,
+        "quote": 18,
+        "unsupported": 11
+      },
+      "verifiability": {
+        "verifiable": 133,
+        "not_verifiable": 75
+      },
+      "anchor": {
+        "pass": 162,
+        "fail": 46
+      },
+      "direct_pct": 13.9,
+      "partial_pct": 46.2,
+      "insufficient_pct": 39.9,
+      "contradicted": 0,
+      "explicit_match_pct": 29.8,
+      "new_inference_pct": 59.6,
+      "verifiable_pct": 63.9,
+      "anchor_pass_pct": 77.9
+    }
+  },
+  "paired": {
+    "n_pairs": 55,
+    "insufficient_sem_lower": 34,
+    "insufficient_sem_higher": 9,
+    "insufficient_p": 1.8783060199665148e-06,
+    "supported_sem_higher": 35,
+    "supported_sem_lower": 11,
+    "supported_p": 2.9092249638014863e-06
+  },
+  "human": {
+    "n": 30,
+    "support_agreement": 18,
+    "total": {
+      "partial": 13,
+      "direct": 11,
+      "insufficient": 5,
+      "contradicted": 1
+    },
+    "by_group": {
+      "random_new": {
+        "partial": 5,
+        "direct": 6,
+        "insufficient": 4
+      },
+      "semantic_new": {
+        "partial": 8,
+        "direct": 5,
+        "contradicted": 1,
+        "insufficient": 1
+      }
+    }
+  },
+  "deferral": {
+    "extracted_but_deferred": 49,
+    "absent_from_cited_units": 85,
+    "nonnumeric": 193,
+    "other_unit": 39,
+    "in_text_not_extracted": 3,
+    "total": 369
+  },
+  "grading_policy": "numeric-ranges-v1",
+  "macros": {
+    "SemOldRows": 448,
+    "SemOldTbdPct": 77.0,
+    "SemOldQPct": 0.0,
+    "SemOldQ": 0,
+    "SemOldGradeXPct": 0.0,
+    "SemOldGradeABPct": 13.8,
+    "SemOldGradeX": 0,
+    "SemNewRows": 448,
+    "SemNewTbdPct": 29.9,
+    "SemNewQPct": 52.0,
+    "SemNewQ": 233,
+    "SemNewGradeXPct": 0.0,
+    "SemNewGradeABPct": 12.1,
+    "SemNewGradeX": 0,
+    "RndOldRows": 408,
+    "RndOldTbdPct": 86.5,
+    "RndOldQPct": 0.0,
+    "RndOldQ": 0,
+    "RndOldGradeXPct": 0.0,
+    "RndOldGradeABPct": 8.8,
+    "RndOldGradeX": 0,
+    "RndNewRows": 398,
+    "RndNewTbdPct": 34.7,
+    "RndNewQPct": 52.3,
+    "RndNewQ": 208,
+    "RndNewGradeXPct": 0.0,
+    "RndNewGradeABPct": 11.3,
+    "RndNewGradeX": 0,
+    "NoRagReRows": 289,
+    "NoRagReTbdPct": 0.0,
+    "NoRagReQPct": 0.0,
+    "NoRagReQ": 0,
+    "NoRagReGradeXPct": 75.1,
+    "NoRagReGradeABPct": 0.0,
+    "NoRagReGradeX": 217,
+    "QSemN": 232,
+    "QSemDirectPct": 27.6,
+    "QSemPartialPct": 57.3,
+    "QSemInsuffPct": 15.1,
+    "QSemContradicted": 0,
+    "QSemMatchPct": 42.7,
+    "QSemNewInfPct": 25.0,
+    "QSemVerifPct": 84.1,
+    "QSemAnchorPct": 86.6,
+    "QRndN": 208,
+    "QRndDirectPct": 13.9,
+    "QRndPartialPct": 46.2,
+    "QRndInsuffPct": 39.9,
+    "QRndContradicted": 0,
+    "QRndMatchPct": 29.8,
+    "QRndNewInfPct": 59.6,
+    "QRndVerifPct": 63.9,
+    "QRndAnchorPct": 77.9,
+    "QPairs": 55,
+    "QInsLower": 34,
+    "QInsHigher": 9,
+    "QInsP": "$<10^{-5}$",
+    "QSupHigher": 35,
+    "QSupLower": 11,
+    "QSupP": "$<10^{-5}$",
+    "HumN": 30,
+    "HumAgree": 18,
+    "HumDirect": 11,
+    "HumPartial": 13,
+    "HumContra": 1,
+    "HumInsuff": 5,
+    "HumSemInsuff": 1,
+    "HumRndInsuff": 4,
+    "HumPerArm": 15,
+    "DefTotal": 369,
+    "DefNonNumeric": 193,
+    "DefAbsent": 85,
+    "DefExtracted": 49,
+    "DefNotExtracted": 3,
+    "DefOtherUnit": 39
+  }
+}

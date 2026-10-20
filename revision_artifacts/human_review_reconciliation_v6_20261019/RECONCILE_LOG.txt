@@ -1,0 +1,64 @@
+{
+  "matched": true,
+  "labels_completed": 31,
+  "metrics": {
+    "support": {
+      "sample_agree": 18,
+      "sample_agreement": 0.6,
+      "weighted_agree_numerator": 276.0,
+      "weighted_agreement": 0.6272727272727273
+    },
+    "applicability": {
+      "sample_agree": 19,
+      "sample_agreement": 0.6333333333333333,
+      "weighted_agree_numerator": 249.2,
+      "weighted_agreement": 0.5663636363636364
+    },
+    "verifiability": {
+      "sample_agree": 17,
+      "sample_agreement": 0.5666666666666667,
+      "weighted_agree_numerator": 284.2,
+      "weighted_agreement": 0.6459090909090909
+    },
+    "faithfulness": {
+      "sample_agree": 11,
+      "sample_agreement": 0.36666666666666664,
+      "weighted_agree_numerator": 113.8,
+      "weighted_agreement": 0.2586363636363636
+    }
+  },
+  "H01_machine": {
+    "review_id": "d323f6f79ed531285557944230c90053af41648414871ecf7bff85b5ff78251f",
+    "format_judgment": "pass",
+    "verifiability": "verifiable",
+    "faithfulness": "new_inference_or_synthesis",
+    "support": "partial",
+    "applicability": "explicit_match",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "MOV-002 HT cooling water temperature con- trol valve ... MOV-016 LT cooling water temperature con- trol valve ... P-002 HT cooling water service pump, at- tached ... P-004 LT cooling water service pump, at- tached",
+        "candidate_span": "冷却水系统配置HT冷却水温度控制阀、LT冷却水温度控制阀，以及HT冷却水服务泵（P-002，附带）和LT冷却水服务泵（P-004，附带）。",
+        "relation": "支持"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "候选中提到的组件（HT冷却水温度控制阀、LT冷却水温度控制阀、HT冷却水服务泵、LT冷却水服务泵）在证据中确实存在，但候选中关于'核对冷却水温度控制要求，并确认泵组配置与温度控制阀配置相协调'的内容是新的推导或综合，没有直接证据支持。同时，来源可靠性无法从给定信息中确定。",
+    "limitations": [
+      "缺少关于温度控制要求的具体说明",
+      "未提供如何确认泵组配置与温度控制阀配置相协调的具体方法"
+    ]
+  },
+  "H01_human": {
+    "support": "部分支持",
+    "applicability": "明确符合",
+    "verifiability": "可检验",
+    "faithfulness": "忠实转述"
+  },
+  "required_note_missing_in_original": [
+    "H16"
+  ],
+  "author_supplement_received": true,
+  "remaining_author_questions": [],
+  "new_calls": 0
+}

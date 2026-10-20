@@ -1,0 +1,161 @@
+{
+  "slot": "OR034-random_old",
+  "started_at": "2026-10-19T02:58:23.646128+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"de0d51d1-15ef-4f8f-a5f1-d3c2aa5a6b3c\",\"object\":\"chat.completion\",\"created\":1792378704,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"温度控制阀应配置热膨胀元件，根据冷却水实际温度连续调节流经冷却器的流量，以维持冷却水进口温度在规定的调节范围内。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀TCV-005|intent:调节范围|hint:证据给出约55°C至65°C的调节范围，需按机型确认上下限及对应工况}}\\\",\\\"applicable_condition\\\":\\\"主机正常运行、冷却水系统投运，温度控制阀处于自动调节状态\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度控制阀在调节范围内随水温变化连续动作，无卡滞\\\",\\\"冷却水进口温度稳定在调节范围内，稳态偏差满足项目计算文件要求\\\",\\\"温度阶跃扰动后阀门动作响应时间满足设计文件规定\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-231\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"温度控制阀的控制逻辑应使冷却水温度信号反映实际水温变化，控制回路响应不得出现明显滞后。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀及温度传感器回路|intent:控制响应滞后时间|hint:需依据项目计算文件或厂家技术数据确定传感器时间常数与阀门全行程响应时间上限}}\\\",\\\"applicable_condition\\\":\\\"冷却水温度发生阶跃或斜坡变化、负荷变化工况下\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度传感器测量值与实际水温偏差在允许范围内\\\",\\\"控制回路从温度偏差出现到阀门开始动作的延迟不超过设计规定值\\\",\\\"负荷变化过程中冷却水温度超调量满足设计文件要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-231\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"温度控制阀的选型与整定应保证冷却水流量调节不超过设计流量的允许偏差，避免因流量过大引起气蚀。\\\",\\\"measurable_criterion\\\":\\\"15%\\\",\\\"applicable_condition\\\":\\\"温度控制阀全开或调节过程中，冷却水泵运行工况下\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"冷却水实际流量不超过设计流量的115%\\\",\\\"温度控制阀调节过程中系统不出现气蚀现象\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-SHUT-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"温度控制阀调节所依据的冷却水温度参数应在冷却系统设计工况下确定，并考虑防冻液添加导致传热率下降的影响。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:冷却水系统及温度控制阀|intent:设计进口温度|hint:需依据厂家技术数据或项目计算文件确定，并计入防冻液浓度对传热的影响}}\\\",\\\"applicable_condition\\\":\\\"冷却水中添加防冻液、冷却器投运的设计工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"温度控制阀整定值覆盖设计工况下的冷却水进口温度要求\\\",\\\"计入防冻液影响后冷却水温度仍满足主机进口温度要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-231\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"低温回路温度调节组件应保证在低于规定负荷时增压空气冷却器旁通、水温控制逻辑正确动作。\\\",\\\"measurable_criterion\\\":\\\"40%\\\",\\\"applicable_condition\\\":\\\"低温回路运行、负荷低于约40%额定负荷的工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"负荷低于40%时增压空气冷却器旁通阀按逻辑动作，水直接引至滑油冷却器\\\",\\\"旁通过程中低温回路水温无异常波动，控制无显著滞后\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-EXP-CTRL-007\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水温度控制相关的传感器与阀门应便于定期检查冷却液状态及膨胀水箱水位，以确认温度信号源可靠。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:次/周|ref:S42 MAN 49/60DF Project Guide|component:膨胀水箱及冷却液|intent:检查频次|hint:证据建议至少每周检查一次冷却液状态与膨胀水箱水位，需按项目维护计划确认}}\\\",\\\"applicable_condition\\\":\\\"主机运行期间及停机维护期间\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"按维护计划完成冷却液状态与膨胀水箱水位检查并记录\\\",\\\"发现油膜、变色等异常时及时处理，保证温度测量信号不受污染影响\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-EXP-INSP-031\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S42 MAN 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2258,\"completion_tokens\":1170,\"total_tokens\":3428,\"prompt_tokens_details\":{\"cached_tokens\":1920},\"prompt_cache_hit_tokens\":1920,\"prompt_cache_miss_tokens\":338},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:58:24 GMT"
+  },
+  "response": {
+    "id": "de0d51d1-15ef-4f8f-a5f1-d3c2aa5a6b3c",
+    "object": "chat.completion",
+    "created": 1792378704,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"温度控制阀应配置热膨胀元件，根据冷却水实际温度连续调节流经冷却器的流量，以维持冷却水进口温度在规定的调节范围内。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀TCV-005|intent:调节范围|hint:证据给出约55°C至65°C的调节范围，需按机型确认上下限及对应工况}}\",\"applicable_condition\":\"主机正常运行、冷却水系统投运，温度控制阀处于自动调节状态\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度控制阀在调节范围内随水温变化连续动作，无卡滞\",\"冷却水进口温度稳定在调节范围内，稳态偏差满足项目计算文件要求\",\"温度阶跃扰动后阀门动作响应时间满足设计文件规定\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-231\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"温度控制阀的控制逻辑应使冷却水温度信号反映实际水温变化，控制回路响应不得出现明显滞后。\",\"measurable_criterion\":\"{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀及温度传感器回路|intent:控制响应滞后时间|hint:需依据项目计算文件或厂家技术数据确定传感器时间常数与阀门全行程响应时间上限}}\",\"applicable_condition\":\"冷却水温度发生阶跃或斜坡变化、负荷变化工况下\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度传感器测量值与实际水温偏差在允许范围内\",\"控制回路从温度偏差出现到阀门开始动作的延迟不超过设计规定值\",\"负荷变化过程中冷却水温度超调量满足设计文件要求\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-231\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"温度控制阀的选型与整定应保证冷却水流量调节不超过设计流量的允许偏差，避免因流量过大引起气蚀。\",\"measurable_criterion\":\"15%\",\"applicable_condition\":\"温度控制阀全开或调节过程中，冷却水泵运行工况下\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"冷却水实际流量不超过设计流量的115%\",\"温度控制阀调节过程中系统不出现气蚀现象\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-SHUT-001\",\"tier\":\"L3\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"温度控制阀调节所依据的冷却水温度参数应在冷却系统设计工况下确定，并考虑防冻液添加导致传热率下降的影响。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:冷却水系统及温度控制阀|intent:设计进口温度|hint:需依据厂家技术数据或项目计算文件确定，并计入防冻液浓度对传热的影响}}\",\"applicable_condition\":\"冷却水中添加防冻液、冷却器投运的设计工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"温度控制阀整定值覆盖设计工况下的冷却水进口温度要求\",\"计入防冻液影响后冷却水温度仍满足主机进口温度要求\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-231\",\"tier\":\"L2\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"低温回路温度调节组件应保证在低于规定负荷时增压空气冷却器旁通、水温控制逻辑正确动作。\",\"measurable_criterion\":\"40%\",\"applicable_condition\":\"低温回路运行、负荷低于约40%额定负荷的工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"负荷低于40%时增压空气冷却器旁通阀按逻辑动作，水直接引至滑油冷却器\",\"旁通过程中低温回路水温无异常波动，控制无显著滞后\"],\"evidence_citations\":[{\"kb_id\":\"E-EXP-CTRL-007\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水温度控制相关的传感器与阀门应便于定期检查冷却液状态及膨胀水箱水位，以确认温度信号源可靠。\",\"measurable_criterion\":\"{{TBD|unit:次/周|ref:S42 MAN 49/60DF Project Guide|component:膨胀水箱及冷却液|intent:检查频次|hint:证据建议至少每周检查一次冷却液状态与膨胀水箱水位，需按项目维护计划确认}}\",\"applicable_condition\":\"主机运行期间及停机维护期间\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"按维护计划完成冷却液状态与膨胀水箱水位检查并记录\",\"发现油膜、变色等异常时及时处理，保证温度测量信号不受污染影响\"],\"evidence_citations\":[{\"kb_id\":\"E-EXP-INSP-031\",\"tier\":\"L3\",\"source\":\"S42 MAN 49/60DF Project Guide\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2258,
+      "completion_tokens": 1170,
+      "total_tokens": 3428,
+      "prompt_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "prompt_cache_hit_tokens": 1920,
+      "prompt_cache_miss_tokens": 338
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.013876",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.013876",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "温度控制阀应配置热膨胀元件，根据冷却水实际温度连续调节流经冷却器的流量，以维持冷却水进口温度在规定的调节范围内。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀TCV-005|intent:调节范围|hint:证据给出约55°C至65°C的调节范围，需按机型确认上下限及对应工况}}",
+        "applicable_condition": "主机正常运行、冷却水系统投运，温度控制阀处于自动调节状态",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度控制阀在调节范围内随水温变化连续动作，无卡滞",
+          "冷却水进口温度稳定在调节范围内，稳态偏差满足项目计算文件要求",
+          "温度阶跃扰动后阀门动作响应时间满足设计文件规定"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-231",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀的控制逻辑应使冷却水温度信号反映实际水温变化，控制回路响应不得出现明显滞后。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S42 MAN 49/60DF Project Guide|component:温度控制阀及温度传感器回路|intent:控制响应滞后时间|hint:需依据项目计算文件或厂家技术数据确定传感器时间常数与阀门全行程响应时间上限}}",
+        "applicable_condition": "冷却水温度发生阶跃或斜坡变化、负荷变化工况下",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度传感器测量值与实际水温偏差在允许范围内",
+          "控制回路从温度偏差出现到阀门开始动作的延迟不超过设计规定值",
+          "负荷变化过程中冷却水温度超调量满足设计文件要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-231",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀的选型与整定应保证冷却水流量调节不超过设计流量的允许偏差，避免因流量过大引起气蚀。",
+        "measurable_criterion": "15%",
+        "applicable_condition": "温度控制阀全开或调节过程中，冷却水泵运行工况下",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水实际流量不超过设计流量的115%",
+          "温度控制阀调节过程中系统不出现气蚀现象"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-001",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "温度控制阀调节所依据的冷却水温度参数应在冷却系统设计工况下确定，并考虑防冻液添加导致传热率下降的影响。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S42 MAN 49/60DF Project Guide|component:冷却水系统及温度控制阀|intent:设计进口温度|hint:需依据厂家技术数据或项目计算文件确定，并计入防冻液浓度对传热的影响}}",
+        "applicable_condition": "冷却水中添加防冻液、冷却器投运的设计工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "温度控制阀整定值覆盖设计工况下的冷却水进口温度要求",
+          "计入防冻液影响后冷却水温度仍满足主机进口温度要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-231",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温回路温度调节组件应保证在低于规定负荷时增压空气冷却器旁通、水温控制逻辑正确动作。",
+        "measurable_criterion": "40%",
+        "applicable_condition": "低温回路运行、负荷低于约40%额定负荷的工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "负荷低于40%时增压空气冷却器旁通阀按逻辑动作，水直接引至滑油冷却器",
+          "旁通过程中低温回路水温无异常波动，控制无显著滞后"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-CTRL-007",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度控制相关的传感器与阀门应便于定期检查冷却液状态及膨胀水箱水位，以确认温度信号源可靠。",
+        "measurable_criterion": "{{TBD|unit:次/周|ref:S42 MAN 49/60DF Project Guide|component:膨胀水箱及冷却液|intent:检查频次|hint:证据建议至少每周检查一次冷却液状态与膨胀水箱水位，需按项目维护计划确认}}",
+        "applicable_condition": "主机运行期间及停机维护期间",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "按维护计划完成冷却液状态与膨胀水箱水位检查并记录",
+          "发现油膜、变色等异常时及时处理，保证温度测量信号不受污染影响"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-INSP-031",
+            "tier": "L3",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:58:30.214051+00:00",
+  "elapsed_seconds": 6.515
+}

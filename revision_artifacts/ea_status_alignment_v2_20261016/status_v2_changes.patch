@@ -1,0 +1,332 @@
+--- a/cooling_rag_mg/requirement_status.py
++++ b/cooling_rag_mg/requirement_status.py
+@@ -0,0 +1,38 @@
++"""Shared UI/EA display semantics. Reported support is never verification."""
++import copy
++from .grade_classifier import classify_grade
++
++RULE_COLORS={'source':('#E8E8E8','#6E6E6E'),'A':('#C8FFC8','#228B22'),'B':('#D2E6FF','#0066CC'),'C':('#FFF5D2','#CC6600'),'X':('#FFD2D2','#B40000'),'unknown':('#F1F3F5','#868E96')}
++SUPPORT={
++ 'reported_direct':('Reported direct (unverified)','#D8F0EC','#247A6B'),
++ 'reported_indirect':('Reported indirect (unverified)','#FFF3CD','#9C7400'),
++ 'evidence_gap':('Reported evidence gap','#FDE2E2','#B54A4A'),
++ 'needs_review':('Reported need for confirmation','#E8E1FA','#7655A3'),
++ 'not_assessed':('Not assessed','#F1F3F5','#868E96'),
++ 'source':('Source requirement','#E8E8E8','#6E6E6E'),
++}
++ALIASES={'verified_by_direct_evidence':'reported_direct','supported_by_indirect_evidence':'reported_indirect','evidence_gap':'evidence_gap','need_confirmation':'needs_review'}
++def normalize_status(record, kb=None, *, source=False):
++    raw=record.get('support_status')
++    support='source' if source else ALIASES.get(raw,'not_assessed')
++    grade='source' if source else next((record[k] for k in ('rule_grade','grade','_grade') if record.get(k) in ('A','B','C','X')),None)
++    grade_origin='source' if source else 'preserved' if grade else 'computed_display_only'
++    if grade is None:
++        criterion=record.get('measurable_criterion',record.get('criterion','; '.join(map(str,record.get('acceptance_criteria') or []))))
++        cites=record.get('evidence_citations',[{'kb_id':x} for x in record.get('evidence_ids',[])])
++        grade=classify_grade(criterion,cites,kb) if kb is not None else 'unknown'
++    return {'rule_grade':grade,'rule_grade_origin':grade_origin,'reported_support_status':raw or '',
++            'evidence_support_state':support,'evidence_support_label':SUPPORT[support][0],
++            'support_assessment_provenance':'source' if source else 'reported_unverified' if raw in ALIASES else 'not_assessed',
++            'semantic_verification_state':'not_assessed',
++            'verification_note':'No independent signed review is attached; model claims and legacy Direct are not verification.'}
++def display_colors(state,mode):
++    if mode not in ('Rule grade','Evidence support'):raise ValueError('Unknown coloring mode')
++    return RULE_COLORS.get(state['rule_grade'],RULE_COLORS['unknown']) if mode=='Rule grade' else SUPPORT[state['evidence_support_state']][1:]
++def colorref(hex_color):
++    r,g,b=(int(hex_color[i:i+2],16) for i in (1,3,5));return r+256*g+65536*b
++def display_payload(payload,kb,mode):
++    result=copy.deepcopy(payload)
++    for s in result.get('requirement_sets',[]):
++        for e in s.get('engineering_requirements',[]):e['_display_state']=normalize_status(e,kb);e['_color_mode']=mode
++    return result
+--- a/cooling_rag_mg/ea_status_view.py
++++ b/cooling_rag_mg/ea_status_view.py
+@@ -0,0 +1,45 @@
++"""Versioned status projection; never creates semantic evidence relationships."""
++import json,uuid,xml.etree.ElementTree as ET
++from .ea_structure import q,properties
++from .ea_presentation import serialize
++from .ea_compact import merge_style
++from .requirement_status import normalize_status,display_colors,colorref
++
++def status_view(xml,mode='Rule grade',*,batch_id='',source_path=''):
++    if isinstance(xml,bytes):xml=xml.decode('utf-8')
++    root=ET.fromstring(xml);before=properties(root);content=root.find('XMI.content');states={}
++    def put(rid,key,value):
++        found=next((t for t in content.findall(q('TaggedValue')) if t.get('modelElement')==rid and t.get('tag')==key),None)
++        if found is None:found=ET.SubElement(content,q('TaggedValue'),{'tag':key,'xmi.id':'EAID_'+str(uuid.uuid4()).upper().replace('-','_'),'modelElement':rid})
++        found.set('value',str(value))
++    for role in root.iter(q('ClassifierRole')):
++        rid=role.get('xmi.id');p=before[rid];source='grade' not in p
++        record=dict(p)
++        if p.get('ui_original_json') and not source:
++            record.update(json.loads(p['ui_original_json'].removeprefix('<memo>#NOTES#')));record['grade']=p['grade']
++        state=normalize_status(record,source=source);states[rid]=state
++        if p.get('rule_grade_origin'):state['rule_grade_origin']=p['rule_grade_origin']
++        for key,value in state.items():put(rid,key,value)
++        put(rid,'coloring_mode',mode)
++        if batch_id:put(rid,'status_batch_id',batch_id)
++        if source_path:put(rid,'status_source_path',source_path)
++    for diagram in root.iter(q('Diagram')):
++        visible=[]
++        for obj in diagram.iter(q('DiagramElement')):
++            rid=obj.get('subject')
++            if rid in states:
++                visible.append(rid);bg,border=display_colors(states[rid],mode);obj.set('style',merge_style(obj.get('style',''),{'BCol':colorref(bg),'LCol':colorref(border)}))
++        label='Coloring by '+mode+'. '
++        if mode=='Rule grade':label+='Grades are criterion/citation rules, not semantic support.'
++        else:label+='Reported support is unverified; missing status = Not assessed.'
++        keys=sorted({states[r]['rule_grade'] if mode=='Rule grade' else states[r]['evidence_support_label'] for r in visible})
++        legend=label+'\n'+', '.join(keys)+'. Nesting = grouping.'
++        subjects={o.get('subject') for o in diagram.iter(q('DiagramElement'))}
++        for note in root.iter(q('Comment')):
++            if note.get('xmi.id') in subjects:
++                for t in note.iter(q('TaggedValue')):
++                    if t.get('tag')=='documentation':t.set('value',legend)
++        hidden=sorted({k for p in properties(root).values() for k in p if k!='id'})
++        for t in diagram.iter(q('TaggedValue')):
++            if t.get('tag')=='styleex':t.set('value',merge_style(t.get('value',''),{'SUPTAG':','.join(hidden),'ShowNotes':0,'ShowTags':1}))
++    return serialize(root)
+--- a/cooling_rag_mg/ea_ui_export.py
++++ b/cooling_rag_mg/ea_ui_export.py
+@@ -16,7 +16,7 @@
+     records=[json.loads(line) for line in Path(path).read_text(encoding='utf-8').splitlines() if line.strip()]
+     return {r.get('kb_id',r.get('evidence_id',r.get('id'))):r for r in records if r.get('kb_id',r.get('evidence_id',r.get('id')))}
+ 
+-def export_ea_payload_bytes(payload, *, source_requirements, kb_index, expanded=False):
++def export_ea_payload_bytes(payload, *, source_requirements, kb_index, expanded=False, coloring_by="Rule grade", batch_id="", source_path=""):
+     """Preserve the whole input as JSON tags; native relationships follow parent_id.
+     A/B/C/X is recomputed from criteria/citations with the configured KB, never from
+     support_status, quality-gate score or confidence. UI acceptance_criteria is the
+@@ -60,6 +60,14 @@
+             tag('grade_input_mapping','measurable_criterion, else joined acceptance_criteria; evidence_citations, else evidence_ids',rid)
+             tag('support_status',str(raw[biz].get('support_status','')),rid)
+             if 'confidence' in raw[biz]: tag('reported_confidence',str(raw[biz]['confidence']),rid)
++    # Preserve explicit existing grades; classifier output is display-only for absent grades.
++    from .requirement_status import normalize_status
++    for biz,rid in bybiz.items():
++        if biz in parents:
++            state=normalize_status(raw[biz],kb_index)
++            tag('rule_grade_origin',state['rule_grade_origin'],rid)
++            for tv in content:
++                if tv.get('modelElement')==rid and tv.get('tag')=='grade':tv.set('value',state['rule_grade'])
+     # Preserve package-wide relationships/gaps/assumptions/confidence without loss.
+     first=next(iter(bybiz.values()));tag('ui_payload_json','<memo>#NOTES#'+json.dumps(payload,ensure_ascii=False),first)
+     duids={n.get('subject'):__import__('re').search(r'DUID=([^;]+)',n.get('style','')).group(1) for n in root.iter(q('DiagramElement')) if n.get('subject') in roles}
+@@ -71,5 +79,7 @@
+             if n.get('subject')==edge.get('xmi.id'):
+                 n.set('style',__import__('re').sub(r'SOID=[^;]+;',f'SOID={duids[parent]};',n.get('style')))
+     result=presentation_xml(serialize(root),ea.GRADE_STYLE,expanded_ids='all' if expanded else (),name='REQ_UI_Expanded' if expanded else 'REQ_UI_Folded')
++    from .ea_status_view import status_view
++    result=status_view(result,coloring_by,batch_id=batch_id,source_path=source_path)
+     result,_=fresh_ids(result)
+     return result.encode('utf-8')
+--- a/cooling_rag_mg/ea_paper_figures.py
++++ b/cooling_rag_mg/ea_paper_figures.py
+@@ -89,13 +89,12 @@
+             else:
+                 geometry=re.sub(r'Path=([^;]*);',lambda m:'Path='+re.sub(r'(-?\d+):(-?\d+)\$',lambda p:p[1]+':'+str(int(p[2])-40)+'$',m[1])+';',geometry)
+             obj.set('geometry',geometry)
+-        diagram=next(view.iter(q('Diagram')));elements=diagram.find(q('Diagram.element'))
+-        rectangles=[o.get('geometry','') for o in elements if 'Top=' in o.get('geometry','')]
+-        right=max(int(re.search(r'Right=(\d+)',g)[1]) for g in rectangles)+30
+-        bottom=max(int(re.search(r'Bottom=(\d+)',g)[1]) for g in rectangles)+40
+-        package=next(view.iter(q('Package')))
+-        ET.SubElement(elements,q('DiagramElement'),{'subject':package.get('xmi.id'),'geometry':f'Left=10;Top=10;Right={right};Bottom={bottom};','style':'DUID='+uuid.uuid4().hex[:8].upper()+';NSL=1;'})
++        # EA renders its native frame; an explicit Package object obscures nodes.
+         output=serialize(view)
++        status_mode=next((p.get('coloring_mode') for p in props.values() if p.get('coloring_mode')),None)
++        if status_mode:
++            from .ea_status_view import status_view
++            output=status_view(output,status_mode)
+         output,guid_map=fresh_ids(output)
+         # fresh_ids rewrites references globally; provenance must point backwards.
+         view=ET.fromstring(output)
+--- a/ui/pages/engineering.py
++++ b/ui/pages/engineering.py
+@@ -16,6 +16,7 @@
+ )
+ from cooling_rag_mg.ea_ui_export import export_ea_payload_bytes, load_kb
+ from cooling_rag_mg.ea_paper_figures import mapping_template, paper_zip
++from cooling_rag_mg.requirement_status import normalize_status, display_colors, display_payload
+ from ui.state import ENGINEERING_STATUS_LABELS, normalize_df
+ from ui.components.shared import (
+     render_workspace_header,
+@@ -42,7 +43,9 @@
+         "evidence_gap": "sysml-gap",
+         "need_confirmation": "sysml-confirm",
+     }.get(status, "sysml-unknown")
+-    status_label = ENGINEERING_STATUS_LABELS.get(status, status)
++    state = item.get("_display_state") or normalize_status(item)
++    status_label = state["evidence_support_label"]
++    bg, border = display_colors(state, item.get("_color_mode", "Evidence support"))
+     badge_class = ENGINEERING_STATUS_CLASS.get(status, "badge-na")
+     req_id = escape(str(item.get("id", "") or ""))
+     topic = escape(str(item.get("topic", "") or ""))
+@@ -58,7 +61,7 @@
+         inner = "".join(_sysml_block_html(c, depth + 1) for c in children)
+         children_html = f'<div class="sysml-children">{inner}</div>'
+     return (
+-        f'<div class="sysml-block {status_class} {depth_class}">'
++        f'<div class="sysml-block {status_class} {depth_class}" data-coloring-mode="{item.get("_color_mode", "Evidence support")}" data-rule-grade="{state["rule_grade"]}" data-support-state="{state["evidence_support_state"]}" style="background:{bg};border-color:{border};">'
+         f'<div class="sysml-stereotype">«requirement»</div>'
+         f'<div class="sysml-block-name">{topic}</div>'
+         f'<div class="sysml-block-body">'
+@@ -67,6 +70,7 @@
+         f'<span class="sysml-text-val">{shall_display}</span></div>'
+         f'<div class="sysml-meta">'
+         f'<span class="badge {badge_class}">{escape(status_label)}</span>'
++        f'<span>Rule grade: {escape(state["rule_grade"])}</span>'
+         f'<span class="sysml-verif-chip">{verif}</span>'
+         f'<div class="sysml-evidence-line">证据：{evidence}</div>'
+         f'</div></div>'
+@@ -94,7 +98,7 @@
+     for col, label, value, caption in [
+         (cols[0], "需求集", len(req_sets), ""),
+         (cols[1], "工程需求", total_items, ""),
+-        (cols[2], "证据缺口", gap_items, f"直接证据支撑 {direct_items} 条"),
++        (cols[2], "证据缺口", gap_items, f"模型自报直接支撑（未核验）{direct_items} 条"),
+     ]:
+         with col:
+             extra = f'<div class="muted">{escape(caption)}</div>' if caption else ""
+@@ -122,7 +126,7 @@
+                 "主题": item.get("topic", ""),
+                 "工程化需求": item.get("shall_statement", ""),
+                 "验证方式": item.get("verification_method", ""),
+-                "支撑状态": ENGINEERING_STATUS_LABELS.get(item.get("support_status", ""), item.get("support_status", "")),
++                "支撑状态": normalize_status(item)["evidence_support_label"],
+                 "证据": ", ".join([str(x) for x in item.get("evidence_ids", []) or []]),
+             })
+     if not rows:
+@@ -138,7 +142,7 @@
+             for item in req_set.get("engineering_requirements", []) or []:
+                 st.markdown(
+                     f'<div class="evidence-card">'
+-                    f'<div class="evidence-title">{engineering_badge_html(item.get("support_status", ""))}'
++                    f'<div class="evidence-title">{escape(normalize_status(item)["evidence_support_label"])}'
+                     f'{escape(str(item.get("id", "") or ""))}｜{escape(str(item.get("topic", "") or ""))}</div>'
+                     f'<div>{escape(str(item.get("shall_statement", "") or ""))}</div>'
+                     f'<div class="muted">验证方式：{escape(str(item.get("verification_method", "") or ""))}｜'
+@@ -195,7 +199,7 @@
+                 st.markdown(
+                     f'<div class="evidence-card">'
+                     f'<div class="evidence-title">'
+-                    f'{engineering_badge_html(item.get("support_status", ""))}'
++                    f'{escape(normalize_status(item)["evidence_support_label"])}'
+                     f'{escape(str(item.get("id", "") or ""))} ｜ {escape(str(item.get("topic", "") or ""))}'
+                     f'</div>'
+                     f'<div>{escape(str(item.get("shall_statement", "") or ""))}</div>'
+@@ -302,6 +306,10 @@
+     if not payload:
+         st.info("尚未生成工程化需求。点击上方按钮后可在需求图中查看层级结构和支撑状态。")
+         return
++    coloring_by = st.radio("Coloring by", ["Rule grade", "Evidence support"], horizontal=True, key="ea_coloring_by")
++    st.caption("Rule grade = criterion/citation rules. Evidence support = reported status, not independently verified. Missing support status = Not assessed. Colors do not prove semantic support.")
++    status_kb = load_kb(cfg.paths.evidence_units_jsonl)
++    shown_payload = display_payload(payload, status_kb, coloring_by)
+     render_engineering_requirement_overview(payload)
+ 
+     # ── Export row ──────────────────────────────────────────────────────────
+@@ -310,23 +318,26 @@
+         try:
+             xml_bytes = export_ea_payload_bytes(
+                 payload, source_requirements=normalize_df(st.session_state.requirements_df),
+-                kb_index=load_kb(cfg.paths.evidence_units_jsonl),
++                kb_index=status_kb, coloring_by=coloring_by,
++                batch_id=Path(st.session_state.last_engineering_output).parent.parent.name if st.session_state.last_engineering_output else "current_session",
++                source_path=str(st.session_state.last_engineering_output or "current_session"),
+             )
+             st.download_button(
+                 label="导出 EA 原生 XMI（默认折叠）",
+                 data=xml_bytes,
+                 file_name="requirements_ea_folded.xml",
+                 mime="application/xml",
++                on_click="ignore",
+                 width="stretch",
+             )
+             with st.expander("English paper figures / 英文论文分图"):
+                 st.caption("下载当前完整模型的映射模板，填写简短英文标题和 3–4 幅小图（每幅 3–5 个 ID）。原始正文与元数据保留；全文默认折叠。此入口不调用付费翻译 API。")
+-                st.download_button("Download English figure mapping template", json.dumps(mapping_template(xml_bytes), ensure_ascii=False, indent=2), "english_figure_mapping.json", "application/json", key="ea_english_template")
++                st.download_button("Download English figure mapping template", json.dumps(mapping_template(xml_bytes), ensure_ascii=False, indent=2), "english_figure_mapping.json", "application/json", key="ea_english_template", on_click="ignore")
+                 figure_mapping = st.file_uploader("Upload reviewed English titles / translation and selection map", type=["json"], key="ea_english_map")
+                 if figure_mapping is not None:
+                     try:
+                         bundle = paper_zip(xml_bytes, json.loads(figure_mapping.getvalue()))
+-                        st.download_button("Export English paper figures + full EA model", bundle, "english_paper_figures.zip", "application/zip", key="ea_english_export")
++                        st.download_button("Export English paper figures + full EA model", bundle, "english_paper_figures.zip", "application/zip", key="ea_english_export", on_click="ignore")
+                     except (ValueError, KeyError, TypeError) as figure_error:
+                         st.error(f"English figure mapping: {figure_error}")
+         except Exception as _exc:
+@@ -336,9 +347,9 @@
+ 
+     diagram_tab, table_tab, gap_tab, raw_tab = st.tabs(["需求图", "SysML 需求表", "证据缺口", "原始 JSON"])
+     with diagram_tab:
+-        render_sysml_requirement_diagram(payload)
++        render_sysml_requirement_diagram(shown_payload)
+     with table_tab:
+-        render_sysml_requirement_table(payload)
++        render_sysml_requirement_table(shown_payload)
+     with gap_tab:
+         gaps = []
+         for req_set in payload.get("requirement_sets", []) or []:
+--- a/tests/test_requirement_status.py
++++ b/tests/test_requirement_status.py
+@@ -0,0 +1,36 @@
++import xml.etree.ElementTree as ET
++from cooling_rag_mg.requirement_status import normalize_status,display_colors,colorref
++from cooling_rag_mg.ea_status_view import status_view
++from cooling_rag_mg.ea_structure import properties,q
++import runpy
++inputs=runpy.run_path('tests/test_ea_folded_ui.py')['inputs']
++from cooling_rag_mg.ea_ui_export import export_ea_payload_bytes
++
++def test_reported_direct_never_promoted_by_self_assertions():
++    s=normalize_status({'support_status':'verified_by_direct_evidence','grade':'B','derivation':'Direct','semantic_support_verified':True})
++    assert s['evidence_support_state']=='reported_direct'
++    assert s['evidence_support_label']=='Reported direct (unverified)'
++    assert s['semantic_verification_state']=='not_assessed'
++    assert normalize_status({'grade':'A','derivation':'Direct'})['evidence_support_state']=='not_assessed'
++
++def test_explicit_grade_is_preserved_even_when_criterion_would_differ():
++    s=normalize_status({'_grade':'B','measurable_criterion':'TBD','support_status':'evidence_gap'}, {})
++    assert s['rule_grade']=='B'
++    assert s['evidence_support_state']=='evidence_gap'
++
++def test_two_modes_match_shared_colors_preserve_payload_and_edges():
++    payload,sources,kb=inputs()
++    payload['requirement_sets'][0]['engineering_requirements'][0]['support_status']='verified_by_direct_evidence'
++    exports=[export_ea_payload_bytes(payload,source_requirements=sources,kb_index=kb,coloring_by=mode,batch_id='test-batch') for mode in ['Rule grade','Evidence support']]
++    for mode,xml in zip(['Rule grade','Evidence support'],exports):
++        root=ET.fromstring(xml);props=properties(root)
++        by={p['id']:p for p in props.values()}
++        assert by['ER-alpha']['support_status']=='verified_by_direct_evidence'
++        assert by['ER-alpha']['evidence_support_label']=='Reported direct (unverified)'
++        assert by['ER-alpha']['status_batch_id']=='test-batch'
++        assert len(list(root.iter(q('Association'))))==2
++        for obj in root.iter(q('DiagramElement')):
++            if obj.get('subject') in props:
++                p=props[obj.get('subject')];bg,_=display_colors(p,mode)
++                assert 'BCol='+str(colorref(bg))+';' in obj.get('style')
++    assert {p['id']:p['grade'] for p in properties(ET.fromstring(exports[0])).values() if 'grade' in p}=={p['id']:p['grade'] for p in properties(ET.fromstring(exports[1])).values() if 'grade' in p}
+--- a/tests/test_ea_english_paper.py
++++ b/tests/test_ea_english_paper.py
+@@ -36,15 +36,15 @@
+     path=Path(__file__).resolve().parents[1]/'ui/pages/engineering.py'
+     text=path.read_text(encoding='utf-8')
+     before=(ROOT/'engineering_before.py').read_text(encoding='utf-8')
+-    assert text[:text.index('    # ── Export row')].replace('from cooling_rag_mg.ea_paper_figures import mapping_template, paper_zip\n','')==before[:before.index('    # ── Export row')]
++    marker='    with st.expander("加载已保存的工程化结果（离线）"'
++    assert text[text.index(marker):text.index('    has_results =')]==before[before.index(marker):before.index('    has_results =')]
+     assert 'paper_zip(xml_bytes, json.loads(figure_mapping.getvalue()))' in text
+ 
+-def test_explicit_native_frame_reserves_caption_band():
++def test_native_frame_uses_caption_band_without_opaque_package():
+     import re
+     xml,m=inputs();files=paper_bundle(xml,m)
+     for f in m['figures']:
+         root=ET.fromstring(files[f['name']+'.xml']);package=next(root.iter(q('Package')))
+-        frame=next(e for e in root.iter(q('DiagramElement')) if e.get('subject')==package.get('xmi.id'))
+-        assert 'Top=10;' in frame.get('geometry')
++        assert not any(e.get('subject')==package.get('xmi.id') for e in root.iter(q('DiagramElement')))
+         roles={e.get('xmi.id') for e in root.iter(q('ClassifierRole'))}
+         assert all(int(re.search('Top=(\\d+)',e.get('geometry'))[1])>=60 for e in root.iter(q('DiagramElement')) if e.get('subject') in roles)

@@ -1,0 +1,74 @@
+{
+  "slot": "3e829076cc1b14843366a466af75c13e600b657f6c9ad3a890ce89144d2a64ab",
+  "started_at": "2026-10-19T04:00:14.208666+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"3e829076cc1b14843366a466af75c13e600b657f6c9ad3a890ce89144d2a64ab\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"not_verifiable\\\",\\n  \\\"faithfulness\\\": \\\"new_inference_or_synthesis\\\",\\n  \\\"support\\\": \\\"insufficient\\\",\\n  \\\"applicability\\\": \\\"unknown\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"On engines equipped with 1-string cooling water system, the LT system is vented via the HT system. This means that both systems are connected to the same expansion tank. On engines equipped with 2-string cooling water system, separate expansion tanks for the LT system and HT system must be installed.\\\",\\n      \\\"candidate_span\\\": \\\"单串冷却水系统LT经HT通气并共用膨胀水箱；双串系统LT与HT分别设独立膨胀水箱\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"Keel Cooler for Jacket Water 15. Expansion Tank for Aftercooler Circuit 16. Vent Line for Aftercooler Circuit 17. Bypass Valve, Thermostatically Controlled 18. Auxiliary Expansion Tank 19.\\\",\\n      \\\"candidate_span\\\": \\\"膨胀水箱监测接口与自动化系统匹配\\\",\\n      \\\"relation\\\": \\\"缺失说明\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"证据E001部分支持了候选中的膨胀水箱配置要求，但没有提到与自动化系统的接口匹配问题。证据E002仅列出了系统组成和部件功能，未直接支持接口匹配的要求。\\\",\\n  \\\"limitations\\\": [\\n    \\\"缺少关于自动化系统接口匹配的具体信息\\\",\\n    \\\"适用机型与工况未知\\\"\\n  ]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1389,\"completion_tokens\":437,\"total_tokens\":1826,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"created\":1792382428,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-1cffd51b-695a-9956-9c07-b82a128a57d1\"}",
+  "response_headers": {
+    "x-request-id": "1cffd51b-695a-9956-9c07-b82a128a57d1",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 04:00:28 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"3e829076cc1b14843366a466af75c13e600b657f6c9ad3a890ce89144d2a64ab\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"not_verifiable\",\n  \"faithfulness\": \"new_inference_or_synthesis\",\n  \"support\": \"insufficient\",\n  \"applicability\": \"unknown\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"On engines equipped with 1-string cooling water system, the LT system is vented via the HT system. This means that both systems are connected to the same expansion tank. On engines equipped with 2-string cooling water system, separate expansion tanks for the LT system and HT system must be installed.\",\n      \"candidate_span\": \"单串冷却水系统LT经HT通气并共用膨胀水箱；双串系统LT与HT分别设独立膨胀水箱\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"Keel Cooler for Jacket Water 15. Expansion Tank for Aftercooler Circuit 16. Vent Line for Aftercooler Circuit 17. Bypass Valve, Thermostatically Controlled 18. Auxiliary Expansion Tank 19.\",\n      \"candidate_span\": \"膨胀水箱监测接口与自动化系统匹配\",\n      \"relation\": \"缺失说明\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"证据E001部分支持了候选中的膨胀水箱配置要求，但没有提到与自动化系统的接口匹配问题。证据E002仅列出了系统组成和部件功能，未直接支持接口匹配的要求。\",\n  \"limitations\": [\n    \"缺少关于自动化系统接口匹配的具体信息\",\n    \"适用机型与工况未知\"\n  ]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1389,
+      "completion_tokens": 437,
+      "total_tokens": 1826,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "created": 1792382428,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-1cffd51b-695a-9956-9c07-b82a128a57d1"
+  },
+  "observed_usage_cost_CNY": "0.0075288",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0075288",
+  "parsed": {
+    "review_id": "3e829076cc1b14843366a466af75c13e600b657f6c9ad3a890ce89144d2a64ab",
+    "format_judgment": "pass",
+    "verifiability": "not_verifiable",
+    "faithfulness": "new_inference_or_synthesis",
+    "support": "insufficient",
+    "applicability": "unknown",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "On engines equipped with 1-string cooling water system, the LT system is vented via the HT system. This means that both systems are connected to the same expansion tank. On engines equipped with 2-string cooling water system, separate expansion tanks for the LT system and HT system must be installed.",
+        "candidate_span": "单串冷却水系统LT经HT通气并共用膨胀水箱；双串系统LT与HT分别设独立膨胀水箱",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "Keel Cooler for Jacket Water 15. Expansion Tank for Aftercooler Circuit 16. Vent Line for Aftercooler Circuit 17. Bypass Valve, Thermostatically Controlled 18. Auxiliary Expansion Tank 19.",
+        "candidate_span": "膨胀水箱监测接口与自动化系统匹配",
+        "relation": "缺失说明"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "证据E001部分支持了候选中的膨胀水箱配置要求，但没有提到与自动化系统的接口匹配问题。证据E002仅列出了系统组成和部件功能，未直接支持接口匹配的要求。",
+    "limitations": [
+      "缺少关于自动化系统接口匹配的具体信息",
+      "适用机型与工况未知"
+    ]
+  },
+  "finished_at": "2026-10-19T04:00:27.326434+00:00",
+  "elapsed_seconds": 13.11
+}

@@ -1,0 +1,2290 @@
+{
+  "note": "Offline application of new policy only; raw saved model outputs remain untouched; no replacement or repair call.",
+  "cases": [
+    {
+      "case": "OR001",
+      "raw_row_count": 10,
+      "raw_response_sha256": "44a39249b1b9e5281576582c3b44f73fdd4cd3dce510d58a4192c8ee1db3dfbc",
+      "postprocessed_row_count": 10,
+      "raw_direct_status_count": 0,
+      "postprocessed_direct_status_count": 0,
+      "output": {
+        "shalls": [
+          {
+            "shall_statement": "主机冷却水系统（含高温冷却水回路与低温冷却水回路）应在温度、压力或流量发生波动时，维持对推进设备（主机）的连续冷却供给，不得因上述波动导致推进设备非计划停机或降负荷。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:主机冷却水系统（HT/LT回路）|intent:温度波动容限|hint:证据未给出允许的温度波动幅值、变化速率及持续时间，需由厂家技术数据或项目计算文件确认}}",
+            "applicable_condition": "主机正常运行工况；适用机型与配置限于来源文件限定的厂家、机型（49/60DF、49/60）及安装条件",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "在温度波动工况下，冷却水系统出口温度保持在厂家技术数据或项目计算文件规定的范围内",
+              "温度波动不得触发导致推进设备停机或降负荷的保护动作",
+              "温度波动容限数值须经厂家技术数据或项目计算文件确认后方可作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-JACKET-PRESS-009",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-JACKET-MON-001",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-SYS-PRESS-021",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-JACKET-MON-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机高温冷却水系统在发动机进口处的冷却水压力应维持在额定转速工况下的规定范围内，以保证推进设备正常运行不受压力波动影响。",
+            "measurable_criterion": "额定转速工况下，HT冷却水发动机进口压力额定值 = 4 bar，压力范围 3 bar 至 8 bar（PT3145）",
+            "applicable_condition": "额定转速；适用机型限于来源文件限定的 MAN 49/60 及 Everllence 49/60DF 机型与配置",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "额定转速下发动机进口HT冷却水压力实测值等于4 bar（额定值）",
+              "运行中发动机进口HT冷却水压力保持在3 bar至8 bar范围内",
+              "超出3 bar至8 bar范围时应触发报警并采取保护措施，避免影响推进设备运行"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-HT-ALARM-002",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-HT-ALARM-004",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-HT-ALARM-002": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机高温冷却水系统在额定流量工况下的发动机总压力损失应控制在按机型规定的限值内，以保证冷却水流量稳定、不影响推进设备正常运行。",
+            "measurable_criterion": "额定流量工况下发动机总压力损失：6L、8L机型 = 1.1 bar；7L、9L机型 = 1.2 bar；10L机型 = 1.4 bar；12V机型 = 1.5 bar；14V机型 = 1.7 bar",
+            "applicable_condition": "额定流量；按机型（6L/7L/8L/9L/10L/12V/14V）分别适用，限于来源文件限定的厂家与配置",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "各机型在额定流量下的HT冷却水总压力损失不超过对应机型限值（6L/8L：1.1 bar；7L/9L：1.2 bar；10L：1.4 bar；12V：1.5 bar；14V：1.7 bar）",
+              "压力损失计算或实测结果与所选机型限值一致",
+              "机型与限值对应关系须经项目机型确认后作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-HT-ALARM-002",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-HT-ALARM-004",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-HT-ALARM-002": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机高温冷却水系统附装HT冷却水泵在额定转速下的压升应满足按机型规定的数值，以保证冷却水流量稳定、不影响推进设备正常运行。",
+            "measurable_criterion": "额定转速下附装HT冷却水泵压升：6L机型 = 3.6 bar；7L、8L机型 = 3.5 bar；9L机型 = 3.4 bar；10L机型 = 3.3 bar；12V机型 = 3.9 bar；14V机型 = 4.4 bar",
+            "applicable_condition": "额定转速；按机型分别适用，限于来源文件限定的厂家与配置",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "各机型附装HT冷却水泵在额定转速下的压升实测值符合对应机型规定值",
+              "泵压升与系统压力损失匹配，保证发动机进口压力处于3 bar至8 bar范围",
+              "机型与压升对应关系须经项目机型确认后作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-HT-ALARM-002",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-HT-ALARM-004",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-HT-ALARM-002": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机冷却水系统应设置温度设定点调节功能，在必要时降低温度设定点，以避免超过发动机出口最高温度，从而防止温度波动影响推进设备正常运行。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:主机冷却水系统温度控制（SaCoS功能）|intent:发动机出口最高温度及设定点降低量|hint:证据仅说明必要时降低设定点以避免超过发动机出口最高温度，未给出最高温度数值与设定点降低量，需由厂家技术数据确认}}",
+            "applicable_condition": "报警水平运行（报警级别运行）工况；适用机型限于来源文件限定的厂家与配置",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "报警水平运行时，温度设定点降低功能可被触发并有效执行",
+              "发动机出口冷却水温度不超过厂家技术数据规定的最高温度",
+              "最高温度限值与设定点降低量须经厂家技术数据确认后方可作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-HT-ALARM-002",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-HT-ALARM-004",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-HT-ALARM-002": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机冷却水系统应设置冷却水温度与压力监测，测量点应覆盖缸套冷却进口等关键位置，以便在温度或压力波动时及时报警并保护推进设备。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN 49/60 Project Guide / S41 Everllence 49/60DF Project Guide|component:主机冷却水系统监测（SaCoS 5000测量点）|intent:温度与压力报警阈值|hint:证据仅说明SaCoS 5000测量点为缸套冷却进口，未给出报警阈值与响应时间，需由厂家技术数据确认}}",
+            "applicable_condition": "正常运行及故障工况；适用机型限于来源文件限定的厂家与配置",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "监测点覆盖缸套冷却进口等关键位置，且与厂家技术数据一致",
+              "温度或压力超出允许范围时触发报警",
+              "报警阈值与响应时间须经厂家技术数据确认后方可作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-HT-ALARM-004",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-SENSOR-ALARM-001",
+                "tier": "L1",
+                "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+                "has_clause": false
+              },
+              {
+                "kb_id": "E-SENSOR-ALARM-003",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": false
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-SENSOR-ALARM-001": [
+                  "engine_model"
+                ],
+                "E-SENSOR-ALARM-003": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机冷却水系统在低负荷及空载/零负荷运行时应按规定的持续时间限制运行，以避免冷却水温度下降过快导致扫气温度和燃烧室温度过低、恶化低负荷燃烧，从而保障推进设备正常运行。",
+            "measurable_criterion": "最大允许空载或零负荷运行——液体模式：最长两小时（每年一次）；低负荷运行范围 < 25% 全负荷",
+            "applicable_condition": "低负荷、空载/零负荷运行工况；液体模式与气体模式分别适用；适用机型限于 Everllence 49/60DF 及来源文件限定条件",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "液体模式下空载或零负荷连续运行时间不超过两小时，且每年不超过一次",
+              "低负荷运行（< 25% 全负荷）按来源文件第77页低负荷运行时间限制图执行",
+              "气体模式零负荷运行时间限制在最小值",
+              "低负荷运行阶段之后的缓解运行持续时间按来源文件第77页图执行"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-SYS-PRESS-021",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机冷却水系统在危险大气环境下运行时，应布置成无需直接取用海水即可冷却机械及相关装置（例如通过箱式冷却或壳体冷却），以保证冷却水供给不中断、不影响推进设备正常运行。",
+            "measurable_criterion": "{{TBD|unit:无|ref:S44 PRS Ship Machinery Piping Systems|component:主机冷却水系统布置（箱式冷却/壳体冷却）|intent:危险大气下无海水直接取用的冷却能力|hint:证据为定性规则要求，未给出冷却能力、容量或切换时间数值，需由项目入级要求与设计文件确认}}",
+            "applicable_condition": "船舶在危险大气中运行期间；适用性以规则条文本身及项目入级要求为准",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "冷却水系统布置方案表明在危险大气中运行时不直接取用海水即可完成冷却",
+              "布置方案经船级社按项目入级要求审查认可",
+              "冷却能力与切换相关参数须经项目设计文件确认后方可作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-SW-INST-002",
+                "tier": "L1",
+                "source": "S44 PRS Ship Machinery Piping Systems",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-SW-INST-002": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机冷却水系统的设计应针对每套装置特别考虑海水温度、冷却器、阀门和管道中的压力损失以及泵容量等设计标准，以保证系统在温度、压力和流量波动下稳定运行、不影响推进设备。",
+            "measurable_criterion": "{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:中央冷却系统（冷却器、阀门、管道、泵）|intent:压力损失与泵容量设计值|hint:来源文件明确未对这些部件作出规定，需由船东/建造商要求及项目设计计算文件确认}}",
+            "applicable_condition": "每套装置；中央冷却系统不同布置方案；适用机型限于来源文件限定的厂家与配置",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "设计文件逐项列出海水温度、冷却器/阀门/管道压力损失及泵容量的取值依据",
+              "上述设计取值满足系统在温度、压力、流量波动下的稳定运行要求",
+              "具体数值须经项目设计计算文件确认后方可作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-CENTRAL-COMP-009",
+                "tier": "L3",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "主机冷却水系统的温度与压力参数应依据来源文件厂家技术数据或项目计算文件确定，并在对应适用对象和工况下作为参数约束，不得超出厂家、机型、系统型式或工况范围泛化使用。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S41 Everllence 49/60DF Project Guide / S30 MAN 49/60 Project Guide|component:主机冷却水系统（HT/LT回路）|intent:温度与压力参数限值|hint:证据中部分参数抽取状态为unknown_historical且存在省略，参数条件不完整，需核实适用性后由厂家技术数据或项目计算文件确认}}",
+            "applicable_condition": "启动、低负荷、正常运行工况；适用机型限于来源文件限定的厂家、机型、配置或安装条件",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "温度与压力参数取值均可追溯至厂家技术数据或项目计算文件",
+              "参数适用条件（机型、工况、配置）在需求中明确记录",
+              "抽取状态为unknown_historical或存在省略的参数须完成适用性核实后方可作为验收判据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-SYS-PRESS-022",
+                "tier": "L2",
+                "source": "S41 Everllence 49/60DF Project Guide",
+                "has_clause": false
+              },
+              {
+                "kb_id": "E-SYS-PRESS-014",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": false
+              },
+              {
+                "kb_id": "E-SYS-PRESS-010",
+                "tier": "L3",
+                "source": "S29 Caterpillar, Know Your Cooling System",
+                "has_clause": false
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-SYS-PRESS-014": [
+                  "engine_model"
+                ],
+                "E-SYS-PRESS-010": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "OR010",
+      "raw_row_count": 9,
+      "raw_response_sha256": "c745560b711d7330728b9a4ef0171cd5eb4246ef486f163b7ddc42ca684f0c65",
+      "postprocessed_row_count": 9,
+      "raw_direct_status_count": 0,
+      "postprocessed_direct_status_count": 0,
+      "output": {
+        "shalls": [
+          {
+            "shall_statement": "冷却水系统冷却液的水质应满足厂家规定的总硬度限值，以防止结垢与沉积。",
+            "measurable_criterion": "总硬度 ≤ 10 dGH",
+            "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家机型需另行确认",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "按供应商建议的测试设备或测试套件测定冷却液总硬度",
+              "测定结果 ≤ 10 dGH 判定合格",
+              "超出限值时按厂家要求处理或更换冷却液"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-INSP-014",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-096",
+                "tier": "L3",
+                "source": "S42 MAN 49/60DF Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-SYS-INSP-009",
+                "tier": "L3",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-077",
+                "tier": "L2",
+                "source": "S39 MAN L21/31 Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统无添加剂填充及补充用水的pH值应处于厂家规定范围内，以防止腐蚀。",
+            "measurable_criterion": "pH值 6.5 – 8（在20 °C条件下测定）",
+            "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；水质类型为蒸馏水或淡水（无添加剂），用于填充和补充；其他厂家机型需另行确认",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "在20 °C条件下测定填充/补充水pH值",
+              "pH值处于6.5至8之间判定合格",
+              "超出范围时不得加注并应按厂家要求处理"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-INSP-014",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-096",
+                "tier": "L3",
+                "source": "S42 MAN 49/60DF Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-SYS-INSP-009",
+                "tier": "L3",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-077",
+                "tier": "L2",
+                "source": "S39 MAN L21/31 Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统含添加剂循环水的pH值应不低于厂家规定下限，以保证添加剂防腐蚀功能有效。",
+            "measurable_criterion": "pH值 ≥ 7.5（在20 °C条件下测定）",
+            "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24机型冷却水系统正常运行工况；水质类型为含化学添加剂的循环冷却水；其他厂家机型需另行确认",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "在20 °C条件下测定循环冷却液pH值",
+              "pH值 ≥ 7.5 判定合格",
+              "低于下限时按厂家要求调整添加剂浓度或更换冷却液"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-INSP-014",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-096",
+                "tier": "L3",
+                "source": "S42 MAN 49/60DF Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-SYS-INSP-009",
+                "tier": "L3",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统冷却液的氯离子含量应满足厂家规定限值，以防止腐蚀与沉积。",
+            "measurable_criterion": "氯离子含量 ≤ 50 mg/l",
+            "applicable_condition": "适用于MAN L23/30DF、49/60DF、L16/24、L21/31机型冷却水系统正常运行工况；无添加剂填充/补充水与含添加剂循环水均适用；其他厂家机型需另行确认",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "按供应商测试套件或检测设备测定氯离子含量",
+              "测定结果 ≤ 50 mg/l 判定合格",
+              "超出限值时按厂家要求处理或更换冷却液"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-INSP-014",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-096",
+                "tier": "L3",
+                "source": "S42 MAN 49/60DF Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-SYS-INSP-009",
+                "tier": "L3",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-077",
+                "tier": "L2",
+                "source": "S39 MAN L21/31 Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统冷却液的氯离子含量应满足MTU厂家更严格的更换判据，不满足时须更换冷却液。",
+            "measurable_criterion": "氯离子含量 ≤ 25 mg/l",
+            "applicable_condition": "适用于MTU冷却液（依据MTU Fluids and Lubricants Specifications A001065 Table 11冷却液要求）正常运行工况；其他厂家机型需另行确认",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "按厂家规定方法测定冷却液氯离子含量",
+              "测定结果 ≤ 25 mg/l 判定合格",
+              "不满足该规格时须更换冷却液",
+              "评估冷却液功能时还应结合各自冷却液特有特性数据及所用淡水水质"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-MAINT-003",
+                "tier": "L2",
+                "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-COOLANT-MAINT-003": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统冷却液的防冻（冰点）保护能力应满足厂家规定的乙二醇配比与冰点要求，以防止低温冻结及换热性能下降。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065 / S29 Caterpillar Know Your Cooling System|component:冷却液|intent:冰点与乙二醇比例|hint:证据给出MTU冷却液浓缩液储存温度≤30°C、约3年储存期，Caterpillar预混合ELC防冻保护至-37°C、浓缩液可至-52°C，但未给出本项目机型的乙二醇体积比例与冰点限值，需按厂家技术数据或项目计算文件确定}}",
+            "applicable_condition": "适用于冷却水系统冷却液配制与加注工况；具体厂家、机型与乙二醇比例条件待确认",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "按厂家技术数据或项目计算文件确定乙二醇体积比例与对应冰点限值",
+              "配制后冷却液冰点满足确定的限值要求",
+              "防冻保护不足时按厂家要求补充或调整配比"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-WATER-040",
+                "tier": "L3",
+                "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-WATER-065",
+                "tier": "L3",
+                "source": "S29 Caterpillar, Know Your Cooling System",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-WATER-157",
+                "tier": "L2",
+                "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-COOLANT-WATER-040": [
+                  "engine_model"
+                ],
+                "E-COOLANT-WATER-065": [
+                  "engine_model"
+                ],
+                "E-COOLANT-WATER-157": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统冷却液应使用符合厂家规范的化学添加剂，并按供应商建议的方法检测添加剂浓度。",
+            "measurable_criterion": "{{TBD|unit:无|ref:S10 MAN L23/30DF Project Guide / S42 MAN 49/60DF Project Guide|component:冷却液添加剂|intent:添加剂浓度|hint:证据仅要求按供应商建议使用测试设备测定添加剂浓度，未给出具体浓度限值，需按厂家技术数据确定}}",
+            "applicable_condition": "适用于使用化学添加剂的冷却水系统正常运行工况；具体厂家机型条件待确认",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "使用供应商建议的检测设备或测试套件测定添加剂浓度",
+              "添加剂浓度满足厂家技术数据规定的限值",
+              "浓度不满足时按厂家要求调整或更换冷却液"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-INSP-014",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-INSP-096",
+                "tier": "L3",
+                "source": "S42 MAN 49/60DF Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统冷却液应按规定周期进行水质检测与维护，并按厂家要求更换或补充添加剂。",
+            "measurable_criterion": "{{TBD|unit:小时|ref:S29 Caterpillar Know Your Cooling System|component:冷却液|intent:检测与维护周期|hint:证据给出Cat ELC服务时间12000小时或6年、6000服务小时或寿命一半时添加Extender，但未给出本项目机型的检测与维护周期，需按厂家技术数据确定}}",
+            "applicable_condition": "适用于冷却水系统冷却液运行维护阶段；具体厂家机型与冷却液类型条件待确认",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "按厂家技术数据确定的周期开展冷却液水质检测",
+              "按周期要求添加添加剂或更换冷却液",
+              "维护记录完整并可追溯"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-WATER-065",
+                "tier": "L3",
+                "source": "S29 Caterpillar, Know Your Cooling System",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-COOLANT-MAINT-003",
+                "tier": "L2",
+                "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-COOLANT-WATER-065": [
+                  "engine_model"
+                ],
+                "E-COOLANT-MAINT-003": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却液浓缩液应储存于原装密封包装、阴凉干燥处，且不得储存于镀锌容器中，以防止腐蚀。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S26 MTU Fluids and Lubricants Specifications A001065|component:冷却液浓缩液储存|intent:储存温度与储存期|hint:证据给出储存温度最高30°C、储存期约3年，但适用性记录标注不能直接给出设计输入具体数值，需按厂家规范与项目文件确认}}",
+            "applicable_condition": "适用于冷却液浓缩液储存与转移处理工况；储存于原装密封包装、温度≤30°C条件",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "冷却液浓缩液储存于原装密封包装且容器密封",
+              "储存于阴凉干燥处，储存温度不超过厂家规定上限",
+              "不得使用镀锌容器储存或转移冷却液",
+              "寒冷季节确保适当的防冻保护"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-COOLANT-WATER-040",
+                "tier": "L3",
+                "source": "S26 MTU, Fluids and Lubricants Specifications, A001065",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-COOLANT-WATER-040": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "OR023",
+      "raw_row_count": 8,
+      "raw_response_sha256": "81f0bf269c6543d56fc89b41f6a9f89f779395a552ce1847f76f00d94cc8888a",
+      "postprocessed_row_count": 8,
+      "raw_direct_status_count": 0,
+      "postprocessed_direct_status_count": 0,
+      "output": {
+        "shalls": [
+          {
+            "shall_statement": "温度控制阀的通流能力应满足外部管路连接工况下的最大水流速限制：淡水侧最大流速不超过3.0 m/s，海水侧最大流速不超过3.0 m/s。",
+            "measurable_criterion": "淡水最大流速 ≤ 3.0 m/s；海水最大流速 ≤ 3.0 m/s（外部管路连接工况）",
+            "applicable_condition": "外部管路连接；正常运行为适用条件；限MAN L23/30H/L23/30DF机型配置",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "淡水侧外部管路流速计算值不超过3.0 m/s",
+              "海水侧外部管路流速计算值不超过3.0 m/s",
+              "计算书需注明适用机型与外部管路连接条件"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-TCV-TEMP-021",
+                "tier": "L2",
+                "source": "S36 MAN L23/30H GenSet Project Guide",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-TCV-TEMP-059",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unmatched_requires_review",
+              "unmatched_quantities": [
+                [
+                  "3.0",
+                  "m/s",
+                  "<="
+                ],
+                [
+                  "3.0",
+                  "m/s",
+                  "<="
+                ]
+              ],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "quantity_tuple_not_found_in_cited_material"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "温度控制阀的压降参数应依据厂家技术数据或项目计算文件确定，并在内置式恒温阀配置下满足约0.5 bar的压降约束。",
+            "measurable_criterion": "恒温阀压降 ≈ 0.5 bar（内置式恒温阀工况）",
+            "applicable_condition": "内置式恒温阀；正常运行为适用条件；限MAN L23/30DF机型配置",
+            "verification_method": "分析",
+            "acceptance_criteria": [
+              "温度控制阀压降计算或选型数据与0.5 bar约束一致",
+              "压降取值注明来源为厂家技术数据或项目计算文件",
+              "注明不含泵与恒温阀的HT系统压降边界（约0.5 bar）"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-TCV-TEMP-059",
+                "tier": "L2",
+                "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-TCV-TEMP-051",
+                "tier": "L2",
+                "source": "S36 MAN L23/30H GenSet Project Guide",
+                "has_clause": false
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "温度控制阀的量程、信号与接口应与自动化系统的输入输出规格匹配，其量程与信号制式应依据厂家技术数据或项目计算文件确定。",
+            "measurable_criterion": "{{TBD|unit:无量纲|ref:S36 MAN L23/30H GenSet Project Guide / S10 MAN L23/30DF Project Guide|component:温度控制阀|intent:量程与信号制式|hint:证据未给出阀量程、信号类型（如4-20mA/开关量）与接口规格，需依据厂家技术数据或项目计算文件确认}}",
+            "applicable_condition": "正常运行为适用条件；限来源文档对应厂家、机型、配置与安装条件",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "温度控制阀量程覆盖被控温度区间并经厂家数据确认",
+              "信号类型与接口规格与自动化系统I/O清单一致",
+              "接口规格在图纸与数据表中可追溯"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-TCV-TEMP-051",
+                "tier": "L2",
+                "source": "S36 MAN L23/30H GenSet Project Guide",
+                "has_clause": false
+              },
+              {
+                "kb_id": "E-TCV-TEMP-028",
+                "tier": "L2",
+                "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+                "has_clause": false
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水温度传感器的量程应覆盖高温冷却水系统各测量点的温度范围，包括HP增压空气冷却器出口60°C至80°C、缸套冷却出口60°C至92°C、LP增压空气冷却器出口标称90°C以及启动前预热进口工况。",
+            "measurable_criterion": "HP TC出口60°C至80°C；缸套冷却出口60°C至92°C；LP TC出口标称90°C；发动机进口启动前预热-100°C（测量点TE3145/TE3170/TE3180/TE3190）",
+            "applicable_condition": "启动与正常运行为适用条件；限MAN 49/60机型对应测量点",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "传感器量程覆盖各测量点温度上下限并留有余量",
+              "量程配置与测量点编号TE3145/TE3170/TE3180/TE3190对应",
+              "启动前预热工况（-100°C记录值）需核实其量纲与含义后方可作为量程依据"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-HT-COMP-036",
+                "tier": "L2",
+                "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-HT-COMP-036": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水温度报警元件的报警阈值与动作逻辑应依据厂家控制系统配置设定，较低级别报警基本温度值为95°C，较高级别报警基本温度值为105°C，且温度持续高于95°C达1秒时触发报警消息。",
+            "measurable_criterion": "低级别报警阈值95°C；高级别报警阈值105°C；触发延时1秒（温度>95°C持续1秒）",
+            "applicable_condition": "故障与正常运行为适用条件；限Scania DI16机型及EMS/S6控制系统配置",
+            "verification_method": "测试",
+            "acceptance_criteria": [
+              "报警阈值设定为95°C与105°C两级",
+              "温度高于95°C持续1秒后发出CAN报警消息并接通警告灯与诊断指示灯",
+              "阈值与动作逻辑限定于DI16+EMS/S6配置，不得泛化至其他机型"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-ALARM-ALARM-001",
+                "tier": "L3",
+                "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+                "has_clause": true
+              },
+              {
+                "kb_id": "E-ALARM-ALARM-003",
+                "tier": "L3",
+                "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水压力传感器的量程与报警设定应与自动化系统匹配，其参数应依据厂家技术数据或项目计算文件确定。",
+            "measurable_criterion": "{{TBD|unit:bar|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水压力传感器|intent:量程与报警阈值|hint:证据未给出压力传感器量程与报警阈值，需依据厂家技术数据或项目计算文件确认}}",
+            "applicable_condition": "启动与正常运行为适用条件；限MAN L16/24机型配置",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "压力传感器量程覆盖系统工作压力并经厂家数据确认",
+              "信号与接口规格与自动化系统I/O清单一致",
+              "报警阈值设定可追溯至厂家文件"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-TSENS-PRESS-008",
+                "tier": "L2",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": false
+              },
+              {
+                "kb_id": "E-TSENS-PRESS-005",
+                "tier": "L2",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": true
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统报警与保护功能应按船级社规则及厂家要求设置，报警阈值与保护动作应受具体厂家、机型与控制系统配置约束。",
+            "measurable_criterion": "{{TBD|unit:°C|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水报警元件|intent:报警阈值与保护动作|hint:证据仅记录45°C单一数值且段落不完整，无法确定其对应参数与工况，需按入级要求与厂家文件确认}}",
+            "applicable_condition": "故障与正常运行为适用条件；以规则条文及项目入级要求为准",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "报警与保护功能清单覆盖温度、压力、液位及传感器异常",
+              "阈值与动作逻辑经厂家文件或入级规则确认",
+              "45°C记录值需核实其对应测量对象与工况后方可引用"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-ALARM-ALARM-009",
+                "tier": "L1",
+                "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+                "has_clause": false
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-ALARM-ALARM-009": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "shall_statement": "冷却水系统组成与监测接口应完整定义，各测量点、阀件与传感器的接口应与自动化系统测点清单一一对应。",
+            "measurable_criterion": "{{TBD|unit:无量纲|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统组成与监测接口|intent:测点与接口完整性|hint:证据未记录具体测点与接口参数，需依据厂家技术数据或项目计算文件确认}}",
+            "applicable_condition": "正常运行为适用条件；限MAN L16/24机型配置",
+            "verification_method": "检查",
+            "acceptance_criteria": [
+              "系统组成清单与自动化系统测点清单一致",
+              "每个传感器与阀件接口均有对应测点编号",
+              "接口定义可追溯至厂家文件"
+            ],
+            "evidence_citations": [
+              {
+                "kb_id": "E-SYS-COMP-012",
+                "tier": "L3",
+                "source": "S38 MAN L16/24 GenSet Project Guide",
+                "has_clause": false
+              }
+            ],
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case": "R001",
+      "raw_row_count": 5,
+      "raw_response_sha256": "b86f7d20b6b464d42f36b4aba691ef418c90f4cfd5d9c728e9b730d1bb61d416",
+      "postprocessed_row_count": 5,
+      "raw_direct_status_count": 4,
+      "postprocessed_direct_status_count": 0,
+      "output": {
+        "requirement_set_id": "ER-R001",
+        "source_requirement_id": "R001",
+        "stakeholder": "船东代表",
+        "generation_basis": "original_requirement_and_supported_evidence_only",
+        "professional_summary": "覆盖主机冷却水系统运行可靠性、热带海区高温环境适应性和负荷变化工况温度控制三方面工程需求，基于船级社规则和厂家项目指南证据，形成可设计、可调试、可验收的正式需求。",
+        "assumptions": [],
+        "engineering_requirements": [
+          {
+            "id": "ER-R001-01",
+            "parent_id": "ER-R001",
+            "level": 1,
+            "requirement_type": "reliability",
+            "topic": "系统运行可靠性",
+            "shall_statement": "主机冷却水系统应配置不少于两台冷却水泵，其中至少一台为独立电力驱动，各泵应具有在主机额定功率工况下单独满足冷却水流量需求的能力；系统应设置冷却水高温报警，当冷却水温度超过允许值时，应能自动减速或停机保护。",
+            "engineering_rationale": "本条覆盖方面【系统运行可靠性】，来自原始需求「具备较高运行可靠性，不能因冷却能力不足、冷却水循环中断或温度失控影响推进装置安全运行」。E-CCS-COOL-001 支撑了泵冗余配置、独立驱动、单泵容量满足MCR以及高温报警和自动保护的要求；E-PUMP-RED-002 支撑了至少两种供水方式且每种容量满足额定功率连续运行的要求；E-PUMP-RED-004 支撑了备用泵容量不小于主泵且至少一台独立驱动的要求；E-IACS-M35-001 支撑了高温冷却水报警和自动减速或停机保护的要求。依据 CCS规范第4篇第3章、ABS 7.7.1(a)、PRS 11.1.2、IACS UR M35 Rev.8。",
+            "acceptance_criteria": [
+              "检查图纸确认冷却水泵台数不少于两台，且至少一台为独立电力驱动，各泵容量满足主机额定功率工况下单独运行要求。",
+              "检查报警和保护系统设计，确认设置冷却水高温报警，且当温度超过允许值时能自动触发减速或停机保护。",
+              "按主机厂家 Technical Data 确认高温报警设定值和自动保护动作阈值。"
+            ],
+            "verification_method": "class_approval",
+            "evidence_ids": [
+              "E-CCS-COOL-001",
+              "E-PUMP-RED-002",
+              "E-PUMP-RED-004",
+              "E-IACS-M35-001"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条基于 CCS、ABS、PRS 船级社规则和 IACS UR M35，适用于入级船舶主机冷却水系统；具体泵容量和报警阈值应按实际选定主机厂家 Technical Data 确认。"
+            ],
+            "risk_if_unmet": "冷却能力不足或循环中断将导致主机过热保护动作，影响推进装置安全运行。",
+            "_reported_evidence_ids": [
+              "E-CCS-COOL-001",
+              "E-PUMP-RED-002",
+              "E-PUMP-RED-004",
+              "E-IACS-M35-001"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-CCS-COOL-001": [
+                  "engine_model"
+                ],
+                "E-PUMP-RED-002": [
+                  "engine_model"
+                ],
+                "E-PUMP-RED-004": [
+                  "engine_model"
+                ],
+                "E-IACS-M35-001": [
+                  "engine_model",
+                  "applicable_condition"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R001-01-01",
+            "parent_id": "ER-R001-01",
+            "level": 2,
+            "requirement_type": "parameter",
+            "topic": "系统运行可靠性",
+            "shall_statement": "冷却水系统应设计为在主机最大连续功率（MCR）条件下，在航行海区最高海水温度时保持正常工作，热带航区应按不低于项目设计基准的热带海水温度进行设计。",
+            "engineering_rationale": "本条覆盖方面【系统运行可靠性】，来自原始需求「具备较高运行可靠性，不能因冷却能力不足、冷却水循环中断或温度失控影响推进装置安全运行」。E-CCS-COOL-001 支撑了系统在MCR和最高海水温度下保持正常工作的设计义务，并给出热带航区不低于35°C的规范要求；E-DNV-COOL-001 支撑了冷却水进机温度应保持在厂家限值内的要求。依据 CCS规范第4篇第3章和 DNV Pt.4 Ch.3。",
+            "acceptance_criteria": [
+              "检查热平衡计算书，确认系统在主机MCR工况和设计海水温度下冷却能力满足要求。",
+              "设计海水温度按项目设计基准（Design Basis）确认，并应不低于船级社规范要求的热带航区最低海水温度。"
+            ],
+            "verification_method": "calculation",
+            "evidence_ids": [
+              "E-CCS-COOL-001",
+              "E-DNV-COOL-001"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条基于 CCS 和 DNV 船级社规则，适用于入级船舶；具体设计海水温度应按项目设计基准和船级社规范共同确认。"
+            ],
+            "risk_if_unmet": "设计海水温度取值不足将导致热带航区冷却能力不够，触发主机降功率或停机。",
+            "_reported_evidence_ids": [
+              "E-CCS-COOL-001",
+              "E-DNV-COOL-001"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-CCS-COOL-001": [
+                  "engine_model"
+                ],
+                "E-DNV-COOL-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R001-02",
+            "parent_id": "ER-R001",
+            "level": 1,
+            "requirement_type": "operation",
+            "topic": "热带海区高温环境适应性",
+            "shall_statement": "主机冷却水系统应能在热带海区高温环境条件下保持稳定冷却能力，冷却水温度控制应满足主机厂家规定的进机温度限值，系统设计应覆盖热带环境参考条件。",
+            "engineering_rationale": "本条覆盖方面【热带海区高温环境适应性】，来自原始需求「热带海区高温环境」。E-COOLER-PRESS-010 支撑了热带条件参考（冷却水温度38°C、空气温度45°C）下的设计条件；E-COOLER-LOAD-005 支撑了热带条件下无需降额的环境限值（冷却水温度≤38°C、空气温度≤45°C）；E-COOLER-LOAD-001 支撑了LT级冷却水进口温度≤38°C的无降额条件；E-SYS-COMP-021 支撑了LT冷却水进口温度设定值32°C和热带条件38°C的系统组成参数。上述证据均为厂家特定数据，需按实际选定主机厂家确认。",
+            "acceptance_criteria": [
+              "检查冷却系统热平衡计算书，确认在项目设计基准规定的热带海水温度和空气温度条件下，冷却水进机温度满足主机厂家限值。",
+              "按主机厂家 Technical Data 确认热带环境设计条件（海水温度、空气温度）及对应的冷却水温度限值。",
+              "调试期间按项目调试大纲验证热带工况模拟条件下冷却水温度稳定性。"
+            ],
+            "verification_method": "calculation",
+            "evidence_ids": [
+              "E-COOLER-PRESS-010",
+              "E-COOLER-LOAD-005",
+              "E-COOLER-LOAD-001",
+              "E-SYS-COMP-021"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条基于 MAN 49/60DF、49/60 及 L21/31 项目指南证据，适用范围限于对应厂家和机型；其他厂家和机型应按各自 Technical Data 另行确认。不同厂家和机型的温度限值不同，不得直接套用。"
+            ],
+            "risk_if_unmet": "热带海区高温环境下冷却能力不足将导致主机降功率或停机，影响船舶运营。",
+            "_reported_evidence_ids": [
+              "E-COOLER-PRESS-010",
+              "E-COOLER-LOAD-005",
+              "E-COOLER-LOAD-001",
+              "E-SYS-COMP-021"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-COOLER-PRESS-010": [
+                  "engine_model"
+                ],
+                "E-COOLER-LOAD-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R001-03",
+            "parent_id": "ER-R001",
+            "level": 1,
+            "requirement_type": "control",
+            "topic": "负荷变化工况温度控制",
+            "shall_statement": "主机冷却水温度控制系统应能在主机全负荷范围内自动调节温度控制阀，保持冷却水温度在主机厂家规定的限值内；应设置手动越控功能，并在自动控制失效时可用；当冷却水温度超过高报警设定值时，系统应发出报警。",
+            "engineering_rationale": "本条覆盖方面【负荷变化工况温度控制】，来自原始需求「主机负荷变化时保持稳定冷却能力」。E-CTRL-COOL-001 支撑了全负荷范围自动调节、手动越控和高温报警的要求；E-DNV-COOL-001 支撑了进机温度保持在厂家限值内的设计义务；E-TCV-SHUT-001 支撑了负载平衡恒温阀限制缸套水进水温度的要求；E-IACS-M35-001 支撑了高温报警和自动保护的要求。依据 IACS UR E10、DNV Pt.4 Ch.3、IACS UR M35 Rev.8。",
+            "acceptance_criteria": [
+              "检查温度控制系统设计，确认温度控制阀具备全负荷范围自动调节功能，并设置手动越控装置。",
+              "检查报警系统设计，确认设置冷却水高温报警，报警设定值按主机厂家 Technical Data 确认。",
+              "调试期间按项目调试大纲验证负荷变化工况下温度控制阀自动调节性能和温度稳定性。"
+            ],
+            "verification_method": "commissioning_check",
+            "evidence_ids": [
+              "E-CTRL-COOL-001",
+              "E-DNV-COOL-001",
+              "E-TCV-SHUT-001",
+              "E-IACS-M35-001"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条基于 IACS UR E10、DNV 规则和 IACS UR M35，适用于入级船舶主机冷却水温度控制系统；E-TCV-SHUT-001 来自 Caterpillar 安装指南，其负载平衡恒温阀要求仅适用于对应厂家系统，其他厂家应按各自 Technical Data 确认。"
+            ],
+            "risk_if_unmet": "负荷变化时温度控制失效将导致冷却水温度超限，触发主机降功率或停机保护。",
+            "_reported_evidence_ids": [
+              "E-CTRL-COOL-001",
+              "E-DNV-COOL-001",
+              "E-TCV-SHUT-001",
+              "E-IACS-M35-001"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-CTRL-COOL-001": [
+                  "engine_model"
+                ],
+                "E-DNV-COOL-001": [
+                  "engine_model"
+                ],
+                "E-TCV-SHUT-001": [
+                  "engine_model"
+                ],
+                "E-IACS-M35-001": [
+                  "engine_model",
+                  "applicable_condition"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R001-03-01",
+            "parent_id": "ER-R001-03",
+            "level": 2,
+            "requirement_type": "parameter",
+            "topic": "负荷变化工况温度控制",
+            "shall_statement": "高温淡水回路冷却水进机温度不应超过调温阀开启温度与船级社规范允许偏差之和，具体限值应按主机厂家 Technical Data 确认。",
+            "engineering_rationale": "本条覆盖方面【负荷变化工况温度控制】，来自原始需求「主机负荷变化时保持稳定冷却能力」。E-DNV-COOL-001 支撑了HT回路进机温度不超过调温阀开启温度+36°C的规范限值；E-CTRL-COOL-001 支撑了温度控制阀自动调节以保持温度在厂家限值内的要求。依据 DNV Pt.4 Ch.3 和 IACS UR E10。",
+            "acceptance_criteria": [
+              "检查温度控制系统设计参数，确认高温淡水回路进机温度限值符合船级社规范要求。",
+              "按主机厂家 Technical Data 确认调温阀开启温度和进机温度允许偏差。"
+            ],
+            "verification_method": "review",
+            "evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-CTRL-COOL-001"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条基于 DNV 规则和 IACS UR E10，适用于入级船舶；具体温度限值应按实际选定主机厂家 Technical Data 确认，不同厂家和机型限值不同。"
+            ],
+            "risk_if_unmet": "进机温度超限将导致主机热负荷过高，影响安全运行。",
+            "_reported_evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-CTRL-COOL-001"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-DNV-COOL-001": [
+                  "engine_model"
+                ],
+                "E-CTRL-COOL-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "source": "R001",
+            "target": "ER-R001-01",
+            "type": "derive",
+            "description": "由原始需求「系统运行可靠性」和 E-CCS-COOL-001 等直接证据派生。"
+          },
+          {
+            "source": "ER-R001-01",
+            "target": "ER-R001-01-01",
+            "type": "refine",
+            "description": "细化为MCR和设计海水温度下的冷却能力要求。"
+          },
+          {
+            "source": "R001",
+            "target": "ER-R001-02",
+            "type": "derive",
+            "description": "由原始需求「热带海区高温环境适应性」和厂家项目指南证据派生。"
+          },
+          {
+            "source": "R001",
+            "target": "ER-R001-03",
+            "type": "derive",
+            "description": "由原始需求「负荷变化工况温度控制」和 IACS UR E10 等直接证据派生。"
+          },
+          {
+            "source": "ER-R001-03",
+            "target": "ER-R001-03-01",
+            "type": "refine",
+            "description": "细化为高温淡水回路进机温度限值要求。"
+          }
+        ],
+        "evidence_gaps": [
+          {
+            "related_requirement_id": "ER-R001-02",
+            "gap_type": "only_indirect",
+            "description": "热带海区高温环境适应性方面仅有厂家项目指南的间接证据，缺少直接给出设计海水温度限值和冷却能力判据的船级社规则或厂家 Technical Data 原文。",
+            "suggested_document_update": "补充船级社规范中关于热带航区设计海水温度的条款原文，以及主机厂家 Technical Data 中热带环境冷却水温度限值和冷却能力计算依据。"
+          }
+        ],
+        "confirmation_items": [
+          {
+            "item": "确认主机冷却水泵的台数、驱动方式和单泵容量。",
+            "reason": "现有证据给出不少于两台且至少一台独立驱动的要求，但具体容量需按主机厂家 Technical Data 和热平衡计算确认。"
+          },
+          {
+            "item": "确认冷却水高温报警设定值和自动保护动作阈值。",
+            "reason": "船级社规则要求设置高温报警和自动保护，但具体温度值需按主机厂家 Technical Data 确认。"
+          },
+          {
+            "item": "确认热带海区设计海水温度和空气温度条件。",
+            "reason": "厂家项目指南给出参考条件，但项目设计基准需结合船级社规范和实际航线确定。"
+          },
+          {
+            "item": "确认高温淡水回路进机温度限值和调温阀开启温度。",
+            "reason": "DNV规则给出不超过调温阀开启温度+36°C的限值，但具体数值需按主机厂家 Technical Data 确认。"
+          }
+        ],
+        "allowed_engineering_aspects": [
+          {
+            "topic": "系统运行可靠性",
+            "source_phrase": "具备较高运行可靠性，不能因冷却能力不足、冷却水循环中断或温度失控影响推进装置安全运行",
+            "implication_type": "explicit"
+          },
+          {
+            "topic": "热带海区高温环境适应性",
+            "source_phrase": "热带海区高温环境",
+            "implication_type": "explicit"
+          },
+          {
+            "topic": "负荷变化工况温度控制",
+            "source_phrase": "主机负荷变化时保持稳定冷却能力",
+            "implication_type": "explicit"
+          }
+        ],
+        "_validation_report": {
+          "version": "ui-structure-reference-v1",
+          "semantic_support": "unknown",
+          "applicability": "unknown",
+          "reference_scope": "supplied_support_context",
+          "issues": [
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CCS-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_context_incomplete",
+              "reported": "E-PUMP-RED-002"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-PUMP-RED-002"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_context_incomplete",
+              "reported": "E-PUMP-RED-004"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-PUMP-RED-004"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_context_incomplete",
+              "reported": "E-IACS-M35-001"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-IACS-M35-001"
+            },
+            {
+              "path": "engineering_requirements[1]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CCS-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[1]",
+              "code": "cited_context_incomplete",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[1]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_context_incomplete",
+              "reported": "E-COOLER-PRESS-010"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-COOLER-PRESS-010"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_context_incomplete",
+              "reported": "E-COOLER-LOAD-005"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-COOLER-LOAD-001"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_context_incomplete",
+              "reported": "E-SYS-COMP-021"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-TCV-SHUT-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-TCV-SHUT-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-IACS-M35-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-IACS-M35-001"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_context_incomplete",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_context_incomplete",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CTRL-COOL-001"
+            }
+          ]
+        },
+        "generated_at": "2026-10-18T23:08:06",
+        "agent": "langgraph_deepseek_engineering_requirement_agent"
+      }
+    },
+    {
+      "case": "R002",
+      "raw_row_count": 5,
+      "raw_response_sha256": "34511f00e91efda7ea55be28466604977a05c86544c4243d8ab10dee4b033d54",
+      "postprocessed_row_count": 5,
+      "raw_direct_status_count": 5,
+      "postprocessed_direct_status_count": 0,
+      "output": {
+        "requirement_set_id": "ER-R002",
+        "source_requirement_id": "R002",
+        "stakeholder": "主机厂家",
+        "generation_basis": "original_requirement_and_supported_evidence_only",
+        "professional_summary": "覆盖主机冷却水进出口温度、压力、流量参数限值要求，以及高低温回路设计参数与主机技术数据、泵曲线、冷却器选型和热平衡计算的一致性要求。",
+        "assumptions": [],
+        "engineering_requirements": [
+          {
+            "id": "ER-R002-01",
+            "parent_id": "ER-R002",
+            "level": 1,
+            "requirement_type": "parameter",
+            "topic": "主机冷却水进出口参数",
+            "shall_statement": "主机冷却水系统应保证主机入口和出口的冷却水温度、压力、流量满足主机厂家技术文件规定的限值要求，并在全负荷范围内通过温度控制阀自动调节维持温度在厂家限值内。",
+            "engineering_rationale": "本条覆盖方面【主机冷却水进出口参数】，来自原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」。E-DNV-COOL-001 支撑了进机温度应保持在厂家限值内的规则义务；E-IACS-M3-002 支撑了温度连续监控和报警设定值不超过厂家最高允许值的要求；E-CTRL-COOL-001 支撑了全负荷范围自动调节和手动备用要求；E-SYS-COMP-004 支撑了LT冷却水压力限值（≤2 bar）的厂家数据；E-TSENS-PRESS-005 支撑了预加热工况下的温度要求。",
+            "acceptance_criteria": [
+              "设计审查确认冷却水系统设计参数（温度、压力、流量）与主机厂家技术文件一致。",
+              "高温报警设定值不超过主机厂家允许的最高冷却水温度，具体限值按主机厂家 Technical Data 确认。",
+              "温度控制阀应能在全负荷范围内自动调节，并具备手动备用功能，具体调节精度按监控系统设计规格书要求。",
+              "[待确认数值] LT冷却水压力（额定转速下增压空气冷却器进口）≤ 2 bar，该数值来自证据 E-SYS-COMP-004 原文，适用于MAN 49/60系列机型。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。",
+              "预加热工况下冷却水温度应满足主机厂家技术文件要求，具体数值按主机厂家 Technical Data 确认。"
+            ],
+            "verification_method": "review",
+            "evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-IACS-M3-002",
+              "E-CTRL-COOL-001",
+              "E-SYS-COMP-004",
+              "E-TSENS-PRESS-005"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条需求基于 DNV 规则、IACS UR M3.1/E10 及 MAN 49/60 系列、L16/24 机型证据，适用范围限于上述规则和厂家机型，其他厂家和机型应按各自 Technical Data 另行确认。",
+              "LT冷却水压力限值 ≤ 2 bar 仅适用于 MAN 49/60 系列机型额定转速工况，其他机型不得直接套用。"
+            ],
+            "risk_if_unmet": "冷却水参数超出厂家限值将导致主机过热、部件损坏或自动降速/停机，影响航行安全。",
+            "_reported_evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-IACS-M3-002",
+              "E-CTRL-COOL-001",
+              "E-SYS-COMP-004",
+              "E-TSENS-PRESS-005"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-DNV-COOL-001": [
+                  "engine_model"
+                ],
+                "E-IACS-M3-002": [
+                  "engine_model"
+                ],
+                "E-CTRL-COOL-001": [
+                  "engine_model"
+                ],
+                "E-SYS-COMP-004": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "lexical_tuple_match_only",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R002-01-01",
+            "parent_id": "ER-R002-01",
+            "level": 2,
+            "requirement_type": "parameter",
+            "topic": "主机冷却水进出口参数",
+            "shall_statement": "主机冷却水温度应连续监控，高温报警设定值不得超过主机制造商允许的最高冷却水温度；当冷却水温度超过高报警设定值时，系统应发出报警。",
+            "engineering_rationale": "本条覆盖方面【主机冷却水进出口参数】，来自原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」。E-IACS-M3-002 支撑了温度连续监控和报警设定值不超过厂家最高允许值的要求；E-CTRL-COOL-001 支撑了高温报警功能要求。",
+            "acceptance_criteria": [
+              "设计审查确认温度监控和报警设定值符合主机厂家技术文件，具体报警值按主机厂家 Technical Data 确认。",
+              "调试期间验证高温报警功能，报警设定值按主机厂家 Technical Data 确认。"
+            ],
+            "verification_method": "commissioning_check",
+            "evidence_ids": [
+              "E-IACS-M3-002",
+              "E-CTRL-COOL-001"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条需求基于 IACS UR M3.1 和 E10 规则，适用于所有船级社规范覆盖的主机冷却水系统。"
+            ],
+            "risk_if_unmet": "报警设定值过高可能导致主机过热损坏，过低可能导致误报警。",
+            "_reported_evidence_ids": [
+              "E-IACS-M3-002",
+              "E-CTRL-COOL-001"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-IACS-M3-002": [
+                  "engine_model"
+                ],
+                "E-CTRL-COOL-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R002-01-02",
+            "parent_id": "ER-R002-01",
+            "level": 2,
+            "requirement_type": "parameter",
+            "topic": "主机冷却水进出口参数",
+            "shall_statement": "主机冷却水系统应设置温度控制阀，在全负荷范围内自动调节冷却水温度，并具备手动备用功能；当自动控制失效时，应能切换至手动控制。",
+            "engineering_rationale": "本条覆盖方面【主机冷却水进出口参数】，来自原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」。E-CTRL-COOL-001 支撑了全负荷范围自动调节和手动备用要求。",
+            "acceptance_criteria": [
+              "设计审查确认温度控制阀的自动调节和手动备用功能配置。",
+              "调试期间验证温度控制阀在全负荷范围内的调节性能，具体调节精度按监控系统设计规格书要求。"
+            ],
+            "verification_method": "commissioning_check",
+            "evidence_ids": [
+              "E-CTRL-COOL-001"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条需求基于 IACS UR E10 规则，适用于所有船级社规范覆盖的主机冷却水系统。"
+            ],
+            "risk_if_unmet": "温度控制失效可能导致主机过热或过冷，影响运行可靠性。",
+            "_reported_evidence_ids": [
+              "E-CTRL-COOL-001"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-CTRL-COOL-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R002-02",
+            "parent_id": "ER-R002",
+            "level": 1,
+            "requirement_type": "system_design",
+            "topic": "高低温回路设计参数一致性",
+            "shall_statement": "高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致，确保各回路在设计工况下满足主机冷却需求。",
+            "engineering_rationale": "本条覆盖方面【高低温回路设计参数一致性】，来自原始需求「高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」。E-DNV-COOL-001 支撑了HT回路进机温度不超过调温阀开启温度+36°C的规则要求；E-LT-COMP-005 和 E-LT-COMP-006 支撑了HT和LT冷却水出口温度设定点及恒温元件范围；E-HT-COMP-082 支撑了HT冷却水流经路径和调节温度；E-COOLER-PRESS-060 支撑了LT级中冷器进口冷却水温度限值。",
+            "acceptance_criteria": [
+              "设计审查确认高低温回路设计参数与主机技术数据、泵曲线、冷却器选型和热平衡计算文件一致。",
+              "[待确认数值] HT回路进机温度不超过调温阀开启温度+36°C，该数值来自证据 E-DNV-COOL-001 原文。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。",
+              "[待确认数值] HT冷却水出口温度设定点79°C标称（机械恒温元件范围77-85°C），LT冷却水出口温度设定点35°C标称（机械恒温元件范围29-41°C），该数值来自证据 E-LT-COMP-005 和 E-LT-COMP-006 原文，适用于MAN L16/24机型。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。",
+              "[待确认数值] LT级中冷器进口冷却水温度≤38°C（热带工况），该数值来自证据 E-COOLER-PRESS-060 原文，适用于MAN L27/38机型。 → 上述数值需由证据原文、厂家 Technical Data 或项目文件确认后方可使用。",
+              "热平衡计算应覆盖设计海水温度，具体数值按项目设计基准（Design Basis）确认。"
+            ],
+            "verification_method": "calculation",
+            "evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-LT-COMP-005",
+              "E-LT-COMP-006",
+              "E-HT-COMP-082",
+              "E-COOLER-PRESS-060"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条需求基于 DNV 规则及 MAN L16/24、49/60DF、L27/38 机型证据，适用范围限于上述厂家和机型，其他厂家和机型应按各自 Technical Data 另行确认。",
+              "HT/LT出口温度设定点仅适用于MAN L16/24机型，LT级中冷器进口温度限值仅适用于MAN L27/38机型，不得跨机型套用。"
+            ],
+            "risk_if_unmet": "设计参数不一致将导致冷却能力不足或设备选型错误，影响主机安全运行。",
+            "_reported_evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-LT-COMP-005",
+              "E-LT-COMP-006",
+              "E-HT-COMP-082",
+              "E-COOLER-PRESS-060"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-DNV-COOL-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unmatched_requires_review",
+              "unmatched_quantities": [
+                [
+                  "38",
+                  "°C",
+                  "<="
+                ]
+              ],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown",
+                "quantity_tuple_not_found_in_cited_material"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          },
+          {
+            "id": "ER-R002-02-01",
+            "parent_id": "ER-R002-02",
+            "level": 2,
+            "requirement_type": "calculation",
+            "topic": "高低温回路设计参数一致性",
+            "shall_statement": "高温冷却水回路和低温冷却水回路的热平衡计算应基于主机技术数据、泵曲线和冷却器选型参数，并覆盖设计工况和极端工况。",
+            "engineering_rationale": "本条覆盖方面【高低温回路设计参数一致性】，来自原始需求「高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」。E-DNV-COOL-001 支撑了HT回路温度限值要求；E-HT-COMP-082 支撑了HT冷却水系统组成和热含量数据。",
+            "acceptance_criteria": [
+              "设计审查确认热平衡计算书引用的主机技术数据、泵曲线和冷却器选型参数与厂家文件一致。",
+              "热平衡计算应覆盖设计海水温度，具体数值按项目设计基准（Design Basis）确认。"
+            ],
+            "verification_method": "calculation",
+            "evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-HT-COMP-082"
+            ],
+            "support_status": "need_confirmation",
+            "applicability_constraints": [
+              "本条需求基于 DNV 规则和 MAN 49/60DF 机型证据，适用范围限于上述规则和厂家机型，其他厂家和机型应按各自 Technical Data 另行确认。"
+            ],
+            "risk_if_unmet": "热平衡计算不准确将导致冷却器选型偏小或偏大，影响冷却效果或经济性。",
+            "_reported_evidence_ids": [
+              "E-DNV-COOL-001",
+              "E-HT-COMP-082"
+            ],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "present",
+              "missing_ids": [],
+              "unknown_applicability_fields": {
+                "E-DNV-COOL-001": [
+                  "engine_model"
+                ]
+              },
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "source": "R002",
+            "target": "ER-R002-01",
+            "type": "derive",
+            "description": "由原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」派生。"
+          },
+          {
+            "source": "R002",
+            "target": "ER-R002-02",
+            "type": "derive",
+            "description": "由原始需求「高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」派生。"
+          },
+          {
+            "source": "ER-R002-01",
+            "target": "ER-R002-01-01",
+            "type": "refine",
+            "description": "细化为温度监控和报警的具体要求。"
+          },
+          {
+            "source": "ER-R002-01",
+            "target": "ER-R002-01-02",
+            "type": "refine",
+            "description": "细化为温度控制阀的自动调节和手动备用要求。"
+          },
+          {
+            "source": "ER-R002-02",
+            "target": "ER-R002-02-01",
+            "type": "refine",
+            "description": "细化为热平衡计算的具体要求。"
+          }
+        ],
+        "evidence_gaps": [],
+        "confirmation_items": [
+          {
+            "item": "确认主机厂家技术文件中冷却水进出口温度、压力、流量的具体限值。",
+            "reason": "现有证据仅提供部分机型的参数限值，需主机厂家提供完整技术数据以覆盖所有工况。"
+          },
+          {
+            "item": "确认设计海水温度。",
+            "reason": "热平衡计算需基于项目设计基准，现有证据未给出具体数值。"
+          },
+          {
+            "item": "确认温度控制阀的调节精度和响应时间。",
+            "reason": "现有证据未给出具体数值，需按监控系统设计规格书要求确认。"
+          }
+        ],
+        "allowed_engineering_aspects": [
+          {
+            "topic": "主机冷却水进出口参数",
+            "source_phrase": "主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求",
+            "implication_type": "explicit"
+          },
+          {
+            "topic": "高低温回路设计参数一致性",
+            "source_phrase": "高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致",
+            "implication_type": "explicit"
+          }
+        ],
+        "_validation_report": {
+          "version": "ui-structure-reference-v1",
+          "semantic_support": "unknown",
+          "applicability": "unknown",
+          "reference_scope": "supplied_support_context",
+          "issues": [
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_context_incomplete",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-IACS-M3-002"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_context_incomplete",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[0]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-SYS-COMP-004"
+            },
+            {
+              "path": "engineering_requirements[1]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-IACS-M3-002"
+            },
+            {
+              "path": "engineering_requirements[1]",
+              "code": "cited_context_incomplete",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[1]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_context_incomplete",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[2]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-CTRL-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-LT-COMP-005"
+            },
+            {
+              "path": "engineering_requirements[3]",
+              "code": "cited_context_incomplete",
+              "reported": "E-HT-COMP-082"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_context_incomplete",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_applicability_unknown",
+              "reported": "E-DNV-COOL-001"
+            },
+            {
+              "path": "engineering_requirements[4]",
+              "code": "cited_context_incomplete",
+              "reported": "E-HT-COMP-082"
+            },
+            {
+              "path": "ER-R002-01.acceptance_criteria",
+              "code": "normalizer_changed_field",
+              "reported": [
+                "设计审查确认冷却水系统设计参数（温度、压力、流量）与主机厂家技术文件一致。",
+                "高温报警设定值不超过主机厂家允许的最高冷却水温度，具体限值按主机厂家 Technical Data 确认。",
+                "温度控制阀应能在全负荷范围内自动调节，并具备手动备用功能，具体调节精度按监控系统设计规格书要求。",
+                "LT冷却水压力（额定转速下增压空气冷却器进口）≤ 2 bar，该数值来自证据 E-SYS-COMP-004 原文，适用于MAN 49/60系列机型。",
+                "预加热工况下冷却水温度应满足主机厂家技术文件要求，具体数值按主机厂家 Technical Data 确认。"
+              ]
+            },
+            {
+              "path": "ER-R002-02.acceptance_criteria",
+              "code": "normalizer_changed_field",
+              "reported": [
+                "设计审查确认高低温回路设计参数与主机技术数据、泵曲线、冷却器选型和热平衡计算文件一致。",
+                "HT回路进机温度不超过调温阀开启温度+36°C，该数值来自证据 E-DNV-COOL-001 原文。",
+                "HT冷却水出口温度设定点79°C标称（机械恒温元件范围77-85°C），LT冷却水出口温度设定点35°C标称（机械恒温元件范围29-41°C），该数值来自证据 E-LT-COMP-005 和 E-LT-COMP-006 原文，适用于MAN L16/24机型。",
+                "LT级中冷器进口冷却水温度≤38°C（热带工况），该数值来自证据 E-COOLER-PRESS-060 原文，适用于MAN L27/38机型。",
+                "热平衡计算应覆盖设计海水温度，具体数值按项目设计基准（Design Basis）确认。"
+              ]
+            }
+          ]
+        },
+        "generated_at": "2026-10-18T23:08:06",
+        "agent": "langgraph_deepseek_engineering_requirement_agent"
+      }
+    },
+    {
+      "case": "R003",
+      "raw_row_count": 1,
+      "raw_response_sha256": "6edd52f107ee3f0f645a079ce2728bf281efc7a56ebcb1d6849caaa682687eef",
+      "postprocessed_row_count": 1,
+      "raw_direct_status_count": 0,
+      "postprocessed_direct_status_count": 0,
+      "output": {
+        "requirement_set_id": "ER-R003",
+        "source_requirement_id": "R003",
+        "stakeholder": "系统设计方",
+        "generation_basis": "original_requirement_and_supported_evidence_only",
+        "professional_summary": "覆盖主机冷却水系统回路划分与边界定义要求，明确高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界的区分，并要求在系统原理图中表达各回路的设备连接、流向、接口和服务对象。当前无有效支撑证据，相关验收判据待补充证据后确认。",
+        "assumptions": [],
+        "engineering_requirements": [
+          {
+            "id": "ER-R003-01",
+            "parent_id": "ER-R003",
+            "level": 1,
+            "requirement_type": "configuration",
+            "topic": "冷却水回路划分与边界定义",
+            "shall_statement": "主机冷却水系统应明确划分高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界，并在系统原理图中清晰表达各回路的设备连接、流向、接口和服务对象。",
+            "engineering_rationale": "本条覆盖方面【冷却水回路划分与边界定义】，来自原始需求「明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界」。检索阶段候选证据均未达到直接或间接支撑标准，本条基于原始需求文本整理，未添加未经证实的参数。",
+            "acceptance_criteria": [
+              "待补充相关工程证据后方可确认验收判据"
+            ],
+            "verification_method": "review",
+            "evidence_ids": [],
+            "support_status": "evidence_gap",
+            "applicability_constraints": [],
+            "risk_if_unmet": "回路边界划分不清将导致设备接口错配、流向混乱，影响系统设计审查和后续施工调试。",
+            "_reported_evidence_ids": [],
+            "_semantic_support": "unknown",
+            "_applicability": "unknown",
+            "_independent_risks": {
+              "version": "independent-reference-quantity-applicability-v1",
+              "reference_scope": "supplied_context",
+              "citation_existence": "unknown",
+              "missing_ids": [],
+              "unknown_applicability_fields": {},
+              "numeric_consistency": "unknown_no_recognized_quantity",
+              "unmatched_quantities": [],
+              "semantic_support": "unknown",
+              "applicability": "unknown",
+              "issues": [
+                "no_citations",
+                "model_or_condition_unknown"
+              ],
+              "limitations": "finite units; no conversion, range reasoning, parameter-role or semantic verification"
+            }
+          }
+        ],
+        "relationships": [
+          {
+            "source": "R003",
+            "target": "ER-R003-01",
+            "type": "derive",
+            "description": "由原始需求「冷却水回路划分与边界定义」派生；因无有效支撑证据，support_status 设为 evidence_gap。"
+          }
+        ],
+        "evidence_gaps": [
+          {
+            "related_requirement_id": "ER-R003-01",
+            "gap_type": "judge_rejected_all",
+            "description": "冷却水回路划分与边界定义方面缺少有效证据支撑：候选证据均未达到直接或间接支撑标准，无法确认回路划分规则、边界定义方式及系统原理图表达要求的具体判据。",
+            "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明，重点覆盖高温/低温冷却水回路及海水侧或中央冷却系统边界的划分规则与原理图表达要求。"
+          }
+        ],
+        "confirmation_items": [
+          {
+            "item": "确认高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界的具体划分规则和原理图表达深度。",
+            "reason": "现有证据均未达到支撑标准，无法确定边界定义和图纸表达的具体判据，需补充设计说明或相关标准条款后确认。"
+          }
+        ],
+        "allowed_engineering_aspects": [
+          {
+            "topic": "冷却水回路划分与边界定义",
+            "source_phrase": "明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界",
+            "implication_type": "explicit"
+          }
+        ],
+        "_validation_report": {
+          "version": "ui-structure-reference-v1",
+          "semantic_support": "unknown",
+          "applicability": "unknown",
+          "reference_scope": "supplied_support_context",
+          "issues": []
+        },
+        "generated_at": "2026-10-18T23:08:06",
+        "agent": "langgraph_deepseek_engineering_requirement_agent"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "slot": "OR014-semantic_new",
+  "body_sha256": "e9f5c49ad3fdf57783a27cbad0f15e3c6e53a23da4f5bcb39edb17c18bcd9bde",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:46:46.109930+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR014-semantic_new",
+    "source_id": "OR014",
+    "group": "semantic_new",
+    "context_sha256": "cf80650c53fca46614c5ad779bb899d4247eda066c619b97b20a39dd4d6e3c21",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n管路高点要考虑排气，低点要考虑放水，不然运行和检修时会比较麻烦。\n\n## 证据清单\n[E-DRAIN-INSP-001] 层级:L3 来源:S51 NASA NTRS 19800002357 Piping Specification\n  内容: 水管路最低点放水和最高点排气要求\nInstall manual drain valves at every low point of water piping systems and a manual air vent at every high point. S52 BN-G-Y015 Piping Systems Inspection and Testing\n整理说明：该证据针对 drain_point 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n具体施工空间\n支架\n接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。\n2. 不能替代船厂施工规范、管系布置标准或安装验收程序。\n3. 不能直接支撑冷却水温度、压力和流量参数限值。\n\n[E-COOLER-MAINT-019] 层级:L2 来源:S51 NASA NTRS 19800002357 Piping Specification\n  内容: 管路检修可达性和拆管最小化要求\nPiping shall be arranged to provide access to openings and to permit convenient removal of heads and pulling of tubes.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：cooler 的 maintenance\naccessibility\npressure 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n[E-VENT-INSP-001] 层级:L3 来源:S51 NASA NTRS 19800002357 Piping Specification\n  内容: 水管路最低点放水和最高点排气要求\nInstall manual drain valves at every low point of water piping systems and a manual air vent at every high point. S52 BN-G-Y015 Piping Systems Inspection and Testing\n整理说明：该证据针对 vent_point 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n具体施工空间\n支架\n接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。\n2. 不能替代船厂施工规范、管系布置标准或安装验收程序。\n3. 不能直接支撑冷却水温度、压力和流量参数限值。\n\n[E-PIPE-INSP-013] 层级:L2 来源:S51 NASA NTRS 19800002357 Piping Specification\n  内容: 水管路最低点放水和最高点排气要求\nInstall manual drain valves at every low point of water piping systems and a manual air vent at every high point. S52 BN-G-Y015 Piping Systems Inspection and Testing\n整理说明：该证据针对 pipe 的 inspection / installation / arrangement 方面提供原文依据，可支撑相应的设计、运行、维护或审查判断；其支撑范围应受来源类型、适用对象和原文明确条件限制。\n可支撑：冷却水系统布置应考虑来源文件提出的安装\n操作或维护可达性原则。\n具体施工空间\n支架\n接口和验收要求仍应由项目安装规范确认。\n不能支撑：1. 不能直接给出焊接空间、操作空间、支架间距、冲洗接口或试压接口的具体要求。\n2. 不能替代船厂施工规范、管系布置标准或安装验收程序。\n3. 不能直接支撑冷却水温度、压力和流量参数限值。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "e9f5c49ad3fdf57783a27cbad0f15e3c6e53a23da4f5bcb39edb17c18bcd9bde",
+    "utf8_message_bytes": 5498,
+    "execution_index": 69
+  }
+}

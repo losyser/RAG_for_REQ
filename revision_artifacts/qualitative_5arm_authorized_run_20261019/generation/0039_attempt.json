@@ -1,0 +1,37 @@
+{
+  "slot": "OR008-semantic_old",
+  "body_sha256": "16eb84f39add4073a018e113654075ceab0288cfb41f01df6c62cd718079eaad",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:42:31.419046+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR008-semantic_old",
+    "source_id": "OR008",
+    "group": "semantic_old",
+    "context_sha256": "a1619e22d303d15f63fbdb51a652bc0aa03172422c12d7f03df57a14d413dd27",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n温度控制阀的设定值和安装位置要按主机要求核对，不然水温可能控制不到合适范围。\n\n## 证据清单\n[E-LT-COMP-006] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: L16/24S;L16/24：HT冷却水发动机出口温度设定点 79°C 标称（机械恒温元件范围 77-85°C）；LT冷却水发动机出口温度设定点 35°C 标称（机械恒温元件范围 29-41°C）；润滑油进口温度设定点 66°C 标称（机械恒温元件范围 63-72°C）。适用条件：参考工况为热带空气温度，发动机进水温度来自系统，空气压力、相对湿度按温度基准；HT冷却水先流经HT级增压空气冷却器，再流经水套和气缸盖，发动机出口水温由机械恒温器调节；LT冷却水先流经LT级增压空气冷却器，再流经滑油冷却器，发动机出口水温由机械恒温器调节。\n\n可支撑：lt_cooling_water_loop 的 composition control pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 79、77-85、35、29-41、66、63-72\n\n[E-SYS-COMP-006] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 淡水侧系统组成\n100 °C at the engine outlet – even in case of frequent load changes – and to protect the engine from excessive thermal load. For adjusting the outlet water temperature (between 90 and 100°C) to engine load and speed, the cooling water inlet temperature is controlled. The elec- tronic water temperature controller recognises deviations by means of the sensor at the engine outlet and afterwards corrects the reference value ac- cordingly. ▪ The electronic temperature controller is installed \n  [量化参数] 100、90、100、2025-12-03、3.0\n\n[E-LT-PRESS-003] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却水温度与压力参数\nAs the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line. The integrated loop in the auxiliary engines will ensure a constant temperature of approximately 80°C at the auxiliary engine outlet. The propul- sion engine wil\n  [量化参数] 80\n\n[E-TCV-TEMP-047] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 温度控制阀配置\nshould be 10 to 15 times the pipe diameter. ▪ The three-way valve (MOV-002) is to be installed as a mixing valve. It is to be designed for a pressure loss of 0.3 – 0.6 bar. It is to be equipped with an actuator of high positioning speed. For adjustment of the valve follow instructions given in MAN Energy Solutions planning documentation. The actuator must permit manual emergency adjustment. ▪ The pipes within the system are to be kept as short as possible in order to reduce the dead time\n  [量化参数] 10 to 15 times the pipe diameter、0.3 – 0.6\n\n[E-LT-PRESS-005] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却水温度与压力参数\noutlet. When the water leaves the propulsion engine, through the jacket inlet, it flows to the thermostatically controlled 3-way valve. As the temperature sensor for the thermostatically controlled 3-way valve, in this operating mode, is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling water through the common thermostatically controlled 3-way valve, serving the auxiliary engines, and back to their common HT inlet line. The integrated loop in th\n  [量化参数] 80\n\n[E-TCV-TEMP-062] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 温度控制阀配置\nTemperature control valve for central cooler (4V08) When it is desired to utilize the engine driven LT-pump for cooling of external equipment, e.g. a reduction or a generator, there must be a common LT temperature control valve in the external system, instead of an individual valve for each engine. The common LT temperature control valve is installed after the central cooler and controls the temperature of the water before the engine and the external equipment, by partly bypassing the ce\n  [量化参数] 38、38\n\n[E-HT-COMP-004] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 高温冷却水系统组成\ngines, the water flows directly to the main engine jacket outlet. When the wa- ter leaves the main engine, through the jacket inlet, it flows to the thermostat- ically controlled 3-way valve. As the temperature sensor for the valve in this operating mode is measuring in a non-flow, low temperature piping, the valve will lead most of the cooling wa- ter to the jacket water cooler. The integrated loop in the auxiliary engines will ensure a constant temperature of 80°C at the auxiliary en\n  [量化参数] 80\n\n[E-SYS-PRESS-006] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却水温度与压力参数\nthe minimum temperature of the cooling circuit. It cannot control the maximum temperature of the cooling circuit. Maximum temperature must be controlled by the correct sizing of the radiator, heat exchanger or similar device. There are two basic methods of thermostatic control of minimum operating temperature in cooling systems; inlet controlled and outlet controlled.\n整理说明：原文说明了参数来源、设计依据或相关设备关系，但没有给出可直接采用的具体数值。它适合支撑参数确认路径，而不是直接替代技术数据或计算书。\n可支撑：main_engine_cooling_water_system 的 pressur\n\n[E-TCV-TEMP-055] 层级:L3 来源:S41 Everllence 49/60DF Project Guide\n  内容: 温度控制阀配置\n▪ The low temperature (LT) cooling water temperature control works simil- arly to the HT cooling water temperature control and can be used if the LT cooling water system is designed as one individual cooling water system per engine. In case several engines are operated with a combined LT cooling water system, it is necessary to use an external temperature controller. This external controller must be mounted on the engine control room desk and is to be wired to the temperature control val\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "16eb84f39add4073a018e113654075ceab0288cfb41f01df6c62cd718079eaad",
+    "utf8_message_bytes": 7595,
+    "execution_index": 39
+  }
+}

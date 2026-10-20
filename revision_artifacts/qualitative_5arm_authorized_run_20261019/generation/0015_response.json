@@ -1,0 +1,213 @@
+{
+  "slot": "OR003-semantic_new",
+  "started_at": "2026-10-19T02:39:40.776074+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"2a1cf8a4-f5b6-4710-83a7-2c67d7393aba\",\"object\":\"chat.completion\",\"created\":1792377581,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"中央冷却器的选型应依据船舶运营区域所确定的海水设计温度进行，并应覆盖高温海水工况。\\\", \\\"measurable_criterion\\\": \\\"海水设计温度取25°C或32°C，取决于船舶运营区域\\\", \\\"applicable_condition\\\": \\\"L21/31、L27/38机型，柴油-电力推进船舶的中央冷却器选型\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型计算书明确给出所采用的海水设计温度（25°C或32°C）及其与运营区域的对应关系\\\", \\\"冷却器换热能力在该海水设计温度下满足MCR工况要求\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-INST-007\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-INST-008\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却器和冷却水泵的容量应在设计工况基础上留有合理裕量，不得按刚好满足MCR需求选型，以覆盖海水温度升高及设备脏污导致的换热能力下降。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:%|ref:S37 MAN L27/38 Propulsion Project Guide|component:中央冷却器与冷却水泵|intent:容量裕量|hint:证据仅给出冷却器额定值公差+10%、热回收公差-15%、冷却水流量公差±5%，未给出容量裕量百分比，需由项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"冷却器与冷却水泵容量选型，机型与工况范围以来源文件限定为准\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型计算书中明确列出容量裕量取值及其依据\\\", \\\"在海水温度升高与换热面脏污的假定条件下，冷却能力仍满足主机MCR运行要求\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-ARR-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-INST-007\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水泵的输送容量公差应由泵制造商予以考虑，并在选型中体现。\\\", \\\"measurable_criterion\\\": \\\"[Q]泵的输送容量公差必须由泵制造商考虑\\\", \\\"applicable_condition\\\": \\\"L 49/60机型冷却水泵容量确定（来源文件限定机型范围）\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"泵制造商提供的容量公差说明文件齐备\\\", \\\"选型计算中已计入该容量公差\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-CLEAN-024\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-CLEAN-022\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统通过所有冷却器的压降应受控，以保证冷却水泵扬程与流量在合理范围内。\\\", \\\"measurable_criterion\\\": \\\"通过所有冷却器的压降最大0.5 bar\\\", \\\"applicable_condition\\\": \\\"L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"冷却水系统压降计算值不超过0.5 bar\\\", \\\"冷却水泵选型扬程覆盖该压降并留有裕量\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-LT-MAINT-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"当船舶在MCR工况下航速低于3节时，中央冷却器设计应考虑航速影响。\\\", \\\"measurable_criterion\\\": \\\"MCR工况下最低船速通常大于3节；低于3节时冷却器设计需考虑航速影响\\\", \\\"applicable_condition\\\": \\\"L21/31、L27/38机型，柴油-电力推进船舶（如拖船、挖泥船等）中央冷却器选型\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"选型文件说明该船MCR工况航速与3节的关系\\\", \\\"若航速低于3节，选型计算中包含航速影响的修正\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-INST-007\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-LT-MAINT-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S37 MAN L27/38 Propulsion Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水温度与压力参数应依据厂家技术数据或项目计算文件确定，并在选型中作为设计输入。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统|intent:冷却水温度设计值|hint:证据给出热带条件温度45/38°C及冷却水温度为中冷器前温度，具体设计取值需按项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"辅助发动机（船舶辅机）与船舶主机（机械或柴油电力驱动），发电和主驱动应用\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"设计输入清单中列明冷却水温度与压力取值及来源\\\", \\\"取值与厂家技术数据或项目计算文件一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-MON-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-MON-009\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统换热器及管路的清洗与冲洗应按来源文件或项目维护程序执行，以保证脏污后换热能力恢复。\\\", \\\"measurable_criterion\\\": \\\"[Q]冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况\\\", \\\"applicable_condition\\\": \\\"冷却水系统换热器或相关管路的清洗（机型与系统型式以来源文件限定为准）\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"清洗与冲洗程序文件齐备并符合来源文件或项目维护程序\\\", \\\"清洗后复查记录包含残留清洗剂、泄漏、沉积物及换热能力恢复情况\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-CLEAN-024\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-PRESS-023\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3398,\"completion_tokens\":1731,\"total_tokens\":5129,\"prompt_tokens_details\":{\"cached_tokens\":3200},\"prompt_cache_hit_tokens\":3200,\"prompt_cache_miss_tokens\":198},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:39:41 GMT"
+  },
+  "response": {
+    "id": "2a1cf8a4-f5b6-4710-83a7-2c67d7393aba",
+    "object": "chat.completion",
+    "created": 1792377581,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"中央冷却器的选型应依据船舶运营区域所确定的海水设计温度进行，并应覆盖高温海水工况。\", \"measurable_criterion\": \"海水设计温度取25°C或32°C，取决于船舶运营区域\", \"applicable_condition\": \"L21/31、L27/38机型，柴油-电力推进船舶的中央冷却器选型\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型计算书明确给出所采用的海水设计温度（25°C或32°C）及其与运营区域的对应关系\", \"冷却器换热能力在该海水设计温度下满足MCR工况要求\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-INST-007\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-INST-008\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却器和冷却水泵的容量应在设计工况基础上留有合理裕量，不得按刚好满足MCR需求选型，以覆盖海水温度升高及设备脏污导致的换热能力下降。\", \"measurable_criterion\": \"{{TBD|unit:%|ref:S37 MAN L27/38 Propulsion Project Guide|component:中央冷却器与冷却水泵|intent:容量裕量|hint:证据仅给出冷却器额定值公差+10%、热回收公差-15%、冷却水流量公差±5%，未给出容量裕量百分比，需由项目计算文件确定}}\", \"applicable_condition\": \"冷却器与冷却水泵容量选型，机型与工况范围以来源文件限定为准\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型计算书中明确列出容量裕量取值及其依据\", \"在海水温度升高与换热面脏污的假定条件下，冷却能力仍满足主机MCR运行要求\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-ARR-005\", \"tier\": \"L2\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-INST-007\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水泵的输送容量公差应由泵制造商予以考虑，并在选型中体现。\", \"measurable_criterion\": \"[Q]泵的输送容量公差必须由泵制造商考虑\", \"applicable_condition\": \"L 49/60机型冷却水泵容量确定（来源文件限定机型范围）\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"泵制造商提供的容量公差说明文件齐备\", \"选型计算中已计入该容量公差\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-CLEAN-024\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-CLEAN-022\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统通过所有冷却器的压降应受控，以保证冷却水泵扬程与流量在合理范围内。\", \"measurable_criterion\": \"通过所有冷却器的压降最大0.5 bar\", \"applicable_condition\": \"L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"冷却水系统压降计算值不超过0.5 bar\", \"冷却水泵选型扬程覆盖该压降并留有裕量\"], \"evidence_citations\": [{\"kb_id\": \"E-LT-MAINT-001\", \"tier\": \"L3\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"当船舶在MCR工况下航速低于3节时，中央冷却器设计应考虑航速影响。\", \"measurable_criterion\": \"MCR工况下最低船速通常大于3节；低于3节时冷却器设计需考虑航速影响\", \"applicable_condition\": \"L21/31、L27/38机型，柴油-电力推进船舶（如拖船、挖泥船等）中央冷却器选型\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"选型文件说明该船MCR工况航速与3节的关系\", \"若航速低于3节，选型计算中包含航速影响的修正\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-INST-007\", \"tier\": \"L3\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-LT-MAINT-001\", \"tier\": \"L3\", \"source\": \"S37 MAN L27/38 Propulsion Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水温度与压力参数应依据厂家技术数据或项目计算文件确定，并在选型中作为设计输入。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统|intent:冷却水温度设计值|hint:证据给出热带条件温度45/38°C及冷却水温度为中冷器前温度，具体设计取值需按项目计算文件确定}}\", \"applicable_condition\": \"辅助发动机（船舶辅机）与船舶主机（机械或柴油电力驱动），发电和主驱动应用\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"设计输入清单中列明冷却水温度与压力取值及来源\", \"取值与厂家技术数据或项目计算文件一致\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-MON-006\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-MON-009\", \"tier\": \"L2\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统换热器及管路的清洗与冲洗应按来源文件或项目维护程序执行，以保证脏污后换热能力恢复。\", \"measurable_criterion\": \"[Q]冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况\", \"applicable_condition\": \"冷却水系统换热器或相关管路的清洗（机型与系统型式以来源文件限定为准）\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"清洗与冲洗程序文件齐备并符合来源文件或项目维护程序\", \"清洗后复查记录包含残留清洗剂、泄漏、沉积物及换热能力恢复情况\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-CLEAN-024\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-PRESS-023\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3398,
+      "completion_tokens": 1731,
+      "total_tokens": 5129,
+      "prompt_tokens_details": {
+        "cached_tokens": 3200
+      },
+      "prompt_cache_hit_tokens": 3200,
+      "prompt_cache_miss_tokens": 198
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.020644",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.020644",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "中央冷却器的选型应依据船舶运营区域所确定的海水设计温度进行，并应覆盖高温海水工况。",
+        "measurable_criterion": "海水设计温度取25°C或32°C，取决于船舶运营区域",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶的中央冷却器选型",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算书明确给出所采用的海水设计温度（25°C或32°C）及其与运营区域的对应关系",
+          "冷却器换热能力在该海水设计温度下满足MCR工况要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-INST-008",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器和冷却水泵的容量应在设计工况基础上留有合理裕量，不得按刚好满足MCR需求选型，以覆盖海水温度升高及设备脏污导致的换热能力下降。",
+        "measurable_criterion": "{{TBD|unit:%|ref:S37 MAN L27/38 Propulsion Project Guide|component:中央冷却器与冷却水泵|intent:容量裕量|hint:证据仅给出冷却器额定值公差+10%、热回收公差-15%、冷却水流量公差±5%，未给出容量裕量百分比，需由项目计算文件确定}}",
+        "applicable_condition": "冷却器与冷却水泵容量选型，机型与工况范围以来源文件限定为准",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型计算书中明确列出容量裕量取值及其依据",
+          "在海水温度升高与换热面脏污的假定条件下，冷却能力仍满足主机MCR运行要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-ARR-005",
+            "tier": "L2",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水泵的输送容量公差应由泵制造商予以考虑，并在选型中体现。",
+        "measurable_criterion": "[Q]泵的输送容量公差必须由泵制造商考虑",
+        "applicable_condition": "L 49/60机型冷却水泵容量确定（来源文件限定机型范围）",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "泵制造商提供的容量公差说明文件齐备",
+          "选型计算中已计入该容量公差"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CLEAN-024",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-CLEAN-022",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统通过所有冷却器的压降应受控，以保证冷却水泵扬程与流量在合理范围内。",
+        "measurable_criterion": "通过所有冷却器的压降最大0.5 bar",
+        "applicable_condition": "L27/38冷却水系统，箱式冷却器由MAN Diesel & Turbo供应时",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水系统压降计算值不超过0.5 bar",
+          "冷却水泵选型扬程覆盖该压降并留有裕量"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-MAINT-001",
+            "tier": "L3",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当船舶在MCR工况下航速低于3节时，中央冷却器设计应考虑航速影响。",
+        "measurable_criterion": "MCR工况下最低船速通常大于3节；低于3节时冷却器设计需考虑航速影响",
+        "applicable_condition": "L21/31、L27/38机型，柴油-电力推进船舶（如拖船、挖泥船等）中央冷却器选型",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "选型文件说明该船MCR工况航速与3节的关系",
+          "若航速低于3节，选型计算中包含航速影响的修正"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-007",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-LT-MAINT-001",
+            "tier": "L3",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度与压力参数应依据厂家技术数据或项目计算文件确定，并在选型中作为设计输入。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水系统|intent:冷却水温度设计值|hint:证据给出热带条件温度45/38°C及冷却水温度为中冷器前温度，具体设计取值需按项目计算文件确定}}",
+        "applicable_condition": "辅助发动机（船舶辅机）与船舶主机（机械或柴油电力驱动），发电和主驱动应用",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "设计输入清单中列明冷却水温度与压力取值及来源",
+          "取值与厂家技术数据或项目计算文件一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-MON-006",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-MON-009",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统换热器及管路的清洗与冲洗应按来源文件或项目维护程序执行，以保证脏污后换热能力恢复。",
+        "measurable_criterion": "[Q]冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况",
+        "applicable_condition": "冷却水系统换热器或相关管路的清洗（机型与系统型式以来源文件限定为准）",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "清洗与冲洗程序文件齐备并符合来源文件或项目维护程序",
+          "清洗后复查记录包含残留清洗剂、泄漏、沉积物及换热能力恢复情况"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CLEAN-024",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-PRESS-023",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:39:47.903911+00:00",
+  "elapsed_seconds": 7.125
+}

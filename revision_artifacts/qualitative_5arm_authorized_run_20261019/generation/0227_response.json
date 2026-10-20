@@ -1,0 +1,252 @@
+{
+  "slot": "OR046-semantic_new",
+  "started_at": "2026-10-19T03:04:45.479395+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"e220a342-159c-4176-8d1b-9705ddd6fd06\",\"object\":\"chat.completion\",\"created\":1792379086,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"调试时应验证冷却水泵的实际出口压力，不得仅以泵能否转动作为合格判据。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S42 MAN 49/60DF Project Guide 第108页 Planning data|component:冷却水泵|intent:出口压力|hint:按厂家规划数据与系统最大可能压力（含零流量扬程与静压）确定调试压力判据}}\\\", \\\"applicable_condition\\\": \\\"冷却水系统调试阶段，泵组投入运行且系统回路按设计布置完成\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"实测泵出口压力记录完整并与厂家规划数据/项目计算文件一致\\\", \\\"压力判据覆盖泵零流量扬程与膨胀水箱静压叠加的最大可能压力工况\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-CAP-025\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证冷却水泵的实际输送流量，不得仅以泵能否转动作为合格判据。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:m3/h|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵|intent:输送流量|hint:按所需冷却水容量与泵制造商给出的容量公差确定调试流量判据}}\\\", \\\"applicable_condition\\\": \\\"冷却水系统调试阶段，泵组在设计工况下运行\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"实测流量满足所需冷却水容量要求\\\", \\\"流量测量结果已计入泵制造商声明的输送容量公差\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-DRAW-004\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-CLEAN-025\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证冷却水泵的备用切换功能，确认备用泵在主泵停止或故障时能自动投入运行。\\\", \\\"measurable_criterion\\\": \\\"[Q]备用泵切换功能应通过实际切换试验确认，备用泵可作为冷却水泵使用且不干扰船舶其他必要服务；冷却水取水口不少于两个。\\\", \\\"applicable_condition\\\": \\\"冷却水系统调试阶段，制冷装置冷却水供水回路（如设有）及主机冷却水回路\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"主泵停止后备用泵按设定逻辑投入运行\\\", \\\"备用泵投入后冷却水供水不中断且不影响其他必要服务\\\", \\\"冷却水取水连接不少于两个\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-RED-021\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证高温冷却水备用泵未运行时的停机前低负荷运行程序，确认发动机在最终停机前以规定负荷运行规定时间。\\\", \\\"measurable_criterion\\\": \\\"15分钟；0%至10%\\\", \\\"applicable_condition\\\": \\\"HT冷却水备用泵因任何原因未运行，发动机最终停机前\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"发动机在最终停机前以0%至10%负荷运行15分钟\\\", \\\"运行期间由发动机驱动的HT冷却水泵完成散热，HT冷却水温度处于允许范围\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-SHUT-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证发动机停止后高温冷却水泵的继续运行能力，确认其按规定时长持续运行并兼顾压缩机叶轮冷却。\\\", \\\"measurable_criterion\\\": \\\"15分钟\\\", \\\"applicable_condition\\\": \\\"发动机停止后，HT冷却水泵继续运行工况\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"发动机停止后HT冷却水泵持续运行15分钟\\\", \\\"继续运行期间同时满足压缩机叶轮冷却需求\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-SHUT-006\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证预热和后冷却期间高温冷却水的最小流量满足对应缸数配置要求。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:m3/h|ref:S41 Everllence 49/60DF Project Guide|component:HT冷却水泵|intent:预热和后冷却期间最小流量|hint:按实际缸数配置（6L/7L/8L/9L/10L/12V/14V）选取对应最小流量需求区间}}\\\", \\\"applicable_condition\\\": \\\"高温冷却水系统预热和后冷却期间，缸数配置按实际机型确定\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"实测最小流量落在所选缸数配置对应的最小流量需求区间内\\\", \\\"流量测量在预热和后冷却两种工况下均完成\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证预热泵的运行状态与报警功能，确认预热期间由电动泵循环高温冷却水且相关报警按厂家要求设置。\\\", \\\"measurable_criterion\\\": \\\"[Q]预热期间需要电动泵循环高温冷却水；预热器使用蒸汽或热油运行时可能触发报警，因发动机启动后无法对热交换器进行后冷却（预热泵被发动机驱动泵的背压阻塞）。\\\", \\\"applicable_condition\\\": \\\"高温冷却水系统预热期间，预热器使用蒸汽或热油运行\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"预热期间电动泵投入并维持高温冷却水循环\\\", \\\"预热器相关报警按厂家要求设置并可在试验中触发确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证冷却水泵容量与冷却器规格的匹配性，确认泵输送容量公差已由泵制造商考虑。\\\", \\\"measurable_criterion\\\": \\\"[Q]泵输送容量的公差必须由泵制造商考虑；冷却器规格基本值用于冷却器布局设计。\\\", \\\"applicable_condition\\\": \\\"冷却水系统调试阶段，冷却器与泵组按厂家规划数据选型完成\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"泵制造商提供的容量公差文件齐全\\\", \\\"调试实测容量在计入公差后的允许范围内\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-CLEAN-028\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-CLEAN-027\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证低温冷却水泵组的运行配置，确认海上运行与港口运行工况下投入的泵组符合设计要求。\\\", \\\"measurable_criterion\\\": \\\"3；两台；一台\\\", \\\"applicable_condition\\\": \\\"双回路中央冷却水系统，LT淡水泵组由3台泵组成，两台用于海上运行、一台较小用于港口运行\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"海上运行工况下两台LT淡水泵投入运行\\\", \\\"港口运行工况下较小一台LT淡水泵投入运行\\\", \\\"切换过程冷却水供水连续\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-INST-003\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"调试时应验证冷却水泵压力与流量测量点的设置及仪表读数有效性，确认调试数据可追溯。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵及换热器|intent:压力测点与压降|hint:按换热器压降与外部连接尺寸/标准确定测点布置与量程}}\\\", \\\"applicable_condition\\\": \\\"冷却水系统调试阶段，测量仪表安装完成并校准\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"压力与流量测点布置符合厂家规划数据要求\\\", \\\"仪表量程覆盖系统最大可能压力\\\", \\\"调试记录包含压力、流量与切换试验数据\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-DRAW-004\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-CAP-025\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3707,\"completion_tokens\":2152,\"total_tokens\":5859,\"prompt_tokens_details\":{\"cached_tokens\":3328},\"prompt_cache_hit_tokens\":3328,\"prompt_cache_miss_tokens\":379},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:04:46 GMT"
+  },
+  "response": {
+    "id": "e220a342-159c-4176-8d1b-9705ddd6fd06",
+    "object": "chat.completion",
+    "created": 1792379086,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"调试时应验证冷却水泵的实际出口压力，不得仅以泵能否转动作为合格判据。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S42 MAN 49/60DF Project Guide 第108页 Planning data|component:冷却水泵|intent:出口压力|hint:按厂家规划数据与系统最大可能压力（含零流量扬程与静压）确定调试压力判据}}\", \"applicable_condition\": \"冷却水系统调试阶段，泵组投入运行且系统回路按设计布置完成\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"实测泵出口压力记录完整并与厂家规划数据/项目计算文件一致\", \"压力判据覆盖泵零流量扬程与膨胀水箱静压叠加的最大可能压力工况\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-CAP-025\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证冷却水泵的实际输送流量，不得仅以泵能否转动作为合格判据。\", \"measurable_criterion\": \"{{TBD|unit:m3/h|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵|intent:输送流量|hint:按所需冷却水容量与泵制造商给出的容量公差确定调试流量判据}}\", \"applicable_condition\": \"冷却水系统调试阶段，泵组在设计工况下运行\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"实测流量满足所需冷却水容量要求\", \"流量测量结果已计入泵制造商声明的输送容量公差\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-DRAW-004\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-CLEAN-025\", \"tier\": \"L2\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证冷却水泵的备用切换功能，确认备用泵在主泵停止或故障时能自动投入运行。\", \"measurable_criterion\": \"[Q]备用泵切换功能应通过实际切换试验确认，备用泵可作为冷却水泵使用且不干扰船舶其他必要服务；冷却水取水口不少于两个。\", \"applicable_condition\": \"冷却水系统调试阶段，制冷装置冷却水供水回路（如设有）及主机冷却水回路\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"主泵停止后备用泵按设定逻辑投入运行\", \"备用泵投入后冷却水供水不中断且不影响其他必要服务\", \"冷却水取水连接不少于两个\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-RED-021\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证高温冷却水备用泵未运行时的停机前低负荷运行程序，确认发动机在最终停机前以规定负荷运行规定时间。\", \"measurable_criterion\": \"15分钟；0%至10%\", \"applicable_condition\": \"HT冷却水备用泵因任何原因未运行，发动机最终停机前\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"发动机在最终停机前以0%至10%负荷运行15分钟\", \"运行期间由发动机驱动的HT冷却水泵完成散热，HT冷却水温度处于允许范围\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-SHUT-006\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证发动机停止后高温冷却水泵的继续运行能力，确认其按规定时长持续运行并兼顾压缩机叶轮冷却。\", \"measurable_criterion\": \"15分钟\", \"applicable_condition\": \"发动机停止后，HT冷却水泵继续运行工况\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"发动机停止后HT冷却水泵持续运行15分钟\", \"继续运行期间同时满足压缩机叶轮冷却需求\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-SHUT-006\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证预热和后冷却期间高温冷却水的最小流量满足对应缸数配置要求。\", \"measurable_criterion\": \"{{TBD|unit:m3/h|ref:S41 Everllence 49/60DF Project Guide|component:HT冷却水泵|intent:预热和后冷却期间最小流量|hint:按实际缸数配置（6L/7L/8L/9L/10L/12V/14V）选取对应最小流量需求区间}}\", \"applicable_condition\": \"高温冷却水系统预热和后冷却期间，缸数配置按实际机型确定\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"实测最小流量落在所选缸数配置对应的最小流量需求区间内\", \"流量测量在预热和后冷却两种工况下均完成\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-005\", \"tier\": \"L3\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证预热泵的运行状态与报警功能，确认预热期间由电动泵循环高温冷却水且相关报警按厂家要求设置。\", \"measurable_criterion\": \"[Q]预热期间需要电动泵循环高温冷却水；预热器使用蒸汽或热油运行时可能触发报警，因发动机启动后无法对热交换器进行后冷却（预热泵被发动机驱动泵的背压阻塞）。\", \"applicable_condition\": \"高温冷却水系统预热期间，预热器使用蒸汽或热油运行\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"预热期间电动泵投入并维持高温冷却水循环\", \"预热器相关报警按厂家要求设置并可在试验中触发确认\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-005\", \"tier\": \"L3\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证冷却水泵容量与冷却器规格的匹配性，确认泵输送容量公差已由泵制造商考虑。\", \"measurable_criterion\": \"[Q]泵输送容量的公差必须由泵制造商考虑；冷却器规格基本值用于冷却器布局设计。\", \"applicable_condition\": \"冷却水系统调试阶段，冷却器与泵组按厂家规划数据选型完成\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"泵制造商提供的容量公差文件齐全\", \"调试实测容量在计入公差后的允许范围内\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-CLEAN-028\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-CLEAN-027\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证低温冷却水泵组的运行配置，确认海上运行与港口运行工况下投入的泵组符合设计要求。\", \"measurable_criterion\": \"3；两台；一台\", \"applicable_condition\": \"双回路中央冷却水系统，LT淡水泵组由3台泵组成，两台用于海上运行、一台较小用于港口运行\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"海上运行工况下两台LT淡水泵投入运行\", \"港口运行工况下较小一台LT淡水泵投入运行\", \"切换过程冷却水供水连续\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-INST-003\", \"tier\": \"L2\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"调试时应验证冷却水泵压力与流量测量点的设置及仪表读数有效性，确认调试数据可追溯。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵及换热器|intent:压力测点与压降|hint:按换热器压降与外部连接尺寸/标准确定测点布置与量程}}\", \"applicable_condition\": \"冷却水系统调试阶段，测量仪表安装完成并校准\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"压力与流量测点布置符合厂家规划数据要求\", \"仪表量程覆盖系统最大可能压力\", \"调试记录包含压力、流量与切换试验数据\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-DRAW-004\", \"tier\": \"L2\", \"source\": \"S10 MAN L23/30DF Project Guide Internal cooling water system\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-CAP-025\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3707,
+      "completion_tokens": 2152,
+      "total_tokens": 5859,
+      "prompt_tokens_details": {
+        "cached_tokens": 3328
+      },
+      "prompt_cache_hit_tokens": 3328,
+      "prompt_cache_miss_tokens": 379
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.02463",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.02463",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "调试时应验证冷却水泵的实际出口压力，不得仅以泵能否转动作为合格判据。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S42 MAN 49/60DF Project Guide 第108页 Planning data|component:冷却水泵|intent:出口压力|hint:按厂家规划数据与系统最大可能压力（含零流量扬程与静压）确定调试压力判据}}",
+        "applicable_condition": "冷却水系统调试阶段，泵组投入运行且系统回路按设计布置完成",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "实测泵出口压力记录完整并与厂家规划数据/项目计算文件一致",
+          "压力判据覆盖泵零流量扬程与膨胀水箱静压叠加的最大可能压力工况"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CAP-025",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证冷却水泵的实际输送流量，不得仅以泵能否转动作为合格判据。",
+        "measurable_criterion": "{{TBD|unit:m3/h|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵|intent:输送流量|hint:按所需冷却水容量与泵制造商给出的容量公差确定调试流量判据}}",
+        "applicable_condition": "冷却水系统调试阶段，泵组在设计工况下运行",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "实测流量满足所需冷却水容量要求",
+          "流量测量结果已计入泵制造商声明的输送容量公差"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-DRAW-004",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-CLEAN-025",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证冷却水泵的备用切换功能，确认备用泵在主泵停止或故障时能自动投入运行。",
+        "measurable_criterion": "[Q]备用泵切换功能应通过实际切换试验确认，备用泵可作为冷却水泵使用且不干扰船舶其他必要服务；冷却水取水口不少于两个。",
+        "applicable_condition": "冷却水系统调试阶段，制冷装置冷却水供水回路（如设有）及主机冷却水回路",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "主泵停止后备用泵按设定逻辑投入运行",
+          "备用泵投入后冷却水供水不中断且不影响其他必要服务",
+          "冷却水取水连接不少于两个"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-021",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证高温冷却水备用泵未运行时的停机前低负荷运行程序，确认发动机在最终停机前以规定负荷运行规定时间。",
+        "measurable_criterion": "15分钟；0%至10%",
+        "applicable_condition": "HT冷却水备用泵因任何原因未运行，发动机最终停机前",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "发动机在最终停机前以0%至10%负荷运行15分钟",
+          "运行期间由发动机驱动的HT冷却水泵完成散热，HT冷却水温度处于允许范围"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证发动机停止后高温冷却水泵的继续运行能力，确认其按规定时长持续运行并兼顾压缩机叶轮冷却。",
+        "measurable_criterion": "15分钟",
+        "applicable_condition": "发动机停止后，HT冷却水泵继续运行工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "发动机停止后HT冷却水泵持续运行15分钟",
+          "继续运行期间同时满足压缩机叶轮冷却需求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证预热和后冷却期间高温冷却水的最小流量满足对应缸数配置要求。",
+        "measurable_criterion": "{{TBD|unit:m3/h|ref:S41 Everllence 49/60DF Project Guide|component:HT冷却水泵|intent:预热和后冷却期间最小流量|hint:按实际缸数配置（6L/7L/8L/9L/10L/12V/14V）选取对应最小流量需求区间}}",
+        "applicable_condition": "高温冷却水系统预热和后冷却期间，缸数配置按实际机型确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "实测最小流量落在所选缸数配置对应的最小流量需求区间内",
+          "流量测量在预热和后冷却两种工况下均完成"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-005",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证预热泵的运行状态与报警功能，确认预热期间由电动泵循环高温冷却水且相关报警按厂家要求设置。",
+        "measurable_criterion": "[Q]预热期间需要电动泵循环高温冷却水；预热器使用蒸汽或热油运行时可能触发报警，因发动机启动后无法对热交换器进行后冷却（预热泵被发动机驱动泵的背压阻塞）。",
+        "applicable_condition": "高温冷却水系统预热期间，预热器使用蒸汽或热油运行",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "预热期间电动泵投入并维持高温冷却水循环",
+          "预热器相关报警按厂家要求设置并可在试验中触发确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-005",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证冷却水泵容量与冷却器规格的匹配性，确认泵输送容量公差已由泵制造商考虑。",
+        "measurable_criterion": "[Q]泵输送容量的公差必须由泵制造商考虑；冷却器规格基本值用于冷却器布局设计。",
+        "applicable_condition": "冷却水系统调试阶段，冷却器与泵组按厂家规划数据选型完成",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "泵制造商提供的容量公差文件齐全",
+          "调试实测容量在计入公差后的允许范围内"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-CLEAN-028",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-CLEAN-027",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证低温冷却水泵组的运行配置，确认海上运行与港口运行工况下投入的泵组符合设计要求。",
+        "measurable_criterion": "3；两台；一台",
+        "applicable_condition": "双回路中央冷却水系统，LT淡水泵组由3台泵组成，两台用于海上运行、一台较小用于港口运行",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "海上运行工况下两台LT淡水泵投入运行",
+          "港口运行工况下较小一台LT淡水泵投入运行",
+          "切换过程冷却水供水连续"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INST-003",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "调试时应验证冷却水泵压力与流量测量点的设置及仪表读数有效性，确认调试数据可追溯。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S10 MAN L23/30DF Project Guide Internal cooling water system|component:冷却水泵及换热器|intent:压力测点与压降|hint:按换热器压降与外部连接尺寸/标准确定测点布置与量程}}",
+        "applicable_condition": "冷却水系统调试阶段，测量仪表安装完成并校准",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "压力与流量测点布置符合厂家规划数据要求",
+          "仪表量程覆盖系统最大可能压力",
+          "调试记录包含压力、流量与切换试验数据"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-DRAW-004",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-CAP-025",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:04:55.255642+00:00",
+  "elapsed_seconds": 9.594
+}

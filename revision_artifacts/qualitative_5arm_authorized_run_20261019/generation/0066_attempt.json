@@ -1,0 +1,37 @@
+{
+  "slot": "OR014-random_new",
+  "body_sha256": "2b917dd90207eded27259b854b85587827315b3b98cc01587e0a398c9389126e",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:46:30.977831+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR014-random_new",
+    "source_id": "OR014",
+    "group": "random_new",
+    "context_sha256": "43a1977543d724648e76712727f0ef59883b7d79ff33cb52c4076cff1fcd2463",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n管路高点要考虑排气，低点要考虑放水，不然运行和检修时会比较麻烦。\n\n## 证据清单\n[E-ALARM-SHUT-003] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: MAN Energy Solutions B 19 00 0 L27/38S; L16/24S; L21/31S; L16/24; L21/31; L27/38：HT冷却水温度发动机出口高停机信号；HT冷却水温度发动机出口高停机超控信号；HT冷却水温度发动机出口高报警信号。适用条件：MAN Energy Solutions B 19 00 0 控制系统，机型L27/38S; L16/24S; L21/31S; L16/24; L21/31; L27/38，2015.11.27版本。\n\n可支撑：冷却水温度、压力、液位或传感器异常应按厂家或规则要求设置报警、降负荷或停机保护。报警阈值和保护动作应受具体厂家、机型和控制系统配置约束。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n  [量化参数] B 19 00 0、2015.11.27\n\n[E-PUMP-CLEAN-023] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 冷却器规格与泵容量参考：基本值用于冷却器布局设计；泵输送容量的公差必须由泵制造商考虑。z = 自动过滤器的冲洗油。适用条件：表51：冷却器规格标称值 – L 49/60 – 带CPP的机械推进。注：您将在相应章节中找到所列主题的进一步规划数据。▪ HT冷却水预热所需的最小加热功率见章节HT冷却水预热模块（MOD-004），第328页。▪ 滑油预热所需的最小加热功率见章节H-002/滑油预热器，第298页。▪ 预热泵容量见章节HT冷却水预热模块（MOD-004），第328页。\n\n可支撑：冷却水系统；换热器或相关管路的清洗；冲洗和复查应按来源文件或项目维护程序执行；清洗后重新投运前应关注残留清洗剂、泄漏、沉积物或换热能力恢复情况。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 49/60、328、298、328\n\n[E-COOLANT-WATER-041] 层级:L3 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 冷却液冰点与乙二醇比例：适用对象为Bucher AG Langenthal Motorex Coolant G48，参数为冰点/乙二醇比例，数值为X X 9000 / 5；适用条件为来源文件指定。  \n冷却液冰点与乙二醇比例：适用对象为Motorex Coolant M4.0 Concentrate，参数为冰点/乙二醇比例，数值为X X 9000 / 3；适用条件为来源文件指定。  \n冷却液冰点与乙二醇比例：适用对象为Castrol Radicool NF，参数为冰点/乙二醇比例，数值为X X 9000 / 5；适用条件为来源文件指定。  \n冷却液冰点与乙二醇比例：适用对象为Clariant Genantin Super，参数为冰点/乙二醇比例，数值为X X 9000 / 5；适用条件为来源文件指定。  \n冷却液冰点与乙二醇比例：适用对象为Classic Schmierstoff GmbH + Co KG Classic Kolda UE G48，参数为冰点/乙二醇比例，数值为X X 9000 / 5；适用条件为来源文件指定。  \n冷却液冰点与乙二醇比例：适用对象为CCI Corpor\n\n[E-COOLANT-WATER-073] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 水质参数要求\nsupplemental coolant additive in Caterpillar engines. Soluble oil damages the radiator hoses and certain engine seals. Also, soluble oil does not lubricate pump bearings or protect engine parts from damage caused by cavitation erosion.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：coolant 的 water_quality\ncorrosion_protection 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "2b917dd90207eded27259b854b85587827315b3b98cc01587e0a398c9389126e",
+    "utf8_message_bytes": 5789,
+    "execution_index": 66
+  }
+}

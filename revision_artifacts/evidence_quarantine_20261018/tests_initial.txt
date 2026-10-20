@@ -1,0 +1,64 @@
+..........FF.                                                            [100%]
+================================== FAILURES ===================================
+______ test_ui_real_graph_routes_quarantine_through_all_paths[fallback] _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C9FBBAB0D0>
+mode = 'fallback'
+
+    @pytest.mark.parametrize('mode',['normal','repaired','fallback','budget'])
+    def test_ui_real_graph_routes_quarantine_through_all_paths(monkeypatch,mode):
+        from cooling_rag_mg import engineering_requirement_agent as agent
+        record={'requirement_id':'R1','sub_requirements':[{'selected_results':[ev()]}]}
+        raw={'engineering_requirements':[{'id':'ER1','shall_statement':'Temperature -100掳C','acceptance_criteria':['-100掳C'],
+             'evidence_ids':['RISK'],'support_status':'verified_by_direct_evidence'}]}
+        captured=[]
+        def completion(*a,**kw):
+            captured.append(kw['messages'])
+            return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(raw) if mode=='normal' else 'broken'))])
+        def repair(*a,**kw):
+            if mode=='fallback':raise ValueError('mock repair failure')
+            return raw
+        monkeypatch.setattr(agent,'get_config',lambda:SimpleNamespace(deepseek=SimpleNamespace(enabled=True,make_client=lambda:object(),model='mock',temperature=0,max_tokens_requirement_agent=1000)))
+        monkeypatch.setattr(agent,'cached_completion',completion);monkeypatch.setattr(agent,'repair_json_with_deepseek',repair)
+        if mode=='budget':monkeypatch.setattr(agent,'UI_MAX_PROMPT_CHARS',1)
+        out=agent.generate_engineering_requirements_for_requirement({'requirement_id':'R1'}, {'requirements':[record]},quarantine_flags=FLAGS)
+>       assert out['engineering_requirements']==[]
+E       AssertionError: assert [{'_quarantin...闇€浜哄伐澶嶆牳銆?, ...}] == []
+E
+E         Left contains one more item: {'_quarantine_check': {'applicability': 'unknown', 'declared_binding_ids': [], 'flagged_ids': [], 'numeric_content_det...straints': ['fallback 缁撴灉涓嶅緱鐩存帴浣滀负鏈€缁堝伐绋嬫寚瀵肩骇闇€姹傘€?], 'engineering_rationale': 'DeepSeek 杈撳嚭澶辫触銆傝鏉′粎渚濇嵁鍘熷闇€姹傚拰宸蹭繚鐣欒瘉鎹敓鎴愪繚瀹堣崏妗堬紝闇€浜哄伐澶嶆牳銆?, ...}
+E         Use -v to get more diff
+
+tests\test_evidence_quarantine.py:115: AssertionError
+_______ test_ui_real_graph_routes_quarantine_through_all_paths[budget] ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C9FBC61210>
+mode = 'budget'
+
+    @pytest.mark.parametrize('mode',['normal','repaired','fallback','budget'])
+    def test_ui_real_graph_routes_quarantine_through_all_paths(monkeypatch,mode):
+        from cooling_rag_mg import engineering_requirement_agent as agent
+        record={'requirement_id':'R1','sub_requirements':[{'selected_results':[ev()]}]}
+        raw={'engineering_requirements':[{'id':'ER1','shall_statement':'Temperature -100掳C','acceptance_criteria':['-100掳C'],
+             'evidence_ids':['RISK'],'support_status':'verified_by_direct_evidence'}]}
+        captured=[]
+        def completion(*a,**kw):
+            captured.append(kw['messages'])
+            return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=json.dumps(raw) if mode=='normal' else 'broken'))])
+        def repair(*a,**kw):
+            if mode=='fallback':raise ValueError('mock repair failure')
+            return raw
+        monkeypatch.setattr(agent,'get_config',lambda:SimpleNamespace(deepseek=SimpleNamespace(enabled=True,make_client=lambda:object(),model='mock',temperature=0,max_tokens_requirement_agent=1000)))
+        monkeypatch.setattr(agent,'cached_completion',completion);monkeypatch.setattr(agent,'repair_json_with_deepseek',repair)
+        if mode=='budget':monkeypatch.setattr(agent,'UI_MAX_PROMPT_CHARS',1)
+        out=agent.generate_engineering_requirements_for_requirement({'requirement_id':'R1'}, {'requirements':[record]},quarantine_flags=FLAGS)
+>       assert out['engineering_requirements']==[]
+E       AssertionError: assert [{'_quarantin...闇€浜哄伐澶嶆牳銆?, ...}] == []
+E
+E         Left contains one more item: {'_quarantine_check': {'applicability': 'unknown', 'declared_binding_ids': [], 'flagged_ids': [], 'numeric_content_det...straints': ['fallback 缁撴灉涓嶅緱鐩存帴浣滀负鏈€缁堝伐绋嬫寚瀵肩骇闇€姹傘€?], 'engineering_rationale': 'DeepSeek 杈撳嚭澶辫触銆傝鏉′粎渚濇嵁鍘熷闇€姹傚拰宸蹭繚鐣欒瘉鎹敓鎴愪繚瀹堣崏妗堬紝闇€浜哄伐澶嶆牳銆?, ...}
+E         Use -v to get more diff
+
+tests\test_evidence_quarantine.py:115: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_evidence_quarantine.py::test_ui_real_graph_routes_quarantine_through_all_paths[fallback]
+FAILED tests/test_evidence_quarantine.py::test_ui_real_graph_routes_quarantine_through_all_paths[budget]
+2 failed, 11 passed in 0.78s

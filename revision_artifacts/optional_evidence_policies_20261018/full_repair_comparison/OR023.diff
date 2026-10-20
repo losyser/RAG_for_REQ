@@ -1,0 +1,222 @@
+--- 3659d37ed21a2f286027f2603b171f2ad22565fe/OR023
++++ 6de9afc02f5f9b524531c3b272ce82d9194a4d79/OR023
+@@ -8,18 +8,37 @@
+ [E-TCV-TEMP-021] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide
+   内容: 温度控制阀：外部管道流速，淡水最大流速 3.0 m/s；海水最大流速 3.0 m/s。适用条件：外部管道连接。  
+-发动机：高压系统压降，约（未给出具体数值）。适用条件：不含泵和恒温阀。  
++发动机：高压系统压降，约（未给出具体数值）。适用条件：不含泵和恒温阀。
+ 
+ 可支撑：temperature_control_valve 的 temperature control pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。  
+ 不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。
+-  [量化参数] 3.0、3.0
++  [上下文省略段数] 0
++  [上下文状态] all_paragraphs_retained: 仅表示文本未省略，不代表语义完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["normal_operation"], "engine_model": "L23/30H", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P178", "manufacturer": "MAN", "unsupported_requirements": "1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "m/s", "value_text": "3.0"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "m/s", "value_text": "3.0"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-TCV-TEMP-028] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System
+-  内容: 温度控制阀配置
+-Temperature control valve (heat recovery)4V02Circulating pump (preheater)4P04 Pipe connections: HT-water airvent from air cooler416HT-water inlet401 LT-water inlet451HT-water outlet402 LT-water outlet452HT-water air vent404 LT-water air vent483Water from preheater to HT-circuit406 Product Guide W32 - 1/2013 101 Wärtsilä 32 - Product Guide 9. Cooling Water System
+-整理说明：原文给出了冷却水相关参数、阈值或适用条件，可用于对应厂家、机型或规则范围内的参数约束。该证据不应跨系统型式或跨机型直接泛化。
+-可支撑：temperature_control_valve 的 temperature
+-control
+-flow 参数
+-  [量化参数] 4V02、4P04、416、401、451、402、452、404、483、406、1/2013、101、32、9
++  内容: unknown (no complete paragraph fits)
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["startup", "normal_operation"], "engine_model": "32", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P107", "manufacturer": "Wärtsilä", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "4V02"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "4P04"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "416"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "401"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "451"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "402"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "452"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "404"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "483"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "406"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "1/2013"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "101"}
++  [完整参数省略条数] 2
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-ALARM-ALARM-003] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）
+@@ -35,5 +54,12 @@
+ 不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。
+ 3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。
+-  [量化参数] 95、105
++  [上下文省略段数] 0
++  [上下文状态] all_paragraphs_retained: 仅表示文本未省略，不代表语义完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["fault_condition", "normal_operation"], "engine_model": "DI16", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P21", "manufacturer": "Scania", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "95"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "105"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-HT-COMP-036] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine
+@@ -41,29 +67,75 @@
+ 高温冷却水系统组成：HT冷却水温度在缸套冷却出口处为60°C至92°C；适用条件：TE3170测量点。  
+ 高温冷却水系统组成：HT冷却水温度在LP TC增压空气冷却器出口处（最后一个增压空气冷却器）标称值为90°C；适用条件：TE3180测量点。  
+-高温冷却水系统组成：HT冷却水温度在发动机进口处为-100°C（启动前预热）；适用条件：3111, TE3190测量点。  
++高温冷却水系统组成：HT冷却水温度在发动机进口处为-100°C（启动前预热）；适用条件：3111, TE3190测量点。
+ 
+ 可支撑：ht_cooling_water_loop 的 composition monitoring temperature 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。  
+ 不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。  
+ 3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。
+-  [量化参数] 60、80、60、92、90、-100
++  [上下文省略段数] 0
++  [上下文状态] all_paragraphs_retained: 仅表示文本未省略，不代表语义完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["startup", "normal_operation"], "engine_model": null, "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P134", "manufacturer": "MAN", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "60"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "80"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "60"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "92"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "90"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "-100"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-ALARM-ALARM-009] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021
+-  内容: 冷却水温度与压力参数
+-until such a time that the lesser ambient temperature may be achieved. iv) Audible and visual alarms are provided, at a continually-manned control station, to indicate any malfunction of the cooling systems. 1.17.2(b) Rating of Cables. In accepting a lesser ambient temperature than 45°C, it is to be ensured that electrical cables for their entire length are adequately rated for the maximum ambient temperature to which they are exposed along their length. 1.17.2(c) Ambient Temperature 
+-  [量化参数] 45°C
++  内容: unknown (no complete paragraph fits)
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "class_rule", "applicable_condition": ["fault_condition", "normal_operation"], "engine_model": null, "limitation": "适用范围以规则、规范或标准条文本身及项目入级要求为准。", "location": "P774", "manufacturer": "ABS", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "45°C"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-TCV-TEMP-051] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide
+-  内容: 温度控制阀配置：Capacities 5-8L23/30H 130 kW/Cyl., 720 rpm 或 135 kW/Cyl., 750 rpm。适用条件：Reference condition: Tropic Air temperature LT water temperature inlet engine (from system) Air pressure Relative humidity Temperature basis 2) Setpoint HT cooling water engine outlet Set point lube oil inlet engine 82°C (engine equipped with HT thermostatic valve) 60°C (SAE30), 66°C (SAE40) Number of cylinders Engine output Speed Heat to be dissipated 1) Cooling water (CW) cylinder Charge air cooler; cooling water HT
+-  [量化参数] 5-8L23/30H、130 kW/Cyl.、720 rpm、135 kW/Cyl.、750 rpm、82°C、60°C、66°C、7.39、3.08、7.39、3.08、7.39、3.08、7.39、3.08、10°C、m3/h、kg/kWh、m3/h
++  内容: 可支撑：temperature_control_valve 的 temperature control pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。
++不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["normal_operation"], "engine_model": "L23/30H", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P26", "manufacturer": "MAN", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "5-8L23/30H"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "kW/Cyl.", "value_text": "130 kW/Cyl."}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "rpm", "value_text": "720 rpm"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "kW/Cyl.", "value_text": "135 kW/Cyl."}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "rpm", "value_text": "750 rpm"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "82°C"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "60°C"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "66°C"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "7.39"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "3.08"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "7.39"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "", "value_text": "3.08"}
++  [完整参数省略条数] 8
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-TCV-TEMP-020] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide
+-  内容: 温度控制阀配置
+-Separate Circuit Aftercooled with Heat Exchangers with Aftercooler Seawater Recirculation The separate circuit aftercooler cooling system must be designed with sufficient capacity for the hottest water and the higher ambient air conditions for operation in climates where both air and seawater temperatures run to extremes. This results in a cooler with excess capacity in cold seawater and warm air conditions. This can result in condensation in the engine’s intake system, especially during
+-  [量化参数] 30°C、85°F
++  内容: unknown (no complete paragraph fits)
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["normal_operation"], "engine_model": null, "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P74", "manufacturer": "Caterpillar", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "<=", "parameter": null, "source_span": null, "unit": "°C", "value_text": "30°C"}
++{"conditions": null, "model": null, "operator": "<=", "parameter": null, "source_span": null, "unit": "°F", "value_text": "85°F"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-TSENS-PRESS-008] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide
+-  内容: 冷却水温度与压力参数
+-Preheating Engines starting on HFO and engines in stand-by position must be preheated. It is also recommended to preheat engines operating on MDO due to the pro- longed life time of the engines' wearing parts. Therefore it is recommended that the preheating is arranged for automatic operation, so that the preheating is disconnected when the engine is running, and connected when the engine is in stand-by position. The preheating is adjusted so that the temperature is ≥ 60°C at the top 
+-  [量化参数] 60、25 to 45
++  内容: unknown (no complete paragraph fits)
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["startup", "normal_operation"], "engine_model": "L16/24", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P263", "manufacturer": "MAN", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": ">=", "parameter": null, "source_span": null, "unit": "°C", "value_text": "60"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "25 to 45"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-TCV-TEMP-059] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system
+@@ -77,5 +149,15 @@
+ 可支撑：temperature_control_valve 的 temperature control pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。
+ 不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。
+-  [量化参数] 3.0、3.0、0.5、0.3、0.5
++  [上下文省略段数] 0
++  [上下文状态] all_paragraphs_retained: 仅表示文本未省略，不代表语义完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["normal_operation"], "engine_model": "L23/30DF", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P189", "manufacturer": "MAN", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "m/s", "value_text": "3.0"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "m/s", "value_text": "3.0"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "bar", "value_text": "0.5"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "bar", "value_text": "0.3"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "bar", "value_text": "0.5"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-ALARM-ALARM-001] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）
+@@ -91,17 +173,36 @@
+ 不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。
+ 3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。
+-  [量化参数] 95、95、105、1、95
++  [上下文省略段数] 0
++  [上下文状态] all_paragraphs_retained: 仅表示文本未省略，不代表语义完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["fault_condition", "normal_operation"], "engine_model": "DI16", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P21", "manufacturer": "Scania", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "95"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "95"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "105"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "秒", "value_text": "1"}
++{"conditions": null, "model": null, "operator": ">", "parameter": null, "source_span": null, "unit": "°C", "value_text": "95"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ [E-TSENS-PRESS-005] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide
+   内容: Internal Cooling Water System 1 (preheating for engines starting on HFO, engines in stand-by position, and engines operating on MDO): temperature ≥ 60°C at the top cover; temperature approximately 25 to 45°C at outlet of the cylinders. 适用条件：preheating is arranged for automatic operation, disconnected when engine is running, connected when engine is in stand-by position.
+-
+-可支撑：temperature_sensor 的 pressure temperature redundancy 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。
+-不能支撑：2. 不能超出来源
+-  [量化参数] 60、25 to 45
+-
+-[E-TCV-TEMP-022] 层级:L2 来源:S41 Everllence 49/60DF Project Guide
+-  内容: 温度控制阀配置
+-standstill of the engine. For max. permissible temperatures, see section Start- ing conditions, Page 66. For details contact Everllence. The system components of the LT cooling water circuit are designed for a max. LT cooling water temperature of 38°C, with a corresponding seawater temperature of 32°C (tropical conditions). However, the capacity of the cooler for LT cooling water (HE-024) is determ- ined by the temperature difference between seawater and LT cooling water. Due to this cor
+-  [量化参数] 38、32、32、25、32、38、32
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["startup", "normal_operation"], "engine_model": "L16/24", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P254", "manufacturer": "MAN", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] {"conditions": null, "model": null, "operator": ">=", "parameter": null, "source_span": null, "unit": "°C", "value_text": "60"}
++{"conditions": null, "model": null, "operator": "", "parameter": null, "source_span": null, "unit": "°C", "value_text": "25 to 45"}
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
++
++[E-SYS-COMP-012] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide
++  内容: unknown (no complete paragraph fits)
++  [上下文省略段数] 1
++  [上下文状态] partial_unknown: 存在省略，不能假定参数条件完整
++  [抽取状态] unknown_historical
++  [适用性记录] {"applicability_level": "manufacturer_specific", "applicable_condition": ["normal_operation"], "engine_model": "L16/24", "limitation": "适用范围限于来源文档对应厂家、机型、配置或安装条件。", "location": "P418", "manufacturer": "MAN", "unsupported_requirements": "2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。"}
++  [量化参数] none recorded
++  [完整参数省略条数] 0
++  null=未记录；适用性仍需核实；引用等级不代表正确性。
+ 
+ 
+@@ -123,2 +224,5 @@
+ 
+ 严禁写入证据清单中未出现的任何数字。所有字段使用中文。
++参数的数值、运算符、单位、条件、型号和来源片段必须一起解释。null表示未记录，不能推断补齐。
++适用性未知、条件缺失或记录因预算被省略时，不得将该参数泛化为项目限值；使用TBD并说明待确认内容。
++证据中的异常数值、型号冲突或量纲冲突不能仅凭引用存在判为正确，应保留待核验说明。

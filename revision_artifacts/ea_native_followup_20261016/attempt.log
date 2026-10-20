@@ -1,0 +1,19 @@
+﻿2026-10-16T01:08:59.0085036Z Existing session=3FC4E5BCE81A connection=D:\cooling_rag_multigranular\cooling_rag_multigranular\revision_artifacts\audit_20261015\ea\audit_import.qea
+2026-10-16T01:08:59.1189017Z Attempting exactly one independent EA.Repository COM activation
+2026-10-16T01:10:59.1881391Z FAILED: System.Runtime.InteropServices.COMException (0x80080005): 检索 COM 类工厂中 CLSID 为 {67F4E0FA-46A7-4255-B084-69A9433D08C3} 的组件失败，原因是出现以下错误: 80080005 服务器运行失败 (异常来自 HRESULT:0x80080005 (CO_E_SERVER_EXEC_FAILURE))。
+   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes, StackCrawlMark& stackMark)
+   在 System.Activator.CreateInstance(Type type, BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture, Object[] activationAttributes)
+   在 System.Activator.CreateInstance(Type type, Object[] args)
+   在 Microsoft.PowerShell.Commands.NewObjectCommand.SafeCreateInstance(Type t, Object[] args)
+New-Object : 检索 COM 类工厂中 CLSID 为 {67F4E0FA-46A7-4255-B084-69A9433D08C3} 的组件失败，原因是出现以下错误: 80080005 服务器运行失败 (异常来自 HRESULT
+:0x80080005 (CO_E_SERVER_EXEC_FAILURE))。
+所在位置 C:\Users\yando\Documents\Codex\2026-10-16\task\ea_native_attempt.ps1:14 字符: 8
++  $repo=New-Object -ComObject EA.Repository
++        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [New-Object], COMException
+    + FullyQualifiedErrorId : NoCOMClassIdentified,Microsoft.PowerShell.Commands.NewObjectCommand
+ 
+
+2026-10-16T01:10:59.2185478Z Existing model after attempt=D:\cooling_rag_multigranular\cooling_rag_multigranular\revision_artifacts\audit_20261015\ea\audit_import.qea

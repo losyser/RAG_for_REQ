@@ -1,0 +1,169 @@
+{
+  "slot": "OR041-semantic_old",
+  "started_at": "2026-10-19T03:02:03.724368+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"8579ac2a-e93a-451a-866c-b823fc60f771\",\"object\":\"chat.completion\",\"created\":1792378924,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"海水冷却系统采用主循环泵配置时，系统应配置低供水压力监测与报警功能，当冷却水供水压力低于预设值时触发报警，以支持及时启动备用泵或切换泵组。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:MPa|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:海水冷却系统主循环泵|intent:低供水压力报警阈值|hint:预设压力值应依据厂家技术数据或项目计算文件确定，不得超出厂家机型适用范围}}\\\", \\\"applicable_condition\\\": \\\"海水冷却系统采用主循环泵（含备用泵）配置，发动机运行工况下；报警阈值与动作逻辑限定于具体厂家、机型和控制系统配置范围\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"模拟供水压力降至预设值以下时，报警在规定时间内触发并可在主控制站显示\\\", \\\"报警触发后备用泵启动或泵组切换功能可被执行\\\", \\\"报警阈值设定值与厂家技术文件或项目计算书一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-CTRL-001\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-ALARM-002\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-HT-ALARM-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"海水冷却系统低供水报警应接入主控制站或机舱监测报警系统，报警信号应能在主控制站显示，以便操作人员及时启动或切换冷却水泵。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:个|ref:S43 ABS Marine Vessel Rules Part 4 2021 表1|component:报警显示单元|intent:报警显示位置数量|hint:主控制站显示位置数量应依据规则表1及项目报警清单确定}}\\\", \\\"applicable_condition\\\": \\\"配置主控制站及机舱监测报警系统的船舶；报警显示与处理逻辑受具体厂家、机型和控制系统配置约束\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警信号在主控制站可显示且标识清晰\\\", \\\"报警清单与规则表1及项目报警点表一致\\\", \\\"报警信号传输路径经检查确认无中断\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-ALARM-002\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"海水冷却系统应配置备用泵，当低供水报警触发或主循环泵故障时，备用泵应能自动或手动启动投入运行，备用泵容量应不低于主泵容量。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:m³/h|ref:S44 PRS Ship Machinery Piping Systems 11.1.2|component:海水冷却备用泵|intent:备用泵容量|hint:备用泵容量应不小于主泵容量，具体数值依据厂家选型与项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"单台主机海水冷却系统配置两台泵（其中一台为备用泵），至少一台泵为独立驱动；适用于采用主循环泵配置的海水冷却系统\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"备用泵容量不小于主泵容量，经选型计算书确认\\\", \\\"至少一台泵为独立驱动，驱动方式经图纸检查确认\\\", \\\"低供水报警触发后备用泵启动或切换逻辑经测试可执行\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-PUMP-RED-004\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S44 PRS Ship Machinery Piping Systems\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-RED-002\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-DRAW-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"低供水报警的阈值设定与保护动作逻辑应依据具体厂家、机型和控制系统配置确定，并在冷却水泵及报警系统送审文件中明确标注。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:MPa|ref:厂家技术文件或项目计算文件|component:海水冷却系统压力传感器|intent:报警阈值设定值|hint:阈值应严格限定在对应厂家、机型和控制系统配置范围内，不得泛化}}\\\", \\\"applicable_condition\\\": \\\"所有采用主循环泵配置的海水冷却系统；阈值与动作逻辑受厂家、机型、控制系统配置约束\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警阈值设定值在送审文件中明确标注并与厂家技术文件一致\\\", \\\"保护动作逻辑（报警、启动备用泵或切换）在控制逻辑图中体现\\\", \\\"阈值设定未超出厂家机型适用工况范围\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-001\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-COOLER-CTRL-001\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-PUMP-ALARM-002\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\", \\\"has_clause\\\": false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3209,\"completion_tokens\":1391,\"total_tokens\":4600,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":3209},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:02:04 GMT"
+  },
+  "response": {
+    "id": "8579ac2a-e93a-451a-866c-b823fc60f771",
+    "object": "chat.completion",
+    "created": 1792378924,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"海水冷却系统采用主循环泵配置时，系统应配置低供水压力监测与报警功能，当冷却水供水压力低于预设值时触发报警，以支持及时启动备用泵或切换泵组。\", \"measurable_criterion\": \"{{TBD|unit:MPa|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:海水冷却系统主循环泵|intent:低供水压力报警阈值|hint:预设压力值应依据厂家技术数据或项目计算文件确定，不得超出厂家机型适用范围}}\", \"applicable_condition\": \"海水冷却系统采用主循环泵（含备用泵）配置，发动机运行工况下；报警阈值与动作逻辑限定于具体厂家、机型和控制系统配置范围\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"模拟供水压力降至预设值以下时，报警在规定时间内触发并可在主控制站显示\", \"报警触发后备用泵启动或泵组切换功能可被执行\", \"报警阈值设定值与厂家技术文件或项目计算书一致\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-CTRL-001\", \"tier\": \"L2\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-ALARM-002\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": false}, {\"kb_id\": \"E-HT-ALARM-001\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}]}, {\"shall_statement\": \"海水冷却系统低供水报警应接入主控制站或机舱监测报警系统，报警信号应能在主控制站显示，以便操作人员及时启动或切换冷却水泵。\", \"measurable_criterion\": \"{{TBD|unit:个|ref:S43 ABS Marine Vessel Rules Part 4 2021 表1|component:报警显示单元|intent:报警显示位置数量|hint:主控制站显示位置数量应依据规则表1及项目报警清单确定}}\", \"applicable_condition\": \"配置主控制站及机舱监测报警系统的船舶；报警显示与处理逻辑受具体厂家、机型和控制系统配置约束\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警信号在主控制站可显示且标识清晰\", \"报警清单与规则表1及项目报警点表一致\", \"报警信号传输路径经检查确认无中断\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-001\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-ALARM-002\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"海水冷却系统应配置备用泵，当低供水报警触发或主循环泵故障时，备用泵应能自动或手动启动投入运行，备用泵容量应不低于主泵容量。\", \"measurable_criterion\": \"{{TBD|unit:m³/h|ref:S44 PRS Ship Machinery Piping Systems 11.1.2|component:海水冷却备用泵|intent:备用泵容量|hint:备用泵容量应不小于主泵容量，具体数值依据厂家选型与项目计算文件确定}}\", \"applicable_condition\": \"单台主机海水冷却系统配置两台泵（其中一台为备用泵），至少一台泵为独立驱动；适用于采用主循环泵配置的海水冷却系统\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"备用泵容量不小于主泵容量，经选型计算书确认\", \"至少一台泵为独立驱动，驱动方式经图纸检查确认\", \"低供水报警触发后备用泵启动或切换逻辑经测试可执行\"], \"evidence_citations\": [{\"kb_id\": \"E-PUMP-RED-004\", \"tier\": \"L1\", \"source\": \"S44 PRS Ship Machinery Piping Systems\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-RED-002\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-DRAW-001\", \"tier\": \"L3\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": true}]}, {\"shall_statement\": \"低供水报警的阈值设定与保护动作逻辑应依据具体厂家、机型和控制系统配置确定，并在冷却水泵及报警系统送审文件中明确标注。\", \"measurable_criterion\": \"{{TBD|unit:MPa|ref:厂家技术文件或项目计算文件|component:海水冷却系统压力传感器|intent:报警阈值设定值|hint:阈值应严格限定在对应厂家、机型和控制系统配置范围内，不得泛化}}\", \"applicable_condition\": \"所有采用主循环泵配置的海水冷却系统；阈值与动作逻辑受厂家、机型、控制系统配置约束\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警阈值设定值在送审文件中明确标注并与厂家技术文件一致\", \"保护动作逻辑（报警、启动备用泵或切换）在控制逻辑图中体现\", \"阈值设定未超出厂家机型适用工况范围\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-001\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}, {\"kb_id\": \"E-COOLER-CTRL-001\", \"tier\": \"L2\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": true}, {\"kb_id\": \"E-PUMP-ALARM-002\", \"tier\": \"L3\", \"source\": \"S21 Caterpillar Cooling Systems Application and Installation Guide\", \"has_clause\": false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3209,
+      "completion_tokens": 1391,
+      "total_tokens": 4600,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 3209
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.017546",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.017546",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "海水冷却系统采用主循环泵配置时，系统应配置低供水压力监测与报警功能，当冷却水供水压力低于预设值时触发报警，以支持及时启动备用泵或切换泵组。",
+        "measurable_criterion": "{{TBD|unit:MPa|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:海水冷却系统主循环泵|intent:低供水压力报警阈值|hint:预设压力值应依据厂家技术数据或项目计算文件确定，不得超出厂家机型适用范围}}",
+        "applicable_condition": "海水冷却系统采用主循环泵（含备用泵）配置，发动机运行工况下；报警阈值与动作逻辑限定于具体厂家、机型和控制系统配置范围",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "模拟供水压力降至预设值以下时，报警在规定时间内触发并可在主控制站显示",
+          "报警触发后备用泵启动或泵组切换功能可被执行",
+          "报警阈值设定值与厂家技术文件或项目计算书一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-CTRL-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-ALARM-002",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统低供水报警应接入主控制站或机舱监测报警系统，报警信号应能在主控制站显示，以便操作人员及时启动或切换冷却水泵。",
+        "measurable_criterion": "{{TBD|unit:个|ref:S43 ABS Marine Vessel Rules Part 4 2021 表1|component:报警显示单元|intent:报警显示位置数量|hint:主控制站显示位置数量应依据规则表1及项目报警清单确定}}",
+        "applicable_condition": "配置主控制站及机舱监测报警系统的船舶；报警显示与处理逻辑受具体厂家、机型和控制系统配置约束",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警信号在主控制站可显示且标识清晰",
+          "报警清单与规则表1及项目报警点表一致",
+          "报警信号传输路径经检查确认无中断"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-ALARM-002",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "海水冷却系统应配置备用泵，当低供水报警触发或主循环泵故障时，备用泵应能自动或手动启动投入运行，备用泵容量应不低于主泵容量。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S44 PRS Ship Machinery Piping Systems 11.1.2|component:海水冷却备用泵|intent:备用泵容量|hint:备用泵容量应不小于主泵容量，具体数值依据厂家选型与项目计算文件确定}}",
+        "applicable_condition": "单台主机海水冷却系统配置两台泵（其中一台为备用泵），至少一台泵为独立驱动；适用于采用主循环泵配置的海水冷却系统",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "备用泵容量不小于主泵容量，经选型计算书确认",
+          "至少一台泵为独立驱动，驱动方式经图纸检查确认",
+          "低供水报警触发后备用泵启动或切换逻辑经测试可执行"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-004",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-RED-002",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-DRAW-001",
+            "tier": "L3",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "低供水报警的阈值设定与保护动作逻辑应依据具体厂家、机型和控制系统配置确定，并在冷却水泵及报警系统送审文件中明确标注。",
+        "measurable_criterion": "{{TBD|unit:MPa|ref:厂家技术文件或项目计算文件|component:海水冷却系统压力传感器|intent:报警阈值设定值|hint:阈值应严格限定在对应厂家、机型和控制系统配置范围内，不得泛化}}",
+        "applicable_condition": "所有采用主循环泵配置的海水冷却系统；阈值与动作逻辑受厂家、机型、控制系统配置约束",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警阈值设定值在送审文件中明确标注并与厂家技术文件一致",
+          "保护动作逻辑（报警、启动备用泵或切换）在控制逻辑图中体现",
+          "阈值设定未超出厂家机型适用工况范围"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-COOLER-CTRL-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-ALARM-002",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:02:10.247306+00:00",
+  "elapsed_seconds": 6.422
+}

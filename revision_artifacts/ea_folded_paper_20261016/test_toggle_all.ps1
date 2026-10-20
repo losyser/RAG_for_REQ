@@ -1,0 +1,6 @@
+$ErrorActionPreference='Stop';$expected='D:\cooling_rag_multigranular\cooling_rag_multigranular\revision_artifacts\ea_native_followup_20261016\structure_native_test_EMPTY.qea'
+$a=[Runtime.InteropServices.Marshal]::GetActiveObject('EA.App');$r=$a.Repository
+try{if($r.ConnectionString -ne $expected){throw 'Wrong model'};$r.OpenDiagram(9)}finally{[void][Runtime.InteropServices.Marshal]::ReleaseComObject($r);[void][Runtime.InteropServices.Marshal]::ReleaseComObject($a)}
+& 'D:\cooling_rag_multigranular\cooling_rag_multigranular\scripts\93_ea_text_visibility.ps1' -RepositoryPath $expected -Mode Expand -All
+$a=[Runtime.InteropServices.Marshal]::GetActiveObject('EA.App');$r=$a.Repository
+try{if($r.ConnectionString -ne $expected){throw 'Wrong model'};$d=$r.GetCurrentDiagram();$p=$r.GetProjectInterface();$p.PutDiagramImageToFile($d.DiagramGUID,'C:\Users\yando\Documents\Codex\2026-10-16\task\native_verified_paper_overview\all_expanded.png',1);$r.SQLQuery('SELECT Object_ID,ObjectStyle FROM t_diagramobjects WHERE Diagram_ID=9') | Set-Content native_verified_paper_overview/all_styles.xml -Encoding UTF8}finally{[void][Runtime.InteropServices.Marshal]::ReleaseComObject($r);[void][Runtime.InteropServices.Marshal]::ReleaseComObject($a)}

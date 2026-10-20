@@ -1,0 +1,37 @@
+{
+  "slot": "OR024-semantic_old",
+  "body_sha256": "9150d3f7cc97e6ec4602f45931cfc4696e509c929f4c8e6d05eb0e791d72260d",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:52:26.933977+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR024-semantic_old",
+    "source_id": "OR024",
+    "group": "semantic_old",
+    "context_sha256": "78b1f8089e5782eccb345e01f2de4246e9613c25a3e4320bd82e3fb1f920badf",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n膨胀水箱要确认容积、液位显示、低液位报警和补水接口，不能只看外形尺寸。\n\n## 证据清单\n[E-EXP-ALARM-002] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 膨胀水箱配置\n80°C at the outlet of the auxiliary engines. There is one common expansion tank for the main engine and the auxiliary engines. To prevent the accumulation of air in the jacket water system, a de-aeration tank is located at the outlet of the main engine. An alarm device is inserted between the de-aeration tank and the expansion tank so that the operating crew can be notified if excess air or gas is released, as this signals a malfunc- tion of engine components. Operation in port The main e\n  [量化参数] 80\n\n[E-EXP-ALARM-007] 层级:L2 来源:S39 MAN L21/31 Project Guide\n  内容: 膨胀水箱作用\nB. Cooling water pressure, alarm set points As the system pressure in case of pump failure will depend on the height of the expansion tank above the engine, the alarm set point has to be adjusted to 0.4 bar plus the static pressure. The static pressure set point can be adjusted in the display module. 2017-10-11 - en Operation data and set points 3700060-3.10 IMO Tier II Project Guide MAN Energy Solutions Project GuideMAN L16/24\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、\n  [量化参数] 0.4\n\n[E-EXP-ALARM-005] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 膨胀水箱作用\nC. Cooling Water Pressure, Alarm Set Points As the system pressure in case of pump failure will depend on the height of the expansion tank above the engine, the alarm set point has to be adjusted to 0.4 bar plus the static pressure.\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 0.4\n\n[E-EXP-FUNC-005] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 膨胀水箱：用于9缸发动机，每台发动机配备一个公共膨胀水箱；冷却水系统膨胀容积和膨胀水箱推荐容积见表1。适用条件：冷却水系统设计。  \n可支撑：可支撑 expansion_tank 在 function 方面的系统设计运行或维护依据。具体指标和验收条件应结合来源文件适用范围进一步确认。  \n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n  [量化参数] 9\n\n[E-EXP-RED-017] 层级:L2 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 膨胀水箱作用：MAN Energy Solutions B 13 00 4 L16/24;L21/31;L27/38, 2015.09.14。适用条件：stand-by position。预加热调整后，顶部盖板处温度 ≥ 60°C（见温度计TI12），气缸出口处温度约为 25 至 45°C（见温度计TI10）。设计外部冷却水系统时，必须确保没有冷冷却水被压入发动机从而破坏 standby 期间的预加热。柴油机冷却水系统无内置截止阀，因此外部冷却水系统设计者必须确保发电机组预加热不受干扰。海上运行期间，备用辅助发动机通过来自运行辅助发动机的HT水，经通向膨胀水箱的透气管（F3）进行预加热。\n\n可支撑：expansion_tank 的 redundancy；temperature；function 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 60、25、45\n\n[E-EXP-ACCESS-001] 层级:L1 来源:S43 ABS Marine Vessel Rules Part 4 2021\n  内容: 冷却液污染与沉积风险\nmain cooling system of the engine. D2 Coolant outlet (each cylinder), temp. - high D3 Coolant outlet (each cylinder), flow - low x x Where outlet flow cannot be monitored due to engine design, alternative arrangements may be accepted. D4 Coolant in expansion tank, level - low Sea water cooling E1 Sea water cooling, pressure - low Cylinder fresh water cooling F1 Water inlet, pressure - x x x F2 Water outlet from each cylinder, temp. - high; or common water outlet, temp. - high x x Sens\n\n[L1-CCS2025-7-46-017] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 冷却水膨胀箱水位报警\n条款 7-46\n冷却水膨胀箱水位低时，应在机舱集控站（室）显示并发出极限报警。\n\n[E-EXP-ALARM-001] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 膨胀水箱作用\nAs all fresh cooling water is inhibited and common for the central cooling sys- tem, only one common expansion tank, item 10, is necessary, for de-aeration of both the low and high temperature cooling systems. This tank accommod- ates the difference in the water volume caused by changes in the temperat- ure. To prevent the accumulation of air in the cooling water system, a de-aeration tank, item 11, is located below the expansion tank. An alarm device is inser- ted between the de-aeration\n\n[E-EXP-WATER-003] 层级:L3 来源:S07 Scania Marine Cooling System Issue 8\n  内容: 膨胀水箱作用\nExpansion tank 5. Coolant level monitor 6. Bleed pipe from highest point of cooling coil 7. Cooling coil 8. Coolant return pipe to engine 9. Static line pipe 10. Outlet from thermostat housing to coolant pipes 11. Bypass pipe\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：expansion_tank 的 water_quality\nmonitoring\nfunction 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压\n\n[E-EXP-ALARM-003] 层级:L3 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 膨胀水箱作用\nAs all fresh cooling water is inhibited and common for the central cooling system, only one common expansion tank, item 10, is necessary, for de-aera- tion of both the low and high temperature cooling systems. This tank accommodates the difference in the water volume caused by changes in the tem- perature. To prevent the accumulation of air in the cooling water system, a de-aeration tank, item 11, is loca- ted below the expansion tank. An alarm device is inserted between the de-aeration t\n\n[E-EXP-ALARM-004] 层级:L3 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 膨胀水箱配置\nThere is one common expansion tank for the main engine and the auxiliary engines. To prevent the accumulation of air in the jacket water system, a de-aeration tank is located at the outlet of the main engine. An alarm device is inser- ted between the de-aeration tank and the expan- sion tank so that the operating crew can be notified if excess air or gas is released, as this signals a mal- function of engine components. Operation in port The main engine is preheated by utilizing hot water\n\n[L1-CCS2025-7-251.6-004] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 冷却水膨胀箱水位报警\n条款 7-25 1.6\n冷却水膨胀箱水位低时，应发出报警。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "9150d3f7cc97e6ec4602f45931cfc4696e509c929f4c8e6d05eb0e791d72260d",
+    "utf8_message_bytes": 9201,
+    "execution_index": 118
+  }
+}

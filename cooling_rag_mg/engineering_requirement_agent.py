@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import copy
+import os
 import re
 from datetime import datetime
 from pathlib import Path
@@ -13,6 +15,7 @@ from cooling_rag_mg.config import get_config
 from cooling_rag_mg.llm_cache import cached_completion
 from cooling_rag_mg.schema import normalize_v2_metadata
 from cooling_rag_mg.text_utils import safe_text, truncate
+from cooling_rag_mg.ui_evidence_contracts import retain_ui_evidence, prepare_ui_output, finish_ui_audit, bounded_ui_excerpt
 
 try:
     from langgraph.graph import END, StateGraph
@@ -270,7 +273,11 @@ JSON_REPAIR_PROMPT = """
 """
 
 
+UI_MAX_PROMPT_CHARS = int(os.getenv("UI_MAX_PROMPT_CHARS", "96000"))
+
+
 class RequirementAgentState(TypedDict, total=False):
+    generation_blocked: str
     requirement: dict[str, Any]
     retrieval_context: dict[str, Any]
     compact_context: dict[str, Any]
@@ -375,7 +382,10 @@ def compact_evidence(ev: dict[str, Any], text_limit: int = 600) -> dict[str, Any
         out["constraint"] = {k: v for k, v in constraint.items()
                              if k != "_extraction_meta" and v is not None}
 
-    return out
+    if "constraint" in out and len(json.dumps(out["constraint"], ensure_ascii=False)) > 1600:
+        out["constraint"] = None
+        out["_constraint_status"] = "omitted_over_budget"
+    return retain_ui_evidence(out, ev, text_limit)
 
 
 def _group_evidence_by_type(evidence_list: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
@@ -434,6 +444,10 @@ def compact_requirement_context(
             gap["sub_text"] = sub.get("text", "")
             gaps.append(gap)
 
+    if max_evidence < 1:
+        raise ValueError("max_evidence must be positive")
+    omitted_supported_ids = [e["id"] for e in supported[max_evidence:]]
+    all_background_ids = list(dict.fromkeys(e["id"] for e in background if e.get("id")))
     supported = supported[:max_evidence]
     background = background[:6]
 
@@ -442,7 +456,7 @@ def compact_requirement_context(
     text_limit = max(300, 600 - sub_count * 20 - len(gaps) * 30)
     for item in supported + background:
         raw_text = item.get("text", "")
-        item["text"] = truncate(raw_text, text_limit) if len(raw_text) > text_limit else raw_text
+        item.update(bounded_ui_excerpt(raw_text, text_limit))
 
     # 按 requirement_intents 分组（帮助 agent 归并）
     grouped_evidence = _group_evidence_by_type(supported)
@@ -466,7 +480,9 @@ def compact_requirement_context(
         "supported_evidence": supported,
         "background_evidence_for_reference_only": background,
         # 用于 normalize_agent_output 的代码级 background 排除（CR-5 hard guard）
-        "_background_evidence_ids": [b.get("id") for b in background if b.get("id")],
+        "_background_evidence_ids": all_background_ids,
+        "_omitted_supported_evidence_ids": omitted_supported_ids,
+        "_evidence_order_policy": "first_selected_reference_not_recovered_rank",
         "evidence_gap_summary": gaps,
         "sub_requirement_type_distribution": sub_type_dist,
         "allowed_engineering_aspects": allowed_aspects,
@@ -568,7 +584,16 @@ def _collapse_orphan_intermediates(reqs: list[dict[str, Any]]) -> list[dict[str,
     return reqs
 
 
-def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str, Any]:
+def normalize_agent_output(obj: dict[str, Any], requirement_id: str, *, evidence_scope: list[dict] | None = None, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None) -> dict[str, Any]:
+    from cooling_rag_mg.evidence_quarantine import active_flags
+    if active_flags(quarantine_flags):
+        obj = copy.deepcopy(obj)
+        for row in obj.get("engineering_requirements", []) or []:
+            if isinstance(row, dict):
+                original = {k: v for k, v in row.items() if k != "_quarantine_original_row"}
+                row["_quarantine_original_row"] = copy.deepcopy(original)
+    obj = prepare_ui_output(obj, requirement_id, evidence_scope)
+    before_normalization = copy.deepcopy(obj)
     set_id = safe_text(obj.get("requirement_set_id")) or f"ER-{requirement_id}"
     obj["requirement_set_id"] = set_id
     obj["source_requirement_id"] = safe_text(obj.get("source_requirement_id")) or requirement_id
@@ -647,6 +672,8 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str
         # ── 后处理②：evidence_ids 裁剪上限为 5 ──
         if len(req["evidence_ids"]) > 5:
             req["evidence_ids"] = req["evidence_ids"][:5]
+            if req.get("support_status") == "verified_by_direct_evidence":
+                req["support_status"] = "need_confirmation"
             req.setdefault("applicability_constraints", [])
             req["applicability_constraints"].append(
                 "证据 ID 已裁剪至前 5 条（primary 优先），完整证据列表见检索结果文件。"
@@ -713,10 +740,29 @@ def normalize_agent_output(obj: dict[str, Any], requirement_id: str) -> dict[str
     obj["agent"] = "langgraph_deepseek_engineering_requirement_agent"
     # 清理只用于内部 guard 的临时字段
     obj.pop("_background_evidence_ids", None)
-    return obj
+    from cooling_rag_mg.generation_risks import annotate_generation_risks
+    obj = finish_ui_audit(obj, before_normalization)
+    obj["engineering_requirements"] = annotate_generation_risks(
+        obj["engineering_requirements"], evidence_scope, policy=risk_policy)
+    from cooling_rag_mg.evidence_quarantine import gate_ui_output
+    return gate_ui_output(obj, quarantine_flags, evidence_scope=evidence_scope)
 
 
-def build_graph():
+def build_graph(*, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None):
+    from cooling_rag_mg.evidence_quarantine import active_flags, mask_prompt_evidence, gate_ui_output, PROMPT_RULE
+    quarantined = active_flags(quarantine_flags)
+    from cooling_rag_mg.generation_risks import annotate_generation_risks
+    annotate_generation_risks([], None, policy=risk_policy)  # Validate before any client.
+
+    def fallback_with_risks(state, errors):
+        obj = build_fallback_output(state, errors)
+        obj["engineering_requirements"] = annotate_generation_risks(
+            obj["engineering_requirements"], (state.get("compact_context") or {}).get("supported_evidence"),
+            policy=risk_policy)
+        obj = gate_ui_output(obj, quarantine_flags, evidence_scope=(state.get('compact_context') or {}).get('supported_evidence'))
+        if quarantined and "llm_raw" in state:
+            obj.setdefault("_quarantine_delivery", {})["raw_model_text"] = state["llm_raw"]
+        return obj
     if StateGraph is None or END is None:
         raise RuntimeError(
             "未安装 langgraph，无法运行需求工程智能体。请执行：pip install langgraph"
@@ -725,24 +771,31 @@ def build_graph():
     def prepare_context(state: RequirementAgentState) -> RequirementAgentState:
         context = state.get("retrieval_context", {}) or {}
         compact = compact_requirement_context(context)
+        compact = mask_prompt_evidence(compact, quarantine_flags)
         return {**state, "compact_context": compact, "errors": list(state.get("errors", []) or [])}
 
     def call_deepseek(state: RequirementAgentState) -> RequirementAgentState:
         cfg = get_config()
         if not cfg.deepseek.enabled:
             raise RuntimeError("DeepSeek 未配置 api_key，无法生成工程化需求。")
-        client = cfg.deepseek.make_client()
         payload = {
             "original_requirement": state.get("requirement", {}),
             "retrieval_context": state.get("compact_context", {}),
         }
+        messages = [
+            {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT + "\n上下文状态partial_unknown、缺失条件、缺失型号均表示待确认，不能推断补齐。参数value_text/operator/unit须一起解释，省略内容不能当作不存在。原文片段及偏移仅供定位，不保证条件完整。原文偏移和字符预算不是工程参数，不得用于数值判据。support_status只是模型报告，不代表独立语义验证。"},
+            {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
+        ]
+        if quarantined:
+            messages[0]["content"] += PROMPT_RULE
+        prompt_chars = sum(len(m["content"]) for m in messages)
+        if UI_MAX_PROMPT_CHARS < 1 or prompt_chars > UI_MAX_PROMPT_CHARS:
+            return {**state, "generation_blocked": f"prompt_budget_exceeded: {prompt_chars}/{UI_MAX_PROMPT_CHARS} characters"}
+        client = cfg.deepseek.make_client()
         resp = cached_completion(
             client,
             model=cfg.deepseek.model,
-            messages=[
-                {"role": "system", "content": ENGINEERING_REQUIREMENT_PROMPT},
-                {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
-            ],
+            messages=messages,
             temperature=cfg.deepseek.temperature,
             max_tokens=cfg.deepseek.max_tokens_requirement_agent,
             response_format={"type": "json_object"},
@@ -754,17 +807,26 @@ def build_graph():
         requirement = state.get("requirement", {}) or {}
         requirement_id = safe_text(requirement.get("requirement_id"))
         errors = list(state.get("errors", []) or [])
+        if state.get("generation_blocked"):
+            errors.append(state["generation_blocked"])
+            return {**state, "output": fallback_with_risks(state, errors), "errors": errors}
 
         try:
             obj = extract_json(state.get("llm_raw", "{}"))
         except Exception as exc:
+            if quarantined:
+                errors.append("Quarantine: invalid JSON retained for review; remote repair disabled.")
+                fallback = fallback_with_risks(state, errors)
+                fallback.setdefault("_quarantine_delivery", {})["raw_model_text"] = state.get("llm_raw", "")
+                fallback["_delivery_status"] = "needs_review"
+                return {**state, "output": fallback, "errors": errors}
             errors.append(f"工程化需求 JSON 解析失败，尝试修复：{exc}")
             try:
                 obj = repair_json_with_deepseek(state.get("llm_raw", "{}"))
                 errors.append("JSON 已通过 DeepSeek 修复。")
             except Exception as exc2:
                 errors.append(f"JSON 修复失败：{exc2}")
-                fallback = build_fallback_output(state, errors)
+                fallback = fallback_with_risks(state, errors)
                 return {**state, "output": fallback, "errors": errors}
 
         try:
@@ -774,14 +836,16 @@ def build_graph():
             # inject background evidence ids so normalize_agent_output can strip them (CR-5 code guard)
             obj["_background_evidence_ids"] = list(compact.get("_background_evidence_ids", []) or [])
 
-            obj = normalize_agent_output(obj, requirement_id)
+            obj = normalize_agent_output(obj, requirement_id, evidence_scope=compact.get("supported_evidence", []), risk_policy=risk_policy, quarantine_flags=quarantine_flags)
+            if quarantined:
+                obj.setdefault("_quarantine_delivery", {})["raw_model_text"] = state.get("llm_raw", "")
             if errors:
                 obj.setdefault("assumptions", [])
                 obj["assumptions"].extend(errors)
             return {**state, "output": obj, "errors": errors}
         except Exception as exc:
             errors.append(f"工程化需求结构校验失败：{exc}")
-            fallback = build_fallback_output(state, errors)
+            fallback = fallback_with_risks(state, errors)
             return {**state, "output": fallback, "errors": errors}
 
     graph = StateGraph(RequirementAgentState)
@@ -877,12 +941,16 @@ def build_fallback_output(
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "agent": "fallback_engineering_requirement_agent",
         "generation_mode": "fallback",
+        "_validation_report": {"version": "ui-structure-reference-v1", "mode": "fallback",
+            "semantic_support": "unknown", "applicability": "unknown",
+            "reference_scope": "supplied_support_context", "issues": list(errors or [])},
     }
 
 
 def generate_engineering_requirements_for_requirement(
     requirement: dict[str, Any],
     retrieval_payload: dict[str, Any],
+    *, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None,
 ) -> dict[str, Any]:
     requirement_id = safe_text(requirement.get("requirement_id"))
     context = collect_requirement_context(retrieval_payload, requirement_id)
@@ -893,21 +961,26 @@ def generate_engineering_requirements_for_requirement(
             "raw_requirement_text": requirement.get("requirement_text", ""),
             "sub_requirements": [],
         }
-    graph = build_graph()
+    graph = build_graph() if risk_policy == "legacy" and not quarantine_flags else build_graph(risk_policy=risk_policy, quarantine_flags=quarantine_flags)
     result = graph.invoke({
         "requirement": requirement,
         "retrieval_context": context,
         "errors": [],
     })
-    return result.get("output") or build_fallback_output(result)
+    if result.get("output"):
+        return result["output"]
+    from cooling_rag_mg.evidence_quarantine import gate_ui_output
+    return gate_ui_output(build_fallback_output(result), quarantine_flags, evidence_scope=(result.get('compact_context') or {}).get('supported_evidence'))
 
 
 def generate_engineering_requirements(
     requirements: list[dict[str, Any]],
     retrieval_payload: dict[str, Any],
+    *, risk_policy: str = "legacy", quarantine_flags: list[dict] | None = None,
 ) -> dict[str, Any]:
     outputs = [
-        generate_engineering_requirements_for_requirement(req, retrieval_payload)
+        (generate_engineering_requirements_for_requirement(req, retrieval_payload) if risk_policy == "legacy" and not quarantine_flags
+         else generate_engineering_requirements_for_requirement(req, retrieval_payload, risk_policy=risk_policy, quarantine_flags=quarantine_flags))
         for req in requirements
     ]
     return {

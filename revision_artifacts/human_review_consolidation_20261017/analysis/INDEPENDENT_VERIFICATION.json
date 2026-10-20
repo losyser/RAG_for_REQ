@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "checks": [
+    "Four original SHA256 and stable-key uniqueness verified from XLSX",
+    "Agreement and actual changes independently recounted",
+    "Independent rowwise TP/FP/FN/TN matched 4 hand-checkable count oracles on common 57 mask",
+    "Original full-reference gate remains blocked with scores=null; subset statistics clearly separate"
+  ],
+  "source_ids": [
+    "OR012",
+    "OR047",
+    "OR059",
+    "OR032",
+    "OR016",
+    "OR030",
+    "OR018",
+    "OR011"
+  ],
+  "counts_oracle": {
+    "deepseek": [
+      21,
+      1,
+      5,
+      30
+    ],
+    "qwen": [
+      18,
+      3,
+      8,
+      28
+    ],
+    "bm25": [
+      6,
+      20,
+      20,
+      11
+    ],
+    "embed": [
+      12,
+      11,
+      14,
+      20
+    ]
+  },
+  "uncertainty_formula_test": {
+    "exhaustive_uncertainty_assignments_checked": 16,
+    "metric_oracle_passed": true
+  }
+}

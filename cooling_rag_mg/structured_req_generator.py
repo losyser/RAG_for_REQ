@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 import logging
+import os
 
 from cooling_rag_mg.json_utils import loads_lenient
+from cooling_rag_mg.evidence_quarantine import active_flags, mask_prompt_evidence, gate_delivery, PROMPT_RULE
+from cooling_rag_mg.generation_risks import annotate_generation_risks, RISK_POLICY
+from cooling_rag_mg.evidence_contracts import SELECTION_POLICY
+from cooling_rag_mg.evidence_contracts import (select_evidence, bounded_context, bounded_value_records, applicability_record, validate_shall)
 
 _log = logging.getLogger(__name__)
 
@@ -31,6 +36,9 @@ measurable_criterion 只有两种合法内容：
 2. {{{{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}}}} 占位符
 
 严禁写入证据清单中未出现的任何数字。所有字段使用中文。
+参数的数值、运算符、单位、条件、型号和来源片段必须一起解释。null表示未记录，不能推断补齐。
+适用性未知、条件缺失或记录因预算被省略时，不得将该参数泛化为项目限值；使用TBD并说明待确认内容。
+证据中的异常数值、型号冲突或量纲冲突不能仅凭引用存在判为正确，应保留待核验说明。
 """
 
 _NORAG_PROMPT = """你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。
@@ -53,37 +61,38 @@ _NORAG_PROMPT = """你是船舶主机冷却水系统需求工程师，为 MBSE/S
 """
 
 
-_MAX_EVIDENCE_ITEMS = 12
-_EU_TEXT_LIMIT = 500
+_MAX_EVIDENCE_ITEMS = int(os.getenv("RAG_MAX_EVIDENCE_ITEMS", "12"))
+_EU_TEXT_LIMIT = int(os.getenv("RAG_EU_TEXT_LIMIT", "500"))
 
 
-def _build_evidence_block(annotated_evidence: list[dict]) -> str:
+def _build_evidence_block(annotated_evidence: list[dict], *, selection_policy: str = SELECTION_POLICY, quarantine_flags: list[dict] | None = None) -> str:
     """将标注后的证据单元格式化为 prompt 中的证据块文本。
 
     优先保留有量化参数的 EU；总数上限 _MAX_EVIDENCE_ITEMS，避免 prompt 过长。
     """
-    # 有量化参数的排前面
-    with_vals  = [eu for eu in annotated_evidence if eu.get("_extracted_values")]
-    without_vals = [eu for eu in annotated_evidence if not eu.get("_extracted_values")]
-    ordered = (with_vals + without_vals)[:_MAX_EVIDENCE_ITEMS]
-
+    ordered = select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy)
+    ordered = mask_prompt_evidence(ordered, quarantine_flags)
     lines = []
     for eu in ordered:
-        eu_id  = eu.get("id", "?")
-        tier   = eu.get("kb_tier", "?")
-        source = eu.get("source_document", "?")
-        text   = eu.get("text", "")[:_EU_TEXT_LIMIT]
-        lines.append(f"[{eu_id}] 层级:{tier} 来源:{source}")
-        lines.append(f"  内容: {text}")
-        values = eu.get("_extracted_values", [])
-        if values:
-            vstr = "、".join(v["value_text"] for v in values if v.get("value_text"))
-            lines.append(f"  [量化参数] {vstr}")
+        context, omitted = bounded_context(eu.get("text", ""), _EU_TEXT_LIMIT)
+        values, omitted_values = bounded_value_records(eu.get("_extracted_values", []))
+        source = str(eu.get("source_document") or "unknown")
+        if len(source) > 300:
+            source = "unknown (source label omitted_over_budget)"
+        lines.append(f"[{eu['id']}] 层级:{eu.get('kb_tier', '?')} 来源:{source}")
+        lines.append(f"  内容: {context or 'unknown (no complete paragraph fits)'}")
+        lines.append(f"  [上下文省略段数] {omitted}")
+        lines.append("  [上下文状态] " + ("partial_unknown: 存在省略，不能假定参数条件完整" if omitted else "all_paragraphs_retained: 仅表示文本未省略，不代表语义完整"))
+        lines.append(f"  [抽取状态] {eu.get('_extraction_status', 'unknown_historical')}")
+        lines.append(f"  [适用性记录] {applicability_record(eu)}")
+        lines.append(f"  [量化参数] {values or 'none recorded'}")
+        lines.append(f"  [完整参数省略条数] {omitted_values}")
+        lines.append("  null=未记录；适用性仍需核实；引用等级不代表正确性。")
         lines.append("")
     return "\n".join(lines)
 
 
-def _parse_shalls(raw: str) -> list[dict]:
+def _parse_shalls(raw: str, *, invalid_rows: list | None = None) -> list[dict]:
     """从 LLM 响应中解析 shalls 列表。"""
     import json, re
     if not raw:
@@ -119,11 +128,17 @@ def _parse_shalls(raw: str) -> list[dict]:
             data = loads_lenient(raw)
             shalls = data.get("shalls", [])
     if not isinstance(shalls, list):
-        return []
-    filtered = [s for s in shalls if isinstance(s, dict) and "shall_statement" in s]
-    if len(filtered) < len(shalls):
-        _log.warning("_parse_shalls: dropped %d malformed items", len(shalls) - len(filtered))
-    return filtered
+        raise ValueError("invalid shall schema: shalls must be a list")
+    errors = [(i, validate_shall(item)) for i, item in enumerate(shalls)]
+    errors = [(i, issues) for i, issues in errors if issues]
+    if errors:
+        if invalid_rows is None:
+            raise ValueError(f"invalid shall schema: {errors}")
+        bad = {i for i, _ in errors}
+        invalid_rows.extend({'position':i+1,'status':'needs_review','reason':'invalid_schema',
+            'schema_errors':issues,'original_row':shalls[i]} for i,issues in errors)
+        return [row for i,row in enumerate(shalls) if i not in bad]
+    return shalls
 
 
 def generate_structured_shalls(
@@ -131,16 +146,33 @@ def generate_structured_shalls(
     annotated_evidence: list[dict],
     client,
     model: str,
-    max_tokens: int = 4000,
+    max_tokens: int = 8192,
+    *,
+    selection_policy: str = SELECTION_POLICY,
+    risk_policy: str = "legacy",
+    quarantine_flags: list[dict] | None = None,
+    delivery_report: dict | None = None,
+    schema_policy: str = "legacy",
 ) -> list[dict]:
     """Stage 3 RAG：根据证据值提取结果生成结构化 shall 列表。出错返回空列表。"""
-    evidence_block = _build_evidence_block(annotated_evidence)
+    if risk_policy not in ("legacy", RISK_POLICY):
+        raise ValueError("unknown generation risk policy")
+    quarantined = active_flags(quarantine_flags)
+    if schema_policy not in ("legacy", "isolate-invalid-rows-v1"):
+        raise ValueError("unknown schema policy")
+    if schema_policy != "legacy" and not quarantined:
+        raise ValueError("row isolation requires explicit quarantine flags and a review destination")
+    if quarantined and not isinstance(delivery_report, dict):
+        raise ValueError("quarantine requires a delivery_report to retain withheld output for review")
+    evidence_block = _build_evidence_block(annotated_evidence, selection_policy=selection_policy, quarantine_flags=quarantine_flags)
     if not annotated_evidence:
         _log.warning("generate_structured_shalls called with empty annotated_evidence — consider generate_norag_shalls")
     prompt = _STRUCTURED_GEN_PROMPT.format(
         source_requirement=source_requirement,
         evidence_block=evidence_block or "（无检索证据）",
     )
+    if quarantined:
+        prompt += PROMPT_RULE
     try:
         resp = client.chat.completions.create(
             model=model,
@@ -149,8 +181,24 @@ def generate_structured_shalls(
             max_tokens=max_tokens,
             response_format={"type": "json_object"},
         )
-        return _parse_shalls(resp.choices[0].message.content)
+        raw_text = resp.choices[0].message.content
+        if quarantined:
+            delivery_report['raw_model_text'] = raw_text
+        invalid_rows = [] if schema_policy != "legacy" else None
+        parsed = _parse_shalls(raw_text, invalid_rows=invalid_rows)
+        if invalid_rows is not None:
+            delivery_report.update({'schema_policy':schema_policy,'schema_withheld':invalid_rows,
+                'status':'needs_review' if invalid_rows else 'no_schema_findings_not_verified'})
+        rows = annotate_generation_risks(parsed,
+            select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy), policy=risk_policy)
+        if selection_policy != SELECTION_POLICY:
+            for row in rows:
+                row["_selection_policy"] = selection_policy
+        return gate_delivery(rows, quarantine_flags, report=delivery_report,
+            evidence_scope=select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS, policy=selection_policy))
     except Exception as exc:
+        if quarantined:
+            delivery_report.update({'enabled': True, 'status': 'needs_review', 'error_type': type(exc).__name__})
         _log.warning("generate_structured_shalls failed for %r: %s", source_requirement[:60], exc)
         return []
 
@@ -159,7 +207,7 @@ def generate_norag_shalls(
     source_requirement: str,
     client,
     model: str,
-    max_tokens: int = 4000,
+    max_tokens: int = 8192,
 ) -> list[dict]:
     """Stage 3 no-RAG：无证据的结构化基线生成。出错返回空列表。"""
     prompt = _NORAG_PROMPT.format(source_requirement=source_requirement)

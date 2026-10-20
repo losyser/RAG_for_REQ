@@ -41,7 +41,6 @@ from cooling_rag_mg.credibility_eval import (
     aggregate_by_source, extract_claims, judge_over_inference,
     score_shall,
 )
-from cooling_rag_mg.index_store import HybridIndexSearcher, load_index
 from cooling_rag_mg.quality_eval import aggregate_quality, consensus_pair
 from cooling_rag_mg.quality_judge import DIMS
 
@@ -66,7 +65,7 @@ def _load_results(rag_path: Path, norag_path: Path) -> tuple[dict, dict]:
 
 def _has_attribution(er: dict) -> bool:
     """Check attribution in either evidence_refs or evidence_ids field."""
-    return bool(er.get("evidence_refs") or er.get("evidence_ids"))
+    return bool(er.get("evidence_refs") or er.get("evidence_ids") or er.get("evidence_citations"))
 
 
 def _load_orig() -> dict[str, str]:
@@ -102,10 +101,10 @@ def _judge_claim_against_kb(
             temperature=0.0, max_tokens=60,
             response_format={"type": "json_object"},
         )
-        v = json.loads(resp.choices[0].message.content or "{}").get("verdict", "not_found")
-        return v if v in {"support", "contradict", "not_found"} else "not_found"
+        v = json.loads(resp.choices[0].message.content or "{}").get("verdict", "error")
+        return v if v in {"support", "contradict", "not_found"} else "error"
     except Exception:
-        return "not_found"
+        return "error"
 
 
 def run_hhard(
@@ -130,6 +129,9 @@ def run_hhard(
             rows.append({
                 "source_requirement_id": rid,
                 "shall_snippet": shall[:120],
+                "shall_full": shall,
+                "retrieved_passages": passages,
+                "evaluation_version": "claim-verdict-v2-errors-explicit",
                 "claim": claim,
                 "verdict": verdict,
                 "over_inference": oi,
@@ -174,6 +176,7 @@ def main() -> None:
     # ── 索引（H_hard 用）────────────────────────────────────────────────────
     if not args.skip_hhard:
         print("加载索引…")
+        from cooling_rag_mg.index_store import HybridIndexSearcher, load_index
         idx      = load_index(IDX)
         searcher = HybridIndexSearcher(idx, device="cpu")
 
@@ -224,10 +227,13 @@ def main() -> None:
                 if not src_rows:
                     continue
                 verdicts = [r["verdict"] for r in src_rows]
-                n = len(verdicts)
+                n_total = len(verdicts)
+                n = sum(v in {"support", "contradict", "not_found"} for v in verdicts)
                 oi_vals = [r["over_inference"] for r in src_rows if r["over_inference"] is not None]
                 store[rid] = {
-                    "n_claims":   n,
+                    "n_claims": n_total,
+                    "evaluated_claim_denominator": n,
+                    "n_errors": verdicts.count("error"),
                     "h_hard":     verdicts.count("contradict") / n if n else None,
                     "h_soft":     verdicts.count("not_found")  / n if n else None,
                     "oi_rate":    sum(oi_vals) / len(oi_vals)  if oi_vals else None,
@@ -259,6 +265,8 @@ def main() -> None:
 
     # ── 写出 ────────────────────────────────────────────────────────────────
     result = {
+        "evaluation_version": "claim-verdict-v2-errors-explicit",
+        "unit": "claims extracted from shall_statement only; criterion excluded; error excluded from evaluated denominator",
         "h_hard": {
             "rag_v3":  rag_src_stats,
             "no_rag":  norag_src_stats,

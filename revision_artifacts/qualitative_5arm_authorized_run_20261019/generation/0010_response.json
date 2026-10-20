@@ -1,0 +1,276 @@
+{
+  "slot": "OR002-semantic_old",
+  "started_at": "2026-10-19T02:39:04.784275+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"3b3570b3-2ff9-45f2-a0fb-7f52b4c7bd11\",\"object\":\"chat.completion\",\"created\":1792377545,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应配置备用冷却水泵，当运行泵或任一关键冷却设备发生故障时，备用泵应能自动或手动投入运行，以维持主机冷却水连续供应。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:台|ref:S43 ABS Marine Vessel Rules Part 4 2021 / S44 PRS Ship Machinery Piping Systems|component:冷却水泵|intent:冗余配置数量|hint:至少设置两套供水手段，其中一套为独立驱动的备用泵，具体台数按项目配置确定}}\\\",\\\"applicable_condition\\\":\\\"主机正常运行及单台运行泵故障工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"冷却水系统至少具备两套向主机供应冷却水的手段\\\",\\\"其中至少一套为独立驱动的备用泵\\\",\\\"单台运行泵故障时备用泵可投入并维持主机冷却不中断\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-RED-002\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-RED-004\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S44 PRS Ship Machinery Piping Systems\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"备用冷却水泵的容量应不小于运行泵容量，且每套供水手段的容量应满足主机额定功率下连续运行的需要。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:%|ref:S44 PRS Ship Machinery Piping Systems 11.1.2|component:备用冷却水泵|intent:容量相对运行泵的比值|hint:备用泵容量不低于主泵容量，按项目计算书确定具体容量}}\\\",\\\"applicable_condition\\\":\\\"主机额定功率连续运行工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"备用泵额定容量不小于主泵额定容量\\\",\\\"各供水手段容量满足主机额定功率连续运行\\\",\\\"容量值经项目计算文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-RED-004\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S44 PRS Ship Machinery Piping Systems\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-RED-002\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"当采用两台泵同时运行冷却主冷凝器、且每台泵容量不小于额定需水量的0.5时，可免设备用冷却水泵。\\\",\\\"measurable_criterion\\\":\\\"0.5（每台泵容量与额定需水量之比）\\\",\\\"applicable_condition\\\":\\\"主冷凝器由两台泵同时运行冷却的布置方案\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"两台同时运行泵各自容量不小于额定需水量的0.5\\\",\\\"满足该条件时可不另设备用冷却水泵\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-RED-026\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S44 PRS Ship Machinery Piping Systems\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"高温（HT）冷却水系统应设置备用泵；当HT冷却水备用泵因任何原因未运行时，主机应在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。\\\",\\\"measurable_criterion\\\":\\\"0%至10%负荷、15分钟\\\",\\\"applicable_condition\\\":\\\"HT冷却水备用泵未运行、主机最终停机前\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"主机在最终停机前以0%至10%负荷运行15分钟\\\",\\\"运行期间由发动机驱动的HT冷却水泵维持散热\\\",\\\"停机后HT冷却水泵按厂家要求继续运行15分钟\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-SHUT-006\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设计为在主机运行和备用状态下均能维持厂家规定的滑油和冷却水温度。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:℃|ref:S41 Everllence 49/60DF Project Guide, Operating/service temperatures and pressures|component:冷却水与滑油|intent:运行及备用状态温度限值|hint:具体温度限值按厂家该章节表格确定}}\\\",\\\"applicable_condition\\\":\\\"主机运行状态及备用状态\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"运行与备用状态下冷却水温度满足厂家规定\\\",\\\"运行与备用状态下滑油温度满足厂家规定\\\",\\\"温度限值经厂家技术文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-SHUT-004\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-SHUT-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"低温（LT）冷却水泵组应配置多台泵，其中部分用于海上运行、一台较小容量泵用于港口运行，以在部分泵故障时保留备用能力。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:台|ref:S38 MAN L16/24 GenSet Project Guide / S39 MAN L21/31 Project Guide|component:LT淡水泵组|intent:泵组配置数量|hint:泵组由3台泵组成，其中两台用于海上运行、一台较小用于港口运行，具体按项目配置确认}}\\\",\\\"applicable_condition\\\":\\\"海上运行与港口运行工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"LT淡水泵组按海上运行与港口运行分别配置\\\",\\\"港口运行采用较小容量泵以降低功耗\\\",\\\"泵组配置满足部分泵故障时的备用能力\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-INST-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-INST-005\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应采用双回路中央冷却水系统布置，辅助发动机作为双回路单元连接并具有独立的LT和HT回路，推进与辅助发动机应具有独立的HT温度调节。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:回路|ref:S38 MAN L16/24 GenSet Project Guide|component:中央冷却水系统|intent:回路配置|hint:双回路中央冷却水系统，仅设一个中央冷却器，具体按项目系统图确认}}\\\",\\\"applicable_condition\\\":\\\"中央冷却水系统设计与布置\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"系统为双回路中央冷却水系统\\\",\\\"辅助发动机具有独立的LT和HT回路\\\",\\\"推进与辅助发动机HT温度调节相互独立\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-INST-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-INST-005\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应在送审图纸中清楚标注管系材料、管径、设计压力、泵额定容量和关断扬程等信息，并覆盖与冷却水管系相关的接口。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:项|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:冷却水管系送审文件|intent:标注信息完整性|hint:材料、管径、设计压力、泵额定容量与关断扬程均需标注，具体深度按项目审查要求确认}}\\\",\\\"applicable_condition\\\":\\\"冷却水管系图纸送审与审查阶段\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"送审图纸标注材料、管径、设计压力\\\",\\\"送审图纸标注泵额定容量与关断扬程\\\",\\\"图纸审查覆盖冷却水管系相关接口\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-DRAW-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置报警与保护功能，当冷却水温度、压力、液位或传感器异常时，按厂家或规则要求触发报警、降负荷或停机保护。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:℃/MPa|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却水系统监测点|intent:报警与保护阈值|hint:阈值受具体厂家、机型和控制系统配置约束，按厂家文件确定}}\\\",\\\"applicable_condition\\\":\\\"主机运行及冷却水参数异常工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却水温度、压力、液位或传感器异常时触发报警\\\",\\\"异常持续时按设定逻辑执行降负荷或停机保护\\\",\\\"阈值与保护动作经厂家或规则文件确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-SHUT-006\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置预热与后冷却功能，利用运行中辅助发动机的热水对备用辅助发动机和推进发动机进行预热，并在主机停机后维持必要的冷却水循环。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:min|ref:S30 MAN Energy Solutions, 49/60 Project Guide, 表19|component:冷却水泵与预热回路|intent:停机后循环持续时间|hint:停机后HT冷却水泵需继续运行15分钟，系统回路运行时间按表19确定}}\\\",\\\"applicable_condition\\\":\\\"主机启动前预热及停机后冷却阶段\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"备用辅助发动机和推进发动机可通过运行辅助发动机热水预热\\\",\\\"主机停机后冷却水循环按厂家规定时间维持\\\",\\\"循环时间经厂家表19确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-PUMP-INST-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-PUMP-SHUT-006\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3113,\"completion_tokens\":2333,\"total_tokens\":5446,\"prompt_tokens_details\":{\"cached_tokens\":2816},\"prompt_cache_hit_tokens\":2816,\"prompt_cache_miss_tokens\":297},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:39:05 GMT"
+  },
+  "response": {
+    "id": "3b3570b3-2ff9-45f2-a0fb-7f52b4c7bd11",
+    "object": "chat.completion",
+    "created": 1792377545,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应配置备用冷却水泵，当运行泵或任一关键冷却设备发生故障时，备用泵应能自动或手动投入运行，以维持主机冷却水连续供应。\",\"measurable_criterion\":\"{{TBD|unit:台|ref:S43 ABS Marine Vessel Rules Part 4 2021 / S44 PRS Ship Machinery Piping Systems|component:冷却水泵|intent:冗余配置数量|hint:至少设置两套供水手段，其中一套为独立驱动的备用泵，具体台数按项目配置确定}}\",\"applicable_condition\":\"主机正常运行及单台运行泵故障工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"冷却水系统至少具备两套向主机供应冷却水的手段\",\"其中至少一套为独立驱动的备用泵\",\"单台运行泵故障时备用泵可投入并维持主机冷却不中断\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-RED-002\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-RED-004\",\"tier\":\"L1\",\"source\":\"S44 PRS Ship Machinery Piping Systems\",\"has_clause\":true}]},{\"shall_statement\":\"备用冷却水泵的容量应不小于运行泵容量，且每套供水手段的容量应满足主机额定功率下连续运行的需要。\",\"measurable_criterion\":\"{{TBD|unit:%|ref:S44 PRS Ship Machinery Piping Systems 11.1.2|component:备用冷却水泵|intent:容量相对运行泵的比值|hint:备用泵容量不低于主泵容量，按项目计算书确定具体容量}}\",\"applicable_condition\":\"主机额定功率连续运行工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"备用泵额定容量不小于主泵额定容量\",\"各供水手段容量满足主机额定功率连续运行\",\"容量值经项目计算文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-RED-004\",\"tier\":\"L1\",\"source\":\"S44 PRS Ship Machinery Piping Systems\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-RED-002\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"当采用两台泵同时运行冷却主冷凝器、且每台泵容量不小于额定需水量的0.5时，可免设备用冷却水泵。\",\"measurable_criterion\":\"0.5（每台泵容量与额定需水量之比）\",\"applicable_condition\":\"主冷凝器由两台泵同时运行冷却的布置方案\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"两台同时运行泵各自容量不小于额定需水量的0.5\",\"满足该条件时可不另设备用冷却水泵\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-RED-026\",\"tier\":\"L1\",\"source\":\"S44 PRS Ship Machinery Piping Systems\",\"has_clause\":true}]},{\"shall_statement\":\"高温（HT）冷却水系统应设置备用泵；当HT冷却水备用泵因任何原因未运行时，主机应在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。\",\"measurable_criterion\":\"0%至10%负荷、15分钟\",\"applicable_condition\":\"HT冷却水备用泵未运行、主机最终停机前\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"主机在最终停机前以0%至10%负荷运行15分钟\",\"运行期间由发动机驱动的HT冷却水泵维持散热\",\"停机后HT冷却水泵按厂家要求继续运行15分钟\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-SHUT-006\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设计为在主机运行和备用状态下均能维持厂家规定的滑油和冷却水温度。\",\"measurable_criterion\":\"{{TBD|unit:℃|ref:S41 Everllence 49/60DF Project Guide, Operating/service temperatures and pressures|component:冷却水与滑油|intent:运行及备用状态温度限值|hint:具体温度限值按厂家该章节表格确定}}\",\"applicable_condition\":\"主机运行状态及备用状态\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"运行与备用状态下冷却水温度满足厂家规定\",\"运行与备用状态下滑油温度满足厂家规定\",\"温度限值经厂家技术文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-SHUT-004\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-SHUT-003\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"低温（LT）冷却水泵组应配置多台泵，其中部分用于海上运行、一台较小容量泵用于港口运行，以在部分泵故障时保留备用能力。\",\"measurable_criterion\":\"{{TBD|unit:台|ref:S38 MAN L16/24 GenSet Project Guide / S39 MAN L21/31 Project Guide|component:LT淡水泵组|intent:泵组配置数量|hint:泵组由3台泵组成，其中两台用于海上运行、一台较小用于港口运行，具体按项目配置确认}}\",\"applicable_condition\":\"海上运行与港口运行工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"LT淡水泵组按海上运行与港口运行分别配置\",\"港口运行采用较小容量泵以降低功耗\",\"泵组配置满足部分泵故障时的备用能力\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-INST-003\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-INST-005\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应采用双回路中央冷却水系统布置，辅助发动机作为双回路单元连接并具有独立的LT和HT回路，推进与辅助发动机应具有独立的HT温度调节。\",\"measurable_criterion\":\"{{TBD|unit:回路|ref:S38 MAN L16/24 GenSet Project Guide|component:中央冷却水系统|intent:回路配置|hint:双回路中央冷却水系统，仅设一个中央冷却器，具体按项目系统图确认}}\",\"applicable_condition\":\"中央冷却水系统设计与布置\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"系统为双回路中央冷却水系统\",\"辅助发动机具有独立的LT和HT回路\",\"推进与辅助发动机HT温度调节相互独立\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-INST-003\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-INST-005\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应在送审图纸中清楚标注管系材料、管径、设计压力、泵额定容量和关断扬程等信息，并覆盖与冷却水管系相关的接口。\",\"measurable_criterion\":\"{{TBD|unit:项|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:冷却水管系送审文件|intent:标注信息完整性|hint:材料、管径、设计压力、泵额定容量与关断扬程均需标注，具体深度按项目审查要求确认}}\",\"applicable_condition\":\"冷却水管系图纸送审与审查阶段\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"送审图纸标注材料、管径、设计压力\",\"送审图纸标注泵额定容量与关断扬程\",\"图纸审查覆盖冷却水管系相关接口\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-DRAW-001\",\"tier\":\"L3\",\"source\":\"S28 Wärtsilä 32 Product Guide, Cooling Water System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应设置报警与保护功能，当冷却水温度、压力、液位或传感器异常时，按厂家或规则要求触发报警、降负荷或停机保护。\",\"measurable_criterion\":\"{{TBD|unit:℃/MPa|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却水系统监测点|intent:报警与保护阈值|hint:阈值受具体厂家、机型和控制系统配置约束，按厂家文件确定}}\",\"applicable_condition\":\"主机运行及冷却水参数异常工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却水温度、压力、液位或传感器异常时触发报警\",\"异常持续时按设定逻辑执行降负荷或停机保护\",\"阈值与保护动作经厂家或规则文件确认\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-SHUT-006\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设置预热与后冷却功能，利用运行中辅助发动机的热水对备用辅助发动机和推进发动机进行预热，并在主机停机后维持必要的冷却水循环。\",\"measurable_criterion\":\"{{TBD|unit:min|ref:S30 MAN Energy Solutions, 49/60 Project Guide, 表19|component:冷却水泵与预热回路|intent:停机后循环持续时间|hint:停机后HT冷却水泵需继续运行15分钟，系统回路运行时间按表19确定}}\",\"applicable_condition\":\"主机启动前预热及停机后冷却阶段\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"备用辅助发动机和推进发动机可通过运行辅助发动机热水预热\",\"主机停机后冷却水循环按厂家规定时间维持\",\"循环时间经厂家表19确认\"],\"evidence_citations\":[{\"kb_id\":\"E-PUMP-INST-003\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-PUMP-SHUT-006\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3113,
+      "completion_tokens": 2333,
+      "total_tokens": 5446,
+      "prompt_tokens_details": {
+        "cached_tokens": 2816
+      },
+      "prompt_cache_hit_tokens": 2816,
+      "prompt_cache_miss_tokens": 297
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.02489",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.02489",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应配置备用冷却水泵，当运行泵或任一关键冷却设备发生故障时，备用泵应能自动或手动投入运行，以维持主机冷却水连续供应。",
+        "measurable_criterion": "{{TBD|unit:台|ref:S43 ABS Marine Vessel Rules Part 4 2021 / S44 PRS Ship Machinery Piping Systems|component:冷却水泵|intent:冗余配置数量|hint:至少设置两套供水手段，其中一套为独立驱动的备用泵，具体台数按项目配置确定}}",
+        "applicable_condition": "主机正常运行及单台运行泵故障工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却水系统至少具备两套向主机供应冷却水的手段",
+          "其中至少一套为独立驱动的备用泵",
+          "单台运行泵故障时备用泵可投入并维持主机冷却不中断"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-002",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-RED-004",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "备用冷却水泵的容量应不小于运行泵容量，且每套供水手段的容量应满足主机额定功率下连续运行的需要。",
+        "measurable_criterion": "{{TBD|unit:%|ref:S44 PRS Ship Machinery Piping Systems 11.1.2|component:备用冷却水泵|intent:容量相对运行泵的比值|hint:备用泵容量不低于主泵容量，按项目计算书确定具体容量}}",
+        "applicable_condition": "主机额定功率连续运行工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "备用泵额定容量不小于主泵额定容量",
+          "各供水手段容量满足主机额定功率连续运行",
+          "容量值经项目计算文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-004",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-RED-002",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "当采用两台泵同时运行冷却主冷凝器、且每台泵容量不小于额定需水量的0.5时，可免设备用冷却水泵。",
+        "measurable_criterion": "0.5（每台泵容量与额定需水量之比）",
+        "applicable_condition": "主冷凝器由两台泵同时运行冷却的布置方案",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "两台同时运行泵各自容量不小于额定需水量的0.5",
+          "满足该条件时可不另设备用冷却水泵"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-RED-026",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温（HT）冷却水系统应设置备用泵；当HT冷却水备用泵因任何原因未运行时，主机应在最终停机前以0%至10%负荷运行15分钟，以便由发动机驱动的HT冷却水泵散热。",
+        "measurable_criterion": "0%至10%负荷、15分钟",
+        "applicable_condition": "HT冷却水备用泵未运行、主机最终停机前",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "主机在最终停机前以0%至10%负荷运行15分钟",
+          "运行期间由发动机驱动的HT冷却水泵维持散热",
+          "停机后HT冷却水泵按厂家要求继续运行15分钟"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设计为在主机运行和备用状态下均能维持厂家规定的滑油和冷却水温度。",
+        "measurable_criterion": "{{TBD|unit:℃|ref:S41 Everllence 49/60DF Project Guide, Operating/service temperatures and pressures|component:冷却水与滑油|intent:运行及备用状态温度限值|hint:具体温度限值按厂家该章节表格确定}}",
+        "applicable_condition": "主机运行状态及备用状态",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "运行与备用状态下冷却水温度满足厂家规定",
+          "运行与备用状态下滑油温度满足厂家规定",
+          "温度限值经厂家技术文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-004",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-SHUT-003",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温（LT）冷却水泵组应配置多台泵，其中部分用于海上运行、一台较小容量泵用于港口运行，以在部分泵故障时保留备用能力。",
+        "measurable_criterion": "{{TBD|unit:台|ref:S38 MAN L16/24 GenSet Project Guide / S39 MAN L21/31 Project Guide|component:LT淡水泵组|intent:泵组配置数量|hint:泵组由3台泵组成，其中两台用于海上运行、一台较小用于港口运行，具体按项目配置确认}}",
+        "applicable_condition": "海上运行与港口运行工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "LT淡水泵组按海上运行与港口运行分别配置",
+          "港口运行采用较小容量泵以降低功耗",
+          "泵组配置满足部分泵故障时的备用能力"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INST-003",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-INST-005",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应采用双回路中央冷却水系统布置，辅助发动机作为双回路单元连接并具有独立的LT和HT回路，推进与辅助发动机应具有独立的HT温度调节。",
+        "measurable_criterion": "{{TBD|unit:回路|ref:S38 MAN L16/24 GenSet Project Guide|component:中央冷却水系统|intent:回路配置|hint:双回路中央冷却水系统，仅设一个中央冷却器，具体按项目系统图确认}}",
+        "applicable_condition": "中央冷却水系统设计与布置",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "系统为双回路中央冷却水系统",
+          "辅助发动机具有独立的LT和HT回路",
+          "推进与辅助发动机HT温度调节相互独立"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INST-003",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-INST-005",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应在送审图纸中清楚标注管系材料、管径、设计压力、泵额定容量和关断扬程等信息，并覆盖与冷却水管系相关的接口。",
+        "measurable_criterion": "{{TBD|unit:项|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:冷却水管系送审文件|intent:标注信息完整性|hint:材料、管径、设计压力、泵额定容量与关断扬程均需标注，具体深度按项目审查要求确认}}",
+        "applicable_condition": "冷却水管系图纸送审与审查阶段",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "送审图纸标注材料、管径、设计压力",
+          "送审图纸标注泵额定容量与关断扬程",
+          "图纸审查覆盖冷却水管系相关接口"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-DRAW-001",
+            "tier": "L3",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置报警与保护功能，当冷却水温度、压力、液位或传感器异常时，按厂家或规则要求触发报警、降负荷或停机保护。",
+        "measurable_criterion": "{{TBD|unit:℃/MPa|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却水系统监测点|intent:报警与保护阈值|hint:阈值受具体厂家、机型和控制系统配置约束，按厂家文件确定}}",
+        "applicable_condition": "主机运行及冷却水参数异常工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却水温度、压力、液位或传感器异常时触发报警",
+          "异常持续时按设定逻辑执行降负荷或停机保护",
+          "阈值与保护动作经厂家或规则文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置预热与后冷却功能，利用运行中辅助发动机的热水对备用辅助发动机和推进发动机进行预热，并在主机停机后维持必要的冷却水循环。",
+        "measurable_criterion": "{{TBD|unit:min|ref:S30 MAN Energy Solutions, 49/60 Project Guide, 表19|component:冷却水泵与预热回路|intent:停机后循环持续时间|hint:停机后HT冷却水泵需继续运行15分钟，系统回路运行时间按表19确定}}",
+        "applicable_condition": "主机启动前预热及停机后冷却阶段",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "备用辅助发动机和推进发动机可通过运行辅助发动机热水预热",
+          "主机停机后冷却水循环按厂家规定时间维持",
+          "循环时间经厂家表19确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-PUMP-INST-003",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-PUMP-SHUT-006",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:39:14.831977+00:00",
+  "elapsed_seconds": 10.047
+}

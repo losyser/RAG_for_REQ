@@ -1,0 +1,37 @@
+{
+  "slot": "OR004-random_old",
+  "body_sha256": "0f575c2860bad43876944904c8825a6e2cc41622744236469b4351893a9a50be",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:40:14.434852+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR004-random_old",
+    "source_id": "OR004",
+    "group": "random_old",
+    "context_sha256": "914197bc18977a5c80eb13289ae778b35a5643df03988cede98c85726ff8af5e",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水系统的主要报警要可靠，船员要能早点知道水温、水压或者液位不正常。\n\n## 证据清单\n[E-SYS-DRAW-015] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 主机冷却型式与设计条件：设计参考冷却水系统图（第348页），在上述参考条件下；涡轮出口温度公差±20 °C，流量公差±10%；基于上述参考条件下涡轮出口规定温度和总大气压计算。适用条件：MAN L49/60DF，燃气模式，电力推进/EPROX-AC。\n\n该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。\n可支撑：管系图纸；材料信息；设计压力和泵额定参数应在送审文件中清楚标注；图纸审查应覆盖与冷却水管系相关的接口；材料；压力等级和泵参数。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n  [量化参数] ±20、±10、第348页\n\n[E-HT-ALARM-002] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 高温冷却水系统组成：HT冷却水压力（发动机进口，额定转速）额定值 = 4 bar；PT3145压力范围 3 bar 至 8 bar。适用条件：额定转速。\n高温冷却水系统组成：发动机压力损失（总，额定流量）对于6L、8L机型 = 1.1 bar；对于7L、9L机型 = 1.2 bar；对于10L机型 = 1.4 bar；对于12V机型 = 1.5 bar；对于14V机型 = 1.7 bar。适用条件：额定流量。\n高温冷却水系统组成：附装HT冷却水泵压升（额定转速）对于6L机型 = 3.6 bar；对于7L、8L机型 = 3.5 bar；对于9L机型 = 3.4 bar；对于10L机型 = 3.3 bar；对于12V机型 = 3.9 bar；对于14V机型 = 4.4 bar。适用条件：额定转速。\n高温冷却水系统组成：HT冷却水流经1. HP HT级增压空气冷却器，2. 缸套冷却，3. LP HT级增压空气冷却器。适用条件：正常运行。\n高温冷却水系统组成：调节温度设定点，必要时由SaCoS功能降低，以避免超过发动机出口最高温度。适用条件：报警水平运行。\n\n可支撑：冷却水温度、压力、液位或传\n  [量化参数] 4、3、8、1.1、1.2、1.4、1.5、1.7、3.6、3.5、3.4、3.3、3.9、4.4\n\n[E-COOLANT-DRAW-001] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却液污染与沉积风险\nDesign features and working principle This diagram describes the possibilities with regard to the design of a com- mon auxiliary system for a two-stroke main engine of the MC-type and four- stroke GenSets from MAN Energy Solutions. The jacket water cooling system controls the temperature of the engines proper. The jacket water is to be inhibited to protect the surfaces of the cooling sys- tem against corrosion, corrosion fatigue, cavitation and the formation of scale. Operation at sea\n  [量化参数] 80-82\n\n[E-EXP-INSP-020] 层级:L3 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 冷却液水质检测方法\nconsult Everllence. Regular water samplings Small quantities of lube oil in coolant can be found by visual check during reg- ular water sampling from the expansion tank. Testing Regular analysis of coolant is very important for safe engine operation. We can analyse cooling water, fuel and lube oil for our customers at Everllence laboratory Everllence PrimeServ Lab.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：expansion_tank 的 inspection\nwater_quality \n\n[E-JACKET-MON-003] 层级:L2 来源:S41 Everllence 49/60DF Project Guide\n  内容: 主机冷却型式与设计条件：适用对象为 L49/60DF IMO Tier II 机型，液体燃料模式，电推/EPROX-AC 1300 kW/cyl.，600 rpm。参考条件：热带；空气温度 = 45 °C；冷却水温度（在增压空气冷却器前，LT 级）= 38 °C；总大气压力 = 1000 mbar；相对湿度 = 60%。适用条件：Table 51: Reference conditions: Tropics。\n\nL49/60DF IMO Tier II 机型，液体燃料模式，电推/EPROX-AC：缸数及配置 6L，发动机输出 = 7800 kW，转速 = 600 rpm；HT 冷却水温度（在 HP TC 增压空气冷却器出口）= 80 °C；HT 冷却水（在缸套冷却出口）；HT 冷却水温度（在 LP TC 增压空气冷却器出口，即最后一个增压空气冷却器）= LT 冷却水空气冷却器入口 = 38 °C（设定点 32 °C）；滑油（发动机进口）温度 = 65 °C；喷嘴冷却水（发动机进口）= 60 °C；空气数据：增压空气温度（在增压空气冷却器出口）。\n\nL49/60DF IMO Tier I\n\n[E-COOLANT-WATER-098] 层级:L2 来源:S32 HY/T 海水循环冷却系统运行管理规范\n  内容: 水质参数要求\n7.1.3 海水冷却塔的运行管理应达到以下要求： a) 海水冷却塔的运行管理应始终保证海水冷却塔达到设计冷却能力； b) 消雾海水冷却塔应达到设计消雾效果； c) 海水冷却塔的内外壳体不应出现防腐涂层脱落； d) 海水冷却塔的集水池不应因积泥过多影响循环水水质； e) 海水冷却塔的进风口在冬季挂冰不应影响换热和结构安全； f) 海水冷却塔淋水填料不应出现大面积堵塞。\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：coolant 的 water_quality\ncorrosion_protection\ncapacity 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n[E-LT-COMP-011] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 淡水侧系统组成\nkeel cooling, skin cooling or tank cooling is not recommended for the L21/31 and L27/38 engines. The layout of such coolers is difficult and changes due to lack of efficiency is very complicated and expensive. The low temperature dif- ference between the sea water and the LT cooling water results in a very large cooling water surface. Depending on the design of the cooler, the waterflow around the hull and to the propeller will be disturbed, causing increased hull resistance and lower sp\n\n[E-COOLANT-CLEAN-012] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却系统清洗要求\ncylinder liner and block pitting and helps prevent corrosion. Cat DEAC does not require supplemental coolant additive at initial fill. See page 18 for available quantities and part numbers. Caterpillar Cooling System Cleaner - Standard is designed to clean the system of harmful scale and corrosion without taking the engine out of service. Caterpillar Cooling System Cleaner - Standard can be used in all Caterpillar engines' and other manufacturers' cooling systems in any application. Cat\n\n[E-TCV-ALARM-001] 层级:L2 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 温度控制阀配置\n• One thermostatic valve for emergency control of the heaters • One control cabinet including starters for pumps • One alarm panel The above equipment is built on a steel frame, which can be welded or bolted to its foundation in the ship.\n整理说明：原文涉及冷却水相关报警、降负荷、停机或传感器异常处理，可支撑控制保护类需求。阈值和动作逻辑应严格限定在对应厂家、机型和控制系统配置范围内。\n可支撑：冷却水温度\n压力\n液位或传感器异常应按厂家或规则要求设置报警\n降负荷或停机保护。\n报警阈值和保护动作应受具体厂家\n机型和控制系统配置约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "0f575c2860bad43876944904c8825a6e2cc41622744236469b4351893a9a50be",
+    "utf8_message_bytes": 9585,
+    "execution_index": 20
+  }
+}

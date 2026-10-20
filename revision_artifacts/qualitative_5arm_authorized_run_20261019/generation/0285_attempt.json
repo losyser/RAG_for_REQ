@@ -1,0 +1,37 @@
+{
+  "slot": "OR057-semantic_old",
+  "body_sha256": "aa9b084b4a56c9fc7759ff39409f8b7818adfd25ff6fcd9f92b6933ebb19d0b8",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:11:46.203209+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR057-semantic_old",
+    "source_id": "OR057",
+    "group": "semantic_old",
+    "context_sha256": "e68710ab4181f282444f173e132fd909f9eef205f7d4cca926f21a9ca1bc48f2",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水系统压力试验要有试验压力、保压时间和泄漏检查记录。\n\n## 证据清单\n[E-IACS-M73-001] 层级:L1 来源:S67 IACS Unified Requirements M73 Turbocharger\n  内容: IACS Unified Requirements M73 — Turbocharger Cooling Space Hydraulic Test\n(Directly extracted from IACS UR M73 Sec. 4.3, via ClassNK TEC-1066)\n\nSection 4.3 (directly extracted): 'Hydraulic testing of cooling spaces to 4 bars or 1.5 times maximum working pressure, whichever is higher.'\n\nThis applies to the water-cooled cooling spaces of turbochargers fitted on marine diesel engines subject to IACS classification. The test is conducted before installation and the surveyor must witness or verify th\n  [量化参数] 4、1.5、4.3\n\n[E-SYS-PRESS-011] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却水温度与压力参数\nthree to five minutes. Make sure the temperature of the cooling system is between 85°C (185°F) and 99°C (210°F). This temperature can be checked by installing a thermistor probe in the regulator housing ahead of the regulator. This is a test for gas in the system, not steam, which can produce similar conditions if the temperature is permitted to increase. Look at the amount of bubbles in the glass jar. If an occasional bubble is visible there is no air or combustion gases in the cooli\n  [量化参数] three to five minutes、85°C、185°F、99°C、210°F\n\n[E-IACS-M72-001] 层级:L1 来源:S66 IACS Unified Requirements M72 Hydraulic Testing\n  内容: IACS Unified Requirements M72 — Hydraulic Testing of Cooling-System Components\n(Directly extracted from IACS UR M72, verified via ClassNK TEC-1066)\n\nHydraulic testing requirements for cooling water components:\n- All items in contact with cooling water are to be tested by hydraulic pressure at a pressure equal to 1.5 times the maximum working pressure (M72 Footnote 3, directly extracted).\n- Hydraulic testing is required for those parts filled with cooling water and having the function of containi\n  [量化参数] 1.5、300、800\n\n[E-PIPE-PTEST-007] 层级:L1 来源:S46 46 CFR 56.97-40 Installation tests\n  内容: 管系安装后水压泄漏试验要求\nPiping systems must be hydrostatically leak tested in the presence of a marine inspector at a pressure of 1.5 times the maximum allowable working pressure of the system. S47 46 CFR 58.20-25 Tests\n整理说明：该证据涉及管系安装后的水压、泄漏或检验要求，可支撑试压和检验类需求。使用时必须保持条款适用范围，不能将其扩展为冷却性能、泵冗余或主机运行参数要求。\n可支撑：管系安装后应按适用法规\n船级社或项目试验程序进行水压或泄漏试验。\n试验压力\n持续时间和见证要求应按适用条款或项目文件确认。\n不能支撑：1. 不能证明冷却能力、换热能力或正常运行参数满足主机厂家要求。\n2. 不能替代项目试验大纲、船级社验船师意见或具体管系等级要求。\n3. 不能直接支撑泵冗余、温控逻辑或停机后冷却要求。\n  [量化参数] 1.5\n\n[E-PIPE-PTEST-001] 层级:L1 来源:S48 46 CFR 197.462 Pressure vessels and pressure piping\n  内容: 压力试验人员和设备防护要求\nPressure tests shall be conducted only after suitable precautions are taken to protect personnel and equipment. S49 SOLAS 2024 Chapter II-1 Regulation 26\n整理说明：该证据涉及管系安装后的水压、泄漏或检验要求，可支撑试压和检验类需求。使用时必须保持条款适用范围，不能将其扩展为冷却性能、泵冗余或主机运行参数要求。\n可支撑：管系安装后应按适用法规\n船级社或项目试验程序进行水压或泄漏试验。\n试验压力\n持续时间和见证要求应按适用条款或项目文件确认。\n不能支撑：1. 不能证明冷却能力、换热能力或正常运行参数满足主机厂家要求。\n2. 不能替代项目试验大纲、船级社验船师意见或具体管系等级要求。\n3. 不能直接支撑泵冗余、温控逻辑或停机后冷却要求。\n\n[E-SYS-INSP-002] 层级:L3 来源:S09 MAN Energy Solutions SL2014-584 Cooling Water System\n  内容: 冷却系统泄漏检查要求：适用对象为MAN B&W二冲程船用柴油机，型号MC/MC-C和ME/ME-C/ME-B。适用条件：该服务通报针对冷却水系统维护与建议，涉及腐蚀或裂纹（气缸盖、气缸套、冷却水套）及冷却水泄漏问题。\n\n可支撑：可支撑 main_engine_cooling_water_system 在 inspection、corrosion_protection、maintenance 方面的系统设计、运行或维护依据。具体指标和验收条件应结合来源文件适用范围进一步确认。\n\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。3. 不能替代更高权威等级的规范、厂家技术数据或项目文件。\n\n[E-PIPE-PTEST-003] 层级:L2 来源:S52 BN-G-Y015 Piping Systems Inspection and Testing\n  内容: 水压试验临时支撑要求\nFor hydrostatic testing, all piping shall be adequately supported, using additional temporary supports where necessary.\n整理说明：该证据涉及管系安装后的水压、泄漏或检验要求，可支撑试压和检验类需求。使用时必须保持条款适用范围，不能将其扩展为冷却性能、泵冗余或主机运行参数要求。\n可支撑：管系安装后应按适用法规\n船级社或项目试验程序进行水压或泄漏试验。\n试验压力\n持续时间和见证要求应按适用条款或项目文件确认。\n不能支撑：1. 不能证明冷却能力、换热能力或正常运行参数满足主机厂家要求。\n2. 不能替代项目试验大纲、船级社验船师意见或具体管系等级要求。\n3. 不能直接支撑泵冗余、温控逻辑或停机后冷却要求。\n\n[E-PIPE-PTEST-004] 层级:L2 来源:S52 BN-G-Y015 Piping Systems Inspection and Testing\n  内容: 水压试验前焊缝和机械接头可检验性要求\nInsulation or painting shall not be applied over welds, flanges and/or other mechanical joints prior to hydrotesting.\n整理说明：该证据涉及管系安装后的水压、泄漏或检验要求，可支撑试压和检验类需求。使用时必须保持条款适用范围，不能将其扩展为冷却性能、泵冗余或主机运行参数要求。\n可支撑：管系安装后应按适用法规\n船级社或项目试验程序进行水压或泄漏试验。\n试验压力\n持续时间和见证要求应按适用条款或项目文件确认。\n不能支撑：1. 不能证明冷却能力、换热能力或正常运行参数满足主机厂家要求。\n2. 不能替代项目试验大纲、船级社验船师意见或具体管系等级要求。\n3. 不能直接支撑泵冗余、温控逻辑或停机后冷却要求。\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "aa9b084b4a56c9fc7759ff39409f8b7818adfd25ff6fcd9f92b6933ebb19d0b8",
+    "utf8_message_bytes": 7813,
+    "execution_index": 285
+  }
+}

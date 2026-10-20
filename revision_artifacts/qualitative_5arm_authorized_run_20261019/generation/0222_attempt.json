@@ -1,0 +1,37 @@
+{
+  "slot": "OR045-semantic_old",
+  "body_sha256": "95023845fd27e60385aa13151991615d4eee62ed7a6141102c23e83227c3033d",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:04:12.861472+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR045-semantic_old",
+    "source_id": "OR045",
+    "group": "semantic_old",
+    "context_sha256": "58892f515228ac8542a2343a7e94a19b225b3641c741d42d8f36f00d1be12000",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n冷却水系统的压力试验、冲洗和检查记录要完整，不能只口头说明已经做过。\n\n## 证据清单\n[E-IACS-M72-001] 层级:L1 来源:S66 IACS Unified Requirements M72 Hydraulic Testing\n  内容: IACS Unified Requirements M72 — Hydraulic Testing of Cooling-System Components\n(Directly extracted from IACS UR M72, verified via ClassNK TEC-1066)\n\nHydraulic testing requirements for cooling water components:\n- All items in contact with cooling water are to be tested by hydraulic pressure at a pressure equal to 1.5 times the maximum working pressure (M72 Footnote 3, directly extracted).\n- Hydraulic testing is required for those parts filled with cooling water and having the function of containi\n  [量化参数] 1.5、300、800\n\n[E-SYS-INSP-001] 层级:L2 来源:S39 MAN L21/31 Project Guide\n  内容: 冷却系统泄漏检查要求：涡轮增压器转速 SI 89；适用条件：无明确适用条件。  \n冷却系统泄漏检查要求：涡轮增压器转速 SAH 89；适用条件：无明确适用条件。  \n3号交流发电机：冷却水泄漏 LAH LAH 98 开关；适用条件：无明确适用条件。  \n3号交流发电机：绕组温度 °C TI 98 100；适用条件：无明确适用条件。  \n3号交流发电机：绕组温度 °C TAH 98 130；适用条件：无明确适用条件。  \n3号交流发电机：轴承温度 °C TI 27 40-60；适用条件：无明确适用条件。  \n3号交流发电机：轴承温度 °C TAH 27 60；适用条件：无明确适用条件。  \nMiscellaneous：操作数据和设定点 2017-10-11 - en；适用条件：IMO Tier II Project Guide MAN Energy Solutions Project Guide MAN L16/24。  \n\n可支撑：main_engine_cooling_water_system 的 inspection maintenance temperature 参数应依据来源文\n  [量化参数] 89、89、98、98、100、98、130、27、40-60、27、60、2017-10-11\n\n[E-SYS-CLEAN-009] 层级:L2 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 冷却系统清洗要求\nc) If the pH value difference is still > 1 after 4 to 5 flushing operations: The coolant circuit must be cleaned, see (→ Page 50). The assemblies may also have to be cleaned, see (→ Page 51). Important information Refer to the engine operating instructions for additional information.\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序执行。\n清洗后重新投运前应关注残留清洗剂\n泄漏\n沉积物或换热能力恢复情况。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。\n2. 不能\n  [量化参数] 1、4 to 5、50、51\n\n[E-SYS-CLEAN-010] 层级:L3 来源:S26 MTU, Fluids and Lubricants Specifications, A001065\n  内容: 冷却系统清洗要求\n8.4 Engine coolant circuits – Cleaning 1. Mix cleaner to the specified concentration with freshwater. Use warm freshwater (45 °C) if the engine is warm. 2. Cleaning agents for coolant circuits are prepared in warm freshwater as a concentrated solution, see (→ Page 48). 3. In the case of powdered products, stir until the cleaning agent is completely dissolved and without sediment. 4. Pour solution together with freshwater into coolant circuit. 5. Start engine and run until warm. 6. Selec\n  [量化参数] 45、8.4、48\n\n[E-SYS-CLEAN-006] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却系统清洗要求\nFollowing cleaning The cooling system must be flushed several times once it has been cleaned using cleaning agents. Replace the water during this process. If acids are used to carry out the cleaning, neutralise the cooling system afterwards with suitable chemicals then flush. The system can then be refilled with water that has been prepared accordingly.\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序\n\n[E-SYS-CLEAN-015] 层级:L3 来源:S38 MAN L16/24 GenSet Project Guide\n  内容: 冷却系统清洗要求\nCoolant system cleaning Summary Remove contamination/residue from operating fluid systems, ensure/re- establish operating reliability. Coolant systems containing deposits or contamination prevent effective cool- ing of parts. Contamination and deposits must be regularly eliminated. This comprises the following: Cleaning the system and, if required, removal of limescale deposits, flushing the system. Cleaning The coolant system must be checked for contamination at regular intervals. Clea\n\n[E-SYS-CLEAN-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却液污染与沉积风险\naccurate set-up and performance documentation of the cooling system during the commissioning procedure. Future system problems or component deterioration (such as fouling) are easier to identify if basic data is available. It also provides information for relating field conditions to original factory tests. Temperature and pressure measurement locations should give accurate reading of fluid stream conditions. Preferred locations are in straight lengths of piping reasonably close to ea\n\n[E-SYS-CLEAN-005] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却系统清洗要求\nCoolant system cleaning Summary Remove contamination/residue from operating fluid systems, ensure/re-estab- lish operating reliability. Coolant systems containing deposits or contamination prevent effective cool- ing of parts. Contamination and deposits must be regularly eliminated. This comprises the following: Cleaning the system and, if required, removal of limescale deposits, flushing the system. Cleaning The coolant system must be checked for contamination at regular intervals. Cle\n\n[E-SYS-CLEAN-017] 层级:L3 来源:S41 Everllence 49/60DF Project Guide\n  内容: 冷却系统清洗要求\nCooling water systems containing deposits or contamination prevent effective cooling of parts. Contamination and deposits must be regularly eliminated. This comprises the following: Cleaning the system and, if required removal of limescale deposits, flushing the system. Cleaning The coolant system must be checked for contamination at regular intervals. Cleaning is required if the degree of contamination is high. This work should ideally be carried out by a specialist who can provide the\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "95023845fd27e60385aa13151991615d4eee62ed7a6141102c23e83227c3033d",
+    "utf8_message_bytes": 7865,
+    "execution_index": 222
+  }
+}

@@ -41,7 +41,7 @@ from cooling_rag_mg.text_utils import simple_tokens
 
 EXP     = PROJECT_ROOT / "data" / "search_results" / "exp_v4"
 IDX_DIR = PROJECT_ROOT / "data" / "indexes" / "evidence_units"
-KB_PATH = PROJECT_ROOT / "data" / "processed" / "evidence_units_v2.jsonl"
+KB_PATH = PROJECT_ROOT / "data" / "processed" / "evidence_units_v3_audited.jsonl"
 
 # ── 数字抽取（同 script 68）────────────────────────────────────────────────
 NUMBER_RE = re.compile(
@@ -158,7 +158,7 @@ def parse_verdicts(llm_out: str) -> dict:
         line = line.strip()
         if not line or "|" not in line:
             continue
-        m = VERDICT_RE.search(line)
+        m = re.fullmatch(r"(SUPPORTED|CONTRADICTED|UNVERIFIABLE)", line.split("|")[1].strip(), re.IGNORECASE)
         if not m:
             continue
         verdict = m.group(1).upper()
@@ -175,7 +175,7 @@ def classify_shall(verdicts: dict) -> str:
     """
     综合所有数值的判断给 shall 打一个标签：
       conflict     — 至少一个数值 CONTRADICTED
-      supported    — 所有数值 SUPPORTED（无冲突）
+      supported    — 历史 v1：至少一个数值 SUPPORTED（无冲突），不保证全部支持
       unverifiable — 无冲突，但无法验证
       no_numeric   — 无含单位数值
     """

@@ -1,0 +1,106 @@
+--- a/cooling_rag_mg/ea_paper_figures.py
++++ b/cooling_rag_mg/ea_paper_figures.py
+@@ -20,7 +20,7 @@
+         'translation_reviewed':False,
+     } for e in root.iter(q('ClassifierRole'))}
+     return {'requirements':rows,'figures':[], 'instructions':
+-        'Provide concise English titles (max 48 characters), complete English text, and 3-4 figures with name, ids (3-5 each), rationale. Unchanged English text needs no translation approval. Review any translation before setting translation_reviewed=true.'}
++        'Provide concise English titles (max 48 characters), complete English text, and four figures with name, ids (3/4/3/4 nodes in order), rationale. Unchanged English text needs no translation approval. Review any translation before setting translation_reviewed=true.'}
+ 
+ def paper_bundle(xml, mapping):
+     if isinstance(xml,bytes):xml=xml.decode('utf-8')
+@@ -28,7 +28,7 @@
+     roles=list(root.iter(q('ClassifierRole'))); ids={props[e.get('xmi.id')]['id'] for e in roles}
+     rows=mapping['requirements'];figures=mapping['figures']
+     if set(rows)!=ids:raise ValueError('Mapping IDs must exactly match the current full model')
+-    if not 3<=len(figures)<=4:raise ValueError('Provide 3-4 representative figures')
++    if len(figures)!=4 or [len(f['ids']) for f in figures]!=[3,4,3,4]:raise ValueError('Provide four representative figures with 3/4/3/4 nodes')
+     names=set()
+     for f in figures:
+         if not re.fullmatch('[a-z][a-z0-9_]*',f['name']) or f['name'] in names:raise ValueError('Unique lowercase figure names required')
+@@ -42,7 +42,7 @@
+         rid=e.get('xmi.id');p=props[rid];bid=p['id'];row=rows[bid];text=p['text'].removeprefix('<memo>#NOTES#')
+         if row['original_name']!=e.get('name') or row['original_text']!=text:raise ValueError('Stale original content: '+bid)
+         title=row['english_title'];english=row['english_text']
+-        if not title.strip() or len(title)>48 or title==bid or re.search(r'[\u3400-\u9fff]',title+english):raise ValueError('Concise English title and English text required: '+bid)
++        if not title.strip() or len(title)>48 or len(title.split())>8 or title==bid or re.search(r'\b(?:shall|must)\b',title,re.I) or re.search(r'[\u3400-\u9fff]',title+english):raise ValueError('Concise English title and English text required: '+bid)
+         if english!=text:
+             if not row.get('translation_reviewed'):raise ValueError('Human-reviewed translation required: '+bid)
+             # Reject changed numbers and literal placeholders; semantic review remains explicit.
+@@ -63,7 +63,7 @@
+             for tv in edge.iter(q('TaggedValue')):
+                 if tv.get('tag')==key:tv.set('value',names_by_guid[end.get('type')])
+     source=serialize(root);files={};manifest={'source_sha256':source_hash,'requirements':provenance,'figures':figures,'packages':[]}
+-    for f in [{'name':'english_full','ids':None,'rationale':'Complete engineering model; not a main-text figure.'}]+figures:
++    for f in figures:
+         output=presentation_xml(source,native_exporter().GRADE_STYLE,visible_ids=f['ids'],name='REQ_'+f['name'])
+         view=ET.fromstring(output)
+         source_roles={e.get('xmi.id') for e in roles if props[e.get('xmi.id')].get('grade','_src') in ('_src','source')}
+@@ -95,6 +95,14 @@
+         if status_mode:
+             from .ea_status_view import status_view
+             output=status_view(output,status_mode)
++        # Paper figures contain only requirements and their grouping connectors.
++        # Status definitions and audit explanations remain in attributes/manifest.
++        clean=ET.fromstring(output)
++        comments={e.get('xmi.id') for e in clean.iter(q('Comment'))}
++        for parent in clean.iter():
++            for child in list(parent):
++                if child.tag==q('Comment') or (child.tag==q('DiagramElement') and child.get('subject') in comments):parent.remove(child)
++        output=serialize(clean)
+         output,guid_map=fresh_ids(output)
+         # fresh_ids rewrites references globally; provenance must point backwards.
+         view=ET.fromstring(output)
+@@ -103,11 +111,11 @@
+             if tv.get('tag')=='paper_source_guid':tv.set('value',original_guids[tv.get('modelElement')])
+         output=serialize(view)
+         files[f['name']+'.xml']=output.encode('utf-8')
+-        files[f['name']+'_guid_map.json']=json.dumps(guid_map,indent=2).encode()
++        files['audit/'+f['name']+'_guid_map.json']=json.dumps(guid_map,indent=2).encode()
+         manifest['packages'].append({'name':f['name'],'visible_ids':f['ids'] or sorted(ids),'sha256':hashlib.sha256(files[f['name']+'.xml']).hexdigest()})
+-    files['selection_translation_map.json']=json.dumps(mapping,ensure_ascii=False,indent=2).encode('utf-8')
+-    files['provenance.json']=json.dumps(manifest,ensure_ascii=False,indent=2).encode('utf-8')
+-    files['README.txt']=b'All XML packages retain the complete model. Only diagram selection changes. Names are concise English titles; id and full text remain independent. Notes are hidden by default. Source names/text/GUIDs and original metadata are retained. Gray=source; blue=B; orange=C where present. Grades are rule classifications, not probabilities. No paid translation API. Import a fresh package into a separate EA test repository; export PNG/EMF using licensed EA for journal artwork. Selection is illustrative, not statistically representative. Human review is required for translations; numeric checks cannot prove unit or modality equivalence.\n'
++    files['audit/selection_translation_map.json']=json.dumps(mapping,ensure_ascii=False,indent=2).encode('utf-8')
++    files['audit/provenance.json']=json.dumps(manifest,ensure_ascii=False,indent=2).encode('utf-8')
++    files['audit/README.txt']=b'All XML packages retain the complete model. Only diagram selection changes. Names are concise English titles; id and full text remain independent. Notes are hidden by default. Source names/text/GUIDs and original metadata are retained. Coloring follows the selected mode, recorded in coloring_mode. Rule grades are criterion/citation classifications, not semantic support or probabilities. Reported support is unverified; absent support is Not assessed. No diagram text legend is added. Only four 3/4/3/4-node paper views are delivered; each XML retains the complete model. No paid translation API. Import a fresh package into a separate EA test repository; export PNG/EMF using licensed EA for journal artwork. Selection is illustrative, not statistically representative. Human review is required for translations; numeric checks cannot prove unit or modality equivalence.\n'
+     return files
+ 
+ def paper_zip(xml,mapping):
+--- a/ui/pages/engineering.py
++++ b/ui/pages/engineering.py
+@@ -337,7 +337,7 @@
+                 if figure_mapping is not None:
+                     try:
+                         bundle = paper_zip(xml_bytes, json.loads(figure_mapping.getvalue()))
+-                        st.download_button("Export English paper figures + full EA model", bundle, "english_paper_figures.zip", "application/zip", key="ea_english_export", on_click="ignore")
++                        st.download_button("Export four English paper figures (3/4/3/4)", bundle, "english_paper_figures.zip", "application/zip", key="ea_english_export", on_click="ignore")
+                     except (ValueError, KeyError, TypeError) as figure_error:
+                         st.error(f"English figure mapping: {figure_error}")
+         except Exception as _exc:
+--- a/tests/test_ea_english_paper.py
++++ b/tests/test_ea_english_paper.py
+@@ -48,3 +48,23 @@
+         assert not any(e.get('subject')==package.get('xmi.id') for e in root.iter(q('DiagramElement')))
+         roles={e.get('xmi.id') for e in root.iter(q('ClassifierRole'))}
+         assert all(int(re.search('Top=(\\d+)',e.get('geometry'))[1])>=60 for e in root.iter(q('DiagramElement')) if e.get('subject') in roles)
++
++
++def test_paper_root_and_child_contracts_and_clean_four_view_delivery():
++    from cooling_rag_mg.ea_status_view import status_view
++    xml,m=inputs()
++    for mode in ['Rule grade','Evidence support']:
++        files=paper_bundle(status_view(xml,mode),m)
++        assert sorted(k for k in files if k.endswith('.xml'))==sorted(f['name']+'.xml' for f in m['figures'])
++        assert all(k.endswith('.xml') or k.startswith('audit/') for k in files)
++        for f in m['figures']:
++            root=ET.fromstring(files[f['name']+'.xml']);p=properties(root)
++            assert not list(root.iter(q('Comment')))
++            for role in root.iter(q('ClassifierRole')):
++                tags={t.get('tag'):t.get('value') for t in role.iter(q('TaggedValue'))}
++                v=p[role.get('xmi.id')]
++                assert tags['documentation']==v['text'].removeprefix('<memo>#NOTES#')
++                assert v['coloring_mode']==mode and v['semantic_verification_state']=='not_assessed'
++                assert v['evidence_support_label'] in ['Source requirement','Not assessed']
++            style=next(t.get('value') for t in root.iter(q('Diagram')).__next__().iter(q('TaggedValue')) if t.get('tag')=='styleex')
++            assert 'ShowNotes=0;' in style and 'text' in style.split('SUPTAG=')[1].split(';')[0].split(',')

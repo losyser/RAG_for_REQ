@@ -1,0 +1,17 @@
+# Independent requirement mapping instructions — English draft
+
+This is a companion translation. The Chinese instructions and the expert's original Chinese records remain primary. Translation must not replace those records.
+
+**Task.** Identify the component–engineering-aspect pairs directly implicated by each original requirement. Assess requirement meaning, not generated-text quality, regulatory compliance, or evidence availability in the knowledge base. Work independently, without model predictions, other reviewers' answers, or coordinator-only materials.
+
+1. **Independent first pass.** Read the Chinese source and the complete taxonomy; record relevant or uncertain pairs before viewing pooled candidates. This first pass is locked when confirmed. Later additions do not overwrite it.
+2. **Direct relevance.** A pair is relevant when stated explicitly or necessarily entailed by the ordinary meaning of the requirement. Do not substitute what engineering practice might additionally require. Do not invent thresholds, standards, protective functions, or equipment. Record uncertainty where an implied relationship is reasonably contestable.
+3. **Multiple labels.** A source may require multiple pairs; no fixed count is imposed. A system-level statement does not automatically imply every component. Prefer the most direct label, adding multiple levels or aspects only when the source separately implicates them.
+4. **Four distinct states.** Relevant: directly implicated. Irrelevant: not directly implicated. Uncertain: semantic ambiguity, a taxonomy boundary, or insufficient expertise prevents a reliable binary decision. Unanswered: not yet reviewed. Neither uncertainty nor a blank is a negative label.
+5. **Coverage review.** The taxonomy has 21 components and 183 valid combinations. Survey all components, then examine all applicable aspects of potentially relevant components. Do not restrict review to pooled candidates. Add missing relevant or uncertain pairs and confirm coverage. Complete each source as a unit.
+6. **Gaps and ambiguity.** If a needed concept is absent, record a taxonomy-gap note with the source wording. Do not force a label or alter the taxonomy. Record each pair once and retain unresolved opinions; the coordinator must not silently convert them into definite labels.
+7. **Preserve originals.** Keep reasoning and questions in Chinese. Save and export a JSON backup. CSV is a viewing export. English research materials are separate derivatives. Leave the task before another expert creates their own independent review.
+
+**Calibration only.** OR002 and OR001 are real requirements reserved for timing and instruction calibration, excluded from formal scoring. They do not constitute an assignment to review all 60 sources. Time each complete source from initial reading through candidate review, full-taxonomy coverage, and notes. Record interruptions separately. If unfinished, report elapsed time and the stopping point rather than rushing to fill answers. Calibration answers must not enter the formal reference set.
+
+Taxonomy note: the original intent-description dictionary has 45 entries. Fourteen additional legal intent IDs lack dictionary descriptions; the tool displays their original source-line comments, explicitly marked in Chinese. IDs and legal pairs are unchanged. If a description remains insufficient, record uncertainty and a question rather than guessing.

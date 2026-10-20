@@ -1,0 +1,269 @@
+{
+  "requirement_sets": [
+    {
+      "source_requirement_id": "OR041",
+      "requirement_set_id": "RS-OR041",
+      "engineering_requirements": [
+        {
+          "id": "OR041.1",
+          "parent_id": "OR041",
+          "topic": "Alarm Display",
+          "shall_statement": "When the seawater cooling system is configured with a main circulation pump, a low supply alarm function shall be provided. The alarm signal shall be capable of being displayed on the bridge or at the main control station so that operators can promptly start the standby pump or change over to the standby pump.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:MPa|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:海水冷却系统主循环泵|intent:低供水报警阈值|hint:报警阈值应依据厂家技术数据或项目计算文件确定，不得超出具体厂家、机型和控制系统配置范围}}",
+          "evidence_ids": [
+            "E-HT-ALARM-001",
+            "E-PUMP-ALARM-002"
+          ],
+          "verification_method": "Test"
+        },
+        {
+          "id": "OR041.2",
+          "parent_id": "OR041",
+          "topic": "Cooling Pump Redundancy",
+          "shall_statement": "The seawater cooling system shall be provided with at least two cooling water pumps, one of which shall be a standby pump. The capacity of the standby pump shall not be less than the capacity of the main pump, and at least one pump shall be driven by an independent drive unit.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:台|ref:S44 PRS Ship Machinery Piping Systems|component:海水冷却水泵|intent:泵数量及备用泵容量|hint:至少两台泵，其中一台为备用泵，备用泵容量不小于主泵容量，至少一台泵独立驱动}}",
+          "evidence_ids": [
+            "E-PUMP-RED-004",
+            "E-PUMP-RED-002"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR041.3",
+          "parent_id": "OR041",
+          "topic": "Standby Pump Start",
+          "shall_statement": "When the seawater cooling system low supply alarm is triggered, the standby pump shall be capable of being started automatically or manually, or changeover to the standby pump shall be possible, to restore the cooling water supply.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:s|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:海水冷却系统主循环泵|intent:备用泵启动或切换响应时间|hint:响应时间应依据厂家技术数据或项目计算文件确定，不得超出具体厂家、机型和控制系统配置范围}}",
+          "evidence_ids": [
+            "E-COOLER-CTRL-001",
+            "E-PUMP-TEMP-003"
+          ],
+          "verification_method": "Test"
+        },
+        {
+          "id": "OR041.4",
+          "parent_id": "OR041",
+          "topic": "Independent Alarm Sensor",
+          "shall_statement": "The sensor for the seawater cooling system low supply alarm shall be provided independently and shall be capable of continuously monitoring the seawater cooling water supply pressure or flow. The alarm signal shall be transmitted to the engine control system or alarm monitoring system.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:MPa|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:海水冷却水压力开关|intent:低供水报警触发压力|hint:报警触发压力应依据厂家技术数据或项目计算文件确定，不得超出具体厂家、机型和控制系统配置范围}}",
+          "evidence_ids": [
+            "E-PUMP-ALARM-002",
+            "E-COOLER-CTRL-001"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR041.5",
+          "parent_id": "OR041",
+          "topic": "Alarm Configuration Scope",
+          "shall_statement": "The threshold and actuation logic of the seawater cooling system low supply alarm shall be strictly limited to the corresponding manufacturer, engine model, and control system configuration scope and shall not be generalized beyond that scope.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:MPa|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:海水冷却系统主循环泵|intent:低供水报警阈值|hint:报警阈值应依据厂家技术数据或项目计算文件确定，不得超出具体厂家、机型和控制系统配置范围}}",
+          "evidence_ids": [
+            "E-HT-ALARM-001",
+            "E-PUMP-ALARM-002"
+          ],
+          "verification_method": "Analysis"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR052",
+      "requirement_set_id": "RS-OR052",
+      "engineering_requirements": [
+        {
+          "id": "OR052.1",
+          "parent_id": "OR052",
+          "topic": "Direct Component Removal",
+          "shall_statement": "The seals, bearings, and motor of the cooling water pump shall be arranged so that they can be directly removed and installed without first moving unrelated piping or other equipment.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:mm|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却水泵|intent:维护空间|hint:需明确密封、轴承和电机拆卸所需的最小净空尺寸}}",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR052.2",
+          "parent_id": "OR052",
+          "topic": "Pump Maintenance Space",
+          "shall_statement": "Sufficient maintenance space shall be provided around the cooling water pump to facilitate removal and installation of the seals, bearings, and motor.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:mm|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却水泵|intent:维护空间|hint:需明确维护操作所需的最小空间尺寸}}",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR052.3",
+          "parent_id": "OR052",
+          "topic": "Accessible Pump Piping",
+          "shall_statement": "The piping arrangement of the cooling water pump shall allow convenient access to the pump seals, bearings, and motor, and removal of these components shall not require moving a large amount of piping.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:mm|ref:S51 NASA NTRS 19800002357 Piping Specification|component:冷却水泵管路|intent:检修可达性|hint:需明确管路布置应提供的检修通道或空间尺寸}}",
+          "evidence_ids": [
+            "E-COOLER-MAINT-019"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR052.4",
+          "parent_id": "OR052",
+          "topic": "Manufacturer Maintenance Access",
+          "shall_statement": "The maintenance space for the cooling water pump seals, bearings, and motor shall meet the manufacturer's specified maintenance operation requirements, ensuring that maintenance can be performed without removing unrelated piping.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:mm|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却水泵|intent:维护空间|hint:需明确厂家规定的维护空间尺寸}}",
+          "evidence_ids": [
+            "E-PUMP-MAINT-001"
+          ],
+          "verification_method": "Inspection"
+        }
+      ]
+    },
+    {
+      "source_requirement_id": "OR008",
+      "requirement_set_id": "RS-OR008",
+      "engineering_requirements": [
+        {
+          "id": "OR008.1",
+          "parent_id": "OR008",
+          "topic": "High-Temperature Valve Setpoint",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The high-temperature cooling water engine outlet temperature setpoint shall be 79°C nominal, and the mechanical thermostatic element adjustment range shall be 77-85°C.",
+          "grade": "B",
+          "measurable_criterion": "79°C nominal; mechanical thermostatic element range 77-85°C",
+          "evidence_ids": [
+            "E-LT-COMP-006"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.2",
+          "parent_id": "OR008",
+          "topic": "Low-Temperature Valve Setpoint",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The low-temperature cooling water engine outlet temperature setpoint shall be 35°C nominal, and the mechanical thermostatic element adjustment range shall be 29-41°C.",
+          "grade": "B",
+          "measurable_criterion": "35°C nominal; mechanical thermostatic element range 29-41°C",
+          "evidence_ids": [
+            "E-LT-COMP-006"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.3",
+          "parent_id": "OR008",
+          "topic": "Lubricating Oil Valve Setpoint",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The lubricating oil inlet temperature setpoint shall be 66°C nominal, and the mechanical thermostatic element adjustment range shall be 63-72°C.",
+          "grade": "B",
+          "measurable_criterion": "66°C nominal; mechanical thermostatic element range 63-72°C",
+          "evidence_ids": [
+            "E-LT-COMP-006"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.4",
+          "parent_id": "OR008",
+          "topic": "Three-Way Mixing Valve Location",
+          "shall_statement": "The installation position of the temperature control valve shall be checked against the main engine manufacturer's requirements. The three-way valve shall be installed as a mixing valve, and its design pressure loss shall be 0.3-0.6 bar.",
+          "grade": "B",
+          "measurable_criterion": "0.3-0.6 bar",
+          "evidence_ids": [
+            "E-TCV-TEMP-047"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.5",
+          "parent_id": "OR008",
+          "topic": "Sensor-to-Valve Pipe Distance",
+          "shall_statement": "The installation position of the temperature control valve shall be checked against the main engine manufacturer's requirements. The pipe length between the temperature sensor installation position and the three-way valve shall be maintained at 10 to 15 times the pipe diameter.",
+          "grade": "C",
+          "measurable_criterion": "10 to 15 times the pipe diameter",
+          "evidence_ids": [
+            "E-TCV-TEMP-047"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.6",
+          "parent_id": "OR008",
+          "topic": "High-Temperature Control Range",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The high-temperature cooling water engine outlet temperature shall be controlled between 90 and 100°C, and the electronic water temperature controller shall identify deviations via the engine outlet sensor and correct the reference value.",
+          "grade": "B",
+          "measurable_criterion": "90-100°C",
+          "evidence_ids": [
+            "E-SYS-COMP-006"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.7",
+          "parent_id": "OR008",
+          "topic": "Shared-System External Controller",
+          "shall_statement": "The installation position of the temperature control valve shall be checked against the main engine manufacturer's requirements. When multiple engines share a combined low-temperature cooling water system, an external temperature controller shall be used. The external controller shall be installed at the engine control room console and wired to the temperature control valve.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:无|ref:S41 Everllence 49/60DF Project Guide|component:低温冷却水温度控制阀|intent:安装位置|hint:外部温度控制器安装于发动机控制室控制台并接线至温度控制阀}}",
+          "evidence_ids": [
+            "E-TCV-TEMP-055"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.8",
+          "parent_id": "OR008",
+          "topic": "Common Low-Temperature Valve",
+          "shall_statement": "The installation position of the temperature control valve shall be checked against the main engine manufacturer's requirements. When engine-driven low-temperature pumps are used to cool external equipment, a common low-temperature temperature control valve shall be provided in the external system. The common low-temperature temperature control valve shall be installed after the central cooler and shall control the water temperature before the engine and external equipment by partially bypassing the central cooler.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:无|ref:S28 Wärtsilä 32 Product Guide, Cooling Water System|component:公共低温温度控制阀|intent:安装位置|hint:公共低温温度控制阀安装于中央冷却器之后，通过部分旁通中央冷却器控制发动机和外部设备前水温}}",
+          "evidence_ids": [
+            "E-TCV-TEMP-062"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.9",
+          "parent_id": "OR008",
+          "topic": "Auxiliary Outlet Temperature",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The auxiliary engine outlet temperature shall be maintained constant at approximately 80°C.",
+          "grade": "B",
+          "measurable_criterion": "80°C",
+          "evidence_ids": [
+            "E-LT-PRESS-003",
+            "E-LT-PRESS-005"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.10",
+          "parent_id": "OR008",
+          "topic": "Auxiliary Outlet Temperature",
+          "shall_statement": "The setpoint of the temperature control valve shall be checked against the main engine manufacturer's technical data. The auxiliary engine outlet temperature shall be maintained constant at approximately 80°C.",
+          "grade": "B",
+          "measurable_criterion": "80°C",
+          "evidence_ids": [
+            "E-HT-COMP-004"
+          ],
+          "verification_method": "Inspection"
+        },
+        {
+          "id": "OR008.11",
+          "parent_id": "OR008",
+          "topic": "Valve Setpoint and Location",
+          "shall_statement": "The setpoint and installation position of the temperature control valve shall be checked against the main engine manufacturer's technical data or project calculation documents. The parameter confirmation path shall follow the minimum temperature control method of the cooling system thermostatic control (inlet control or outlet control), and the maximum temperature shall be controlled by correct sizing of the radiator, heat exchanger, or similar equipment.",
+          "grade": "C",
+          "measurable_criterion": "{{TBD|unit:无|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:温度控制阀|intent:设定值与安装位置确认路径|hint:依据主机制造厂技术数据或项目计算文件确定，区分进口控制与出口控制方法}}",
+          "evidence_ids": [
+            "E-SYS-PRESS-006"
+          ],
+          "verification_method": "Analysis"
+        }
+      ]
+    }
+  ],
+  "acceptance_fixture": "English official 23, original grade/text/citations retained; status absent"
+}

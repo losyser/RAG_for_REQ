@@ -1,0 +1,37 @@
+{
+  "slot": "OR040-random_new",
+  "body_sha256": "8b810e03c21f413032a3f21483f79852661fb93d559e2b4c6a260f6874a08e3d",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:01:57.658710+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR040-random_new",
+    "source_id": "OR040",
+    "group": "random_new",
+    "context_sha256": "550b83deefa984797c235244cbd4a184c26d422a2410452423cb92ae79c13d8d",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n报警设定和延时不要太随意，既不能太迟，也不能因为误报警频繁影响运行。\n\n## 证据清单\n[E-JACKET-MON-005] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 主机冷却型式与设计条件：HT冷却水温度在HP TC增压空气冷却器出口为83°C；HT冷却水在缸套冷却出口未指定；HT冷却水温度在LP TC增压空气冷却器出口（=最后一个增压空气冷却器）等于LT冷却水空气冷却器入口38°C（设定点32°C）；滑油发动机入口为65°C；喷嘴冷却水发动机入口为60°C。适用条件：MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.；600 rpm；参考条件：热带，空气温度45°C，增压空气冷却器前冷却水温度（LT级）38°C，总大气压力1,000 mbar，相对湿度60%。\n\n主机冷却型式与设计条件：发动机输出功率7,800 kW；转速600 rpm。适用条件：6L缸数配置，MAN L49/60DF IMO Tier II，气体模式，电力推进/EPROX-AC 1,300 kW/cyl.；600 rpm；参考条件：热带。\n\n主机冷却型式与设计条件：发动机输出功率9,100 kW；转速600 rpm。适用条件：7L缸数配置，MAN L49/60DF IMO Tier II，气体模式，电力推进/EPR\n  [量化参数] 83、38、32、65、60、1,300、600、45、38、1,000、60、7,800、600、1,300、600、9,100、600、1,300、600、10,400、600、1,300、600、11,700、600、1,300、600、13,000、600、1,300、600\n\n[E-JACKET-WATER-001] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 冷却液污染与沉积风险\ndoes not blow-down the boiler at the appointed time, or if the engine steaming rate increases between blow-down operations. If the absolute maximum is exceeded, scaling will occur. Because small amounts of scale wastes energy and can lead to engine damage, it is very important to stay below the absolute maximum. Conversely, the steam production rate may decrease, and as a result, the operator would blow-down the engine sooner than necessary. Therefore, Caterpillar recommends continuou\n  [量化参数] 4000\n\n[E-HT-SHUT-001] 层级:L3 来源:S28 Wärtsilä 32 Product Guide, Cooling Water System\n  内容: 高温冷却水系统组成\n14.1.2 Local control panel and local display unit Operational functions available at the LCP: • Local start • Local stop • Local emergency speed setting selectors (mechanical propulsion): - Normal / emergency mode - Decrease / Increase speed • Local emergency stop • Local shutdown reset • Local mode selector switch with positions blow, blocked, local and remote Positions: - Local: Engine start and stop can be done only at the local control panel - Remote: Engine can be started and stop\n\n[E-COOLANT-CORR-006] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却系统腐蚀与气蚀风险\nCylinder Wall Pitting Proper cooling system maintenance helps to control cylinder wall pitting. Cylinder wall pitting is the result of the combined action of cavitation-erosion and corrosion. Essentially, during the normal course of engine operation, the cylinder wall flexes causing small air bubbles to form on the coolant side of the wall. Cavitation occurs when these bubbles break or implode and remove the cylinder wall's protective oxide film. Once this film is removed, corrosion \n\n[L1-CCS2025-7-46-016] 层级:L1 来源:CCS《钢质海船入级规范》2025\n  内容: 气缸冷却水出口温度报警\n条款 7-46\n气缸冷却水出口温度高时，应在机舱集控站（室）显示并发出极限报警。\n\n[E-COOLER-CLEAN-016] 层级:L1 来源:S32 HY/T 海水循环冷却系统运行管理规范\n  内容: 板式换热器拆解清洗要求\n9.3.10 当板式换热器结垢严重而影响换热效果时， 应进行拆解清洗。板式换热器的拆解清洗应满足以 下要求： a) 不应使用金属刷刷洗板片； b) 宜采用甲酸类清洗液进行辅助刷洗，其他清洗液不应腐蚀板片； c) 拆解清洗过程中应检查板片与密封垫圈的粘合是否完好并应更换损坏密封垫圈； d) 损坏板片应及时更换； e) 重新压紧板片时应根据上一次压紧的刻度位置，防止压紧过度； f) 螺栓应对角压紧，受力均匀； g) 清洗的质量应符合 GB/T 25146 的规定。\n整理说明：原文涉及冷却水系统、换热器或管路的清洗、冲洗、结垢处理或清洗后复查，可支撑维护清洗类要求。若原文未给出药剂浓度、流速、周期或验收指标，则这些参数仍需由项目维护程序或厂家文件确认。\n可支撑：冷却水系统\n换热器或相关管路的清洗\n冲洗和复查应按来源文件或项目维护程序执行。\n清洗后重新投运前应关注残留清洗剂\n泄漏\n沉积物或换热能力恢复情况。\n不能支撑：1. 不能超出来源文件限定的适用对象和工况范围泛化。\n2. 不能直接生成原文未给出的具体数值、持续时间或验收判据。\n3. 不能替代更高权威等级的规范、厂家\n\n[E-EXP-FLOW-005] 层级:L3 来源:S21 Caterpillar Cooling Systems Application and Installation Guide\n  内容: 膨胀水箱配置\nadding any heat to the water before it enters the aftercooler. The additional resistance of the auxiliary equipment cooling circuit must be held to a minimum to avoid reducing the flow of water to the aftercooler. Separate Circuit Aftercooled – Keel Coolers Figure 26 1. Aftercooler, Keel Cooled 3. Jacket Water Outlet Connection 4. Jacket Water Inlet Connection 5. Auxiliary Fresh Water Pump 8. Auxiliary Fresh Water Inlet Connection 9. Aftercooler Outlet Connection 10. Duplex Full-Flow Stra\n\n[E-SYS-ALARM-001] 层级:L3 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却系统泄漏检查要求\nFuel oil leakage is led to a leakage alarm which is heated by means of fuel re- turn oil. The fuel leak oil can be reused and led to the fuel oil tank as it not are mixed with the waste oil. As mentioned above the waste oil is separated from leak oil, and led to the waste oil tank. Internal nozzle cooling system The nozzles of the injection valves on the engines are temperature controlled by means of a circuit containing the engines lubricating oil as media. The system maintains a noz\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "8b810e03c21f413032a3f21483f79852661fb93d559e2b4c6a260f6874a08e3d",
+    "utf8_message_bytes": 7676,
+    "execution_index": 200
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "slot": "OR005-random_new",
+  "started_at": "2026-10-19T02:40:52.262717+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"dd582b6c-57c2-4c38-8127-9de7b3db9301\",\"object\":\"chat.completion\",\"created\":1792377653,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"冷却水系统的滤器、冷却器、泵和阀门应设计为便于维护的可达布置，使维护作业无需复杂拆装。\\\", \\\"measurable_criterion\\\": \\\"[Q]滤器、冷却器、泵和阀门应能方便处理（可达、可拆装维护），具体可达性与拆装时间指标未知，须按厂家技术数据或项目维护文件确定。\\\", \\\"applicable_condition\\\": \\\"冷却水系统后期维护工况；具体机型与系统型式未知，须按项目适用条件确认。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"滤器、冷却器、泵和阀门具备可达维护通道\\\", \\\"维护作业不依赖复杂拆装工序\\\", \\\"维护可达性指标按厂家技术数据或项目文件确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-CTRL-001\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-EXP-WATER-008\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S29 Caterpillar, Know Your Cooling System\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置冷却水压力监测，当发动机运行中冷却水压力低于预设值时自动启动泵。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:bar|ref:S28 Wärtsilä 32 Product Guide|component:冷却水泵|intent:自动启动压力阈值|hint:原文仅说明低于预设值自动启动，未给出具体数值，须按厂家技术数据确定}}\\\", \\\"applicable_condition\\\": \\\"发动机运行中、冷却水压力低于预设值的工况；具体机型与系统型式未知。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"发动机上设有专用压力传感器\\\", \\\"压力低于预设值时通过电机启动器自动启动泵\\\", \\\"预设压力值按厂家技术数据确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-COOLER-CTRL-001\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"气缸冷却水进机压力或流量应设置低报警，过低时触发减速和报警。\\\", \\\"measurable_criterion\\\": \\\"[Q]气缸冷却水进机压力或流量设低报警；过低报警触发减速和报警。具体报警与减速阈值未知，须按厂家或规则要求确定。\\\", \\\"applicable_condition\\\": \\\"气缸冷却水进机压力或流量监测；十字头式柴油机仅要求压力项目。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"设置进机压力或流量低报警\\\", \\\"过低时触发减速和报警\\\", \\\"十字头式柴油机仅设压力项目\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"L1-CCS2025-7-491.6-018\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水温度、压力、液位或传感器异常时，应按厂家或规则要求设置报警、降负荷或停机保护。\\\", \\\"measurable_criterion\\\": \\\"[Q]冷却水温度、压力、液位或传感器异常应设置报警、降负荷或停机保护；报警阈值和保护动作受具体厂家、机型和控制系统配置约束，具体数值未知。\\\", \\\"applicable_condition\\\": \\\"高温冷却水系统及冷却水监测系统；具体厂家、机型和控制系统配置未知。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"温度、压力、液位或传感器异常设有报警\\\", \\\"异常时按配置执行降负荷或停机保护\\\", \\\"阈值与保护动作按厂家或规则要求确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-SYS-SHUT-001\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S36 MAN L23/30H GenSet Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"高温冷却水系统在预热和后冷却期间应配置电动泵循环高温冷却水，并满足对应缸数配置的最小流量需求。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:m³/h|ref:S41 Everllence 49/60DF Project Guide|component:高温冷却水预热泵|intent:预热和后冷却期间最小流量|hint:原文按缸数配置给出最小流量区间，具体取值须按实际缸数配置与厂家数据确定}}\\\", \\\"applicable_condition\\\": \\\"高温冷却水系统预热和后冷却期间；缸数配置按实际项目确定。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"预热期间由电动泵循环高温冷却水\\\", \\\"最小流量满足对应缸数配置要求\\\", \\\"预热器运行报警条件按厂家要求处理\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-ALARM-005\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统应设置膨胀水箱，其功能与水质要求应依据厂家技术数据或项目计算文件确定。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:L|ref:S29 Caterpillar, Know Your Cooling System|component:膨胀水箱|intent:容积与水质参数|hint:原文仅说明膨胀水箱功能，未给出具体数值，须按厂家技术数据或项目计算文件确定}}\\\", \\\"applicable_condition\\\": \\\"热交换器式冷却水系统；具体机型与系统型式未知。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"设置膨胀水箱\\\", \\\"膨胀水箱功能满足系统要求\\\", \\\"水质参数按厂家技术数据或项目计算文件确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-EXP-WATER-008\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S29 Caterpillar, Know Your Cooling System\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"废冷却液禁止排入地面、下水道和雨水排放系统，排放点水质应依据厂家技术数据或项目计算文件确定。\\\", \\\"measurable_criterion\\\": \\\"[Q]废冷却液禁止排入地面、下水道和雨水排放系统；排放点水质参数依据来源文件、厂家技术数据或项目计算文件确定，具体限值未知。\\\", \\\"applicable_condition\\\": \\\"冷却液排放与维护处理工况；具体限值和检测周期须按来源文件适用条件使用。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"废冷却液不排入地面\\\", \\\"废冷却液不排入下水道\\\", \\\"废冷却液不排入雨水排放系统\\\", \\\"排放点水质参数按适用文件确认\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-DRAIN-WATER-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S50 Washington State Department of Ecology Antifreeze\\\", \\\"has_clause\\\": false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2201,\"completion_tokens\":1621,\"total_tokens\":3822,\"prompt_tokens_details\":{\"cached_tokens\":1792},\"prompt_cache_hit_tokens\":1792,\"prompt_cache_miss_tokens\":409},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:40:53 GMT"
+  },
+  "response": {
+    "id": "dd582b6c-57c2-4c38-8127-9de7b3db9301",
+    "object": "chat.completion",
+    "created": 1792377653,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"冷却水系统的滤器、冷却器、泵和阀门应设计为便于维护的可达布置，使维护作业无需复杂拆装。\", \"measurable_criterion\": \"[Q]滤器、冷却器、泵和阀门应能方便处理（可达、可拆装维护），具体可达性与拆装时间指标未知，须按厂家技术数据或项目维护文件确定。\", \"applicable_condition\": \"冷却水系统后期维护工况；具体机型与系统型式未知，须按项目适用条件确认。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"滤器、冷却器、泵和阀门具备可达维护通道\", \"维护作业不依赖复杂拆装工序\", \"维护可达性指标按厂家技术数据或项目文件确认\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-CTRL-001\", \"tier\": \"L2\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": false}, {\"kb_id\": \"E-EXP-WATER-008\", \"tier\": \"L3\", \"source\": \"S29 Caterpillar, Know Your Cooling System\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统应设置冷却水压力监测，当发动机运行中冷却水压力低于预设值时自动启动泵。\", \"measurable_criterion\": \"{{TBD|unit:bar|ref:S28 Wärtsilä 32 Product Guide|component:冷却水泵|intent:自动启动压力阈值|hint:原文仅说明低于预设值自动启动，未给出具体数值，须按厂家技术数据确定}}\", \"applicable_condition\": \"发动机运行中、冷却水压力低于预设值的工况；具体机型与系统型式未知。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"发动机上设有专用压力传感器\", \"压力低于预设值时通过电机启动器自动启动泵\", \"预设压力值按厂家技术数据确认\"], \"evidence_citations\": [{\"kb_id\": \"E-COOLER-CTRL-001\", \"tier\": \"L2\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": false}]}, {\"shall_statement\": \"气缸冷却水进机压力或流量应设置低报警，过低时触发减速和报警。\", \"measurable_criterion\": \"[Q]气缸冷却水进机压力或流量设低报警；过低报警触发减速和报警。具体报警与减速阈值未知，须按厂家或规则要求确定。\", \"applicable_condition\": \"气缸冷却水进机压力或流量监测；十字头式柴油机仅要求压力项目。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"设置进机压力或流量低报警\", \"过低时触发减速和报警\", \"十字头式柴油机仅设压力项目\"], \"evidence_citations\": [{\"kb_id\": \"L1-CCS2025-7-491.6-018\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水温度、压力、液位或传感器异常时，应按厂家或规则要求设置报警、降负荷或停机保护。\", \"measurable_criterion\": \"[Q]冷却水温度、压力、液位或传感器异常应设置报警、降负荷或停机保护；报警阈值和保护动作受具体厂家、机型和控制系统配置约束，具体数值未知。\", \"applicable_condition\": \"高温冷却水系统及冷却水监测系统；具体厂家、机型和控制系统配置未知。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"温度、压力、液位或传感器异常设有报警\", \"异常时按配置执行降负荷或停机保护\", \"阈值与保护动作按厂家或规则要求确认\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-005\", \"tier\": \"L3\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": false}, {\"kb_id\": \"E-SYS-SHUT-001\", \"tier\": \"L2\", \"source\": \"S36 MAN L23/30H GenSet Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"高温冷却水系统在预热和后冷却期间应配置电动泵循环高温冷却水，并满足对应缸数配置的最小流量需求。\", \"measurable_criterion\": \"{{TBD|unit:m³/h|ref:S41 Everllence 49/60DF Project Guide|component:高温冷却水预热泵|intent:预热和后冷却期间最小流量|hint:原文按缸数配置给出最小流量区间，具体取值须按实际缸数配置与厂家数据确定}}\", \"applicable_condition\": \"高温冷却水系统预热和后冷却期间；缸数配置按实际项目确定。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"预热期间由电动泵循环高温冷却水\", \"最小流量满足对应缸数配置要求\", \"预热器运行报警条件按厂家要求处理\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-ALARM-005\", \"tier\": \"L3\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统应设置膨胀水箱，其功能与水质要求应依据厂家技术数据或项目计算文件确定。\", \"measurable_criterion\": \"{{TBD|unit:L|ref:S29 Caterpillar, Know Your Cooling System|component:膨胀水箱|intent:容积与水质参数|hint:原文仅说明膨胀水箱功能，未给出具体数值，须按厂家技术数据或项目计算文件确定}}\", \"applicable_condition\": \"热交换器式冷却水系统；具体机型与系统型式未知。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"设置膨胀水箱\", \"膨胀水箱功能满足系统要求\", \"水质参数按厂家技术数据或项目计算文件确认\"], \"evidence_citations\": [{\"kb_id\": \"E-EXP-WATER-008\", \"tier\": \"L3\", \"source\": \"S29 Caterpillar, Know Your Cooling System\", \"has_clause\": false}]}, {\"shall_statement\": \"废冷却液禁止排入地面、下水道和雨水排放系统，排放点水质应依据厂家技术数据或项目计算文件确定。\", \"measurable_criterion\": \"[Q]废冷却液禁止排入地面、下水道和雨水排放系统；排放点水质参数依据来源文件、厂家技术数据或项目计算文件确定，具体限值未知。\", \"applicable_condition\": \"冷却液排放与维护处理工况；具体限值和检测周期须按来源文件适用条件使用。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"废冷却液不排入地面\", \"废冷却液不排入下水道\", \"废冷却液不排入雨水排放系统\", \"排放点水质参数按适用文件确认\"], \"evidence_citations\": [{\"kb_id\": \"E-DRAIN-WATER-001\", \"tier\": \"L3\", \"source\": \"S50 Washington State Department of Ecology Antifreeze\", \"has_clause\": false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2201,
+      "completion_tokens": 1621,
+      "total_tokens": 3822,
+      "prompt_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "prompt_cache_hit_tokens": 1792,
+      "prompt_cache_miss_tokens": 409
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.01737",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.01737",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统的滤器、冷却器、泵和阀门应设计为便于维护的可达布置，使维护作业无需复杂拆装。",
+        "measurable_criterion": "[Q]滤器、冷却器、泵和阀门应能方便处理（可达、可拆装维护），具体可达性与拆装时间指标未知，须按厂家技术数据或项目维护文件确定。",
+        "applicable_condition": "冷却水系统后期维护工况；具体机型与系统型式未知，须按项目适用条件确认。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "滤器、冷却器、泵和阀门具备可达维护通道",
+          "维护作业不依赖复杂拆装工序",
+          "维护可达性指标按厂家技术数据或项目文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-CTRL-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-EXP-WATER-008",
+            "tier": "L3",
+            "source": "S29 Caterpillar, Know Your Cooling System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置冷却水压力监测，当发动机运行中冷却水压力低于预设值时自动启动泵。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S28 Wärtsilä 32 Product Guide|component:冷却水泵|intent:自动启动压力阈值|hint:原文仅说明低于预设值自动启动，未给出具体数值，须按厂家技术数据确定}}",
+        "applicable_condition": "发动机运行中、冷却水压力低于预设值的工况；具体机型与系统型式未知。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "发动机上设有专用压力传感器",
+          "压力低于预设值时通过电机启动器自动启动泵",
+          "预设压力值按厂家技术数据确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-CTRL-001",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "气缸冷却水进机压力或流量应设置低报警，过低时触发减速和报警。",
+        "measurable_criterion": "[Q]气缸冷却水进机压力或流量设低报警；过低报警触发减速和报警。具体报警与减速阈值未知，须按厂家或规则要求确定。",
+        "applicable_condition": "气缸冷却水进机压力或流量监测；十字头式柴油机仅要求压力项目。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "设置进机压力或流量低报警",
+          "过低时触发减速和报警",
+          "十字头式柴油机仅设压力项目"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-7-491.6-018",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度、压力、液位或传感器异常时，应按厂家或规则要求设置报警、降负荷或停机保护。",
+        "measurable_criterion": "[Q]冷却水温度、压力、液位或传感器异常应设置报警、降负荷或停机保护；报警阈值和保护动作受具体厂家、机型和控制系统配置约束，具体数值未知。",
+        "applicable_condition": "高温冷却水系统及冷却水监测系统；具体厂家、机型和控制系统配置未知。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "温度、压力、液位或传感器异常设有报警",
+          "异常时按配置执行降负荷或停机保护",
+          "阈值与保护动作按厂家或规则要求确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-005",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-SYS-SHUT-001",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水系统在预热和后冷却期间应配置电动泵循环高温冷却水，并满足对应缸数配置的最小流量需求。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S41 Everllence 49/60DF Project Guide|component:高温冷却水预热泵|intent:预热和后冷却期间最小流量|hint:原文按缸数配置给出最小流量区间，具体取值须按实际缸数配置与厂家数据确定}}",
+        "applicable_condition": "高温冷却水系统预热和后冷却期间；缸数配置按实际项目确定。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "预热期间由电动泵循环高温冷却水",
+          "最小流量满足对应缸数配置要求",
+          "预热器运行报警条件按厂家要求处理"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-005",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置膨胀水箱，其功能与水质要求应依据厂家技术数据或项目计算文件确定。",
+        "measurable_criterion": "{{TBD|unit:L|ref:S29 Caterpillar, Know Your Cooling System|component:膨胀水箱|intent:容积与水质参数|hint:原文仅说明膨胀水箱功能，未给出具体数值，须按厂家技术数据或项目计算文件确定}}",
+        "applicable_condition": "热交换器式冷却水系统；具体机型与系统型式未知。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "设置膨胀水箱",
+          "膨胀水箱功能满足系统要求",
+          "水质参数按厂家技术数据或项目计算文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-EXP-WATER-008",
+            "tier": "L3",
+            "source": "S29 Caterpillar, Know Your Cooling System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "废冷却液禁止排入地面、下水道和雨水排放系统，排放点水质应依据厂家技术数据或项目计算文件确定。",
+        "measurable_criterion": "[Q]废冷却液禁止排入地面、下水道和雨水排放系统；排放点水质参数依据来源文件、厂家技术数据或项目计算文件确定，具体限值未知。",
+        "applicable_condition": "冷却液排放与维护处理工况；具体限值和检测周期须按来源文件适用条件使用。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "废冷却液不排入地面",
+          "废冷却液不排入下水道",
+          "废冷却液不排入雨水排放系统",
+          "排放点水质参数按适用文件确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-DRAIN-WATER-001",
+            "tier": "L3",
+            "source": "S50 Washington State Department of Ecology Antifreeze",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:40:59.000067+00:00",
+  "elapsed_seconds": 6.735
+}

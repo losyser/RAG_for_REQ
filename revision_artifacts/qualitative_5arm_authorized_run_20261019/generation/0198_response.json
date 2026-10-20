@@ -1,0 +1,186 @@
+{
+  "slot": "OR040-semantic_new",
+  "started_at": "2026-10-19T03:01:37.535891+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"c73e3a06-a940-4425-8b07-24ea73312560\",\"object\":\"chat.completion\",\"created\":1792378898,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"高温冷却水温度报警应设置高报警阈值，且该阈值应受具体厂家、机型和控制系统配置约束，不得随意设定。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度|intent:高报警阈值|hint:证据给出95°C/105°C两级基本温度值，但仅适用于Scania DI16 EMS/S6配置，本船机型未确认，阈值待定}}\\\", \\\"applicable_condition\\\": \\\"适用于配置高温冷却水温度报警的主机冷却水系统；具体阈值仅在确认厂家、机型及控制系统配置后确定\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"报警阈值设定值有厂家文件或型式认可依据，并在报警设定清单中记录\\\", \\\"阈值设定范围与所确认的厂家、机型及控制系统配置一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-003\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"L1-CCS2025-9.4.2.2-032\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水温度报警应设置报警延时，延时值应可量化并经验证，避免因瞬时波动产生频繁误报警而影响运行。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:s|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度报警|intent:报警延时|hint:证据给出温度高于95°C持续1秒触发CAN报警消息，仅适用于Scania DI16 EMS/S6配置，本船延时值待定}}\\\", \\\"applicable_condition\\\": \\\"适用于配置高温冷却水温度报警的主机冷却水系统；延时值在确认厂家、机型及控制系统配置后确定\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"报警延时设定值在报警设定清单中记录并可追溯至厂家文件\\\", \\\"注入短于设定延时的温度越限信号时不应触发报警\\\", \\\"注入超过设定延时的温度越限信号时应触发报警\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-001\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"高温冷却水温度报警应设置报警重置条件，报警消失后需经认可值保持一定时间方可重置，防止报警频繁通断。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:s|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度报警|intent:报警重置保持时间|hint:证据给出认可值记录2秒以上以重置警报，仅适用于Scania DI16 EMS/S6配置，本船重置时间待定}}\\\", \\\"applicable_condition\\\": \\\"适用于配置高温冷却水温度报警的主机冷却水系统；重置条件在确认厂家、机型及控制系统配置后确定\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"报警重置保持时间在报警设定清单中记录并可追溯至厂家文件\\\", \\\"温度恢复至正常后未达到保持时间时报警不应重置\\\", \\\"温度恢复并保持超过设定时间后报警应重置\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-002\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"高温冷却水温度高报警应联动降负荷或软停机保护动作，保护动作阈值与动作方式应受具体厂家、机型和控制系统配置约束。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度|intent:降负荷保护动作阈值|hint:证据给出超过95°C激活扭矩降低、燃油量降至70%，仅适用于Scania DI16 EMS/S6配置，本船动作阈值待定}}\\\", \\\"applicable_condition\\\": \\\"适用于配置高温冷却水温度保护的主机冷却水系统；动作阈值与动作方式在确认厂家、机型及控制系统配置后确定\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"保护动作阈值与动作方式在报警与保护设定清单中记录并可追溯至厂家文件\\\", \\\"模拟温度越限至保护阈值时，降负荷或软停机动作按设定执行\\\", \\\"软停机时电源管理系统启动备用发动机并转移负载后关闭报警发动机（如配置软停机）\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-006\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S06 Scania DI16 船用发动机车主手册（中文）\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-HT-SHUT-003\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": false}, {\\\"kb_id\\\": \\\"E-HT-SHUT-005\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": false}]}, {\\\"shall_statement\\\": \\\"冷却水系统故障应在持续有人值班的控制站设置声光报警。\\\", \\\"measurable_criterion\\\": \\\"[Q] 在持续有人值班的控制站设置声光报警，以指示冷却系统的任何故障。\\\", \\\"applicable_condition\\\": \\\"适用于按ABS规范入级的船舶冷却水系统；具体船型与布置未知\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"持续有人值班的控制站设有冷却水系统故障声光报警\\\", \\\"报警指示功能经检查确认可指示冷却系统故障\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-ALARM-ALARM-009\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"S43 ABS Marine Vessel Rules Part 4 2021\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"柴油机冷却系统应设置高温报警装置。\\\", \\\"measurable_criterion\\\": \\\"[Q] 柴油机的冷却系统应设高温报警装置。\\\", \\\"applicable_condition\\\": \\\"适用于按CCS规范入级的柴油机冷却系统；具体机型未知\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"柴油机冷却系统配置高温报警装置\\\", \\\"高温报警装置经检查确认存在且功能有效\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"L1-CCS2025-9.4.2.2-032\\\", \\\"tier\\\": \\\"L1\\\", \\\"source\\\": \\\"CCS《钢质海船入级规范》2025\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2099,\"completion_tokens\":1617,\"total_tokens\":3716,\"prompt_tokens_details\":{\"cached_tokens\":1664},\"prompt_cache_hit_tokens\":1664,\"prompt_cache_miss_tokens\":435},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:01:38 GMT"
+  },
+  "response": {
+    "id": "c73e3a06-a940-4425-8b07-24ea73312560",
+    "object": "chat.completion",
+    "created": 1792378898,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"高温冷却水温度报警应设置高报警阈值，且该阈值应受具体厂家、机型和控制系统配置约束，不得随意设定。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度|intent:高报警阈值|hint:证据给出95°C/105°C两级基本温度值，但仅适用于Scania DI16 EMS/S6配置，本船机型未确认，阈值待定}}\", \"applicable_condition\": \"适用于配置高温冷却水温度报警的主机冷却水系统；具体阈值仅在确认厂家、机型及控制系统配置后确定\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"报警阈值设定值有厂家文件或型式认可依据，并在报警设定清单中记录\", \"阈值设定范围与所确认的厂家、机型及控制系统配置一致\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-003\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}, {\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}, {\"kb_id\": \"L1-CCS2025-9.4.2.2-032\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水温度报警应设置报警延时，延时值应可量化并经验证，避免因瞬时波动产生频繁误报警而影响运行。\", \"measurable_criterion\": \"{{TBD|unit:s|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度报警|intent:报警延时|hint:证据给出温度高于95°C持续1秒触发CAN报警消息，仅适用于Scania DI16 EMS/S6配置，本船延时值待定}}\", \"applicable_condition\": \"适用于配置高温冷却水温度报警的主机冷却水系统；延时值在确认厂家、机型及控制系统配置后确定\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"报警延时设定值在报警设定清单中记录并可追溯至厂家文件\", \"注入短于设定延时的温度越限信号时不应触发报警\", \"注入超过设定延时的温度越限信号时应触发报警\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-001\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"高温冷却水温度报警应设置报警重置条件，报警消失后需经认可值保持一定时间方可重置，防止报警频繁通断。\", \"measurable_criterion\": \"{{TBD|unit:s|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度报警|intent:报警重置保持时间|hint:证据给出认可值记录2秒以上以重置警报，仅适用于Scania DI16 EMS/S6配置，本船重置时间待定}}\", \"applicable_condition\": \"适用于配置高温冷却水温度报警的主机冷却水系统；重置条件在确认厂家、机型及控制系统配置后确定\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"报警重置保持时间在报警设定清单中记录并可追溯至厂家文件\", \"温度恢复至正常后未达到保持时间时报警不应重置\", \"温度恢复并保持超过设定时间后报警应重置\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-002\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}]}, {\"shall_statement\": \"高温冷却水温度高报警应联动降负荷或软停机保护动作，保护动作阈值与动作方式应受具体厂家、机型和控制系统配置约束。\", \"measurable_criterion\": \"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度|intent:降负荷保护动作阈值|hint:证据给出超过95°C激活扭矩降低、燃油量降至70%，仅适用于Scania DI16 EMS/S6配置，本船动作阈值待定}}\", \"applicable_condition\": \"适用于配置高温冷却水温度保护的主机冷却水系统；动作阈值与动作方式在确认厂家、机型及控制系统配置后确定\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"保护动作阈值与动作方式在报警与保护设定清单中记录并可追溯至厂家文件\", \"模拟温度越限至保护阈值时，降负荷或软停机动作按设定执行\", \"软停机时电源管理系统启动备用发动机并转移负载后关闭报警发动机（如配置软停机）\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-006\", \"tier\": \"L3\", \"source\": \"S06 Scania DI16 船用发动机车主手册（中文）\", \"has_clause\": false}, {\"kb_id\": \"E-HT-SHUT-003\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": false}, {\"kb_id\": \"E-HT-SHUT-005\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": false}]}, {\"shall_statement\": \"冷却水系统故障应在持续有人值班的控制站设置声光报警。\", \"measurable_criterion\": \"[Q] 在持续有人值班的控制站设置声光报警，以指示冷却系统的任何故障。\", \"applicable_condition\": \"适用于按ABS规范入级的船舶冷却水系统；具体船型与布置未知\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"持续有人值班的控制站设有冷却水系统故障声光报警\", \"报警指示功能经检查确认可指示冷却系统故障\"], \"evidence_citations\": [{\"kb_id\": \"E-ALARM-ALARM-009\", \"tier\": \"L1\", \"source\": \"S43 ABS Marine Vessel Rules Part 4 2021\", \"has_clause\": true}]}, {\"shall_statement\": \"柴油机冷却系统应设置高温报警装置。\", \"measurable_criterion\": \"[Q] 柴油机的冷却系统应设高温报警装置。\", \"applicable_condition\": \"适用于按CCS规范入级的柴油机冷却系统；具体机型未知\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"柴油机冷却系统配置高温报警装置\", \"高温报警装置经检查确认存在且功能有效\"], \"evidence_citations\": [{\"kb_id\": \"L1-CCS2025-9.4.2.2-032\", \"tier\": \"L1\", \"source\": \"CCS《钢质海船入级规范》2025\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2099,
+      "completion_tokens": 1617,
+      "total_tokens": 3716,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 435
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.017134",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.017134",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "高温冷却水温度报警应设置高报警阈值，且该阈值应受具体厂家、机型和控制系统配置约束，不得随意设定。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度|intent:高报警阈值|hint:证据给出95°C/105°C两级基本温度值，但仅适用于Scania DI16 EMS/S6配置，本船机型未确认，阈值待定}}",
+        "applicable_condition": "适用于配置高温冷却水温度报警的主机冷却水系统；具体阈值仅在确认厂家、机型及控制系统配置后确定",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警阈值设定值有厂家文件或型式认可依据，并在报警设定清单中记录",
+          "阈值设定范围与所确认的厂家、机型及控制系统配置一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-003",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "L1-CCS2025-9.4.2.2-032",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水温度报警应设置报警延时，延时值应可量化并经验证，避免因瞬时波动产生频繁误报警而影响运行。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度报警|intent:报警延时|hint:证据给出温度高于95°C持续1秒触发CAN报警消息，仅适用于Scania DI16 EMS/S6配置，本船延时值待定}}",
+        "applicable_condition": "适用于配置高温冷却水温度报警的主机冷却水系统；延时值在确认厂家、机型及控制系统配置后确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "报警延时设定值在报警设定清单中记录并可追溯至厂家文件",
+          "注入短于设定延时的温度越限信号时不应触发报警",
+          "注入超过设定延时的温度越限信号时应触发报警"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水温度报警应设置报警重置条件，报警消失后需经认可值保持一定时间方可重置，防止报警频繁通断。",
+        "measurable_criterion": "{{TBD|unit:s|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度报警|intent:报警重置保持时间|hint:证据给出认可值记录2秒以上以重置警报，仅适用于Scania DI16 EMS/S6配置，本船重置时间待定}}",
+        "applicable_condition": "适用于配置高温冷却水温度报警的主机冷却水系统；重置条件在确认厂家、机型及控制系统配置后确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "报警重置保持时间在报警设定清单中记录并可追溯至厂家文件",
+          "温度恢复至正常后未达到保持时间时报警不应重置",
+          "温度恢复并保持超过设定时间后报警应重置"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-002",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水温度高报警应联动降负荷或软停机保护动作，保护动作阈值与动作方式应受具体厂家、机型和控制系统配置约束。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册|component:高温冷却水温度|intent:降负荷保护动作阈值|hint:证据给出超过95°C激活扭矩降低、燃油量降至70%，仅适用于Scania DI16 EMS/S6配置，本船动作阈值待定}}",
+        "applicable_condition": "适用于配置高温冷却水温度保护的主机冷却水系统；动作阈值与动作方式在确认厂家、机型及控制系统配置后确定",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "保护动作阈值与动作方式在报警与保护设定清单中记录并可追溯至厂家文件",
+          "模拟温度越限至保护阈值时，降负荷或软停机动作按设定执行",
+          "软停机时电源管理系统启动备用发动机并转移负载后关闭报警发动机（如配置软停机）"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-006",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-SHUT-003",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-SHUT-005",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统故障应在持续有人值班的控制站设置声光报警。",
+        "measurable_criterion": "[Q] 在持续有人值班的控制站设置声光报警，以指示冷却系统的任何故障。",
+        "applicable_condition": "适用于按ABS规范入级的船舶冷却水系统；具体船型与布置未知",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "持续有人值班的控制站设有冷却水系统故障声光报警",
+          "报警指示功能经检查确认可指示冷却系统故障"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-ALARM-ALARM-009",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "柴油机冷却系统应设置高温报警装置。",
+        "measurable_criterion": "[Q] 柴油机的冷却系统应设高温报警装置。",
+        "applicable_condition": "适用于按CCS规范入级的柴油机冷却系统；具体机型未知",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "柴油机冷却系统配置高温报警装置",
+          "高温报警装置经检查确认存在且功能有效"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-9.4.2.2-032",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:01:44.926947+00:00",
+  "elapsed_seconds": 7.25
+}

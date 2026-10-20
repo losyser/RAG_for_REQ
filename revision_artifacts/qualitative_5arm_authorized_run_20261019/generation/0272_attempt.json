@@ -1,0 +1,37 @@
+{
+  "slot": "OR055-semantic_old",
+  "body_sha256": "87f26eef0b69fae1712bdbc820ce97297b4e45d1796a4a2da2d6706ef59e3377",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:10:34.812244+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR055-semantic_old",
+    "source_id": "OR055",
+    "group": "semantic_old",
+    "context_sha256": "f0a77e88e9d9b984dc89dc9ef83cef0dcf0501a0ef8bd635c3e7b8131eaff103",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n牺牲阳极或者其他防腐部件如果有配置，要方便检查和更换。\n\n## 证据清单\n[E-SW-CLEAN-006] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却系统清洗要求\nvoltage that exists between the two dissimilar metals allows current to flow. Galvanic corrosion occurs on the least resistant metal. In marine applications where sea water is highly conductive, sacrificial material (rods) are placed in seawater flow passages to absorb current flow. Typically, this wear material is either magnesium or zinc. Rods must be inspected regularly and replaced when necessary. Caterpillar recommends inspecting rods every 50 hours until a wear rate is established\n  [量化参数] 50\n\n[E-SYS-CORR-002] 层级:L3 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却水连接关系\ndesigned so that no continuous electrical potential is imposed upon any cooling system components. Despite coolant mixture quality, the presence of an electrical potential can cause materials in the cooling system to be damaged by electrolytic corrosion. Soundness of ground connections should be checked with a volt/ohm meter. Typically, measured resistance between an electrical component on the engine and battery negative should be less than 0.3 ohms. All grounds should be tight and free\n  [量化参数] 0.3、one-half\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "87f26eef0b69fae1712bdbc820ce97297b4e45d1796a4a2da2d6706ef59e3377",
+    "utf8_message_bytes": 2317,
+    "execution_index": 272
+  }
+}

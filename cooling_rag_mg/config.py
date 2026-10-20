@@ -55,8 +55,11 @@ class Paths:
 
     @property
     def evidence_units_jsonl(self) -> Path:
-        v2 = self.processed_dir / "evidence_units_v2.jsonl"
-        return v2 if v2.exists() else self.processed_dir / "evidence_units.jsonl"
+        for name in ("evidence_units_v3_audited.jsonl", "evidence_units_v2.jsonl"):
+            p = self.processed_dir / name
+            if p.exists():
+                return p
+        return self.processed_dir / "evidence_units.jsonl"
 
     @property
     def source_chunks_jsonl(self) -> Path:

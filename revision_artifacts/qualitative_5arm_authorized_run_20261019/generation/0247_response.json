@@ -1,0 +1,258 @@
+{
+  "slot": "OR050-semantic_old",
+  "started_at": "2026-10-19T03:07:13.958895+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"6318f2c9-4113-40a7-be59-36339448072a\",\"object\":\"chat.completion\",\"created\":1792379235,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应配置冷却器换热效果评估功能，结合运行温度数据对冷却器换热性能进行判断，不得仅在低负荷工况下判定冷却器正常。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:冷却器|intent:换热效果判定|hint:需依据厂家技术数据确定各负荷工况下冷却器进出口温度判据，覆盖低负荷与高负荷运行温度数据}}\\\",\\\"applicable_condition\\\":\\\"冷却器投入运行的全部负荷工况，包括低负荷及高负荷运行状态\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"换热效果判定逻辑覆盖低负荷与高负荷运行温度数据\\\",\\\"判定依据引用厂家技术数据或项目计算文件中的温度限值\\\",\\\"不存在仅以低负荷工况判定冷却器正常的逻辑分支\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-COMP-036\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-JACKET-MAINT-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应在冷却器及主要系统部件处设置压力和温度差测量点，以支撑换热效果与运行温度数据的采集与判断。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:个|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却器及主要系统部件|intent:监测点布置|hint:需依据厂家技术数据或项目计算文件确定冷却器及主要部件进出口压力、温度测量点数量与位置}}\\\",\\\"applicable_condition\\\":\\\"冷却器及主要系统部件的监测点设计与布置\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却器进出口均设有温度测量点\\\",\\\"主要系统部件设有压力与温度差测量点\\\",\\\"测量点位置与数量符合厂家技术数据或项目计算文件\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-JACKET-MAINT-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S21 Caterpillar Cooling Systems Application and Installation Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-TSENS-PRESS-015\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"高温冷却水系统应在HP TC增压空气冷却器出口、缸套冷却出口、LP TC增压空气冷却器出口及发动机进口等测量点监测冷却水温度，作为冷却器换热效果判断的运行温度数据来源。\\\",\\\"measurable_criterion\\\":\\\"HP TC增压空气冷却器出口处60°C至80°C；缸套冷却出口处60°C至92°C；LP TC增压空气冷却器出口处标称值90°C；发动机进口处-100°C（启动前预热）\\\",\\\"applicable_condition\\\":\\\"TE3145(3102)、TE3170、TE3180、3111/TE3190测量点对应的运行工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"各测量点温度处于对应限值范围内\\\",\\\"温度数据纳入冷却器换热效果判断逻辑\\\",\\\"测量点标识与厂家技术数据一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-COMP-036\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应对冷却器进行泄漏检查，对滑油、燃油等环境危害流体的海水冷却器应采用可检测泄漏的结构并配置泄漏检测装置。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却器|intent:泄漏检测|hint:需依据规则4-6-5/7.5、4-6-5/7.7及4-8-5/5.5.1(b)确定泄漏检查方式与检测装置配置要求}}\\\",\\\"applicable_condition\\\":\\\"冷却系统泄漏检查；单系统旋转推进机械的水-空气热交换器\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"危害流体海水冷却器采用双壁板式或等效可检漏结构\\\",\\\"配置泄漏检测装置以监测水泄漏\\\",\\\"泄漏检查符合规则4-6-5/7.5与4-6-5/7.7规定\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-ALARM-002\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SW-INSP-002\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S41 Everllence 49/60DF Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应在通常有人值守的位置设置视觉和听觉报警，以指示检测到的冷却水泄漏。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:报警装置|intent:泄漏报警|hint:需依据规则确定报警阈值与保护动作，受厂家、机型和控制系统配置约束}}\\\",\\\"applicable_condition\\\":\\\"冷却水泄漏检测报警\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"有人值守位置设有视觉报警\\\",\\\"有人值守位置设有听觉报警\\\",\\\"报警触发条件与泄漏检测装置联动\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SW-ALARM-002\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应对冷却器及相关管路按维护程序进行清洗、检修与复查，清洗后重新投运前应确认换热能力恢复情况。\\\",\\\"measurable_criterion\\\":\\\"每年一次\\\",\\\"applicable_condition\\\":\\\"海水循环冷却水处理构筑物及设备的维护检修\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"每年检修所有机械设备一次\\\",\\\"完成清洗、修漏、防腐及附属机械设备检修\\\",\\\"重新投运前确认无残留清洗剂、泄漏、沉积物且换热能力恢复\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-CENTRAL-INSP-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S32 HY/T 海水循环冷却系统运行管理规范\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SW-MAINT-003\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S29 Caterpillar, Know Your Cooling System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应为冷却器拆检提供足够空间，以保证增压空气冷却器芯、滑油冷却器等部件的抽出与维护。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mm|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却器|intent:维护空间|hint:需依据厂家技术数据或项目计算文件确定冷却器芯及滤芯抽出所需最小空间尺寸}}\\\",\\\"applicable_condition\\\":\\\"冷却器及附属部件拆检维护\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"增压空气冷却器芯抽出空间满足要求\\\",\\\"滑油冷却器及滤芯拆检空间满足要求\\\",\\\"布置满足厂家维护空间要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-MAINT-003\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S36 MAN L23/30H GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-IFACE-MAINT-001\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S10 MAN L23/30DF Project Guide Internal cooling water system\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置冷却液更换与加注维护要求，包括膨胀水箱加注及系统最低点排放操作。\\\",\\\"measurable_criterion\\\":\\\"3 个点处排放（气缸体右下侧2个泄水阀、左下侧泄水阀）；热交换器下2个塞子\\\",\\\"applicable_condition\\\":\\\"冷却液更换与加注维护\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"按3个排放点完成冷却液排放\\\",\\\"热交换器下2个塞子按要求拆装\\\",\\\"通过膨胀水箱加注孔加注至正确液位并按手册混合冷却液\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-MAINT-024\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统预热功能应自动投入，发动机运行时断开、待机时接通，以保证启动前及待机状态下的冷却水温度。\\\",\\\"measurable_criterion\\\":\\\"顶盖处温度≥60°C；气缸出口温度约25至45°C\\\",\\\"applicable_condition\\\":\\\"预热自动运行；发动机运行中断开、待机时接通\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"待机状态下顶盖处温度≥60°C\\\",\\\"气缸出口温度处于25至45°C范围\\\",\\\"预热在发动机运行时自动断开\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TSENS-PRESS-005\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-TSENS-PRESS-008\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2913,\"completion_tokens\":2076,\"total_tokens\":4989,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2913},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:07:15 GMT"
+  },
+  "response": {
+    "id": "6318f2c9-4113-40a7-be59-36339448072a",
+    "object": "chat.completion",
+    "created": 1792379235,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应配置冷却器换热效果评估功能，结合运行温度数据对冷却器换热性能进行判断，不得仅在低负荷工况下判定冷却器正常。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:冷却器|intent:换热效果判定|hint:需依据厂家技术数据确定各负荷工况下冷却器进出口温度判据，覆盖低负荷与高负荷运行温度数据}}\",\"applicable_condition\":\"冷却器投入运行的全部负荷工况，包括低负荷及高负荷运行状态\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"换热效果判定逻辑覆盖低负荷与高负荷运行温度数据\",\"判定依据引用厂家技术数据或项目计算文件中的温度限值\",\"不存在仅以低负荷工况判定冷却器正常的逻辑分支\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-COMP-036\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true},{\"kb_id\":\"E-JACKET-MAINT-001\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应在冷却器及主要系统部件处设置压力和温度差测量点，以支撑换热效果与运行温度数据的采集与判断。\",\"measurable_criterion\":\"{{TBD|unit:个|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却器及主要系统部件|intent:监测点布置|hint:需依据厂家技术数据或项目计算文件确定冷却器及主要部件进出口压力、温度测量点数量与位置}}\",\"applicable_condition\":\"冷却器及主要系统部件的监测点设计与布置\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却器进出口均设有温度测量点\",\"主要系统部件设有压力与温度差测量点\",\"测量点位置与数量符合厂家技术数据或项目计算文件\"],\"evidence_citations\":[{\"kb_id\":\"E-JACKET-MAINT-001\",\"tier\":\"L3\",\"source\":\"S21 Caterpillar Cooling Systems Application and Installation Guide\",\"has_clause\":true},{\"kb_id\":\"E-TSENS-PRESS-015\",\"tier\":\"L2\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"高温冷却水系统应在HP TC增压空气冷却器出口、缸套冷却出口、LP TC增压空气冷却器出口及发动机进口等测量点监测冷却水温度，作为冷却器换热效果判断的运行温度数据来源。\",\"measurable_criterion\":\"HP TC增压空气冷却器出口处60°C至80°C；缸套冷却出口处60°C至92°C；LP TC增压空气冷却器出口处标称值90°C；发动机进口处-100°C（启动前预热）\",\"applicable_condition\":\"TE3145(3102)、TE3170、TE3180、3111/TE3190测量点对应的运行工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"各测量点温度处于对应限值范围内\",\"温度数据纳入冷却器换热效果判断逻辑\",\"测量点标识与厂家技术数据一致\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-COMP-036\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应对冷却器进行泄漏检查，对滑油、燃油等环境危害流体的海水冷却器应采用可检测泄漏的结构并配置泄漏检测装置。\",\"measurable_criterion\":\"{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却器|intent:泄漏检测|hint:需依据规则4-6-5/7.5、4-6-5/7.7及4-8-5/5.5.1(b)确定泄漏检查方式与检测装置配置要求}}\",\"applicable_condition\":\"冷却系统泄漏检查；单系统旋转推进机械的水-空气热交换器\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"危害流体海水冷却器采用双壁板式或等效可检漏结构\",\"配置泄漏检测装置以监测水泄漏\",\"泄漏检查符合规则4-6-5/7.5与4-6-5/7.7规定\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-ALARM-002\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-SW-INSP-002\",\"tier\":\"L3\",\"source\":\"S41 Everllence 49/60DF Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应在通常有人值守的位置设置视觉和听觉报警，以指示检测到的冷却水泄漏。\",\"measurable_criterion\":\"{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:报警装置|intent:泄漏报警|hint:需依据规则确定报警阈值与保护动作，受厂家、机型和控制系统配置约束}}\",\"applicable_condition\":\"冷却水泄漏检测报警\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"有人值守位置设有视觉报警\",\"有人值守位置设有听觉报警\",\"报警触发条件与泄漏检测装置联动\"],\"evidence_citations\":[{\"kb_id\":\"E-SW-ALARM-002\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应对冷却器及相关管路按维护程序进行清洗、检修与复查，清洗后重新投运前应确认换热能力恢复情况。\",\"measurable_criterion\":\"每年一次\",\"applicable_condition\":\"海水循环冷却水处理构筑物及设备的维护检修\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"每年检修所有机械设备一次\",\"完成清洗、修漏、防腐及附属机械设备检修\",\"重新投运前确认无残留清洗剂、泄漏、沉积物且换热能力恢复\"],\"evidence_citations\":[{\"kb_id\":\"E-CENTRAL-INSP-001\",\"tier\":\"L3\",\"source\":\"S32 HY/T 海水循环冷却系统运行管理规范\",\"has_clause\":true},{\"kb_id\":\"E-SW-MAINT-003\",\"tier\":\"L3\",\"source\":\"S29 Caterpillar, Know Your Cooling System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应为冷却器拆检提供足够空间，以保证增压空气冷却器芯、滑油冷却器等部件的抽出与维护。\",\"measurable_criterion\":\"{{TBD|unit:mm|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却器|intent:维护空间|hint:需依据厂家技术数据或项目计算文件确定冷却器芯及滤芯抽出所需最小空间尺寸}}\",\"applicable_condition\":\"冷却器及附属部件拆检维护\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"增压空气冷却器芯抽出空间满足要求\",\"滑油冷却器及滤芯拆检空间满足要求\",\"布置满足厂家维护空间要求\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-MAINT-003\",\"tier\":\"L2\",\"source\":\"S36 MAN L23/30H GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-IFACE-MAINT-001\",\"tier\":\"L2\",\"source\":\"S10 MAN L23/30DF Project Guide Internal cooling water system\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设置冷却液更换与加注维护要求，包括膨胀水箱加注及系统最低点排放操作。\",\"measurable_criterion\":\"3 个点处排放（气缸体右下侧2个泄水阀、左下侧泄水阀）；热交换器下2个塞子\",\"applicable_condition\":\"冷却液更换与加注维护\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"按3个排放点完成冷却液排放\",\"热交换器下2个塞子按要求拆装\",\"通过膨胀水箱加注孔加注至正确液位并按手册混合冷却液\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-MAINT-024\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统预热功能应自动投入，发动机运行时断开、待机时接通，以保证启动前及待机状态下的冷却水温度。\",\"measurable_criterion\":\"顶盖处温度≥60°C；气缸出口温度约25至45°C\",\"applicable_condition\":\"预热自动运行；发动机运行中断开、待机时接通\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"待机状态下顶盖处温度≥60°C\",\"气缸出口温度处于25至45°C范围\",\"预热在发动机运行时自动断开\"],\"evidence_citations\":[{\"kb_id\":\"E-TSENS-PRESS-005\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-TSENS-PRESS-008\",\"tier\":\"L2\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2913,
+      "completion_tokens": 2076,
+      "total_tokens": 4989,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2913
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.022434",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.022434",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应配置冷却器换热效果评估功能，结合运行温度数据对冷却器换热性能进行判断，不得仅在低负荷工况下判定冷却器正常。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:冷却器|intent:换热效果判定|hint:需依据厂家技术数据确定各负荷工况下冷却器进出口温度判据，覆盖低负荷与高负荷运行温度数据}}",
+        "applicable_condition": "冷却器投入运行的全部负荷工况，包括低负荷及高负荷运行状态",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "换热效果判定逻辑覆盖低负荷与高负荷运行温度数据",
+          "判定依据引用厂家技术数据或项目计算文件中的温度限值",
+          "不存在仅以低负荷工况判定冷却器正常的逻辑分支"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-036",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-JACKET-MAINT-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应在冷却器及主要系统部件处设置压力和温度差测量点，以支撑换热效果与运行温度数据的采集与判断。",
+        "measurable_criterion": "{{TBD|unit:个|ref:S21 Caterpillar Cooling Systems Application and Installation Guide|component:冷却器及主要系统部件|intent:监测点布置|hint:需依据厂家技术数据或项目计算文件确定冷却器及主要部件进出口压力、温度测量点数量与位置}}",
+        "applicable_condition": "冷却器及主要系统部件的监测点设计与布置",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却器进出口均设有温度测量点",
+          "主要系统部件设有压力与温度差测量点",
+          "测量点位置与数量符合厂家技术数据或项目计算文件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-JACKET-MAINT-001",
+            "tier": "L3",
+            "source": "S21 Caterpillar Cooling Systems Application and Installation Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TSENS-PRESS-015",
+            "tier": "L2",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水系统应在HP TC增压空气冷却器出口、缸套冷却出口、LP TC增压空气冷却器出口及发动机进口等测量点监测冷却水温度，作为冷却器换热效果判断的运行温度数据来源。",
+        "measurable_criterion": "HP TC增压空气冷却器出口处60°C至80°C；缸套冷却出口处60°C至92°C；LP TC增压空气冷却器出口处标称值90°C；发动机进口处-100°C（启动前预热）",
+        "applicable_condition": "TE3145(3102)、TE3170、TE3180、3111/TE3190测量点对应的运行工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "各测量点温度处于对应限值范围内",
+          "温度数据纳入冷却器换热效果判断逻辑",
+          "测量点标识与厂家技术数据一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-036",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应对冷却器进行泄漏检查，对滑油、燃油等环境危害流体的海水冷却器应采用可检测泄漏的结构并配置泄漏检测装置。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却器|intent:泄漏检测|hint:需依据规则4-6-5/7.5、4-6-5/7.7及4-8-5/5.5.1(b)确定泄漏检查方式与检测装置配置要求}}",
+        "applicable_condition": "冷却系统泄漏检查；单系统旋转推进机械的水-空气热交换器",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "危害流体海水冷却器采用双壁板式或等效可检漏结构",
+          "配置泄漏检测装置以监测水泄漏",
+          "泄漏检查符合规则4-6-5/7.5与4-6-5/7.7规定"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-ALARM-002",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SW-INSP-002",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应在通常有人值守的位置设置视觉和听觉报警，以指示检测到的冷却水泄漏。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:报警装置|intent:泄漏报警|hint:需依据规则确定报警阈值与保护动作，受厂家、机型和控制系统配置约束}}",
+        "applicable_condition": "冷却水泄漏检测报警",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "有人值守位置设有视觉报警",
+          "有人值守位置设有听觉报警",
+          "报警触发条件与泄漏检测装置联动"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SW-ALARM-002",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应对冷却器及相关管路按维护程序进行清洗、检修与复查，清洗后重新投运前应确认换热能力恢复情况。",
+        "measurable_criterion": "每年一次",
+        "applicable_condition": "海水循环冷却水处理构筑物及设备的维护检修",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "每年检修所有机械设备一次",
+          "完成清洗、修漏、防腐及附属机械设备检修",
+          "重新投运前确认无残留清洗剂、泄漏、沉积物且换热能力恢复"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-CENTRAL-INSP-001",
+            "tier": "L3",
+            "source": "S32 HY/T 海水循环冷却系统运行管理规范",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SW-MAINT-003",
+            "tier": "L3",
+            "source": "S29 Caterpillar, Know Your Cooling System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应为冷却器拆检提供足够空间，以保证增压空气冷却器芯、滑油冷却器等部件的抽出与维护。",
+        "measurable_criterion": "{{TBD|unit:mm|ref:S36 MAN L23/30H GenSet Project Guide|component:冷却器|intent:维护空间|hint:需依据厂家技术数据或项目计算文件确定冷却器芯及滤芯抽出所需最小空间尺寸}}",
+        "applicable_condition": "冷却器及附属部件拆检维护",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "增压空气冷却器芯抽出空间满足要求",
+          "滑油冷却器及滤芯拆检空间满足要求",
+          "布置满足厂家维护空间要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-MAINT-003",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-IFACE-MAINT-001",
+            "tier": "L2",
+            "source": "S10 MAN L23/30DF Project Guide Internal cooling water system",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置冷却液更换与加注维护要求，包括膨胀水箱加注及系统最低点排放操作。",
+        "measurable_criterion": "3 个点处排放（气缸体右下侧2个泄水阀、左下侧泄水阀）；热交换器下2个塞子",
+        "applicable_condition": "冷却液更换与加注维护",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "按3个排放点完成冷却液排放",
+          "热交换器下2个塞子按要求拆装",
+          "通过膨胀水箱加注孔加注至正确液位并按手册混合冷却液"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-MAINT-024",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统预热功能应自动投入，发动机运行时断开、待机时接通，以保证启动前及待机状态下的冷却水温度。",
+        "measurable_criterion": "顶盖处温度≥60°C；气缸出口温度约25至45°C",
+        "applicable_condition": "预热自动运行；发动机运行中断开、待机时接通",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "待机状态下顶盖处温度≥60°C",
+          "气缸出口温度处于25至45°C范围",
+          "预热在发动机运行时自动断开"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TSENS-PRESS-005",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-TSENS-PRESS-008",
+            "tier": "L2",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:07:23.384772+00:00",
+  "elapsed_seconds": 9.218
+}

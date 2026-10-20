@@ -1,0 +1,123 @@
+{
+  "slot": "OR031-norag_original",
+  "started_at": "2026-10-19T02:56:35.452403+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"bc6b96a5-7d6a-47a1-b117-2e5d5af0916a\",\"object\":\"chat.completion\",\"created\":1792378596,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"冷却水系统应采集冷却水温度信号并接入监控系统。\\\", \\\"measurable_criterion\\\": \\\"温度测量范围0~120℃，测量精度±0.5℃，采样周期≤1s，信号更新至监控系统延迟≤2s。\\\", \\\"applicable_condition\\\": \\\"主机运行及冷却水系统投运工况（含暖机、正常运行、停机后冷却阶段）。\\\", \\\"verification_method\\\": \\\"测试验证（信号注入与实船比对）+ 检查（信号清单与接线图核对）。\\\", \\\"acceptance_criteria\\\": [\\\"温度信号在监控系统画面正确显示，量程与单位符合规定。\\\", \\\"实测温度与标准温度计比对偏差≤±0.5℃。\\\", \\\"采样周期与传输延迟满足判据要求。\\\"], \\\"evidence_citations\\\": []}, {\\\"shall_statement\\\": \\\"冷却水系统应采集冷却水压力信号并接入监控系统。\\\", \\\"measurable_criterion\\\": \\\"压力测量范围0~1.0MPa（表压），测量精度±1%FS，采样周期≤1s，超限报警阈值可配置。\\\", \\\"applicable_condition\\\": \\\"冷却水泵运行、系统充压及正常循环工况。\\\", \\\"verification_method\\\": \\\"测试验证（标准压力源校准与实船比对）+ 检查（仪表校准证书）。\\\", \\\"acceptance_criteria\\\": [\\\"压力信号在监控系统正确显示，量程与单位符合规定。\\\", \\\"实测压力与标准压力表比对偏差≤±1%FS。\\\", \\\"压力越限时监控系统按设定阈值发出报警。\\\"], \\\"evidence_citations\\\": []}, {\\\"shall_statement\\\": \\\"冷却水系统应采集膨胀水箱（或冷却水柜）液位信号并接入监控系统。\\\", \\\"measurable_criterion\\\": \\\"液位测量范围覆盖水箱0~100%液位，测量精度±2%FS，采样周期≤2s，低液位报警阈值可配置。\\\", \\\"applicable_condition\\\": \\\"系统充水、正常运行及补水工况。\\\", \\\"verification_method\\\": \\\"测试验证（模拟液位变化与实船比对）+ 检查（液位计校准记录）。\\\", \\\"acceptance_criteria\\\": [\\\"液位信号在监控系统正确显示为百分比或工程单位。\\\", \\\"实测液位与就地液位计比对偏差≤±2%FS。\\\", \\\"液位低于设定阈值时监控系统发出低液位报警。\\\"], \\\"evidence_citations\\\": []}, {\\\"shall_statement\\\": \\\"冷却水系统应采集冷却水泵运行状态信号（运行/停止、故障）并接入监控系统。\\\", \\\"measurable_criterion\\\": \\\"泵状态信号为开关量，状态变化至监控系统显示延迟≤2s，故障信号保持至人工复位或故障消除。\\\", \\\"applicable_condition\\\": \\\"冷却水泵启动、运行、切换及故障工况。\\\", \\\"verification_method\\\": \\\"测试验证（启停泵与故障模拟）+ 检查（信号点表与逻辑图核对）。\\\", \\\"acceptance_criteria\\\": [\\\"监控系统正确显示各冷却水泵运行/停止状态。\\\", \\\"模拟泵故障时监控系统在≤2s内显示故障状态并报警。\\\", \\\"泵状态与就地控制柜指示一致。\\\"], \\\"evidence_citations\\\": []}, {\\\"shall_statement\\\": \\\"监控系统应具备冷却水温度、压力、液位和泵状态的历史趋势记录功能。\\\", \\\"measurable_criterion\\\": \\\"趋势数据存储周期≤10s，历史数据保存时间≥30天，支持按时间范围查询与曲线回放。\\\", \\\"applicable_condition\\\": \\\"监控系统正常运行且数据存储功能投入时。\\\", \\\"verification_method\\\": \\\"测试验证（趋势查询与回放操作）+ 检查（存储配置参数）。\\\", \\\"acceptance_criteria\\\": [\\\"可查询不少于30天的历史趋势数据。\\\", \\\"趋势曲线时间轴与数据点间隔符合存储周期要求。\\\", \\\"支持多参数同屏趋势对比显示。\\\"], \\\"evidence_citations\\\": []}, {\\\"shall_statement\\\": \\\"监控系统应基于冷却水参数设定值实现异常判断并发出报警。\\\", \\\"measurable_criterion\\\": \\\"温度、压力、液位越限及泵故障报警响应时间≤2s，报警阈值可在监控系统内配置并具备报警记录功能。\\\", \\\"applicable_condition\\\": \\\"冷却水系统运行及监控系统报警功能投入时。\\\", \\\"verification_method\\\": \\\"测试验证（阈值触发与报警响应测试）+ 检查（报警阈值配置表）。\\\", \\\"acceptance_criteria\\\": [\\\"各参数越限时监控系统在≤2s内发出声光报警并记录报警时间与参数值。\\\", \\\"报警阈值可按系统要求配置和修改。\\\", \\\"报警记录可查询且保存时间≥30天。\\\"], \\\"evidence_citations\\\": []}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":181,\"completion_tokens\":1019,\"total_tokens\":1200,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":181},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:56:36 GMT"
+  },
+  "response": {
+    "id": "bc6b96a5-7d6a-47a1-b117-2e5d5af0916a",
+    "object": "chat.completion",
+    "created": 1792378596,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"冷却水系统应采集冷却水温度信号并接入监控系统。\", \"measurable_criterion\": \"温度测量范围0~120℃，测量精度±0.5℃，采样周期≤1s，信号更新至监控系统延迟≤2s。\", \"applicable_condition\": \"主机运行及冷却水系统投运工况（含暖机、正常运行、停机后冷却阶段）。\", \"verification_method\": \"测试验证（信号注入与实船比对）+ 检查（信号清单与接线图核对）。\", \"acceptance_criteria\": [\"温度信号在监控系统画面正确显示，量程与单位符合规定。\", \"实测温度与标准温度计比对偏差≤±0.5℃。\", \"采样周期与传输延迟满足判据要求。\"], \"evidence_citations\": []}, {\"shall_statement\": \"冷却水系统应采集冷却水压力信号并接入监控系统。\", \"measurable_criterion\": \"压力测量范围0~1.0MPa（表压），测量精度±1%FS，采样周期≤1s，超限报警阈值可配置。\", \"applicable_condition\": \"冷却水泵运行、系统充压及正常循环工况。\", \"verification_method\": \"测试验证（标准压力源校准与实船比对）+ 检查（仪表校准证书）。\", \"acceptance_criteria\": [\"压力信号在监控系统正确显示，量程与单位符合规定。\", \"实测压力与标准压力表比对偏差≤±1%FS。\", \"压力越限时监控系统按设定阈值发出报警。\"], \"evidence_citations\": []}, {\"shall_statement\": \"冷却水系统应采集膨胀水箱（或冷却水柜）液位信号并接入监控系统。\", \"measurable_criterion\": \"液位测量范围覆盖水箱0~100%液位，测量精度±2%FS，采样周期≤2s，低液位报警阈值可配置。\", \"applicable_condition\": \"系统充水、正常运行及补水工况。\", \"verification_method\": \"测试验证（模拟液位变化与实船比对）+ 检查（液位计校准记录）。\", \"acceptance_criteria\": [\"液位信号在监控系统正确显示为百分比或工程单位。\", \"实测液位与就地液位计比对偏差≤±2%FS。\", \"液位低于设定阈值时监控系统发出低液位报警。\"], \"evidence_citations\": []}, {\"shall_statement\": \"冷却水系统应采集冷却水泵运行状态信号（运行/停止、故障）并接入监控系统。\", \"measurable_criterion\": \"泵状态信号为开关量，状态变化至监控系统显示延迟≤2s，故障信号保持至人工复位或故障消除。\", \"applicable_condition\": \"冷却水泵启动、运行、切换及故障工况。\", \"verification_method\": \"测试验证（启停泵与故障模拟）+ 检查（信号点表与逻辑图核对）。\", \"acceptance_criteria\": [\"监控系统正确显示各冷却水泵运行/停止状态。\", \"模拟泵故障时监控系统在≤2s内显示故障状态并报警。\", \"泵状态与就地控制柜指示一致。\"], \"evidence_citations\": []}, {\"shall_statement\": \"监控系统应具备冷却水温度、压力、液位和泵状态的历史趋势记录功能。\", \"measurable_criterion\": \"趋势数据存储周期≤10s，历史数据保存时间≥30天，支持按时间范围查询与曲线回放。\", \"applicable_condition\": \"监控系统正常运行且数据存储功能投入时。\", \"verification_method\": \"测试验证（趋势查询与回放操作）+ 检查（存储配置参数）。\", \"acceptance_criteria\": [\"可查询不少于30天的历史趋势数据。\", \"趋势曲线时间轴与数据点间隔符合存储周期要求。\", \"支持多参数同屏趋势对比显示。\"], \"evidence_citations\": []}, {\"shall_statement\": \"监控系统应基于冷却水参数设定值实现异常判断并发出报警。\", \"measurable_criterion\": \"温度、压力、液位越限及泵故障报警响应时间≤2s，报警阈值可在监控系统内配置并具备报警记录功能。\", \"applicable_condition\": \"冷却水系统运行及监控系统报警功能投入时。\", \"verification_method\": \"测试验证（阈值触发与报警响应测试）+ 检查（报警阈值配置表）。\", \"acceptance_criteria\": [\"各参数越限时监控系统在≤2s内发出声光报警并记录报警时间与参数值。\", \"报警阈值可按系统要求配置和修改。\", \"报警记录可查询且保存时间≥30天。\"], \"evidence_citations\": []}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 181,
+      "completion_tokens": 1019,
+      "total_tokens": 1200,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 181
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.008514",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.008514",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应采集冷却水温度信号并接入监控系统。",
+        "measurable_criterion": "温度测量范围0~120℃，测量精度±0.5℃，采样周期≤1s，信号更新至监控系统延迟≤2s。",
+        "applicable_condition": "主机运行及冷却水系统投运工况（含暖机、正常运行、停机后冷却阶段）。",
+        "verification_method": "测试验证（信号注入与实船比对）+ 检查（信号清单与接线图核对）。",
+        "acceptance_criteria": [
+          "温度信号在监控系统画面正确显示，量程与单位符合规定。",
+          "实测温度与标准温度计比对偏差≤±0.5℃。",
+          "采样周期与传输延迟满足判据要求。"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统应采集冷却水压力信号并接入监控系统。",
+        "measurable_criterion": "压力测量范围0~1.0MPa（表压），测量精度±1%FS，采样周期≤1s，超限报警阈值可配置。",
+        "applicable_condition": "冷却水泵运行、系统充压及正常循环工况。",
+        "verification_method": "测试验证（标准压力源校准与实船比对）+ 检查（仪表校准证书）。",
+        "acceptance_criteria": [
+          "压力信号在监控系统正确显示，量程与单位符合规定。",
+          "实测压力与标准压力表比对偏差≤±1%FS。",
+          "压力越限时监控系统按设定阈值发出报警。"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统应采集膨胀水箱（或冷却水柜）液位信号并接入监控系统。",
+        "measurable_criterion": "液位测量范围覆盖水箱0~100%液位，测量精度±2%FS，采样周期≤2s，低液位报警阈值可配置。",
+        "applicable_condition": "系统充水、正常运行及补水工况。",
+        "verification_method": "测试验证（模拟液位变化与实船比对）+ 检查（液位计校准记录）。",
+        "acceptance_criteria": [
+          "液位信号在监控系统正确显示为百分比或工程单位。",
+          "实测液位与就地液位计比对偏差≤±2%FS。",
+          "液位低于设定阈值时监控系统发出低液位报警。"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "冷却水系统应采集冷却水泵运行状态信号（运行/停止、故障）并接入监控系统。",
+        "measurable_criterion": "泵状态信号为开关量，状态变化至监控系统显示延迟≤2s，故障信号保持至人工复位或故障消除。",
+        "applicable_condition": "冷却水泵启动、运行、切换及故障工况。",
+        "verification_method": "测试验证（启停泵与故障模拟）+ 检查（信号点表与逻辑图核对）。",
+        "acceptance_criteria": [
+          "监控系统正确显示各冷却水泵运行/停止状态。",
+          "模拟泵故障时监控系统在≤2s内显示故障状态并报警。",
+          "泵状态与就地控制柜指示一致。"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "监控系统应具备冷却水温度、压力、液位和泵状态的历史趋势记录功能。",
+        "measurable_criterion": "趋势数据存储周期≤10s，历史数据保存时间≥30天，支持按时间范围查询与曲线回放。",
+        "applicable_condition": "监控系统正常运行且数据存储功能投入时。",
+        "verification_method": "测试验证（趋势查询与回放操作）+ 检查（存储配置参数）。",
+        "acceptance_criteria": [
+          "可查询不少于30天的历史趋势数据。",
+          "趋势曲线时间轴与数据点间隔符合存储周期要求。",
+          "支持多参数同屏趋势对比显示。"
+        ],
+        "evidence_citations": []
+      },
+      {
+        "shall_statement": "监控系统应基于冷却水参数设定值实现异常判断并发出报警。",
+        "measurable_criterion": "温度、压力、液位越限及泵故障报警响应时间≤2s，报警阈值可在监控系统内配置并具备报警记录功能。",
+        "applicable_condition": "冷却水系统运行及监控系统报警功能投入时。",
+        "verification_method": "测试验证（阈值触发与报警响应测试）+ 检查（报警阈值配置表）。",
+        "acceptance_criteria": [
+          "各参数越限时监控系统在≤2s内发出声光报警并记录报警时间与参数值。",
+          "报警阈值可按系统要求配置和修改。",
+          "报警记录可查询且保存时间≥30天。"
+        ],
+        "evidence_citations": []
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:56:41.130449+00:00",
+  "elapsed_seconds": 5.578
+}

@@ -1,0 +1,177 @@
+{
+  "slot": "OR050-random_old",
+  "started_at": "2026-10-19T03:07:33.997310+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"98548976-c4c2-47db-9ad1-46ddea7524e5\",\"object\":\"chat.completion\",\"created\":1792379255,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应配置温度控制阀，将低温（LT）冷却水维持在设定点温度，并以运行温度数据作为换热效果判断依据。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:LT冷却水温度控制阀|intent:设定点温度|hint:原文给出32°C标准值，但仅适用于该厂家49/60机型，需按实际机型确认}}\\\",\\\"applicable_condition\\\":\\\"MAN 49/60系列四冲程船用柴油机低温冷却水回路，温度控制阀以混流阀方式安装并处于调节运行工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"温度控制阀型式、安装方式与厂家项目指南一致\\\",\\\"LT冷却水温度设定点依据厂家技术数据或项目计算文件确定并记录\\\",\\\"换热效果判断须结合运行温度数据，不得仅以低负荷工况判定正常\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-162\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-TCV-DRAW-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S37 MAN L27/38 Propulsion Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置高温报警装置，用于在冷却水温度超出允许运行范围时发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025 第9.4.2.2条|component:柴油机冷却水系统|intent:高温报警设定值|hint:规范要求设高温报警，具体报警阈值按厂家技术数据确定}}\\\",\\\"applicable_condition\\\":\\\"船舶柴油机冷却水系统正常运行及异常升温工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却水系统配置高温报警装置\\\",\\\"报警设定值依据厂家技术数据或项目计算文件确定并经验证\\\",\\\"报警功能在试验中可正常触发\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"L1-CCS2025-9.4.2.2-032\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"CCS《钢质海船入级规范》2025\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统设计应确定温度与压力的设定点和运行水平，并作为冷却器换热效果判断的输入依据。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:主机冷却水系统|intent:温度设定点与运行水平|hint:设定点与运行水平依据B 19 00 0 Operating Data and Set Points确定}}\\\",\\\"applicable_condition\\\":\\\"MAN L23/30H机型，2009年3月9日版本文件适用范围内\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"温度与压力设定点及运行水平依据来源文件厂家技术数据确定\\\",\\\"设计数据引用文件版本与机型范围一致，未跨机型泛化\\\",\\\"换热效果评估覆盖各运行温度工况而非仅低负荷工况\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-PRESS-015\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S36 MAN L23/30H GenSet Project Guide\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水系统应防止过冷运行，冷却液温度应维持在避免过冷损伤的运行温度之上。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S29 Caterpillar, Know Your Cooling System|component:发动机冷却水系统|intent:最低正常运行温度|hint:原文给出高硫燃油条件下温度需高于80°C(175°F)，仅适用于该来源限定条件}}\\\",\\\"applicable_condition\\\":\\\"使用高硫燃油的发动机冷却系统运行工况\\\",\\\"verification_method\\\":\\\"分析\\\",\\\"acceptance_criteria\\\":[\\\"冷却系统设计避免冷却液旁通温度调节器直接流向散热器\\\",\\\"运行温度数据表明未发生过冷工况\\\",\\\"过冷判断纳入换热效果评估范围\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLANT-PRESS-023\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S29 Caterpillar, Know Your Cooling System\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却器及冷却水管系的设计与安装应适合其预定用途并采取防护，以将人员危险降至最低。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:MPa|ref:S49 SOLAS 2024 Chapter II-1 Regulation 26|component:冷却器及管系|intent:设计与安装压力|hint:原文未给出具体数值，压力参数依据厂家技术数据或项目计算文件确定}}\\\",\\\"applicable_condition\\\":\\\"船舶机械处所内冷却器、压力容器及相关管系与附件的设计与安装\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"冷却器与管系设计构造适合预定使用工况\\\",\\\"安装与防护措施满足人员危险最小化要求\\\",\\\"设计压力参数有厂家技术数据或计算文件支撑\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-COOLER-INST-030\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S49 SOLAS 2024 Chapter II-1 Regulation 26\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统换热效果评估应基于运行温度数据，覆盖各负荷工况，不得仅以低负荷工况判定冷却器正常。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却器|intent:换热效果判定温度数据|hint:需按厂家技术数据确定各负荷工况下的温度判据，原文仅给出LT设定点32°C}}\\\",\\\"applicable_condition\\\":\\\"冷却器换热性能评估与运行监测，含低负荷及高负荷运行工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"换热效果判定记录包含多负荷工况运行温度数据\\\",\\\"低负荷工况数据不得单独作为正常判定依据\\\",\\\"判定结果与厂家技术数据或项目计算文件比对一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-TCV-TEMP-162\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-SYS-COMP-027\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":2377,\"completion_tokens\":1438,\"total_tokens\":3815,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":2377},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 03:07:35 GMT"
+  },
+  "response": {
+    "id": "98548976-c4c2-47db-9ad1-46ddea7524e5",
+    "object": "chat.completion",
+    "created": 1792379255,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应配置温度控制阀，将低温（LT）冷却水维持在设定点温度，并以运行温度数据作为换热效果判断依据。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:LT冷却水温度控制阀|intent:设定点温度|hint:原文给出32°C标准值，但仅适用于该厂家49/60机型，需按实际机型确认}}\",\"applicable_condition\":\"MAN 49/60系列四冲程船用柴油机低温冷却水回路，温度控制阀以混流阀方式安装并处于调节运行工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"温度控制阀型式、安装方式与厂家项目指南一致\",\"LT冷却水温度设定点依据厂家技术数据或项目计算文件确定并记录\",\"换热效果判断须结合运行温度数据，不得仅以低负荷工况判定正常\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-162\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-TCV-DRAW-001\",\"tier\":\"L3\",\"source\":\"S37 MAN L27/38 Propulsion Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应设置高温报警装置，用于在冷却水温度超出允许运行范围时发出报警。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025 第9.4.2.2条|component:柴油机冷却水系统|intent:高温报警设定值|hint:规范要求设高温报警，具体报警阈值按厂家技术数据确定}}\",\"applicable_condition\":\"船舶柴油机冷却水系统正常运行及异常升温工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却水系统配置高温报警装置\",\"报警设定值依据厂家技术数据或项目计算文件确定并经验证\",\"报警功能在试验中可正常触发\"],\"evidence_citations\":[{\"kb_id\":\"L1-CCS2025-9.4.2.2-032\",\"tier\":\"L1\",\"source\":\"CCS《钢质海船入级规范》2025\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统设计应确定温度与压力的设定点和运行水平，并作为冷却器换热效果判断的输入依据。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:主机冷却水系统|intent:温度设定点与运行水平|hint:设定点与运行水平依据B 19 00 0 Operating Data and Set Points确定}}\",\"applicable_condition\":\"MAN L23/30H机型，2009年3月9日版本文件适用范围内\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"温度与压力设定点及运行水平依据来源文件厂家技术数据确定\",\"设计数据引用文件版本与机型范围一致，未跨机型泛化\",\"换热效果评估覆盖各运行温度工况而非仅低负荷工况\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-PRESS-015\",\"tier\":\"L2\",\"source\":\"S36 MAN L23/30H GenSet Project Guide\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水系统应防止过冷运行，冷却液温度应维持在避免过冷损伤的运行温度之上。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S29 Caterpillar, Know Your Cooling System|component:发动机冷却水系统|intent:最低正常运行温度|hint:原文给出高硫燃油条件下温度需高于80°C(175°F)，仅适用于该来源限定条件}}\",\"applicable_condition\":\"使用高硫燃油的发动机冷却系统运行工况\",\"verification_method\":\"分析\",\"acceptance_criteria\":[\"冷却系统设计避免冷却液旁通温度调节器直接流向散热器\",\"运行温度数据表明未发生过冷工况\",\"过冷判断纳入换热效果评估范围\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLANT-PRESS-023\",\"tier\":\"L3\",\"source\":\"S29 Caterpillar, Know Your Cooling System\",\"has_clause\":false}]},{\"shall_statement\":\"冷却器及冷却水管系的设计与安装应适合其预定用途并采取防护，以将人员危险降至最低。\",\"measurable_criterion\":\"{{TBD|unit:MPa|ref:S49 SOLAS 2024 Chapter II-1 Regulation 26|component:冷却器及管系|intent:设计与安装压力|hint:原文未给出具体数值，压力参数依据厂家技术数据或项目计算文件确定}}\",\"applicable_condition\":\"船舶机械处所内冷却器、压力容器及相关管系与附件的设计与安装\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"冷却器与管系设计构造适合预定使用工况\",\"安装与防护措施满足人员危险最小化要求\",\"设计压力参数有厂家技术数据或计算文件支撑\"],\"evidence_citations\":[{\"kb_id\":\"E-COOLER-INST-030\",\"tier\":\"L1\",\"source\":\"S49 SOLAS 2024 Chapter II-1 Regulation 26\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统换热效果评估应基于运行温度数据，覆盖各负荷工况，不得仅以低负荷工况判定冷却器正常。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却器|intent:换热效果判定温度数据|hint:需按厂家技术数据确定各负荷工况下的温度判据，原文仅给出LT设定点32°C}}\",\"applicable_condition\":\"冷却器换热性能评估与运行监测，含低负荷及高负荷运行工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"换热效果判定记录包含多负荷工况运行温度数据\",\"低负荷工况数据不得单独作为正常判定依据\",\"判定结果与厂家技术数据或项目计算文件比对一致\"],\"evidence_citations\":[{\"kb_id\":\"E-TCV-TEMP-162\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false},{\"kb_id\":\"E-SYS-COMP-027\",\"tier\":\"L3\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2377,
+      "completion_tokens": 1438,
+      "total_tokens": 3815,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 2377
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.016258",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.016258",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应配置温度控制阀，将低温（LT）冷却水维持在设定点温度，并以运行温度数据作为换热效果判断依据。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:LT冷却水温度控制阀|intent:设定点温度|hint:原文给出32°C标准值，但仅适用于该厂家49/60机型，需按实际机型确认}}",
+        "applicable_condition": "MAN 49/60系列四冲程船用柴油机低温冷却水回路，温度控制阀以混流阀方式安装并处于调节运行工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "温度控制阀型式、安装方式与厂家项目指南一致",
+          "LT冷却水温度设定点依据厂家技术数据或项目计算文件确定并记录",
+          "换热效果判断须结合运行温度数据，不得仅以低负荷工况判定正常"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-162",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-TCV-DRAW-001",
+            "tier": "L3",
+            "source": "S37 MAN L27/38 Propulsion Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置高温报警装置，用于在冷却水温度超出允许运行范围时发出报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:CCS《钢质海船入级规范》2025 第9.4.2.2条|component:柴油机冷却水系统|intent:高温报警设定值|hint:规范要求设高温报警，具体报警阈值按厂家技术数据确定}}",
+        "applicable_condition": "船舶柴油机冷却水系统正常运行及异常升温工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却水系统配置高温报警装置",
+          "报警设定值依据厂家技术数据或项目计算文件确定并经验证",
+          "报警功能在试验中可正常触发"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-9.4.2.2-032",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统设计应确定温度与压力的设定点和运行水平，并作为冷却器换热效果判断的输入依据。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S36 MAN L23/30H GenSet Project Guide|component:主机冷却水系统|intent:温度设定点与运行水平|hint:设定点与运行水平依据B 19 00 0 Operating Data and Set Points确定}}",
+        "applicable_condition": "MAN L23/30H机型，2009年3月9日版本文件适用范围内",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "温度与压力设定点及运行水平依据来源文件厂家技术数据确定",
+          "设计数据引用文件版本与机型范围一致，未跨机型泛化",
+          "换热效果评估覆盖各运行温度工况而非仅低负荷工况"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-PRESS-015",
+            "tier": "L2",
+            "source": "S36 MAN L23/30H GenSet Project Guide",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应防止过冷运行，冷却液温度应维持在避免过冷损伤的运行温度之上。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S29 Caterpillar, Know Your Cooling System|component:发动机冷却水系统|intent:最低正常运行温度|hint:原文给出高硫燃油条件下温度需高于80°C(175°F)，仅适用于该来源限定条件}}",
+        "applicable_condition": "使用高硫燃油的发动机冷却系统运行工况",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "冷却系统设计避免冷却液旁通温度调节器直接流向散热器",
+          "运行温度数据表明未发生过冷工况",
+          "过冷判断纳入换热效果评估范围"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLANT-PRESS-023",
+            "tier": "L3",
+            "source": "S29 Caterpillar, Know Your Cooling System",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却器及冷却水管系的设计与安装应适合其预定用途并采取防护，以将人员危险降至最低。",
+        "measurable_criterion": "{{TBD|unit:MPa|ref:S49 SOLAS 2024 Chapter II-1 Regulation 26|component:冷却器及管系|intent:设计与安装压力|hint:原文未给出具体数值，压力参数依据厂家技术数据或项目计算文件确定}}",
+        "applicable_condition": "船舶机械处所内冷却器、压力容器及相关管系与附件的设计与安装",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "冷却器与管系设计构造适合预定使用工况",
+          "安装与防护措施满足人员危险最小化要求",
+          "设计压力参数有厂家技术数据或计算文件支撑"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-COOLER-INST-030",
+            "tier": "L1",
+            "source": "S49 SOLAS 2024 Chapter II-1 Regulation 26",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统换热效果评估应基于运行温度数据，覆盖各负荷工况，不得仅以低负荷工况判定冷却器正常。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S30 MAN Energy Solutions, 49/60 Project Guide|component:冷却器|intent:换热效果判定温度数据|hint:需按厂家技术数据确定各负荷工况下的温度判据，原文仅给出LT设定点32°C}}",
+        "applicable_condition": "冷却器换热性能评估与运行监测，含低负荷及高负荷运行工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "换热效果判定记录包含多负荷工况运行温度数据",
+          "低负荷工况数据不得单独作为正常判定依据",
+          "判定结果与厂家技术数据或项目计算文件比对一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-TCV-TEMP-162",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-SYS-COMP-027",
+            "tier": "L3",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T03:07:42.018144+00:00",
+  "elapsed_seconds": 7.859
+}

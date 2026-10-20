@@ -11,7 +11,7 @@ import streamlit as st
 
 from ui.components.shared import render_workspace_header
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _count_jsonl(path: Path) -> int:

@@ -1,0 +1,39 @@
+五组定性判据附加实验——执行结果摘要（2026-10-19）
+
+一、执行状态
+DeepSeek：计划300次，已发300次，成功300次，失败/未决0次，未发0次。
+Qwen：候选441条，已发78次，成功77次，失败/未决1次，未发363次。
+生成终态：completed
+评审终态：paused_failure
+review暂停原因：HTTP_400
+review服务错误详情：[{"slot": "3399e298e3555e9389cab1e8f8597d69513dca4bd3dc5afb804a3556abdcdb68", "http_status": 400, "provider_error": {"message": "Access denied, please make sure your account is in good standing. For details, see: https://help.aliyun.com/zh/model-studio/error-code#overdue-payment", "type": "Arrearage", "param": null, "code": "Arrearage"}, "local_error": "HTTP_400"}]
+评审覆盖不完整：失败和未发送均保留；以下机器标签仅描述已返回子集，不能外推到全部Q，不能据此完成五组质量比较。恢复需先由用户处理服务账户状态并明确恢复授权；本次未充值、未换密钥、未重试。
+
+二、输出分布（机械候选分类，不是工程正确性）
+semantic_old：完成60/60源；448条输出；[Q]候选0条，格式通过0条；TBD/混合候选345条；数值候选61条；未标记非数值候选42条。
+semantic_new：完成60/60源；448条输出；[Q]候选233条，格式通过233条；TBD/混合候选134条；数值候选42条；未标记非数值候选39条。
+random_old：完成60/60源；408条输出；[Q]候选0条，格式通过0条；TBD/混合候选353条；数值候选34条；未标记非数值候选21条。
+random_new：完成60/60源；398条输出；[Q]候选208条，格式通过208条；TBD/混合候选138条；数值候选34条；未标记非数值候选18条。
+norag_original：完成60/60源；289条输出；[Q]候选0条，格式通过0条；TBD/混合候选14条；数值候选181条；未标记非数值候选94条。
+
+三、按源配对与Qwen判断
+配对统计：{"semantic": {"paired_sources": 60, "total_Q_count_difference_new_minus_old": 233, "total_TBD_candidate_difference_new_minus_old": -211}, "random": {"paired_sources": 60, "total_Q_count_difference_new_minus_old": 208, "total_TBD_candidate_difference_new_minus_old": -215}}
+Qwen原始支持标签（仅成功返回子集）：{"partial": 43, "insufficient": 18, "direct": 16}
+Qwen原始适用性标签（仅成功返回子集）：{"unknown": 41, "explicit_match": 33, "general_rule_with_basis": 3}
+经原句锚点/枚举检查后的抽样分层（全部Q候选，other层包含未评条目）：{"other_uncertain_error": 401, "explicit_negative": 30, "direct_and_applicable": 10}
+机械格式通过、模型语义判断、来源可靠性与目标适用性分别报告。Qwen是跨模型意见，不是人工真值；未评、不确定、不支持及锚点核查失败均保留。不能将[Q]自动加入旧数值A/B。
+统计单位为源需求；不把同源shall当独立样本。单次T=0运行不能估计随机方差，也不证明提示词效应超过自然波动。noRAG约束不同，只作工作流比较。
+
+四、预算与风险
+本轮DeepSeek成功usage估价：¥4.650044；Qwen成功usage估价：¥0.4732368。
+含历史成功后的usage估价合计：¥5.6864428；历史及本轮未决风险预留：¥4.4187648；累计模型账本：¥10.1052076；距离¥50上限尚余¥39.8947924。
+价格按峰值未缓存费率估算，不计折扣；不是核验后的实付账单。每次发送前使用服务上下文最大费用预留，失败保留全额风险并立即暂停，未自动重试。
+
+五、人工抽查与交付
+已准备30条匿名抽查材料及空白判断CSV；人工判断完成0条，未联系或分配专家。抽样按预定组别/机器结果分层，不是总体真值或总体准确率估计。
+所有原始请求/响应、usage、返回model/可用指纹、阶段状态及未发队列保存在本目录generation/和review/。匿名包、映射密钥、原句锚点核查、源级计数与配对差异分开保存。
+保护检查：861个既有文件哈希未变，冻结文件未变，凭据泄漏扫描0项。未修改KB、主实验、论文或既有人评。
+本结果只作为附加实验材料，不自动采用到论文或公开发布。
+
+项目交付目录：D:\cooling_rag_multigranular\cooling_rag_multigranular\revision_artifacts\qualitative_5arm_authorized_run_20261019
+关键文件：RESULT_SUMMARY.json、FINAL_AUDIT.json、SOURCE_LEVEL_COUNTS.json、SOURCE_LEVEL_REVIEW_COUNTS.json、PAIRED_SOURCE_DIFFERENCES.json、PAIRED_SOURCE_REVIEW_DIFFERENCES.json、REVIEW_DIAGNOSTICS.json、manual_sample/BLANK_HUMAN_JUDGMENTS.csv。

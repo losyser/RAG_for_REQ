@@ -1,0 +1,35 @@
+Qwen补充评审执行完毕（保留1条无效异常）
+
+执行终态：本轮330/330成功，无新增失败，进程已退出。
+总体覆盖：441个冻结候选，440个有效评审响应、1个ID缺字符异常、0个未发送。不能称441条有效完成。
+总评审尝试442次：440次有效成功、1次原Arrearage失败（后来成功补交）、1次ID异常。生成300次保持原样，成功结果未重跑。
+本轮时间：2026-10-19T06:04:03.498812+00:00 至 2026-10-19T07:00:34.207035+00:00
+累计费用模型账本：¥12.5212804；其中已知usage估价¥8.0091268，历史和失败风险预留¥4.5121536；距50元上限¥37.4787196。未核验实际账单。
+Qwen成功usage：输入536731、输出157059、合计693790 tokens。模型qwen-max；system_fingerprint未提供。
+
+机器标签（保持原值；不等于人工/工程真值）：
+semantic_new：候选233，有效232，缺失1。
+支持标签：{"partial": 133, "insufficient": 35, "direct": 64}；contradicted=0，uncertain=0。
+适用性：{"explicit_match": 99, "unknown": 121, "general_rule_with_basis": 12}
+忠实性：{"new_inference_or_synthesis": 57, "faithful_paraphrase": 147, "quote": 27, "unsupported": 1}
+可验证性：{"verifiable": 195, "not_verifiable": 37}
+来源可靠性：{"unknown": 205, "supported": 27}
+锚点字面核验：{"pass": 201, "fail": 31}；direct且适用性unknown=18，direct且锚点核验失败=6。
+random_new：候选208，有效208，缺失0。
+支持标签：{"partial": 96, "direct": 29, "insufficient": 83}；contradicted=0，uncertain=0。
+适用性：{"unknown": 139, "explicit_match": 62, "general_rule_with_basis": 6, "explicit_mismatch": 1}
+忠实性：{"faithful_paraphrase": 66, "new_inference_or_synthesis": 113, "quote": 18, "unsupported": 11}
+可验证性：{"verifiable": 133, "not_verifiable": 75}
+来源可靠性：{"unknown": 200, "supported": 7, "questionable": 1}
+锚点字面核验：{"pass": 162, "fail": 46}；direct且适用性unknown=6，direct且锚点核验失败=7。
+semantic_old、random_old、norag_original没有[Q]候选，因此没有本轮Qwen标签；不能解释为语义质量为零。
+440条有效响应的JSON、请求ID、原始内容与保存标签一致，标签枚举无异常。锚点363通过、77失败，作为独立风险标志，不改原支持标签。
+
+源级配对：共60个源需求，两臂均有Q且有效评审齐全的配对数=55。各标签配对计数及有条件的源均值见PAIRED_SOURCE_SUMMARY.json；逐源明细见PAIRED_SOURCE_REVIEW_DIFFERENCES.json。
+生成旧/新配对仍为120行（60源×2检索臂），数据保持原样；不把同源多条结果当独立样本，不由格式变化推断语义提升。
+
+异常与抽样：OR002-semantic_new第9条的返回review_id缺少9字符，原响应隔离保留，无ID修补、无重发。单独核对包在quarantined_candidates/，人工判断留空。
+正式30条抽样未生成：441条全部有效门槛不满足。五标签×两臂方案仍保留，规则补充发生在已见77条结果之后。旧临时30条材料保留，不冒充正式样本。
+
+保护核验：旧827份材料、前轮100份材料、861个保护文件、33个冻结文件哈希均未变；凭据泄露扫描0。未修改KB、主实验、论文或人工评审。
+完整结果目录：D:\cooling_rag_multigranular\cooling_rag_multigranular\revision_artifacts\qualitative_5arm_authorized_run_20261019\authorized_remaining330_20261019\terminal_results

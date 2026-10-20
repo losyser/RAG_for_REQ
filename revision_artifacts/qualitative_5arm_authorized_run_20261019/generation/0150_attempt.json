@@ -1,0 +1,37 @@
+{
+  "slot": "OR030-random_new",
+  "body_sha256": "ce2baffbc32d59ff1b7c4508dad2eefa96a2c280f048a8bd5554b101490342b7",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:56:03.494068+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR030-random_new",
+    "source_id": "OR030",
+    "group": "random_new",
+    "context_sha256": "c50d676b6afb65763df3037785a826ff3990b6d46b05588623f145cc8ff2b108",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n海水侧滤器最好能在不中断冷却供应的情况下清洗，不然运行中处理起来风险比较大。\n\n## 证据清单\n[E-JACKET-PRESS-014] 层级:L2 来源:S41 Everllence 49/60DF Project Guide\n  内容: 主机冷却型式与设计条件：Load specific values at tropical conditions – L/V49/60DF IMO Tier II, gas mode – Electric propulsion/EPROX-AC 1,300 kW/cyl.; 600 rpm – Electric propulsion/EPROX-AC Reference conditions: Tropics Air temperature ≤ 45 °C；Cooling water temp. before charge air cooler (LT stage) = 38 °C；Total atmospheric pressure = 1,000 mbar；Relative humidity = 60%。适用条件：Tropics。\n\n主机冷却型式与设计条件：Engine output = 100%；Speed = 600 rpm；Heat to be dissipated HT circuit: + Charge air cooler LP and HP HT stage + Jac\n  [量化参数] 1,300、600、45、38、1,000、60、100、600、1,137、85、600、1,033、75、600、1,055\n\n[E-COOLANT-WATER-002] 层级:L3 来源:S06 Scania DI16 船用发动机车主手册（中文）\n  内容: 冷却液冰点与乙二醇比例\n冷却液成分： 如果存在结冰危险： 最少 30% 体积比的二元醇 最多 60% 体积比的二元醇 如果不存在结冰危险： 8-12% 体积比的 Scania Corrosion Inhibitor （Scania 防腐剂） 将冷却液注入冷却系统时， 应将其预先混合。 切勿仅用水或二元醇加注至 正确的液位。\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：coolant 的 water_quality\ncorrosion_protection 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 30%、60%、8-12%\n\n[E-EXP-PRESS-003] 层级:L2 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 膨胀水箱作用\nOpen system Characterised by \"atmospheric pressure\" in the expansion tank. Pre-pressure in the system, at the suction side of the cooling water pump is given by the geodetic height of the expansion tank (standard value 6–9 m above crank- shaft of engine). Closed system In a closed system, the expansion tank is pressurised and has no venting connection to open atmosphere. This system is recommended in case the engine will be operated at cooling water temperatures above 100°C or an open exp\n  [量化参数] 6–9、100、1\n\n[E-HT-COMP-041] 层级:L3 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: 高温冷却水系统组成\nNote: ▪ It needs to be proven within plant layout, that lube oil circuit is capable to be operated at stated low lube oil temperature with accordingly high vis- cosity and high pressures. ▪ If engine cold start is frequently performed, wear could increase in a long- term perspective. ▪ “Start-Reliability” under stated cold start conditions is reduced and cannot be guaranteed, as the probability of a false start is increased. ▪ If applicable, warming-up phase can be shortened if engine \n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "ce2baffbc32d59ff1b7c4508dad2eefa96a2c280f048a8bd5554b101490342b7",
+    "utf8_message_bytes": 4750,
+    "execution_index": 150
+  }
+}

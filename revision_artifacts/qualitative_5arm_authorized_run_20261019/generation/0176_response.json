@@ -1,0 +1,234 @@
+{
+  "slot": "OR036-semantic_old",
+  "started_at": "2026-10-19T02:58:50.802052+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"c6c0fd0f-1cf8-4f34-8f0f-cec8a95d776a\",\"object\":\"chat.completion\",\"created\":1792378731,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"冷却水系统应设置高温报警装置，当冷却液温度超过报警阈值时，向有人值班控制站发出声光报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水系统|intent:高温报警阈值|hint:厂家基本温度值95°C，较高级别105°C，须按具体机型确认}}\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水系统处于投运状态；阈值限定于对应厂家、机型和控制系统配置范围\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却液温度超过报警阈值时，在持续有人值班控制站发出声光报警\\\",\\\"报警触发延时满足厂家规定的时间要求\\\",\\\"报警阈值与厂家机型配置一致并记录于报警设定清单\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"L1-CCS2025-9.4.2.2-032\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"CCS《钢质海船入级规范》2025\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":false},{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置低温报警或温度监测装置，当冷却液温度低于设定下限时发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:°C|ref:S44 PRS Ship Machinery Piping Systems|component:冷却水系统|intent:低温报警阈值|hint:按厂家或规则要求设定低温报警值}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统投运及加热/冷却系统配置工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却液温度低于低温报警设定值时发出报警\\\",\\\"低温报警设定值经厂家确认并记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-LT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S44 PRS Ship Machinery Piping Systems\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置低压报警，当冷却水压力低于设定值时向有人值班控制站发出声光报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统|intent:低压报警阈值|hint:按厂家或规则要求设定低压报警值}}\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水泵运行状态\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却水压力低于报警设定值时发出声光报警\\\",\\\"报警信号在就地及有人值班控制站均可显示\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-009\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置低液位报警，当膨胀水箱或冷却水储存柜液位低于设定值时发出报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mm|ref:S44 PRS Ship Machinery Piping Systems|component:冷却水膨胀水箱/储存柜|intent:低液位报警阈值|hint:按厂家或规则要求设定低液位报警值}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统运行及补液工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"液位低于低液位报警设定值时发出报警\\\",\\\"液位监测装置具备高/低液位报警功能\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-LT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S44 PRS Ship Machinery Piping Systems\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统应设置流量不足报警，当冷却水流量低于设定值时及时发出报警，不得延迟至主机过热后才报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:m³/h|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统|intent:流量不足报警阈值|hint:按液压计算与流量分配结果及厂家要求设定}}\\\",\\\"applicable_condition\\\":\\\"主机运行工况，冷却水泵及管路投运状态\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却水流量低于报警设定值时发出报警\\\",\\\"报警响应时间满足及时性要求，先于主机过热保护动作\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水系统故障时，应在就地及持续有人值班控制站同时发出报警，并自动降低输出电流或负荷。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:%|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:主机冷却水系统|intent:降负荷比例|hint:厂家规定温度超限且激活扭矩降低时燃油量降至70%，须按机型确认}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统故障工况，控制系统具备降负荷/扭矩降低功能\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"冷却系统故障时就地与远程同时报警\\\",\\\"报警同时自动执行降负荷或输出电流降低动作\\\",\\\"降负荷动作逻辑与厂家控制系统配置一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SENSOR-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-006\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":false}]},{\\\"shall_statement\\\":\\\"冷却水温度传感器、压力传感器、液位传感器及流量传感器发生故障或信号异常时，系统应发出传感器异常报警。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统传感器|intent:传感器异常报警判据|hint:按厂家或规则要求定义断线、超量程、信号失效判据}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统监测回路运行工况\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"任一传感器断线、超量程或信号失效时发出报警\\\",\\\"传感器异常报警在有人值班控制站可显示\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SENSOR-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"冷却水高温报警及保护动作的阈值与逻辑应严格限定在对应厂家、机型和控制系统配置范围内，并形成报警设定清单。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:—|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:主机冷却水控制系统|intent:报警阈值与保护动作配置范围|hint:阈值和动作逻辑须按厂家机型与控制系统配置确认并记录}}\\\",\\\"applicable_condition\\\":\\\"报警与保护功能设计与调试阶段\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"报警设定清单覆盖高温、低压、低液位、流量不足及传感器异常\\\",\\\"清单中每项阈值与动作均标注厂家、机型及控制系统来源\\\",\\\"清单经厂家或船级社确认\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-ALARM-001\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-ALARM-ALARM-001\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S06 Scania DI16 船用发动机车主手册（中文）\\\",\\\"has_clause\\\":false}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1810,\"completion_tokens\":1848,\"total_tokens\":3658,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":1810},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:58:51 GMT"
+  },
+  "response": {
+    "id": "c6c0fd0f-1cf8-4f34-8f0f-cec8a95d776a",
+    "object": "chat.completion",
+    "created": 1792378731,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"冷却水系统应设置高温报警装置，当冷却液温度超过报警阈值时，向有人值班控制站发出声光报警。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水系统|intent:高温报警阈值|hint:厂家基本温度值95°C，较高级别105°C，须按具体机型确认}}\",\"applicable_condition\":\"主机运行工况，冷却水系统处于投运状态；阈值限定于对应厂家、机型和控制系统配置范围\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却液温度超过报警阈值时，在持续有人值班控制站发出声光报警\",\"报警触发延时满足厂家规定的时间要求\",\"报警阈值与厂家机型配置一致并记录于报警设定清单\"],\"evidence_citations\":[{\"kb_id\":\"L1-CCS2025-9.4.2.2-032\",\"tier\":\"L1\",\"source\":\"CCS《钢质海船入级规范》2025\",\"has_clause\":true},{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":false},{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设置低温报警或温度监测装置，当冷却液温度低于设定下限时发出报警。\",\"measurable_criterion\":\"{{TBD|unit:°C|ref:S44 PRS Ship Machinery Piping Systems|component:冷却水系统|intent:低温报警阈值|hint:按厂家或规则要求设定低温报警值}}\",\"applicable_condition\":\"冷却水系统投运及加热/冷却系统配置工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却液温度低于低温报警设定值时发出报警\",\"低温报警设定值经厂家确认并记录\"],\"evidence_citations\":[{\"kb_id\":\"E-LT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S44 PRS Ship Machinery Piping Systems\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设置低压报警，当冷却水压力低于设定值时向有人值班控制站发出声光报警。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统|intent:低压报警阈值|hint:按厂家或规则要求设定低压报警值}}\",\"applicable_condition\":\"主机运行工况，冷却水泵运行状态\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却水压力低于报警设定值时发出声光报警\",\"报警信号在就地及有人值班控制站均可显示\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-ALARM-ALARM-009\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设置低液位报警，当膨胀水箱或冷却水储存柜液位低于设定值时发出报警。\",\"measurable_criterion\":\"{{TBD|unit:mm|ref:S44 PRS Ship Machinery Piping Systems|component:冷却水膨胀水箱/储存柜|intent:低液位报警阈值|hint:按厂家或规则要求设定低液位报警值}}\",\"applicable_condition\":\"冷却水系统运行及补液工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"液位低于低液位报警设定值时发出报警\",\"液位监测装置具备高/低液位报警功能\"],\"evidence_citations\":[{\"kb_id\":\"E-LT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S44 PRS Ship Machinery Piping Systems\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统应设置流量不足报警，当冷却水流量低于设定值时及时发出报警，不得延迟至主机过热后才报警。\",\"measurable_criterion\":\"{{TBD|unit:m³/h|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统|intent:流量不足报警阈值|hint:按液压计算与流量分配结果及厂家要求设定}}\",\"applicable_condition\":\"主机运行工况，冷却水泵及管路投运状态\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却水流量低于报警设定值时发出报警\",\"报警响应时间满足及时性要求，先于主机过热保护动作\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水系统故障时，应在就地及持续有人值班控制站同时发出报警，并自动降低输出电流或负荷。\",\"measurable_criterion\":\"{{TBD|unit:%|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:主机冷却水系统|intent:降负荷比例|hint:厂家规定温度超限且激活扭矩降低时燃油量降至70%，须按机型确认}}\",\"applicable_condition\":\"冷却水系统故障工况，控制系统具备降负荷/扭矩降低功能\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"冷却系统故障时就地与远程同时报警\",\"报警同时自动执行降负荷或输出电流降低动作\",\"降负荷动作逻辑与厂家控制系统配置一致\"],\"evidence_citations\":[{\"kb_id\":\"E-SENSOR-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-ALARM-ALARM-006\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":false}]},{\"shall_statement\":\"冷却水温度传感器、压力传感器、液位传感器及流量传感器发生故障或信号异常时，系统应发出传感器异常报警。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统传感器|intent:传感器异常报警判据|hint:按厂家或规则要求定义断线、超量程、信号失效判据}}\",\"applicable_condition\":\"冷却水系统监测回路运行工况\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"任一传感器断线、超量程或信号失效时发出报警\",\"传感器异常报警在有人值班控制站可显示\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-SENSOR-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"冷却水高温报警及保护动作的阈值与逻辑应严格限定在对应厂家、机型和控制系统配置范围内，并形成报警设定清单。\",\"measurable_criterion\":\"{{TBD|unit:—|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:主机冷却水控制系统|intent:报警阈值与保护动作配置范围|hint:阈值和动作逻辑须按厂家机型与控制系统配置确认并记录}}\",\"applicable_condition\":\"报警与保护功能设计与调试阶段\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"报警设定清单覆盖高温、低压、低液位、流量不足及传感器异常\",\"清单中每项阈值与动作均标注厂家、机型及控制系统来源\",\"清单经厂家或船级社确认\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-ALARM-001\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true},{\"kb_id\":\"E-ALARM-ALARM-001\",\"tier\":\"L3\",\"source\":\"S06 Scania DI16 船用发动机车主手册（中文）\",\"has_clause\":false}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1810,
+      "completion_tokens": 1848,
+      "total_tokens": 3658,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1810
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.018404",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.018404",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "冷却水系统应设置高温报警装置，当冷却液温度超过报警阈值时，向有人值班控制站发出声光报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:冷却水系统|intent:高温报警阈值|hint:厂家基本温度值95°C，较高级别105°C，须按具体机型确认}}",
+        "applicable_condition": "主机运行工况，冷却水系统处于投运状态；阈值限定于对应厂家、机型和控制系统配置范围",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却液温度超过报警阈值时，在持续有人值班控制站发出声光报警",
+          "报警触发延时满足厂家规定的时间要求",
+          "报警阈值与厂家机型配置一致并记录于报警设定清单"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "L1-CCS2025-9.4.2.2-032",
+            "tier": "L1",
+            "source": "CCS《钢质海船入级规范》2025",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          },
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置低温报警或温度监测装置，当冷却液温度低于设定下限时发出报警。",
+        "measurable_criterion": "{{TBD|unit:°C|ref:S44 PRS Ship Machinery Piping Systems|component:冷却水系统|intent:低温报警阈值|hint:按厂家或规则要求设定低温报警值}}",
+        "applicable_condition": "冷却水系统投运及加热/冷却系统配置工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却液温度低于低温报警设定值时发出报警",
+          "低温报警设定值经厂家确认并记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-ALARM-001",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置低压报警，当冷却水压力低于设定值时向有人值班控制站发出声光报警。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统|intent:低压报警阈值|hint:按厂家或规则要求设定低压报警值}}",
+        "applicable_condition": "主机运行工况，冷却水泵运行状态",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却水压力低于报警设定值时发出声光报警",
+          "报警信号在就地及有人值班控制站均可显示"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-009",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置低液位报警，当膨胀水箱或冷却水储存柜液位低于设定值时发出报警。",
+        "measurable_criterion": "{{TBD|unit:mm|ref:S44 PRS Ship Machinery Piping Systems|component:冷却水膨胀水箱/储存柜|intent:低液位报警阈值|hint:按厂家或规则要求设定低液位报警值}}",
+        "applicable_condition": "冷却水系统运行及补液工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "液位低于低液位报警设定值时发出报警",
+          "液位监测装置具备高/低液位报警功能"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-LT-ALARM-001",
+            "tier": "L1",
+            "source": "S44 PRS Ship Machinery Piping Systems",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应设置流量不足报警，当冷却水流量低于设定值时及时发出报警，不得延迟至主机过热后才报警。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统|intent:流量不足报警阈值|hint:按液压计算与流量分配结果及厂家要求设定}}",
+        "applicable_condition": "主机运行工况，冷却水泵及管路投运状态",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却水流量低于报警设定值时发出报警",
+          "报警响应时间满足及时性要求，先于主机过热保护动作"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统故障时，应在就地及持续有人值班控制站同时发出报警，并自动降低输出电流或负荷。",
+        "measurable_criterion": "{{TBD|unit:%|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:主机冷却水系统|intent:降负荷比例|hint:厂家规定温度超限且激活扭矩降低时燃油量降至70%，须按机型确认}}",
+        "applicable_condition": "冷却水系统故障工况，控制系统具备降负荷/扭矩降低功能",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷却系统故障时就地与远程同时报警",
+          "报警同时自动执行降负荷或输出电流降低动作",
+          "降负荷动作逻辑与厂家控制系统配置一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SENSOR-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-006",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水温度传感器、压力传感器、液位传感器及流量传感器发生故障或信号异常时，系统应发出传感器异常报警。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水系统传感器|intent:传感器异常报警判据|hint:按厂家或规则要求定义断线、超量程、信号失效判据}}",
+        "applicable_condition": "冷却水系统监测回路运行工况",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "任一传感器断线、超量程或信号失效时发出报警",
+          "传感器异常报警在有人值班控制站可显示"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SENSOR-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水高温报警及保护动作的阈值与逻辑应严格限定在对应厂家、机型和控制系统配置范围内，并形成报警设定清单。",
+        "measurable_criterion": "{{TBD|unit:—|ref:S06 Scania DI16 船用发动机车主手册（中文）|component:主机冷却水控制系统|intent:报警阈值与保护动作配置范围|hint:阈值和动作逻辑须按厂家机型与控制系统配置确认并记录}}",
+        "applicable_condition": "报警与保护功能设计与调试阶段",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "报警设定清单覆盖高温、低压、低液位、流量不足及传感器异常",
+          "清单中每项阈值与动作均标注厂家、机型及控制系统来源",
+          "清单经厂家或船级社确认"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-ALARM-001",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-ALARM-ALARM-001",
+            "tier": "L3",
+            "source": "S06 Scania DI16 船用发动机车主手册（中文）",
+            "has_clause": false
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:58:59.087868+00:00",
+  "elapsed_seconds": 8.14
+}

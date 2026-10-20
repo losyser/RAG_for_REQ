@@ -1,0 +1,467 @@
+{
+  "schema": 1,
+  "kind": "pilot",
+  "title": "真实需求试做校准（排除正式评分）",
+  "protocol": "S2-calibration-v1-exclude-formal",
+  "provenance": {
+    "source_sha256": "02f2fdfa89dc9e6b1ad1266815f68719844b58654c71649d2cdd222f18b1ccdf",
+    "taxonomy_sha256": "a26fe12002039f828d313100455e4764edfc1732ef05411d8445299be0041628",
+    "prediction_scope": "historical-upstream-stage1-used-by-v4; stored-in-v3; no-new-run"
+  },
+  "components": {
+    "cooling_water_pump": "冷却水泵（含海水泵）",
+    "cooler": "冷却器 / 热交换器",
+    "expansion_tank": "膨胀水箱 / 高位水箱",
+    "temperature_control_valve": "温控阀 / 温度调节阀",
+    "pipe": "冷却水管路",
+    "valve": "阀门（截止阀、球阀、蝶阀、止回阀、安全阀等）",
+    "pipe_fitting": "管件（弯头、三通、异径管、法兰等）",
+    "filter": "过滤器 / 滤网",
+    "pipe_support": "管路支架 / 吊架",
+    "temperature_sensor": "温度传感器 / 温度计",
+    "pressure_sensor": "压力传感器 / 压力表",
+    "level_sensor": "液位传感器 / 液位计",
+    "flow_meter": "流量计",
+    "alarm_system": "报警与保护系统",
+    "control_system": "自动控制系统（PLC / 集控）",
+    "coolant": "淡水冷却液（含缓蚀剂、防冻剂）",
+    "sea_water": "海水（冷却侧介质）",
+    "anode": "牺牲阳极（锌块 / 铝块）",
+    "insulation": "隔热保温材料及护套",
+    "sea_chest": "海水箱（金水箱）",
+    "cooling_system": "冷却水系统（系统级，不能归入具体部件时使用）"
+  },
+  "intents": {
+    "specification": "额定参数（容量、流量、扬程、功率、换热量、压力等级等）",
+    "material": "材料选择（牌号、标准、兼容性要求）",
+    "wall_thickness": "壁厚 / 强度等级",
+    "pressure_rating": "设计压力等级（PN 等级、管路类别）",
+    "connection_type": "连接方式（焊接、法兰、螺纹、卡压等）",
+    "redundancy": "冗余配置（一用一备、切换条件、切换方式）",
+    "auto_start": "备用设备自动启动逻辑与条件",
+    "control_logic": "自动控制逻辑（启停、调节、联锁）",
+    "set_point": "调节设定值（温度设定、开启点、全开点）",
+    "fail_safe": "故障安全状态（失电 / 失信号后的默认位置）",
+    "manual_override": "手动操控要求（就地操作、手动旁通）",
+    "bypass": "旁通阀配置与旁通逻辑",
+    "alarm_setpoint": "报警定值（高温、低压、低液位、高压差等）",
+    "trip_setpoint": "停机保护定值（超温、失压、失流等触发停机的阈值）",
+    "alarm_response": "报警处置程序（操作员响应、自动联锁动作）",
+    "installation": "安装要求（方位、间距、坡度、膨胀补偿、穿舱封堵等）",
+    "pipe_support": "管路支架间距、固定方式、减振要求",
+    "welding": "焊接工艺（WPS/WPQR）、焊工资质、无损检测比例",
+    "thermal_insulation": "隔热保温材料、厚度、护套施工",
+    "labeling": "色标（ISO 14726）、流向标识、铭牌",
+    "hot_surface_warning": "高温表面警示标识（ISO 11684）",
+    "vent_drain": "排气点与放水点的设置位置、数量、阀门要求",
+    "corrosion_protection": "防腐处理（涂层、电化学保护、材料防腐措施）",
+    "cathodic_protection": "阴极保护（牺牲阳极布置、连接方式、电气隔离）",
+    "biofouling": "防海生物附着（防污涂料、机械清除）",
+    "pressure_test": "水压试验（试验压力倍数、保压时间、合格判据）",
+    "test_procedure": "功能试验程序（调试前、调试中、验收试验）",
+    "calibration": "仪表校验（校验方法、周期、允许误差）",
+    "inspection": "检查项目与周期（外观、性能、完整性检查）",
+    "maintenance": "维护保养程序（定期维护、易损件更换）",
+    "cleaning": "清洗方式与周期（机械清洗、化学清洗）",
+    "replacement_cycle": "更换周期（介质更换、阳极更换等）",
+    "water_quality": "水质指标（pH、硬度、电导率、氯离子、含氧量等）",
+    "corrosion_inhibitor": "缓蚀剂种类、浓度范围、补加方法",
+    "antifreeze": "防冻剂（乙二醇比例、冰点要求）",
+    "sampling": "取样检测方法、频率、送检要求",
+    "compatibility": "介质与管材 / 设备材料的兼容性限制",
+    "environmental_protection": "废液处置（乙二醇含量、排放标准）",
+    "initial_fill": "首次充注程序（冲洗、加药、排气）",
+    "documentation": "文件要求（厂家说明书、图纸、计算书、备件目录）",
+    "drawing_requirement": "图纸提交要求（系统图、布置图、单线图提交节点）",
+    "class_approval": "船级社审批 / 认可 / 检验要求",
+    "spare_parts": "备品备件清单与最低储量要求",
+    "interface": "与其他系统或设备的接口要求",
+    "system_description": "系统功能描述、工作原理、系统边界",
+    "pressure_drop": "[原目录行注释] 水侧/海水侧允许压降",
+    "fouling": "[原目录行注释] 结垢系数、防污措施",
+    "capacity": "[原目录行注释] 有效容积计算依据（系统膨胀量）",
+    "level_control": "[原目录行注释] 正常液位范围、控制逻辑",
+    "makeup_water": "[原目录行注释] 自动补水触发条件、补水源",
+    "venting": "[原目录行注释] 排气管管径、连接位置",
+    "pressure": "[原目录行注释] 工作压力（膨胀压力）",
+    "type": "[原目录行注释] 阀门类型选用（截止/球/蝶/止回/安全阀）",
+    "position_indicator": "[原目录行注释] 开/关状态指示（就地 + 远程）",
+    "lockout": "[原目录行注释] 锁定要求（防误关的常开阀）",
+    "drain": "[原目录行注释] 阀体排空（低点阀门的排空接头）",
+    "spacing": "[原目录行注释] 支架最大间距（按管径/壁厚查表）",
+    "vibration_isolation": "[原目录行注释] 减振垫、弹性支架选用条件",
+    "thickness": "[原目录行注释] 隔热厚度（按表面温度和环境温度计算）"
+  },
+  "taxonomy": {
+    "cooling_water_pump": [
+      "specification",
+      "redundancy",
+      "auto_start",
+      "material",
+      "corrosion_protection",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "pressure_test",
+      "inspection",
+      "maintenance",
+      "documentation",
+      "class_approval",
+      "spare_parts"
+    ],
+    "cooler": [
+      "specification",
+      "pressure_drop",
+      "material",
+      "corrosion_protection",
+      "fouling",
+      "cleaning",
+      "bypass",
+      "alarm_setpoint",
+      "installation",
+      "pressure_test",
+      "inspection",
+      "maintenance",
+      "documentation",
+      "drawing_requirement",
+      "class_approval",
+      "spare_parts",
+      "interface"
+    ],
+    "expansion_tank": [
+      "specification",
+      "capacity",
+      "level_control",
+      "makeup_water",
+      "venting",
+      "pressure",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "control_logic",
+      "material",
+      "corrosion_protection",
+      "installation",
+      "inspection",
+      "maintenance",
+      "documentation",
+      "drawing_requirement",
+      "class_approval"
+    ],
+    "temperature_control_valve": [
+      "specification",
+      "set_point",
+      "control_logic",
+      "fail_safe",
+      "bypass",
+      "redundancy",
+      "material",
+      "installation",
+      "inspection",
+      "maintenance",
+      "drawing_requirement",
+      "class_approval"
+    ],
+    "pipe": [
+      "material",
+      "wall_thickness",
+      "pressure_rating",
+      "connection_type",
+      "corrosion_protection",
+      "cathodic_protection",
+      "thermal_insulation",
+      "pipe_support",
+      "welding",
+      "vent_drain",
+      "installation",
+      "labeling",
+      "hot_surface_warning",
+      "pressure_test",
+      "cleaning",
+      "inspection",
+      "documentation",
+      "drawing_requirement",
+      "class_approval"
+    ],
+    "valve": [
+      "type",
+      "specification",
+      "material",
+      "installation",
+      "drawing_requirement",
+      "position_indicator",
+      "lockout",
+      "drain",
+      "inspection",
+      "maintenance",
+      "class_approval"
+    ],
+    "pipe_fitting": [
+      "material",
+      "pressure_rating",
+      "welding",
+      "class_approval"
+    ],
+    "filter": [
+      "specification",
+      "redundancy",
+      "pressure_drop",
+      "alarm_setpoint",
+      "bypass",
+      "cleaning",
+      "material",
+      "installation",
+      "inspection",
+      "maintenance"
+    ],
+    "pipe_support": [
+      "spacing",
+      "material",
+      "vibration_isolation",
+      "installation"
+    ],
+    "temperature_sensor": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "calibration",
+      "redundancy",
+      "class_approval"
+    ],
+    "pressure_sensor": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "calibration",
+      "class_approval"
+    ],
+    "level_sensor": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "trip_setpoint",
+      "calibration"
+    ],
+    "flow_meter": [
+      "specification",
+      "installation",
+      "alarm_setpoint",
+      "calibration"
+    ],
+    "alarm_system": [
+      "alarm_setpoint",
+      "trip_setpoint",
+      "alarm_response",
+      "test_procedure",
+      "redundancy",
+      "documentation",
+      "class_approval"
+    ],
+    "control_system": [
+      "control_logic",
+      "manual_override",
+      "fail_safe",
+      "redundancy",
+      "interface",
+      "documentation",
+      "class_approval"
+    ],
+    "coolant": [
+      "water_quality",
+      "corrosion_inhibitor",
+      "antifreeze",
+      "sampling",
+      "inspection",
+      "replacement_cycle",
+      "compatibility",
+      "environmental_protection",
+      "initial_fill"
+    ],
+    "sea_water": [
+      "corrosion_protection",
+      "cathodic_protection",
+      "biofouling",
+      "material",
+      "cleaning",
+      "water_quality"
+    ],
+    "anode": [
+      "material",
+      "specification",
+      "installation",
+      "inspection",
+      "replacement_cycle"
+    ],
+    "insulation": [
+      "specification",
+      "thickness",
+      "installation",
+      "hot_surface_warning"
+    ],
+    "sea_chest": [
+      "specification",
+      "redundancy",
+      "material",
+      "corrosion_protection",
+      "cathodic_protection",
+      "installation",
+      "inspection",
+      "class_approval"
+    ],
+    "cooling_system": [
+      "system_description",
+      "interface",
+      "drawing_requirement",
+      "test_procedure",
+      "spare_parts",
+      "documentation",
+      "class_approval"
+    ]
+  },
+  "sources": [
+    {
+      "id": "OR002",
+      "text": "冷却系统最好有一定备用能力，泵或者某个关键设备出问题时，不要马上导致主机冷却中断。",
+      "candidates": [
+        {
+          "id": "control_system:interface",
+          "component": "control_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooler:interface",
+          "component": "cooler",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:auto_start",
+          "component": "cooling_water_pump",
+          "intent": "auto_start"
+        },
+        {
+          "id": "cooling_water_pump:redundancy",
+          "component": "cooling_water_pump",
+          "intent": "redundancy"
+        },
+        {
+          "id": "cooling_water_pump:spare_parts",
+          "component": "cooling_water_pump",
+          "intent": "spare_parts"
+        }
+      ]
+    },
+    {
+      "id": "OR001",
+      "text": "主机冷却水系统平时要稳定一点，不能因为温度、压力或者流量波动就影响推进设备正常运行。",
+      "candidates": [
+        {
+          "id": "alarm_system:alarm_setpoint",
+          "component": "alarm_system",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "control_system:control_logic",
+          "component": "control_system",
+          "intent": "control_logic"
+        },
+        {
+          "id": "cooler:specification",
+          "component": "cooler",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_system:class_approval",
+          "component": "cooling_system",
+          "intent": "class_approval"
+        },
+        {
+          "id": "cooling_system:documentation",
+          "component": "cooling_system",
+          "intent": "documentation"
+        },
+        {
+          "id": "cooling_system:interface",
+          "component": "cooling_system",
+          "intent": "interface"
+        },
+        {
+          "id": "cooling_system:spare_parts",
+          "component": "cooling_system",
+          "intent": "spare_parts"
+        },
+        {
+          "id": "cooling_system:system_description",
+          "component": "cooling_system",
+          "intent": "system_description"
+        },
+        {
+          "id": "cooling_water_pump:installation",
+          "component": "cooling_water_pump",
+          "intent": "installation"
+        },
+        {
+          "id": "cooling_water_pump:specification",
+          "component": "cooling_water_pump",
+          "intent": "specification"
+        },
+        {
+          "id": "cooling_water_pump:trip_setpoint",
+          "component": "cooling_water_pump",
+          "intent": "trip_setpoint"
+        },
+        {
+          "id": "flow_meter:alarm_setpoint",
+          "component": "flow_meter",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "pipe:installation",
+          "component": "pipe",
+          "intent": "installation"
+        },
+        {
+          "id": "pressure_sensor:alarm_setpoint",
+          "component": "pressure_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "temperature_control_valve:control_logic",
+          "component": "temperature_control_valve",
+          "intent": "control_logic"
+        },
+        {
+          "id": "temperature_sensor:alarm_setpoint",
+          "component": "temperature_sensor",
+          "intent": "alarm_setpoint"
+        },
+        {
+          "id": "valve:specification",
+          "component": "valve",
+          "intent": "specification"
+        }
+      ]
+    }
+  ],
+  "version": "198ddc867836017bad5e25ae5067d87d45a81ce4eb23e20b73a46159b36ffac1"
+}

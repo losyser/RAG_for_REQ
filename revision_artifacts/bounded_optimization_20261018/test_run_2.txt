@@ -1,0 +1,133 @@
+...................F.................................................... [ 75%]
+.......................                                                  [100%]
+================================== FAILURES ===================================
+______________ test_multiprocess_prompt_hash_is_seed_independent ______________
+
+    def test_multiprocess_prompt_hash_is_seed_independent():
+        code = r'''
+    import hashlib,json
+    from pathlib import Path
+    from cooling_rag_mg.evidence_contracts import ordered_evidence_ids
+    from cooling_rag_mg.structured_req_generator import _build_evidence_block
+    root=Path.cwd()
+    kb={u['id']:u for u in map(json.loads,(root/'data/processed/evidence_units_v3_audited.jsonl').read_text(encoding='utf-8').splitlines())}
+    rs=json.loads((root/'data/search_results/exp_v4/rag_v4_results.json').read_text(encoding='utf-8'))['result_sets']
+    blocks=[]
+    for r in rs:
+        vals=r.get('_evidence_values',{})
+        ids=ordered_evidence_ids([{'evidence_ids':list(vals)}])
+        blocks.append(_build_evidence_block([{**kb[i], '_extracted_values':vals[i]} for i in ids if i in kb]))
+    print(hashlib.sha256('\n'.join(blocks).encode('utf-8')).hexdigest())
+    '''
+        hashes = []
+        for seed in ("1", "17", "123"):
+            env = {**os.environ, "PYTHONHASHSEED": seed, "PYTHONDONTWRITEBYTECODE": "1"}
+>           hashes.append(subprocess.check_output([sys.executable, "-B", "-c", code], cwd=ROOT, env=env, text=True).strip())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_bounded_evidence_contracts.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+D:\Users\yando\miniconda3\envs\cooling_rag_env\Lib\subprocess.py:466: in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input = None, capture_output = False, timeout = None, check = True
+popenargs = (['D:\\Users\\yando\\miniconda3\\envs\\cooling_rag_env\\python.exe', '-B', '-c', "\nimport hashlib,json\nfrom pathlib ...alues':vals[i]} for i in ids if i in kb]))\nprint(hashlib.sha256('\\n'.join(blocks).encode('utf-8')).hexdigest())\n"],)
+kwargs = {'cwd': WindowsPath('D:/cooling_rag_multigranular/cooling_rag_multigranular'), 'env': {'AIVR_API_KEY': 'sk-b66ecc419d9...CODE_VM_OPTIONS': 'D:\\win2021-2026 (1)\\win2021-2026\\vmoptions\\appcode.vmoptions', ...}, 'stdout': -1, 'text': True}
+process = <Popen: returncode: 1 args: ['D:\\Users\\yando\\miniconda3\\envs\\cooling_ra...>
+stdout = '', stderr = None, retcode = 1
+
+    def run(*popenargs,
+            input=None, capture_output=False, timeout=None, check=False, **kwargs):
+        """Run command with arguments and return a CompletedProcess instance.
+    
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them,
+        or pass capture_output=True to capture both.
+    
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
+    
+        If timeout is given, and the process takes too long, a TimeoutExpired
+        exception will be raised.
+    
+        There is an optional argument "input", allowing you to
+        pass bytes or a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
+    
+        By default, all communication is in bytes, and therefore any "input" should
+        be bytes, and the stdout and stderr will be bytes. If in text mode, any
+        "input" should be a string, and stdout and stderr will be strings decoded
+        according to locale encoding, or by "encoding" if set. Text mode is
+        triggered by setting any of text, encoding, errors or universal_newlines.
+    
+        The other arguments are the same as for the Popen constructor.
+        """
+        if input is not None:
+            if kwargs.get('stdin') is not None:
+                raise ValueError('stdin and input arguments may not both be used.')
+            kwargs['stdin'] = PIPE
+    
+        if capture_output:
+            if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:
+                raise ValueError('stdout and stderr arguments may not be used '
+                                 'with capture_output.')
+            kwargs['stdout'] = PIPE
+            kwargs['stderr'] = PIPE
+    
+        with Popen(*popenargs, **kwargs) as process:
+            try:
+                stdout, stderr = process.communicate(input, timeout=timeout)
+            except TimeoutExpired as exc:
+                process.kill()
+                if _mswindows:
+                    # Windows accumulates the output in a single blocking
+                    # read() call run on child threads, with the timeout
+                    # being done in a join() on those threads.  communicate()
+                    # _after_ kill() is required to collect that and add it
+                    # to the exception.
+                    exc.stdout, exc.stderr = process.communicate()
+                else:
+                    # POSIX _communicate already populated the output so
+                    # far into the TimeoutExpired exception.
+                    process.wait()
+                raise
+            except:  # Including KeyboardInterrupt, communicate handled that.
+                process.kill()
+                # We don't call process.wait() as .__exit__ does that for us.
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command '['D:\\Users\\yando\\miniconda3\\envs\\cooling_rag_env\\python.exe', '-B', '-c', "\nimport hashlib,json\nfrom pathlib import Path\nfrom cooling_rag_mg.evidence_contracts import ordered_evidence_ids\nfrom cooling_rag_mg.structured_req_generator import _build_evidence_block\nroot=Path.cwd()\nkb={u['id']:u for u in map(json.loads,(root/'data/processed/evidence_units_v3_audited.jsonl').read_text(encoding='utf-8').splitlines())}\nrs=json.loads((root/'data/search_results/exp_v4/rag_v4_results.json').read_text(encoding='utf-8'))['result_sets']\nblocks=[]\nfor r in rs:\n    vals=r.get('_evidence_values',{})\n    ids=ordered_evidence_ids([{'evidence_ids':list(vals)}])\n    blocks.append(_build_evidence_block([{**kb[i], '_extracted_values':vals[i]} for i in ids if i in kb]))\nprint(hashlib.sha256('\\n'.join(blocks).encode('utf-8')).hexdigest())\n"]' returned non-zero exit status 1.
+
+D:\Users\yando\miniconda3\envs\cooling_rag_env\Lib\subprocess.py:571: CalledProcessError
+---------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+
+  File "<string>", line 13, in <module>
+
+  File "D:\cooling_rag_multigranular\cooling_rag_multigranular\cooling_rag_mg\structured_req_generator.py", line 70, in _build_evidence_block
+
+    ordered = select_evidence(annotated_evidence, _MAX_EVIDENCE_ITEMS)
+
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "D:\cooling_rag_multigranular\cooling_rag_multigranular\cooling_rag_mg\evidence_contracts.py", line 53, in select_evidence
+
+    validate_values(eu.get("_extracted_values", []))
+
+  File "D:\cooling_rag_multigranular\cooling_rag_multigranular\cooling_rag_mg\evidence_contracts.py", line 25, in validate_values
+
+    raise ValueError(f"values[{i}].operator is invalid")
+
+ValueError: values[1].operator is invalid
+
+=========================== short test summary info ===========================
+FAILED tests/test_bounded_evidence_contracts.py::test_multiprocess_prompt_hash_is_seed_independent
+1 failed, 94 passed in 16.55s

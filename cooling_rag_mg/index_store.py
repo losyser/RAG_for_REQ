@@ -4,7 +4,6 @@ import pickle
 from pathlib import Path
 from typing import Any
 
-import faiss
 import numpy as np
 from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer
@@ -51,6 +50,35 @@ def load_sentence_transformer(
         raise
 
 
+
+class NumpyFlatIP:
+    """Exact inner-product index with the FAISS IndexFlatIP interface used here
+    (``d``, ``ntotal``, ``search``, ``reconstruct``). Replaces faiss because faiss-cpu 1.13
+    and torch 2.11 crash natively (access violation) in the same process on this Windows env."""
+
+    def __init__(self, vectors: np.ndarray):
+        self.vectors = np.ascontiguousarray(vectors, dtype="float32")
+        self.d = int(self.vectors.shape[1])
+        self.ntotal = int(self.vectors.shape[0])
+
+    def search(self, q: np.ndarray, k: int):
+        scores = np.asarray(q, dtype="float32") @ self.vectors.T
+        kk = min(k, self.ntotal)
+        order = np.argsort(-scores, axis=1, kind="stable")[:, :kk]
+        top = np.take_along_axis(scores, order, axis=1)
+        if kk < k:
+            pad = k - kk
+            order = np.hstack([order, -np.ones((order.shape[0], pad), dtype=order.dtype)])
+            top = np.hstack([top, np.full((top.shape[0], pad), -np.inf, dtype="float32")])
+        return top, order
+
+    def reconstruct(self, idx: int, out: np.ndarray | None = None) -> np.ndarray:
+        if out is None:
+            return self.vectors[idx].copy()
+        out[:] = self.vectors[idx]
+        return out
+
+
 class BuiltIndex:
     def __init__(self, records: list[dict[str, Any]], bm25: BM25Okapi, tokens: list[list[str]], faiss_index: Any, model_name: str):
         self.records = records
@@ -78,8 +106,7 @@ def build_index(*, jsonl_path: str | Path, output_dir: str | Path, text_field: s
         else:
             raise
     vectors = np.asarray(vectors, dtype="float32")
-    index = faiss.IndexFlatIP(vectors.shape[1])
-    index.add(vectors)
+    index = NumpyFlatIP(vectors)
 
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -89,7 +116,7 @@ def build_index(*, jsonl_path: str | Path, output_dir: str | Path, text_field: s
         pickle.dump(bm25, f)
     with (out / "tokens.pkl").open("wb") as f:
         pickle.dump(tokens, f)
-    faiss.write_index(index, str(out / "faiss.index"))
+    np.save(out / "vectors.npy", index.vectors)
     (out / "model_path.txt").write_text(model_path, encoding="utf-8")
 
 
@@ -101,7 +128,12 @@ def load_index(index_dir: str | Path) -> BuiltIndex:
         bm25 = pickle.load(f)
     with (p / "tokens.pkl").open("rb") as f:
         tokens = pickle.load(f)
-    faiss_index = faiss.read_index(str(p / "faiss.index"))
+    if (p / "vectors.npy").exists():
+        faiss_index = NumpyFlatIP(np.load(p / "vectors.npy"))
+    else:  # legacy index directory written with faiss
+        import faiss
+        fi = faiss.read_index(str(p / "faiss.index"))
+        faiss_index = NumpyFlatIP(np.vstack([fi.reconstruct(i) for i in range(fi.ntotal)]))
     model_name = (p / "model_path.txt").read_text(encoding="utf-8").strip()
     return BuiltIndex(records=records, bm25=bm25, tokens=tokens, faiss_index=faiss_index, model_name=model_name)
 

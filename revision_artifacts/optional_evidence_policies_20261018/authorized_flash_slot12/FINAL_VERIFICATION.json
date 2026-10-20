@@ -1,0 +1,205 @@
+{
+  "checks_passed": true,
+  "protected_historical_files": 366,
+  "prior_model_artifacts": 52,
+  "historical_changed": [],
+  "prior_model_artifacts_changed": [],
+  "unrelated_dirty_changed": [],
+  "request_checks": [
+    {
+      "slot": 1,
+      "case": "OR001",
+      "arm": "old",
+      "status": "failed_stop",
+      "request_sha256": "68e5f4432d2b20e3b1de2b2174b6133e517169b6bdb8935f4865d09954fd4362"
+    },
+    {
+      "slot": 2,
+      "case": "OR001",
+      "arm": "new",
+      "status": "completed",
+      "request_sha256": "55d775a58d75eb968cc8be177433b8a9b4c70cb836bd2d501a93f1c42afa2b30"
+    },
+    {
+      "slot": 3,
+      "case": "OR010",
+      "arm": "old",
+      "status": "completed",
+      "request_sha256": "0abb2092a8c065a10b9e12f5ca0a3ef51d694a8c33151df6208b0a6543731a30"
+    },
+    {
+      "slot": 4,
+      "case": "OR010",
+      "arm": "new",
+      "status": "completed",
+      "request_sha256": "4754a43243c8ac950b5125e39bccc20224fad1586411977e5b1be2ccdcc6cf1b"
+    },
+    {
+      "slot": 5,
+      "case": "OR023",
+      "arm": "old",
+      "status": "completed",
+      "request_sha256": "466c47f570cf3c575df568463ec7057b3c5dc13423e503cceba908328117b4af"
+    },
+    {
+      "slot": 6,
+      "case": "OR023",
+      "arm": "new",
+      "status": "completed",
+      "request_sha256": "82a3d7ddf76c45446fd073ac0ba396edf95934fca7a12cfd21b162d36b6f9944"
+    },
+    {
+      "slot": 7,
+      "case": "R001",
+      "arm": "old",
+      "status": "completed",
+      "request_sha256": "8b7d8e278a41d638025ac362766a185608efc6043ac65c682e4fad359b308f6d"
+    },
+    {
+      "slot": 8,
+      "case": "R001",
+      "arm": "new",
+      "status": "completed",
+      "request_sha256": "51106d9c22e0125faceb4efba4c0c389bea302bbfe2bec5fa4a8bc57ecbec8e0"
+    },
+    {
+      "slot": 9,
+      "case": "R002",
+      "arm": "old",
+      "status": "completed",
+      "request_sha256": "aca28ec373918b761d8221065a1600d3d4f308683b2553bbf68ef9ab9dae16f9"
+    },
+    {
+      "slot": 10,
+      "case": "R002",
+      "arm": "new",
+      "status": "completed",
+      "request_sha256": "88df403d74bee522da8b0e5c661f047fb3f8835b1b1f54ecf144738513102b59"
+    },
+    {
+      "slot": 11,
+      "case": "R003",
+      "arm": "old",
+      "status": "failed_stop",
+      "request_sha256": "ee7c77316e2a6e17946ff721bda5e9bbc325f18e06d413426ebb9d125c254372"
+    },
+    {
+      "slot": 12,
+      "case": "R003",
+      "arm": "new",
+      "status": "completed",
+      "request_sha256": "484aa2ddffb52a9f6d07b6a32f65f227a8e5c6facbf4768a9da324dc1a13c483"
+    }
+  ],
+  "offline_quarantine_only": {
+    "prior_replay_sha256": "a093ef67e8c95a2399bdcd7c9bc0d06c8da93de55864601440629ed78919ec55",
+    "prior_delivery_sha256": "4eef295c94cdfc39c6cd12be8d5cfe591e7cfce9a43a215704904381df45effe",
+    "saved_responses": 10,
+    "raw_rows": 78,
+    "delivery_rows": 76,
+    "withheld_rows": 2,
+    "R003_new_output": {
+      "requirement_set_id": "ER-R003",
+      "source_requirement_id": "R003",
+      "stakeholder": "系统设计方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统回路划分与边界定义要求，明确高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界的区分，并要求在系统原理图中表达各回路的设备连接、流向、接口和服务对象。当前无有效支撑证据，相关验收判据待补充证据后确认。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R003-01",
+          "parent_id": "ER-R003",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "冷却水回路划分与边界定义",
+          "shall_statement": "主机冷却水系统应明确划分高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界，并在系统原理图中清晰表达各回路的设备连接、流向、接口和服务对象。",
+          "engineering_rationale": "本条覆盖方面【冷却水回路划分与边界定义】，来自原始需求「明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界」。检索阶段候选证据均未达到直接或间接支撑标准，本条基于原始需求文本整理，未添加未经证实的参数。",
+          "acceptance_criteria": [
+            "待补充相关工程证据后方可确认验收判据"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [],
+          "risk_if_unmet": "回路边界划分不清将导致设备接口错配、流向混乱，影响系统设计审查和后续施工调试。",
+          "_reported_evidence_ids": [],
+          "_semantic_support": "unknown",
+          "_applicability": "unknown",
+          "_quarantine_check": {
+            "version": "evidence-quarantine-v1",
+            "flagged_ids": [],
+            "reported_citation_ids": [],
+            "declared_binding_ids": [],
+            "numeric_provenance": "unknown_missing_or_invalid_binding",
+            "semantic_support": "unknown",
+            "applicability": "unknown",
+            "numeric_content_detected": false,
+            "reference_scope": "supplied_context",
+            "out_of_scope_ids": [],
+            "source_attribution": "not_inferred_from_matching_numbers",
+            "status": "no_known_flag_not_verified"
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R003",
+          "target": "ER-R003-01",
+          "type": "derive",
+          "description": "由原始需求「冷却水回路划分与边界定义」派生；因无有效支撑证据，support_status 设为 evidence_gap。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-R003-01",
+          "gap_type": "judge_rejected_all",
+          "description": "冷却水回路划分与边界定义方面缺少有效证据支撑：候选证据均未达到直接或间接支撑标准，无法确认回路划分规则、边界定义方式及系统原理图表达要求的具体判据。",
+          "suggested_document_update": "补充更直接的标准条款、厂家手册、试验记录或设计说明，重点覆盖高温/低温冷却水回路及海水侧或中央冷却系统边界的划分规则与原理图表达要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界的具体划分规则和原理图表达深度。",
+          "reason": "现有证据均未达到支撑标准，无法确定边界定义和图纸表达的具体判据，需补充设计说明或相关标准条款后确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水回路划分与边界定义",
+          "source_phrase": "明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界",
+          "implication_type": "explicit"
+        }
+      ],
+      "_validation_report": {
+        "version": "ui-structure-reference-v1",
+        "semantic_support": "unknown",
+        "applicability": "unknown",
+        "reference_scope": "supplied_support_context",
+        "issues": []
+      },
+      "generated_at": "2026-10-18T23:08:52",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_quarantine_delivery": {
+        "version": "evidence-quarantine-v1",
+        "enabled": true,
+        "active_review_ids": [
+          "MAN4960-P134-edition-mismatch-20261018"
+        ],
+        "input_rows": 1,
+        "delivery_rows": 1,
+        "withheld": [],
+        "background_warnings": [
+          {
+            "evidence_id": "E-HT-COMP-036",
+            "review_id": "MAN4960-P134-edition-mismatch-20261018",
+            "status": "quarantined",
+            "instruction": "Use TBD; not a numeric basis. See external review provenance."
+          }
+        ],
+        "withheld_relationships": []
+      },
+      "_delivery_status": "no_known_flag_not_verified"
+    },
+    "limitation": "Offline containment of saved output; not masked-prompt model performance."
+  }
+}

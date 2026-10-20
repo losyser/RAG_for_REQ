@@ -1,0 +1,80 @@
+{
+  "slot": "eb19e6db6653c59d337eb46a7310e31378ab88d90cf4c4962036da2570e6867d",
+  "started_at": "2026-10-19T06:53:52.027293+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"choices\":[{\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"review_id\\\": \\\"eb19e6db6653c59d337eb46a7310e31378ab88d90cf4c4962036da2570e6867d\\\",\\n  \\\"format_judgment\\\": \\\"pass\\\",\\n  \\\"verifiability\\\": \\\"not_verifiable\\\",\\n  \\\"faithfulness\\\": \\\"new_inference_or_synthesis\\\",\\n  \\\"support\\\": \\\"insufficient\\\",\\n  \\\"applicability\\\": \\\"unknown\\\",\\n  \\\"anchors\\\": [\\n    {\\n      \\\"evidence_id\\\": \\\"E001\\\",\\n      \\\"exact_quote\\\": \\\"该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。\\\",\\n      \\\"candidate_span\\\": \\\"中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。\\\",\\n      \\\"relation\\\": \\\"缺失说明\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E002\\\",\\n      \\\"exact_quote\\\": \\\"It is important, that no condensed water of the intake air/charge air will be led to the compressor of the turbocharger,\\\",\\n      \\\"candidate_span\\\": \\\"凝水不得引至增压器压气机。\\\",\\n      \\\"relation\\\": \\\"支持\\\"\\n    },\\n    {\\n      \\\"evidence_id\\\": \\\"E003\\\",\\n      \\\"exact_quote\\\": \\\"In case of one-string cooling water system are the dual fuel engine is delivered with connection branches for the external preheater unit. In case of two-string cooling water systems, the preheater is connected at the external piping just in front of the engine.\\\",\\n      \\\"candidate_span\\\": \\\"中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。\\\",\\n      \\\"relation\\\": \\\"缺失说明\\\"\\n    }\\n  ],\\n  \\\"source_reliability\\\": \\\"unknown\\\",\\n  \\\"reason\\\": \\\"候选中的部分内容（如“中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确”）在提供的证据片段中没有直接对应的内容。虽然有部分提到冷却水连接关系和凝水排放的处理，但这些信息并不足以全面支持候选中的所有要求。此外，具体机型与工况未明确定义，适用性无法确定。\\\",\\n  \\\"limitations\\\": [\\\"缺少具体机型与工况\\\", \\\"证据片段未能全面覆盖候选要求\\\"]\\n}\"},\"finish_reason\":\"stop\",\"index\":0,\"logprobs\":null}],\"object\":\"chat.completion\",\"usage\":{\"prompt_tokens\":1659,\"completion_tokens\":550,\"total_tokens\":2209,\"prompt_tokens_details\":{\"cached_tokens\":256}},\"created\":1792392849,\"system_fingerprint\":null,\"model\":\"qwen-max\",\"id\":\"chatcmpl-98ad8f95-4a00-9068-9fbf-8521102db93a\"}",
+  "response_headers": {
+    "x-request-id": "98ad8f95-4a00-9068-9fbf-8521102db93a",
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 06:54:08 GMT"
+  },
+  "response": {
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"review_id\": \"eb19e6db6653c59d337eb46a7310e31378ab88d90cf4c4962036da2570e6867d\",\n  \"format_judgment\": \"pass\",\n  \"verifiability\": \"not_verifiable\",\n  \"faithfulness\": \"new_inference_or_synthesis\",\n  \"support\": \"insufficient\",\n  \"applicability\": \"unknown\",\n  \"anchors\": [\n    {\n      \"evidence_id\": \"E001\",\n      \"exact_quote\": \"该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。\",\n      \"candidate_span\": \"中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。\",\n      \"relation\": \"缺失说明\"\n    },\n    {\n      \"evidence_id\": \"E002\",\n      \"exact_quote\": \"It is important, that no condensed water of the intake air/charge air will be led to the compressor of the turbocharger,\",\n      \"candidate_span\": \"凝水不得引至增压器压气机。\",\n      \"relation\": \"支持\"\n    },\n    {\n      \"evidence_id\": \"E003\",\n      \"exact_quote\": \"In case of one-string cooling water system are the dual fuel engine is delivered with connection branches for the external preheater unit. In case of two-string cooling water systems, the preheater is connected at the external piping just in front of the engine.\",\n      \"candidate_span\": \"中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。\",\n      \"relation\": \"缺失说明\"\n    }\n  ],\n  \"source_reliability\": \"unknown\",\n  \"reason\": \"候选中的部分内容（如“中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确”）在提供的证据片段中没有直接对应的内容。虽然有部分提到冷却水连接关系和凝水排放的处理，但这些信息并不足以全面支持候选中的所有要求。此外，具体机型与工况未明确定义，适用性无法确定。\",\n  \"limitations\": [\"缺少具体机型与工况\", \"证据片段未能全面覆盖候选要求\"]\n}"
+        },
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null
+      }
+    ],
+    "object": "chat.completion",
+    "usage": {
+      "prompt_tokens": 1659,
+      "completion_tokens": 550,
+      "total_tokens": 2209,
+      "prompt_tokens_details": {
+        "cached_tokens": 256
+      }
+    },
+    "created": 1792392849,
+    "system_fingerprint": null,
+    "model": "qwen-max",
+    "id": "chatcmpl-98ad8f95-4a00-9068-9fbf-8521102db93a"
+  },
+  "observed_usage_cost_CNY": "0.0092616",
+  "identity": {
+    "model": "qwen-max",
+    "system_fingerprint": null
+  },
+  "usage_cost_CNY": "0.0092616",
+  "parsed": {
+    "review_id": "eb19e6db6653c59d337eb46a7310e31378ab88d90cf4c4962036da2570e6867d",
+    "format_judgment": "pass",
+    "verifiability": "not_verifiable",
+    "faithfulness": "new_inference_or_synthesis",
+    "support": "insufficient",
+    "applicability": "unknown",
+    "anchors": [
+      {
+        "evidence_id": "E001",
+        "exact_quote": "该证据说明管系图纸或送审资料中需要体现材料、管径、设计压力、泵额定容量和关断扬程等信息，可支撑审图和文件完整性要求；具体图纸深度仍需按项目和审查机构要求确认。",
+        "candidate_span": "中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。",
+        "relation": "缺失说明"
+      },
+      {
+        "evidence_id": "E002",
+        "exact_quote": "It is important, that no condensed water of the intake air/charge air will be led to the compressor of the turbocharger,",
+        "candidate_span": "凝水不得引至增压器压气机。",
+        "relation": "支持"
+      },
+      {
+        "evidence_id": "E003",
+        "exact_quote": "In case of one-string cooling water system are the dual fuel engine is delivered with connection branches for the external preheater unit. In case of two-string cooling water systems, the preheater is connected at the external piping just in front of the engine.",
+        "candidate_span": "中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确，包括凝水排放等接口不得混淆至淡水侧。",
+        "relation": "缺失说明"
+      }
+    ],
+    "source_reliability": "unknown",
+    "reason": "候选中的部分内容（如“中央冷却器海水侧边界内的冷却水连接关系应在系统图中明确”）在提供的证据片段中没有直接对应的内容。虽然有部分提到冷却水连接关系和凝水排放的处理，但这些信息并不足以全面支持候选中的所有要求。此外，具体机型与工况未明确定义，适用性无法确定。",
+    "limitations": [
+      "缺少具体机型与工况",
+      "证据片段未能全面覆盖候选要求"
+    ]
+  },
+  "finished_at": "2026-10-19T06:54:07.858336+00:00",
+  "elapsed_seconds": 15.594
+}

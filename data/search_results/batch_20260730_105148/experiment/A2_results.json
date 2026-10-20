@@ -1,0 +1,995 @@
+{
+  "group": "A2",
+  "result_sets": [
+    {
+      "requirement_set_id": "ER-R001",
+      "source_requirement_id": "R001",
+      "stakeholder": "船东代表",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统可靠性要求，包含系统运行可靠性、热带海区高温环境适应性和负荷变化工况温度控制。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R001-01",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "reliability",
+          "topic": "系统运行可靠性",
+          "shall_statement": "主机冷却水系统应具备足够的冷却能力，确保在任何运行工况下冷却水循环不中断、温度不失控，不影响推进装置安全运行。",
+          "engineering_rationale": "本条覆盖方面【系统运行可靠性】，来自原始需求「具备较高运行可靠性，不能因冷却能力不足、冷却水循环中断或温度失控影响推进装置安全运行」。E-COOLER-LOAD-001和E-COOLER-LOAD-005支撑了冷却水温度限值（LT级中冷器进口≤311K），E-TSENS-PRESS-008和E-TSENS-PRESS-005支撑了预加热温度要求，E-JACKET-MON-001和E-JACKET-MON-003支撑了热带参考条件下的温度参数，E-CTRL-COOL-001支撑了温度控制系统功能要求。",
+          "acceptance_criteria": [
+            "系统设计应通过热平衡计算验证冷却能力满足主机厂家要求，具体参数按主机厂家Technical Data确认。",
+            "系统应配置冗余冷却水泵，确保单泵故障时循环不中断，具体配置按船级社规范和项目要求确认。",
+            "温度控制系统应能在全负荷范围内自动调节，保持温度在主机厂家限值内，并设置高温报警和保护。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [
+            "E-COOLER-LOAD-001",
+            "E-COOLER-LOAD-005",
+            "E-TSENS-PRESS-008",
+            "E-TSENS-PRESS-005",
+            "E-CTRL-COOL-001"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "冷却水温度限值（LT级中冷器进口≤311K）基于MAN 49/60和49/60DF项目指南，适用范围限于该厂家和机型，其他厂家和机型应按各自Technical Data确认。",
+            "预加热温度要求（≥60°C at top cover, 25-45°C at cylinder outlet）基于MAN L16/24项目指南，适用范围限于该机型。"
+          ],
+          "risk_if_unmet": "冷却能力不足或循环中断将导致主机过热，触发保护停机，影响航行安全。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R001-01",
+            "overall_passed": true,
+            "score": 0.8,
+            "error_count": 0,
+            "warning_count": 1,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 5 item(s), support_status='verified_by_direct_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='calculation', 3 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": false,
+                "severity": "warning",
+                "message": "Ambiguous qualitative term(s) detected (LLM): ['足够的冷却能力', '温度不失控'].",
+                "suggestion": "Specify minimum cooling capacity (e.g., kW) and maximum allowable temperature (e.g., ≤ 45°C) under all operating conditions."
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "ER-R001-02",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "environmental_adaptability",
+          "topic": "热带海区高温环境适应性",
+          "shall_statement": "主机冷却水系统应能在热带海区高温环境（包括高海水温度）下连续运行，保持冷却水温度在主机厂家允许范围内，不因环境温度升高导致主机降额或停机。",
+          "engineering_rationale": "本条覆盖方面【热带海区高温环境适应性】，来自原始需求「热带海区高温环境」。E-COOLER-LOAD-001和E-COOLER-LOAD-005给出了无需降额的环境条件，包括冷却水温度限值（LT级中冷器进口≤311K），直接支撑热带高温工况下的冷却能力要求。E-JACKET-MON-001和E-JACKET-MON-003给出了热带参考条件下的冷却水温度参数（如HT冷却水出口80°C，LT冷却水入口38°C），间接支撑。",
+          "acceptance_criteria": [
+            "冷却器选型应基于热带海水温度条件进行热平衡计算，确保在最高设计海水温度下冷却水温度不超过主机厂家限值，具体海水温度按项目设计基准确认。",
+            "系统设计应满足在热带条件下无需降额运行，具体验证按主机厂家Technical Data确认。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [
+            "E-COOLER-LOAD-001",
+            "E-COOLER-LOAD-005",
+            "E-JACKET-MON-001",
+            "E-JACKET-MON-003"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "冷却水温度限值（LT级中冷器进口≤311K）基于MAN 49/60和49/60DF项目指南，适用范围限于该厂家和机型。",
+            "热带参考温度参数（HT出口80°C，LT入口38°C）基于MAN 49/60和Everllence 49/60DF项目指南，适用范围限于对应厂家和机型。"
+          ],
+          "risk_if_unmet": "高温环境下冷却能力不足将导致主机降额运行或停机，影响船舶运营效率。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R001-02",
+            "overall_passed": true,
+            "score": 1.0,
+            "error_count": 0,
+            "warning_count": 0,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 4 item(s), support_status='verified_by_direct_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='calculation', 2 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": true,
+                "severity": "warning",
+                "message": "No ambiguous terms detected (LLM check).",
+                "suggestion": ""
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "ER-R001-03",
+          "parent_id": "ER-R001",
+          "level": 1,
+          "requirement_type": "control",
+          "topic": "负荷变化工况温度控制",
+          "shall_statement": "主机冷却水系统应能在主机负荷变化时自动调节冷却水温度，保持温度在主机厂家规定的范围内，确保稳定冷却能力。",
+          "engineering_rationale": "本条覆盖方面【负荷变化工况温度控制】，来自原始需求「主机负荷变化时保持稳定冷却能力」。E-CTRL-COOL-001（IACS UR E10）明确要求冷却水温控系统在全负荷范围内自动调节，保持温度在厂家限值内，直接支撑负荷变化工况下的温度稳定性需求。E-TSENS-PRESS-008和E-TSENS-PRESS-005给出了预加热温度要求，支撑负荷变化时的温度控制。",
+          "acceptance_criteria": [
+            "温度控制系统应能在全负荷范围内自动调节冷却水温度，并具备手动备用功能，具体调节范围和精度按主机厂家Technical Data确认。",
+            "当冷却水温度超过高报警设定值时，系统应发出报警，并自动采取保护动作（如降负荷或停机），报警设定值按主机厂家Technical Data确认。",
+            "系统设计应满足单一故障安全准则，即任一部件故障不应导致温度失控。"
+          ],
+          "verification_method": "commissioning_check",
+          "evidence_ids": [
+            "E-CTRL-COOL-001",
+            "E-TSENS-PRESS-008",
+            "E-TSENS-PRESS-005"
+          ],
+          "support_status": "verified_by_direct_evidence",
+          "applicability_constraints": [
+            "IACS UR E10为通用船级社规则，适用于所有船舶。",
+            "预加热温度要求（≥60°C at top cover, 25-45°C at cylinder outlet）基于MAN L16/24项目指南，适用范围限于该机型。"
+          ],
+          "risk_if_unmet": "负荷变化时温度失控将导致主机热应力过大或燃烧恶化，影响主机寿命和安全。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R001-03",
+            "overall_passed": true,
+            "score": 1.0,
+            "error_count": 0,
+            "warning_count": 0,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 3 item(s), support_status='verified_by_direct_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='commissioning_check', 3 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": true,
+                "severity": "warning",
+                "message": "No ambiguous terms detected (LLM check).",
+                "suggestion": ""
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R001",
+          "target": "ER-R001-01",
+          "type": "derive",
+          "description": "由原始需求「系统运行可靠性」和直接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-02",
+          "type": "derive",
+          "description": "由原始需求「热带海区高温环境适应性」和直接证据派生。"
+        },
+        {
+          "source": "R001",
+          "target": "ER-R001-03",
+          "type": "derive",
+          "description": "由原始需求「负荷变化工况温度控制」和直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家Technical Data中冷却水温度限值（如HT出口、LT进口、中冷器进口等）的具体数值。",
+          "reason": "现有证据仅给出MAN特定机型的限值，其他厂家和机型需确认。"
+        },
+        {
+          "item": "确认项目设计基准中的最高海水温度。",
+          "reason": "热带海区高温环境适应性需基于项目具体设计海水温度进行热平衡计算。"
+        },
+        {
+          "item": "确认温度控制系统的高报警设定值和保护动作阈值。",
+          "reason": "IACS UR E10要求报警和自动保护，但具体数值需按主机厂家Technical Data确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "系统运行可靠性",
+          "source_phrase": "具备较高运行可靠性，不能因冷却能力不足、冷却水循环中断或温度失控影响推进装置安全运行",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "热带海区高温环境适应性",
+          "source_phrase": "热带海区高温环境",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "负荷变化工况温度控制",
+          "source_phrase": "主机负荷变化时保持稳定冷却能力",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-07-30T10:51:10",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "A2",
+      "_quality_gate_summary": {
+        "total": 3,
+        "passed": 3,
+        "avg_score": 0.9333333333333332
+      }
+    },
+    {
+      "requirement_set_id": "ER-R002",
+      "source_requirement_id": "R002",
+      "stakeholder": "主机厂家",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水进出口参数要求及高低温回路设计参数一致性要求，基于主机厂家技术文件证据。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R002-01",
+          "parent_id": "ER-R002",
+          "level": 1,
+          "requirement_type": "parameter",
+          "topic": "主机冷却水进出口参数",
+          "shall_statement": "主机入口和出口冷却水的温度、压力、流量应满足主机厂家技术文件规定的限值。",
+          "engineering_rationale": "本条覆盖方面【主机冷却水进出口参数】，来自原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」。E-JACKET-MON-001、E-JACKET-MON-002、E-JACKET-MON-003、E-JACKET-MON-005 提供了MAN和Everllence 49/60系列机型的参考温度值（如HT 80°C、LT 38°C），但均为间接证据且限于特定厂家机型，不能直接作为通用限值。",
+          "acceptance_criteria": [
+            "按主机厂家 Technical Data 确认主机入口和出口冷却水的温度、压力、流量限值。",
+            "设计图纸和计算报告中应明确标注上述参数限值，并与主机厂家技术文件一致。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-JACKET-MON-001",
+            "E-JACKET-MON-002",
+            "E-JACKET-MON-003",
+            "E-JACKET-MON-005"
+          ],
+          "support_status": "need_confirmation",
+          "applicability_constraints": [
+            "本条需求基于MAN和Everllence 49/60系列机型证据，适用范围限于对应厂家和机型，其他厂家和机型应按各自Technical Data另行确认。"
+          ],
+          "risk_if_unmet": "冷却水参数不满足主机要求可能导致主机过热、效率下降或损坏。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R002-01",
+            "overall_passed": true,
+            "score": 1.0,
+            "error_count": 0,
+            "warning_count": 0,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 4 item(s), support_status='need_confirmation'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='review', 2 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": true,
+                "severity": "warning",
+                "message": "No ambiguous terms detected (LLM check).",
+                "suggestion": ""
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "ER-R002-02",
+          "parent_id": "ER-R002",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "高低温回路设计参数一致性",
+          "shall_statement": "高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致。",
+          "engineering_rationale": "本条覆盖方面【高低温回路设计参数一致性】，来自原始需求「高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」。E-SYS-COMP-004 提供了LT冷却水压力限值等直接证据，E-HT-COMP-071 提供了HT和LT回路流量数值的间接证据，E-HT-ALARM-002和E-HT-ALARM-004提供了压力参数间接支撑。",
+          "acceptance_criteria": [
+            "设计文件中应包含高低温回路的热平衡计算书，验证设计参数与主机技术数据、泵曲线、冷却器选型的一致性。",
+            "泵曲线和冷却器选型应基于热平衡计算结果，并满足主机厂家技术数据要求。"
+          ],
+          "verification_method": "calculation",
+          "evidence_ids": [
+            "E-SYS-COMP-004",
+            "E-HT-COMP-071",
+            "E-HT-ALARM-002",
+            "E-HT-ALARM-004"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "本条需求基于MAN和Everllence 49/60系列机型证据，适用范围限于对应厂家和机型，其他厂家和机型应按各自Technical Data另行确认。"
+          ],
+          "risk_if_unmet": "设计参数不一致可能导致系统流量不匹配、冷却能力不足或设备选型错误。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R002-02",
+            "overall_passed": true,
+            "score": 1.0,
+            "error_count": 0,
+            "warning_count": 0,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 4 item(s), support_status='supported_by_indirect_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='calculation', 2 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": true,
+                "severity": "warning",
+                "message": "No ambiguous terms detected (LLM check).",
+                "suggestion": ""
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R002",
+          "target": "ER-R002-01",
+          "type": "derive",
+          "description": "由原始需求「主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求」派生。"
+        },
+        {
+          "source": "R002",
+          "target": "ER-R002-02",
+          "type": "derive",
+          "description": "由原始需求「高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致」派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-R002-01",
+          "gap_type": "only_indirect",
+          "description": "只有间接证据，尚无直接证据形成工程化需求依据。",
+          "suggested_document_update": "补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认主机厂家技术文件中主机入口和出口冷却水的温度、压力、流量限值。",
+          "reason": "现有证据仅提供参考数值，需厂家Technical Data确认。"
+        },
+        {
+          "item": "确认高低温回路热平衡计算书和泵曲线、冷却器选型的一致性。",
+          "reason": "需结合项目具体设计文件验证。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "主机冷却水进出口参数",
+          "source_phrase": "主机入口和出口冷却水温度、压力、流量应满足主机厂家技术文件要求",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "高低温回路设计参数一致性",
+          "source_phrase": "高温冷却水回路和低温冷却水回路的设计参数应与主机技术数据、泵曲线、冷却器选型和热平衡计算保持一致",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-07-30T10:51:17",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "A2",
+      "_quality_gate_summary": {
+        "total": 2,
+        "passed": 2,
+        "avg_score": 1.0
+      }
+    },
+    {
+      "requirement_set_id": "ER-R003",
+      "source_requirement_id": "R003",
+      "stakeholder": "系统设计方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖主机冷却水系统回路划分与边界定义要求，确保系统原理图清晰表达各回路设备连接、流向、接口和服务对象。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R003-01",
+          "parent_id": "ER-R003",
+          "level": 1,
+          "requirement_type": "configuration",
+          "topic": "冷却水回路划分与边界定义",
+          "shall_statement": "主机冷却水系统应明确划分高温冷却水回路、低温冷却水回路及海水侧或中央冷却系统边界，并在系统原理图中清晰表达各回路的设备连接、流向、接口和服务对象。",
+          "engineering_rationale": "本条覆盖方面【冷却水回路划分与边界定义】，来自原始需求「明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界」。E-HT-COMP-087、E-HT-COMP-007、E-HT-COMP-026 间接支撑了高温冷却水回路的组成部件和连接关系；E-COOLER-COMP-003 间接支撑了海水侧冷却器的连接顺序。",
+          "acceptance_criteria": [
+            "系统原理图应明确标注高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统的边界线或区域。",
+            "原理图中各回路内的设备（如冷却器、泵、阀等）应正确连接，并标注流向箭头。",
+            "各回路的接口（如与主机、换热器、膨胀水箱等）应清晰标识，并注明服务对象。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-HT-COMP-087",
+            "E-HT-COMP-007",
+            "E-HT-COMP-026",
+            "E-COOLER-COMP-003"
+          ],
+          "support_status": "evidence_gap",
+          "applicability_constraints": [
+            "本条需求基于 MAN 49/60DF、MAN L23/30DF、Caterpillar 及 Scania 等厂家证据，适用范围限于对应厂家和机型，其他厂家和机型应按各自 Technical Data 另行确认。"
+          ],
+          "risk_if_unmet": "回路划分不清将导致系统原理图无法指导施工和调试，可能造成管路接错、设备误操作等风险。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R003-01",
+            "overall_passed": false,
+            "score": 0.8,
+            "error_count": 1,
+            "warning_count": 0,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": false,
+                "severity": "error",
+                "message": "support_status='evidence_gap' with 4 evidence ID(s) listed.",
+                "suggestion": "Supplement the evidence database with relevant standards, manuals, or technical data."
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='review', 3 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": true,
+                "severity": "warning",
+                "message": "No ambiguous terms detected (LLM check).",
+                "suggestion": ""
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R003",
+          "target": "ER-R003-01",
+          "type": "derive",
+          "description": "由原始需求「冷却水回路划分与边界定义」和间接证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-R003",
+          "gap_type": "only_indirect",
+          "description": "只有间接证据，尚无直接证据形成工程化需求依据。",
+          "suggested_document_update": "补充规则条款原文、厂家 Technical Data、安装指南或试验程序等直接证据以确认工程要求。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认系统原理图中各回路边界划分的具体表达方式（如颜色、线型、标注等）。",
+          "reason": "现有证据未提供原理图表达的具体规范，需项目设计文件确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "冷却水回路划分与边界定义",
+          "source_phrase": "明确区分高温冷却水回路、低温冷却水回路、海水侧或中央冷却系统边界",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-07-30T10:51:22",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "A2",
+      "_quality_gate_summary": {
+        "total": 1,
+        "passed": 0,
+        "avg_score": 0.8
+      }
+    },
+    {
+      "requirement_set_id": "ER-R004",
+      "source_requirement_id": "R004",
+      "stakeholder": "船厂建造方",
+      "generation_basis": "original_requirement_and_supported_evidence_only",
+      "professional_summary": "覆盖冷却水系统管路布置施工便利性、阀门与支架可及性、放水排气点设置、设备接口可操作性等工程方面，确保系统便于现场焊接、安装、冲洗、压力试验和后续检查。",
+      "assumptions": [],
+      "engineering_requirements": [
+        {
+          "id": "ER-R004-01",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "管路布置施工便利性",
+          "shall_statement": "冷却水系统管路布置应清楚、紧凑并便于施工，管路走向应避免交叉和干涉，法兰连接处应留有不小于满足拆装工具操作所需的检修空间。",
+          "engineering_rationale": "本条覆盖方面【管路布置施工便利性】，来自原始需求「管路布置应清楚、紧凑并便于施工」。E-SUPP-MAINT-001（DNV规则）支撑了设备维护通道间距要求，间接支撑管路布置的紧凑性和施工便利性。",
+          "acceptance_criteria": [
+            "检查管路布置图，确认管路走向清晰、无干涉，法兰连接处留有足够的拆装空间，具体尺寸按船级社规范和厂家安装手册确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "管路布置混乱或空间不足将导致施工困难、维护不便，增加返工风险。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R004-01",
+            "overall_passed": true,
+            "score": 0.6,
+            "error_count": 0,
+            "warning_count": 2,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 1 item(s), support_status='supported_by_indirect_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": false,
+                "severity": "warning",
+                "message": "Acceptance criteria contain vague placeholder(s): ['足够'].",
+                "suggestion": "Replace vague terms with measurable conditions or explicit references to project documents (e.g., 'per commissioning procedure Doc-XXX')."
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": false,
+                "severity": "warning",
+                "message": "Ambiguous qualitative term(s) detected (LLM): ['清楚', '紧凑', '便于施工', '避免交叉和干涉', '不小于满足拆装工具操作所需的检修空间'].",
+                "suggestion": "Specify quantitative criteria for clarity, compactness, construction convenience, and clearance dimensions (e.g., minimum distance between pipes, minimum clearance around flanges)."
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "ER-R004-02",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "maintainability",
+          "topic": "阀门与支架可及性",
+          "shall_statement": "阀门位置和支架布置应便于操作、维护和检查，阀门操作侧应留有足够的空间以便人员操作和拆卸。",
+          "engineering_rationale": "本条覆盖方面【阀门与支架可及性】，来自原始需求「阀门位置、支架布置...便于...后续检查」。E-SUPP-MAINT-001（DNV规则）支撑了阀操作侧间隙≥600mm的要求；E-IFACE-MAINT-001、E-IFACE-MAINT-004（MAN项目指南）支撑了维护空间要求。",
+          "acceptance_criteria": [
+            "检查布置图，确认阀门操作侧间隙不小于600mm，支架布置不影响阀门操作和维护，具体尺寸按船级社规范和厂家安装手册确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-SUPP-MAINT-001",
+            "E-IFACE-MAINT-001",
+            "E-IFACE-MAINT-004"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "E-IFACE-MAINT-001和E-IFACE-MAINT-004基于MAN机型，其他厂家和机型应按各自Technical Data确认。"
+          ],
+          "risk_if_unmet": "阀门操作空间不足将导致维护困难，影响系统正常运行。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R004-02",
+            "overall_passed": true,
+            "score": 0.8,
+            "error_count": 0,
+            "warning_count": 1,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 3 item(s), support_status='supported_by_indirect_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='review', 1 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": false,
+                "severity": "warning",
+                "message": "Ambiguous qualitative term(s) detected (LLM): ['足够的空间'].",
+                "suggestion": "Specify minimum clearance dimensions (e.g., ≥600 mm) or reference applicable standard (e.g., ISO 12100)."
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "ER-R004-03",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "放水排气点设置",
+          "shall_statement": "管路应在最高点设置排气点，在最低点设置放水点，以便系统冲洗和压力试验。",
+          "engineering_rationale": "本条覆盖方面【放水排气点设置】，来自原始需求「放水点、排气点...便于...冲洗、压力试验」。E-VENT-INSP-001和E-DRAIN-INSP-001（NASA规范）支撑了最高点排气和最低点放水的要求；E-PIPE-PTEST-002（安装指南）支撑了试验前管路清洁要求。",
+          "acceptance_criteria": [
+            "检查管路布置图，确认最高点设有手动排气阀，最低点设有手动放水阀，且阀门位置便于操作。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-VENT-INSP-001",
+            "E-DRAIN-INSP-001",
+            "E-PIPE-PTEST-002"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [],
+          "risk_if_unmet": "缺少放水排气点将导致系统冲洗不彻底、压力试验无法有效进行。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R004-03",
+            "overall_passed": true,
+            "score": 1.0,
+            "error_count": 0,
+            "warning_count": 0,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 3 item(s), support_status='supported_by_indirect_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": true,
+                "severity": "error",
+                "message": "Verifiable: method='review', 1 criterion/criteria defined.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": true,
+                "severity": "warning",
+                "message": "No ambiguous terms detected (LLM check).",
+                "suggestion": ""
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "ER-R004-04",
+          "parent_id": "ER-R004",
+          "level": 1,
+          "requirement_type": "installation",
+          "topic": "设备接口可操作性",
+          "shall_statement": "设备接口应便于现场焊接、安装和后续检查，接口处应留有足够的操作空间，且应考虑拆卸维护的便利性。",
+          "engineering_rationale": "本条覆盖方面【设备接口可操作性】，来自原始需求「设备接口应便于现场焊接、安装...和后续检查」。E-COOLER-MAINT-004、E-IFACE-MAINT-001、E-IFACE-MAINT-004（MAN项目指南）支撑了设备接口处应留有拆卸空间的要求；E-SUPP-MAINT-001（DNV规则）支撑了设备维护通道间距要求。",
+          "acceptance_criteria": [
+            "检查布置图，确认设备接口处留有足够的焊接和安装空间，且满足拆卸维护要求，具体尺寸按厂家Technical Data和船级社规范确认。"
+          ],
+          "verification_method": "review",
+          "evidence_ids": [
+            "E-COOLER-MAINT-004",
+            "E-IFACE-MAINT-001",
+            "E-IFACE-MAINT-004",
+            "E-SUPP-MAINT-001"
+          ],
+          "support_status": "supported_by_indirect_evidence",
+          "applicability_constraints": [
+            "E-COOLER-MAINT-004、E-IFACE-MAINT-001、E-IFACE-MAINT-004基于MAN机型，其他厂家和机型应按各自Technical Data确认。"
+          ],
+          "risk_if_unmet": "设备接口空间不足将导致安装困难、维护不便，增加施工周期。",
+          "quality_gate_report": {
+            "requirement_id": "ER-R004-04",
+            "overall_passed": true,
+            "score": 0.6,
+            "error_count": 0,
+            "warning_count": 2,
+            "checks": [
+              {
+                "dimension": "evidence_sufficiency",
+                "passed": true,
+                "severity": "error",
+                "message": "Evidence present: 4 item(s), support_status='supported_by_indirect_evidence'.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "verifiability",
+                "passed": false,
+                "severity": "warning",
+                "message": "Acceptance criteria contain vague placeholder(s): ['足够'].",
+                "suggestion": "Replace vague terms with measurable conditions or explicit references to project documents (e.g., 'per commissioning procedure Doc-XXX')."
+              },
+              {
+                "dimension": "over_inference",
+                "passed": true,
+                "severity": "error",
+                "message": "No over-inference detected.",
+                "suggestion": ""
+              },
+              {
+                "dimension": "ambiguity",
+                "passed": false,
+                "severity": "warning",
+                "message": "Ambiguous qualitative term(s) detected (LLM): ['便于', '足够的操作空间', '便利性'].",
+                "suggestion": "Specify minimum clearances (e.g., 500 mm) and reference applicable standards (e.g., ISO 15547) for installation and maintenance space."
+              },
+              {
+                "dimension": "mbse_completeness",
+                "passed": true,
+                "severity": "error",
+                "message": "All 5 SysML required fields are present.",
+                "suggestion": ""
+              }
+            ]
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "source": "R004",
+          "target": "ER-R004-01",
+          "type": "derive",
+          "description": "由原始需求「管路布置应清楚、紧凑并便于施工」派生。"
+        },
+        {
+          "source": "R004",
+          "target": "ER-R004-02",
+          "type": "derive",
+          "description": "由原始需求「阀门位置、支架布置...便于...后续检查」派生。"
+        },
+        {
+          "source": "R004",
+          "target": "ER-R004-03",
+          "type": "derive",
+          "description": "由原始需求「放水点、排气点...便于...冲洗、压力试验」派生。"
+        },
+        {
+          "source": "R004",
+          "target": "ER-R004-04",
+          "type": "derive",
+          "description": "由原始需求「设备接口应便于现场焊接、安装...和后续检查」派生。"
+        },
+        {
+          "source": "R004",
+          "target": "ER-R004-05",
+          "type": "derive",
+          "description": "由原始需求「便于...压力试验」和E-PIPE-PTEST-007直接证据派生。"
+        },
+        {
+          "source": "R004",
+          "target": "ER-R004-06",
+          "type": "derive",
+          "description": "由原始需求「便于...冲洗」和E-PIPE-PTEST-002直接证据派生。"
+        }
+      ],
+      "evidence_gaps": [
+        {
+          "related_requirement_id": "ER-R004-02",
+          "gap_type": "only_indirect",
+          "description": "阀门与支架可及性方面仅有间接证据，缺少直接给出具体尺寸或安装细节的规则或厂家文件。",
+          "suggested_document_update": "补充船级社规则或厂家安装手册中关于阀门操作空间和支架布置的具体要求。"
+        },
+        {
+          "related_requirement_id": "ER-R004-03",
+          "gap_type": "only_indirect",
+          "description": "放水排气点设置方面仅有间接证据，缺少直接给出具体安装位置或阀门规格的规则或厂家文件。",
+          "suggested_document_update": "补充船级社规则或厂家技术文件中关于放水排气点设置的具体要求。"
+        },
+        {
+          "related_requirement_id": "ER-R004-04",
+          "gap_type": "only_indirect",
+          "description": "设备接口可操作性方面仅有间接证据，缺少直接给出接口空间尺寸或焊接要求的规则或厂家文件。",
+          "suggested_document_update": "补充厂家安装手册或船级社规范中关于设备接口空间的具体要求。"
+        },
+        {
+          "related_requirement_id": "ER-R004-05",
+          "gap_type": "scope_violation",
+          "description": "topic '压力试验要求' 不在 allowed_engineering_aspects 列表中，已从工程需求中移除。若确需覆盖该方面，请在原始需求中补充相应内容。",
+          "suggested_document_update": "在原始需求中明确提及该工程方面。"
+        },
+        {
+          "related_requirement_id": "ER-R004-06",
+          "gap_type": "scope_violation",
+          "description": "topic '管路冲洗要求' 不在 allowed_engineering_aspects 列表中，已从工程需求中移除。若确需覆盖该方面，请在原始需求中补充相应内容。",
+          "suggested_document_update": "在原始需求中明确提及该工程方面。"
+        }
+      ],
+      "confirmation_items": [
+        {
+          "item": "确认管路法兰连接处的最小拆装空间尺寸。",
+          "reason": "现有证据仅给出设备维护通道间距，未明确管路法兰处的具体空间要求，需按船级社规范和厂家安装手册确认。"
+        },
+        {
+          "item": "确认阀门操作侧最小间隙的具体数值。",
+          "reason": "E-SUPP-MAINT-001给出≥600mm，但需结合项目实际和厂家要求确认。"
+        },
+        {
+          "item": "确认放水排气点的具体位置和阀门规格。",
+          "reason": "现有证据仅要求设置，未给出具体位置和规格，需按项目设计文件确认。"
+        },
+        {
+          "item": "确认设备接口处的最小焊接和安装空间。",
+          "reason": "现有证据仅要求考虑拆卸空间，未给出具体尺寸，需按厂家Technical Data确认。"
+        }
+      ],
+      "allowed_engineering_aspects": [
+        {
+          "topic": "管路布置施工便利性",
+          "source_phrase": "管路布置应清楚、紧凑并便于施工",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "阀门与支架可及性",
+          "source_phrase": "阀门位置、支架布置...便于...后续检查",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "放水排气点设置",
+          "source_phrase": "放水点、排气点...便于...冲洗、压力试验",
+          "implication_type": "explicit"
+        },
+        {
+          "topic": "设备接口可操作性",
+          "source_phrase": "设备接口应便于现场焊接、安装...和后续检查",
+          "implication_type": "explicit"
+        }
+      ],
+      "generated_at": "2026-07-30T10:51:40",
+      "agent": "langgraph_deepseek_engineering_requirement_agent",
+      "_group": "A2",
+      "_quality_gate_summary": {
+        "total": 4,
+        "passed": 4,
+        "avg_score": 0.75
+      }
+    }
+  ]
+}

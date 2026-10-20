@@ -1,0 +1,334 @@
+{
+  "slot": "OR007-semantic_new",
+  "started_at": "2026-10-19T02:41:28.326761+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"9625b966-abd4-4b2d-8c20-7454d08edd84\",\"object\":\"chat.completion\",\"created\":1792377689,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\": [{\\\"shall_statement\\\": \\\"高温冷却水回路与低温冷却水回路应作为两个独立回路分别定义，不得将不同服务对象的冷却水合并为单一模糊系统。\\\", \\\"measurable_criterion\\\": \\\"[Q]系统由低温（LT）回路和高温（HT）回路组成；高温冷却水用于气缸套和气缸盖的冷却；低温冷却水系统包括增压空气冷却和滑油冷却。\\\", \\\"applicable_condition\\\": \\\"MAN Energy Solutions L16/24、L21/31、L27/38 机型内部冷却水系统（2012.05.07 - NG 1(2)）；其他机型/系统型式未知，不得泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"系统架构文件中HT回路与LT回路分别建模并具有独立标识\\\", \\\"HT回路服务对象包含气缸套与气缸盖冷却\\\", \\\"LT回路服务对象包含增压空气冷却与滑油冷却\\\", \\\"不存在将HT与LT服务对象混入同一回路的建模条目\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-088\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应明确其组成顺序：依次流经高压HT级中冷器、缸套冷却、低压HT级中冷器，并对温度进行调节。\\\", \\\"measurable_criterion\\\": \\\"[Q]HT冷却水流经：1. 高压HT级中冷器；2. 缸套冷却；3. 低压HT级中冷器；调节温度。\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 项目指南所限定的工厂系统（plant system）适用条件；其他机型或系统型式未知，不得泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"HT回路组成清单按HP HT级中冷器→缸套冷却→LP HT级中冷器的顺序列出\\\", \\\"HT回路包含温度调节功能项\\\", \\\"组成清单中不混入LT回路服务对象\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-073\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-COMP-077\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应规定启动前预热温度下限，发动机出口冷却水温度应不低于规定值。\\\", \\\"measurable_criterion\\\": \\\"HT冷却水温度 ≥ 60 °C（发动机出口，启动前预热）\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型冷机启动前预热工况；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"冷机启动前发动机出口HT冷却水温度不低于60 °C\\\", \\\"预热过程记录可追溯至该温度阈值\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-037\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-COMP-042\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-DRAW-007\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应规定预热时间与温升范围，用于确定预热加热功率。\\\", \\\"measurable_criterion\\\": \\\"将HT冷却水从10 °C预热至60 °C的时间为4 h\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型冷机启动前预热工况；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"预热计算书给出10 °C至60 °C、4 h条件下的加热功率\\\", \\\"加热功率取值与厂家技术数据表一致\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-037\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应规定预热温度要求，并区分强制要求与推荐值。\\\", \\\"measurable_criterion\\\": \\\"冷却水预热温度至少60 ºC，优选70 ºC\\\", \\\"applicable_condition\\\": \\\"Wärtsilä 32 产品指南冷却水系统；燃用重油（HFO）装置为绝对要求，仅燃用船用柴油的发动机为强烈推荐；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"预热系统设计文件中给出不低于60 ºC的下限\\\", \\\"目标预热温度按70 ºC设定\\\", \\\"按燃料类型标注强制/推荐属性\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-030\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S28 Wärtsilä 32 Product Guide, Cooling Water System\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应规定启动前滑油温度与HT冷却水温度的最低条件。\\\", \\\"measurable_criterion\\\": \\\"滑油温度 ≥ 40 °C；HT冷却水温度 ≥ 60 °C\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型预热后正常启动（Normal start）工况；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"测试\\\", \\\"acceptance_criteria\\\": [\\\"启动许可逻辑中滑油温度阈值不低于40 °C\\\", \\\"启动许可逻辑中HT冷却水温度阈值不低于60 °C\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-042\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-DRAW-007\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-DRAW-006\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S41 Everllence 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应规定涡轮增压器后允许排气背压上限，作为回路相关压力约束。\\\", \\\"measurable_criterion\\\": \\\"涡轮增压器后允许排气背压 ≤ 50 mbar\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型、工厂系统（plant system）适用条件；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"排气系统计算书中涡轮增压器后背压不超过50 mbar\\\", \\\"该限值标注对应机型与工况\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-073\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-COMP-077\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路与低温冷却水回路的流量参数应按厂家技术数据或项目计算文件分别确定，不得混用。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:m³/h|ref:S42 MAN 49/60DF Project Guide|component:HT/LT冷却水回路|intent:流量|hint:按机型配置分别取HT回路与LT回路流量，来源文件给出多组HT/LT流量数值，需按具体机型与配置选定}}\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型对应配置；具体机型与配置未知时不得取值。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"HT回路与LT回路流量分别列出并注明来源与机型配置\\\", \\\"流量取值可追溯至厂家技术数据或项目计算文件\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-070\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"低温冷却水回路应规定冷却水温度范围，并明确温度调节与再循环路径。\\\", \\\"measurable_criterion\\\": \\\"发动机冷却水侧淡水温度范围10至40 °C\\\", \\\"applicable_condition\\\": \\\"MAN L21/31 机型，Tier II，双列配置，2018.01.08版本；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"LT回路温度范围标注为10至40 °C\\\", \\\"LT回路描述包含滑油冷却器后经恒温阀再循环或引至外部系统的路径\\\", \\\"LT回路仅使用淡水\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-PRESS-010\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路应明确循环泵的配置归属，作为回路组成的一部分。\\\", \\\"measurable_criterion\\\": \\\"[Q]高温回路：发动机驱动的HT离心式循环泵为内置式。\\\", \\\"applicable_condition\\\": \\\"MAN L21/31 机型，Tier II，双列配置，2018.01.08版本；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"HT回路组成中包含发动机驱动内置式离心循环泵条目\\\", \\\"泵的驱动方式与安装归属在模型中明确标注\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-PRESS-010\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S39 MAN L21/31 Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"冷却水系统应仅使用处理过的淡水作为工作介质。\\\", \\\"measurable_criterion\\\": \\\"[Q]系统仅设计用于处理过的淡水。\\\", \\\"applicable_condition\\\": \\\"MAN Energy Solutions L16/24、L21/31、L27/38 机型内部冷却水系统（2012.05.07 - NG 1(2)）；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"系统介质要求文件中规定仅使用处理过的淡水\\\", \\\"HT与LT回路均标注该介质约束\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-088\\\", \\\"tier\\\": \\\"L3\\\", \\\"source\\\": \\\"S38 MAN L16/24 GenSet Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水回路的组成、控制与压力参数应依据来源文件厂家技术数据或项目计算文件确定，并标注适用机型与工况。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:-|ref:S42 MAN 49/60DF Project Guide|component:HT冷却水回路|intent:组成/控制/压力参数来源|hint:参数须引用厂家技术数据或项目计算文件，并注明适用对象与工况}}\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型及来源文件限定的工厂系统；不得超出厂家、机型、系统型式或工况范围泛化。\\\", \\\"verification_method\\\": \\\"检查\\\", \\\"acceptance_criteria\\\": [\\\"HT回路组成、控制、压力参数均标注来源文件与适用机型\\\", \\\"参数取值可追溯至厂家技术数据或项目计算文件\\\", \\\"不存在跨机型或跨系统型式的直接泛化引用\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-077\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}, {\\\"kb_id\\\": \\\"E-HT-COMP-073\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}, {\\\"shall_statement\\\": \\\"高温冷却水预热模块的加热功率与预热泵容量应依据厂家技术数据或项目计算文件确定。\\\", \\\"measurable_criterion\\\": \\\"{{TBD|unit:kW|ref:S42 MAN 49/60DF Project Guide|component:HT冷却水预热模块(MOD-004)|intent:最小加热功率与预热泵容量|hint:来源文件仅给出参数确认路径，具体数值需查MOD-004章节及滑油预热器H-002章节}}\\\", \\\"applicable_condition\\\": \\\"MAN 49/60DF 机型预热模块（MOD-004）适用条件；其他机型未知，不得泛化。\\\", \\\"verification_method\\\": \\\"分析\\\", \\\"acceptance_criteria\\\": [\\\"预热模块加热功率取值可追溯至MOD-004技术数据\\\", \\\"预热泵容量取值可追溯至MOD-004技术数据\\\", \\\"滑油预热功率取值可追溯至H-002章节\\\"], \\\"evidence_citations\\\": [{\\\"kb_id\\\": \\\"E-HT-COMP-079\\\", \\\"tier\\\": \\\"L2\\\", \\\"source\\\": \\\"S42 MAN 49/60DF Project Guide\\\", \\\"has_clause\\\": true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":3083,\"completion_tokens\":3027,\"total_tokens\":6110,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":3083},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:41:29 GMT"
+  },
+  "response": {
+    "id": "9625b966-abd4-4b2d-8c20-7454d08edd84",
+    "object": "chat.completion",
+    "created": 1792377689,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\": [{\"shall_statement\": \"高温冷却水回路与低温冷却水回路应作为两个独立回路分别定义，不得将不同服务对象的冷却水合并为单一模糊系统。\", \"measurable_criterion\": \"[Q]系统由低温（LT）回路和高温（HT）回路组成；高温冷却水用于气缸套和气缸盖的冷却；低温冷却水系统包括增压空气冷却和滑油冷却。\", \"applicable_condition\": \"MAN Energy Solutions L16/24、L21/31、L27/38 机型内部冷却水系统（2012.05.07 - NG 1(2)）；其他机型/系统型式未知，不得泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"系统架构文件中HT回路与LT回路分别建模并具有独立标识\", \"HT回路服务对象包含气缸套与气缸盖冷却\", \"LT回路服务对象包含增压空气冷却与滑油冷却\", \"不存在将HT与LT服务对象混入同一回路的建模条目\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-088\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应明确其组成顺序：依次流经高压HT级中冷器、缸套冷却、低压HT级中冷器，并对温度进行调节。\", \"measurable_criterion\": \"[Q]HT冷却水流经：1. 高压HT级中冷器；2. 缸套冷却；3. 低压HT级中冷器；调节温度。\", \"applicable_condition\": \"MAN 49/60DF 项目指南所限定的工厂系统（plant system）适用条件；其他机型或系统型式未知，不得泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"HT回路组成清单按HP HT级中冷器→缸套冷却→LP HT级中冷器的顺序列出\", \"HT回路包含温度调节功能项\", \"组成清单中不混入LT回路服务对象\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-073\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-HT-COMP-077\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应规定启动前预热温度下限，发动机出口冷却水温度应不低于规定值。\", \"measurable_criterion\": \"HT冷却水温度 ≥ 60 °C（发动机出口，启动前预热）\", \"applicable_condition\": \"MAN 49/60DF 机型冷机启动前预热工况；其他机型未知，不得泛化。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"冷机启动前发动机出口HT冷却水温度不低于60 °C\", \"预热过程记录可追溯至该温度阈值\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-037\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}, {\"kb_id\": \"E-HT-COMP-042\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}, {\"kb_id\": \"E-HT-DRAW-007\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应规定预热时间与温升范围，用于确定预热加热功率。\", \"measurable_criterion\": \"将HT冷却水从10 °C预热至60 °C的时间为4 h\", \"applicable_condition\": \"MAN 49/60DF 机型冷机启动前预热工况；其他机型未知，不得泛化。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"预热计算书给出10 °C至60 °C、4 h条件下的加热功率\", \"加热功率取值与厂家技术数据表一致\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-037\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应规定预热温度要求，并区分强制要求与推荐值。\", \"measurable_criterion\": \"冷却水预热温度至少60 ºC，优选70 ºC\", \"applicable_condition\": \"Wärtsilä 32 产品指南冷却水系统；燃用重油（HFO）装置为绝对要求，仅燃用船用柴油的发动机为强烈推荐；其他机型未知，不得泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"预热系统设计文件中给出不低于60 ºC的下限\", \"目标预热温度按70 ºC设定\", \"按燃料类型标注强制/推荐属性\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-030\", \"tier\": \"L2\", \"source\": \"S28 Wärtsilä 32 Product Guide, Cooling Water System\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应规定启动前滑油温度与HT冷却水温度的最低条件。\", \"measurable_criterion\": \"滑油温度 ≥ 40 °C；HT冷却水温度 ≥ 60 °C\", \"applicable_condition\": \"MAN 49/60DF 机型预热后正常启动（Normal start）工况；其他机型未知，不得泛化。\", \"verification_method\": \"测试\", \"acceptance_criteria\": [\"启动许可逻辑中滑油温度阈值不低于40 °C\", \"启动许可逻辑中HT冷却水温度阈值不低于60 °C\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-042\", \"tier\": \"L2\", \"source\": \"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\", \"has_clause\": true}, {\"kb_id\": \"E-HT-DRAW-007\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-HT-DRAW-006\", \"tier\": \"L3\", \"source\": \"S41 Everllence 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应规定涡轮增压器后允许排气背压上限，作为回路相关压力约束。\", \"measurable_criterion\": \"涡轮增压器后允许排气背压 ≤ 50 mbar\", \"applicable_condition\": \"MAN 49/60DF 机型、工厂系统（plant system）适用条件；其他机型未知，不得泛化。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"排气系统计算书中涡轮增压器后背压不超过50 mbar\", \"该限值标注对应机型与工况\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-073\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-HT-COMP-077\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路与低温冷却水回路的流量参数应按厂家技术数据或项目计算文件分别确定，不得混用。\", \"measurable_criterion\": \"{{TBD|unit:m³/h|ref:S42 MAN 49/60DF Project Guide|component:HT/LT冷却水回路|intent:流量|hint:按机型配置分别取HT回路与LT回路流量，来源文件给出多组HT/LT流量数值，需按具体机型与配置选定}}\", \"applicable_condition\": \"MAN 49/60DF 机型对应配置；具体机型与配置未知时不得取值。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"HT回路与LT回路流量分别列出并注明来源与机型配置\", \"流量取值可追溯至厂家技术数据或项目计算文件\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-070\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"低温冷却水回路应规定冷却水温度范围，并明确温度调节与再循环路径。\", \"measurable_criterion\": \"发动机冷却水侧淡水温度范围10至40 °C\", \"applicable_condition\": \"MAN L21/31 机型，Tier II，双列配置，2018.01.08版本；其他机型未知，不得泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"LT回路温度范围标注为10至40 °C\", \"LT回路描述包含滑油冷却器后经恒温阀再循环或引至外部系统的路径\", \"LT回路仅使用淡水\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-PRESS-010\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路应明确循环泵的配置归属，作为回路组成的一部分。\", \"measurable_criterion\": \"[Q]高温回路：发动机驱动的HT离心式循环泵为内置式。\", \"applicable_condition\": \"MAN L21/31 机型，Tier II，双列配置，2018.01.08版本；其他机型未知，不得泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"HT回路组成中包含发动机驱动内置式离心循环泵条目\", \"泵的驱动方式与安装归属在模型中明确标注\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-PRESS-010\", \"tier\": \"L2\", \"source\": \"S39 MAN L21/31 Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"冷却水系统应仅使用处理过的淡水作为工作介质。\", \"measurable_criterion\": \"[Q]系统仅设计用于处理过的淡水。\", \"applicable_condition\": \"MAN Energy Solutions L16/24、L21/31、L27/38 机型内部冷却水系统（2012.05.07 - NG 1(2)）；其他机型未知，不得泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"系统介质要求文件中规定仅使用处理过的淡水\", \"HT与LT回路均标注该介质约束\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-088\", \"tier\": \"L3\", \"source\": \"S38 MAN L16/24 GenSet Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水回路的组成、控制与压力参数应依据来源文件厂家技术数据或项目计算文件确定，并标注适用机型与工况。\", \"measurable_criterion\": \"{{TBD|unit:-|ref:S42 MAN 49/60DF Project Guide|component:HT冷却水回路|intent:组成/控制/压力参数来源|hint:参数须引用厂家技术数据或项目计算文件，并注明适用对象与工况}}\", \"applicable_condition\": \"MAN 49/60DF 机型及来源文件限定的工厂系统；不得超出厂家、机型、系统型式或工况范围泛化。\", \"verification_method\": \"检查\", \"acceptance_criteria\": [\"HT回路组成、控制、压力参数均标注来源文件与适用机型\", \"参数取值可追溯至厂家技术数据或项目计算文件\", \"不存在跨机型或跨系统型式的直接泛化引用\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-077\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}, {\"kb_id\": \"E-HT-COMP-073\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}, {\"shall_statement\": \"高温冷却水预热模块的加热功率与预热泵容量应依据厂家技术数据或项目计算文件确定。\", \"measurable_criterion\": \"{{TBD|unit:kW|ref:S42 MAN 49/60DF Project Guide|component:HT冷却水预热模块(MOD-004)|intent:最小加热功率与预热泵容量|hint:来源文件仅给出参数确认路径，具体数值需查MOD-004章节及滑油预热器H-002章节}}\", \"applicable_condition\": \"MAN 49/60DF 机型预热模块（MOD-004）适用条件；其他机型未知，不得泛化。\", \"verification_method\": \"分析\", \"acceptance_criteria\": [\"预热模块加热功率取值可追溯至MOD-004技术数据\", \"预热泵容量取值可追溯至MOD-004技术数据\", \"滑油预热功率取值可追溯至H-002章节\"], \"evidence_citations\": [{\"kb_id\": \"E-HT-COMP-079\", \"tier\": \"L2\", \"source\": \"S42 MAN 49/60DF Project Guide\", \"has_clause\": true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3083,
+      "completion_tokens": 3027,
+      "total_tokens": 6110,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 3083
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.030382",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.030382",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "高温冷却水回路与低温冷却水回路应作为两个独立回路分别定义，不得将不同服务对象的冷却水合并为单一模糊系统。",
+        "measurable_criterion": "[Q]系统由低温（LT）回路和高温（HT）回路组成；高温冷却水用于气缸套和气缸盖的冷却；低温冷却水系统包括增压空气冷却和滑油冷却。",
+        "applicable_condition": "MAN Energy Solutions L16/24、L21/31、L27/38 机型内部冷却水系统（2012.05.07 - NG 1(2)）；其他机型/系统型式未知，不得泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "系统架构文件中HT回路与LT回路分别建模并具有独立标识",
+          "HT回路服务对象包含气缸套与气缸盖冷却",
+          "LT回路服务对象包含增压空气冷却与滑油冷却",
+          "不存在将HT与LT服务对象混入同一回路的建模条目"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-088",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应明确其组成顺序：依次流经高压HT级中冷器、缸套冷却、低压HT级中冷器，并对温度进行调节。",
+        "measurable_criterion": "[Q]HT冷却水流经：1. 高压HT级中冷器；2. 缸套冷却；3. 低压HT级中冷器；调节温度。",
+        "applicable_condition": "MAN 49/60DF 项目指南所限定的工厂系统（plant system）适用条件；其他机型或系统型式未知，不得泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "HT回路组成清单按HP HT级中冷器→缸套冷却→LP HT级中冷器的顺序列出",
+          "HT回路包含温度调节功能项",
+          "组成清单中不混入LT回路服务对象"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-073",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-COMP-077",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应规定启动前预热温度下限，发动机出口冷却水温度应不低于规定值。",
+        "measurable_criterion": "HT冷却水温度 ≥ 60 °C（发动机出口，启动前预热）",
+        "applicable_condition": "MAN 49/60DF 机型冷机启动前预热工况；其他机型未知，不得泛化。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "冷机启动前发动机出口HT冷却水温度不低于60 °C",
+          "预热过程记录可追溯至该温度阈值"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-037",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-COMP-042",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-DRAW-007",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应规定预热时间与温升范围，用于确定预热加热功率。",
+        "measurable_criterion": "将HT冷却水从10 °C预热至60 °C的时间为4 h",
+        "applicable_condition": "MAN 49/60DF 机型冷机启动前预热工况；其他机型未知，不得泛化。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "预热计算书给出10 °C至60 °C、4 h条件下的加热功率",
+          "加热功率取值与厂家技术数据表一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-037",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应规定预热温度要求，并区分强制要求与推荐值。",
+        "measurable_criterion": "冷却水预热温度至少60 ºC，优选70 ºC",
+        "applicable_condition": "Wärtsilä 32 产品指南冷却水系统；燃用重油（HFO）装置为绝对要求，仅燃用船用柴油的发动机为强烈推荐；其他机型未知，不得泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "预热系统设计文件中给出不低于60 ºC的下限",
+          "目标预热温度按70 ºC设定",
+          "按燃料类型标注强制/推荐属性"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-030",
+            "tier": "L2",
+            "source": "S28 Wärtsilä 32 Product Guide, Cooling Water System",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应规定启动前滑油温度与HT冷却水温度的最低条件。",
+        "measurable_criterion": "滑油温度 ≥ 40 °C；HT冷却水温度 ≥ 60 °C",
+        "applicable_condition": "MAN 49/60DF 机型预热后正常启动（Normal start）工况；其他机型未知，不得泛化。",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "启动许可逻辑中滑油温度阈值不低于40 °C",
+          "启动许可逻辑中HT冷却水温度阈值不低于60 °C"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-042",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-DRAW-007",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-DRAW-006",
+            "tier": "L3",
+            "source": "S41 Everllence 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应规定涡轮增压器后允许排气背压上限，作为回路相关压力约束。",
+        "measurable_criterion": "涡轮增压器后允许排气背压 ≤ 50 mbar",
+        "applicable_condition": "MAN 49/60DF 机型、工厂系统（plant system）适用条件；其他机型未知，不得泛化。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "排气系统计算书中涡轮增压器后背压不超过50 mbar",
+          "该限值标注对应机型与工况"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-073",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-COMP-077",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路与低温冷却水回路的流量参数应按厂家技术数据或项目计算文件分别确定，不得混用。",
+        "measurable_criterion": "{{TBD|unit:m³/h|ref:S42 MAN 49/60DF Project Guide|component:HT/LT冷却水回路|intent:流量|hint:按机型配置分别取HT回路与LT回路流量，来源文件给出多组HT/LT流量数值，需按具体机型与配置选定}}",
+        "applicable_condition": "MAN 49/60DF 机型对应配置；具体机型与配置未知时不得取值。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "HT回路与LT回路流量分别列出并注明来源与机型配置",
+          "流量取值可追溯至厂家技术数据或项目计算文件"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-070",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "低温冷却水回路应规定冷却水温度范围，并明确温度调节与再循环路径。",
+        "measurable_criterion": "发动机冷却水侧淡水温度范围10至40 °C",
+        "applicable_condition": "MAN L21/31 机型，Tier II，双列配置，2018.01.08版本；其他机型未知，不得泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "LT回路温度范围标注为10至40 °C",
+          "LT回路描述包含滑油冷却器后经恒温阀再循环或引至外部系统的路径",
+          "LT回路仅使用淡水"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-PRESS-010",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路应明确循环泵的配置归属，作为回路组成的一部分。",
+        "measurable_criterion": "[Q]高温回路：发动机驱动的HT离心式循环泵为内置式。",
+        "applicable_condition": "MAN L21/31 机型，Tier II，双列配置，2018.01.08版本；其他机型未知，不得泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "HT回路组成中包含发动机驱动内置式离心循环泵条目",
+          "泵的驱动方式与安装归属在模型中明确标注"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-PRESS-010",
+            "tier": "L2",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "冷却水系统应仅使用处理过的淡水作为工作介质。",
+        "measurable_criterion": "[Q]系统仅设计用于处理过的淡水。",
+        "applicable_condition": "MAN Energy Solutions L16/24、L21/31、L27/38 机型内部冷却水系统（2012.05.07 - NG 1(2)）；其他机型未知，不得泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "系统介质要求文件中规定仅使用处理过的淡水",
+          "HT与LT回路均标注该介质约束"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-088",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水回路的组成、控制与压力参数应依据来源文件厂家技术数据或项目计算文件确定，并标注适用机型与工况。",
+        "measurable_criterion": "{{TBD|unit:-|ref:S42 MAN 49/60DF Project Guide|component:HT冷却水回路|intent:组成/控制/压力参数来源|hint:参数须引用厂家技术数据或项目计算文件，并注明适用对象与工况}}",
+        "applicable_condition": "MAN 49/60DF 机型及来源文件限定的工厂系统；不得超出厂家、机型、系统型式或工况范围泛化。",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "HT回路组成、控制、压力参数均标注来源文件与适用机型",
+          "参数取值可追溯至厂家技术数据或项目计算文件",
+          "不存在跨机型或跨系统型式的直接泛化引用"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-077",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-HT-COMP-073",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "高温冷却水预热模块的加热功率与预热泵容量应依据厂家技术数据或项目计算文件确定。",
+        "measurable_criterion": "{{TBD|unit:kW|ref:S42 MAN 49/60DF Project Guide|component:HT冷却水预热模块(MOD-004)|intent:最小加热功率与预热泵容量|hint:来源文件仅给出参数确认路径，具体数值需查MOD-004章节及滑油预热器H-002章节}}",
+        "applicable_condition": "MAN 49/60DF 机型预热模块（MOD-004）适用条件；其他机型未知，不得泛化。",
+        "verification_method": "分析",
+        "acceptance_criteria": [
+          "预热模块加热功率取值可追溯至MOD-004技术数据",
+          "预热泵容量取值可追溯至MOD-004技术数据",
+          "滑油预热功率取值可追溯至H-002章节"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-079",
+            "tier": "L2",
+            "source": "S42 MAN 49/60DF Project Guide",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:41:40.449498+00:00",
+  "elapsed_seconds": 12.11
+}

@@ -1,0 +1,37 @@
+{
+  "slot": "OR029-random_new",
+  "body_sha256": "bf4f245ba99db63d470c3b37ee694743bb71dc58621ab69f0a727238b0d08449",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T02:55:14.065367+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR029-random_new",
+    "source_id": "OR029",
+    "group": "random_new",
+    "context_sha256": "c75d9fed1f0e17fa0ed307d94b6ac9ed54901b41b66ad0cdba53c53619d25cf9",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n补水、排气、放水和换液操作要简单清楚，不要每次都要翻很厚的资料才能做。\n\n## 证据清单\n[E-SYS-WATER-011] 层级:L2 来源:S29 Caterpillar, Know Your Cooling System\n  内容: 冷却液冰点与乙二醇比例\nCoolant Coolant generally consists of water combined with corrosion inhibitors or water combined with antifreeze and corrosion inhibitors. The correct selection of coolant has a direct effect on the efficiency and/or service life of both the cooling system and the engine. Coolant must be able to transfer heat from hot engine components to a radiator or heat exchanger where the heat is dissipated. Heat Transfer Heat transfer describes the tendency of heat to move from a hot area to a \n  [量化参数] 1°\n\n[E-HT-COMP-038] 层级:L3 来源:S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\n  内容: Engine type L/V engine: Min. heating power = 14 kW/cylinder；适用条件：这些值包括发动机外表面的辐射热损失，并已考虑冷却系统热损失20%的余量。为防止发动机过快和不均匀加热，HT冷却水预热温度在发动机进口处必须强制低于90°C，循环量不得超过额定流量的30%，最大加热功率需相应计算。预热器的辅助功能是在发动机部分负荷运行期间为HT冷却水系统提供热容量，适用于高淡水需求的船舶推进装置，如客船。\n\n可支撑：ht_cooling_water_loop 的 composition、installation、capacity 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 14、20、90、30\n\n[E-EXP-INSP-017] 层级:L2 来源:S10 MAN L23/30DF Project Guide Internal cooling water system\n  内容: 冷却液水质检测方法：防腐剂浓度必须按照制造商说明检查，或委托合适实验室测试；如有疑问，咨询MAN Energy Solutions。适用条件：依据MAN Energy Solutions操作说明书010.005 Engine – Operating Instructions 010.000.023-14。\n\n膨胀水箱：冷却液中少量润滑油可通过定期水样目视检查发现。适用条件：定期从膨胀水箱取样。\n\n冷却液：定期分析对安全发动机运行非常重要；MAN Energy Solutions实验室PrimeServLab可为客户分析燃油。适用条件：取样须按照有效MAN Energy Solutions操作说明书进行，以确保船员安全和获得代表性样品。\n\n可支撑：expansion_tank的inspection；water_quality参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。\n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图\n\n[E-EXP-CORR-006] 层级:L3 来源:S39 MAN L21/31 Project Guide\n  内容: 膨胀水箱：冷却水连接口位于顶部，便于安装和运行控制；冷却水被吸入悬挂在全焊接容器内的橡胶袋中；全焊接容器被排除腐蚀风险；橡胶袋可更换。适用条件：L28/32S;L27/38S;L21/31S;L16/24S;L23/30DF;V28/32S-DF;V28/32H;L28/32DF;V28/32S;L16/24;L21/31;L23/30H;L27/38;L28/32H，2016.02.24 Figure 1。\n\n膨胀水箱：膨胀容器应连接至系统靠近冷却水进口接头（G1/F1）的位置，以维持系统正压并允许水膨胀；安全阀安装在集管上；压力表安装在集管上，位置应便于从补水点读取；补水点应靠近压力膨胀容器。适用条件：L28/32S;L27/38S;L21/31S;L16/24S;L23/30DF;V28/32S-DF;V28/32H;L28/32DF;V28/32S;L16/24;L21/31;L23/30H;L27/38;L28/32H，2016.02.24 Figure 1。\n\n可支撑：冷却水系统布置应考虑来源文件提出的安装操作或维护可达性原则。具体施工空间、支架、接口和验收要求仍应由项目安\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有三种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n3. 以固定前缀[Q]开头的可检验定性判据：必须有evidence_citations中的有效引用，明确applicable_condition，内容仅限可对应证据原文的摘录或忠实转述，不许可新推导或跨证据综合。不得根据相同数字推断语义支持；机型或工况未知须明确写未知，不能声称适用。无证据或证据不能支持时仍用TBD；空证据不得生成[Q]。\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "bf4f245ba99db63d470c3b37ee694743bb71dc58621ab69f0a727238b0d08449",
+    "utf8_message_bytes": 5487,
+    "execution_index": 141
+  }
+}

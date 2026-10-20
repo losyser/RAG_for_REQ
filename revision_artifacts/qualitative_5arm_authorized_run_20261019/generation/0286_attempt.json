@@ -1,0 +1,37 @@
+{
+  "slot": "OR058-random_old",
+  "body_sha256": "1f1a3cab017bef96701d2f4c8800de60957e4018d4c66a7122151fd6f4ffbc55",
+  "plan_hash": "6d4e7c7ea5884804fdf7eebcb79cf9399021592b9c6cd070a77a4a34f96fa204",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "started_at": "2026-10-19T03:11:53.136975+00:00",
+  "reserved_CNY": "2.162688",
+  "status": "dispatch_may_have_occurred",
+  "item": {
+    "slot": "OR058-random_old",
+    "source_id": "OR058",
+    "group": "random_old",
+    "context_sha256": "1da2ea27789b52a34f4c686766d956d7f9ef16c0a2958f7e81a007eb9629dc19",
+    "body": {
+      "model": "deepseek-flash",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是船舶主机冷却水系统需求工程师，为 MBSE/SysML 建模生成结构化工程化 shall 需求。\n\n## 原始需求\n报警和传感器要做实际动作测试，不要只确认监控画面上有信号。\n\n## 证据清单\n[E-EXP-ALARM-008] 层级:L2 来源:S41 Everllence 49/60DF Project Guide\n  内容: 膨胀水箱配置\nFor the recommended volume of the tank and the recommended installation height, see table Service tanks capacities, Page 172. The tank may be designed to a smaller volume if necessary. In that case make sure, that proper air venting is ensured even in heavy seas at max. ship inclinations. We recommend a minimum volume of 15% of the total HT cool- ing water amount in the plant. In case gaskets at the cylinder head are damaged, the cooling water may contain gas. This gas will enter the tank\n  [量化参数] 15%、172\n\n[E-HT-COMP-073] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 高温冷却水系统组成\nPermissible exhaust gas back pressure after turbocharger mbar ≤ 50 HT cooling water flow through: 1. HP HT stage charge air cooler 2. Jacket cooling 3. LP HT stage charge air cooler. Regulated temperature. Relevant for plant system.\n整理说明：原文给出了冷却水相关参数、阈值或适用条件，可用于对应厂家、机型或规则范围内的参数约束。该证据不应跨系统型式或跨机型直接泛化。\n可支撑：ht_cooling_water_loop 的 composition\ncontrol\npressure 参数应依据来源文件\n厂家技术数据或项目计算文件确定。\n若原文给出明确限值\n可作为对应适用对象和工况下的参数约束。\n不能支撑：2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。\n3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 50\n\n[E-TCV-TEMP-021] 层级:L2 来源:S36 MAN L23/30H GenSet Project Guide\n  内容: 温度控制阀：外部管道流速，淡水最大流速 3.0 m/s；海水最大流速 3.0 m/s。适用条件：外部管道连接。  \n发动机：高压系统压降，约（未给出具体数值）。适用条件：不含泵和恒温阀。  \n\n可支撑：temperature_control_valve 的 temperature control pressure 参数应依据来源文件厂家技术数据或项目计算文件确定。若原文给出明确限值，可作为对应适用对象和工况下的参数约束。  \n不能支撑：1. 不能直接给出可用于设计输入的具体数值。2. 不能超出来源文件限定的厂家、机型、系统型式或工况范围泛化。3. 不能直接支撑施工安装、冲洗试压或图纸送审完整性要求。\n  [量化参数] 3.0、3.0\n\n[E-SYS-WATER-018] 层级:L2 来源:S42 MAN 49/60DF Project Guide\n  内容: 冷却液防腐剂比例\nmixed with LT cooling water, the LT circuit has to be checked with regard to possible accumulation of gas too. The cooling water is to be conditioned by using a corrosion inhibitor, see sec- tion Specification of engine coolant, Page 279. Cooling water that is not treated properly may cause serious corrosion during storage or operation of the engine.\n整理说明：原文涉及冷却液、水质、防腐剂、pH、硬度、氯离子或污染沉积风险，可支撑水质处理和维护检测类需求；具体限值和检测周期须按来源文件适用条件使用。\n可支撑：main_engine_cooling_water_system 的 water_quality\ncorrosion\n\n\n## 输出要求\n返回 JSON 格式：{\"shalls\": [<shall对象>, ...]}\n\n每个 shall 对象包含：\n- shall_statement：shall 语句（中文）\n- measurable_criterion：可量化判据（见数值规则）\n- applicable_condition：适用条件/工况\n- verification_method：验证方式（检查/测试/分析）\n- acceptance_criteria：验收准则列表\n- evidence_citations：引用证据列表，每项含 kb_id/tier/source/has_clause\n\n## 数值规则（最高优先级）\nmeasurable_criterion 只有两种合法内容：\n1. 来自上方证据清单中 [量化参数] 标注的具体值，需在 evidence_citations 中引用对应证据\n2. {{TBD|unit:<单位>|ref:<来源文档>|component:<部件>|intent:<方面>|hint:<说明>}} 占位符\n\n严禁写入证据清单中未出现的任何数字。所有字段使用中文。\n"
+        }
+      ],
+      "temperature": 0,
+      "max_tokens": 8192,
+      "response_format": {
+        "type": "json_object"
+      },
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "body_sha256": "1f1a3cab017bef96701d2f4c8800de60957e4018d4c66a7122151fd6f4ffbc55",
+    "utf8_message_bytes": 4251,
+    "execution_index": 286
+  }
+}

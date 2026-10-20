@@ -1,0 +1,189 @@
+{
+  "slot": "OR026-semantic_old",
+  "started_at": "2026-10-19T02:53:16.453209+00:00",
+  "status": "completed",
+  "http_status": 200,
+  "raw_response_body": "{\"id\":\"89913ff1-eccf-4a00-bd5a-c44f7f29eb27\",\"object\":\"chat.completion\",\"created\":1792378397,\"model\":\"deepseek-flash\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"shalls\\\":[{\\\"shall_statement\\\":\\\"集控室应设置主机冷却水系统集中监视功能，能够显示高温冷却水温度、低温冷却水温度、冷却水压力、冷却水液位及冷却水泵运行状态，不得仅依赖机旁仪表。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:℃|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:温度显示范围|hint:依据TE3145/TE3170/TE3180/TE3190测量点确定集控室显示的温度上下限}}\\\",\\\"applicable_condition\\\":\\\"主机冷却水系统正常运行及启动前预热工况；适用于MAN Energy Solutions 49/60机型高温冷却水回路\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"集控室监视画面包含高温冷却水温度、低温冷却水温度、冷却水压力、冷却水液位和冷却水泵运行状态五类参数\\\",\\\"上述参数在集控室可独立于机旁仪表读取\\\",\\\"显示参数与机旁仪表测量点一一对应并可追溯\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-COMP-036\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-COMP-015\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-COMP-013\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"集控室显示的高温冷却水温度应覆盖高温冷却水回路关键测量点，包括增压空气冷却器出口、缸套冷却出口、低压增压空气冷却器出口及发动机进口处的温度。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:℃|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:各测量点温度限值|hint:依据TE3145、TE3170、TE3180、TE3190测量点分别确定显示与报警限值}}\\\",\\\"applicable_condition\\\":\\\"高温冷却水回路运行工况；测量点TE3145、TE3170、TE3180、TE3190对应位置\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"集控室画面覆盖TE3145、TE3170、TE3180、TE3190对应温度测点\\\",\\\"各测点显示值与机旁仪表读数一致\\\",\\\"各测点温度限值依据厂家技术数据或项目计算文件确定并记录\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-HT-COMP-036\\\",\\\"tier\\\":\\\"L2\\\",\\\"source\\\":\\\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"集控室应能显示高温冷却水压力和低温冷却水压力，压力信号应来自冷却水系统压力传感器PT10和PT01。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:bar|ref:S39 MAN L21/31 Project Guide|component:高温冷却水/低温冷却水压力传感器PT10、PT01|intent:压力显示范围|hint:依据PT10、PT01信号范围MW64-80、MW65-80确定工程量程与显示范围}}\\\",\\\"applicable_condition\\\":\\\"适用于MAN Energy Solutions L27/38S、L16/24S、L21/31S等机型冷却水系统\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"集控室画面显示PT10高温冷却水压力与PT01低温冷却水压力\\\",\\\"压力显示量程与传感器信号范围对应并记录于参数表\\\",\\\"显示值与机旁仪表读数一致\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-COMP-015\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-COMP-013\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"集控室应能显示冷却水系统液位状态，液位开关传感器应在投用前完成校验并确认功能正常。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:mm|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水液位开关传感器|intent:液位显示与报警阈值|hint:依据厂家技术数据或项目计算文件确定液位开关动作值与显示范围}}\\\",\\\"applicable_condition\\\":\\\"冷却水系统液位监测回路；传感器校验与功能检查阶段\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"液位开关传感器校验记录完整且功能正常\\\",\\\"集控室可显示冷却水液位状态及液位开关动作信号\\\",\\\"液位报警阈值依据厂家技术数据或项目计算文件确定\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-VALVE-PRESS-029\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"集控室应能显示冷却水泵运行状态，包括运行、停止及故障状态。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水泵|intent:运行状态监视|hint:依据厂家技术数据确定泵运行状态信号类型与状态定义}}\\\",\\\"applicable_condition\\\":\\\"冷却水泵运行与备用切换工况\\\",\\\"verification_method\\\":\\\"检查\\\",\\\"acceptance_criteria\\\":[\\\"集控室画面显示各冷却水泵运行、停止和故障状态\\\",\\\"泵状态信号与现场实际状态一致\\\",\\\"状态定义与信号类型记录于参数表\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-SYS-COMP-013\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S38 MAN L16/24 GenSet Project Guide\\\",\\\"has_clause\\\":true},{\\\"kb_id\\\":\\\"E-SYS-COMP-015\\\",\\\"tier\\\":\\\"L3\\\",\\\"source\\\":\\\"S39 MAN L21/31 Project Guide\\\",\\\"has_clause\\\":true}]},{\\\"shall_statement\\\":\\\"集控室冷却水温度、压力、液位和泵状态监视参数应在投用前完成校准与功能检查，确保显示正确。\\\",\\\"measurable_criterion\\\":\\\"{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水温度、压力、液位传感器及泵状态信号|intent:校准与功能检查|hint:依据厂家技术数据或项目计算文件确定校准项目与合格判据}}\\\",\\\"applicable_condition\\\":\\\"冷却水监视系统调试与投用前检查阶段\\\",\\\"verification_method\\\":\\\"测试\\\",\\\"acceptance_criteria\\\":[\\\"温度、压力、液位传感器校准记录完整\\\",\\\"泵运行状态信号功能检查通过\\\",\\\"校准与功能检查结果满足厂家技术数据或项目计算文件要求\\\"],\\\"evidence_citations\\\":[{\\\"kb_id\\\":\\\"E-VALVE-PRESS-029\\\",\\\"tier\\\":\\\"L1\\\",\\\"source\\\":\\\"S43 ABS Marine Vessel Rules Part 4 2021\\\",\\\"has_clause\\\":true}]}]}\"},\"logprobs\":null,\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1494,\"completion_tokens\":1557,\"total_tokens\":3051,\"prompt_tokens_details\":{\"cached_tokens\":0},\"prompt_cache_hit_tokens\":0,\"prompt_cache_miss_tokens\":1494},\"system_fingerprint\":\"e72d3c7f663d3e1383b00b3884cb4501\"}",
+  "response_headers": {
+    "content-type": "application/json",
+    "date": "Mon, 19 Oct 2026 02:53:17 GMT"
+  },
+  "response": {
+    "id": "89913ff1-eccf-4a00-bd5a-c44f7f29eb27",
+    "object": "chat.completion",
+    "created": 1792378397,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"shalls\":[{\"shall_statement\":\"集控室应设置主机冷却水系统集中监视功能，能够显示高温冷却水温度、低温冷却水温度、冷却水压力、冷却水液位及冷却水泵运行状态，不得仅依赖机旁仪表。\",\"measurable_criterion\":\"{{TBD|unit:℃|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:温度显示范围|hint:依据TE3145/TE3170/TE3180/TE3190测量点确定集控室显示的温度上下限}}\",\"applicable_condition\":\"主机冷却水系统正常运行及启动前预热工况；适用于MAN Energy Solutions 49/60机型高温冷却水回路\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"集控室监视画面包含高温冷却水温度、低温冷却水温度、冷却水压力、冷却水液位和冷却水泵运行状态五类参数\",\"上述参数在集控室可独立于机旁仪表读取\",\"显示参数与机旁仪表测量点一一对应并可追溯\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-COMP-036\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true},{\"kb_id\":\"E-SYS-COMP-015\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-COMP-013\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"集控室显示的高温冷却水温度应覆盖高温冷却水回路关键测量点，包括增压空气冷却器出口、缸套冷却出口、低压增压空气冷却器出口及发动机进口处的温度。\",\"measurable_criterion\":\"{{TBD|unit:℃|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:各测量点温度限值|hint:依据TE3145、TE3170、TE3180、TE3190测量点分别确定显示与报警限值}}\",\"applicable_condition\":\"高温冷却水回路运行工况；测量点TE3145、TE3170、TE3180、TE3190对应位置\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"集控室画面覆盖TE3145、TE3170、TE3180、TE3190对应温度测点\",\"各测点显示值与机旁仪表读数一致\",\"各测点温度限值依据厂家技术数据或项目计算文件确定并记录\"],\"evidence_citations\":[{\"kb_id\":\"E-HT-COMP-036\",\"tier\":\"L2\",\"source\":\"S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine\",\"has_clause\":true}]},{\"shall_statement\":\"集控室应能显示高温冷却水压力和低温冷却水压力，压力信号应来自冷却水系统压力传感器PT10和PT01。\",\"measurable_criterion\":\"{{TBD|unit:bar|ref:S39 MAN L21/31 Project Guide|component:高温冷却水/低温冷却水压力传感器PT10、PT01|intent:压力显示范围|hint:依据PT10、PT01信号范围MW64-80、MW65-80确定工程量程与显示范围}}\",\"applicable_condition\":\"适用于MAN Energy Solutions L27/38S、L16/24S、L21/31S等机型冷却水系统\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"集控室画面显示PT10高温冷却水压力与PT01低温冷却水压力\",\"压力显示量程与传感器信号范围对应并记录于参数表\",\"显示值与机旁仪表读数一致\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-COMP-015\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-COMP-013\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"集控室应能显示冷却水系统液位状态，液位开关传感器应在投用前完成校验并确认功能正常。\",\"measurable_criterion\":\"{{TBD|unit:mm|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水液位开关传感器|intent:液位显示与报警阈值|hint:依据厂家技术数据或项目计算文件确定液位开关动作值与显示范围}}\",\"applicable_condition\":\"冷却水系统液位监测回路；传感器校验与功能检查阶段\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"液位开关传感器校验记录完整且功能正常\",\"集控室可显示冷却水液位状态及液位开关动作信号\",\"液位报警阈值依据厂家技术数据或项目计算文件确定\"],\"evidence_citations\":[{\"kb_id\":\"E-VALVE-PRESS-029\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]},{\"shall_statement\":\"集控室应能显示冷却水泵运行状态，包括运行、停止及故障状态。\",\"measurable_criterion\":\"{{TBD|unit:无|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水泵|intent:运行状态监视|hint:依据厂家技术数据确定泵运行状态信号类型与状态定义}}\",\"applicable_condition\":\"冷却水泵运行与备用切换工况\",\"verification_method\":\"检查\",\"acceptance_criteria\":[\"集控室画面显示各冷却水泵运行、停止和故障状态\",\"泵状态信号与现场实际状态一致\",\"状态定义与信号类型记录于参数表\"],\"evidence_citations\":[{\"kb_id\":\"E-SYS-COMP-013\",\"tier\":\"L3\",\"source\":\"S38 MAN L16/24 GenSet Project Guide\",\"has_clause\":true},{\"kb_id\":\"E-SYS-COMP-015\",\"tier\":\"L3\",\"source\":\"S39 MAN L21/31 Project Guide\",\"has_clause\":true}]},{\"shall_statement\":\"集控室冷却水温度、压力、液位和泵状态监视参数应在投用前完成校准与功能检查，确保显示正确。\",\"measurable_criterion\":\"{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水温度、压力、液位传感器及泵状态信号|intent:校准与功能检查|hint:依据厂家技术数据或项目计算文件确定校准项目与合格判据}}\",\"applicable_condition\":\"冷却水监视系统调试与投用前检查阶段\",\"verification_method\":\"测试\",\"acceptance_criteria\":[\"温度、压力、液位传感器校准记录完整\",\"泵运行状态信号功能检查通过\",\"校准与功能检查结果满足厂家技术数据或项目计算文件要求\"],\"evidence_citations\":[{\"kb_id\":\"E-VALVE-PRESS-029\",\"tier\":\"L1\",\"source\":\"S43 ABS Marine Vessel Rules Part 4 2021\",\"has_clause\":true}]}]}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1494,
+      "completion_tokens": 1557,
+      "total_tokens": 3051,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1494
+    },
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "observed_usage_cost_CNY": "0.015444",
+  "identity": {
+    "model": "deepseek-flash",
+    "system_fingerprint": "e72d3c7f663d3e1383b00b3884cb4501"
+  },
+  "usage_cost_CNY": "0.015444",
+  "parsed": {
+    "shalls": [
+      {
+        "shall_statement": "集控室应设置主机冷却水系统集中监视功能，能够显示高温冷却水温度、低温冷却水温度、冷却水压力、冷却水液位及冷却水泵运行状态，不得仅依赖机旁仪表。",
+        "measurable_criterion": "{{TBD|unit:℃|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:温度显示范围|hint:依据TE3145/TE3170/TE3180/TE3190测量点确定集控室显示的温度上下限}}",
+        "applicable_condition": "主机冷却水系统正常运行及启动前预热工况；适用于MAN Energy Solutions 49/60机型高温冷却水回路",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "集控室监视画面包含高温冷却水温度、低温冷却水温度、冷却水压力、冷却水液位和冷却水泵运行状态五类参数",
+          "上述参数在集控室可独立于机旁仪表读取",
+          "显示参数与机旁仪表测量点一一对应并可追溯"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-036",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-COMP-015",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-COMP-013",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "集控室显示的高温冷却水温度应覆盖高温冷却水回路关键测量点，包括增压空气冷却器出口、缸套冷却出口、低压增压空气冷却器出口及发动机进口处的温度。",
+        "measurable_criterion": "{{TBD|unit:℃|ref:S30 MAN Energy Solutions 49/60 Project Guide|component:高温冷却水系统|intent:各测量点温度限值|hint:依据TE3145、TE3170、TE3180、TE3190测量点分别确定显示与报警限值}}",
+        "applicable_condition": "高温冷却水回路运行工况；测量点TE3145、TE3170、TE3180、TE3190对应位置",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "集控室画面覆盖TE3145、TE3170、TE3180、TE3190对应温度测点",
+          "各测点显示值与机旁仪表读数一致",
+          "各测点温度限值依据厂家技术数据或项目计算文件确定并记录"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-HT-COMP-036",
+            "tier": "L2",
+            "source": "S30 MAN Energy Solutions, 49/60 Project Guide, Marine Four-stroke diesel engine",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "集控室应能显示高温冷却水压力和低温冷却水压力，压力信号应来自冷却水系统压力传感器PT10和PT01。",
+        "measurable_criterion": "{{TBD|unit:bar|ref:S39 MAN L21/31 Project Guide|component:高温冷却水/低温冷却水压力传感器PT10、PT01|intent:压力显示范围|hint:依据PT10、PT01信号范围MW64-80、MW65-80确定工程量程与显示范围}}",
+        "applicable_condition": "适用于MAN Energy Solutions L27/38S、L16/24S、L21/31S等机型冷却水系统",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "集控室画面显示PT10高温冷却水压力与PT01低温冷却水压力",
+          "压力显示量程与传感器信号范围对应并记录于参数表",
+          "显示值与机旁仪表读数一致"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-COMP-015",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-COMP-013",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "集控室应能显示冷却水系统液位状态，液位开关传感器应在投用前完成校验并确认功能正常。",
+        "measurable_criterion": "{{TBD|unit:mm|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水液位开关传感器|intent:液位显示与报警阈值|hint:依据厂家技术数据或项目计算文件确定液位开关动作值与显示范围}}",
+        "applicable_condition": "冷却水系统液位监测回路；传感器校验与功能检查阶段",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "液位开关传感器校验记录完整且功能正常",
+          "集控室可显示冷却水液位状态及液位开关动作信号",
+          "液位报警阈值依据厂家技术数据或项目计算文件确定"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-VALVE-PRESS-029",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "集控室应能显示冷却水泵运行状态，包括运行、停止及故障状态。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S38 MAN L16/24 GenSet Project Guide|component:冷却水泵|intent:运行状态监视|hint:依据厂家技术数据确定泵运行状态信号类型与状态定义}}",
+        "applicable_condition": "冷却水泵运行与备用切换工况",
+        "verification_method": "检查",
+        "acceptance_criteria": [
+          "集控室画面显示各冷却水泵运行、停止和故障状态",
+          "泵状态信号与现场实际状态一致",
+          "状态定义与信号类型记录于参数表"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-SYS-COMP-013",
+            "tier": "L3",
+            "source": "S38 MAN L16/24 GenSet Project Guide",
+            "has_clause": true
+          },
+          {
+            "kb_id": "E-SYS-COMP-015",
+            "tier": "L3",
+            "source": "S39 MAN L21/31 Project Guide",
+            "has_clause": true
+          }
+        ]
+      },
+      {
+        "shall_statement": "集控室冷却水温度、压力、液位和泵状态监视参数应在投用前完成校准与功能检查，确保显示正确。",
+        "measurable_criterion": "{{TBD|unit:无|ref:S43 ABS Marine Vessel Rules Part 4 2021|component:冷却水温度、压力、液位传感器及泵状态信号|intent:校准与功能检查|hint:依据厂家技术数据或项目计算文件确定校准项目与合格判据}}",
+        "applicable_condition": "冷却水监视系统调试与投用前检查阶段",
+        "verification_method": "测试",
+        "acceptance_criteria": [
+          "温度、压力、液位传感器校准记录完整",
+          "泵运行状态信号功能检查通过",
+          "校准与功能检查结果满足厂家技术数据或项目计算文件要求"
+        ],
+        "evidence_citations": [
+          {
+            "kb_id": "E-VALVE-PRESS-029",
+            "tier": "L1",
+            "source": "S43 ABS Marine Vessel Rules Part 4 2021",
+            "has_clause": true
+          }
+        ]
+      }
+    ]
+  },
+  "finished_at": "2026-10-19T02:53:23.497902+00:00",
+  "elapsed_seconds": 6.953
+}
