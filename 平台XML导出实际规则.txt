@@ -1,0 +1,109 @@
+平台 XML 导出实际规则与历史脚本定位
+核查日期：2026-10-15
+
+1. 结论与核查范围
+
+当前平台“导出 SysML XML”按钮不是 EA 原生需求图导出入口。实际调用链是：
+ui/pages/engineering.py:16 导入 export_payload_bytes
+ui/pages/engineering.py:277 调用 export_payload_bytes(payload)
+ui/pages/engineering.py:279–282 下载 requirements_sysml.xml
+cooling_rag_mg/sysml_exporter.py:258 实现 export_payload_bytes
+
+以上路径均相对 D:/cooling_rag_multigranular/cooling_rag_multigranular。
+Git 提交 aab04d8 中也是这条调用链；所检查的较早提交 068a7cf 中没有搜到 export_payload_bytes/export_to_mdesign 调用。现有证据不足以声称平台以前必然调用过 M-design 或 EA 导出器。未检查外部 Claude/Trae 工作目录或未提供的版本。
+
+2. 当前平台 XML 的既有契约
+
+输入：payload["requirement_sets"] 为需求集列表。不能直接传入实验结果中的 result_sets 而不做转换，否则当前函数会导出 count=0 的空包。
+输出：带 XML 声明的 UTF-8 字节，由 ElementTree 序列化；根节点 RequirementPackage。
+根属性：generatedAt、count（需求集数量）。
+每个 RequirementSet：setId、sourceRequirementId、stakeholder、generationBasis。
+需求集可含：ProfessionalSummary、Assumptions、EngineeringRequirements、sysml:Relationships、EvidenceGaps、ConfirmationItems。
+
+本项目的命名空间：
+sysml = http://www.omg.org/spec/SysML/20181001/CoolingRAG/Requirements
+注意：这是代码采用的项目自定义 URI；含 omg.org 字样不意味着它是 OMG 官方 XML Schema。
+RequirementPackage、RequirementSet、Requirement、Evidence 等节点无命名空间；Name、Text、DerivedFrom 等采用 sysml 命名空间。兼容现有消费方时应保留这种区分。
+
+需求字段映射：
+id → Requirement/@id
+level → Requirement/@level（缺省 1）
+requirement_type → Requirement/@requirementType（缺省 other）
+topic → sysml:Name
+shall_statement → sysml:Text
+verification_method → sysml:VerifiedBy/@method（非空时）
+parent_id → sysml:DerivedFrom/@refId（非空时）
+evidence_ids → sysml:Traceability/Evidence/@id
+support_status → Evidence/@supportStatus 及 sysml:QualityStatus/SupportStatus
+risk_if_unmet → QualityStatus/RiskIfUnmet
+applicability_constraints → QualityStatus/ApplicabilityConstraint
+acceptance_criteria → sysml:AcceptanceCriteria/Criterion
+engineering_rationale → sysml:EngineeringRationale
+quality_gate_report → sysml:QualityGateReport，包含 passed、score 及各 Check
+
+层级算法：仅 level=1 的需求作为顶层输出；递归选取 parent_id 等于当前 id 且 level=当前 level+1 的子需求。level 必须使用整数，不能传字符串 "1"。孤立的二级需求、跳级节点会被漏掉；count 仍取输入列表长度，因此 count 正确不代表所有需求已导出。
+
+relationships 按输入写出 source、target、type 和 description。当前导出器不会创建 UML 连接器或验证端点存在性。
+VerifiedBy 的 method 只是文本字段，不是连接测试用例的 SysML verify 关系；DerivedFrom 也是自定义引用，不是 XMI 中的 deriveReqt 连接器。
+
+本文件没有以下内容：EA stereotype/xref、UML:Diagram、DiagramElement、节点坐标、颜色、字体、连线路由、memo 显示模式。
+所以只要平台仍调用这个函数，无法通过“补充几个需求字段”恢复 Fig. 5 的 EA 样式。sysml_exporter.py 文件开头明确说明：这是自定义 XML，不符合标准 XMI，目标建模工具需要定制导入器。
+
+3. 平台页面显示与下载文件是两套实现
+
+ui/pages/engineering.py 的 _sysml_block_html 和 render_sysml_requirement_diagram 负责页面需求图；下载按钮单独调用 export_payload_bytes。
+页面 HTML/CSS 的框体颜色和布局不会自动写入下载文件。不能用“网页上显示正确”证明 XML 导入后的图形也正确。
+
+4. 保留的 M-design 导出路径
+
+cooling_rag_mg/mdesign_exporter.py：export_to_mdesign / export_to_mdesign_file。
+scripts/86_export_v4_mdesign.py：convert 将 result_sets 转成 requirement_sets，再调用 M-design 导出器。
+输出：data/search_results/exp_v4/rag_v4_requirements_mdesign.xml。
+当前平台按钮没有调用它。
+
+若要复用旧 M-design 格式，必须同时保留以下三部分：
+A. 模型：xmi:XMI → uml:Model → uml:Package → 根 uml:Class → nestedClassifier 子需求；nestingClass 指向根模型 ID。
+B. 构造型应用：sysml:Requirement 的 base_Class 指向模型 Class，Id/Text 使用现有 _UML_BASE 前缀；保留 _NAMESPACES、_STEREO_HREFS 和 HuaWang 需求图/需求表构造型。不能自行把这些本地兼容值替换成看起来更标准的 URI。
+C. 视图：ownedDiagram 中的 binaryObject/@streamContentID="BINARY-{diag_id}" 必须与 xmi:Extension/filePart/@name 对应；filePart 内 mdOwnedViews 存储真正的图形对象。
+
+节点视图必须有 elementClass="Class"、elementID/@xmi:idref、geometry="x, y, w, h"、properties 及 TAGGED_VALUES compartment。
+既有样式：字体微软雅黑、字号 12；PEN_COLOR=-6191771；TAGGED_VALUES_DISPLAY_MODE 的 index=1。
+连接视图：ContainmentLink；linkFirstEndID/linkSecondEndID 指向视图 ID，不是模型 ID；geometry 保存端点；LINK_LINE_STYLE=OBLIQUE。
+既有布局：需求框 200×80，横向间距 30、纵向额外间距 100；父节点 y=180，子节点 y=360；所有子需求单行排列；画布至少 1800 宽、高 600。
+
+旧 M-design 实现的限制，不应写成必须沿用的需求：
+• 为所有子需求重新生成 ER-{包序号}.{子序号} 作为 Id，没有直接保留输入业务 id。
+• 所有工程需求扁平地嵌套到同一个源需求下，没有使用输入 level/parent_id 恢复多级结构。
+• 根需求 Text 为空；其 Class 名称为 source_requirement_id。
+• 没有按 A/B/C/X 设置等级填充色，也没有 EA 的 text=<memo> 契约。
+• 主函数读取 topic/shall_statement 等少量字段；其余信息不会自动保留。86 脚本通过拼入 shall_statement 才带入判据、等级和引用说明。
+• 当前 ID 生成方式不是跨次导出的稳定身份映射。
+因此，即使完整复用此导出器，也不能期待得到 Fig. 5 的 EA 原生样式。
+
+5. EA 原生导出路径及必须保留的规则
+
+scripts/92_export_ea_native_xmi.py 才是与 Fig. 5 对应的专用生成器；模板为外层项目 XML/XML_of_EA/reqFig.xml。
+输入不是当前 UI payload，而是 exp_v4/rag_v4_results.json、original_requirements_v2.jsonl 和 evidence_units_v3_audited.jsonl；按 result_sets 处理。
+
+关键契约：
+• XMI 1.1，UML 命名空间 omg.org/UML1.3。
+• 需求采用模板的 UML:ClassifierRole，保留 Requirement 类型及 SysML1.4::requirement xref。
+• 内容级 id/text TaggedValue 通过 modelElement 关联需求；保留项目已有的 id/text GUID 前缀。
+• text 采用 &lt;memo&gt;#NOTES#正文；不能变成普通全文 tag，也不能丢掉正文。
+• 图采用 CustomDiagram，styleex 包含 MDGDgm=SysML1.4::Requirement;ShowNotes=0;。
+• 节点保留 HideIcon=0;UCRect=1;Tag=1;AttCustom=0;OpCustom=0;RzO=1;。
+• geometry 明确 Left/Top/Right/Bottom；subject 引用模型 ID；DUID 表示图形身份；连线 SOID/EOID 引用节点 DUID。
+• 源需求灰色，A/B/C/X 按现有 GRADE_STYLE 配色；初始框宽 110、高 170。
+• 当前模型关系是 Nesting；不得直接称为 deriveReqt。
+
+scripts/90_export_ea_xmi.py 是另一版 XMI 2.1 模型导出，不能与 92 的图形模板混合。92 的完整显示约束见《EA_XML生成规范.txt》。EA 实际导入仍须验证。
+
+6. 应交给 Claude/Trae 的实施要求
+
+第一步：报告正在修改哪个平台入口、实际调用哪个导出函数、生成文件根节点和目标建模软件；不得仅依据 .xml 扩展名判断兼容性。
+第二步：保留需求数据与目标工具格式之间的适配层，不要把 UI requirement_sets 与实验 result_sets 混用。
+第三步：如果目标是 Fig. 5，在平台新增或接入明确命名的“导出 EA XMI”路径，复用 92 的模型和视图模板；仅修改 sysml_exporter.py 的自定义字段不能达到目标。接入时需补齐 UI 数据到来源正文、等级、引用及复核字段的映射；缺失字段应报告，不得推断填值。
+第四步：在导出前校验业务 ID 唯一、父节点存在、层级合法、无环、关系端点有效、输入数量与实际序列化数量一致。当前代码没有全面执行这些校验，这些是应补充的约束。
+第五步：根据目标软件分别验收模型、属性、关系和图形；平台页面预览不替代导入验收。不得只生成 XML 后宣称恢复图 5。
+
+本次只核查源代码与上述 Git 快照，并记录格式契约；未修改平台或导出脚本，也未运行导出器重新生成正式需求文件。

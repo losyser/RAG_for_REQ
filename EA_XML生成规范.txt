@@ -1,0 +1,182 @@
+EA 需求图 XML/XMI 生成规范（供 Claude / Trae 执行）
+版本：1.0；日期：2026-10-15
+适用范围：本项目 Enterprise Architect 需求图的生成、导入与样式回归。
+
+补充说明（平台调用链核查后）：当前平台“导出 SysML XML”按钮实际调用 cooling_rag_mg/sysml_exporter.py 的 export_payload_bytes，并未调用本文件讨论的 92_export_ea_native_xmi.py。平台输出是无图形布局的自定义 RequirementPackage XML。本规范仅适用于独立 EA 原生导出路径；平台导出规则和 M-design 路径请先阅读同目录《平台XML导出实际规则.txt》。不得把三种格式合并为一套 XML 规则。
+
+一、任务与基准
+
+生成目标是“包含需求模型和图形呈现信息的 EA 原生兼容 XMI”，不是任意可解析的 XML。必须同时保存元素、属性、关系、图形对象、坐标和显示配置。
+
+视觉基准：
+1. paper_wiley_submission_to_be_revised/fig5_ea_structure.pdf：结构视图。需求框包含 «requirement»、简短名称、tags 分隔区、id 和 text = <memo>；完整正文不展开；源需求为灰色，子需求按已有等级着色。
+2. paper_wiley_submission_to_be_revised/fig5_ea_detail.pdf：详情视图。保留上述结构，只在选定需求框下方展开 Notes。原图主要展开 OR008 及其三个子需求，不能误做成全部节点展开。
+3. fig4_req_diagram.pdf 是正文展开的论文示意图，不作为 EA 原生框体的默认模板。fig1/fig2 是方法流程图，fig3 是架构与需求关系示意，均不得混入需求框样式。
+
+本地序列化依据（相对项目根目录）：
+• XML/XML_of_EA/reqFig.xml：EA 导出的格式样本。
+• cooling_rag_multigranular/scripts/92_export_ea_native_xmi.py：现有生成器。
+• cooling_rag_multigranular/tests/test_ea_compact_blocks.py：紧凑框体契约。
+• cooling_rag_multigranular/tests/test_ea_layout.py、test_ea_notes.py：布局及 Notes 契约。
+
+证据边界：已核对六份 PDF 的外观及上述源文件；尚未对 Claude/Trae 最新输出与本机 EA 导入结果完成逐项比对。因此不能将本规范列出的风险直接断言为本次故障的已证实根因。旧脚本注释中的兼容性解释属于项目经验，不等同于官方跨版本保证。
+
+二、生成方式与兼容配置
+
+必须复用或修正现有生成器，不得让语言模型每次自由拼写整份 XMI。语言模型可提供经校验的结构化需求数据；元素类型、标识符、颜色、坐标和 EA 扩展字段由确定性代码处理。
+
+冻结本项目现有兼容配置：
+• XML 声明及实际文件编码均为 UTF-8。
+• XMI xmi.version="1.1"。
+• xmlns:UML="omg.org/UML1.3"。
+• SysML 元素限定名为 SysML1.4::requirement。
+• 图类型采用 CustomDiagram，并保留 MDGDgm=SysML1.4::Requirement。
+• 保留现有 XMI.header、XMI.content、XMI.difference、XMI.extensions 结构。
+
+exporterVersion=2.5、toolName="Enterprise Architect 2.5" 是现有交换文件中的标记，不应据此推断当前安装的 EA 产品版本。验收报告须另行记录实际 EA 版本、启用的 SysML 技术、字体及主题。
+
+不得擅自改用 XMI 2.x、普通 UML Class、自定义 <requirement> 根节点，或仅输出需求列表而删除 Diagram。若迁移格式，应建立新的兼容配置并重新验收。
+
+三、模型层次和元素身份
+
+沿用当前模板的层次：
+XMI.content
+  UML:Model
+    UML:Namespace.ownedElement
+      UML:Class（EARootClass）
+      UML:Package
+        UML:Namespace.ownedElement
+          UML:Collaboration
+            UML:Namespace.ownedElement
+              UML:ClassifierRole（需求）
+          UML:Association（既有 Nesting 关系）
+  UML:TaggedValue（通过 modelElement 关联需求的 id/text）
+  UML:Diagram
+    UML:Diagram.element
+      UML:DiagramElement（节点和连线）
+
+这是本项目 EA XMI 1.1 模板的序列化规则，不宣称所有 SysML 工具都使用 ClassifierRole 表示需求。
+
+每个需求元素须保留：
+• UML:Stereotype name="requirement"。
+• ea_stype=Requirement、stereotype=requirement、ea_eleType=element。
+• package、package_name、ea_localid、documentation、style。
+• $ea_xref_property 中的 Name=requirement 和 FQName=SysML1.4::requirement。
+• xref 的 $CLT 指向该需求的实际 GUID；不得原样复制其他元素的 $CLT。
+
+业务编号、元素 GUID、图形 DUID 和 ea_localid 是不同标识符，不得混用。
+同一模型内每个 xmi.id 必须唯一；所有 subject、modelElement、type、owner、base 引用须能解析到正确对象。DUID 在图内唯一，SOID/EOID 必须引用同图节点 DUID。
+
+新增稳定身份映射表：业务编号 → 元素 GUID；逻辑关系 → 关系 GUID。更新现有模型时复用身份，新增对象才分配新身份。新建独立模型时使用独立包 GUID，不得沿用脚本中固定 PKG 导致意外合并。随机生成所有 GUID 虽可形成新文件，却不能保证重复导入的更新语义。
+
+四、需求内容和 memo 属性
+
+name 仅放“业务编号 + 简短标题”，优先控制在约 2–3 行内；不得把完整 shall、判据、引用和复核路由都塞进 name。不得通过截断正文修复框体溢出。
+
+每个需求必须有且只有一个业务 id 和一个 text 属性，沿用模板在 XMI.content 下的内容级 TaggedValue，并用 modelElement 关联需求。
+
+保留本地模板中的 tagged value 标识前缀：
+id：EAID_00000DED_3AF1_773a_
+text：EAID_00415985_D789_37d7_
+后续部分生成唯一值，不得复制完整 xmi.id。
+
+以上前缀属于当前模板兼容约束，其跨 EA 版本必要性当前缺少可靠支撑。若需修改，先在目标 EA 版本做最小导入、再导出对照实验，不得仅依据字符串猜测替换。
+
+示意片段（占位符须由生成器替换，不能直接作为独立文件导入）：
+<UML:TaggedValue tag="id" xmi.id="{ID_TAG_GUID}" value="OR008.1" modelElement="{REQUIREMENT_GUID}"/>
+<UML:TaggedValue tag="text" xmi.id="{TEXT_TAG_GUID}" value="&lt;memo&gt;#NOTES#{XML_ESCAPED_FULL_TEXT}" modelElement="{REQUIREMENT_GUID}"/>
+
+text 的解析后内容以 <memo>#NOTES# 开头；图中显示 text = <memo>，双击属性仍可读到完整内容。不得只存字面量 <memo> 而丢失正文；不得将全文作为普通可见 tag 展开。
+
+text 保存完整规范性需求文本；documentation 保存详情展示内容，至少包括：
+Shall、Criterion、Grade、Derivation、Route、Verification、Cited。
+两处出现的正文、数值、单位和条件必须一致。缺失信息须标明未提供或沿用已批准的延期标记，不得为了填满模板生成阈值、标准条款或证据编号。
+
+结构视图不得显示上述全部字段为 tags 列表。需要机器读取的额外元数据可以存储，但必须使用经验证的隐藏或分隔区过滤配置，不能破坏只显示 id/text 的外观。
+
+仅进行一次 XML 转义：& → &amp;、< → &lt;、属性中的引号正确转义；属性换行可用 &#xA;。检查不能出现 &amp;lt;memo&amp;gt; 等二次转义。标题翻译与摘要必须缓存并可审核；仅调整样式时不得重新调用模型改写需求。
+
+五、结构视图的显示契约
+
+图级字段：
+diagramType="CustomDiagram"
+styleex 包含 MDGDgm=SysML1.4::Requirement;ShowNotes=0;
+若同时存在 EAStyle 和 styleex，其中的重叠显示设置必须一致。
+
+节点样式基线：
+DUID={NODE_DUID};HideIcon=0;UCRect=1;Tag=1;AttCustom=0;OpCustom=0;RzO=1;
+
+不得删除 Tag=1，也不得通过 Tag=0 隐藏全部属性来掩盖 memo 识别错误。保留右上角图标、stereotype、标题和 tags 分隔线。RzO=1 沿用样本；其导入后的实际尺寸行为须目视确认，不能只凭字段存在判定自动适配成功。
+
+颜色沿用现有生成器的 COLORREF 编码：R + 256G + 65536B。
+源需求：填充 RGB(232,232,232)，边框 RGB(110,110,110)。
+A：填充 RGB(200,255,200)，边框 RGB(34,139,34)。
+B：填充 RGB(210,230,255)，边框 RGB(0,102,204)。
+C：填充 RGB(255,245,210)，边框 RGB(204,102,0)。
+X：填充 RGB(255,210,210)，边框 RGB(180,0,0)。
+BorderWidth=2；其他样式以通过导入验收的模板为准。
+
+Grade 必须来自既有判定结果；颜色不代表需求已被工程批准。未知等级必须显式报告，不得默认为 A/B/C；灰色不能同时隐式表示源需求和未知等级。
+
+六、坐标与布局契约
+
+每个可见节点显式写出：
+geometry="Left={L};Top={T};Right={R};Bottom={B};"
+要求 R>L、B>T，框体无相交、文字无裁切，包络框覆盖所有节点。这里是 EA 图坐标，不是 PDF 像素，禁止把截图像素直接当成 EA 坐标。
+
+当前生成器初始尺寸为宽 110、高 170，水平步长 170、垂直步长 240；这些是复用起点，不是所有文本都适用的固定尺寸。字体和导入行为确认后，按实际内容调整高度并重新计算下游节点位置。
+
+同一父需求的子节点按稳定业务顺序排列，默认每行最多 4 个，父框按子节点整体包围盒居中。图 5 的复现布局采用：OR041 组在左上、OR008 组在右上、OR052 组在左下；仅在这些组确实存在时采用该固定位置。
+
+必须区分“恢复同类样式”和“恢复原图位置”：现有 group_layout 将多个需求组依次向下排列，并不保证复现图 5 的三组布局。若要求复现图 5，应新增显式组位置配置，不能声称只保留 110×170 即可复原整图。
+
+禁止导入后依赖自动布局作为正式结果。允许先在空白模型中调好坐标并原生导出，再把确认后的 geometry、路由和显示字段固化为模板。连接线不得穿过无关需求框；跨行子节点应预留走线通道。
+
+七、详情视图契约
+
+结构图和详情图必须引用同一套需求元素 GUID；分别使用独立图 GUID、DUID、坐标及节点显示设置。不得复制第二套需求元素来实现正文展开。
+
+详情图保留 stereotype、标题、tags、id 和 text = <memo>，在选定元素下方增加 Notes 分隔区。支持由 selected_detail_ids 指定展开对象；默认可采用 OR008 及其实际子需求。展开后按完整内容增加框高并重新布局。
+
+目前检查到的生成器只输出 ShowNotes=0 的单个图，尚无已核验的“按节点选择性展开 Notes”序列化模板。不得猜造 ShowNotes 类字段并宣称已复原。
+实施方法：在目标 EA 中建立一小组需求，分别设置展开与收起；原生导出两份 XMI，比较图级、DiagramElement 级和元素级字段；只迁移经导入复验有效的差异。若需要 EA 自动化接口补充设置，交付脚本并明确这是 XML 之外的导入步骤。
+
+八、关系语义与视觉复现
+
+Fig. 5 及当前生成器使用实线、圆圈十字符号的 Nesting 连接形式。恢复既有视觉模板时保留当前 UML:Association + ea_type=Nesting 的序列化，不得替换成普通箭头。
+关系图元必须保留 subject 指向连接器，SOID/EOID 指向实际端点的 DUID，并保存 Hidden=0 和经验证的线型、路由配置。EDGE、Path 等值应从实际模板或经验证算法获得，不应假定一个 EDGE 数值适用于所有方向。
+
+语义审查必须单独进行：Nesting/Containment 表示包含关系，deriveReqt 表示需求派生，两者不能互相冒充。当前脚本按父→子建立 Nesting，仅说明它如何序列化，不能证明该关系符合论文所声称的派生语义。
+如果实际关系是“工程需求由源需求派生”，应使用经目标 EA 原生导出确认的 deriveReqt 模板，派生需求指向来源需求；不能为了外观保持 Nesting 却在论文中写成自动生成 deriveReqt。修正后线型与图 5 有所不同是语义修正的结果，须更新对应图及说明。
+不要从 Fig. 3 的示意箭头直接推定标准连接器方向。satisfy、verify、trace 也须有真实模型对象及业务依据；仅 Notes 中出现 Cited 不等于已创建 trace 连接器。
+
+官方依据：
+https://sparxsystems.com/enterprise_architect_user_guide/17.2/guide_books/deriving_a_requirement_from_another.html
+https://sparxsystems.com/enterprise_architect_user_guide/17.1/guide_books/containment_relationship.html
+https://sparxsystems.com/resources/user-guides/17.1/guidebooks/mbse-and-sysml.pdf
+
+九、生成和验收流程
+
+1. 冻结需求输入、旧版 XML、样式模板和目标 EA 环境；计算文件摘要。先比较最新 XML 与基准的元素类型、xref、memo、Tag、ShowNotes、坐标及端点引用。
+2. 样式修复不得更改业务编号、shall、判据、等级和引用。需要修正研究内容时另列变更及依据。
+3. 先生成最小案例：一个源需求、两个真实子需求、两条经确认的关系及两种视图。至少验证 memo、特殊字符、换行、颜色和一处展开 Notes。
+4. 静态验收：XML 可解析；定义 ID 无重复；引用可解析；每需求 id/text 完整；stereotype 与 xref 一致；图元和关系数量与输入相符；颜色映射正确；坐标有效；记录身份复用策略。仅 XML 可解析不算导入成功。
+5. 运行与本次修改相关的现有测试；测试只能证明结构契约，不能代替 EA 渲染验收。
+6. 在独立空白 EA 模型中导入，避免覆盖正式模型。记录实际导入选项；需要更新现有对象时不得使用会重建身份的选项。检查重复导入是否产生重复元素或关系。
+7. 目视验收结构图：«requirement» 正确；标题清晰；tags 仅有 id/text；text 显示 <memo>；正文收起；配色正确；节点及连线无重叠。
+8. 目视验收详情图：只有指定元素展开；完整正文及判据、等级、验证和引用可读；其他元素保持紧凑；源需求和子需求身份与结构图一致。
+9. 双击需求核对 memo/Notes 原文；检查连接器实际类型和端点，不能只看其外观。
+10. 从 EA 再导出 XMI，按业务编号及关系语义比较关键属性，忽略无关时间戳和内部序号变动；输出前后截图及差异清单。只有经过目标 EA 实测才能标记“导入和样式验证通过”。
+
+十、必须交付的内容
+
+• 生成的 EA 兼容 XML。
+• 生成器及样式/布局配置，明确结构视图和详情视图的实现方式。
+• 稳定身份映射或等效持久化机制。
+• 静态校验结果、实际 EA 导入环境、截图及再导出比对结果。
+• 尚未验证的行为、内容缺失项和语义冲突清单。
+
+若当前环境无法操作 EA，仍应交付生成文件和静态检查结果，但结论必须写“静态检查通过，EA 导入外观待验证”，不得写“完全恢复原样”。
+
+可直接发给 Claude / Trae 的执行指令：
+请按 docs/EA_XML生成规范.txt 修复现有 EA XMI 生成流程，以 fig5_ea_structure.pdf 和 fig5_ea_detail.pdf 为视觉验收基准。先比较最新 XML 与 XML/XML_of_EA/reqFig.xml、92_export_ea_native_xmi.py 的结构及样式字段，给出有证据的差异；保持需求内容与等级不变，复用确定性生成器，保留 EA 原生 stereotype、xref、memo、tags、坐标和连线引用。分别实现紧凑结构视图与选择性展开 Notes 的详情视图；未经目标 EA 导出确认，不得猜造显示字段。将 Nesting 与 deriveReqt 的语义问题独立列出，不得用样式恢复掩盖。交付 XML、代码、配置、校验报告和实际导入截图；无法实际导入时明确标注未验证。
